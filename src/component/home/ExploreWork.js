@@ -1,89 +1,114 @@
-'use client';
-import React from 'react';
-import {
-  Box,
-  Typography,
-  Stack,
-  Button,
-  Grid,
-} from '@mui/material';
+"use client";
+import React, { useState } from "react";
+import { Box, Typography, Button, Grid, Stack } from "@mui/material";
 
-const categories = ['All', 'Wedding', 'Corporate', 'Private Events', 'Decoration', 'Catering'];
+const filters = [
+  "All",
+  "Wedding",
+  "Corporate",
+  "Private Events",
+  "Decoration",
+  "Catering",
+];
 
-const images = [
-  '/images/wedding1.jpg',
-  '/images/wedding2.jpg',
-  '/images/wedding3.jpg',
-  // Add more URLs as needed
+const gallery = [
+  {
+    img: "/explore1.jpg",
+    category: "Wedding",
+  },
+  {
+    img: "/explore1.jpg",
+    category: "Decoration",
+  },
+  {
+    img: "/explore1.jpg",
+    category: "Catering",
+  },
 ];
 
 export default function ExploreWork() {
+  const [selected, setSelected] = useState("Wedding");
+
   return (
-    <Box sx={{ bgcolor: '#FDF8EF', py: 10, px: { xs: 3, md: 12 } }}>
-      <Grid container spacing={6} alignItems="flex-start">
-        {/* LEFT SIDE */}
-        <Grid item xs={12} md={4}>
+    <Box
+      sx={{ px: { xs: 2, md: 5 }, py: { xs: 6, md: 5 } }}
+    >
+      <Grid
+        container
+        spacing={0}
+        alignItems="center"
+        justifyContent="center"
+        sx={{ columnGap: { md: "150px" }  , rowGap:{xs:'20px'}}}
+      >
+        {/* Left Side - Title + Filters */}
+        <Grid item xs={12} md={3}>
           <Typography
             variant="h4"
             sx={{
-              fontFamily: `'Playfair Display', serif`,
-              color: '#0D1A46',
-              fontWeight: 'bold',
+              fontWeight: "bold",
+              fontFamily: `'Georgia', serif`,
+              color: "#0D1A46",
               mb: 3,
             }}
           >
-            Explore Our Work
+            Explore <br /> Our Work
           </Typography>
 
-          <Stack spacing={1}>
-            {categories.map((cat, index) => (
+          <Stack direction="row" flexWrap="wrap" gap={1}>
+            {filters.map((filter) => (
               <Button
-                key={index}
-                variant={cat === 'Wedding' ? 'contained' : 'outlined'}
+                key={filter}
+                onClick={() => setSelected(filter)}
+                variant={selected === filter ? "contained" : "outlined"}
                 size="small"
                 sx={{
-                  textTransform: 'none',
-                  borderRadius: '20px',
-                  color: cat === 'Wedding' ? '#fff' : '#B89562',
-                  bgcolor: cat === 'Wedding' ? '#B89562' : 'transparent',
-                  borderColor: '#B89562',
-                  '&:hover': {
-                    bgcolor: '#B89562',
-                    color: '#fff',
+                  textTransform: "none",
+                  borderRadius: 50,
+                  borderColor: "#F7C35F",
+                  color: selected === filter ? "#fff" : "#F7C35F",
+                  backgroundColor:
+                    selected === filter ? "#0D1A46" : "transparent",
+                  fontWeight: 500,
+                  px: 2,
+                  "&:hover": {
+                    backgroundColor:
+                      selected === filter ? "#0D1A46" : "#F7C35F22",
+                    borderColor: "#F7C35F",
                   },
                 }}
               >
-                {cat}
+                {filter}
               </Button>
             ))}
           </Stack>
         </Grid>
 
-        {/* RIGHT SIDE */}
-        <Grid item xs={12} md={8}>
+        {/* Right Side - Images */}
+        <Grid item xs={12} md={6}>
           <Box
             sx={{
-              display: 'flex',
+              display: "flex",
               gap: 2,
-              overflowX: 'auto',
-              scrollBehavior: 'smooth',
-              pb: 1,
-              '&::-webkit-scrollbar': { display: 'none' },
+              overflowX: { xs: "auto", md: "unset" },
+              whiteSpace: { xs: "nowrap", md: "normal" },
+              scrollBehavior: "smooth",
+              pb: { xs: 2, md: 0 },
             }}
           >
-            {images.map((src, index) => (
+            {gallery.map((item, index) => (
               <Box
                 key={index}
                 component="img"
-                src={src}
-                alt={`Work ${index}`}
+                src={item.img}
+                alt={`Gallery ${index}`}
                 sx={{
-                  width: { xs: 220, sm: 280 },
-                  height: 'auto',
-                  borderRadius: 3,
+                  height: 260,
+                  width: 260,
+                  minWidth: 260,
+                  borderRadius: 2,
+                  objectFit: "cover",
+                  border: index === 0 ? "3px solid #007FFF" : "none",
                   flexShrink: 0,
-                  objectFit: 'cover',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
                 }}
               />
             ))}
