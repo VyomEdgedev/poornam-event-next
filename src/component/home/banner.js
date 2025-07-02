@@ -20,21 +20,25 @@ export default function HeroSection() {
             alignItems: "stretch",
             justifyContent: "space-between",
             gap: 4,
+            padding: "20px"
           }}
         >
-      
+
 
           {/* Text Section */}
           <Box flex={1} display="flex" flexDirection="column" justifyContent="center">
             <Box mb={2} sx={{ display: { xs: "none", md: "block" } }}>
               <Image src={"/logo.png"} alt="Logo" width={150} height={150} />
+
             </Box>
             <Typography
               variant="h3"
               fontWeight="bold"
               sx={{
-                color: "#f4ce6a",
+                color: "#E6C365",
                 fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
+                fontFamily: 'Elsie Swash Caps',
+                padding: "5px",
               }}
               gutterBottom
             >
@@ -42,12 +46,12 @@ export default function HeroSection() {
             </Typography>
             <Typography
               variant="h5"
-              sx={{ color: "white", mb: 2, fontWeight: 300 }}
+              sx={{ color: "#FFF5D9", mb: 2, fontWeight: 300 }}
             >
               Let’s Make Yours Legendary
             </Typography>
             <Typography
-              sx={{ color: "#ccc", fontSize: "0.95rem", mb: 3 }}
+              sx={{ color: "#FFF5D9", fontSize: "0.95rem", mb: 3 }}
             >
               Luxury meets laughter, chaos choreographed—beautiful weddings across
               Indore, Bhopal & Jabalpur.
@@ -58,26 +62,28 @@ export default function HeroSection() {
             >
               <Button
                 variant="contained"
-                sx={{ bgcolor: "#f4ce6a", color: "black" }}
+                sx={{ bgcolor: "#D7A10F", color: "#FFFFFF", borderRadius: "20px", padding: "8px 25px" }}
               >
                 Plan My Wedding
               </Button>
               <Button
                 variant="outlined"
-                sx={{ color: "white", borderColor: "white" }}
+                sx={{ bgcolor: "#FFFFFF", color: "black", borderColor: "black", borderRadius: "20px", padding: "8px 25px" }}
               >
                 Talk to Our Planner
               </Button>
             </Stack>
           </Box>
-          
-              {/* Image Section */}
+
+          {/* Image Section */}
           <Box
             sx={{
               flex: 1,
               width: "100%",
               overflow: "hidden",
               borderRadius: 2,
+
+
             }}
           >
             <Image
@@ -93,6 +99,8 @@ export default function HeroSection() {
                 objectPosition: "top",
                 display: "block",
                 borderRadius: "12px",
+                transform: 'scaleX(-1)',
+
               }}
             />
           </Box>

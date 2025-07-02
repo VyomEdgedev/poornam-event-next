@@ -84,12 +84,17 @@ export default function Header() {
               <Box display="flex" alignItems="center">
                 <Image src="/logo.png" alt="Logo" width={50} height={50} />
               </Box>
-              <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)}>
-                <MenuIcon />
+              <Box 
+               >
+                <IconButton   edge="end" color="inherit" onClick={() => setOpenDrawer(true)}>
+                <MenuIcon  />
+                
               </IconButton>
-              <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}>
+              </Box>
+              
+              <Drawer  anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}>
                 <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
-                  <List>
+                  <List  sx={{backgroundColor:"#0A163ED4", color:"#CBEFFF", alignContent:"center", alignItems:"center", height:"667px", padding:"25%"}}>
                     {navItems.map((item, index) => (
                       <ListItem key={index} disablePadding>
                         <ListItemButton>

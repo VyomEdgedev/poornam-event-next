@@ -46,9 +46,12 @@ export default function ExploreWork() {
             variant="h4"
             sx={{
               fontWeight: "bold",
-              fontFamily: `'Georgia', serif`,
+              fontFamily: `'Elsie Swash Caps', serif`,
               color: "#0D1A46",
               mb: 3,
+              fontSize:'40px'
+              
+
             }}
           >
             Explore <br /> Our Work
@@ -93,6 +96,7 @@ export default function ExploreWork() {
               whiteSpace: { xs: "nowrap", md: "normal" },
               scrollBehavior: "smooth",
               pb: { xs: 2, md: 0 },
+
             }}
           >
             {gallery.map((item, index) => (
