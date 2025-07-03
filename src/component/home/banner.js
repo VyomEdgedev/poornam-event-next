@@ -35,10 +35,8 @@ export default function HeroSection() {
               variant="h3"
               fontWeight="bold"
               sx={{
-                color: "#E6C365",
+                color: "#f4ce6a",
                 fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
-                fontFamily: 'Elsie Swash Caps',
-                padding: "5px",
               }}
               gutterBottom
             >
@@ -46,14 +44,14 @@ export default function HeroSection() {
             </Typography>
             <Typography
               variant="h5"
-              sx={{ color: "#FFF5D9", mb: 2, fontWeight: 300 }}
+              sx={{ color: "white", mb: 2, fontWeight: 300 }}
             >
               Let’s Make Yours Legendary
             </Typography>
             <Typography
-              sx={{ color: "#FFF5D9", fontSize: "0.95rem", mb: 3 }}
+              sx={{ color: "#ccc", fontSize: "0.95rem", mb: 3 }}
             >
-              Luxury meets laughter, chaos choreographed—beautiful weddings across
+              Luxury meets laughter, chaos choreographed-beautiful weddings across
               Indore, Bhopal & Jabalpur.
             </Typography>
             <Stack
@@ -62,13 +60,13 @@ export default function HeroSection() {
             >
               <Button
                 variant="contained"
-                sx={{ bgcolor: "#D7A10F", color: "#FFFFFF", borderRadius: "20px", padding: "8px 25px" }}
+                sx={{ bgcolor: "#f4ce6a", color: "black" }}
               >
                 Plan My Wedding
               </Button>
               <Button
                 variant="outlined"
-                sx={{ bgcolor: "#FFFFFF", color: "black", borderColor: "black", borderRadius: "20px", padding: "8px 25px" }}
+                sx={{ color: "white", borderColor: "white" }}
               >
                 Talk to Our Planner
               </Button>

@@ -1,26 +1,21 @@
-'use client';
-import React from 'react';
+
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
   Grid,
-  Card,
-  CardContent,
+  Button,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
-import {
-  LocationOn,
-  Favorite,
-  Store,
-  EventNote,
-  MusicNote,
-  LocalFlorist,
-} from '@mui/icons-material';
+import Image from 'next/image';
 
 const services = [
   {
     icon: <LocationOn sx={{ fontSize: 50, color: '#0D2650' }} />,
     title: 'Destination Weddings',
-    desc: 'We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...',
+    image: '/portfolio1.png',
+    description: 'We plan unforgettable weddings in Udaipur, Goa, Jaipur, and more.',
   },
   {
     icon: <Favorite sx={{ fontSize: 50, color: '#0D2650' }} />,
@@ -30,7 +25,8 @@ const services = [
   {
     icon: <Store sx={{ fontSize: 50, color: '#0D2650' }} />,
     title: 'Themed & Designer Weddings',
-    desc: 'Enjoy your day while we handle the details.',
+    image: '/portfolio1.png',
+    description: 'Enjoy your big day while we handle the details.',
   },
   {
     icon: <EventNote sx={{ fontSize: 50, color: '#0D2650' }} />,
@@ -50,24 +46,25 @@ const services = [
 ];
 
 export default function OurServices() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Box
       sx={{
-        bgcolor: '#FDF8EF',
-        py: { xs: 6, md: 2 },
-        px: { xs: 2, md: 2 },
+        px: { xs: 2, md: 10 },
+        py: { xs: 6, md: 10 },
+        bgcolor: '#FEF7EA',
+        textAlign: 'center',
       }}
     >
       <Typography
         variant="h4"
-        align="center"
-        fontWeight="bold"
         sx={{
           fontFamily: `'Playfair Display', serif`,
           color: '#000D1F',
           mb: 1,
           fontSize:'40px',
-          fontFamily: 'Elsie Swash Caps',
           padding:'1px'
           
         }}
@@ -78,7 +75,7 @@ export default function OurServices() {
         Everything You Need, Delivered Beautifully
       </Typography>
 
-      <Grid container spacing={4} justifyContent={'center'}>
+      <Grid container spacing={4} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card

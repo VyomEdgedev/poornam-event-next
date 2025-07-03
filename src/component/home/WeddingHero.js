@@ -36,24 +36,24 @@ const WeddingHero = () => {
             fontWeight="bold"
             sx={{ mb: 2 , padding:"10px "}}
           >
-            <Box component="span" sx={{ color: '#000D1F', fontSize:'45px' ,fontFamily: 'Elsie Swash Caps'}}>it’s Not </Box>
-            <Box component="span" sx={{ color: '#DAA412' ,fontSize:'45px' ,fontFamily: 'Elsie Swash Caps' }}>Just a Wedding...</Box>
+            <Box component="span" sx={{ color: '#000D1F', fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock'}}>It’s Not </Box>
+            <Box component="span" sx={{ color: '#DAA412' ,fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock' }}>Just a Wedding...</Box>
           </Typography>
 
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F",fontSize:'24px' }}>
+          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F",fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
             It’s a Story You’ll Tell Forever
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize:'15px' }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" }}}>
             Shaadi ka stress is real. One minute you're choosing napkin colors,
-            next <br/> minute you're crying over seating charts. We get it.
+            next  minute you're crying over seating charts. We get it.
           </Typography>
 
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F" ,fontSize:'24px'}}>
+          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F" ,fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
             At Poornam, we don’t just manage weddings:
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize:'15px' }}>
-            We manage meltdowns, moodboards, and Mom’s wishlist. From the first <br /> dance to the final
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" } }}>
+            We manage meltdowns, moodboards, and Mom’s wishlist. From the first  dance to the final
             goodbye hug, we’re there.
           </Typography>
         </Grid>

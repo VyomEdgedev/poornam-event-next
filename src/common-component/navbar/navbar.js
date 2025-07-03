@@ -96,11 +96,15 @@ export default function Header() {
                 <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
                   <List  sx={{backgroundColor:"#0A163ED4", color:"#CBEFFF", alignContent:"center", alignItems:"center", height:"667px", padding:"25%"}}>
                     {navItems.map((item, index) => (
-                      <ListItem key={index} disablePadding>
+                      <>
+                       <ListItem key={index} disablePadding >
                         <ListItemButton>
                           <ListItemText primary={item} />
                         </ListItemButton>
                       </ListItem>
+                      <hr />
+                      </>
+                     
                     ))}
                     <ListItem>
                       <IconButton href="https://wa.me/919000000000" target="_blank" sx={{ color: "#25D366" }}>
