@@ -4,6 +4,7 @@ import WeddingHero from "./WeddingHero";
 import OurServices from "./OurService";
 import ExploreWork from "./ExploreWork";
 import Testimonials from "./Testimonials";
+import OurPortfolio from "./OurPortfolio";
 export default function () {
   return (<>
   
@@ -12,6 +13,7 @@ export default function () {
   <OurServices></OurServices>
   <ExploreWork></ExploreWork>
   <Testimonials></Testimonials>
+  <OurPortfolio></OurPortfolio>
   </>
   )
 }
