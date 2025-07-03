@@ -20,14 +20,16 @@ export default function HeroSection() {
             alignItems: "stretch",
             justifyContent: "space-between",
             gap: 4,
+            padding: "20px"
           }}
         >
-      
+
 
           {/* Text Section */}
           <Box flex={1} display="flex" flexDirection="column" justifyContent="center">
             <Box mb={2} sx={{ display: { xs: "none", md: "block" } }}>
               <Image src={"/logo.png"} alt="Logo" width={150} height={150} />
+
             </Box>
             <Typography
               variant="h3"
@@ -49,7 +51,7 @@ export default function HeroSection() {
             <Typography
               sx={{ color: "#ccc", fontSize: "0.95rem", mb: 3 }}
             >
-              Luxury meets laughter, chaos choreographed—beautiful weddings across
+              Luxury meets laughter, chaos choreographed-beautiful weddings across
               Indore, Bhopal & Jabalpur.
             </Typography>
             <Stack
@@ -70,14 +72,16 @@ export default function HeroSection() {
               </Button>
             </Stack>
           </Box>
-          
-              {/* Image Section */}
+
+          {/* Image Section */}
           <Box
             sx={{
               flex: 1,
               width: "100%",
               overflow: "hidden",
               borderRadius: 2,
+
+
             }}
           >
             <Image
@@ -93,6 +97,8 @@ export default function HeroSection() {
                 objectPosition: "top",
                 display: "block",
                 borderRadius: "12px",
+                transform: 'scaleX(-1)',
+
               }}
             />
           </Box>
