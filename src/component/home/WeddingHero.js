@@ -3,6 +3,7 @@
 import { Box, Typography, Grid, useMediaQuery, useTheme, Stack } from '@mui/material';
 import Image from 'next/image';
 
+
 const WeddingHero = () => {
   const theme = useTheme();
 
@@ -16,6 +17,7 @@ const WeddingHero = () => {
         py: { xs: 2, md: 5 },
         bgcolor: 'white',
         position: 'relative',
+       
         // overflow: 'hidden',
       }}
     >
@@ -25,30 +27,33 @@ const WeddingHero = () => {
         alignItems="center"
         justifyContent="space-between"
         direction={isCompact ? 'column' : 'row'}
+        padding={"10px 80px"}
       >
         {/* LEFT - TEXT */}
-        <Grid item xs={12} md={4} width={ isCompact ? '100%' : '50%'}>
+        <Grid item xs={12} md={4} width={isCompact ? '100%' : '50%'}>
           <Typography
             variant={isCompact ? 'h5' : 'h3'}
             fontWeight="bold"
-            sx={{ mb: 2 }}
+            sx={{ mb: 2 , padding:"10px "}}
           >
-            <Box component="span" sx={{ color: '#0A1E3F' }}>it’s Not </Box>
-            <Box component="span" sx={{ color: '#D99F0B' }}>Just a Wedding...</Box>
+            <Box component="span" sx={{ color: '#000D1F', fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock'}}>It’s Not </Box>
+            <Box component="span" sx={{ color: '#DAA412' ,fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock' }}>Just a Wedding...</Box>
           </Typography>
 
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F",fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
             It’s a Story You’ll Tell Forever
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            Shaadi ka stress is real. One minute you're choosing napkin colors, 
-            next minute you're crying over seating charts. We get it.
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" }}}>
+            Shaadi ka stress is real. One minute you're choosing napkin colors,
+            next  minute you're crying over seating charts. We get it.
           </Typography>
 
-          <Typography variant="body1" color="text.secondary">
-            At Poornam, we don’t just manage weddings: We manage meltdowns, 
-            moodboards, and Mom’s wishlist. From the first dance to the final 
+          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F" ,fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
+            At Poornam, we don’t just manage weddings:
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" } }}>
+            We manage meltdowns, moodboards, and Mom’s wishlist. From the first  dance to the final
             goodbye hug, we’re there.
           </Typography>
         </Grid>
@@ -78,6 +83,7 @@ const WeddingHero = () => {
                 width: '100%',
                 flexWrap: 'wrap',
                 gap: 3,
+                
               }}
             >
               {/* Image 1 */}
