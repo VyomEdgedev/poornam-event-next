@@ -275,7 +275,7 @@ const ButtonContainer = styled(Box)(({ theme, buttonscontainer }) => ({
 }));
 
 // Main Banner Component
-const Banner = ({
+const CustomBanner = ({
   // Content props
   title,
   subtitle,
@@ -473,7 +473,7 @@ const Banner = ({
   );
 };
 
-export default Banner;
+export default CustomBanner;
 
 // Enhanced Usage Examples with Responsive Features:
 
