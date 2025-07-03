@@ -7,8 +7,11 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Card,
+  CardContent,
 } from '@mui/material';
 import Image from 'next/image';
+import { EventNote, Favorite, LocalFlorist, LocationOn, MusicNote, Store } from '@mui/icons-material';
 
 const services = [
   {
