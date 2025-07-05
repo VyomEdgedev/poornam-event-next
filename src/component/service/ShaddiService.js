@@ -122,7 +122,7 @@ const ServiceCard = styled(Card)(({ theme,isHighlighted }) => ({
   display: 'flex',
   flexDirection: 'row',
   overflow: 'hidden',
-  padding: theme.spacing(2),
+  padding: '16px 16px 16px 0px',
   alignItems: 'center',
   gap: theme.spacing(2),
   '& .MuiCardContent-root': {
@@ -255,7 +255,7 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const ShaddiService = () => {
+const   ShaddiService = () => {
   return (
     <MainContainer>
       {/* Title */}
