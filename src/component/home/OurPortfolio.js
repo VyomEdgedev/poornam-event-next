@@ -1,132 +1,129 @@
-"use client";
-import React from "react";
+import React from 'react';
 import {
   Box,
+  Container,
   Typography,
   Button,
-  Grid,
-  useMediaQuery,
   useTheme,
-} from "@mui/material";
-import Image from "next/image";
+  useMediaQuery,
+} from '@mui/material';
 
-const portfolioImages = [
-  "/portfolio1.png",
-  "/portfolio1.jpg",
-  "/portfolio1.jpg",
-  "/portfolio1.jpg",
-  "/portfolio1.jpg",
-  "/portfolio1.jpg",
+const images = [
+  { src: '/portfolio1.png', alt: 'Fireworks Ceremony', },
+  { src: '/portfolio1.png', alt: 'Stage Decor' },
+  { src: '/portfolio1.png', alt: 'Mandap Setup' },
+  { src: '/portfolio1.png', alt: 'Sangeet Night' },
+  { src: '/portfolio1.png', alt: 'Palace Venue' },
+  { src: '/portfolio1.png', alt: 'Entry Moment', hasButton: true, cols:1 },
 ];
 
-export default function OurPortfolio() {
+const PortfolioSection = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box
-      sx={{
-        px: { xs: 2, md: 8 },
-        py: { xs: 6, md: 10 },
-        bgcolor: "#FEF7EA",
-        textAlign: "center",
-      }}
-    >
-      {/* Heading */}
-      <Typography
-        variant="h4"
-        sx={{
-          fontFamily: `'Playfair Display', serif`,
-          fontWeight: "bold",
-          color: "#0D1A46",
-          mb: 1,
-        }}
-      >
-        Our Portfolio
-      </Typography>
-      <Typography
-        variant="subtitle1"
-        color="text.secondary"
-        mb={{ xs: 4, md: 6 }}
-      >
-        Real Weddings. Real Emotions.
-      </Typography>
-
-      {/* Portfolio Layout */}
-      <Grid
-        container
-        spacing={4}
-        alignItems="flex-start"
-        justifyContent="center"
-        direction={isMobile ? "column" : "row"}
-      >
-        {/* Left Image */}
-        <Grid item xs={12} md={4}>
-          <Box
+    <Box sx={{ bgcolor: '#FEF7EA', py: { xs: 6, md: 10 } }}>
+      <Container maxWidth="lg">
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Typography
+            variant="h4"
             sx={{
-              height: isMobile ? 300 : 420,
-              borderRadius: "0 0 100px 0",
-              overflow: "hidden",
-              position: "relative",
-              boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+              fontFamily: `'Playfair Display', serif`,
+              fontWeight: 700,
+              color: '#0D1A46',
             }}
           >
-            <Image
-              src="/protfolio1.png" // make sure image exists under public
-              alt="Main Portrait"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </Box>
-        </Grid>
+            Our Portfolio
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Real Weddings. Real Emotions.
+          </Typography>
+        </Box>
 
-        {/* Right Image Grid */}
-        <Grid item xs={12} md={8}>
-          <Grid container spacing={2}>
-            {portfolioImages.map((src, index) => (
-              <Grid key={index} item xs={6} sm={4}>
-                <Box
-                  sx={{
-                    borderRadius: 3,
-                    overflow: "hidden",
-                    height: 120,
-                    width: "100%",
-                    position: "relative",
-                    boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-                  }}
-                >
-                  <Image
-                    src={src}
-                    alt={`Portfolio ${index + 1}`}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
-
-      {/* CTA Button */}
-      <Box mt={6}>
-        <Button
-          variant="contained"
+        {/* 🖼️ Image Grid */}
+        <Box
           sx={{
-            bgcolor: "#000",
-            color: "#fff",
-            borderRadius: "50px",
-            px: 4,
-            py: 1.5,
-            textTransform: "none",
-            fontWeight: 600,
-            fontSize: "15px",
-            "&:hover": { bgcolor: "#333" },
+            display: 'grid',
+            gap: 0.5,
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+            },
+            gridAutoRows: '190px',
+            gridAutoFlow: 'dense',
           }}
         >
-          View Full Wedding Stories
-        </Button>
-      </Box>
+          {images.map((item, idx) => (
+            <Box
+              key={idx}
+              sx={{
+                position: 'relative',
+                borderRadius: 2,
+                overflow: 'hidden',
+                gridColumn: {
+                  xs: 'auto',
+                  md: item.cols ? `span ${item.cols}` : 'auto',
+                },
+                gridRow: {
+                  xs: 'auto',
+                  md: item.rows ? `span ${item.rows}` : 'auto',
+                },
+                '& img': {
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'transform 0.4s ease',
+                },
+                '&:hover img': {
+                  transform: 'scale(1.04)',
+                },
+              }}
+            >
+              <img src={item.src} alt={item.alt} />
+
+              {item.hasButton && (
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: 'rgba(0,0,0,0.3)',
+                    backdropFilter: 'blur(2px)',
+                    zIndex: 2,
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    sx={{
+                      bgcolor: '#0D1A46',
+                      color: '#fff',
+                      textTransform: 'none',
+                      borderRadius: '999px',
+                      px: 3,
+                      py: 1,
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      '&:hover': {
+                        bgcolor: '#1B2A60',
+                      },
+                    }}
+                  >
+                    View Full Wedding Stories
+                  </Button>
+                </Box>
+              )}
+            </Box>
+          ))}
+        </Box>
+      </Container>
     </Box>
   );
-}
+};
+
+export default PortfolioSection;
