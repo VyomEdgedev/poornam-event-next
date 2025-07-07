@@ -1,26 +1,33 @@
 import React from 'react';
 import { Box, Grid, Typography, TextField, Button } from '@mui/material';
+import CustomButton from '@/common-component/button/CustomButton';
+import { px } from 'framer-motion';
+import { Height } from '@mui/icons-material';
 
 export default function ContactSection() {
+    const handleLetChat = () => {
+    // Add your navigation or action logic here
+    console.log("Let's Chat clicked");
+  };
   return (
-    <Box sx={{ px: 4, py: 10, backgroundColor: '#fff' }}>
-      <Grid container spacing={4} alignItems="center" justifyContent="center">
+    <Box sx={{ px: 2, py: 10 }}>
+      <Grid container spacing={12}  justifyContent="center">
         {/* Left Text Side */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={8} >
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
-              fontFamily: 'serif',
-              fontWeight: 700,
+              fontFamily: 'Gloock, serif',
+              fontWeight: 400,
               mb: 2,
-              lineHeight: 1.3,
+              lineHeight: 1.2,
             }}
           >
             Get in Touch with <br />
             the Heart Behind <br />
             the Brand
           </Typography>
-          <Typography variant="body1" sx={{ color: '#444' }}>
+          <Typography variant="body1" sx={{ color: '#000000' ,frontFamily: "Akatab,Sans-serif", fontWeight:'400'}}>
             Let’s connect and make your dream wedding a reality.
           </Typography>
         </Grid>
@@ -36,8 +43,8 @@ export default function ContactSection() {
               maxWidth: 400,
             }}
           >
-            <Box>
-              <Typography variant="body2" sx={{ mb: 0.5 }}>
+            <Box> 
+              <Typography variant="body2" sx={{ mb: 0.5 ,frontFamily: "Akatab,Sans-serif", fontWeight:'500', color:'#000000'}}>
                 Your Name
               </Typography>
               <TextField
@@ -49,7 +56,7 @@ export default function ContactSection() {
             </Box>
 
             <Box>
-              <Typography variant="body2" sx={{ mb: 0.5 }}>
+              <Typography variant="body2" sx={{ mb: 0.5 ,frontFamily: "Akatab,Sans-serif", fontWeight:'500', color:'#000000'}}>
                 Your Message
               </Typography>
               <TextField
@@ -61,25 +68,10 @@ export default function ContactSection() {
                 rows={3}
               />
             </Box>
-
-            <Button
-              variant="contained"
-              sx={{
-                width: 'fit-content',
-                mt: 1,
-                borderRadius: '20px',
-                backgroundColor: '#D4A016',
-                textTransform: 'none',
-                fontWeight: 500,
-                px: 3,
-                '&:hover': {
-                  backgroundColor: '#b8860b',
-                },
-              }}
-            >
-              Let's Chat
-            </Button>
-          </Box>
+            <CustomButton onClick={handleLetChat} sx={
+              {mt:1, width:130, height:50}
+            }>Let's Chat</CustomButton>
+            </Box>
         </Grid>
       </Grid>
     </Box>

@@ -1,136 +1,128 @@
-'use client';
+import React from "react";
+import { Box, Typography, Grid, useMediaQuery, useTheme } from "@mui/material";
 
-import { Box, Typography, Grid, useMediaQuery, useTheme, Stack } from '@mui/material';
-import Image from 'next/image';
-
-
-const WeddingHero = () => {
+export default function WeddingSection() {
   const theme = useTheme();
-
-  // 📏 Custom stacking breakpoint at 750px
-  const isCompact = useMediaQuery('(max-width:900px)');
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
       sx={{
-        px: { xs: 2, md: 5 },
-        py: { xs: 2, md: 5 },
-        bgcolor: 'white',
-        position: 'relative',
-       
-        // overflow: 'hidden',
+        py:{xs:1, md:2},
+        px: { xs: 2, md: 7 },
+        // maxWidth: "1200px",
+        width: "100%",
+        margin: "auto",
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: { xs: 4, md: 6 },
       }}
     >
+      <Box sx={{ flex: 1, maxWidth: { md: "55%" }}}>
+        <Typography
+          variant={isSmDown ? "h4" : "h3"}
+          component="h1"
+          sx={{
+            fontFamily: 'Gloock, serif',
+            fontWeight: 400,
+            color: "#000D1F",
+            mb: 0.6,
+            lineHeight: 1.3,
+            
+          }}
+        >
+          It's Not Just a{" "}
+          <Box
+            component="span"
+            sx={{fontFamily: 'Gloock, serif', fontWeight: 400, color: "#DAA412" }}
+          >
+            Wedding...
+          </Box>
+        </Typography>
+
+        <Typography
+          variant="subtitle1"
+          sx={{ mb: 0, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , fontSize:"1.75rem" }}
+        >
+          It's a Story You'll Tell Forever
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{ mb: 2, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 ,fontSize:"1rem"}}
+        >
+          Shaadi ka stress is real. One minute you're choosing napkin colors,
+          next minute you're crying over seating arrangements. We get it.
+        </Typography>
+
+        <Typography
+          variant="subtitle2"
+          sx={{
+            fontSize:"1.75rem",
+            frontFamily: "Akatab,Sans-serif",
+            color: "#000D1F", 
+            fontWeight: 400,
+            mb: 0.6,
+          }}
+        >
+          At Poornam, we don’t just manage weddings:
+        </Typography>
+
+        <Typography variant="body2" sx={{ fontSize:"1rem" ,frontFamily: "Akatab,Sans-serif",color: "#000D1F",  }}>
+          We manage Meltdowns, Moodboards, and Mom’s wishlist. From the first dance
+          to the final goodbye hug, we’re there.
+        </Typography>
+      </Box>
+
       <Grid
         container
-        // spacing={2}
-        alignItems="center"
-        justifyContent="space-between"
-        direction={isCompact ? 'column' : 'row'}
-        padding={"10px 80px"}
+        spacing={1}
+        sx={{ maxWidth: { xs: "100%", md: "55%" }, justifyContent: "center" }}
       >
-        {/* LEFT - TEXT */}
-        <Grid item xs={12} md={4} width={isCompact ? '100%' : '50%'}>
-          <Typography
-            variant={isCompact ? 'h5' : 'h3'}
-            fontWeight="bold"
-            sx={{ mb: 2 , padding:"10px "}}
-          >
-            <Box component="span" sx={{ color: '#000D1F', fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock'}}>It’s Not </Box>
-            <Box component="span" sx={{ color: '#DAA412' ,fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" } ,fontFamily: 'Gloock' }}>Just a Wedding...</Box>
-          </Typography>
+        <Grid item xs={6} sm={6} md={6} >
+          <Box
+            component="img"
+            src="./weddinghero1.png"
+            alt="Colorful wedding archway with many floral arrangements in yellow, pink, orange, and green colors creating a vibrant path"
+            sx={{
 
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F",fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
-            It’s a Story You’ll Tell Forever
-          </Typography>
+              width: "100%",
+              height: "auto",
+              borderRadius: 3,
+              boxShadow: 3,
+              objectFit: "cover",
+              height: 261,
+            }}
+            onError={(e) => {
+              e.target.onerror = null;
 
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" }}}>
-            Shaadi ka stress is real. One minute you're choosing napkin colors,
-            next  minute you're crying over seating charts. We get it.
-          </Typography>
-
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, color: "#000D1F" ,fontSize: { xs: "1.1rem", sm: "1.5rem", md: "1.5rem" } }}>
-            At Poornam, we don’t just manage weddings:
-          </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2,fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" } }}>
-            We manage meltdowns, moodboards, and Mom’s wishlist. From the first  dance to the final
-            goodbye hug, we’re there.
-          </Typography>
+            }}
+          />
         </Grid>
 
-        {/* RIGHT - IMAGE STACK */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={6} sm={6} md={6}  sx={{ position: "relative" }}>
           <Box
+            component="img"
+            src="./weddinghero2.png"
+            alt="Elegant wedding stage decorated with a big pink floral chandelier composed of roses, hydrangeas, and ornamental hanging crystals with vintage style seating"
             sx={{
-              width: '100%',
-              position: 'relative',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundImage: 'url("/image1.png")',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'top',
-              pt: 10,
-              pb: 5,
+              height: "auto",
+              borderRadius: 1,
+              boxShadow: 3,
+              objectFit: "cover",
+              mt: 8,
+              width:200,
+              height: 259,
             }}
-          >
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="flex-end"
-              sx={{
-                width: '100%',
-                flexWrap: 'wrap',
-                gap: 3,
-                
-              }}
-            >
-              {/* Image 1 */}
-              <Box
-                sx={{
-                  transform: 'rotate(-5deg)',
-                  bgcolor: '#fff8dc',
-                  p: 1,
-                  width: { xs: 140, sm: 160 },
-                  boxShadow: 3,
-                  borderRadius: 2,
-                }}
-              >
-                <Image
-                  src="/wedding2.jpg"
-                  alt="Wedding Stage"
-                  width={160}
-                  height={160}
-                  style={{ width: '100%', height: 'auto', borderRadius: 6, objectFit: 'cover' }}
-                />
-              </Box>
-
-              {/* Image 2 */}
-              <Box
-                sx={{
-                  transform: 'rotate(6deg)',
-                  bgcolor: '#fff8dc',
-                  p: 1,
-                  width: { xs: 140, sm: 160 },
-                  boxShadow: 3,
-                  borderRadius: 2,
-                }}
-              >
-                <Image
-                  src="/wedding2.jpg"
-                  alt="Bride Walk"
-                  width={160}
-                  height={160}
-                  style={{ width: '100%', height: 'auto', borderRadius: 6, objectFit: 'cover' }}
-                />
-              </Box>
-            </Stack>
-          </Box>
+            onError={(e) => {
+              e.target.onerror = null;
+            }}
+          />
         </Grid>
       </Grid>
     </Box>
   );
-};
+}
 
-export default WeddingHero;

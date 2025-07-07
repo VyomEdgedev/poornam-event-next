@@ -8,7 +8,7 @@ const tools = [
   },
   {
     title: 'Wedding Checklist',
-    icon: '/checklist.png',
+    icon: '/checklist0.png',
   },
   {
     title: 'Top 10 Mandap Themes for 2025',
@@ -18,8 +18,8 @@ const tools = [
 
 export default function ResourcesSection() {
   return (
-    <Box sx={{ py: 1, px: 2, backgroundColor: '#fff' }} >
-      <Grid container spacing={6} alignItems="center" justifyContent={'space-evenly'}>
+    <Box sx={{ py: 1, px: 0, backgroundColor: '#fff' }} >
+      <Grid container spacing={{ xs: 6, md: 25 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
         <Grid item xs={12} md={8} justifyItems={'center'}>
           <Typography

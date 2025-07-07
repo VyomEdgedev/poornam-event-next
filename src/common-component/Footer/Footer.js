@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <Box>
       {/* Top dark blue section */}
-      <Box sx={{ backgroundColor: "#011d4a", color: "#fff", pt: 4, pb: 5 }}>
+      <Box sx={{ backgroundColor: "#011d4a", color: "#FFF1CA", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}   sx={{
                 
@@ -43,7 +43,7 @@ const Footer = () => {
               </Box>
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", lineHeight: 1.6 }}
+                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily:"Akatab,Sans-serif" }}
               >
                 Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -56,7 +56,7 @@ const Footer = () => {
               <Box sx={{ textAlign: "left" , width:"130px"  , padding:"10px" , display:"grid" , gap:"5px"}}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
+                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600,  color:"#E4E4E4", fontFamily:"Akatab,Sans-serif" }}
                 >
                   Quick Links
                 </Typography>
@@ -70,7 +70,7 @@ const Footer = () => {
                   <Typography
                     key={item}
                     variant="body2"
-                    sx={{ fontSize: "13px", mb: 0.5 }}
+                    sx={{ fontSize: "13px", mb: 0.5 , color:"#E4E4E4"}}
                   >
                     <Link href="#" color="inherit" underline="hover">
                       {item}
@@ -82,7 +82,7 @@ const Footer = () => {
 
             {/* Services */}
             <Grid item xs={12} sm={4} md={2} >
-              <Box sx={{ textAlign: "left" , width:"200px"  , padding:"10px" , display:"grid" , gap:"5px"}}>
+              <Box sx={{ textAlign: "left" , width:"200px"  , padding:"10px" , display:"grid" , gap:"5px", color:"#E4E4E4"}}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -112,7 +112,7 @@ const Footer = () => {
 
             {/* Contact */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left" , width:"130px"  , padding:"10px" , display:"grid" , gap:"5px" }}>
+              <Box sx={{ textAlign: "left" , width:"130px"  , padding:"10px" , display:"grid" , gap:"5px" , color:"#E4E4E4", fontFamily:"Akatab,Sans-serif" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -150,7 +150,7 @@ const Footer = () => {
       </Box>
 
       {/* Bottom mustard section */}
-      <Box sx={{ backgroundColor: "#d59700", color: "#000", py: 1.5 }}>
+      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
         <Container maxWidth="lg">
           <Grid container alignItems="center" justifyContent="space-between">
             {/* Left - Copyright */}
@@ -170,7 +170,7 @@ const Footer = () => {
             <Grid item xs={12} md={4}>
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", textAlign: "center" }}
+                sx={{ fontSize: "13px", textAlign: "center" ,}}
               >
                 <Link href="#" underline="hover" color="inherit">
                   Disclaimer
@@ -202,10 +202,27 @@ const Footer = () => {
                 component="span"
                 sx={{ fontSize: "13px" }}
               >
-                Developed by Vyomedge
+                Developed by{" "}
+                <Link
+                  href="https://vyomedge.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="inherit"
+                  underline="hover"
+                  sx={{ fontWeight: 600 }}
+                >
+                  Vyomedge
+                </Link>
               </Typography>
-              <Box component="span" sx={{ ml: 1 }}>
-                <img src="/developer.png" alt="Developer Logo" height={24} />
+              <Box component="span" sx={{ ml: 0,}}>
+                <a
+                  href="https://vyomedge.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-block" }}
+                >
+                  <img src="./developer.png" alt="Developer Logo" height={24} />
+                </a>
               </Box>
             </Grid>
           </Grid>
