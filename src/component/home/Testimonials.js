@@ -44,7 +44,7 @@ export default function ClientTestimonials() {
       sx={{
         bgcolor: "#FEF7EA",
         px: { xs: 2, md: 5 },
-        py: { xs: 2, md: 5 },
+        py: { xs: 2, md: 3 },
       }}
     >
       <Box
@@ -88,15 +88,15 @@ export default function ClientTestimonials() {
       >
         <Stack direction="row" spacing={1} alignItems="center" mb={1}>
           <Avatar src={item.avatar} sx={{ width: 36, height: 36 }} />
-          <Typography variant="subtitle2" fontWeight={600}>
+          <Typography variant="subtitle2" fontWeight={600} fontFamily={"Akatab,Sans-serif"} color="#000000" fontSize={isMobile ? "1rem" : "1.1rem"}>
             {item.name}
           </Typography>
         </Stack>
 
         <Typography
           variant="body2"
-          color="text.secondary"
-          sx={{ fontStyle: "italic", mb: 2 }}
+          color="#000000"
+          sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif",fontWeight:'400' , fontSize: isMobile ? "0.95rem" : "1rem" }}
         >
           "{item.text}"
         </Typography>
@@ -115,17 +115,23 @@ export default function ClientTestimonials() {
         {/* Right - Heading */}
         <Box sx={{ textAlign: isMobile ? "center" : "right" }}>
           <Typography
-            variant="h4"
+            variant="h3"
             fontWeight="bold"
             sx={{
-              fontFamily: `'Playfair Display', serif`,
-              color: "#0D1A46",
+             fontFamily: 'Gloock, serif',
+              fontWeight: "400",
+              color: "#000000",
               mb: 1,
+              fontSize: isMobile ? "2rem" : "3rem"
             }}
           >
             Client Testimonials
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary">
+          <Typography variant="subtitle1" color="text.secondary" sx={{
+            frontFamily: "Akatab,Sans-serif",
+            color: "#000000",
+            fontWeight:'400'
+          }}>
             Love From Our Couples
           </Typography>
         </Box>

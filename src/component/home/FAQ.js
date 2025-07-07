@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { X } from '@mui/icons-material';
 
 const faqData = [
   {
@@ -37,23 +38,23 @@ export default function FAQSection() {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#fdf8ef', py: 8, px: 4 }}>
+    <Box sx={{ backgroundColor: '#fdf8ef', py: 4, px: 4 }}>
       <Typography
         variant="h4"
         align="center"
-        sx={{ fontFamily: 'serif', fontWeight: 'bold', mb: 1 }}
+        sx={{ fontFamily: 'Gloock, serif', fontWeight: '400', mb: 1 }}
       >
         FAQ’s
       </Typography>
       <Typography
         variant="subtitle1"
         align="center"
-        sx={{ mb: 4 }}
+        sx={{ mb: 4 , frontFamily: "Akatab,Sans-serif",  fontWeight:400}}
       >
         Your Questions, Answered
       </Typography>
 
-      <Box maxWidth="md" mx="auto">
+      <Box maxWidth="lg" mx="auto">
         {faqData.map((item, index) => (
           <Accordion
             key={index}
@@ -65,7 +66,9 @@ export default function FAQSection() {
             sx={{
               borderBottom: '1px solid #e0b855',
               backgroundColor: 'transparent',
+              
               '&::before': { display: 'none' },
+
             }}
           >
             <AccordionSummary
@@ -87,8 +90,9 @@ export default function FAQSection() {
             >
               <Typography
                 sx={{
+                  frontFamily: "Akatab,Sans-serif",
                   fontWeight: 500,
-                  color: '#000',
+                  color: '#001538',
                 }}
               >
                 {item.question}
@@ -96,7 +100,7 @@ export default function FAQSection() {
             </AccordionSummary>
             {item.answer && (
               <AccordionDetails>
-                <Typography variant="body2" sx={{ color: '#333' }}>
+                <Typography variant="body2" sx={{ color: '#001538' ,frontFamily: "Akatab,Sans-serif", fontWeight: 400 }}>
                   {item.answer}
                 </Typography>
               </AccordionDetails>

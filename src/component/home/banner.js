@@ -1,55 +1,86 @@
 // components/HeroSection.js
 "use client";
-import { Box, Typography, Button, Container, Stack } from "@mui/material";
+import CustomButton from "@/common-component/button/CustomButton";
+import { Box, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 
 export default function HeroSection() {
+    const handleWeddingPlan = () => {
+    // Add your navigation or action logic here
+    console.log("Plan My Wedding clicked");
+  };
+
+  const handleTalkToPlanner = () => {
+    // Add your navigation or action logic here
+    console.log("Talk to Our Planner clicked");
+  };
+
   return (
     <Box
       sx={{
         backgroundColor: "#030b1d",
-        pt: { xs: 6, sm: 10, md: 12 },
-        px: { xs: 2, sm: 3, md: 4 },
+        pt: { xs: 6, sm: 5, md: 0 },
+        px: { xs: 0, sm: 0, md: 1 },
       }}
     >
-      <Container maxWidth="xl">
+      
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             alignItems: "stretch",
             justifyContent: "space-between",
-            gap: 4,
-            padding: "20px"
+            padding: "0px 10px",
           }}
         >
 
 
           {/* Text Section */}
-          <Box flex={1} display="flex" flexDirection="column" justifyContent="center">
-            <Box mb={2} sx={{ display: { xs: "none", md: "block" } }}>
-              <Image src={"/logo.png"} alt="Logo" width={150} height={150} />
+          <Box flex={1} display="flex" flexDirection="column" justifyContent="center"  
+         >
+            <Box mb={2} sx={{ display: { xs: "none", md: "block" }}
+            
+          }>
+              <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
 
             </Box>
             <Typography
               variant="h3"
-              fontWeight="bold"
+              fontWeight="regular"
               sx={{
-                color: "#f4ce6a",
-                fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
+                color: "#E6C365",
+                fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3.5rem" },
+                fontFamily: 'Gloock, serif',
+                // width:"900px",
+                textAlign: { xs: "center", md: "left" },
+                ml:5,
+                mb:1,
+                  
               }}
-              gutterBottom
             >
               Shaadiyaan Banti Hain Yaadon Se...
-            </Typography>
-            <Typography
+            </Typography> 
+             <Typography
               variant="h5"
-              sx={{ color: "white", mb: 2, fontWeight: 300 }}
+              sx={{ color: "#FFF5D9", mb: 2, fontWeight: 400,
+                frontFamily: "Akatab,Sans-serif",
+                
+                ml:5,
+               }}
             >
               Let’s Make Yours Legendary
-            </Typography>
+            </Typography> 
             <Typography
-              sx={{ color: "#ccc", fontSize: "0.95rem", mb: 3 }}
+              sx={{
+                color: "#FFF5D9",
+                fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
+                frontFamily: "Akatab,Sans-serif",
+                fontWeight: 400,
+                mb: 3,
+                ml:5,
+                
+
+              }}
             >
               Luxury meets laughter, chaos choreographed-beautiful weddings across
               Indore, Bhopal & Jabalpur.
@@ -57,29 +88,54 @@ export default function HeroSection() {
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={2}
+              marginLeft={5}
             >
-              <Button
-                variant="contained"
-                sx={{ bgcolor: "#f4ce6a", color: "black" }}
+              <CustomButton 
+                variant="primary" 
+                onClick={handleWeddingPlan}
+                sx={{
+                  fontFamily: "Akatab,Sans-serif",
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem"  },
+                   fontWeight: 400,
+                }}
               >
                 Plan My Wedding
-              </Button>
-              <Button
+              </CustomButton>
+              <CustomButton
                 variant="outlined"
-                sx={{ color: "white", borderColor: "white" }}
+                sx={{ 
+                  color: "#000D1F", 
+                  background:"#FFFFFF",
+                  borderColor: "#DAA412",
+                  width: { xs: "178px", sm: "auto" }, 
+                  height: "46px", 
+                  borderRadius: "30px",
+                  textTransform: "none",
+                  fontFamily: "Akatab,Sans-serif",
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
+                  fontWeight: 400,
+                  "&:hover": {
+                    borderColor: "#f4ce6a",
+                    color: "#f4ce6a",
+                  }
+                }}
+                onClick={handleTalkToPlanner}
               >
                 Talk to Our Planner
-              </Button>
+              </CustomButton> 
+
             </Stack>
           </Box>
 
           {/* Image Section */}
-          <Box
+           <Box
             sx={{
               flex: 1,
               width: "100%",
               overflow: "hidden",
-              borderRadius: 2,
+              // borderRadius: 2,
+            
+             
 
 
             }}
@@ -96,14 +152,15 @@ export default function HeroSection() {
                 objectFit: "cover",
                 objectPosition: "top",
                 display: "block",
-                borderRadius: "12px",
+                // borderRadius: "12px",
                 transform: 'scaleX(-1)',
 
               }}
             />
-          </Box>
+          </Box> 
         </Box>
-      </Container>
     </Box>
   );
 }
+
+

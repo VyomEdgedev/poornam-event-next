@@ -13,12 +13,13 @@ import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
 export default function () {
-  return (<>
+  return (
+    <>
   
   <Banner></Banner>
-  <WeddingHero></WeddingHero>
-  <OurServices></OurServices>
-  <AboutSection></AboutSection>
+    <WeddingHero></WeddingHero>
+    <OurServices></OurServices>
+ <AboutSection></AboutSection>
   {/* <ExecutiveCard
   title="Luxury Wedding Planning"
   subtitle="Bespoke, Opulent, Iconic"
@@ -27,13 +28,13 @@ export default function () {
     We craft events that feel magical — from theme to confetti, sparkle to vows.
   </Typography>
 </ExecutiveCard> */}
-  {/* <ExploreWork></ExploreWork> */}
-  <Testimonials></Testimonials>
-  {/* <OurPortfolio></OurPortfolio> */}
-  <ResourcesSection></ResourcesSection>
-  <FAQSection></FAQSection>
+   <OurPortfolio></OurPortfolio>
+   <Testimonials></Testimonials>
+  
+   <ResourcesSection></ResourcesSection>
+   <FAQSection></FAQSection>
   <InspirationSection></InspirationSection>
-  <ContactSection></ContactSection>
+ <ContactSection></ContactSection>
   </>
   )
 }

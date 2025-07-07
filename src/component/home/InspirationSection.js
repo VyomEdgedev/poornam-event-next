@@ -8,11 +8,11 @@ const data = [
   },
   {
     label: 'Celebrity',
-    image: '/blog1.jpg',
+    image: '/blog2.jpg',
   },
   {
     label: 'Fashion',
-    image: '/blog1.jpg',
+    image: '/blog3.jpg',
   },
   {
     label: 'Decoration',
