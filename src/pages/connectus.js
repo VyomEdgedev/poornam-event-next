@@ -1,9 +1,10 @@
-import React from 'react'
 
-const connectus = () => {
-  return (
-    <div>connectus</div>
-  )
+import dynamic from "next/dynamic";
+
+// const Dashbord = dynamic(() => import('../component/dashboard/index') )
+import Connectus from "@/component/connectus/Connectus";
+
+export default  function () {
+  return <Connectus></Connectus>;
 }
 
-export default connectus

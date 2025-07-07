@@ -8,9 +8,9 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import "../styles/globals.css"; // Your global styles (if any)
 import NProgress from "nprogress";
-
 import Router from "next/router";
 import theme from "@/styles/style";
+
 const layouts = {
   default: Layout,
   layout1: Layout1,
