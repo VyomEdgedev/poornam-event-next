@@ -50,7 +50,7 @@ const MyForm = () => {
                             fontSize: { xs: "1.3rem", sm: "1.8rem", md: "2.5rem", }
                         }}
                     >
-                       {` Tell Us Everything <br /> (Yes, Even the Drama)`}
+                        Tell Us Everything  (Yes, Even the Drama)
                     </Typography>
                     <Grid
                         component="img"

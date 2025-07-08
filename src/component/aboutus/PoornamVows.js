@@ -27,7 +27,8 @@ const PoornamVows = () => {
   return (
     <Grid container
      width= 'fit-content'
-        margin= '0 auto' >
+        margin= '0 auto' 
+        >
       <Box sx={{ p: 1, textAlign: 'center' }}>
       <Typography sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2.5rem" }, fontFamily: "Gloock" }} variant="h3" fontWeight="bold" gutterBottom>
         Poornam Vows
