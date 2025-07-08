@@ -10,6 +10,7 @@ export default function Snapshot() {
         textAlign="center"
        width= 'fit-content'
         margin= '0 auto' 
+        bgcolor="#FFFCF5"
         
 >
             <Grid >
