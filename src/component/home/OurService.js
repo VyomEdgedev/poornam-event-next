@@ -12,39 +12,39 @@ import Image from "next/image";
 const services = [
   {
     title: "Destination Weddings",
-    image: "/portfolio1.png",
+    image: "/homeservices1.png",
     description:
-      "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and more.",
+      "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
   },
   {
     title: "Intimate Weddings",
     image: "/portfolio1.png",
     description:
-      "Smaller weddings, bigger hearts. We specialize in cozy affairs — personal, poetic, and beautiful.",
+      "Smaller weddings, bigger heart.We specialize in private, cozy affairs- beautifully styled, deeply personal, and easy on the chaos.",
     guests: "50 guests, 500 memories, 0 stress",
     cta: "Learn More",
   },
   {
     title: "Themed & Designer Weddings",
-    image: "/portfolio1.png",
+    image: "/homeservices2.png",
     description: "Enjoy your big day while we handle the details.",
   },
   {
     title: "Artist Management",
-    image: "/portfolio1.png",
+    image: "/homeservices3.png",
     description: "Don’t lift a finger. We’ll plan the entire show.",
   },
   {
     title: "Prewedding & Photography",
-    image: "/portfolio1.png",
+    image: "/homeservices4.png",
     description:
-      "Because one day, you’ll want to re-marry the DJ during your own sangeet.",
+      "Because you don’t want to be managing the DJ during your own varmala.",
   },
   {
     title: "Special Effects",
-    image: "/portfolio1.png",
+    image: "/homeservices5.png",
     description:
-      "More than just cold fireworks. We design impactful entry moments, vibes, and memories.",
+      "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
   },
 ];
 
@@ -179,13 +179,14 @@ const FlipCard = ({ service }) => {
               {service.guests}
             </Typography>
           )}
-          <Typography variant="h6" fontWeight={700} sx={{ mb: 1, zIndex: 2 }}>
+          <Typography variant="h6" fontWeight={600} fontFamily={"Akatab,Sans-serif"} sx={{ mb: 1, zIndex: 2 }}>
             {service.title}
           </Typography>
           <Typography
             variant="body2"
             sx={{
               color: "#f5f5f5",
+              frontFamily: "Akatab,Sans-serif",color: "#FFFBF0", 
               fontSize: "0.9rem",
               lineHeight: 1.5,
               mb: 2,
@@ -231,7 +232,7 @@ export default function OurServices() {
     <Box
       sx={{
         px: { xs: 2, md: 10 },
-        py: { xs: 6, md: 10 },
+        py: { xs: 4, md: 4 },
         bgcolor: "#FEF7EA",
         textAlign: "center",
       }}
@@ -239,15 +240,15 @@ export default function OurServices() {
       <Typography
         variant="h4"
         sx={{
-          fontFamily: `'Playfair Display', serif`,
-          fontWeight: "bold",
+          fontFamily: 'Gloock, serif',
+          fontWeight: "400",
           color: "#0D1A46",
           mb: 1,
         }}
       >
         Our Services
       </Typography>
-      <Typography variant="subtitle1" color="text.secondary" mb={6}>
+      <Typography variant="subtitle1" color="#000000" fontFamily={"Akatab,Sans-serif"} fontWeight={400} mb={6}>
         Everything You Need, Delivered Beautifully
       </Typography>
 

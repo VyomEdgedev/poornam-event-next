@@ -10,7 +10,7 @@ import Planner from "./Planner";
 import FAQSection from "../home/FAQ";
 
 
-export default function () {
+export default function ContactUs() {
   return (<>
   <Banner></Banner>
   <Form></Form>

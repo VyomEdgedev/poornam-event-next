@@ -35,12 +35,12 @@ export default function Owners() {
                         >
 
                             <Typography color="white" sx={{ fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" }, fontFamily: "Akatab" }}>
-                                <strong>Aadi Jain - The Visionary (Founder & Creative Director)</strong>
+                                <strong>{`Aadi Jain - The Visionary (Founder & Creative Director)`}</strong>
                             </Typography>
                             <Typography color="white" sx={{ fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" }, fontFamily: "Akatab" }}>
-                                The clam in your chaos, the brain behind every baraat.
+                               {` The clam in your chaos, the brain behind every baraat.
                                 Swati's superpower? Turning Pinterest boards into
-                                physical mandaps, without breaking the bank or a sweat.
+                                physical mandaps, without breaking the bank or a sweat.`}
                             </Typography>
                         </Box>
                     </Card>
@@ -72,11 +72,11 @@ export default function Owners() {
                             }}
                         >
                            <Typography color="white" sx={{ fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" }, fontFamily: "Akatab" }}>
-                                <strong>Richi Anand Jain - CEO</strong>
+                                <strong>{`Richi Anand Jain - CEO`}</strong>
                             </Typography>
                             <Typography color="white" sx={{ fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" }, fontFamily: "Akatab" }}>
-                                He once planned a wedding where the horse fainted.
-                                he had a backup in 22 minutes. Enough said.
+                               {` He once planned a wedding where the horse fainted.
+                                he had a backup in 22 minutes. Enough said.`}
                             </Typography>
                         </Box>
                     </Card>
