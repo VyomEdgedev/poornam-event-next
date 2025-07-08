@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 
 export default function OurStories() {
@@ -16,7 +17,7 @@ export default function OurStories() {
   }, []);
 
   return (
-    <div style={{ padding: "3rem", fontFamily: "Gloock", fontSize: "1.2rem" }}>
+    <div style={{ padding: "3rem", fontFamily: "Gloock", fontSize:"1.2rem"}}>
       {data.map((item, index) => (
         <div key={index} style={{ marginBottom: "0.5rem" }}>
           <h2 style={{ color: "black" }}>{item.heading}</h2>

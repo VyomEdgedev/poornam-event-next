@@ -6,8 +6,16 @@ import {
   Typography,
   Link,
   IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemText
 } from "@mui/material";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
 
 const Footer = () => {
   return (
@@ -15,15 +23,15 @@ const Footer = () => {
       {/* Top dark blue section */}
       <Box sx={{ backgroundColor: "#011d4a", color: "#fff", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4}   sx={{
-                
-                "@media (min-width:600px)": {
-                justifyContent:"flex-start"
-                },
-                "@media (min-width:900px)": {
-                 justifyContent:"center"
-                },
-              }}>
+          <Grid container spacing={4} sx={{
+
+            "@media (min-width:600px)": {
+              justifyContent: "flex-start"
+            },
+            "@media (min-width:900px)": {
+              justifyContent: "center"
+            },
+          }}>
             {/* Logo and About - 50% width on desktop */}
             <Grid
               item
@@ -53,7 +61,7 @@ const Footer = () => {
 
             {/* Quick Links - 16.6% on desktop */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left" , width:"130px"  , padding:"10px" , display:"grid" , gap:"5px"}}>
+              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: "grid", gap: "1px" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -61,19 +69,19 @@ const Footer = () => {
                   Quick Links
                 </Typography>
                 {[
-                  "Home",
-                  "About Us",
-                  "Contact Us",
-                  "Our Portfolio",
-                  "Blogs",
+                  { label: "Home", href: "/" },
+                  { label: "About", href: "/aboutus" },
+                  { label: "Services", href: "/services" },
+                  { label: "Portfolio", href: "/portfolio" },
+                  { label: "Blogs", href: "/blogs" },
+                  { label: "Connect us", href: "/connectus" },
                 ].map((item) => (
                   <Typography
                     key={item}
                     variant="body2"
                     sx={{ fontSize: "13px", mb: 0.5 }}
                   >
-                    <Link href="#" color="inherit" underline="hover">
-                      {item}
+                    <Link key={item} href={item.href} sx={{ color: "white", underline: "hover" }} >{item.label}
                     </Link>
                   </Typography>
                 ))}
@@ -82,7 +90,7 @@ const Footer = () => {
 
             {/* Services */}
             <Grid item xs={12} sm={4} md={2} >
-              <Box sx={{ textAlign: "left" , width:"200px"  , padding:"10px" , display:"grid" , gap:"5px"}}>
+              <Box sx={{ textAlign: "left", width: "200px", padding: "10px", display: "grid", gap: "5px" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -112,7 +120,7 @@ const Footer = () => {
 
             {/* Contact */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left" , width:"130px"  , padding:"10px" , display:"grid" , gap:"5px" }}>
+              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: "grid", gap: "5px" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -133,6 +141,27 @@ const Footer = () => {
                   </Link>
                 </Typography>
                 <Box>
+                  {[
+                    { icon: FacebookIcon, url: "https://facebook.com" },
+                    { icon: InstagramIcon, url: "https://instagram.com" },
+                    { icon: TwitterIcon, url: "https://twitter.com" },
+                    { icon: YouTubeIcon, url: "https://youtube.com" },
+                  ].map(({ icon: Icon, url }, i) => (
+                    <IconButton
+                      key={i}
+                      sx={{ color: "red", p: 0.5 }}
+                      size="small"
+                      component="a"
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon fontSize="small" />
+                    </IconButton>
+                  ))}
+                </Box>
+
+                {/* <Box>
                   {[Facebook, Instagram, Twitter, YouTube].map((Icon, i) => (
                     <IconButton
                       key={i}
@@ -142,7 +171,7 @@ const Footer = () => {
                       <Icon fontSize="small" />
                     </IconButton>
                   ))}
-                </Box>
+                </Box>*/}
               </Box>
             </Grid>
           </Grid>

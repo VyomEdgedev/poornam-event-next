@@ -1,5 +1,5 @@
 // components/HeroSection.js
-"use client";
+
 import { Box, Typography, Button, Container, Stack } from "@mui/material";
 import Image from "next/image";
 

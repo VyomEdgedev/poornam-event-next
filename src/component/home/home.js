@@ -12,6 +12,7 @@ import ResourcesSection from "./ResourcesSection";
 import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
+import HomeSnapshot from "./HomeSnapshot";
 export default function () {
   return (<>
   
@@ -19,6 +20,7 @@ export default function () {
   <WeddingHero></WeddingHero>
   <OurServices></OurServices>
   <AboutSection></AboutSection>
+  
   {/* <ExecutiveCard
   title="Luxury Wedding Planning"
   subtitle="Bespoke, Opulent, Iconic"
@@ -29,6 +31,7 @@ export default function () {
 </ExecutiveCard> */}
   {/* <ExploreWork></ExploreWork> */}
   <Testimonials></Testimonials>
+  <HomeSnapshot></HomeSnapshot>
   {/* <OurPortfolio></OurPortfolio> */}
   <ResourcesSection></ResourcesSection>
   <FAQSection></FAQSection>

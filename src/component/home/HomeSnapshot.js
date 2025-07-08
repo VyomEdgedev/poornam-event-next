@@ -6,12 +6,15 @@ import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 
 export default function Snapshot() {
   return (
+  <Grid  bgcolor="#FFFCF5"
+  padding="2%"> 
+       
     <Grid
       container
       textAlign="center"
       width="fit-content"
       margin="0 auto"
-      bgcolor="#FFFCF5"
+      
     >
       <Grid>
         <Typography
@@ -23,7 +26,7 @@ export default function Snapshot() {
           fontWeight="bold"
           gutterBottom
         >
-          Life at Poornam
+          Snapshots from the Script
         </Typography>
 
         <Typography
@@ -34,16 +37,19 @@ export default function Snapshot() {
           variant="subtitle1"
           gutterBottom
         >
-          Behind the scenes of our creative hustle.
+          A scrapbook of memories shared by our couples.
         </Typography>
 
         <SnapshotCard
           avatarSrc="/images/profile.jpg"
-          title="Team Poornam"
-          imageSrc="/snapshot2.png"
-          caption="Laughter, chai, and dance practice!"
+          title="Priya"
+          Subtitles="2 days ago at Udaipur"
+          imageSrc="/snapshot.jpg"
+          caption="Every detail was perfectly curated!"
+           tags={['#WeddingGoals', '#PerfectDay']}
         />
       </Grid>
     </Grid>
+  </Grid>
   );
 }
