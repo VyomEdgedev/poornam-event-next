@@ -98,7 +98,7 @@ export default function ClientTestimonials() {
           color="#000000"
           sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif",fontWeight:'400' , fontSize: isMobile ? "0.95rem" : "1rem" }}
         >
-          "{item.text}"
+          {item.text}
         </Typography>
 
         <Stack direction="row" spacing={0.5}>
@@ -132,7 +132,7 @@ export default function ClientTestimonials() {
             color: "#000000",
             fontWeight:'400'
           }}>
-            Love From Our Couples
+            {`Love From Our Couples`}
           </Typography>
         </Box>
       </Box>

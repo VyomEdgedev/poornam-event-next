@@ -16,7 +16,7 @@ export default function AboutSection() {
             mb: 3,
           }}
         >
-          Crafting Weddings with Soul Since 2017
+         {` Crafting Weddings with Soul Since 2017`}
         </Typography>
 
         <Typography
@@ -32,11 +32,11 @@ export default function AboutSection() {
             mb: 2,
           }}
         >
-          At Poonam Events, we turn your wedding dreams into unforgettable
+         {` At Poonam Events, we turn your wedding dreams into unforgettable
           memories. Founded by <strong>Aadi Jain</strong>, a self-taught planner
           with a passion for perfection, and <strong>Richi Anand Jain</strong>,
           the creative spirit behind our signature style — we've been planning
-          heartfelt celebrations across India since 2017.
+          heartfelt celebrations across India since 2017.`}
         </Typography>
 
         <Typography
@@ -51,12 +51,12 @@ export default function AboutSection() {
             mb: 4,
           }}
         >
-          From intimate gatherings to grand destination weddings, our team
-          brings emotion, elegance, and flawless execution to every event.
+        {`  From intimate gatherings to grand destination weddings, our team
+          brings emotion, elegance, and flawless execution to every event.`}
         </Typography>
 
         <Box display="flex">
-          <CustomButton> Meet Our Story</CustomButton>
+          <CustomButton> {`Meet Our Story`}</CustomButton>
         </Box>
     </Box>
   );

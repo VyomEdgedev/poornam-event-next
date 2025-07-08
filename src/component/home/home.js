@@ -12,7 +12,7 @@ import ResourcesSection from "./ResourcesSection";
 import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
-export default function () {
+export default function  HomePage() {
   return (
     <>
   

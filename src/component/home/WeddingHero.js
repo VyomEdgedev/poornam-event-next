@@ -33,7 +33,7 @@ export default function WeddingSection() {
             
           }}
         >
-          It's Not Just a{" "}
+         {` It's Not Just a`}
           <Box
             component="span"
             sx={{fontFamily: 'Gloock, serif', fontWeight: 400, color: "#DAA412" }}
@@ -46,15 +46,15 @@ export default function WeddingSection() {
           variant="subtitle1"
           sx={{ mb: 0, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , fontSize:"1.75rem" }}
         >
-          It's a Story You'll Tell Forever
+          {`It's a Story You'll Tell Forever`}
         </Typography>
 
         <Typography
           variant="body1"
           sx={{ mb: 2, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 ,fontSize:"1rem"}}
         >
-          Shaadi ka stress is real. One minute you're choosing napkin colors,
-          next minute you're crying over seating arrangements. We get it.
+         {` Shaadi ka stress is real. One minute you're choosing napkin colors,
+          next minute you're crying over seating arrangements. We get it.`}
         </Typography>
 
         <Typography
@@ -67,12 +67,12 @@ export default function WeddingSection() {
             mb: 0.6,
           }}
         >
-          At Poornam, we don’t just manage weddings:
+         {` At Poornam, we don’t just manage weddings:`}
         </Typography>
 
         <Typography variant="body2" sx={{ fontSize:"1rem" ,frontFamily: "Akatab,Sans-serif",color: "#000D1F",  }}>
-          We manage Meltdowns, Moodboards, and Mom’s wishlist. From the first dance
-          to the final goodbye hug, we’re there.
+         {` We manage Meltdowns, Moodboards, and Mom’s wishlist. From the first dance
+          to the final goodbye hug, we’re there.`}
         </Typography>
       </Box>
 

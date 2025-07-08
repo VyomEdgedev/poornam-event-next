@@ -9,7 +9,7 @@ import Philosophy from "./Philosophy";
 import Snapshot from "./Snapshot";
 import ContactSection from "../home/ContactSection";
 
-export default function () {
+export default function AboutUS() {
     return (
         <>
             <AboutUsBanner></AboutUsBanner>

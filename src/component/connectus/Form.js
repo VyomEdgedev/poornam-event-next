@@ -50,7 +50,7 @@ const MyForm = () => {
                             fontSize: { xs: "1.3rem", sm: "1.8rem", md: "2.5rem", }
                         }}
                     >
-                        Tell Us Everything <br /> (Yes, Even the Drama)
+                       {` Tell Us Everything <br /> (Yes, Even the Drama)`}
                     </Typography>
                     <Grid
                         component="img"
@@ -166,7 +166,7 @@ const MyForm = () => {
                             onChange={handleChange}
                             required
                         />
-                        <Typography sx={{ fontSize: { xs: "0.7rem", sm: "0.7rem", md: "0.9rem", } }}><strong>What's on your mind?</strong></Typography>
+                        <Typography sx={{ fontSize: { xs: "0.7rem", sm: "0.7rem", md: "0.9rem", } }}><strong>{`What's on your mind?`}</strong></Typography>
                         <TextField
                             placeholder="Your Message"
                             variant="outlined"
@@ -196,7 +196,7 @@ const MyForm = () => {
                                 "&:hover": { bgcolor: "#333" },
                             }}
                         >
-                            Let's Begin the Dream
+                         {`   Let's Begin the Dream`}
                         </Button>
                     </Grid>
                 </Grid>
