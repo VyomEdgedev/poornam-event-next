@@ -10,7 +10,7 @@ import "../styles/globals.css"; // Your global styles (if any)
 import NProgress from "nprogress";
 import Router from "next/router";
 import theme from "@/styles/style";
-
+import '@/styles/style.css'
 const layouts = {
   default: Layout,
   layout1: Layout1,

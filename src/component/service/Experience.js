@@ -1,43 +1,43 @@
-import '@/styles/style.css'
+
 const Experience = () => {
   return (
    <section className="poornam-section">
         <div className="container">
             <div className="content-wrapper">
                 <div className="left-content">
-                    <h1 className="title">The Poornam Experience</h1>
+                    <h1 className="title">{`The Poornam Experience`}</h1>
                     <p className="subtitle">
-                        We plan weddings the way your dadi tells stories- with love, 
-                        drama, and perfect timing.
+                       {` We plan weddings the way your dadi tells stories- with love, 
+                        drama, and perfect timing.`}
                     </p>
                     
                     <div className="process-section">
-                        <h3 className="process-title">Our Process</h3>
+                        <h3 className="process-title">{`Our Process`}</h3>
                         <div className="process-steps">
                             <div className="process-step">
                                 <div className="step-content">
-                                    <div className="step-title">Vision</div>
-                                    <div className="step-subtitle">Discovery</div>
+                                    <div className="step-title">{`Vision`}</div>
+                                    <div className="step-subtitle">{`Discovery`}</div>
                                 </div>
                             </div>
                             <div className="step-arrow"><img src="./Arrow.png"  /></div>
                             <div className="process-step">
                                 <div className="step-content">
-                                    <div className="step-title">Planning &</div>
-                                    <div className="step-subtitle">Budgeting</div>
+                                    <div className="step-title">{`Planning &`}</div>
+                                    <div className="step-subtitle">{`Budgeting`}</div>
                                 </div>
                             </div>
                             <div className="step-arrow"><img src="./Arrow.png"  /></div>
                             <div className="process-step">
                                 <div className="step-content">
-                                    <div className="step-title">Design &</div>
-                                    <div className="step-subtitle">Moodboarding</div>
+                                    <div className="step-title">{`Design &`}</div>
+                                    <div className="step-subtitle">{`Moodboarding`}</div>
                                 </div>
                             </div>
                             <div className="step-arrow"><img src="./Arrow.png"  /></div>
                             <div className="process-step">
                                 <div className="step-content">
-                                    <div className="step-title">Final Execution</div>
+                                    <div className="step-title">{`Final Execution`}</div>
                                     <div className="step-subtitle"></div>
                                 </div>
                             </div>
