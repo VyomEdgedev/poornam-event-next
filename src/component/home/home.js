@@ -28,12 +28,11 @@ export default function  HomePage() {
     We craft events that feel magical — from theme to confetti, sparkle to vows.
   </Typography>
 </ExecutiveCard> */}
-  {/* <ExploreWork></ExploreWork> */}
-  <Testimonials></Testimonials>
-  <HomeSnapshot></HomeSnapshot>
-  {/* <OurPortfolio></OurPortfolio> */}
-  <ResourcesSection></ResourcesSection>
-  <FAQSection></FAQSection>
+   <OurPortfolio></OurPortfolio>
+   <Testimonials></Testimonials>
+  
+   <ResourcesSection></ResourcesSection>
+   <FAQSection></FAQSection>
   <InspirationSection></InspirationSection>
  <ContactSection></ContactSection>
   </>
