@@ -12,15 +12,14 @@ import ResourcesSection from "./ResourcesSection";
 import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
-import HomeSnapshot from "./HomeSnapshot";
-export default function () {
-  return (<>
+export default function  HomePage() {
+  return (
+    <>
   
   <Banner></Banner>
-  <WeddingHero></WeddingHero>
-  <OurServices></OurServices>
-  <AboutSection></AboutSection>
-  
+    <WeddingHero></WeddingHero>
+    <OurServices></OurServices>
+ <AboutSection></AboutSection>
   {/* <ExecutiveCard
   title="Luxury Wedding Planning"
   subtitle="Bespoke, Opulent, Iconic"
@@ -36,7 +35,7 @@ export default function () {
   <ResourcesSection></ResourcesSection>
   <FAQSection></FAQSection>
   <InspirationSection></InspirationSection>
-  <ContactSection></ContactSection>
+ <ContactSection></ContactSection>
   </>
   )
 }

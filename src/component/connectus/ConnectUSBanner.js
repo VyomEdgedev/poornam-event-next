@@ -50,7 +50,7 @@ export default function HeroSection() {
               }}
               gutterBottom
             >
-              Let's Make Shaadi Magic Together!
+             {` Let's Make Shaadi Magic Together!`}
             </Typography>
             <Typography
               variant="h5"
@@ -58,7 +58,7 @@ export default function HeroSection() {
                  fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem", }
               }}
             >
-              From Planning to "I do", we've got your back!
+              {`From Planning to "I do", we've got your back!`}
             </Typography>
 
             <Stack
@@ -69,7 +69,7 @@ export default function HeroSection() {
                 variant="contained"
                 sx={{ bgcolor: "#DAA412", color: "white", borderRadius: "15px",padding:"7px 30px" }}
               >
-                Plan My Wedding
+              {`  Plan My Wedding`}
               </Button>
 
             </Stack>
