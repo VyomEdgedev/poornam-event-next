@@ -59,7 +59,7 @@ function SocialMedia() {
                     </IconButton>
                     <IconButton
                         component="a"
-                        href="https://www.youtube.com/your_channel"
+                        href="https://youtube.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="YouTube"

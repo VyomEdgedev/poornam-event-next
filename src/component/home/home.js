@@ -12,6 +12,7 @@ import ResourcesSection from "./ResourcesSection";
 import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
+import HomeSnapshot from "./HomeSnapshot"
 export default function  HomePage() {
   return (
     <>
@@ -30,7 +31,7 @@ export default function  HomePage() {
 </ExecutiveCard> */}
    <OurPortfolio></OurPortfolio>
    <Testimonials></Testimonials>
-  
+  <HomeSnapshot></HomeSnapshot>
    <ResourcesSection></ResourcesSection>
    <FAQSection></FAQSection>
   <InspirationSection></InspirationSection>

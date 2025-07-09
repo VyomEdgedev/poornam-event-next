@@ -16,7 +16,7 @@ export default function OurStories() {
   }, []);
 
   return (
-    <div style={{ padding: "4rem", fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" }}}>
+    <div style={{ padding: "4rem", fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "1.2rem" }}}>
       {data.map((item, index) => (
         <div key={index} style={{ marginBottom: "0.2rem" }}>
           <h4 style={{ color: "black" }}>{item.heading}</h4>
