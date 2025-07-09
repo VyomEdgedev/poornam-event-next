@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from '@mui/material';
+import Link from "next/link";
 import { Box, Typography, Button, Container } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 
@@ -36,8 +36,8 @@ export default function AboutSection() {
         }}
       >
         {` At Poonam Events, we turn your wedding dreams into unforgettable
-          memories. Founded by <strong>Aadi Jain</strong>, a self-taught planner
-          with a passion for perfection, and <strong>Richi Anand Jain</strong>,
+          memories. Founded by Aadi Jain, a self-taught planner
+          with a passion for perfection, and Richi Anand Jain,
           the creative spirit behind our signature style — we've been planning
           heartfelt celebrations across India since 2017.`}
       </Typography>
@@ -59,17 +59,16 @@ export default function AboutSection() {
       </Typography>
 
       <Box display="flex">
-        <CustomButton>
-          <Link
-            href="/aboutus"
-            color="inherit"
-            underline="none"
-
-          >
-            {`Meet Our Story`}
+        <CustomButton >
+          <Link href="/aboutus" passHref legacyBehavior>
+            <Button sx={{ textDecoration: 'none', color: 'inherit' }}>
+              Meet Our Story
+            </Button>
           </Link>
         </CustomButton>
       </Box>
     </Box>
   );
 }
+
+
