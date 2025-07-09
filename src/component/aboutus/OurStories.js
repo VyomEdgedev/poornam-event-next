@@ -20,7 +20,7 @@ export default function OurStories() {
     <div style={{ padding: "3rem", fontFamily: "Akatab", fontSize:"1.2rem"}}>
       {data.map((item, index) => (
         <div key={index} style={{ marginBottom: "0.5rem" }}>
-          <h2 style={{ color: "black" }}>{item.heading}</h2>
+          <h4 style={{ color: "black" }}>{item.heading}</h4>
           {item.paragraphs.map((p, i) => (
             <p key={i} style={{ lineHeight: 1.2 }}>{p}</p>
           ))}
