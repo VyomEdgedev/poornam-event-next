@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <Box>
       {/* Top dark blue section */}
-      <Box sx={{ backgroundColor: "#011d4a", color: "#FFF1CA", pt: 4, pb: 5 }}>
+      <Box sx={{ backgroundColor: "#011d4a", color: "#E4E4E4", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} sx={{
 
@@ -131,7 +131,7 @@ const Footer = () => {
 
             {/* Contact */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: "grid", gap: "5px" }}>
+              <Box sx={{ textAlign: "left", width: "228px", padding: "10px", display: "grid", gap: "5px" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
@@ -207,24 +207,24 @@ const Footer = () => {
             </Grid>
 
             {/* Center - Policies */}
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} >
               <Typography
                 variant="body2"
                 sx={{ fontSize: "13px", textAlign: "center", }}
               >
-                <Link href="#" underline="hover" color="inherit">
+                <Link href="/disclaimer" underline="hover" color="inherit">
                   Disclaimer
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" color="inherit" sx={{ mx: 1 }}>
+                <Link href="/privacy" underline="hover" color="inherit" sx={{ mx: 1 }}>
                   Privacy Policy
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" color="inherit">
+                <Link href="/terms" underline="hover" color="inherit">
                   T & C
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" color="inherit" sx={{ ml: 1 }}>
+                <Link href="/cookies" underline="hover" color="inherit" sx={{ ml: 1 }}>
                   Cookies
                 </Link>
               </Typography>
@@ -263,7 +263,7 @@ const Footer = () => {
                 >
                   <img src="./developer.png" alt="Developer Logo" height={24} />
                 </a>
-              </Box>
+              </Box> 
             </Grid>
           </Grid>
         </Container>
