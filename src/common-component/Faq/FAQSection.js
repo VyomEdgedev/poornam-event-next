@@ -119,8 +119,7 @@ const FAQSection = ({
 };
 
 export default FAQSection;
-
-// // 4. Minimal Usage (just change data)
+// 4. Minimal Usage (just change data)
 // function MinimalFAQ() {
 //   const myFAQData = [
 //     {
