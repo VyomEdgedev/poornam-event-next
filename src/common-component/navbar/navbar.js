@@ -15,6 +15,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
+import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Image from "next/image";
@@ -110,14 +111,17 @@ export default function Header() {
                 <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
                   <List sx={{ backgroundColor: "#0A163ED4", color: "#CBEFFF", alignContent: "center", alignItems: "center", height: "667px", padding: "25%" }}>
                     {navItems.map((item, index) => (
-                      <>
-                        <ListItem key={index} disablePadding >
-                          <ListItemButton>
-                            <ListItemText primary={item} />
+
+                      <React.Fragment key={index}>
+                        <ListItem disablePadding>
+                          <ListItemButton component="a" href={item.href}>
+                            <ListItemText primary={item.label} />
                           </ListItemButton>
                         </ListItem>
                         <hr />
-                      </>
+                      </React.Fragment>
+
+
 
                     ))}
                     <ListItem>
