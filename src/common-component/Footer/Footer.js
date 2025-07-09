@@ -4,13 +4,13 @@ import {
   Container,
   Grid,
   Typography,
-  Link,
   IconButton,
   ListItem,
   ListItemButton,
   ListItemText
 } from "@mui/material";
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+
+import Link from "next/link";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -51,7 +51,7 @@ const Footer = () => {
               </Box>
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily:"Akatab,Sans-serif" }}
+                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif" }}
               >
                 Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -64,7 +64,7 @@ const Footer = () => {
               <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: "grid", gap: "1px" }}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600,  color:"#E4E4E4", fontFamily:"Akatab,Sans-serif" }}
+                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "#E4E4E4", fontFamily: "Akatab,Sans-serif" }}
                 >
                   Quick Links
                 </Typography>
@@ -76,15 +76,26 @@ const Footer = () => {
                   { label: "Blogs", href: "/blogs" },
                   { label: "Connect us", href: "/connectus" },
                 ].map((item) => (
-                  <Typography
-                    key={item}
-                    variant="body2"
-                    sx={{ fontSize: "13px", mb: 0.5 , color:"#E4E4E4"}}
-                  >
-                    <Link key={item} href={item.href} sx={{ color: "white", underline: "hover" }} >{item.label}
-                    </Link>
-                  </Typography>
-                ))}
+
+                  <Link key={item.href} href={item.href}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: "13px",
+                        mb: 0.5,
+                        color: "white",
+                        textDecoration: "none",
+                        '&:hover': {
+                          textDecoration: 'underline',
+                        },
+                      }}
+                    >
+                      {item.label}
+                    </Typography>
+                  </Link>
+                ))
+                }
+
               </Box>
             </Grid>
 
@@ -199,7 +210,7 @@ const Footer = () => {
             <Grid item xs={12} md={4} >
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", textAlign: "center" ,}}
+                sx={{ fontSize: "13px", textAlign: "center", }}
               >
                 <Link href="/disclaimer" underline="hover" color="inherit">
                   Disclaimer
@@ -243,7 +254,7 @@ const Footer = () => {
                   Vyomedge
                 </Link>
               </Typography>
-              <Box component="span" sx={{ ml: 0} }>
+              <Box component="span" sx={{ ml: 0, }}>
                 <a
                   href="https://vyomedge.com/"
                   target="_blank"
