@@ -9,19 +9,20 @@ import {
   ListItemButton,
   ListItemText
 } from "@mui/material";
-
 import Link from "next/link";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { LinkedIn } from "@mui/icons-material";
+import { color } from "framer-motion";
 
 
 const Footer = () => {
   return (
     <Box>
       {/* Top dark blue section */}
-      <Box sx={{ backgroundColor: "#011d4a", color: "#E4E4E4", pt: 4, pb: 5 }}>
+      <Box sx={{ backgroundColor: "#011d4a", color: "#FFF1CA", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} sx={{
 
@@ -76,7 +77,6 @@ const Footer = () => {
                   { label: "Blogs", href: "/blogs" },
                   { label: "Connect us", href: "/connectus" },
                 ].map((item) => (
-
                   <Link key={item.href} href={item.href}>
                     <Typography
                       variant="body2"
@@ -86,16 +86,15 @@ const Footer = () => {
                         color: "white",
                         textDecoration: "none",
                         '&:hover': {
-                          textDecoration: 'underline',
-                        },
-                      }}
-                    >
+                          textDecoration: "underline",
+                        }
+                      }}>
                       {item.label}
                     </Typography>
-                  </Link>
-                ))
-                }
 
+                  </Link>
+
+                ))}
               </Box>
             </Grid>
 
@@ -116,40 +115,63 @@ const Footer = () => {
                   "Prewedding & Photography",
                   "Special Effects",
                 ].map((service) => (
-                  <Typography
+                  <Link
                     key={service}
-                    variant="body2"
-                    sx={{ fontSize: "13px", mb: 0.5 }}
+                    href="#"
+                    passHref
                   >
-                    <Link href="#" color="inherit" underline="hover">
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: "13px",
+                        mb: 0.5,
+                        color: "white",
+                        textDecoration: "none",
+                        '&:hover': {
+                          textDecoration: "underline",
+                        },
+                      }}
+                    >
                       {service}
-                    </Link>
-                  </Typography>
+                    </Typography>
+                  </Link>
+
                 ))}
               </Box>
             </Grid>
 
             {/* Contact */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left", width: "228px", padding: "10px", display: "grid", gap: "5px" }}>
+              <Box sx={{
+                textAlign: "left",
+                width: "130px",
+                padding: "10px",
+                display: "grid",
+                gap: "5px",
+              }}
+              >
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
+                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "white" }}
                 >
                   Contact
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: "13px" }}>
+
+                <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
                   Phone: 9610366885
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: "13px", mb: 1 }}>
+
+                <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
                   Email:{" "}
-                  <Link
+                  <Box
+                    component="a"
                     href="mailto:info@poornamevents.com"
-                    color="inherit"
-                    underline="hover"
+                    style={{ color: "white", textDecoration: "none" }}
+                    onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
+                    onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
                   >
                     info@poornamevents.com
-                  </Link>
+                  </Box>
                 </Typography>
                 <Box>
                   {[
@@ -157,6 +179,7 @@ const Footer = () => {
                     { icon: InstagramIcon, url: "https://instagram.com" },
                     { icon: TwitterIcon, url: "https://twitter.com" },
                     { icon: YouTubeIcon, url: "https://youtube.com" },
+                    { icon: LinkedIn, url: "https://linkedin.com" },
                   ].map(({ icon: Icon, url }, i) => (
                     <IconButton
                       key={i}
@@ -171,18 +194,6 @@ const Footer = () => {
                     </IconButton>
                   ))}
                 </Box>
-
-                {/* <Box>
-                  {[Facebook, Instagram, Twitter, YouTube].map((Icon, i) => (
-                    <IconButton
-                      key={i}
-                      sx={{ color: "red", p: 0.5 }}
-                      size="small"
-                    >
-                      <Icon fontSize="small" />
-                    </IconButton>
-                  ))}
-                </Box>*/}
               </Box>
             </Grid>
           </Grid>
@@ -207,24 +218,25 @@ const Footer = () => {
             </Grid>
 
             {/* Center - Policies */}
-            <Grid item xs={12} md={4} >
+            <Grid item xs={12} md={4}>
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", textAlign: "center", }}
+
+                sx={{ fontSize: "13px", textAlign: "center", color: "black" }}
               >
-                <Link href="/disclaimer" underline="hover" color="inherit">
+                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Disclaimer
                 </Link>{" "}
                 |
-                <Link href="/privacy" underline="hover" color="inherit" sx={{ mx: 1 }}>
+                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Privacy Policy
                 </Link>{" "}
                 |
-                <Link href="/terms" underline="hover" color="inherit">
+                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   T & C
                 </Link>{" "}
                 |
-                <Link href="/cookies" underline="hover" color="inherit" sx={{ ml: 1 }}>
+                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Cookies
                 </Link>
               </Typography>
@@ -250,6 +262,7 @@ const Footer = () => {
                   color="inherit"
                   underline="hover"
                   sx={{ fontWeight: 600 }}
+                  style={{ color: "black", textDecoration: "none" }}
                 >
                   Vyomedge
                 </Link>
@@ -263,12 +276,12 @@ const Footer = () => {
                 >
                   <img src="./developer.png" alt="Developer Logo" height={24} />
                 </a>
-              </Box> 
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
