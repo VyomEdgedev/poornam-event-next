@@ -144,7 +144,7 @@ const Footer = () => {
             <Grid item xs={12} sm={4} md={2}>
               <Box sx={{
                 textAlign: "left",
-                width: "130px",
+                width: "250px",
                 padding: "10px",
                 display: "grid",
                 gap: "5px",
@@ -224,19 +224,19 @@ const Footer = () => {
 
                 sx={{ fontSize: "13px", textAlign: "center", color: "black" }}
               >
-                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/disclaimer" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Disclaimer
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/privacy" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Privacy Policy
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/terms" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   T & C
                 </Link>{" "}
                 |
-                <Link href="#" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/cookies" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Cookies
                 </Link>
               </Typography>
