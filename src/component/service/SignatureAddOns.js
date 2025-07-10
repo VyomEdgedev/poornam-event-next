@@ -84,7 +84,7 @@ const SignatureAddOns = () => {
                   alignItems: 'center',
                   textAlign: 'center',
                   justifyContent:'center',
-                  padding: { xs: 2, md: 0 , lg: 0 },
+                  padding: { xs: 5, md: 0 , lg: 0 },
                   
                 }}
 

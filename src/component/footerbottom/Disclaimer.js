@@ -13,6 +13,7 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import CustomBanner from '@/common-component/banner/CustomBanner';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -27,7 +28,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 const SectionTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
   marginBottom: theme.spacing(2),
-  color: theme.palette.primary.main,
+  color: "#001538",
   position: 'relative',
   '&::after': {
     content: '""',
@@ -46,7 +47,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingRight: 0,
   '&::before': {
     content: '"•"',
-    color: theme.palette.primary.main,
+    color: "#000000" ,
     fontWeight: 600,
     position: 'absolute',
     left: '8px',
@@ -134,8 +135,8 @@ const disclaimerData = {
       content: "If you have any questions about this disclaimer or any of our policies:",
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
-        email: "hello@poornamevents.com",
-        phone: "+91-XXXXXXXXXX"
+        email: "info@poornamevents.com",
+        phone: "+91-9610366885"
       }
     }
   ]
@@ -146,6 +147,12 @@ export default function Disclaimer() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
+    <>
+     <CustomBanner 
+  showLogo={true}
+  logoSrc="/logo.png"
+  height="30vh"
+  />
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header Section */}
       <StyledPaper elevation={3}>
@@ -157,7 +164,7 @@ export default function Disclaimer() {
             sx={{ 
              fontWeight: 700,
               fontFamily: "Akatab,Sans-serif",
-              background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+              backgroundColor:'#001538',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               mb: 2,
@@ -168,7 +175,7 @@ export default function Disclaimer() {
           </Typography>
           <Chip 
             label={`Last Updated: ${disclaimerData.lastUpdated}`}
-            color="primary"
+            color="#001538"
             variant="outlined"
             sx={{ mb: 2 }}
           />
@@ -269,5 +276,6 @@ export default function Disclaimer() {
         </StyledPaper>
       ))}
     </Container>
+    </>
   );
 }

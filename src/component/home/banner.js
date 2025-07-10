@@ -7,11 +7,13 @@ import Image from "next/image";
 export default function HeroSection() {
     const handleWeddingPlan = () => {
     // Add your navigation or action logic here
+    alert("Plan My Wedding clicked");
     console.log("Plan My Wedding clicked");
   };
 
   const handleTalkToPlanner = () => {
     // Add your navigation or action logic here
+    alert("Talk to Our Planner clicked");
     console.log("Talk to Our Planner clicked");
   };
 
@@ -114,9 +116,11 @@ export default function HeroSection() {
                   fontFamily: "Akatab,Sans-serif",
                   fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
                   fontWeight: 400,
+                  whiteSpace: "nowrap",
                   "&:hover": {
                     borderColor: "#f4ce6a",
                     color: "#f4ce6a",
+                    
                   }
                 }}
                 onClick={handleTalkToPlanner}

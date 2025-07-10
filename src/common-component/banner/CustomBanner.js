@@ -147,6 +147,7 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   color: headingstyle?.color || 'rgba(255, 255, 255, 1)',
   marginBottom: headingstyle?.marginBottom || '8px',
   maxWidth: headingstyle?.maxWidth || '600px',
+  whiteSpace:'nowrap',
   
   // Enhanced responsive typography
   [theme.breakpoints.down('xl')]: {
