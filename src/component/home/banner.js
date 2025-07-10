@@ -12,9 +12,7 @@ export default function HeroSection() {
   };
 
   const handleTalkToPlanner = () => {
-    // Add your navigation or action logic here
-    alert("Talk to Our Planner clicked");
-    console.log("Talk to Our Planner clicked");
+     window.open("https://wa.me/919610366885", "_blank");
   };
 
   return (

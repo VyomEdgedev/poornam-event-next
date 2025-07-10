@@ -3,6 +3,8 @@ import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CustomButton from '../button/CustomButton';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Custom styled components
 const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
@@ -397,11 +399,16 @@ const CustomBanner = ({
           showlogo={showLogo} 
           logoposition={logoPosition}
         >
-          <img 
-            src={logoSrc}
-            alt={logoAlt}
-            style={{ width: '100%', height: 'auto' }}
-          />
+          <Link href="/" style={{ display: 'block' }}>
+  <Image
+    src={logoSrc}
+    alt={logoAlt}
+    width={500} // You can adjust
+    height={500} // You can adjust
+    style={{ width: '100%', height: 'auto' }}
+  />
+</Link>
+
         </LogoContainer>
       )}
       
