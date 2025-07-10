@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import {
   Box,
   Container,
@@ -27,22 +28,22 @@ const PortfolioSection = () => {
       id: "img1"
     },
     {
-      src: "/portfolio4.png",
+      src: "/portfolio7.png",
       alt: "Portfolio Image 2", 
       id: "img2"
     },
     {
-      src: "/portfolio5.png",
+      src: "/portfolio6.png",
       alt: "Portfolio Image 3",
       id: "img3"
     },
     {
-      src: "/portfolio6.png",
+      src: "/portfolio4.png",
       alt: "Portfolio Image 4",
       id: "img4"
     },
     {
-      src: "/portfolio7.png",
+      src: "/portfolio5.png",
       alt: "Portfolio Image 5", 
       id: "img5"
     }
@@ -52,22 +53,29 @@ const PortfolioSection = () => {
   const PortfolioImage = ({ src, alt }) => (
     <Box
       sx={{
-        position: 'relative',
+        position: 'relative', 
         borderRadius: { xs: 1, md: 2 },
         overflow: 'hidden',
         height: '100%',
-        '& img': {
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          transition: 'transform 0.4s ease',
-        },
-        '&:hover img': {
-          transform: 'scale(1.05)',
+        width: '100%',
+        '&:hover': {
+          '& .portfolio-image': {
+            transform: 'scale(1.05)',
+          },
         },
       }}
     >
-      <img src={src} alt={alt} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        style={{
+          objectFit: 'cover',
+          transition: 'transform 0.4s ease',
+        }}
+        className="portfolio-image"
+      />
     </Box>
   );
 
@@ -90,7 +98,7 @@ const PortfolioSection = () => {
           <Typography 
             variant="subtitle1" 
             sx={{ 
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               fontWeight: 400,
               color: '#000000',
               fontSize: { xs: '0.9rem', md: '1.125rem' },
@@ -105,13 +113,12 @@ const PortfolioSection = () => {
           sx={{
             display: { xs: 'none', md: 'grid' },
             gridTemplateColumns: '1fr 1fr 1fr',
-            gap: 2,
+            gap: 1.5,
             mb: 2,
-            height: '425px', // Fixed height for the entire grid
-            padding: 2,
+            height: '425px',
+            padding: 0,
             borderRadius: 2,
             overflow: 'hidden',
-            objectFit: 'cover',
           }}
         >
           {/* Left Column - Main Image */}
@@ -120,13 +127,13 @@ const PortfolioSection = () => {
             alt={portfolioImages[0].alt} 
           />
 
-          
+          {/* Middle Column */}
           <Box
             sx={{
               display: 'grid',
               gridTemplateRows: '1fr 1fr',
-              gap: 2,
-              height: '55%', 
+              gap: 1.5,
+              height: '100%',
             }}
           >
             {/* Top section */}
@@ -140,7 +147,7 @@ const PortfolioSection = () => {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: 1,
+                gap: 1.5,
                 height: '100%',
               }}
             >
@@ -160,18 +167,21 @@ const PortfolioSection = () => {
             sx={{
               display: 'grid',
               gridTemplateRows: '1fr 1fr',
-              gap: 2,
-              height: '55%', // Take full height of grid
+              gap: 1.5,
+              height: '100%',
             }}
           >
             <PortfolioImage 
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
             />
+            
             <PortfolioImage 
               src={portfolioImages[5].src} 
               alt={portfolioImages[5].alt} 
-            />
+              >
+                <Button sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} zIndex={5}>Click</Button>
+              </PortfolioImage>
             
           </Box>
         </Box>
@@ -181,10 +191,10 @@ const PortfolioSection = () => {
           sx={{
             display: { xs: 'none', sm: 'grid', md: 'none' },
             gridTemplateColumns: '1fr 1fr',
-            gap: 2,
+            gap: 1.5,
             mb: 2,
             height: '350px',
-            padding: 2,
+            padding: 0,
             borderRadius: 2,
           }}
         >
@@ -200,7 +210,7 @@ const PortfolioSection = () => {
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gridTemplateRows: '1fr 1fr',
-              gap: 1,
+              gap: 1.5,
               height: '100%',
             }}
           >
@@ -227,12 +237,12 @@ const PortfolioSection = () => {
         <Box
           sx={{
             display: { xs: 'block', sm: 'none' },
-            padding: 2,
+            padding: 0,
             borderRadius: 2,
           }}
         >
           {/* Main image */}
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 1.5, height: '200px' }}>
             <PortfolioImage 
               src={portfolioImages[0].src} 
               alt={portfolioImages[0].alt} 
@@ -244,8 +254,9 @@ const PortfolioSection = () => {
             sx={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: 1,
-              height: '200px',
+              gap: 1.5,
+              height: '150px',
+              mb: 1.5,
             }}
           >
             <PortfolioImage 
@@ -262,9 +273,8 @@ const PortfolioSection = () => {
             sx={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: 1,
+              gap: 1.5,
               height: '150px',
-              mt: 1,
             }}
           >
             <PortfolioImage 
@@ -283,3 +293,4 @@ const PortfolioSection = () => {
 };
 
 export default PortfolioSection;
+

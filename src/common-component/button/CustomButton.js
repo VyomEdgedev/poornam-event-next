@@ -2,16 +2,48 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-// Styled button component matching Figma design
+// Styled button component matching Figma design with responsive features
 const StyledCustomButton = styled(Button)(({ theme, variant }) => ({
-  width: '178px',
+  // Base styles - mobile first approach
+  width: '100%',
+  maxWidth: '178px',
   height: '46px',
   borderRadius: '30px',
-  padding: '10px 22px',
+  padding: '10px 16px',
   textTransform: 'none',
-  fontSize: '16px',
+  fontSize: '14px',
   fontWeight: 500,
   fontFamily: theme.typography.fontFamily,
+  whiteSpace: 'nowrap',
+  minWidth: '120px', // Minimum width to prevent too narrow buttons
+  
+  // Tablet styles
+  [theme.breakpoints.up('sm')]: {
+    width: '178px',
+    padding: '10px 22px',
+    fontSize: '16px',
+  },
+  
+  // Desktop styles
+  [theme.breakpoints.up('md')]: {
+    width: '178px',
+    padding: '10px 22px',
+    fontSize: '16px',
+  },
+  
+  // Large desktop styles
+  [theme.breakpoints.up('lg')]: {
+    width: '178px',
+    padding: '10px 22px',
+    fontSize: '16px',
+  },
+  
+  // Extra small devices (portrait phones)
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '13px',
+    padding: '8px 14px',
+    height: '42px',
+  },
   
   // Primary variant (solid background)
   ...(variant === 'primary' && {
@@ -61,6 +93,7 @@ const CustomButton = ({
   disabled = false,
   type = 'button',
   className,
+  fullWidth = false, // New prop for full width on mobile
   ...props
 }) => {
   return (
@@ -71,6 +104,13 @@ const CustomButton = ({
       type={type}
       className={className}
       disableRipple
+      sx={{
+        // Override width if fullWidth is true
+        ...(fullWidth && {
+          width: '100%',
+          maxWidth: 'none',
+        }),
+      }}
       {...props}
     >
       {children}

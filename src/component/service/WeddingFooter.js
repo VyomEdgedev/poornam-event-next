@@ -4,14 +4,15 @@ import { LocationOn, Email } from '@mui/icons-material';
 
 const WeddingFooter = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 0 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 1, md: 8} }}>
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-evenly',
           flexWrap: 'wrap',
-          gap: 2,
+          
+          gap: { xs: 2, md: 4 },
           // backgroundColor: 'red',
         }}
       >
@@ -39,7 +40,7 @@ const WeddingFooter = () => {
         <Box
           sx={{
             display: 'flex',
-            gap: 4,
+            gap: { xs: 2, md: 4 },
             alignItems: 'center',
             flexWrap: 'wrap'
           }}

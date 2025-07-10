@@ -15,6 +15,8 @@ const services = [
     image: "/homeservices1.png",
     description:
       "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
+      cta: "Learn More",
+  
   },
   {
     title: "Intimate Weddings",
@@ -28,23 +30,27 @@ const services = [
     title: "Themed & Designer Weddings",
     image: "/homeservices2.png",
     description: "Enjoy your big day while we handle the details.",
+    cta: "Learn More",
   },
   {
     title: "Artist Management",
     image: "/homeservices3.png",
     description: "Don’t lift a finger. We’ll plan the entire show.",
+    cta: "Learn More",
   },
   {
     title: "Prewedding & Photography",
     image: "/homeservices4.png",
     description:
       "Because you don’t want to be managing the DJ during your own varmala.",
+      cta: "Learn More",
   },
   {
     title: "Special Effects",
     image: "/homeservices5.png",
     description:
       "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
+      cta: "Learn More",
   },
 ];
 
