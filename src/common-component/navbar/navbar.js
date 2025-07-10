@@ -22,6 +22,7 @@ import Image from "next/image";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 
 
 const navItems = [
@@ -37,6 +38,7 @@ export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [openDrawer, setOpenDrawer] = useState(false);
+  const pathname = usePathname();
 
   return (
     <AppBar
@@ -64,33 +66,31 @@ export default function Header() {
               }}
               gap={2}
             >
-              {navItems.map((item, index) => (
-                <Button
-                  component="a"
-                  key={index}
-                  sx={{
-                    color: item === " " ? "#ffca28" : "white",
-                    borderRadius: "20px",
-                    textTransform: "none",
+              {navItems.map((item, index) => {
+                const isActive = pathname === item.href;
 
-                    fontWeight: 500,
-                    px: 2,
-                    py: 0.5,
-                    minWidth: "auto",
-                    fontSize: "14px",
-                    '&:hover': {
-                      backgroundColor: "#192249",
-                    },
-                  }}
-                >
-                  <Link key={index} href={item.href} passHref legacyBehavior>
-                    <ListItem disablePadding>
-                      <ListItemText primary={item.label} />
-                    </ListItem>
+                return (
+                  <Link key={index} href={item.href} style={{ textDecoration: "none" }}>
+                    <Button
+                      sx={{
+                        color: isActive ? "#DAA412" : "#FFFFFF",
+                        borderRadius: "20px",
+                        textTransform: "none",
+                        fontWeight: 500,
+                        px: 2,
+                        py: 0.5,
+                        minWidth: "auto",
+                        fontSize: "14px",
+                        "&:hover": {backgroundColor: "#192249",
+                        },
+                      }}
+                    >
+                      {item.label}
+                    </Button>
                   </Link>
-                </Button>
-              ))}
-              <IconButton href="https://wa.me/919000000000" target="_blank" sx={{ color: "#25D366" }}>
+                );
+              })}
+              <IconButton href="https://wa.me/919610366885" target="_blank" sx={{ color: "#25D366" }}>
                 <WhatsAppIcon />
               </IconButton>
             </Box>
@@ -125,7 +125,7 @@ export default function Header() {
 
                     ))}
                     <ListItem>
-                      <IconButton href="https://wa.me/919000000000" target="_blank" sx={{ color: "#25D366" }}>
+                      <IconButton href="https://wa.me/919610366885" target="_blank" sx={{ color: "#25D366" }}>
                         <WhatsAppIcon />
                       </IconButton>
                     </ListItem>

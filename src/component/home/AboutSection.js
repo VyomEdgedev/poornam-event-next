@@ -30,16 +30,16 @@ export default function AboutSection() {
           lineHeight: 1.75,
           frontFamily: "Akatab,Sans-serif",
           color: "#000000",
-          fontWeight: '700',
+          fontWeight: '500',
           // textAlign: "center",
           mb: 2,
         }}
       >
-        {` At Poonam Events, we turn your wedding dreams into unforgettable
-          memories. Founded by Aadi Jain, a self-taught planner
-          with a passion for perfection, and Richi Anand Jain,
-          the creative spirit behind our signature style — we've been planning
-          heartfelt celebrations across India since 2017.`}
+        {` At Poonam Events, we turn your wedding dreams into unforgettable memories. Founded by `}
+        <strong>Aadi Jain</strong>
+        {`, a self-taught planner with a passion for perfection, and `}
+        <strong>Richi Anand Jain</strong>
+        {`, the creative spirit behind our signature style — we've been planning heartfelt celebrations across India since 2017.`}
       </Typography>
 
       <Typography
@@ -50,7 +50,7 @@ export default function AboutSection() {
           lineHeight: 1.75,
           frontFamily: "Akatab,Sans-serif",
           color: "#000000",
-          fontWeight: '700',
+          fontWeight: '500',
           mb: 4,
         }}
       >
