@@ -109,7 +109,7 @@ export default function Header() {
 
               <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}>
                 <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
-                  <List sx={{ backgroundColor: "#0A163ED4", color: "#CBEFFF", alignContent: "center", alignItems: "center", height: "667px", padding: "25%" }}>
+                  <List sx={{ backgroundColor: "#0A163ED4", color: "#CBEFFF", height: "667px", padding: " 11% 25% " }}>
                     {navItems.map((item, index) => (
 
                       <React.Fragment key={index}>
