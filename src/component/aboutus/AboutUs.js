@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OurStories from "./OurStories";
 import MagicMakers from "./MagicMakers";
 import Owners from "./Owners"
@@ -9,8 +9,14 @@ import Snapshot from "./Snapshot";
 import ContactSection from "../home/ContactSection";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
+import ConnectModal from "@/common-component/modal/ConnectModal";
 
 export default function AboutUS() {
+   const [open, setOpen] = useState(false)
+       const handleWeddingPlan = () => {
+       // Add your navigation or action logic here
+       setOpen(true)
+     };
     return (
         <>
             <CustomBanner
@@ -21,7 +27,8 @@ export default function AboutUS() {
                 showLogo={true}
                 logoSrc="/logo.png"
             >
-                <CustomButton>Plan my Wedding</CustomButton>
+                <ConnectModal open={open} setOpen={setOpen} />
+                <CustomButton  onClick={handleWeddingPlan}>Plan my Wedding</CustomButton>
             </CustomBanner >
 
          

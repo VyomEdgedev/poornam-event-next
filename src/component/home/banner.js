@@ -3,12 +3,13 @@
 import CustomButton from "@/common-component/button/CustomButton";
 import { Box, Typography, Stack } from "@mui/material";
 import Image from "next/image";
-
+import ConnectModal from "@/common-component/modal/ConnectModal";
+import { useState } from "react";
 export default function HeroSection() {
+  const [open, setOpen] = useState(false)
     const handleWeddingPlan = () => {
     // Add your navigation or action logic here
-    alert("Plan My Wedding clicked");
-    console.log("Plan My Wedding clicked");
+    setOpen(true)
   };
 
   const handleTalkToPlanner = () => {
@@ -23,7 +24,7 @@ export default function HeroSection() {
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
-      
+      <ConnectModal open={open} setOpen={setOpen} />
         <Box
           sx={{
             display: "flex",

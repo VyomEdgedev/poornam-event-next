@@ -15,6 +15,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { LinkedIn } from "@mui/icons-material";
+import Image from "next/image";
 import { color } from "framer-motion";
 
 
@@ -47,9 +48,19 @@ const Footer = () => {
                 },
               }}
             >
-              <Box sx={{ mb: 2 }}>
-                <img src="/logo.png" alt="Logo" width="100" />
-              </Box>
+              <Link href="/" passHref legacyBehavior>
+  <a>
+    <Box sx={{ display: "inline-block" }}>
+      <Image
+        src="/logo.png"
+        alt="Logo"
+        width={100}
+        height={60}
+        style={{ height: "auto" }}
+      />
+    </Box>
+  </a>
+</Link>
               <Typography
                 variant="body2"
                 sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif" }}
@@ -62,7 +73,7 @@ const Footer = () => {
 
             {/* Quick Links - 16.6% on desktop */}
             <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: "grid", gap: "1px" }}>
+              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: {xs:"contents", md:"grid"}, gap: "1px" }}>
                 <Typography
                   variant="h6"
                   sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "#E4E4E4", fontFamily: "Akatab,Sans-serif" }}
@@ -100,10 +111,10 @@ const Footer = () => {
 
             {/* Services */}
             <Grid item xs={12} sm={4} md={2} >
-              <Box sx={{ textAlign: "left", width: "200px", padding: "10px", display: "grid", gap: "5px" }}>
+              <Box sx={{ textAlign: "left", width: "200px", padding: "10px", display: {xs:"contents", md:"grid"}, gap: "5px"}}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600 }}
+                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "#E4E4E4" }}
                 >
                   Services
                 </Typography>
@@ -145,8 +156,8 @@ const Footer = () => {
               <Box sx={{
                 textAlign: "left",
                 width: "250px",
-                padding: "10px",
-                display: "grid",
+                padding: {xs:"1px", md:"10px"},
+                display: {xs:"grid", md:"grid"},
                 gap: "5px",
               }}
               >
@@ -175,8 +186,8 @@ const Footer = () => {
                 </Typography>
                 <Box>
                   {[
-                    { icon: FacebookIcon, url: "https://facebook.com" },
-                    { icon: InstagramIcon, url: "https://instagram.com" },
+                    { icon: FacebookIcon, url: "https://www.facebook.com/share/1F1cZcuxff/" },
+                    { icon: InstagramIcon, url: "https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw==" },
                     { icon: TwitterIcon, url: "https://twitter.com" },
                     { icon: YouTubeIcon, url: "https://youtube.com" },
                     { icon: LinkedIn, url: "https://linkedin.com" },
@@ -203,7 +214,7 @@ const Footer = () => {
       {/* Bottom mustard section */}
       <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
         <Container maxWidth="lg">
-          <Grid container alignItems="center" justifyContent="space-between">
+          <Grid container sx={{ display: { xs: "block", md: "flex" } }} alignItems="center" justifyContent="space-between">
             {/* Left - Copyright */}
             <Grid item xs={12} md={4}>
               <Typography
