@@ -28,7 +28,7 @@ const SignatureAddOns = () => {
     {
       title: "Drone + Cinematic Video Services",
       description: "Professional aerial coverage",
-      image: "../Group4.jpg"
+      image: "./Group5.jpg"
     },
     {
       title: "On-ground Crisis Manager",

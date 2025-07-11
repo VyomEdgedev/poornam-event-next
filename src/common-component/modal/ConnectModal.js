@@ -16,11 +16,11 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p:3,
+  p:1,
   borderRadius: 2,
   outline: 'none',
   maxHeight: '90vh',
-  overflow: 'hidden',
+  overflowY: 'auto',
 };
 
 export default function ConnectModal({open, setOpen}) {
@@ -34,7 +34,7 @@ export default function ConnectModal({open, setOpen}) {
   const getModalDimensions = () => {
     if (isMobile) {
       return {
-        width: '95vw',
+        width: '85vw',
         height: 'auto',
         maxHeight: '90vh',
         overflowY: 'auto',
