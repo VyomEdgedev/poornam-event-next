@@ -1,75 +1,101 @@
+'use client';
 import React from 'react';
-import { Card, CardMedia, Container, Typography, Box, Grid, Chip } from '@mui/material';
+import {
+  Box, Typography, Card, CardMedia, Chip, IconButton
+} from '@mui/material';
+import ShareIcon from '@mui/icons-material/Share';
 
-const SubCard = () => {
-  // JSON data inside the component
-  const blogCardData = {
-    image: "/SubBlog.png",
-    category: "Budget & Planning",
-    title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
-    authorInfo: "Author | 02-07-2025",
-  };
+const cardData = {
+  image: "/SubBlog.png",
+  category: "Budget & Planning",
+  title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
+  author: "Author",
+  date: "02-07-2025"
+};
 
+const BlogCard = () => {
   return (
-    <Container sx={{ py: 4 }}>
-      <Grid container spacing={4} justifyContent="center">
-        <Grid item xs={12} sm={10} md={8}>
-          <Card sx={{ position: "relative", height: { xs: 400, md: 450 } }}>
-            <CardMedia
-              component="img"
-              height="100%"
-              image={blogCardData.image}
-              alt="Blog Preview"
-              sx={{ objectFit: "cover", width: "100%" }}
-            />
+    <Box  display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            px={{ xs: 2, sm: 6, md: 10 }}
+            py={5}>
+      <Card
+        sx={{
+          position: 'relative',
+          borderRadius: 2,
+          width: { xs: '100%', sm: 500, md: 987 },
+          height: 449,
+          overflow: 'hidden'
+        }}
+      >
+        <CardMedia
+          component="img"
+          image={cardData.image}
+          alt={cardData.title}
+          sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
 
-            <Box
-              sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                color: "white",
-                px: 3,
-                py: 2,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
-                  fontFamily: "Akatab",
-                }}
-              >
-                Category: {blogCardData.category}
-              </Typography>
+        {/* Share icon top-right */}
+        <IconButton
+          sx={{
+            position: 'absolute',
+            top: 10,
+            right: 10,
+            color: 'white',
+            bgcolor: 'rgba(0,0,0,0.4)',
+            '&:hover': { bgcolor: 'rgba(0,0,0,0.6)' }
+          }}
+        >
+          <ShareIcon />
+        </IconButton>
 
-              <Typography
-                sx={{
-                  fontSize: { xs: "1rem", sm: "1.3rem", md: "1.7rem" },
-                  fontWeight: 600,
-                  fontFamily: "Akatab",
-                }}
-              >
-                {blogCardData.title}
-              </Typography>
+        {/* Overlay Text */}
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            p: 2,
+            bgcolor: 'rgba(0,0,0,0.4)',
+            color: 'white'
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '0.8rem', sm: '0.9rem' },
+              fontFamily: 'Akatab'
+            }}
+          >
+            Category: {cardData.category}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: '1.2rem', sm: '1.4rem' },
+              fontWeight: 600,
+              fontFamily: 'Akatab'
+            }}
+          >
+            {cardData.title}
+          </Typography>
+          <Chip
+            label={`${cardData.author} | ${cardData.date}`}
+            variant="outlined"
+            sx={{
+              mt: 1,
+              color: 'white',
+              borderColor: 'white',
+              fontSize: '0.8rem',
+              fontFamily: 'Akatab'
+            }}
+          />
+        </Box>
+      </Card>
+    </Box>
 
-              <Chip
-                label={blogCardData.authorInfo}
-                variant="outlined"
-                sx={{
-                  mt: 1,
-                  color: "white",
-                  borderColor: "white",
-                  fontSize: { xs: "0.75rem", md: "0.85rem" },
-                  fontFamily: "Akatab",
-                }}
-              />
-            </Box>
-          </Card>
-        </Grid>
-      </Grid>
-    </Container>
   );
 };
 
-export default SubCard;
+export default BlogCard;
