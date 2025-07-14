@@ -285,7 +285,13 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   style={{ display: "inline-block" }}
                 >
-                  <img src="./developer.png" alt="Developer Logo" height={24} />
+                   <Image
+      src="/developer.png"
+      alt="Developer Logo"
+      width={60}
+      height={24}
+      style={{ height: "24px", width: "auto" }}
+    />
                 </a>
               </Box>
             </Grid>

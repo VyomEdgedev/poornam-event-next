@@ -58,7 +58,7 @@ const PoornamVows = () => {
           variant="subtitle1" 
           gutterBottom
         >
-          Poornam's 7 Pheras of Promise
+         {` Poornam's 7 Pheras of Promise  `}
         </Typography>
 
         <Box

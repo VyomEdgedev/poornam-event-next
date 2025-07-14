@@ -9,6 +9,7 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
+import Image from 'next/image';
 
 const PlanningTips = () => {
   const theme = useTheme();
@@ -59,7 +60,12 @@ const PlanningTips = () => {
   };
 
   const getIcon = (imagePath) => {
-    return <img src={imagePath} alt="service icon" style={{ width: 40, height: 40 }} />;
+    return <Image 
+      src={imagePath} 
+      alt="service icon" 
+      width={40} 
+      height={40} 
+    />;
   };
 
 return (
