@@ -27,14 +27,14 @@ function Philosophy() {
                             <CardContent>
                                 {/* Main title text */}
                                 <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Roboto">
-                                    Our Humble Beginnings
+                                 {`   Our Humble Beginnings`}
                                 </Typography>
 
                                 {/* Supporting description text */}
                                 <Typography variant="body2" color="text.secondary" fontFamily="Roboto">
-                                    Founded by a passionate team, Poornam began
+                                   {` Founded by a passionate team, Poornam began
                                     with the idea of bringing joy and creativity to
-                                    Indian weddings.
+                                    Indian weddings.`}
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -61,12 +61,12 @@ function Philosophy() {
                             <CardContent>
                                 {/* Main title text */}
                                 <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Roboto">
-                                    Our Mission
+                                  {`  Our Mission`}
                                 </Typography>
 
                                 {/* Supporting description text */}
                                 <Typography variant="body2" color="text.secondary" fontFamily="Roboto"> 
-                                   To create memorable moments filled with creativity, care, joy, and authenticity.
+                                 {`  To create memorable moments filled with creativity, care, joy, and authenticity.`}
                                 </Typography>
                             </CardContent>
                         </Card>

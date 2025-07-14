@@ -159,124 +159,131 @@ export default function TermsAndConditions() {
 
   return (
     <>
-      <CustomBanner 
-  showLogo={true}
-  logoSrc="/logo.png"
-  height="30vh"
-  />
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      {/* Header Section */}
-      <StyledPaper elevation={3}>
-        <Box textAlign="center" mb={3}>
-          <Typography 
-            variant={isMobile ? "h4" : "h3"} 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-              fontWeight: 700,
-              fontFamily: "Akatab,Sans-serif",
-              background: "#001538",
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              mb: 2
-            }}
-          >
-            {termsData.title}
-          </Typography>
-          <Chip 
-            label={`Last Updated: ${termsData.lastUpdated}`}
-            color="#001538"
-            variant="outlined"
-            sx={{ mb: 2 }}
-          />
-          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
-            Welcome to <strong>{termsData.companyName}</strong> — {termsData.description}
-          </Typography>
-        </Box>
-        
-        <Divider sx={{ my: 3 }} />
-        
-        <Typography variant="body1" >
-          Before you explore, book, or contact us through our website, please take a moment to read our terms.
-        </Typography>
-        
-        <Typography variant="body1" sx={{ fontWeight: 500 }}>
-          By accessing or using <strong>{termsData.website}</strong>, you agree to the following terms and conditions:
-        </Typography>
-      </StyledPaper>
-
-      {/* Terms Sections */}
-      {termsData.sections.map((section, index) => (
-        <StyledPaper key={index} elevation={2}>
-          <SectionTitle variant="h5" component="h2">
-            {section.title}
-          </SectionTitle>
-          
-          {section.content && (
-            <Typography variant="body1" sx={{ mb: 2 }}>
-              {section.content}
-            </Typography>
-          )}
-          
-          {section.items && (
-            <List sx={{ py: 0 }}>
-              {section.items.map((item, itemIndex) => (
-                <StyledListItem key={itemIndex} disablePadding>
-                  <ListItemText 
-                    primary={item}
-                    primaryTypographyProps={{
-                      variant: 'body1',
-                      sx: { lineHeight: 1.6 }
-                    }}
-                  />
-                </StyledListItem>
-              ))}
-            </List>
-          )}
-          
-          {section.note && (
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                mt: 2, 
-                fontStyle: 'italic', 
-                color: '#000000',
-                borderLeft: `3px solid ${theme.palette.secondary.main}`,
-                pl: 2,
-                py: 1
+      <CustomBanner
+        showLogo={true}
+        logoSrc="/logo.png"
+        height="30vh"
+      />
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        {/* Header Section */}
+        <StyledPaper elevation={3}>
+          <Box textAlign="center" mb={3}>
+            <Typography
+              variant={isMobile ? "h4" : "h3"}
+              component="h1"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Akatab,Sans-serif",
+                background: "#001538",
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                mb: 2
               }}
             >
-              {section.note}
+              {termsData.title}
             </Typography>
-          )}
-          
-          {section.contactInfo && (
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                {section.contactInfo.company}
-              </Typography>
-              <Typography variant="body1" color="primary">
-                {section.contactInfo.email}
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                {section.contactInfo.phone}
-              </Typography>
-            </Box>
-          )}
-        </StyledPaper>
-      ))}
+            <Chip
+              label={`Last Updated: ${termsData.lastUpdated}`}
+              color="#001538"
+              variant="outlined"
+              sx={{ mb: 2 }}
+            />
+            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
+              dangerouslySetInnerHTML={{
+                __html: ` Welcome to <strong>{termsData.companyName}</strong> — {termsData.description}`,
+              }}
 
-      {/* Changes Notice */}
-      <StyledPaper elevation={2} sx={{ bgcolor: 'grey.50' }}>
-        <SectionTitle variant="h5" component="h2">
-          Changes to These Terms
-        </SectionTitle>
-        <Typography variant="body1">
-          We may update these Terms occasionally. Any changes will be reflected on this page with an updated date. 
-          Your continued use of the site after any changes means you accept the updated Terms.
-        </Typography>
-      </StyledPaper>
-    </Container>
+            />
+          </Box>
+
+          <Divider sx={{ my: 3 }} />
+
+          <Typography variant="body1" >
+            {`  Before you explore, book, or contact us through our website, please take a moment to read our terms.`}
+          </Typography>
+
+          <Typography variant="body1" sx={{ fontWeight: 500 }}
+            dangerouslySetInnerHTML={{
+              __html: `  By accessing or using <strong>{termsData.website}</strong>, you agree to the following terms and conditions:`,
+            }}
+          />
+
+
+        </StyledPaper>
+
+        {/* Terms Sections */}
+        {termsData.sections.map((section, index) => (
+          <StyledPaper key={index} elevation={2}>
+            <SectionTitle variant="h5" component="h2">
+              {section.title}
+            </SectionTitle>
+
+            {section.content && (
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                {section.content}
+              </Typography>
+            )}
+
+            {section.items && (
+              <List sx={{ py: 0 }}>
+                {section.items.map((item, itemIndex) => (
+                  <StyledListItem key={itemIndex} disablePadding>
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body1',
+                        sx: { lineHeight: 1.6 }
+                      }}
+                    />
+                  </StyledListItem>
+                ))}
+              </List>
+            )}
+
+            {section.note && (
+              <Typography
+                variant="body2"
+                sx={{
+                  mt: 2,
+                  fontStyle: 'italic',
+                  color: '#000000',
+                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  pl: 2,
+                  py: 1
+                }}
+              >
+                {section.note}
+              </Typography>
+            )}
+
+            {section.contactInfo && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                  {section.contactInfo.company}
+                </Typography>
+                <Typography variant="body1" color="primary">
+                  {section.contactInfo.email}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {section.contactInfo.phone}
+                </Typography>
+              </Box>
+            )}
+          </StyledPaper>
+        ))}
+
+        {/* Changes Notice */}
+        <StyledPaper elevation={2} sx={{ bgcolor: 'grey.50' }}>
+          <SectionTitle variant="h5" component="h2">
+         {`   Changes to These Terms`}
+          </SectionTitle>
+          <Typography variant="body1">
+           {` We may update these Terms occasionally. Any changes will be reflected on this page with an updated date.
+            Your continued use of the site after any changes means you accept the updated Terms.`}
+          </Typography>
+        </StyledPaper>
+      </Container>
     </>
   );
 }

@@ -50,9 +50,9 @@ const ShowCase = () => {
         {`Highlighting exquisite captures from different weddings.`}
       </Typography>
       <Box textAlign="center" mb={6} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
-       <CustomButton sx={{width: { xs: "178px", sm: "auto" }}}>{`Browse Gallery`}</CustomButton>
+       <CustomButton  data-testid="notify-button" sx={{width: { xs: "178px", sm: "auto" }}}>{`Browse Gallery`}</CustomButton>
 
-       <CustomButton
+       <CustomButton  data-testid="notify-button"
                        variant="outlined"
                        sx={{ 
                          color: "#000D1F", 

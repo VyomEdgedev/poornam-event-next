@@ -63,7 +63,7 @@ export default function HeroSection() {
                   
               }}
             >
-              Shaadiyaan Banti Hain Yaadon Se...
+             {` Shaadiyaan Banti Hain Yaadon Se...`}
             </Typography> 
             
              <Typography
@@ -74,7 +74,7 @@ export default function HeroSection() {
                 ml:5,
                }}
             >
-              Let’s Make Yours Legendary
+           {`   Let’s Make Yours Legendary`}
             </Typography> 
             <Typography
               sx={{
@@ -88,8 +88,8 @@ export default function HeroSection() {
 
               }}
             >
-              Luxury meets laughter, chaos choreographed-beautiful weddings across
-              Indore, Bhopal & Jabalpur.
+             {` Luxury meets laughter, chaos choreographed-beautiful weddings across
+              Indore, Bhopal & Jabalpur.`}
             </Typography>
             
             <Stack
@@ -98,7 +98,7 @@ export default function HeroSection() {
               marginLeft={5}
               alignContent={{xs:"center",md:"flex-start"}}
             >
-              <CustomButton 
+              <CustomButton   data-testid="notify-button"
                 variant="primary" 
                 onClick={handleWeddingPlan}
                 sx={{
@@ -109,7 +109,7 @@ export default function HeroSection() {
               >
                 Plan My Wedding
               </CustomButton>
-              <CustomButton
+              <CustomButton  data-testid="notify-button"
                 variant="outlined"
                 sx={{ 
                   color: "#000D1F", 

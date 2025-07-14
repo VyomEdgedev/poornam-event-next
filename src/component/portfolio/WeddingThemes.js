@@ -50,7 +50,7 @@ const WeddingThemes = () => {
         {`Choose from a variety of stunning wedding themes. `}
       </Typography>
       <Box textAlign="center" mb={6}>
-       <CustomButton>{`View All Themes`}</CustomButton>
+       <CustomButton  data-testid="notify-button">{`View All Themes`}</CustomButton>
       </Box>
       <Grid container spacing={4} justifyContent="center">
         {weddingThemesData.map(({ id, tag, image,alt, title, description }) => (

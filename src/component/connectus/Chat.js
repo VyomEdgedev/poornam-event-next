@@ -36,7 +36,7 @@ function Chat() {
                         color="#000000"  >
                         We Do Too!
                     </Typography>
-                    <CustomButton onClick={handleSubmit}>Start Chat</CustomButton>
+                    <CustomButton onClick={handleSubmit}   data-testid="notify-button">Start Chat</CustomButton>
                    
                 </Grid>
                 <Grid item xs={12} md={4} 

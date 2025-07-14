@@ -38,7 +38,7 @@ const BlogCard = () => {
         />
 
         {/* Share icon top-right */}
-        <IconButton
+        <IconButton  data-testid="notify-button"
           sx={{
             position: 'absolute',
             top: 10,

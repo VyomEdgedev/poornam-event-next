@@ -140,7 +140,7 @@ const SocialMediaFollow = () => {
           {socialMediaData.links.map((social) => {
             const IconComponent = iconMap[social.icon];
             return (
-              <IconButton
+              <IconButton  data-testid="notify-button"
                 key={social.id}
                 href={social.url}
                 target="_blank"

@@ -214,9 +214,13 @@ export default function PrivacyPolicy() {
             variant="outlined"
             sx={{ mb: 2 }}
           />
-          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
-            Welcome to <strong>{privacyData.companyName}!</strong>
-          </Typography>
+          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
+               dangerouslySetInnerHTML={{
+              __html: `   Welcome to <strong>{privacyData.companyName}!</strong>`,
+            }}
+          />
+           
+     
         </Box>
         
         <Divider sx={{ my: 3 }} />
@@ -226,7 +230,7 @@ export default function PrivacyPolicy() {
         </Typography>
         
         <Typography variant="body1" >
-          This Privacy Policy explains how we collect, use, share, and protect your information when you use our website, contact us, or plan your dream wedding with us.
+       {`   This Privacy Policy explains how we collect, use, share, and protect your information when you use our website, contact us, or plan your dream wedding with us.`}
         </Typography>
       </StyledPaper>
 

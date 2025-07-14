@@ -27,7 +27,7 @@ export default function Snapshot() {
           variant="h3"
           fontWeight="bold"
         >
-          Snapshots from the Script
+        {`  Snapshots from the Script`}
         </Typography>
 
         <Typography
@@ -38,7 +38,7 @@ export default function Snapshot() {
           variant="subtitle1"
           gutterBottom
         >
-          A scrapbook of memories shared by our couples.
+        {`  A scrapbook of memories shared by our couples.`}
         </Typography>
 
         <SnapshotCard

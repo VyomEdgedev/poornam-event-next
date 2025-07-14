@@ -32,7 +32,7 @@ export default function WeddingPlanning() {
             >
               Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with love, dhol, and a bit of dholak.
             </Typography>
-            <CustomButton>Start Planning</CustomButton>
+            <CustomButton   data-testid="notify-button" >Start Planning</CustomButton>
            
           </Box>
         </Grid>

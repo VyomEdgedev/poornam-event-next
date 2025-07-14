@@ -39,10 +39,10 @@ export default function PortfolioSection() {
         variant="h4"
         sx={{ fontFamily: `'Playfair Display', serif`, fontWeight: 'bold', color: '#0D1A46' }}
       >
-        Our Portfolio
+      {`  Our Portfolio`}
       </Typography>
       <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 6 }}>
-        Real Weddings. Real Emotions.
+      {`  Real Weddings. Real Emotions.`}
       </Typography>
 
       <Grid container spacing={2} justifyContent="center">
@@ -78,7 +78,7 @@ export default function PortfolioSection() {
                   zIndex: 2,
                 }}
               >
-                <Button
+                <Button  data-testid="notify-button"
                   variant="contained"
                   sx={{
                     backgroundColor: '#0D1A46',
