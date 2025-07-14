@@ -42,7 +42,7 @@ export default function ClientTestimonials() {
   return (
     <Box
       sx={{
-        bgcolor: "#FEF7EA",
+        bgcolor: "white",
         px: { xs: 2, md: 5 },
         py: { xs: 2, md: 3 },
       }}

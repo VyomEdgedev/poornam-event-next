@@ -16,6 +16,16 @@ const Service = () => {
   backgroundImage="/servicebanner.png"
   showLogo={true}
   logoSrc="/logo.png"
+  overlay={{
+    background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
+    width: '70%',
+    responsive: {
+      md: { 
+        width: '100%',
+        background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)'
+      }
+    }
+  }}
   />
 <ShaddiService/> 
 <SignatureAddOns/>

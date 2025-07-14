@@ -20,7 +20,7 @@ const services = [
   },
   {
     title: "Intimate Weddings",
-    image: "/portfolio1.png",
+    image: "/homeservices.png",
     description:
       "Smaller weddings, bigger heart.We specialize in private, cozy affairs- beautifully styled, deeply personal, and easy on the chaos.",
     guests: "50 guests, 500 memories, 0 stress",
@@ -206,8 +206,8 @@ const FlipCard = ({ service }) => {
               variant="contained"
               size="small"
               sx={{
-                bgcolor: "#FFD700",
-                color: "#0D1A46",
+                bgcolor: "#D7A10F",
+                color: "#FFFFFF",
                 textTransform: "none",
                 fontWeight: 600,
                 borderRadius: "999px",
@@ -217,7 +217,7 @@ const FlipCard = ({ service }) => {
                 boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                 zIndex: 2,
                 "&:hover": {
-                  bgcolor: "#FFC300",
+                  bgcolor: "#B8850D",
                 },
               }}
             >
@@ -239,7 +239,7 @@ export default function OurServices() {
       sx={{
         px: { xs: 2, md: 10 },
         py: { xs: 4, md: 4 },
-        bgcolor: "#FEF7EA",
+        bgcolor: "#FFFAED",
         textAlign: "center",
       }}
     >

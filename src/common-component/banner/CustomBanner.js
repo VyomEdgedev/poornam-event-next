@@ -49,22 +49,22 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
-  width: '65%',
+  width: overlay?.width || '65%',
   height: '100%',
   zIndex: 2,
-  backgroundImage: 'linear-gradient(red,yellow)',
-  opacity: 0.9,
+   background: overlay?.background || 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
   
   // Responsive overlay adjustments
   [theme.breakpoints.down('lg')]: {
-    width: '70%',
+    width: overlay?.responsive?.lg?.width || '70%',
+    background: overlay?.responsive?.lg?.background || overlay?.background || 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
   },
   [theme.breakpoints.down('md')]: {
-    width: '100%',
-    opacity: 0.8,
+    width: overlay?.responsive?.md?.width || '100%',
+    background: overlay?.responsive?.md?.background || overlay?.background || 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
   },
   [theme.breakpoints.down('sm')]: {
-    opacity: 0.85,
+    background: overlay?.responsive?.sm?.background || overlay?.background || 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
   },
 }));
 
@@ -99,7 +99,7 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
 
 const ContentContainer = styled(Container)(({ theme, contentalignment, contentposition }) => ({
   position: 'absolute',
-  top: '140px',
+  top: '190px',
   left: '40px',
   zIndex: 3,
   display: 'flex',
@@ -109,7 +109,7 @@ const ContentContainer = styled(Container)(({ theme, contentalignment, contentpo
   textAlign: contentalignment?.textAlign || 'left',
   maxWidth: '1200px',
   padding: '0 20px',
-  
+  // backgroundColor:"red",
   // Enhanced responsive positioning
   [theme.breakpoints.down('xl')]: {
     top: contentposition?.xl?.top || '120px',

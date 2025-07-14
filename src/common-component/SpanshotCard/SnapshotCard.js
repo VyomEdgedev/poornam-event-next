@@ -30,7 +30,7 @@ export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, cap
 
       <CardMedia
         component="img"
-        height="300"
+        height="400"
         image={imageSrc}
         alt="Instagram post"
       />

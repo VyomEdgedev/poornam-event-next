@@ -11,7 +11,7 @@ export default function ContactSection() {
   };
   return (
     <Box sx={{ px: 2, py: 10 }}>
-      <Grid container spacing={12}  justifyContent="center">
+      <Grid container spacing={{xs: 6, md: 25}}  justifyContent="center">
         {/* Left Text Side */}
         <Grid item xs={12} md={8} >
           <Typography
@@ -40,7 +40,7 @@ export default function ContactSection() {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              maxWidth: 400,
+              width: {xs: '100%', md: '600px'},
             }}
           >
             <Box> 
@@ -69,7 +69,7 @@ export default function ContactSection() {
               />
             </Box>
             <CustomButton onClick={handleLetChat} sx={
-              {mt:1, width:130, height:50}
+              {mt:1}
             }>Let's Chat</CustomButton>
             </Box>
         </Grid>

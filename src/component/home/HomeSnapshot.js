@@ -6,7 +6,7 @@ import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 
 export default function Snapshot() {
   return (
-  <Grid  bgcolor="#FFFCF5"
+  <Grid  bgcolor="#FFFAED"
   padding="2%"> 
        
     <Grid
@@ -20,19 +20,20 @@ export default function Snapshot() {
         <Typography
           sx={{
             fontSize: { xs: "1.5rem", sm: "1.5rem", md: "2.5rem" },
-            fontFamily: "Gloock"
+
+            fontWeight:"400",
+            fontFamily: "Gloock, serif"
           }}
           variant="h3"
           fontWeight="bold"
-          gutterBottom
         >
           Snapshots from the Script
         </Typography>
 
         <Typography
           sx={{
-            fontSize: { xs: "1rem", sm: "1.5rem", md: "1.2rem" },
-            fontFamily: "Akatab"
+            fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
+            fontFamily: "Akatab,Sans-serif"
           }}
           variant="subtitle1"
           gutterBottom
