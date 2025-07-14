@@ -265,10 +265,12 @@ const MyForm = () => {
                             fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
                             lineHeight: 1.2
                         }}
-                    >
-                        Tell Us Everything<br />
-                        (Yes, Even the Drama)
-                    </Typography>
+                        dangerouslySetInnerHTML={{
+    __html: `Tell Us Everything<br /> (Yes, Even the Drama)`,
+  }}
+                    />
+                    
+                   
                     <Box
                         sx={{ 
                             width: "100%", 
@@ -317,7 +319,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Full Name
+                                {  `Full Name `}
                             </Typography>
                             <TextField
                                 placeholder="Your Full Name"
@@ -351,7 +353,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Email
+                              { ` Email `}
                             </Typography>
                             <TextField
                                 placeholder="Your Email"
@@ -386,7 +388,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Phone
+                                {`Phone` }
                             </Typography>
                             <TextField
                                 placeholder="Your Phone"
@@ -420,7 +422,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Wedding Date (optional)
+                               {` Wedding Date (optional)` }
                             </Typography>
                             <TextField
                                 placeholder="Your Wedding Date"
@@ -453,7 +455,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Location
+                               {`Location` }
                             </Typography>
                             <TextField
                                 placeholder="Venue Location"
@@ -487,7 +489,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                Number of Guests
+                                {`Number of Guests` }
                             </Typography>
                             <TextField
                                 placeholder="Estimated Guests"
@@ -521,7 +523,7 @@ const MyForm = () => {
                                     fontWeight: "600"
                                 }}
                             >
-                                What's on your mind?
+                                {  `What's on your mind?`}
                             </Typography>
                             <TextField
                                 placeholder="Your Message"
@@ -566,7 +568,7 @@ const MyForm = () => {
                                 }
                             }}
                         >
-                            Let's Begin the Dream
+                            { `Let's Begin the Dream`}
                         </Button>
                     </Box>
                 </Grid>

@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 const Experience = () => {
   return (
    <section className="poornam-section">
@@ -20,21 +20,36 @@ const Experience = () => {
                                     <div className="step-subtitle">{`Discovery`}</div>
                                 </div>
                             </div>
-                            <div className="step-arrow"><img src="./Arrow.png"  /></div>
+                            <div className="step-arrow"><Image
+                    src="/Arrow.png"
+                    alt="Arrow"
+                    width={30}
+                    height={20}
+                  /></div>
                             <div className="process-step">
                                 <div className="step-content">
                                     <div className="step-title">{`Planning &`}</div>
                                     <div className="step-subtitle">{`Budgeting`}</div>
                                 </div>
                             </div>
-                            <div className="step-arrow"><img src="./Arrow.png"  /></div>
+                            <div className="step-arrow"><Image
+                    src="/Arrow.png"
+                    alt="Arrow"
+                    width={30}
+                    height={20}
+                  /></div>
                             <div className="process-step">
                                 <div className="step-content">
                                     <div className="step-title">{`Design &`}</div>
                                     <div className="step-subtitle">{`Moodboarding`}</div>
                                 </div>
                             </div>
-                            <div className="step-arrow"><img src="./Arrow.png"  /></div>
+                            <div className="step-arrow"><Image
+                    src="/Arrow.png"
+                    alt="Arrow"
+                    width={30}
+                    height={20}
+                  /></div>
                             <div className="process-step">
                                 <div className="step-content">
                                     <div className="step-title">{`Final Execution`}</div>

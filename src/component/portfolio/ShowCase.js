@@ -1,12 +1,13 @@
 import React from "react";
 import { Container, Typography, Grid, Card, CardContent, Box, Chip } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
+import Image from "next/image";
 
 const weddingThemesData = [
   {
     id: 1,
     tag: "Rajasthan",
-    image: "./portfolio2.png",
+    image: "/portfolio2.png",
       alt: "Royal Rajasthani Theme",
     title: "Royal Rajasthani",
     description: "A regal affair in royal palaces."
@@ -14,7 +15,7 @@ const weddingThemesData = [
   {
     id: 2,
     tag: "Beach",
-   image: "./portfolio2.png",
+   image: "/portfolio2.png",
       alt: "Royal Rajasthani Theme",
     title: "Boho Beach",
     description: "An elegant beach ceremony."
@@ -22,7 +23,7 @@ const weddingThemesData = [
   {
     id: 3,
     tag: "Modern",
-    image: "./portfolio2.png",
+    image: "/portfolio2.png",
       alt: "Royal Rajasthani Theme",
     title: "Minimal Chic",
     description: "Simplicity meets elegance."
@@ -38,7 +39,7 @@ const ShowCase = () => {
         align="center" 
         sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
       >
-        Visual Showcase
+       {` Visual Showcase `}
       </Typography>
       <Typography 
         variant="body1" 
@@ -46,10 +47,10 @@ const ShowCase = () => {
         
         sx={{ mb: 4 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
       >
-        Highlighting exquisite captures from different weddings.
+        {`Highlighting exquisite captures from different weddings.`}
       </Typography>
       <Box textAlign="center" mb={6} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
-       <CustomButton sx={{width: { xs: "178px", sm: "auto" }}}>Browse Gallery</CustomButton>
+       <CustomButton sx={{width: { xs: "178px", sm: "auto" }}}>{`Browse Gallery`}</CustomButton>
 
        <CustomButton
                        variant="outlined"
@@ -71,7 +72,7 @@ const ShowCase = () => {
                        }}
                        
                      >
-                       Filter by Category
+                      {` Filter by Category `}
                      </CustomButton> 
       
       </Box>
@@ -96,6 +97,7 @@ const ShowCase = () => {
               />
               <Box 
                 sx={{ 
+                  position: "relative",
                   width: "340px",
                   height: 300, 
                   backgroundColor: "red",
@@ -107,11 +109,13 @@ const ShowCase = () => {
                   minHeight: { xs: 250, sm: 280, md: 300 }
                 }}
                 >
-                <img 
-    src={image} 
-    alt={alt} 
-    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-  />
+            <Image
+                  src={image}
+                  alt={alt}
+                  layout="fill"
+                  objectFit="cover"
+                />
+  
               
                 
                   
