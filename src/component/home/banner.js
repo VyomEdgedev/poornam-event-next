@@ -151,7 +151,7 @@ export default function HeroSection() {
             }}
           >
             <Image
-              src={"/sadhi.png"}
+              src="/sadhi.png"
               alt="Bridal Hero"
               width={1200}
               height={1600}
@@ -162,10 +162,7 @@ export default function HeroSection() {
                 objectFit: "cover",
                 objectPosition: "top",
                 display: "block",
-                // borderRadius: "12px",
-                transform: 'scaleX(-1)',
-                zIndex:1
-
+                transform: "scaleX(-1)",
               }}
             />
           </Box> 
