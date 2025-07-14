@@ -1,12 +1,13 @@
 import React from 'react'
 import { Container, Typography, Grid, Card, CardContent, Box } from "@mui/material";
 import CustomButton from '@/common-component/button/CustomButton';
+import Image from 'next/image';
 
 
 const YourDreamData = [
     {
         id: 1,
-        image: "./YourDream1.png",
+        image: "/YourDream1.png",
         alt: "Royal Rajasthani Theme",
         title: "Udaipur",
         description: "For that royal Rajasthani Magic.",
@@ -14,7 +15,7 @@ const YourDreamData = [
     },
     {
         id: 2,
-        image: "./YourDream2.png",
+        image: "/YourDream2.png",
         alt: "Royal Rajasthani Theme",
         title: "Goa",
         description: "For Beachside vows & sunset pheras.",
@@ -22,7 +23,7 @@ const YourDreamData = [
     },
     {
         id: 3,
-        image: "./YourDream3.png",
+        image: "/YourDream3.png",
         alt: "Royal Rajasthani Theme",
         title: "Mahabaleshwar",
         description: "For mountain serenity & mity mornings.",
@@ -39,9 +40,9 @@ const YourDream = () => {
                 align="center"
                 sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif', fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
             >
-               Real Talk About [Service Name]s
+                {`Real Talk About [Service Name]s`}
             </Typography>
-           
+
             <Grid container spacing={4} justifyContent="center">
                 {YourDreamData.map(({ id, tag, image, alt, title, description, ctr }) => (
                     <Grid item key={id} xs={12} sm={6} md={4}>
@@ -56,9 +57,10 @@ const YourDream = () => {
                             }}
                             elevation={1}
                         >
-                        
+
                             <Box
                                 sx={{
+                                    position:"relative",
                                     width: "340px",
                                     height: 300,
                                     backgroundColor: "red",
@@ -68,13 +70,20 @@ const YourDream = () => {
                                     fontSize: 14,
                                     textAlign: "center",
                                     minHeight: { xs: 250, sm: 280, md: 300 }
+                                    
                                 }}
                             >
-                                <img
+                                <Image
+                                    src={image}
+                                    alt={alt}
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                             { /*  <img
                                     src={image}
                                     alt={alt}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
+                                />*/}
 
 
 
@@ -83,7 +92,7 @@ const YourDream = () => {
                                 <Typography variant="subtitle1" component="div" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '400', fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1rem' } }}>
                                     {title}
                                 </Typography>
-                                <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem' } }}>
+                                <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem'}, mb:2, whiteSpace:"nowrap" }}>
                                     {description}
                                 </Typography>
                                 <CustomButton>{ctr}</CustomButton>
