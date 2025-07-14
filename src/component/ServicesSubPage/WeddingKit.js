@@ -25,9 +25,9 @@ function WeddingKit() {
         </Typography>
         <Typography variant="body2" color="text.primary"
           sx={{ fontFamily: "Akatab", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.1rem" } }}>
-          We're here to help you plan a wedding that's unforgettable, personal,
+         {`We're here to help you plan a wedding that's unforgettable, personal,
           and oh-so-magical. Drop your email, and we'll make sure you're the first
-          to get our latest tips, updates, and exclusive ideas before anyone else.
+          to get our latest tips, updates, and exclusive ideas before anyone else.`}
         </Typography>
       </Box>
 
