@@ -6,6 +6,7 @@ import {
   Avatar, 
   Container 
 } from '@mui/material';
+import Image from 'next/image';
 
 
 const SignatureAddOns = () => {
@@ -13,27 +14,27 @@ const SignatureAddOns = () => {
     {
       title: "Venue Support",
       description: "We provide venue assistance",
-      image: "./Group1.jpg"
+      image: "/Group1.jpg"
     },
     {
       title: "Eco-Friendly Setup",
       description: "Zero-waste decor, paperless invites",
-      image: "./Group2.jpg"
+      image: "/Group2.jpg"
     },
     {
       title: "Customized Wedding Favors",
       description: "Personalized gifts for guests",
-      image: "./Group3.jpg"
+      image: "/Group3.jpg"
     },
     {
       title: "Drone + Cinematic Video Services",
       description: "Professional aerial coverage",
-      image: "./Group5.jpg"
+      image: "/Group5.jpg"
     },
     {
       title: "On-ground Crisis Manager",
       description: "Expert event coordination",
-      image: "./Group4.jpg"
+      image: "/Group4.jpg"
     }
   ];
 
@@ -58,7 +59,7 @@ const SignatureAddOns = () => {
               mb: 1
             }}
           >
-            Signature Add-Ons
+           {` Signature Add-Ons`}
           </Typography>
           <Typography
             variant="h6"
@@ -70,7 +71,7 @@ const SignatureAddOns = () => {
               color: '#000000'
             }}
           >
-            Because Details Matter
+            {`Because Details Matter`}
           </Typography>
         </Box>
 
@@ -110,17 +111,12 @@ const SignatureAddOns = () => {
                    
                   }}
                >
-                  <img 
+                <Image
                     src={addon.image}
                     alt={addon.title}
-                    style={{
-                      width: '32px',
-                      height: '36px',
-                      objectFit: 'contain',
-                     display: 'block',
-                      margin: 'auto'
-                      
-                    }}
+                    width={32}
+                    height={36}
+                    style={{ objectFit: 'contain' }}
                   />
                  </Box>
 

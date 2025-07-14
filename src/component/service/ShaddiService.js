@@ -1,7 +1,8 @@
 import React from 'react';
 import CustomButton from '@/common-component/button/CustomButton';
 import { Card, Grid, Typography, styled, Box } from '@mui/material';
-import Link from 'next/link';
+
+import Image from 'next/image';
 
 // JSON Data for services
 const servicesData = {
@@ -272,7 +273,13 @@ const ShaddiService = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <HeroImageContainer>
-              <img src={servicesData.hero.image} alt={servicesData.hero.title} />
+              <Image
+                src={servicesData.hero.image}
+                alt={servicesData.hero.title}
+                width={500}
+                height={500}
+                objectFit="cover"
+              />
             </HeroImageContainer>
           </Grid>
           <Grid item xs={12} md={4} spacing={2}>
@@ -300,7 +307,15 @@ const ShaddiService = () => {
             key={service.id}>
             <ServiceCard isHighlighted={service.isHighlighted}>
               <ImageContainer>
-                <img src={service.image} alt={service.title} />
+                <ImageContainer>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={100}
+                  height={125}
+                  style={{ objectFit: 'cover' }}
+                />
+              </ImageContainer>
               </ImageContainer>
               <ServiceContent>
                 <ServiceTitle variant="h6">
