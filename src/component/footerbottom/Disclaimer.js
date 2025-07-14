@@ -179,9 +179,11 @@ export default function Disclaimer() {
             variant="outlined"
             sx={{ mb: 2 }}
           />
-          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
-            Welcome to <strong>{disclaimerData.companyName}!</strong>
-          </Typography>
+          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
+           dangerouslySetInnerHTML={{
+              __html: `    Welcome to <strong>{disclaimerData.companyName}!</strong>`,
+            }}
+          />
         </Box>
         
         <Divider sx={{ my: 3 }} />
@@ -191,7 +193,7 @@ export default function Disclaimer() {
         </Typography>
         
         <Typography variant="body1" >
-          This disclaimer outlines how to interpret the information on our website.
+         {` This disclaimer outlines how to interpret the information on our website.`}
         </Typography>
       </StyledPaper>
 

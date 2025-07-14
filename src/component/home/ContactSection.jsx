@@ -23,12 +23,12 @@ export default function ContactSection() {
               lineHeight: 1.2,
             }}
           >
-            Get in Touch with <br />
+          {`  Get in Touch with <br />
             the Heart Behind <br />
-            the Brand
+            the Brand`}
           </Typography>
           <Typography variant="body1" sx={{ color: '#000000' ,frontFamily: "Akatab,Sans-serif", fontWeight:'400'}}>
-            Let’s connect and make your dream wedding a reality.
+           {` Let’s connect and make your dream wedding a reality.`}
           </Typography>
         </Grid>
 
@@ -45,7 +45,7 @@ export default function ContactSection() {
           >
             <Box> 
               <Typography variant="body2" sx={{ mb: 0.5 ,frontFamily: "Akatab,Sans-serif", fontWeight:'500', color:'#000000'}}>
-                Your Name
+             {` Your Name`}
               </Typography>
               <TextField
                 fullWidth
@@ -57,7 +57,7 @@ export default function ContactSection() {
 
             <Box>
               <Typography variant="body2" sx={{ mb: 0.5 ,frontFamily: "Akatab,Sans-serif", fontWeight:'500', color:'#000000'}}>
-                Your Message
+             {`   Your Message`}
               </Typography>
               <TextField
                 fullWidth
@@ -68,7 +68,7 @@ export default function ContactSection() {
                 rows={3}
               />
             </Box>
-            <CustomButton onClick={handleLetChat} sx={
+            <CustomButton    data-testid="notify-button" onClick={handleLetChat} sx={
               {mt:1}
             }>Let's Chat</CustomButton>
             </Box>

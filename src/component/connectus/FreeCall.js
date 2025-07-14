@@ -17,7 +17,7 @@ function FreeCall() {
             <Grid  lineHeight="60px">
                 <Typography sx={{ fontFamily:'Roboto',fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }}}><strong>JustWant to Chat Wedding Vibes Over Coffee?</strong></Typography>
                 <Typography>{`We love meeting new couples (and yes, we'll bring the Pinterest boards).`}</Typography>
-                <Button
+                <Button   data-testid="notify-button"
                     type="submit"
                     margin="5px"
                     onClick={handleSubmit}

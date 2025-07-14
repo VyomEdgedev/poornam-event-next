@@ -59,7 +59,7 @@ export default function AboutSection() {
       </Typography>
 
       <Box display="flex">
-        <CustomButton >
+        <CustomButton   data-testid="notify-button">
           <Link href="/aboutus" passHref legacyBehavior>
             <Button sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap' }}>
               Meet Our Story

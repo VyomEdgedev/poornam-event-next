@@ -186,7 +186,7 @@ const SearchFilter = () => {
             <Box sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
              
               <CustomButton 
-                onClick={handleSearch}>Search</CustomButton>
+                onClick={handleSearch}   data-testid="notify-button">Search</CustomButton>
             </Box>
           </StyledPaper>
         </Grid>

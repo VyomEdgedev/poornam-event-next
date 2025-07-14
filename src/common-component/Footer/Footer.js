@@ -65,9 +65,9 @@ const Footer = () => {
                 variant="body2"
                 sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif" }}
               >
-                Born from a dream in 2017, Poornam Events is where traditions
+              {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
-                create moments that live forever.
+                create moments that live forever.`}
               </Typography>
             </Grid>
 

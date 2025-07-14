@@ -41,7 +41,7 @@ function SocialMedia() {
                             <stop offset="100%" stopColor="#bc1888" />
                         </linearGradient>
                     </svg>
-                    <IconButton
+                    <IconButton   data-testid="notify-button"
                         component="a"
                         href="https://www.instagram.com/openai"
                         target="_blank"
@@ -50,14 +50,14 @@ function SocialMedia() {
                     >
                         <InstagramIcon sx={{ fill: 'url(#instagramGradient)' }} />
                     </IconButton>
-                    <IconButton
+                    <IconButton   data-testid="notify-button"
                         color="primary"
                         aria-label="Twitter"
                         onClick={() => window.open('https://twitter.com/your_username', '_blank')}
                     >
                         <TwitterIcon />
                     </IconButton>
-                    <IconButton
+                    <IconButton   data-testid="notify-button"
                         component="a"
                         href="https://youtube.com"
                         target="_blank"
@@ -68,7 +68,7 @@ function SocialMedia() {
                     >
                         <YouTubeIcon fontSize="inherit" />
                     </IconButton>
-                    <IconButton
+                    <IconButton   data-testid="notify-button"
                         component="a"
                         href="https://www.linkedin.com/in/your_username"
                         target="_blank"
@@ -77,7 +77,7 @@ function SocialMedia() {
                         color="primary"
                         size="large"
                     >
-                        <LinkedInIcon fontSize="inherit" />
+                        <LinkedInIcon    data-testid="notify-button" fontSize="inherit" />
                     </IconButton>
 
                 </Stack>

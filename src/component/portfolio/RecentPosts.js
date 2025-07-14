@@ -113,7 +113,7 @@ const RecentPosts = () => {
                   
              
                   {post.videoThumbnail && (
-                    <IconButton
+                    <IconButton  data-testid="notify-button"
                       sx={{
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         color: 'white',

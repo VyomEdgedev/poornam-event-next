@@ -31,7 +31,7 @@ export default function ContactUs() {
     }
   }}
     >
-      <CustomButton>Plan my Wedding</CustomButton>
+      <CustomButton   data-testid="notify-button">Plan my Wedding</CustomButton>
     </CustomBanner >
 
     <Form></Form>

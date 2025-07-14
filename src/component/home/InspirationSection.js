@@ -27,7 +27,7 @@ export default function InspirationSection() {
         variant="h4"
         sx={{ fontFamily: 'serif', fontWeight: 700, mb: 6 }}
       >
-        Inspirations & Blogs
+      {`  Inspirations & Blogs`}
       </Typography>
 
       <Grid container spacing={4} justifyContent="center">

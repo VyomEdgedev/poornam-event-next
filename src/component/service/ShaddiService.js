@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomButton from '@/common-component/button/CustomButton';
 import { Card, Grid, Typography, styled, Box } from '@mui/material';
+
 import Image from 'next/image';
 
 // JSON Data for services
@@ -66,7 +67,7 @@ const servicesData = {
       title: "Guest Hospitality & Logistics",
       description: "Because a happy guest = a happy shaadi."
     },
-    
+
     {
       id: 10,
       image: "/serviceimg8.png",
@@ -102,7 +103,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const HeroCard = styled(Card)(({ theme }) => ({
-  display:'flex',
+  display: 'flex',
   backgroundColor: 'transparent',
   boxShadow: 'none',
   border: 'none',
@@ -113,9 +114,9 @@ const HeroCard = styled(Card)(({ theme }) => ({
   }
 }));
 
-const ServiceCard = styled(Card)(({ theme,isHighlighted }) => ({
+const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
   backgroundColor: 'transparent',
-   boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
   border: '1px solid #e0e0e0',
   borderRadius: '12px',
   width: isHighlighted ? "1058px" : "340px",
@@ -129,15 +130,15 @@ const ServiceCard = styled(Card)(({ theme,isHighlighted }) => ({
   '& .MuiCardContent-root': {
     padding: theme.spacing(2)
   },
-[theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down('md')]: {
     // width: '100%', 
     maxWidth: '340px', // Standard card width
     height: 'auto',
     minHeight: '132px',
   },
   [theme.breakpoints.down('sm')]: {
-   flexDirection: 'column',
-   textAlign:'center',
+    flexDirection: 'column',
+    textAlign: 'center',
     height: 'auto',
     minHeight: '180px',
     marginLeft: '10px',
@@ -146,18 +147,18 @@ const ServiceCard = styled(Card)(({ theme,isHighlighted }) => ({
   },
 }));
 
-const ImageContainer = styled(Box)(({ theme })=>({
+const ImageContainer = styled(Box)(({ theme }) => ({
   width: '100px',
   height: '125px',
   overflow: 'hidden',
   borderRadius: '8px',
-    flexShrink: 0,
+  flexShrink: 0,
   '& img': {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
   },
-   [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('sm')]: {
     width: '100px',
     height: '100px',
   },
@@ -213,10 +214,10 @@ const ServiceDescription = styled(Typography)(({ theme }) => ({
 const HeroContent = styled(Box)(({ theme }) => ({
   padding: theme.spacing(0),
   display: 'flex',
-  marginLeft:'40px',
+  marginLeft: '40px',
   flexDirection: 'column',
   justifyContent: 'center',
-    alignItems: 'start',
+  alignItems: 'start',
   height: '100%',
   [theme.breakpoints.down('md')]: {
     marginLeft: '20px',
@@ -225,13 +226,13 @@ const HeroContent = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     marginLeft: '0px',
     textAlign: 'center',
-     alignItems: 'center',
+    alignItems: 'center',
   },
 }));
 
 const HeroTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Gloock, serif',
-  width:'314px',
+  width: '314px',
   fontWeight: 400,
   fontSize: '36px',
   color: '#000000',
@@ -247,11 +248,11 @@ const HeroTitle = styled(Typography)(({ theme }) => ({
 
 const HeroDescription = styled(Typography)(({ theme }) => ({
   fontFamily: 'Akatab,Sans-serif',
-  fontWeight:'400',
+  fontWeight: '400',
   fontSize: '16px',
-  width:'251px',
+  width: '251px',
   color: '#000000',
-  textAlign:"left",
+  textAlign: "left",
   marginBottom: theme.spacing(3),
   lineHeight: 1.5,
   [theme.breakpoints.down('md')]: {
@@ -259,7 +260,7 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const   ShaddiService = () => {
+const ShaddiService = () => {
   return (
     <MainContainer>
       {/* Title */}
@@ -289,7 +290,7 @@ const   ShaddiService = () => {
               <HeroDescription>
                 {servicesData.hero.description}
               </HeroDescription>
-              <CustomButton>
+              <CustomButton data-testid="notify-button" >
                 {servicesData.hero.buttonText}
               </CustomButton>
             </HeroContent>
@@ -298,11 +299,11 @@ const   ShaddiService = () => {
       </HeroCard>
 
       {/* Services Grid */}
-     <Grid container spacing={2}>
+      <Grid container spacing={2}>
         {servicesData.services.map((service) => (
-          <Grid item xs={12}   
-          sm={service.isHighlighted ? 12 : 6} 
-            md={service.isHighlighted ? 12 : 4} 
+          <Grid item xs={12}
+            sm={service.isHighlighted ? 12 : 6}
+            md={service.isHighlighted ? 12 : 4}
             key={service.id}>
             <ServiceCard isHighlighted={service.isHighlighted}>
               <ImageContainer>
