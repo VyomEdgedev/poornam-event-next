@@ -54,7 +54,7 @@ const Portfolio = () => {
     }
   }}
 ><CustomButton   data-testid="notify-button" onClick={handleportfolio}>
-  Plan My Wedding
+ {` Plan My Wedding`}
 </CustomButton>
 </CustomBanner>
 <WeddingThemes />

@@ -41,9 +41,9 @@ function WeOffer() {
                                 />
                             </Box>
                             <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
+                                <Typography fontWeight={600} sx={{   frontFamily: "Akatab,Sans-serif", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
                                     {`Venue Selection`} </Typography>
-                                <Typography variant="body2" color="text.primary" sx={{ fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
+                                <Typography variant="body2" color="text.primary" sx={{   frontFamily: "Akatab,Sans-serif", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
                                     {`We help you find the perfect venue.`}
                                 </Typography>
                             </Box>

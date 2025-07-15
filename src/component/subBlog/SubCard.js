@@ -48,7 +48,7 @@ const BlogCard = () => {
             '&:hover': { bgcolor: 'rgba(0,0,0,0.6)' }
           }}
         >
-          <ShareIcon />
+          <ShareIcon   data-testid="notify-button"/>
         </IconButton>
 
         {/* Overlay Text */}
@@ -66,7 +66,7 @@ const BlogCard = () => {
           <Typography
             sx={{
               fontSize: { xs: '0.8rem', sm: '0.9rem' },
-              fontFamily: 'Akatab'
+             frontFamily: "Akatab,Sans-serif",
             }}
           >
             Category: {cardData.category}
@@ -75,7 +75,7 @@ const BlogCard = () => {
             sx={{
               fontSize: { xs: '1.2rem', sm: '1.4rem' },
               fontWeight: 600,
-              fontFamily: 'Akatab'
+              frontFamily: "Akatab,Sans-serif",
             }}
           >
             {cardData.title}
@@ -88,7 +88,7 @@ const BlogCard = () => {
               color: 'white',
               borderColor: 'white',
               fontSize: '0.8rem',
-              fontFamily: 'Akatab'
+              frontFamily: "Akatab,Sans-serif",
             }}
           />
         </Box>

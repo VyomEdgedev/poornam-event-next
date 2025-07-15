@@ -94,7 +94,7 @@ export default function PortfolioSection() {
                     },
                   }}
                 >
-                  View Full Wedding Stories
+                 {` View Full Wedding Stories`}
                 </Button>
               </Box>
             )}

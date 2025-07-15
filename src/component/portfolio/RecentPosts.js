@@ -59,7 +59,7 @@ const RecentPosts = () => {
           fontFamily: 'Gloock,serif'
         }}
       >
-        Recent Posts
+       {` Recent Posts`}
       </Typography>
 
      

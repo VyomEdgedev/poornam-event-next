@@ -29,11 +29,13 @@ const WeddingFooter = () => {
               fontFamily: 'Gloock,serif',
               letterSpacing:'6%',
             }}
-          >
+           dangerouslySetInnerHTML={{
+                __html: `
             Your Wedding.
             <br />
-            Our Mission.
-          </Typography>
+            Our Mission.`,
+              }}
+            />
         </Box>
 
         {/* Right side - Contact info */}
@@ -70,7 +72,7 @@ const WeddingFooter = () => {
               
               }}
             >
-              Serving Indore, Bhopal, Ujjain & beyond.
+             {` Serving Indore, Bhopal, Ujjain & beyond.`}
             </Typography>
           </Box>
 

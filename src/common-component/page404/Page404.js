@@ -102,9 +102,9 @@ function Page404() {
           gap={2}
           padding="20px"
         >
-          <CustomButton testId="home" onClick={() => handlePage404('/')}>{`Take Me Home`}</CustomButton>
-          <CustomButton onClick={() => handlePage404('/connectus')}>{`Contact Us`}</CustomButton>
-          <CustomButton onClick={() => handlePage404W()}>{`Plan My Wedding`}</CustomButton>
+          <CustomButton   data-testid="notify-button" testId="home" onClick={() => handlePage404('/')}>{`Take Me Home`}</CustomButton>
+          <CustomButton   data-testid="notify-button" onClick={() => handlePage404('/connectus')}>{`Contact Us`}</CustomButton>
+          <CustomButton   data-testid="notify-button" onClick={() => handlePage404W()}>{`Plan My Wedding`}</CustomButton>
         </Box>
       </Box>
     </Box>

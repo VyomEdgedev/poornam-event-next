@@ -20,7 +20,7 @@ export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, cap
       <CardHeader
         avatar={<Avatar src={avatarSrc}  />}
         action={
-          <IconButton>
+          <IconButton  data-testid="notify-button">
             <MoreVertIcon />
           </IconButton>
         }
