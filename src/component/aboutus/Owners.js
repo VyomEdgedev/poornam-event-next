@@ -71,10 +71,10 @@ export default function Owners() {
 
                             }}
                         >
-                           <Typography color="white" sx={{ fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" }, fontFamily: "Akatab" }}>
+                           <Typography color="white" sx={{ fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" },  fontFamily: "Akatab,Sans-serif" }}>
                                 <strong>{`Richi Anand Jain - CEO`}</strong>
                             </Typography>
-                            <Typography color="white" sx={{ fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" }, fontFamily: "Akatab" }}>
+                            <Typography color="white" sx={{ fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" },  fontFamily: "Akatab,Sans-serif" }}>
                                {` He once planned a wedding where the horse fainted.
                                 he had a backup in 22 minutes. Enough said.`}
                             </Typography>

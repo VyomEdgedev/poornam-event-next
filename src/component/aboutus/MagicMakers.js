@@ -19,8 +19,10 @@ function MagicMakers() {
             <Grid
 
                 sx={{ textAlign: "center" }} >
-                <Typography sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2rem" }, fontFamily: "Gloock" }}>Meet the Magic Makers</Typography>
-                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.5rem", md: "1.2rem" }, fontFamily: "Gloock" }}>The heart and soul behind your dreamy Shaadi.</Typography>
+                <Typography sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2rem" }, fontFamily: "Gloock,Sans-serif" }}>
+                    {`Meet the Magic Makers`}</Typography>
+                <Typography sx={{ fontSize: { xs: "1rem", sm: "1.5rem", md: "1.2rem" },  frontFamily: "Akatab,Sans-serif" }}>
+                    {`The heart and soul behind your dreamy Shaadi.`}</Typography>
             </Grid>
 
 

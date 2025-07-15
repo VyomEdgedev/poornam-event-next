@@ -14,14 +14,17 @@ function FreeCall() {
         justifyContent="space-evenly"
         padding="30px"
         >
-            <Grid  lineHeight="60px">
-                <Typography sx={{ fontFamily:'Roboto',fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }}}><strong>JustWant to Chat Wedding Vibes Over Coffee?</strong></Typography>
+            <Grid  lineHeight="60px"  >
+                <Typography sx={{ fontFamily:"Gloock,Sans-serif",fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }}}>
+                    {`Just Want to Chat Wedding Vibes Over Coffee?`}</Typography>
                 <Typography>{`We love meeting new couples (and yes, we'll bring the Pinterest boards).`}</Typography>
                 <Button   data-testid="notify-button"
                     type="submit"
                     margin="5px"
                     onClick={handleSubmit}
-                    sx={{ padding:"50px" ,color: "white", bgcolor: "#DAA412", padding: "5px 10px", borderRadius: "15px" }}
+                    sx={{fontFamily:"Akatab,Sans-serif", 
+                        padding:"50px" ,color: "white", 
+                        bgcolor: "#DAA412", padding: "5px 10px", borderRadius: "15px" }}
                 >
                     {`Schedule a Free 15-min Vibe Check Call`}
                 </Button>
@@ -34,4 +37,4 @@ function FreeCall() {
         </Grid>
     )
 }
-export default FreeCall
+export default FreeCall;

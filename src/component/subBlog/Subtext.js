@@ -26,18 +26,19 @@ const Subtext = () => {
                 <Box>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.2rem" },
+                            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.25rem" },
                             fontWeight: 600,
-                            fontFamily: "Akatab",
+                            frontFamily: "Akatab,serif",
+                            
                         }}
                     >
                         {SubtextData.heading}
                     </Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                            fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" },
 
-                            fontFamily: "Akatab",
+                            frontFamily: "Akatab,serif",
                         }}
                     >
                         {SubtextData.paragraph}
@@ -45,18 +46,18 @@ const Subtext = () => {
 
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
                             fontWeight: 600,
-                            fontFamily: "Akatab",
+                             frontFamily: "Akatab,serif",
                         }}
                     >
                         {SubtextData.subHeading}
                     </Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
 
-                            fontFamily: "Akatab",
+                         frontFamily: "Akatab,serif",
                         }}
                     >
                         {SubtextData.line}
@@ -64,27 +65,27 @@ const Subtext = () => {
                     <Box>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
 
-                                fontFamily: "Akatab",
+                               frontFamily: "Akatab,serif",
                             }}
                         >
                             {SubtextData.line1}
                         </Typography>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
 
-                                fontFamily: "Akatab",
+                                  frontFamily: "Akatab,serif",
                             }}
                         >
                             {SubtextData.line2}
                         </Typography>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.5rem" },
+                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
                                 fontWeight: 600,
-                                fontFamily: "Akatab",
+                                  frontFamily: "Akatab,serif",
                             }}
                         >
                             {SubtextData.line3}

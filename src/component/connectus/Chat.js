@@ -29,12 +29,12 @@ function Chat() {
                     <Typography variant="h6"
                         sx={{ fontSize: { xs: "1.5rem", sm: "2rem", md: "3rem" }, fontFamily: "Gloock, serif", fontWeight: "400" }}
                         color="#000000"  >
-                            Prefer Talking?
+                       {` Prefer Talking?`}
                     </Typography>
                     <Typography variant="h1"
                         sx={{ fontSize: { xs: "1rem", sm: "1.5rem", md: "3rem",fontFamily: "Gloock, serif", fontWeight: "400" , marginBottom:"20px" } }}
                         color="#000000"  >
-                        We Do Too!
+                      {`  We Do Too!`}
                     </Typography>
                     <CustomButton onClick={handleSubmit}   data-testid="notify-button">Start Chat</CustomButton>
                    

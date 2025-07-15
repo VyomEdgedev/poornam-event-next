@@ -25,9 +25,13 @@ function SocialMedia() {
                 <Typography
                     textAlign="center"
                     padding="50px"
-                    sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}>
-                    <strong>Follow Us <br />
-                        on <br /> Social Media</strong></Typography>
+                    sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+                       dangerouslySetInnerHTML={{
+                __html: `  Follow Us <br />
+                        on <br /> Social Media`,
+              }}
+            />
+               
             </Grid>
             <Grid container
                 padding="10px">
