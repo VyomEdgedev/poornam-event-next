@@ -70,6 +70,7 @@ const FlipCard = ({ service }) => {
         "&:hover": {
           transform: "scale(1.02)",
         },
+
       }}
     >
       <Box
