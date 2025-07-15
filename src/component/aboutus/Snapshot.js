@@ -17,24 +17,24 @@ export default function Snapshot() {
         <Typography
           sx={{
             fontSize: { xs: "1.5rem", sm: "1.5rem", md: "2.5rem" },
-            fontFamily: "Gloock"
+            fontFamily: "Gloock,Sans-serif"
           }}
           variant="h3"
-          fontWeight="bold"
+         
           gutterBottom
         >
-          Life at Poornam
+        {`  Life at Poornam`}
         </Typography>
 
         <Typography
           sx={{
             fontSize: { xs: "1rem", sm: "1.5rem", md: "1.2rem" },
-            fontFamily: "Akatab"
+            fontFamily: "Akatab,Sans-serif"
           }}
           variant="subtitle1"
           gutterBottom
         >
-          Behind the scenes of our creative hustle.
+        {`  Behind the scenes of our creative hustle.`}
         </Typography>
 
         <SnapshotCard

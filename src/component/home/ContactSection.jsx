@@ -71,7 +71,7 @@ export default function ContactSection() {
             </Box>
             <CustomButton    data-testid="notify-button" onClick={handleLetChat} sx={
               {mt:1}
-            }>Let's Chat</CustomButton>
+            }>{`Let's Chat`}</CustomButton>
             </Box>
         </Grid>
       </Grid>

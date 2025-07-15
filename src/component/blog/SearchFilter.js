@@ -98,7 +98,7 @@ const SearchFilter = () => {
             fontFamily: 'Gloock,serif',
                 }}
               >
-                Find What You Need
+               {` Find What You Need`}
               </Typography>
               <Typography
                 variant="body1"
@@ -109,7 +109,7 @@ const SearchFilter = () => {
             lineHeight: 1.2,
                 }}
               >
-                Search for valuable insights to aid your planning journey.
+               {` Search for valuable insights to aid your planning journey.`}
               </Typography>
             </StyledPaper>
           </Grid>
@@ -123,7 +123,7 @@ const SearchFilter = () => {
                 variant="h6"
                 sx={{ mb: 2, fontWeight: 600, color: '#000D1F' ,fontFamily:"Akatab,Sans-serif" }}
               >
-                Search
+              {`Search`}
               </Typography>
               <TextField
                 fullWidth
@@ -146,7 +146,7 @@ const SearchFilter = () => {
                 variant="h6"
                 sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
               >
-                Filter by Category
+              {`  Filter by Category`}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {categories.map((category) => (
@@ -167,7 +167,7 @@ const SearchFilter = () => {
                 variant="h6"
                 sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
               >
-                Filter by Location
+              {`  Filter by Location`}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {locations.map((location) => (
@@ -186,7 +186,7 @@ const SearchFilter = () => {
             <Box sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
              
               <CustomButton 
-                onClick={handleSearch}   data-testid="notify-button">Search</CustomButton>
+                onClick={handleSearch}   data-testid="notify-button">{`Search`}</CustomButton>
             </Box>
           </StyledPaper>
         </Grid>

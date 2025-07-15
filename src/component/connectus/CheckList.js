@@ -12,16 +12,22 @@ function CheckList() {
       textAlign="left"
       padding="20px">
       <Grid>
-        <Typography sx={{ fontFamily:'Roboto',fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" }}}>
-          <strong>Visit Our Studio (We Server Chai & Checklists)</strong>
-        </Typography>
-        <Typography sx={{ fontFamily:'Roboto',fontSize: { xs: "0.8rem", sm: "1rem", md: "1.1rem" }}}>
-          202, 2nd Floor, Kothari Manjur, Janjeerwala Square, Near Janjeerwala Square,
-          <br /> Diamond Colony, New Palasia, Indore, Madhya Pradesh 452001
-        </Typography>
+        <Typography sx={{ frontFamily: "Akatab,Sans-serif", fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" } }}
+            dangerouslySetInnerHTML={{
+            __html: `    <strong>Visit Our Studio (We Server Chai & Checklists)</strong>`,
+          }}
+        />    
+        <Typography sx={{  frontFamily: "Akatab,Sans-serif", fontSize: { xs: "0.8rem", sm: "1rem", md: "1.1rem" } }}
+          dangerouslySetInnerHTML={{
+            __html: `   202, 2nd Floor, Kothari Manjur, Janjeerwala Square, Near Janjeerwala Square,
+          <br /> Diamond Colony, New Palasia, Indore, Madhya Pradesh 452001`,
+          }}
+        />
+
+
       </Grid>
       <Grid>
-        <LocationOnIcon fontSize="large" color="primary" />
+        <LocationOnIcon  data-testid="notify-button" fontSize="large" color="primary" />
       </Grid>
 
     </Grid>

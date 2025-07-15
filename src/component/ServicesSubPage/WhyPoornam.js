@@ -14,8 +14,11 @@ const WhyPoornam = () => {
                 <Grid container
                     px="10px"
                     py="50px">
-                    <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.2rem" }, fontFamily: "Gloock" }}>
-                        Why Poornam for <br /> Your Destination Wedding?</Typography>
+                    <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.2rem" }, fontFamily: "Gloock, Sans-serif" }}
+                        dangerouslySetInnerHTML={{
+                __html: ` Why Poornam for <br /> Your Destination Wedding?`,
+              }}
+            />
                 </Grid>
 
                 <Grid container
@@ -29,12 +32,12 @@ const WhyPoornam = () => {
                     <Card sx={{ maxWidth: 400, m: 2, p: 2, boxShadow: 3 }}>
                         <CardContent>
                             <Typography variant="body2" color="text.primary"
-                                sx={{ fontFamily: "Akatab", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "0.9rem"}}}>
-                                With years of experience and a personal touch, Poornam
+                                sx={{  frontFamily: "Akatab,Sans-serif", fontSize: { xs: "0.9rem", sm: "0.9rem", md: "0.9rem"}}}>
+                              {`  With years of experience and a personal touch, Poornam
                                 Events dedicates itself to making your destination weddings
                                 dreams come true. We tailor each experience to your needs,
                                 ensuring every detail is meticulously managed for a perfect
-                                celebration.
+                                celebration.`}
                             </Typography>
                         </CardContent>
                     </Card>

@@ -125,8 +125,8 @@ export default function Header() {
 
                     ))}
                     <ListItem>
-                      <IconButton href="https://wa.me/919610366885" target="_blank" sx={{ color: "#25D366" }}>
-                        <WhatsAppIcon />
+                      <IconButton href="https://wa.me/919610366885" target="_blank" sx={{ color: "#25D366" }}  data-testid="notify-button">
+                        <WhatsAppIcon   data-testid="notify-button"/>
                       </IconButton>
                     </ListItem>
                   </List>

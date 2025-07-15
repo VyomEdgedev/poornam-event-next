@@ -15,7 +15,7 @@ export default function WeddingPlanning() {
         <Grid item xs={12} md={4}  >
           <Box>
             <Typography variant="h4" component="h2" fontWeight={400} sx={{ fontFamily: 'Gloock, serif', color:"#000000" }}>
-              Shaadi Ki Planning?
+             {` Shaadi Ki Planning?`}
             </Typography>
             <Typography 
               variant="h4" 
@@ -24,15 +24,15 @@ export default function WeddingPlanning() {
               color="#DAA412" 
               sx={{ fontFamily: 'Gloock, serif',}}
             >
-              Gyaan Bhi, Fun Bhi!
+             {` Gyaan Bhi, Fun Bhi!`}
             </Typography >
             <Typography 
               variant="body1" 
               sx={{ mb: 3, color: '#000000', maxWidth: 530, frontFamily: "Akatab,Sans-serif", fontWeight:'400'  }}
             >
-              Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with love, dhol, and a bit of dholak.
+            {`  Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with love, dhol, and a bit of dholak.`}
             </Typography>
-            <CustomButton   data-testid="notify-button" >Start Planning</CustomButton>
+            <CustomButton   data-testid="notify-button" >{`Start Planning`}</CustomButton>
            
           </Box>
         </Grid>

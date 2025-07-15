@@ -200,10 +200,10 @@
 //                         </Button>
 //                     </Grid>
 //                 </Grid>
-                  
 
 
-           
+
+
 
 //         </Box>
 //     );
@@ -240,13 +240,13 @@ const MyForm = () => {
     };
 
     return (
-        <Box sx={{ 
-            px: { xs: 2, md: 7  }, 
+        <Box sx={{
+            px: { xs: 2, md: 7 },
             py: { xs: 2, md: 7 },
             fontFamily: "Akatab, sans-serif"
         }}>
             <Grid
-                container 
+                container
                 spacing={{ xs: 4, md: 16 }}
                 display="flex"
                 alignItems="flex-start"
@@ -266,14 +266,14 @@ const MyForm = () => {
                             lineHeight: 1.2
                         }}
                         dangerouslySetInnerHTML={{
-    __html: `Tell Us Everything<br /> (Yes, Even the Drama)`,
-  }}
+                            __html: `Tell Us Everything <br /> (Yes, Even the Drama)`,
+                        }}
                     />
-                    
-                   
+
+
                     <Box
-                        sx={{ 
-                            width: "100%", 
+                        sx={{
+                            width: "100%",
                             maxWidth: { xs: 300, sm: 350, md: 450 },
                             height: { xs: 250, sm: 300, md: 350 },
                             borderRadius: 2,
@@ -299,27 +299,27 @@ const MyForm = () => {
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
-                        sx={{ 
-                            display: 'flex', 
-                            flexDirection: 'column', 
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
                             gap: 3,
                             maxWidth: { xs: 350, sm: 400, md: 500 },
-                            width: {xs: "100%", md: "440px"},
+                            width: { xs: "100%", md: "440px" },
                             mx: { xs: 0, md: 2 },
-                    
+
                         }}
                     >
                         {/* Full Name */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                                {  `Full Name `}
+                                {`Full Name `}
                             </Typography>
                             <TextField
                                 placeholder="Your Full Name"
@@ -345,15 +345,15 @@ const MyForm = () => {
 
                         {/* Email */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                              { ` Email `}
+                                {` Email `}
                             </Typography>
                             <TextField
                                 placeholder="Your Email"
@@ -380,15 +380,15 @@ const MyForm = () => {
 
                         {/* Phone */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                                {`Phone` }
+                                {`Phone`}
                             </Typography>
                             <TextField
                                 placeholder="Your Phone"
@@ -414,15 +414,15 @@ const MyForm = () => {
 
                         {/* Wedding Date */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                               {` Wedding Date (optional)` }
+                                {` Wedding Date (optional)`}
                             </Typography>
                             <TextField
                                 placeholder="Your Wedding Date"
@@ -447,15 +447,15 @@ const MyForm = () => {
 
                         {/* Location */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                               {`Location` }
+                                {`Location`}
                             </Typography>
                             <TextField
                                 placeholder="Venue Location"
@@ -481,15 +481,15 @@ const MyForm = () => {
 
                         {/* Number of Guests */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                                {`Number of Guests` }
+                                {`Number of Guests`}
                             </Typography>
                             <TextField
                                 placeholder="Estimated Guests"
@@ -515,15 +515,15 @@ const MyForm = () => {
 
                         {/* Message */}
                         <Box>
-                            <Typography 
-                                sx={{ 
+                            <Typography
+                                sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
                                 }}
                             >
-                                {  `What's on your mind?`}
+                                {`What's on your mind?`}
                             </Typography>
                             <TextField
                                 placeholder="Your Message"
@@ -548,7 +548,7 @@ const MyForm = () => {
                         </Box>
 
                         {/* Submit Button */}
-                        <Button   data-testid="notify-button"
+                        <Button data-testid="notify-button"
                             type="submit"
                             variant="contained"
                             fullWidth
@@ -563,12 +563,12 @@ const MyForm = () => {
                                 fontFamily: "Akatab, sans-serif",
                                 fontWeight: "600",
                                 height: { xs: '45px', md: '50px' },
-                                "&:hover": { 
-                                    bgcolor: "#C4941A" 
+                                "&:hover": {
+                                    bgcolor: "#C4941A"
                                 }
                             }}
                         >
-                            { `Let's Begin the Dream`}
+                            {`Let's Begin the Dream`}
                         </Button>
                     </Box>
                 </Grid>

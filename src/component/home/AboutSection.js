@@ -61,8 +61,8 @@ export default function AboutSection() {
       <Box display="flex">
         <CustomButton   data-testid="notify-button">
           <Link href="/aboutus" passHref legacyBehavior>
-            <Button sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap' }}>
-              Meet Our Story
+            <Button   data-testid="notify-button"  sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap' }}>
+           {`   Meet Our Story`}
             </Button>
           </Link>
         </CustomButton>
