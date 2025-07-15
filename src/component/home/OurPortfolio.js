@@ -28,22 +28,22 @@ const PortfolioSection = () => {
       id: "img1"
     },
     {
-      src: "/portfolio7.png",
+      src: "/portfolio7.jpg",
       alt: "portfolio Image 7", 
       id: "img2"
     },
     {
-      src: "/portfolio6.png",
+      src: "/portfolio6.jpg",
       alt: "portfolio Image 6",
       id: "img3"
     },
     {
-      src: "/portfolio4.png",
-      alt: "Portfolio Image 4",
+      src: "/portfolio4.jpg",
+      alt: "portfolio Image 4",
       id: "img4"
     },
     {
-      src: "/portfolio5.png",
+      src: "/portfolio5.jpg",
       alt: "portfolio Image 5", 
       id: "img5"
 
@@ -71,7 +71,7 @@ const PortfolioSection = () => {
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw,"
         style={{
           objectFit: 'cover',
           transition: 'transform 0.4s ease',

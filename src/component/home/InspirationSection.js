@@ -25,7 +25,7 @@ export default function InspirationSection() {
     <Box sx={{ py: 8, px: 4, textAlign: 'center' }}>
       <Typography
         variant="h4"
-        sx={{ fontFamily: 'serif', fontWeight: 700, mb: 6 }}
+        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 6 }}
       >
       {`  Inspirations & Blogs`}
       </Typography>
@@ -89,7 +89,7 @@ export default function InspirationSection() {
                 className="label-text"
                 sx={{
                   position: 'absolute',
-                  bottom: 12,
+                  bottom: 18,
                   left: 0,
                   right: 0,
                   textAlign: 'center',
