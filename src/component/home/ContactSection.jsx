@@ -22,12 +22,13 @@ export default function ContactSection() {
               mb: 2,
               lineHeight: 1.2,
             }}
-          >
-          {`  Get in Touch with <br />
+            dangerouslySetInnerHTML={{
+                __html: `Get in Touch with <br />
             the Heart Behind <br />
-            the Brand`}
-          </Typography>
-          <Typography variant="body1" sx={{ color: '#000000' ,frontFamily: "Akatab,Sans-serif", fontWeight:'400'}}>
+            the Brand`,
+              }}
+         />
+            <Typography variant="body1" sx={{ color: '#000000' ,frontFamily: "Akatab,Sans-serif", fontWeight:'400'}}>
            {` Let’s connect and make your dream wedding a reality.`}
           </Typography>
         </Grid>

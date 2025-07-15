@@ -24,17 +24,17 @@ const PortfolioSection = () => {
     },
     {
       src: "/portfolio3.png", 
-      alt: "Portfolio Image 3",
+      alt: "portfolio Image 3",
       id: "img1"
     },
     {
       src: "/portfolio7.png",
-      alt: "Portfolio Image 7", 
+      alt: "portfolio Image 7", 
       id: "img2"
     },
     {
       src: "/portfolio6.png",
-      alt: "Portfolio Image 6",
+      alt: "portfolio Image 6",
       id: "img3"
     },
     {
@@ -44,8 +44,10 @@ const PortfolioSection = () => {
     },
     {
       src: "/portfolio5.png",
-      alt: "Portfolio Image 5", 
+      alt: "portfolio Image 5", 
       id: "img5"
+
+
     }
   ];
 
