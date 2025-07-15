@@ -11,7 +11,7 @@ export default function AboutSection() {
     }}>
 
       <Typography
-        variant="h4"
+        variant="h2"
         sx={{
           fontFamily: 'Gloock, serif',
           fontWeight: "400",
@@ -46,7 +46,7 @@ export default function AboutSection() {
         variant="body1"
         sx={{
           color: "#000000",
-          fontSize: "1rem",
+          // fontSize: "1rem",
           lineHeight: 1.75,
           frontFamily: "Akatab,Sans-serif",
           color: "#000000",

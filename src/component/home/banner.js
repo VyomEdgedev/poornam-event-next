@@ -30,7 +30,7 @@ export default function HeroSection() {
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             alignItems: "stretch",
-            justifyContent: "space-between",
+            justifyContent: "space-between",  
             padding: "0px 10px",
           }}
         >
@@ -45,9 +45,9 @@ export default function HeroSection() {
               <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
 
             </Box>
-            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",md:"absolute"}, top:{xs:"0",md:"150px"}, left:{xs:0,md:0} }}>
+            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"0",sm:"100px",md:"150px"}, left:{xs:0,md:0} }}>
             <Typography
-              variant="h3"
+              variant="h1"
               fontWeight="regular"
               sx={{
                 color: "#E6C365",
@@ -67,7 +67,7 @@ export default function HeroSection() {
             </Typography> 
             
              <Typography
-              variant="h5"
+              variant="h4"
               sx={{ color: "#FFF5D9", mb: 2, fontWeight: 400,
                 frontFamily: "Akatab,Sans-serif",
                 
@@ -77,11 +77,12 @@ export default function HeroSection() {
            {`   Let’s Make Yours Legendary`}
             </Typography> 
             <Typography
+            variant="p"
               sx={{
                 color: "#FFF5D9",
-                fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
                 frontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
+                whiteSpace:{xs:'wrap',md:'nowrap'},
                 mb: 3,
                 ml:5,
                 
@@ -95,6 +96,7 @@ export default function HeroSection() {
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={2}
+              marginTop={5}
               marginLeft={5}
               alignContent={{xs:"center",md:"flex-start"}}
             >

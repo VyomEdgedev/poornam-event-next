@@ -17,25 +17,18 @@ export default function  HomePage() {
   return (
     <>
   
-  <Banner></Banner>
-    <WeddingHero></WeddingHero>
+  {/* <Banner></Banner> */}
+    {/* <WeddingHero></WeddingHero>
     <OurServices></OurServices>
- <AboutSection></AboutSection>
-  {/* <ExecutiveCard
-  title="Luxury Wedding Planning"
-  subtitle="Bespoke, Opulent, Iconic"
->
-  <Typography variant="body2" sx={{ color: '#ccc' }}>
-    We craft events that feel magical — from theme to confetti, sparkle to vows.
-  </Typography>
-</ExecutiveCard> */}
-   <OurPortfolio></OurPortfolio>
+ <AboutSection></AboutSection> */}
+
+   {/* <OurPortfolio></OurPortfolio> */}
    <Testimonials></Testimonials>
-  <HomeSnapshot></HomeSnapshot>
-   <ResourcesSection></ResourcesSection>
-   <FAQSection></FAQSection>
-  <InspirationSection></InspirationSection>
- <ContactSection></ContactSection>
+  {/* <HomeSnapshot></HomeSnapshot> */}
+   {/* <ResourcesSection></ResourcesSection> */}
+   {/* <FAQSection></FAQSection> */}
+  {/* <InspirationSection></InspirationSection> */}
+ {/* <ContactSection></ContactSection> */}
   </>
   )
 }

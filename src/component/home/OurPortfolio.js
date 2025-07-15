@@ -86,24 +86,25 @@ const PortfolioSection = () => {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
           <Typography
-            variant="h4"
+            variant="h2"
+            
             sx={{
               fontFamily: 'Gloock, serif',
               fontWeight: 400,
               color: '#000D1F',
-              fontSize: { xs: '2rem', md: '3rem' },
-              mb: 1,
+              mb: 0.85,
             }}
           >
             Our Portfolio
           </Typography>
           <Typography 
-            variant="subtitle1" 
+            variant="body1"
+            component="p" 
             sx={{ 
               fontFamily: "Akatab,Sans-serif",
               fontWeight: 400,
               color: '#000000',
-              fontSize: { xs: '0.9rem', md: '1.125rem' },
+              
             }}
           >
             Real Weddings. Real Emotions.

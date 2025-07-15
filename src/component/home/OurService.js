@@ -123,7 +123,7 @@ const FlipCard = ({ service }) => {
               backdropFilter: "blur(4px)",
             }}
           >
-            <Typography variant="subtitle1" fontWeight={600}>
+            <Typography variant="h6" fontWeight={600}>
               {service.title}
             </Typography>
           </Box>
@@ -171,6 +171,7 @@ const FlipCard = ({ service }) => {
         >
           {service.guests && (
             <Typography
+            
               sx={{
                 bgcolor: "rgba(255,255,255,0.8)",
                 color: "#0D1A46",
@@ -186,16 +187,16 @@ const FlipCard = ({ service }) => {
               {service.guests}
             </Typography>
           )}
-          <Typography variant="h6" fontWeight={600} fontFamily={"Akatab,Sans-serif"} sx={{ mb: 1, zIndex: 2 }}>
+          <Typography variant="h5" fontWeight={600} fontFamily={"Akatab,Sans-serif"} sx={{ mb: 1, zIndex: 2 }}>
             {service.title}
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
+            component="p"
             sx={{
               color: "#f5f5f5",
               frontFamily: "Akatab,Sans-serif",color: "#FFFBF0", 
-              fontSize: "0.9rem",
-              lineHeight: 1.5,
+              lineHeight: 1.2,
               mb: 2,
               zIndex: 2,
             }}
@@ -245,7 +246,7 @@ export default function OurServices() {
       }}
     >
       <Typography
-        variant="h4"
+        variant="h2"
         sx={{
           fontFamily: 'Gloock, serif',
           fontWeight: "400",
@@ -255,7 +256,7 @@ export default function OurServices() {
       >
         Our Services
       </Typography>
-      <Typography variant="subtitle1" color="#000000" fontFamily={"Akatab,Sans-serif"} fontWeight={400} mb={6}>
+      <Typography variant="body1" component="p" color="#000000" fontFamily={"Akatab,Sans-serif"} fontWeight={400} mb={{ xs: 2, md: 4 }}>
         Everything You Need, Delivered Beautifully
       </Typography>
 
