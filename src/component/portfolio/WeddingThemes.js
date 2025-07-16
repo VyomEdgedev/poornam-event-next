@@ -8,15 +8,15 @@ const weddingThemesData = [
     id: 1,
     tag: "Rajasthan",
     image: "/portfolio2.png",
-      alt: "Royal Rajasthani Theme",
+    alt: "Royal Rajasthani Theme",
     title: "Royal Rajasthani",
     description: "A regal affair in royal palaces."
   },
   {
     id: 2,
     tag: "Beach",
-   image: "/portfolio2.png",
-      alt: "Royal Rajasthani Theme",
+    image: "/portfolio2.png",
+    alt: "Royal Rajasthani Theme",
     title: "Boho Beach",
     description: "An elegant beach ceremony."
   },
@@ -24,7 +24,7 @@ const weddingThemesData = [
     id: 3,
     tag: "Modern",
     image: "/portfolio2.png",
-      alt: "Royal Rajasthani Theme",
+    alt: "Royal Rajasthani Theme",
     title: "Minimal Chic",
     description: "Simplicity meets elegance."
   }
@@ -33,50 +33,50 @@ const weddingThemesData = [
 const WeddingThemes = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 3 }}>
-      <Typography 
-        variant="h3" 
-        component="h3" 
-        align="center" 
-        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
+      <Typography
+        variant="h3"
+        component="h3"
+        align="center"
+        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif', fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
       >
-       {` Explore Our Wedding Themes`}
+        {` Explore Our Wedding Themes`}
       </Typography>
-      <Typography 
-        variant="body1" 
-        component="p" 
-        align="center" 
-        
-        sx={{ mb: 2 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
+      <Typography
+        variant="body1"
+        component="p"
+        align="center"
+
+        sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: '400' }}
       >
         {`Choose from a variety of stunning wedding themes. `}
       </Typography>
       <Box textAlign="center" mb={4}>
-       <CustomButton  data-testid="notify-button">{`View All Themes`}</CustomButton>
+        <CustomButton data-testid="notify-button">{`View All Themes`}</CustomButton>
       </Box>
       <Grid container spacing={4} justifyContent="center">
-        {weddingThemesData.map(({ id, tag, image,alt, title, description }) => (
+        {weddingThemesData.map(({ id, tag, image, alt, title, description }) => (
           <Grid item key={id} xs={12} sm={6} md={4}>
-            <Card 
-              sx={{ 
+            <Card
+              sx={{
                 width: "100%",
-                height: "100%", 
-                display: "flex", 
-                flexDirection: "column", 
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
                 position: "relative",
-                
+                cursor: 'pointer'
               }}
               elevation={1}
             >
-              <Chip 
-                label={tag} 
+              <Chip
+                label={tag}
                 size="small"
-                sx={{ position: "absolute", top: 8, left: 8, backgroundColor: "#ddd", fontSize: 11, zIndex:2 }} 
+                sx={{ position: "absolute", top: 8, left: 8, backgroundColor: "#ddd", fontSize: 11, zIndex: 2 }}
               />
-              <Box 
-                sx={{ 
+              <Box
+                sx={{
                   position: "relative",
                   width: "340px",
-                  height: 300, 
+                  height: 300,
                   backgroundColor: "red",
                   display: "flex",
                   justifyContent: "center",
@@ -85,21 +85,29 @@ const WeddingThemes = () => {
                   textAlign: "center",
                   minHeight: { xs: 250, sm: 280, md: 300 }
                 }}
-                >
+              >
                 <Image
                   src={image}
                   alt={alt}
                   layout="fill"
                   objectFit="cover"
-                />         
-                
-                  
+                  cursor='pointer'
+                />
+
+
               </Box>
               <CardContent>
-                <Typography variant="body1" component="p" sx={{fontFamily: "Akatab,Sans-serif", fontWeight:'400' ,fontSize:{ xs: '0.9rem', sm: '0.9rem', md: '1rem' }}}>
+                <Typography
+                  variant="body1"
+                  component="p"
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif", fontWeight: '400',
+                    cursor: 'pointer',
+                    fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1rem' }
+                  }}>
                   {title}
                 </Typography>
-                <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight:'500', color:"#000000" , fontSize:{ xs: '0.9rem', sm: '0.9rem', md: '1.125rem' } }}>
+                <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem' } }}>
                   {description}
                 </Typography>
               </CardContent>

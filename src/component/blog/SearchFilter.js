@@ -97,7 +97,7 @@ const SearchFilter = () => {
           <StyledPaper elevation={0}>
             <Typography
               variant="h2"
-              component="h3"
+              component="h2"
               sx={{
                 fontSize: { xs: '2rem', md: '3rem' },
                 fontWeight: '400',

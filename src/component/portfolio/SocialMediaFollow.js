@@ -21,8 +21,8 @@ function SocialMedia() {
           variant='h3'
           component={'h3'}
           textAlign="center"
-          padding="10px"
-          sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+          padding="20px"
+          sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }, lineHeight: 1 }}
           dangerouslySetInnerHTML={{
             __html: `  Follow Us <br />
                         on <br /> Social Media`,
@@ -33,7 +33,7 @@ function SocialMedia() {
       <Grid container
 
         padding="1px">
-        <Box mt={1}
+        <Box mt={2}
           display="flex"
           justifyItems="center"
           justifyContent="space-evenly">
@@ -48,20 +48,35 @@ function SocialMedia() {
           </svg>
           <IconButton data-testid="notify-button"
             component="a"
-            href="https://www.instagram.com/openai"
+            href="https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw==" 
             target="_blank"
             rel="noopener noreferrer"
             aria-label="OpenAI Instagram"
 
           >
-            <InstagramIcon sx={{ fill: 'url(#instagramGradient)', fontSize: { xs: 30, sm: 40, md: 60 } }} />
+            <InstagramIcon sx={{
+              fill: 'url(#instagramGradient)',
+              backgroundColor: '#fff',
+              width: { xs: 60, sm: 70, md: 80 },
+              height: { xs: 60, sm: 70, md: 80 },
+              borderRadius: '50%',
+              
+              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+            }} />
           </IconButton>
           <IconButton data-testid="notify-button"
             color="primary"
             aria-label="Twitter"
             onClick={() => window.open('https://twitter.com/your_username', '_blank')}
           >
-            <TwitterIcon sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+            <TwitterIcon sx={{
+              backgroundColor: '#fff',
+              width: { xs: 60, sm: 70, md: 80 },
+              height: { xs: 60, sm: 70, md: 80 },
+              borderRadius: '50%',
+             
+              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+            }} />
           </IconButton>
           <IconButton data-testid="notify-button"
             component="a"
@@ -72,7 +87,14 @@ function SocialMedia() {
             color="error"        // red theme—YouTube style
             size="large"
           >
-            <YouTubeIcon fontSize="inherit" sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+            <YouTubeIcon fontSize="inherit" sx={{
+              backgroundColor: '#fff',
+              width: { xs: 60, sm: 70, md: 80 },
+              height: { xs: 60, sm: 70, md: 80 },
+              borderRadius: '50%',
+             
+              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+            }} />
           </IconButton>
           <IconButton data-testid="notify-button"
             component="a"
@@ -83,7 +105,15 @@ function SocialMedia() {
             color="primary"
             size="large"
           >
-            <LinkedInIcon data-testid="notify-button" fontSize="inherit" sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+            <LinkedInIcon data-testid="notify-button"
+              fontSize="inherit" sx={{
+                backgroundColor: '#fff',
+                width: { xs: 60, sm: 70, md: 80 },
+                height: { xs: 60, sm: 70, md: 80 },
+               
+                fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+              }}
+            />
           </IconButton>
 
         </Box>

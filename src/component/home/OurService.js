@@ -101,7 +101,7 @@ const FlipCard = ({ service }) => {
           <Image
             src={service.image}
             alt={service.title}
-            width={400}
+            width={245}
             height={300}
             unoptimized
             style={{

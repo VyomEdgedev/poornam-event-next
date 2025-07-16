@@ -109,6 +109,7 @@ const BlogSection = () => {
                       transform: "translateY(-5px)",
                       boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
                     },
+                    cursor: 'pointer'
                   }}
                 >
                   <CardMedia
@@ -130,7 +131,7 @@ const BlogSection = () => {
                       fontFamily: "Akatab,Sans-serif",
                       color: "#000000",
                       mb: 1,
-                       lineHeight: 1.4,
+                      lineHeight: 1.4,
                       textAlign: "center",
                       pt: 2,
                       px: 2,

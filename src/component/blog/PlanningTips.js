@@ -69,6 +69,7 @@ const PlanningTips = () => {
             alt="service icon"
             width={40}
             height={40}
+            cursor='pointer'
         />;
     };
 
@@ -76,7 +77,7 @@ const PlanningTips = () => {
         <Grid sx={{
             // backgroundColor: '#FFF8F3',
             minHeight: '40vh',
-            py: { xs: 4,sm: 1, md: 2, lg: 3 },
+            py: { xs: 4, sm: 1, md: 2, lg: 3 },
         }}          >
 
             <Container maxWidth="lg">
@@ -91,6 +92,8 @@ const PlanningTips = () => {
                                 variant="h2"
                                 component="h2"
                                 sx={{
+
+                                    cursor: 'pointer',
                                     fontSize: { xs: '1.6rem', sm: '2rem', md: '2.8rem' },
                                     fontWeight: 400,
                                     lineHeight: 1.2,
@@ -113,7 +116,9 @@ const PlanningTips = () => {
                                     fontWeight: 500,
                                     fontFamily: "Akatab,Sans-serif",
                                     color: '#000D1F',
-                                    mt: 4
+                                    mt: 4,
+                                    cursor: 'pointer'
+
                                 }}
                             >
                                 {sectionData.planningTips}
@@ -135,7 +140,8 @@ const PlanningTips = () => {
                                         '&:hover': {
                                             transform: 'translateY(-2px)',
                                             boxShadow: '0 8px 30px rgba(0,0,0,0.12)'
-                                        }
+                                        },
+                                        cursor: 'pointer'
                                     }}
                                 >
                                     <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
@@ -150,7 +156,8 @@ const PlanningTips = () => {
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
-                                                    flexShrink: 0
+                                                    flexShrink: 0,
+                                                    cursor: 'pointer'
                                                 }}
                                             >
                                                 {getIcon(service.image)}
@@ -166,7 +173,8 @@ const PlanningTips = () => {
                                                         fontWeight: 500,
                                                         fontSize: { xs: '1rem', sm: '1.1rem' },
                                                         color: '#000000',
-                                                        mb: 0.5
+                                                        mb: 0.5,
+                                                        cursor: 'pointer'
                                                     }}
                                                 >
                                                     {service.title}
@@ -179,7 +187,8 @@ const PlanningTips = () => {
                                                         fontWeight: 400,
                                                         color: '#000000',
                                                         fontSize: { xs: '0.85rem', sm: '0.9rem' },
-                                                        lineHeight: 1.4
+                                                        lineHeight: 1.4,
+                                                        cursor: 'pointer'
                                                     }}
                                                 >
                                                     {service.description}
