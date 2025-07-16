@@ -88,7 +88,7 @@ const Footer = () => {
                   { label: "Blogs", href: "/blogs" },
                   { label: "Connect us", href: "/connectus" },
                 ].map((item) => (
-                  <Link key={item.href} href={item.href}>
+                  <Link key={item.href} href={item.href} style={{ textDecoration: "none" }} >
                     <Typography
                       variant="body2"
                       sx={{
@@ -96,9 +96,10 @@ const Footer = () => {
                         mb: 0.5,
                         color: "white",
                         textDecoration: "none",
-                        '&:hover': {
-                          textDecoration: "underline",
-                        }
+                        underline: "none",
+                        "&:hover": {
+                        textDecoration: "underline",
+      },
                       }}>
                       {item.label}
                     </Typography>
@@ -129,9 +130,10 @@ const Footer = () => {
                   <Link
                     key={service}
                     href="#"
-                    passHref
+                    style={{ textDecoration: "none" }}
                   >
                     <Typography
+                    
                       variant="body2"
                       sx={{
                         fontSize: "13px",
@@ -194,7 +196,7 @@ const Footer = () => {
                   ].map(({ icon: Icon, url }, i) => (
                     <IconButton
                       key={i}
-                      sx={{ color: "red", p: 0.5 }}
+                      sx={{ color: "#DAA412", p: 0.5 }}
                       size="small"
                       component="a"
                       href={url}
