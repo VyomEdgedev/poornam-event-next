@@ -32,24 +32,25 @@ const weddingThemesData = [
 
 const WeddingThemes = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ py: 3 }}>
       <Typography 
         variant="h3" 
-        component="h2" 
+        component="h3" 
         align="center" 
-        sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
+        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
       >
        {` Explore Our Wedding Themes`}
       </Typography>
       <Typography 
         variant="body1" 
+        component="p" 
         align="center" 
         
-        sx={{ mb: 4 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
+        sx={{ mb: 2 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
       >
         {`Choose from a variety of stunning wedding themes. `}
       </Typography>
-      <Box textAlign="center" mb={6}>
+      <Box textAlign="center" mb={4}>
        <CustomButton  data-testid="notify-button">{`View All Themes`}</CustomButton>
       </Box>
       <Grid container spacing={4} justifyContent="center">
@@ -95,7 +96,7 @@ const WeddingThemes = () => {
                   
               </Box>
               <CardContent>
-                <Typography variant="subtitle1" component="div" sx={{fontFamily: "Akatab,Sans-serif", fontWeight:'400' ,fontSize:{ xs: '0.9rem', sm: '0.9rem', md: '1rem' }}}>
+                <Typography variant="body1" component="p" sx={{fontFamily: "Akatab,Sans-serif", fontWeight:'400' ,fontSize:{ xs: '0.9rem', sm: '0.9rem', md: '1rem' }}}>
                   {title}
                 </Typography>
                 <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight:'500', color:"#000000" , fontSize:{ xs: '0.9rem', sm: '0.9rem', md: '1.125rem' } }}>

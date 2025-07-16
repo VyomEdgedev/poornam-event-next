@@ -32,12 +32,12 @@ const weddingThemesData = [
 
 const ShowCase = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
       <Typography 
         variant="h3" 
         component="h2" 
         align="center" 
-        sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
+        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif' , fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
       >
        {` Visual Showcase `}
       </Typography>
@@ -45,11 +45,11 @@ const ShowCase = () => {
         variant="body1" 
         align="center" 
         
-        sx={{ mb: 4 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
+        sx={{ mb: 2 , fontFamily: "Akatab,Sans-serif", fontWeight:'400' }}
       >
         {`Highlighting exquisite captures from different weddings.`}
       </Typography>
-      <Box textAlign="center" mb={6} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
+      <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
        <CustomButton  data-testid="notify-button" sx={{width: { xs: "178px", sm: "auto" }}}>{`Browse Gallery`}</CustomButton>
 
        <CustomButton  data-testid="notify-button"

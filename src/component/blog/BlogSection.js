@@ -41,12 +41,18 @@ const blogData = {
 const BlogSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
+  const responsiveSpacing = isBelow1150
+    ? { xs: 2, sm: 1 }   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
 
   return (
-    <Box sx={{ py: 2, px: { xs: 2, md: 15 }, backgroundColor: "#fefefe" }}>
+    <Box
+      sx={{ py: 2, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFFAED" }}>
       <Container maxWidth="xl">
         {/* Header */}
-        <Box sx={{ textAlign: "center", mb: 6 }}>
+        <Box
+          sx={{ textAlign: "center", mb: 4 }}>
           <Typography
             variant="h2"
             component="h2"
@@ -61,7 +67,7 @@ const BlogSection = () => {
           >
             {blogData.title}
           </Typography>
-          <Button
+          <Button data-testid="notify-button"
             variant="contained"
             sx={{
               backgroundColor: "#ffa726",
@@ -83,9 +89,11 @@ const BlogSection = () => {
           </Button>
         </Box>
 
-        <Grid container spacing={{ xs: 5, md: 3 }} sx={{ px: 0 }}>
+        <Grid container spacing={responsiveSpacing}
+          alignItems={isBelow1150 ? 'center' : "center"}
+          justifyContent={isBelow1150 ? 'center' : 'center'} sx={{ px: 0 }}>
           {blogData.posts.map((post) => (
-            <Grid item xs={12} md={6} key={post.id}>
+            <Grid item xs={12} sm={8} md={6} key={post.id}>
               <Box sx={{ px: 0 }}>
                 <Card
                   sx={{
@@ -109,54 +117,55 @@ const BlogSection = () => {
                       width: "100%",
                       height: "300px",
                       objectFit: "cover",
+                      margin: "0 auto",
                     }}
                     image={post.image}
                     alt={post.imageAlt}
                   />
-
+                  <Typography
+                    variant="h6"
+                    component="h6"
+                    sx={{
+                      fontWeight: 400,
+                      fontFamily: "Akatab,Sans-serif",
+                      color: "#000000",
+                      mb: 1,
+                       lineHeight: 1.4,
+                      textAlign: "center",
+                      pt: 2,
+                      px: 2,
+                    }}
+                  >
+                    {post.title}
+                  </Typography>
                   <CardContent sx={{ p: 2.5, flexGrow: 1 }}>
-                    <Chip
+                    <Typography
                       label={post.category}
                       sx={{
-                        backgroundColor: "#fff3e0",
+
                         fontWeight: 400,
                         fontFamily: "Akatab,Sans-serif",
-                        color: "#f57c00",
-                        fontSize: "0.7rem",
+                        color: "#00000080",
+                        textAlign: "center",
                         fontWeight: 500,
                         mb: 1.5,
-                        height: 24,
-                      }}
-                    />
-
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: {
-                          xs: "0.85rem",
-                          sm: "0.85rem",
-                          md: "0.85rem",
-                        },
-                        fontWeight: 400,
-                        fontFamily: "Akatab,Sans-serif",
-
-                        lineHeight: 1.1,
-                        color: "#000000",
-                        mb: 1,
-                      }}
-                    >
-                      {post.title}
+                        height: 24
+                      }}>
+                      {post.category}
                     </Typography>
 
                     <Typography
-                      variant="body1"
+                      variant="h6"
+                      component="h6"
                       sx={{
                         color: "#000000",
                         fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
                         fontWeight: 500,
                         fontFamily: "Akatab,Sans-serif",
-                        lineHeight: 1.4,
+                        lineHeight: 1.5,
                         fontWeight: 500,
+                        fontWeight: 'bold',
+                        textAlign: "center",
                       }}
                     >
                       {post.subtitle}

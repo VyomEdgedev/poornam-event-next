@@ -1,173 +1,97 @@
-import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  IconButton, 
-  Container,
-  useTheme,
-  useMediaQuery 
-} from '@mui/material';
-import { 
-  Instagram, 
-  Twitter, 
-  YouTube, 
-  LinkedIn 
-} from '@mui/icons-material';
+import { Grid, Typography, Stack, Box } from '@mui/material'
+import React from 'react'
+import IconButton from '@mui/material/IconButton';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-// JSON data for social media links
-const socialMediaData = {
-  title: "Follow Us",
-  subtitle: "on",
-  platform: "Social Media",
-  links: [
-    {
-      id: "instagram",
-      name: "Instagram",
-      url: "https://instagram.com/yourcompany",
-      icon: "Instagram",
-      color: "#E4405F",
-      hoverColor: "#C13584"
-    },
-    {
-      id: "twitter",
-      name: "Twitter",
-      url: "https://twitter.com/yourcompany",
-      icon: "Twitter",
-      color: "#1DA1F2",
-      hoverColor: "#0d8bd9"
-    },
-    {
-      id: "youtube",
-      name: "YouTube",
-      url: "https://youtube.com/yourcompany",
-      icon: "YouTube",
-      color: "#FF0000",
-      hoverColor: "#cc0000"
-    },
-    {
-      id: "linkedin",
-      name: "LinkedIn",
-      url: "https://linkedin.com/company/yourcompany",
-      icon: "LinkedIn",
-      color: "#0077B5",
-      hoverColor: "#005885"
-    }
-  ]
-};
-
-const SocialMediaFollow = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  
-
-  const iconMap = {
-    Instagram: Instagram,
-    Twitter: Twitter,
-    YouTube: YouTube,
-    LinkedIn: LinkedIn
-  };
-
+function SocialMedia() {
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 4,
-          width: '100%'
-          
-        }}
-      >
-        
-        <Box
-          sx={{
-            textAlign: isMobile ? 'center' : 'left',
-            flex: isMobile ? 'none' : 1
+    <Grid
+      container
+      display="flex"
+      justifyItems="center"
+      justifyContent="space-evenly"
+      padding="10px"
+    >
+
+      <Grid container>
+        <Typography
+          variant='h3'
+          component={'h3'}
+          textAlign="center"
+          padding="10px"
+          sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" } }}
+          dangerouslySetInnerHTML={{
+            __html: `  Follow Us <br />
+                        on <br /> Social Media`,
           }}
-        >
-          <Typography
-            variant="h3"
-            component="h2"
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-              lineHeight: 1.2,
-              color: '#1E1E1E',
-               fontFamily: 'Gloock,serif' 
-            }}
+        />
+
+      </Grid>
+      <Grid container
+
+        padding="1px">
+        <Box mt={1}
+          display="flex"
+          justifyItems="center"
+          justifyContent="space-evenly">
+          <svg width={0} height={0}>
+            <linearGradient id="instagramGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#f09433" />
+              <stop offset="25%" stopColor="#e6683c" />
+              <stop offset="50%" stopColor="#dc2743" />
+              <stop offset="75%" stopColor="#cc2366" />
+              <stop offset="100%" stopColor="#bc1888" />
+            </linearGradient>
+          </svg>
+          <IconButton data-testid="notify-button"
+            component="a"
+            href="https://www.instagram.com/openai"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="OpenAI Instagram"
+
           >
-            {socialMediaData.title}
-          </Typography>
-          <Typography
-            variant="h3"
-            component="span"
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-              lineHeight: 1.2,
-               color: '#1E1E1E',
-               fontFamily: 'Gloock,serif' 
-            }}
+            <InstagramIcon sx={{ fill: 'url(#instagramGradient)', fontSize: { xs: 30, sm: 40, md: 60 } }} />
+          </IconButton>
+          <IconButton data-testid="notify-button"
+            color="primary"
+            aria-label="Twitter"
+            onClick={() => window.open('https://twitter.com/your_username', '_blank')}
           >
-            {socialMediaData.subtitle}
-          </Typography>
-          <Typography
-            variant="h3"
-            component="div"
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-              lineHeight: 1.2,
-               color: '#1E1E1E',
-               fontFamily: 'Gloock,serif' 
-            }}
+            <TwitterIcon sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+          </IconButton>
+          <IconButton data-testid="notify-button"
+            component="a"
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            color="error"        // red theme—YouTube style
+            size="large"
           >
-            {socialMediaData.platform}
-          </Typography>
+            <YouTubeIcon fontSize="inherit" sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+          </IconButton>
+          <IconButton data-testid="notify-button"
+            component="a"
+            href="https://www.linkedin.com/in/your_username"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            color="primary"
+            size="large"
+          >
+            <LinkedInIcon data-testid="notify-button" fontSize="inherit" sx={{ fontSize: { xs: 30, sm: 40, md: 60 } }} />
+          </IconButton>
+
         </Box>
 
-       
-        <Box
-          sx={{
-            display: 'flex',
-            gap: 3,
-            flexWrap: 'wrap',
-            justifyContent: 'center'
-          }}
-        >
-          {socialMediaData.links.map((social) => {
-            const IconComponent = iconMap[social.icon];
-            return (
-              <IconButton  data-testid="notify-button"
-                key={social.id}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  width: { xs: 60, sm: 60, md:60 },
-                  height: { xs: 53, sm: 53, md: 63 },
-                  backgroundColor: social.color,
-                  color: 'white',
-                  borderRadius: 2,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    backgroundColor: social.hoverColor,
-                    transform: 'translateY(-2px)',
-                    boxShadow: `0 8px 25px ${social.color}40`
-                  }
-                }}
-              >
-                <IconComponent sx={{ fontSize: { xs: 28, sm: 32, md: 42 } }} />
-              </IconButton>
-            );
-          })}
-        </Box>
-      </Box>
-    </Container>
-  );
-};
+      </Grid>
+    </Grid>
+  )
+}
 
-export default SocialMediaFollow;
+export default SocialMedia
 

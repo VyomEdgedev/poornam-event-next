@@ -45,14 +45,14 @@ const postsData = [
 
 const RecentPosts = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 5 }}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
       
       <Typography
         variant="h2"
-        component="h1"
+        component="h2"
         align="center"
         sx={{
-          mb: 6,
+          mb: 3,
           fontWeight: 400,
           fontSize: { xs: '2.5rem', md: '3rem' },
           color: '#000000',

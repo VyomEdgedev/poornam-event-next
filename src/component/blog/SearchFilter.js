@@ -18,7 +18,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   borderRadius: theme.spacing(2),
   boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
- 
+
 }));
 
 const SearchButton = styled(Button)(({ theme }) => ({
@@ -52,24 +52,29 @@ const SearchFilter = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
-  
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
+
+  const responsiveSpacing = isBelow1150
+    ? { xs: 2, sm: 0 }   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
 
   const categories = ['Tips', 'Trends', 'Venues', 'Real Weddings', 'Budget'];
   const locations = ['Indore', 'Bhopal', 'Jabalpur', 'Goa', 'Udaipur'];
 
   const handleCategoryToggle = (category) => {
-    setSelectedCategories(prev => 
-      prev.includes(category) 
+    setSelectedCategories(prev =>
+      prev.includes(category)
         ? prev.filter(c => c !== category)
         : [...prev, category]
     );
   };
 
   const handleLocationToggle = (location) => {
-    setSelectedLocations(prev => 
-      prev.includes(location) 
+    setSelectedLocations(prev =>
+      prev.includes(location)
         ? prev.filter(l => l !== location)
         : [...prev, location]
     );
@@ -81,49 +86,55 @@ const SearchFilter = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 1, md: 4 } }}>
-      <Grid container spacing={{ xs: 2, md: 8 }} alignItems="flex-start">
+    <Grid  backgroundColor="#FFFAED">
+       <Container width="100%" maxWidth="lg" sx={{ py: { xs: 1, sm: 1, md: 4 }  }}    >
+      <Grid container
+        spacing={responsiveSpacing}
+        alignItems={isBelow1150 ? 'center' : "center"}
+        justifyContent={isBelow1150 ? 'center' : 'center'}>
         {/* Left Side - Main Heading */}
-          <Grid item xs={12} md={6} sx={{ py: { xs: 1, md: 10 } }}>
-            <StyledPaper elevation={0}>
-              <Typography
-                variant="h2"
-                component="h3"
-                sx={{
-            fontSize: { xs: '2rem', md: '3rem' },
-            fontWeight: '400',
-            color: '#000000',
-            lineHeight: 1.2,
-            mb: 1,
-            fontFamily: 'Gloock,serif',
-                }}
-              >
-               {` Find What You Need`}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-            color: '#000000',
-            fontFamily:'Akatab,Sans-serif',
-            fontSize: { xs: '0.95rem', md: '1.125rem' },
-            lineHeight: 1.2,
-                }}
-              >
-               {` Search for valuable insights to aid your planning journey.`}
-              </Typography>
-            </StyledPaper>
-          </Grid>
+        <Grid item xs={12} md={6} sx={{ py: { xs: 0, sm: 2, md: 2 } }}>
+          <StyledPaper elevation={0}>
+            <Typography
+              variant="h2"
+              component="h3"
+              sx={{
+                fontSize: { xs: '2rem', md: '3rem' },
+                fontWeight: '400',
+                color: '#000000',
+                lineHeight: 1.2,
+                mb: 1,
+                fontFamily: 'Gloock,serif',
+              }}
+            >
+              {` Find What You Need`}
+            </Typography>
+            <Typography
+              variant="body1"
+              component="p"
+              sx={{
+                color: '#000000',
+                fontFamily: 'Akatab,Sans-serif',
+                fontSize: { xs: '0.95rem', md: '1.125rem' },
+                lineHeight: 1.2,
+              }}
+            >
+              {` Search for valuable insights to aid your planning journey.`}
+            </Typography>
+          </StyledPaper>
+        </Grid>
 
-          {/* Right Side - Search and Filters */}
+        {/* Right Side - Search and Filters */}
         <Grid item xs={12} md={6}>
           <StyledPaper elevation={0}>
             {/* Search Input */}
             <Box sx={{ mb: 3 }}>
               <Typography
                 variant="h6"
-                sx={{ mb: 2, fontWeight: 600, color: '#000D1F' ,fontFamily:"Akatab,Sans-serif" }}
+                 component="h6"
+                sx={{ mb: 2, fontWeight: 600, color: '#000D1F', fontFamily: "Akatab,Sans-serif" }}
               >
-              {`Search`}
+                {`Search`}
               </Typography>
               <TextField
                 fullWidth
@@ -144,9 +155,10 @@ const SearchFilter = () => {
             <Box sx={{ mb: 3 }}>
               <Typography
                 variant="h6"
+                 component="h6"
                 sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
               >
-              {`  Filter by Category`}
+                {`  Filter by Category`}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {categories.map((category) => (
@@ -165,9 +177,10 @@ const SearchFilter = () => {
             <Box sx={{ mb: 3 }}>
               <Typography
                 variant="h6"
+                component="h6"
                 sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
               >
-              {`  Filter by Location`}
+                {`  Filter by Location`}
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {locations.map((location) => (
@@ -184,14 +197,16 @@ const SearchFilter = () => {
 
             {/* Search Button */}
             <Box sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-             
-              <CustomButton 
-                onClick={handleSearch}   data-testid="notify-button">{`Search`}</CustomButton>
+
+              <CustomButton
+                onClick={handleSearch} data-testid="notify-button">{`Search`}</CustomButton>
             </Box>
           </StyledPaper>
         </Grid>
       </Grid>
     </Container>
+    </Grid>
+   
   );
 };
 
