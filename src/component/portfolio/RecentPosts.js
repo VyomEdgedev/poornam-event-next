@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  Card, 
-  CardContent, 
-  CardMedia, 
-  Grid, 
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
   Container,
   Chip,
   IconButton
@@ -21,7 +21,7 @@ const postsData = [
     description: "Beautiful beach wedding setup",
     publishDate: "October 10, 2023",
     videoThumbnail: true,
-    image: "/api/placeholder/400/300" 
+    image: "/api/placeholder/400/300"
   },
   {
     id: 2,
@@ -45,30 +45,30 @@ const postsData = [
 
 const RecentPosts = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 5 }}>
-      
+    <Container maxWidth="lg" sx={{ py: 2 }}>
+
       <Typography
         variant="h2"
-        component="h1"
+        component="h2"
         align="center"
         sx={{
-          mb: 6,
+          mb: 3,
           fontWeight: 400,
           fontSize: { xs: '2.5rem', md: '3rem' },
           color: '#000000',
           fontFamily: 'Gloock,serif'
         }}
       >
-       {` Recent Posts`}
+        {` Recent Posts`}
       </Typography>
 
-     
+
       <Grid container spacing={4} alignContent={"center"} justifyContent={"center"}>
         {postsData.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
             <Card
               sx={{
-                width:'267px',
+                width: '267px',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -79,10 +79,12 @@ const RecentPosts = () => {
                 '&:hover': {
                   boxShadow: '0 8px 15px rgba(0, 0, 0, 0.15)',
                   transform: 'translateY(-2px)'
-                }
+                },
+                cursor: 'pointer'
+
               }}
             >
-            
+
               <Box sx={{ position: 'relative' }}>
                 <CardMedia
                   component="div"
@@ -93,10 +95,11 @@ const RecentPosts = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     position: 'relative',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    cursor: 'pointer'
                   }}
                 >
-                 
+
                   <Chip
                     label={post.category}
                     size="small"
@@ -106,14 +109,15 @@ const RecentPosts = () => {
                       left: 12,
                       backgroundColor: '#0000000D',
                       fontSize: '0.65rem',
-                      fontWeight: 500
-                      
+                      fontWeight: 500,
+                      cursor: 'pointer'
+
                     }}
                   />
-                  
-             
+
+
                   {post.videoThumbnail && (
-                    <IconButton  data-testid="notify-button"
+                    <IconButton data-testid="notify-button"
                       sx={{
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         color: 'white',
@@ -123,15 +127,17 @@ const RecentPosts = () => {
                         },
                         width: 60,
                         height: 42,
+                        cursor: 'pointer'
                       }}
                     >
                       <PlayArrow sx={{ fontSize: 30 }} />
                     </IconButton>
                   )}
-                  
-                 
+
+
                   <Typography
                     variant="caption"
+                    component="p"
                     sx={{
                       position: 'absolute',
                       bottom: 70,
@@ -146,8 +152,8 @@ const RecentPosts = () => {
                 </CardMedia>
               </Box>
 
-              
-              <CardContent sx={{pt: 2 }}>
+
+              <CardContent sx={{ pt: 2 }}>
                 <Typography
                   variant="h6"
                   component="h6"
@@ -155,20 +161,22 @@ const RecentPosts = () => {
                     mb: 1,
                     fontWeight: 400,
                     color: '#000000',
-                    fontSize: '0.85em'
+                    fontSize: '0.85em',
+                    cursor: 'pointer'
                   }}
                 >
                   {post.title}
                 </Typography>
-                
+
                 <Typography
-                  variant="body2"
+                  variant="body1"
+                  component="p"
                   sx={{
                     width: '100%',
                     color: '#000000',
                     fontSize: '1rem',
                     lineHeight: 1.4,
-                    
+
                   }}
                 >
                   Published on {post.publishDate}

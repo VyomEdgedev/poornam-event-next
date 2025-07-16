@@ -20,21 +20,21 @@ const picksData = {
       id: 1,
       title: "Editor's Picks",
       description: "The best from our team for you.",
-      image: "./pick1.png", 
+      image: "./pick1.png",
       category: "editorial"
     },
     {
       id: 2,
       title: "Real Wedding Highlights",
       description: "Unique experiences from real couples.",
-      image: "./pick2.png", 
+      image: "./pick2.png",
       category: "wedding"
     },
     {
       id: 3,
       title: "Guest Interactions",
       description: "Tips and tricks from those who've attended.",
-      image: "./pick3.png", 
+      image: "./pick3.png",
       category: "guest"
     }
   ]
@@ -43,29 +43,36 @@ const picksData = {
 const PicksSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
+  const responsiveSpacing = isBelow1150
+    ? { xs: 2, sm: 2 }   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Grid container spacing={4}>
-        
+      <Grid container spacing={responsiveSpacing}
+        alignItems={isBelow1150 ? 'center' : "center"}
+        justifyContent={isBelow1150 ? 'center' : 'center'}>
+
         <Grid item xs={12} md={5}>
-          <Box sx={{ pr: { md: 7 } }}>
+          <Box sx={{ pr: { md: 4 } }}>
             <Typography
               variant="h2"
-              component="h1"
+              component="h2"
               sx={{
                 fontSize: { xs: '1.8rem', sm: '2rem', md: '3rem' },
-               fontFamily: 'Gloock,serif',
-              fontWeight: 400,
+                fontFamily: 'Gloock,serif',
+                fontWeight: 400,
                 lineHeight: 1.2,
                 mb: 2,
-                color:'#000000'
+                color: '#000000'
               }}
             >
               {picksData.title}
             </Typography>
             <Typography
               variant="body1"
+              component="p"
               color="text.secondary"
               sx={{
                 fontSize: { xs: '0.95rem', sm: '0.95rem', md: '1rem' },
@@ -81,7 +88,9 @@ const PicksSection = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={12} md={7}>
+        <Grid
+
+          item xs={12} md={7}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {picksData.items.map((item) => (
               <Card
@@ -98,7 +107,8 @@ const PicksSection = () => {
                   '&:hover': {
                     boxShadow: theme.shadows[4],
                     transform: 'translateY(-2px)'
-                  }
+                  },
+                  cursor: 'pointer'
                 }}
               >
                 <CardMedia
@@ -116,31 +126,33 @@ const PicksSection = () => {
                   sx={{
                     flex: 1,
                     p: 3,
-                    '&:last-child': { pb: 3 }
+                    '&:last-child': { pb: 3 },
+                    cursor: 'pointer'
                   }}
                 >
                   <Typography
                     variant="h6"
-                    component="h3"
+                    component="h6"
                     sx={{
                       fontSize: { xs: '1rem', sm: '1rem', md: '1.25rem' },
                       fontWeight: 600,
                       fontFamily: "Akatab,Sans-serif",
                       mb: 0.70,
-                    
+
                     }}
                   >
                     {item.title}
                   </Typography>
                   <Typography
-                    variant="body2"
+                    variant="body1"
+                    component="p"
                     color="text.secondary"
                     sx={{
                       lineHeight: 1,
                       fontSize: { xs: '0.85rem', sm: '0.85rem', md: '0.95rem' },
                       fontWeight: 400,
                       fontFamily: "Akatab,Sans-serif",
-                      color:'#000000'
+                      color: '#000000'
                     }}
                   >
                     {item.description}
@@ -155,4 +167,4 @@ const PicksSection = () => {
   );
 };
 
-export default PicksSection ;
+export default PicksSection;
