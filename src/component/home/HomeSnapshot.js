@@ -18,13 +18,15 @@ export default function Snapshot() {
     >
       <Grid>
         <Typography
+        vaeriant="h2"
+        component="h2"
           sx={{
-            fontSize: { xs: "1.5rem", sm: "1.5rem", md: "2.5rem" },
+            // fontSize: { xs: "1.5rem", sm: "1.5rem", md: "2.5rem" },
 
             fontWeight:"400",
             fontFamily: "Gloock, serif"
           }}
-          variant="h3"
+          
           fontWeight="bold"
         >
         {`  Snapshots from the Script`}
@@ -32,10 +34,11 @@ export default function Snapshot() {
 
         <Typography
           sx={{
-            fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
+            // fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
             fontFamily: "Akatab,Sans-serif"
           }}
-          variant="subtitle1"
+          variant="body1"
+          component={"p"}
           gutterBottom
         >
         {`  A scrapbook of memories shared by our couples.`}

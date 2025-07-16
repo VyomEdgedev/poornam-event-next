@@ -9,58 +9,60 @@ export default function WeddingSection() {
     <Box
       sx={{
         py:{xs:1, md:2},
-        px: { xs: 2, md: 7 },
+        px: { xs: 2,sm: 4, md: 7 },
         // maxWidth: "1200px",
         width: "100%",
-        margin: "auto",
+        margin: "auto", 
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
         alignItems: "center",
-        gap: { xs: 4, md: 6 },
+        gap: { xs: 3, sm:4, md: 6 },
       }}
     >
       <Box sx={{ flex: 1, maxWidth: { md: "55%" }}}>
         <Typography
-          variant={isSmDown ? "h4" : "h3"}
-          component="h1"
+          variant="h2"
+          component="h2"
           sx={{
             fontFamily: 'Gloock, serif',
             fontWeight: 400,
             color: "#000D1F",
-            mb: 0.6,
-            lineHeight: 1.3,
+            mb: {xs:0.5, sm:0.6},
+            lineHeight: 1.2,
             
           }}
         >
          {` It's Not Just a`}
           <Box
             component="span"
-            sx={{fontFamily: 'Gloock, serif', fontWeight: 400, color: "#DAA412" }}
+            sx={{fontFamily: 'Gloock, serif', fontWeight: 400, color: "#DAA412", ml: 0.5 }}
           >
             Wedding...
           </Box>
         </Typography>
 
         <Typography
-          variant="subtitle1"
-          sx={{ mb: 0, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , fontSize:"1.75rem" }}
+          variant="h4"
+          component="h4"
+          sx={{ mb: 0, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , lineHeight: 1.2}}
         >
           {`It's a Story You'll Tell Forever`}
         </Typography>
 
         <Typography
           variant="body1"
-          sx={{ mb: 2, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 ,fontSize:"1rem"}}
+          component="p"
+          sx={{ mb: 2, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , lineHeight: 1.3}}
         >
          {` Shaadi ka stress is real. One minute you're choosing napkin colors,
           next minute you're crying over seating arrangements. We get it.`}
         </Typography>
 
         <Typography
-          variant="subtitle2"
+          variant="h4"
+          component="h4"
           sx={{
-            fontSize:"1.75rem",
             frontFamily: "Akatab,Sans-serif",
             color: "#000D1F", 
             fontWeight: 400,
@@ -70,7 +72,9 @@ export default function WeddingSection() {
          {` At Poornam, we don’t just manage weddings:`}
         </Typography>
 
-        <Typography variant="body2" sx={{ fontSize:"1rem" ,frontFamily: "Akatab,Sans-serif",color: "#000D1F",  }}>
+        <Typography  variant="body1"
+          component="p" sx={{ frontFamily: "Akatab,Sans-serif",color: "#000D1F",  fontWeight: 400,
+            lineHeight: 1.3 }}>
          {` We manage Meltdowns, Moodboards, and Mom’s wishlist. From the first dance
           to the final goodbye hug, we’re there.`}
         </Typography>
@@ -93,7 +97,7 @@ export default function WeddingSection() {
               borderRadius: 3,
               boxShadow: 3,
               objectFit: "cover",
-              height: 261,
+              height: { xs: 180, sm: 220, md: 261 },
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -108,13 +112,13 @@ export default function WeddingSection() {
             src="./weddinghero2.png"
             alt="Elegant wedding stage decorated with a big pink floral chandelier composed of roses, hydrangeas, and ornamental hanging crystals with vintage style seating"
             sx={{
+              width: "100%",
               height: "auto",
               borderRadius: 1,
               boxShadow: 3,
               objectFit: "cover",
-              mt: 8,
-              width:200,
-              height: 259,
+              mt: { xs: 4, sm: 6, md: 8 },
+              height: { xs: 160, sm: 200, md: 259 },
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -125,4 +129,5 @@ export default function WeddingSection() {
     </Box>
   );
 }
+
 

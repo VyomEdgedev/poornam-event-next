@@ -22,21 +22,24 @@ const data = [
 
 export default function InspirationSection() {
   return (
-    <Box sx={{ py: 8, px: 4, textAlign: 'center' }}>
+    <Box sx={{ py: {xs: 4, md: 8}, px: 4, textAlign: 'center' }}>
       <Typography
-        variant="h4"
+
+        variant="h2"
+        component={"h2"}
+
         sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 6 }}
       >
       {`  Inspirations & Blogs`}
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={{xs: 4, sm: 4}} justifyContent="center">
         {data.map((item, index) => (
           <Grid item key={index} xs={6} sm={3}>
             <Box
               sx={{
-                width: 180,
-                height: 180,
+                width: { xs: 130, sm: 180 },
+                height: {xs: 130, sm: 180},
                 mx: 'auto',
                 borderRadius: '50%',
                 overflow: 'hidden',

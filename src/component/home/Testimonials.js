@@ -38,25 +38,25 @@ const testimonials = [
 export default function ClientTestimonials() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box
       sx={{
         bgcolor: "white",
-        px: { xs: 2, md: 5 },
-        py: { xs: 2, md: 3 },
+        px: { xs: 2, sm: 3,  md: 5 },
+        py: { xs: 2,sm: 3, md: 3 },
       }}
     >
       <Box
         sx={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row",
+          display: isMobile ? "column-reverse" : isTablet ? "flex" : "flex",
+          flexDirection: isMobile ? "column" : isTablet ? "column" : "row",
           gap: 4,
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        {/* Left - Testimonials Grid */}
+        
        {/* Left - Testimonials Grid */}
 <Box
   sx={{
@@ -69,7 +69,8 @@ export default function ClientTestimonials() {
     sx={{
       display: "flex",
       gap: 2,
-      flexWrap: isMobile ? "nowrap" : "wrap",
+      flexWrap: isMobile ? "nowrap" : isTablet ? "nowrap" :  "wrap",
+
       justifyContent: isMobile ? "flex-start" : "center",
     }}
   >
@@ -88,15 +89,16 @@ export default function ClientTestimonials() {
       >
         <Stack direction="row" spacing={1} alignItems="center" mb={1}>
           <Avatar src={item.avatar} sx={{ width: 36, height: 36 }} />
-          <Typography variant="subtitle2" fontWeight={600} fontFamily={"Akatab,Sans-serif"} color="#000000" fontSize={isMobile ? "1rem" : "1.1rem"}>
+          <Typography variant="h6" fontWeight={600} fontFamily={"Akatab,Sans-serif"} color="#000000" >
             {item.name}
           </Typography>
         </Stack>
 
         <Typography
-          variant="body2"
+          variant="body1"
+          component="p"
           color="#000000"
-          sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif",fontWeight:'400' , fontSize: isMobile ? "0.95rem" : "1rem" }}
+          sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif",fontWeight:'400' ,}}
         >
           {item.text}
         </Typography>
@@ -115,19 +117,19 @@ export default function ClientTestimonials() {
         {/* Right - Heading */}
         <Box sx={{ textAlign: isMobile ? "center" : "right" }}>
           <Typography
-            variant="h3"
+            variant="h2"
             fontWeight="bold"
             sx={{
              fontFamily: 'Gloock, serif',
               fontWeight: "400",
               color: "#000000",
               mb: 1,
-              fontSize: isMobile ? "2rem" : "3rem"
+              
             }}
           >
-            Client Testimonials
+           {` Client Testimonials `}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" sx={{
+          <Typography variant="body1" component="p" color="text.secondary" sx={{
             frontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight:'400'
@@ -139,3 +141,6 @@ export default function ClientTestimonials() {
     </Box>
   );
 }
+
+
+
