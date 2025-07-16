@@ -1,4 +1,4 @@
-// FAQSection.js - Reusable FAQ Component
+// FAQSection.js - Enhanced Reusable FAQ Component
 import React, { useState } from 'react';
 import {
   Box,
@@ -6,8 +6,10 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Grid,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const FAQSection = ({
@@ -24,6 +26,8 @@ const FAQSection = ({
   padding = 4,
 }) => {
   const [expanded, setExpanded] = useState(null);
+  const theme = useTheme();
+  const isTabletUp = useMediaQuery(theme.breakpoints.up('sm'));
 
   const handleChange = (panel) => (_, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
@@ -32,13 +36,13 @@ const FAQSection = ({
   return (
     <Box sx={{ backgroundColor, py: padding, px: padding }}>
       <Typography
-        variant={titleVariant}
+        variant={"h1"}
         align="center"
-        sx={{ 
-          fontFamily: titleFontFamily, 
-          fontWeight: 400, 
+        sx={{
+          fontFamily: titleFontFamily,
+          fontWeight: 400,
           mb: 1,
-          color: textColor 
+          color: textColor,
         }}
       >
         {title}
@@ -46,87 +50,112 @@ const FAQSection = ({
       <Typography
         variant="subtitle1"
         align="center"
-        sx={{ 
-          mb: 4, 
-          fontFamily: bodyFontFamily, 
+        sx={{
+          mb: 4,
+          fontFamily: bodyFontFamily,
           fontWeight: 400,
-          color: textColor 
+          color: textColor,
         }}
       >
         {subtitle}
       </Typography>
+
       <Box maxWidth={maxWidth} mx="auto">
-        {faqData.map((item, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === index}
-            onChange={handleChange(index)}
-            disableGutters
-            square
-            elevation={0}
-            sx={{
-              borderBottom: `1px solid ${borderColor}`,
-              backgroundColor: 'transparent',
-              '&::before': { display: 'none' },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={
-                item.answer ? (
-                  expanded === index ? <ExpandMoreIcon /> : <ChevronRightIcon />
-                ) : (
-                  <ExpandMoreIcon />
-                )
-              }
-              aria-controls={`panel${index}-content`}
-              id={`panel${index}-header`}
-              sx={{
-                minHeight: 48,
-                '& .MuiAccordionSummary-content': {
-                  marginY: '8px',
-                },
-              }}
+        {faqData.map((item, index) => {
+          const isOpen = expanded === index;
+          return (
+            <Grid
+              container
+              key={index}
+              spacing={2}
+              alignItems="flex-start"
+              sx={{ borderBottom: `1px solid ${borderColor}`, mb: 2 }}
             >
-              <Typography
-                sx={{
-                  fontFamily: bodyFontFamily,
-                  fontWeight: 500,
-                  color: textColor,
-                }}
-              >
-                {item.question}
-              </Typography>
-            </AccordionSummary>
-            {item.answer && (
-              <AccordionDetails>
-                <Typography 
-                  variant="body2" 
-                  sx={{ 
-                    color: textColor,
-                    fontFamily: bodyFontFamily, 
-                    fontWeight: 400 
+              {/* Question Accordion */}
+              <Grid item xs={12} sm={6}>
+                <Accordion
+                  expanded={isOpen}
+                  onChange={handleChange(index)}
+                  disableGutters
+                  square
+                  elevation={0}
+                  sx={{
+                    backgroundColor: 'transparent',
+                    '&::before': { display: 'none' },
                   }}
                 >
-                  {item.answer}
-                </Typography>
-              </AccordionDetails>
-            )}
-          </Accordion>
-        ))}
+                  <AccordionSummary
+                    expandIcon={
+                      <ChevronRightIcon
+                        sx={{
+                          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.4s ease',
+                          color: textColor,
+                        }}
+                      />
+                    }
+                    sx={{
+                      minHeight: 48,
+                      '& .MuiAccordionSummary-content': {
+                        marginY: '8px',
+                      },
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: bodyFontFamily,
+                        fontWeight: 500,
+                        color: textColor,
+                      }}
+                    >
+                      {item.question}
+                    </Typography>
+                  </AccordionSummary>
+                </Accordion>
+              </Grid>
+
+              {/* Answer - right side (tablet/desktop), below (mobile) */}
+              {isOpen && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ p: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontFamily: bodyFontFamily,
+                        fontWeight: 400,
+                        color: textColor,
+                        lineHeight: 0.85,
+                      }}
+                    >
+                      {item.answer}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+            </Grid>
+          );
+        })}
       </Box>
     </Box>
   );
 };
 
 export default FAQSection;
-// 4. Minimal Usage (just change data)
-// function MinimalFAQ() {
+
+
+// import FAQSection from './FAQSection';
+
+// const MinimalFAQ = () => {
 //   const myFAQData = [
 //     {
-//       question: 'Your custom question?',
-//       answer: 'Your custom answer here.',
+//       question: 'Can I customize this component?',
+//       answer: 'Yes! You can pass props like title, color, font, etc.',
+//     },
+//     {
+//       question: 'Does it support responsive layouts?',
+//       answer: 'Absolutely! Answer shows below on mobile, right side on larger screens.',
 //     },
 //   ];
 
 //   return <FAQSection faqData={myFAQData} />;
-// }
+// };

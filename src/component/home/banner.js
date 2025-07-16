@@ -20,7 +20,7 @@ export default function HeroSection() {
     <Box
       sx={{
         backgroundColor: "#030b1d",
-        pt: { xs: 6, sm: 5, md: 0 },
+        pt: { xs: 8, sm: 5, md: 0 },
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
@@ -45,17 +45,18 @@ export default function HeroSection() {
               <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
 
             </Box>
-            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"0",sm:"100px",md:"150px"}, left:{xs:0,md:0} }}>
+            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"90px",lg:"170px"}, left:{xs:0,md:0} }}>
             <Typography
               variant="h1"
+              component={"h1"}
               fontWeight="regular"
               sx={{
                 color: "#E6C365",
                 // position:"absolute",
-                fontSize: { xs: "1.4rem", sm: "2.4rem", md: "3.5rem" },
+                // fontSize: { xs: "1.4rem", sm: "2.4rem", md: "3.5rem" },
                 fontFamily: 'Gloock, serif',
                 // width:"900px",
-                textAlign: { xs: "center", md: "left" },
+                textAlign: { xs: "left", md: "left" },
                 ml:5,
                 mb:1,
                 whiteSpace:{xs:'wrap',md:'nowrap'},
@@ -67,10 +68,11 @@ export default function HeroSection() {
             </Typography> 
             
              <Typography
-              variant="h4"
+              variant="h5"
+              component={"h5"}
               sx={{ color: "#FFF5D9", mb: 2, fontWeight: 400,
                 frontFamily: "Akatab,Sans-serif",
-                
+                textAlign: { xs: "left", md: "left" },
                 ml:5,
                }}
             >
@@ -78,13 +80,17 @@ export default function HeroSection() {
             </Typography> 
             <Typography
             variant="p"
+            component={"p"}
               sx={{
                 color: "#FFF5D9",
+                textAlign: { xs: "left", md: "left" },
                 frontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 whiteSpace:{xs:'wrap',md:'nowrap'},
                 mb: 3,
                 ml:5,
+                
+                
                 
 
               }}
@@ -94,7 +100,7 @@ export default function HeroSection() {
             </Typography>
             
             <Stack
-              direction={{ xs: "column", sm: "row" }}
+              direction={{ xs: "row", sm: "row" }}
               spacing={2}
               marginTop={5}
               marginLeft={5}
@@ -122,7 +128,7 @@ export default function HeroSection() {
                   borderRadius: "30px",
                   textTransform: "none",
                   fontFamily: "Akatab,Sans-serif",
-                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
+                  fontSize: { xs: "0.70rem", sm: "1rem", md: "1rem" },
                   fontWeight: 400,
                   whiteSpace: "nowrap",
                   "&:hover": {
@@ -145,7 +151,7 @@ export default function HeroSection() {
             sx={{
               flex: 1,
               width: "100%",
-              overflow: "hidden",
+              overflow: { xs: "visible", md: "hidden" },
               // borderRadius: 2,
               zIndex:1             
 
@@ -155,7 +161,7 @@ export default function HeroSection() {
             <Image
               src="/sadhi.png"
               alt="Bridal Hero"
-              width={1200}
+              width={1000}
               height={800}
               
               style={{
@@ -165,6 +171,7 @@ export default function HeroSection() {
                 objectPosition: "top",
                 display: "block",
                 transform: "scaleX(-1)",
+                
               }}
             />
           </Box> 

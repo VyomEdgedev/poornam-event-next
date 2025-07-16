@@ -19,19 +19,19 @@ const tools = [
 export default function ResourcesSection() {
   return (
     <Box sx={{ py: 1, px: 0, backgroundColor: '#fff' }} >
-      <Grid container spacing={{ xs: 6, md: 25 }} alignItems="center" justifyContent={'space-evenly'}>
+      <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg: 25 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
         <Grid item xs={12} md={8} justifyItems={'center'}>
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{ fontFamily: 'serif', fontWeight: 700, mb: 1 }}
           >
             Resources
           </Typography>
-          <Typography variant="subtitle2" color="textSecondary">
+          <Typography variant="body1" component={"p"} color="textSecondary">
             Love From Our Couples
           </Typography>
-          <Typography variant="h6" sx={{ mt: 3 }}>
+          <Typography variant="h6" component="h6" sx={{ mt: 2 }}>
             Grab your free tools:
           </Typography>
           <Button
@@ -55,7 +55,7 @@ export default function ResourcesSection() {
 
         {/* Right Section */}
         <Grid item xs={12} md={8} >
-          <Grid container spacing={4} justifyContent={'center'}>
+          <Grid container spacing={{xs:2,sm:4,md:4,lg:4}} justifyContent={'center'} flexWrap={"nowrap"}>
             {tools.map((tool, index) => (
               <Grid item xs={12} sm={4} key={index}  textAlign="center">
                 <Box
@@ -64,7 +64,7 @@ export default function ResourcesSection() {
                   alt={tool.title}
                   sx={{ height: 80, mb: 2 }}
                 />
-                <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
+                <Typography variant="body1" component={"p"} sx={{ fontWeight: 400 }}>
                   {tool.title}
                 </Typography>
               </Grid>

@@ -17,18 +17,18 @@ export default function  HomePage() {
   return (
     <>
   
-  {/* <Banner></Banner> */}
-    {/* <WeddingHero></WeddingHero>
+  <Banner></Banner>
+    <WeddingHero></WeddingHero>
     <OurServices></OurServices>
- <AboutSection></AboutSection> */}
+ <AboutSection></AboutSection>
 
-   {/* <OurPortfolio></OurPortfolio> */}
+   <OurPortfolio></OurPortfolio>
    <Testimonials></Testimonials>
-  {/* <HomeSnapshot></HomeSnapshot> */}
-   {/* <ResourcesSection></ResourcesSection> */}
-   {/* <FAQSection></FAQSection> */}
-  {/* <InspirationSection></InspirationSection> */}
- {/* <ContactSection></ContactSection> */}
+  <HomeSnapshot></HomeSnapshot>
+   <ResourcesSection></ResourcesSection>
+   <FAQSection></FAQSection>
+  <InspirationSection></InspirationSection>
+ <ContactSection></ContactSection>
   </>
   )
 }
