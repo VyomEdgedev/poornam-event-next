@@ -21,14 +21,7 @@ export default function  HomePage() {
     <WeddingHero></WeddingHero>
     <OurServices></OurServices>
  <AboutSection></AboutSection>
-  {/* <ExecutiveCard
-  title="Luxury Wedding Planning"
-  subtitle="Bespoke, Opulent, Iconic"
->
-  <Typography variant="body2" sx={{ color: '#ccc' }}>
-    We craft events that feel magical — from theme to confetti, sparkle to vows.
-  </Typography>
-</ExecutiveCard> */}
+
    <OurPortfolio></OurPortfolio>
    <Testimonials></Testimonials>
   <HomeSnapshot></HomeSnapshot>
