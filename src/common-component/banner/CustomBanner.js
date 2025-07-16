@@ -93,6 +93,7 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
       top: logoposition?.sm?.top || logoposition?.mobile?.top || '15px',
       left: logoposition?.sm?.left || logoposition?.mobile?.left || '15px',
       width: logoposition?.sm?.width || logoposition?.mobile?.width || '50px',
+      display: 'none',
     },
   }),
 }));
@@ -134,7 +135,7 @@ const ContentContainer = styled(Container)(({ theme, contentalignment, contentpo
     maxWidth: '100%',
   },
   [theme.breakpoints.down('sm')]: {
-    padding: '30px 15px',
+    padding: '20px 15px',
     alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
     textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
   },
@@ -143,13 +144,14 @@ const ContentContainer = styled(Container)(({ theme, contentalignment, contentpo
 const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   fontFamily: headingstyle?.fontFamily || "'Gloock', serif",
   fontWeight: headingstyle?.fontWeight || '400',
-  fontSize: headingstyle?.fontSize || '48px',
+  fontSize: headingstyle?.fontSize ||'48px',
   letterSpacing: headingstyle?.letterSpacing || '-0.02em',
   lineHeight: headingstyle?.lineHeight || '1.13',
   color: headingstyle?.color || 'rgba(255, 255, 255, 1)',
   marginBottom: headingstyle?.marginBottom || '8px',
-  maxWidth: headingstyle?.maxWidth || '600px',
-  whiteSpace:'nowrap',
+  maxWidth: headingstyle?.maxWidth || '950px',
+  
+  
   
   // Enhanced responsive typography
   [theme.breakpoints.down('xl')]: {
@@ -162,26 +164,27 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
     maxWidth: headingstyle?.responsive?.lg?.maxWidth || '500px',
   },
   [theme.breakpoints.down('md')]: {
-    fontSize: headingstyle?.responsive?.md?.fontSize || '36px',
+    fontSize: headingstyle?.responsive?.md?.fontSize || '24px ',
     lineHeight: headingstyle?.responsive?.md?.lineHeight || '1.2',
     maxWidth: headingstyle?.responsive?.md?.maxWidth || '100%',
     marginBottom: headingstyle?.responsive?.md?.marginBottom || '12px',
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: headingstyle?.responsive?.sm?.fontSize || '28px',
-    lineHeight: headingstyle?.responsive?.sm?.lineHeight || '1.3',
-    marginBottom: headingstyle?.responsive?.sm?.marginBottom || '16px',
+    marginTop:"35px",
+    fontSize: headingstyle?.responsive?.sm?.fontSize || '22px',
+    lineHeight: headingstyle?.responsive?.sm?.lineHeight || '1.2',
+    marginBottom: headingstyle?.responsive?.sm?.marginBottom || '5px',
   },
   [theme.breakpoints.down('xs')]: {
-    fontSize: headingstyle?.responsive?.xs?.fontSize || '24px',
-    lineHeight: headingstyle?.responsive?.xs?.lineHeight || '1.35',
+    fontSize: headingstyle?.responsive?.xs?.fontSize || '20px',
+    lineHeight: headingstyle?.responsive?.xs?.lineHeight || '1',
   },
 }));
 
 const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
   fontFamily: subheadingstyle?.fontFamily || "'Akatab', sans-serif",
   fontWeight: subheadingstyle?.fontWeight || '600',
-  fontSize: subheadingstyle?.fontSize || '26px',
+  fontSize: subheadingstyle?.fontSize || '26px !important',
   letterSpacing: subheadingstyle?.letterSpacing || '0.02em',
   lineHeight: subheadingstyle?.lineHeight || '1.37',
   color: subheadingstyle?.color || 'rgba(255, 245, 217, 1)',
@@ -198,17 +201,17 @@ const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
     maxWidth: subheadingstyle?.responsive?.lg?.maxWidth || '700px',
   },
   [theme.breakpoints.down('md')]: {
-    fontSize: subheadingstyle?.responsive?.md?.fontSize || '20px',
+    fontSize: subheadingstyle?.responsive?.md?.fontSize || '20px !important',
     marginBottom: subheadingstyle?.responsive?.md?.marginBottom || '12px',
     maxWidth: subheadingstyle?.responsive?.md?.maxWidth || '100%',
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: subheadingstyle?.responsive?.sm?.fontSize || '18px',
-    lineHeight: subheadingstyle?.responsive?.sm?.lineHeight || '1.4',
-    marginBottom: subheadingstyle?.responsive?.sm?.marginBottom || '16px',
+    fontSize: subheadingstyle?.responsive?.sm?.fontSize || '24px',
+    lineHeight: subheadingstyle?.responsive?.sm?.lineHeight || '1.2',
+    marginBottom: subheadingstyle?.responsive?.sm?.marginBottom || '14px',
   },
   [theme.breakpoints.down('xs')]: {
-    fontSize: subheadingstyle?.responsive?.xs?.fontSize || '16px',
+    fontSize: subheadingstyle?.responsive?.xs?.fontSize || '20px',
   },
 }));
 
@@ -340,7 +343,7 @@ const CustomBanner = ({
       xl: { fontSize: '44px', maxWidth: '550px' },
       lg: { fontSize: '40px', maxWidth: '500px' },
       md: { fontSize: '36px', maxWidth: '100%' },
-      sm: { fontSize: '28px', marginBottom: '16px' },
+      sm: { fontSize: '28px', marginBottom: '10px' },
       xs: { fontSize: '24px' }
     }
   },
@@ -349,7 +352,7 @@ const CustomBanner = ({
       xl: { fontSize: '24px', maxWidth: '800px' },
       lg: { fontSize: '22px', maxWidth: '700px' },
       md: { fontSize: '20px', maxWidth: '100%' },
-      sm: { fontSize: '18px', marginBottom: '16px' },
+      sm: { fontSize: '18px', marginBottom: '14px' },
       xs: { fontSize: '16px' }
     }
   },
@@ -358,8 +361,8 @@ const CustomBanner = ({
       xl: { maxWidth: '700px' },
       lg: { fontSize: '15px', maxWidth: '600px' },
       md: { fontSize: '15px', maxWidth: '100%' },
-      sm: { fontSize: '14px', marginBottom: '20px' },
-      xs: { fontSize: '13px' }
+      sm: { fontSize: '13px', marginBottom: '15px' },
+      xs: { fontSize: '12px' }
     }
   },
   buttonsContainer = {
@@ -420,7 +423,8 @@ const CustomBanner = ({
         {/* Title */}
         {title && (
           <MainHeading 
-            variant="h1" 
+            variant="h2" 
+            
             headingstyle={headingStyle}
           >
             {title}
@@ -546,4 +550,7 @@ export default CustomBanner;
   ]}
 />
 */
+
+
+
 

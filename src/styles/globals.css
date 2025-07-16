@@ -97,26 +97,24 @@
       }
     }
 
-/* body{
-  zoom: 0.9;
-} */
+
 
 
 /* Default (large screens) */
-h1 { font-size: 54px !important;
+h1 { font-size: 48px!important;
     font-family: 'Gloock', serif;
 ;
 
 }
 
-h2 { font-size: 44px !important;
+h2 { font-size: 42px !important;
    font-family: 'Gloock,serif'
 }
-h3 { font-size: 32px !important; }
-h4 { font-size: 28px !important; }
-h5 { font-size: 24px !important; }
-h6 { font-size: 20px !important; }
-p  { font-size: 18px !important; 
+h3 { font-size: 32px  }
+h4 { font-size: 28px  }
+h5 { font-size: 24px  }
+h6 { font-size: 20px  }
+p  { font-size: 18px ; 
  font-family: "Akatab,Sans-serif"
 }
 

@@ -47,8 +47,8 @@ export default function HeroSection() {
             </Box>
             <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"90px",lg:"170px"}, left:{xs:0,md:0} }}>
             <Typography
-              variant="h1"
-              component={"h1"}
+              variant="h2"
+              component="h1"
               fontWeight="regular"
               sx={{
                 color: "#E6C365",
