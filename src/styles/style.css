@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 body {
+  zoom:0.9;
  line-height: 1.6;
   color:#000000;
   font-family: 'Akatab', sans-serif;

@@ -4,12 +4,11 @@ import {
   Typography,
   Accordion,
   AccordionSummary,
-  AccordionDetails,
+  useMediaQuery,
+  useTheme,
   Grid,
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { X } from '@mui/icons-material';
 
 const faqData = [
   {
@@ -32,6 +31,8 @@ const faqData = [
 
 export default function FAQSection() {
   const [expanded, setExpanded] = useState(null);
+  const theme = useTheme();
+  const isTabletUp = useMediaQuery(theme.breakpoints.up('sm'));
 
   const handleChange = (panel) => (_, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
@@ -42,71 +43,109 @@ export default function FAQSection() {
       <Typography
         variant="h4"
         align="center"
-        sx={{ fontFamily: 'Gloock, serif', fontWeight: '400', mb: 1 }}
+        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 }}
       >
         FAQ’s
       </Typography>
       <Typography
         variant="subtitle1"
         align="center"
-        sx={{ mb: 4 , frontFamily: "Akatab,Sans-serif",  fontWeight:400}}
+        sx={{
+          mb: 4,
+          fontFamily: 'Akatab, Sans-serif',
+          fontWeight: 400,
+        }}
       >
         Your Questions, Answered
       </Typography>
 
       <Box maxWidth="lg" mx="auto">
-        {faqData.map((item, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === index}
-            onChange={handleChange(index)}
-            disableGutters
-            square
-            elevation={0}
-            sx={{
-              borderBottom: '1px solid #e0b855',
-              backgroundColor: 'transparent',
-              
-              '&::before': { display: 'none' },
+        {faqData.map((item, index) => {
+          const isOpen = expanded === index;
 
-            }}
-          >
-            <AccordionSummary
-              expandIcon={
-                item.answer ? (
-                  expanded === index ? <ExpandMoreIcon /> : <ChevronRightIcon />
-                ) : (
-                  <ExpandMoreIcon />
-                )
-              }
-              aria-controls={`panel${index}-content`}
-              id={`panel${index}-header`}
+          return (
+            <Grid
+              container
+              key={index}
+              spacing={2}
+              alignItems="flex-start"
               sx={{
-                minHeight: 48,
-                '& .MuiAccordionSummary-content': {
-                  marginY: '8px',
-                },
+                borderBottom: '1px solid #e0b855',
+                mb: 2,
               }}
             >
-              <Typography
-                sx={{
-                  frontFamily: "Akatab,Sans-serif",
-                  fontWeight: 500,
-                  color: '#001538',
-                }}
-              >
-                {item.question}
-              </Typography>
-            </AccordionSummary>
-            {item.answer && (
-              <AccordionDetails>
-                <Typography variant="body2" sx={{ color: '#001538' ,frontFamily: "Akatab,Sans-serif", fontWeight: 400 }}>
-                  {item.answer}
-                </Typography>
-              </AccordionDetails>
-            )}
-          </Accordion>
-        ))}
+              <Grid item xs={12} sm={6}>
+                <Accordion
+                  expanded={isOpen}
+                  onChange={handleChange(index)}
+                  disableGutters
+                  square
+                  elevation={0}
+                  sx={{
+                    backgroundColor: 'transparent',
+                    '&::before': { display: 'none' },
+                  }}
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      <ChevronRightIcon
+                        sx={{
+                          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.4s ease',
+                          color: '#001538',
+                        }}
+                      />
+                    }
+                    sx={{
+                      minHeight: 48,
+                      '& .MuiAccordionSummary-content': {
+                        marginY: '8px',
+                        fontFamily: 'Akatab, Sans-serif',
+                        fontWeight: 500,
+                        color: '#001538',
+                      },
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: 'Akatab, Sans-serif',
+                        fontWeight: 500,
+                        color: '#001538',
+                      }}
+                    >
+                      {item.question}
+                    </Typography>
+                  </AccordionSummary>
+                </Accordion>
+              </Grid>
+
+              {/* Answer right on desktop, below on mobile */}
+              {isOpen && (
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      transition: 'opacity 0.4s ease',
+                      opacity: 1,
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontFamily: 'Akatab, Sans-serif',
+                        fontWeight: 400,
+                        color: '#001538',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {item.answer}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+            </Grid>
+          );
+        })}
       </Box>
     </Box>
   );
