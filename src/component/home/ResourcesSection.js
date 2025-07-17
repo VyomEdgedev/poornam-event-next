@@ -18,7 +18,7 @@ const tools = [
 
 export default function ResourcesSection() {
   return (
-    <Box sx={{ py: 1, px: 0, backgroundColor: '#fff' }} >
+    <Box sx={{ py:{ xs: 4, md: 8 }, px: 0, backgroundColor: '#fff' }} >
       <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg: 25 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
         <Grid item xs={12} md={8} justifyItems={'center'}>

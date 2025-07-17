@@ -39,7 +39,7 @@ export default function FAQSection() {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#fdf8ef', py: 4, px: 4 }}>
+    <Box sx={{ backgroundColor: '#fdf8ef', py: 3, px: 4 }}>
       <Typography
         variant="h4"
         align="center"
