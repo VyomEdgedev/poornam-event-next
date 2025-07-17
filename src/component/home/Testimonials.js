@@ -44,13 +44,13 @@ export default function ClientTestimonials() {
       sx={{
         bgcolor: "white",
         px: { xs: 2, sm: 3,  md: 5 },
-        py: { xs: 2,sm: 3, md: 3 },
+        py: { xs: 4,sm: 5, md: 5 },
       }}
     >
       <Box
         sx={{
-          display: isMobile ? "column-reverse" : isTablet ? "flex" : "flex",
-          flexDirection: isMobile ? "column" : isTablet ? "column" : "row",
+          display: "flex",
+          flexDirection: isMobile || isTablet ? "column" : "row",
           gap: 4,
           alignItems: "center",
           justifyContent: "space-between",
@@ -60,18 +60,18 @@ export default function ClientTestimonials() {
        {/* Left - Testimonials Grid */}
 <Box
   sx={{
-    width: isMobile ? '100%' : '60%',
-    overflowX: isMobile ? 'auto' : 'visible',
-    "&::-webkit-scrollbar": { display: "none" },
+    width: isMobile || isTablet ? "100%" : "70%",
+    overflowX: 'auto',
+    "&::-webkit-scrollbar": {height: 6,},
   }}
 >
   <Box
     sx={{
       display: "flex",
       gap: 2,
-      flexWrap: isMobile ? "nowrap" : isTablet ? "nowrap" :  "wrap",
+      flexWrap:"nowrap",
 
-      justifyContent: isMobile ? "flex-start" : "center",
+      justifyContent:  "flex-start",
     }}
   >
     {testimonials.map((item, index) => (
@@ -115,7 +115,7 @@ export default function ClientTestimonials() {
 
 
         {/* Right - Heading */}
-        <Box sx={{ textAlign: isMobile ? "center" : "right" }}>
+        <Box sx={{ textAlign: isMobile ? "center" : "right", mt:{ xs: 7, sm: 0} ,mb:{xs: 2, sm: 0} }}>
           <Typography
             variant="h2"
             fontWeight="bold"

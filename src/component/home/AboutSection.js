@@ -6,7 +6,7 @@ import CustomButton from "@/common-component/button/CustomButton";
 export default function AboutSection() {
   return (
     <Box sx={{
-      bgcolor: "#fff", marginTop: "10px", marginBottom: "10px", py: { xs: 1, md: 2 },
+      bgcolor: "#fff", marginTop: "10px", marginBottom: "10px", py: { xs: 3, md: 2 },
       px: { xs: 2, md: 7 },
     }}>
 
@@ -19,7 +19,7 @@ export default function AboutSection() {
           mb: 3,
         }}
       >
-        {` Crafting Weddings with Soul Since 2017`}
+        {`Crafting Weddings with Soul Since 2017`}
       </Typography>
 
       <Typography
