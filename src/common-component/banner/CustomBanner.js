@@ -88,6 +88,7 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
       top: logoposition?.md?.top || logoposition?.mobile?.top || '20px',
       left: logoposition?.md?.left || logoposition?.mobile?.left || '20px',
       width: logoposition?.md?.width || logoposition?.mobile?.width || '60px',
+      display: 'none',
     },
     [theme.breakpoints.down('sm')]: {
       top: logoposition?.sm?.top || logoposition?.mobile?.top || '15px',
