@@ -5,6 +5,7 @@ import SearchFilter from './SearchFilter';
 import PlanningTips from './PlanningTips';
 import BlogSection from './BlogSection';
 import PicksSection from './PicksSection';
+
 const Blog = () => {
   return (
     <>
@@ -21,7 +22,8 @@ const Blog = () => {
           responsive: {
             md: {
               width: '100%',
-              background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)'
+              background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)',
+             
             }
           }
         }}
