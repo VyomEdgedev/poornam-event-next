@@ -41,8 +41,8 @@ export default function AboutUS() {
             </CustomBanner >
 
          
-            <OurStories></OurStories>
-            <MagicMakers></MagicMakers>
+             <OurStories></OurStories>
+           <MagicMakers></MagicMakers>
             <Owners></Owners>
             <History></History>
             <PoornamVows></PoornamVows>

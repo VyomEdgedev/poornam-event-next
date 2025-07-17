@@ -97,6 +97,10 @@
       }
     }
 
+
+
+
+
 /* Default (large screens) */
 h1 { font-size: 48px!important;
     font-family: 'Gloock', serif;
@@ -169,4 +173,6 @@ p  { font-size: 18px ;
   h6 { font-size: 13px  };
   p  { font-size: 12px  };
 }
+
+  
 

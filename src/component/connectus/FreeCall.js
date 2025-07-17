@@ -12,8 +12,8 @@ function FreeCall() {
         display="flex"
         justifyItems="center"
         justifyContent="space-evenly"
-        padding="30px"
-        >
+       padding={{xs:"20px",sm:"30px",md:"40px"}}>
+      
             <Grid  lineHeight="60px"  >
                 <Typography sx={{ fontFamily:"Gloock,Sans-serif",fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }}}>
                     {`Just Want to Chat Wedding Vibes Over Coffee?`}</Typography>

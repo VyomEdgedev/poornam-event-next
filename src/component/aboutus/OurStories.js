@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Box, Typography } from "@mui/material";
 const Story = [
   {
     "heading": "Our Story “From One Wedding... to a Thousand Memories”",
@@ -12,18 +13,49 @@ const Story = [
 
 export default function OurStories() {
   return (
-    <div style={{ padding: "3rem",}}>
+
+
+    <Box sx={{ padding: "3rem" }}>
       {Story.map((story, index) => (
-        <div key={index} style={{ marginBottom: "0.5rem" }}>
-          <h2 style={{ color: "black" ,  fontSize: "clamp(1.5rem, 5vw, 2rem)",
-              fontFamily: "Gloock,serif", fontWeight:400 }}>{story.heading}</h2>
-          {story.paragraphs.map((p, i) => (
-            <p key={i} style={{ lineHeight: 1.2  , fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
+        <Box key={index} sx={{ marginBottom: "1.5rem" }}>
+          {/* Heading */}
+          <Typography
+            variant="h2"
+            component="h2"
+            sx={{
+              color: "black",
+              fontSize: "clamp(1.5rem, 5vw, 2rem)",
+              fontFamily: "Gloock, serif",
               fontWeight: 400,
-              fontFamily: "Akatab,Sans-serif",} }>{p}</p>
+              mb: 1.5,
+            }}
+          >
+            {story.heading}
+          </Typography>
+
+          {/* Paragraphs */}
+          {story.paragraphs.map((p, i) => (
+            <Typography
+             variant="h6"
+            component="h6"
+              key={i}
+              sx={{
+                lineHeight: 1.6,
+           
+                fontWeight: 400,
+                fontFamily: "Akatab, sans-serif",
+                mb: 1,
+              }}
+            >
+              {p}
+            </Typography>
           ))}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
-}
+};
+
+
+
+

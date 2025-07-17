@@ -214,6 +214,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import Image from 'next/image';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const MyForm = () => {
     const [formData, setFormData] = useState({
@@ -239,29 +240,35 @@ const MyForm = () => {
         // Handle form submission logic here
     };
 
+    const isBelow900 = useMediaQuery('(max-width:900px),(spacing:20px)');
+    const responsiveSpacing = isBelow900
     return (
         <Box sx={{
-            px: { xs: 2, md: 7 },
-            py: { xs: 2, md: 7 },
+            px: { xs: 12, sm: 15, md: 7 },
+            py: { xs: 2, sm: 5, md: 7 },
             fontFamily: "Akatab, sans-serif"
         }}>
             <Grid
                 container
-                spacing={{ xs: 4, md: 16 }}
+                spacing={{ xs: 2, sm: 5, md: 7 }}
                 display="flex"
                 alignItems="flex-start"
                 justifyContent="center"
                 sx={{ width: "100%" }}
             >
                 {/* Left Side - Title + Image */}
-                <Grid item xs={12} md={6}>
+                <Grid
+                    container spacing={responsiveSpacing}
+                    alignItems={isBelow900 ? 'center' : "center"}
+                    justifyContent={isBelow900 ? 'center' : 'center'}
+                    item xs={12} sm={4} md={4}>
                     <Typography
-                        variant="h4"
+                        variant="h2"
+                        component="h2"
                         sx={{
                             fontWeight: "400",
                             fontFamily: "Gloock, serif",
                             color: "#000000",
-                            mb: 4,
                             fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
                             lineHeight: 1.2
                         }}
@@ -274,11 +281,13 @@ const MyForm = () => {
                     <Box
                         sx={{
                             width: "100%",
-                            maxWidth: { xs: 300, sm: 350, md: 450 },
-                            height: { xs: 250, sm: 300, md: 350 },
+                            maxWidth: { xs: 300, sm: 400, md: 500 },
+                            height: { xs: 250, sm: 300, md: 520 },
                             borderRadius: 2,
                             overflow: "hidden",
-                            position: "relative"
+                            position: "relative",
+                            px: { xs: 5, sm: 10, md: 2 },
+
                         }}
                     >
                         <Image
@@ -304,16 +313,18 @@ const MyForm = () => {
                             flexDirection: 'column',
                             gap: 3,
                             maxWidth: { xs: 350, sm: 400, md: 500 },
-                            width: { xs: "100%", md: "440px" },
-                            mx: { xs: 0, md: 2 },
+                            width: { xs: "100%", sm: "350px", md: "540px" },
+                            mx: { xs: 0, sm: 0, md: 0 },
 
                         }}
                     >
                         {/* Full Name */}
                         <Box>
                             <Typography
+                                variant="body1"
+                                component="p"
                                 sx={{
-                                    fontSize: { xs: "1rem", md: "1.1rem" },
+                                    fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
@@ -328,7 +339,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -345,7 +356,8 @@ const MyForm = () => {
 
                         {/* Email */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -362,7 +374,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -380,7 +392,8 @@ const MyForm = () => {
 
                         {/* Phone */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -397,7 +410,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -414,7 +427,8 @@ const MyForm = () => {
 
                         {/* Wedding Date */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -431,7 +445,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -447,7 +461,8 @@ const MyForm = () => {
 
                         {/* Location */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -464,7 +479,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -481,7 +496,8 @@ const MyForm = () => {
 
                         {/* Number of Guests */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -498,7 +514,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -515,7 +531,8 @@ const MyForm = () => {
 
                         {/* Message */}
                         <Box>
-                            <Typography
+                            <Typography variant="body1"
+                                component="p"
                                 sx={{
                                     fontSize: { xs: "1rem", md: "1.1rem" },
                                     fontFamily: "Akatab, sans-serif",
@@ -532,7 +549,7 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '45px', md: '50px' },
+                                        height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
