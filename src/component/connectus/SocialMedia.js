@@ -6,8 +6,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { RealEstateAgent } from '@mui/icons-material';
-import { red } from '@mui/material/colors';
+import Image from 'next/image';
+
 
 
 function SocialMedia() {
@@ -20,19 +20,25 @@ function SocialMedia() {
             display="flex"
             justifyItems="center"
             justifyContent="space-evenly"
-            padding={{ xs: "20px", sm: "20px", md: "30px" }}
-            bgcolor="#FFFAED">
-            <Grid
-
-                component="img"
-                src="/Phone.png"
-                alt="Sample"
-                alignItems="center"
-                sx={{
-                    width: { xs: 130, sm: 180, md: 230 },
-                    height: { xs: 130, sm: 180, md: 230 },
-                }} >
-
+            gap={responsiveSpacing ? 2 : 0}
+            padding={{ xs: "20px", sm: "20px", md: "18px" }}
+            bgcolor="#FFF7E4">
+            <Grid item width={150}>
+                <Box
+                    sx={{
+                        width: { xs: 130, sm: 180, md: 220 },
+                        height: { xs: 130, sm: 180, md: 220 },
+                        position: 'relative',
+                    }}
+                >
+                    <Image
+                        src="/Phone.png"
+                        alt="Sample"
+                        fill // this will make the image fill the Box
+                        style={{ objectFit: 'contain' }}
+                        priority
+                    />
+                </Box>
             </Grid>
             <Grid container>
                 <Typography
@@ -54,97 +60,179 @@ function SocialMedia() {
             <Grid container
                 alignItems={isBelow482 ? 'center' : "center"}
                 justifyContent={isBelow482 ? 'coloum' : 'row'}
-                direction={isDesktop ? 'column' : 'row'}
+                direction={isDesktop ? '' : 'row'}
                 spacing={isDesktop ? 2 : 1}
                 position="relative"
-                sx={{ px: "5px" }}
+                sx={{
+                    px: "5px",
+                    transform: {
+                        xs: 'none', // No transform on mobile
+                        sm: 'rotate(90deg) scale(1.2)', // Apply on tablet and desktop
+                        md: 'rotate(90deg) scale(1.2)', // Apply on tablet and desktop
+                        lg: 'rotate(90deg) scale(1.2)', // Apply on tablet and desktop
+                    },
+                    transition: 'transform 0.3s ease-in-out',
+            
+                }}
 
 
             >
-                <Box mt={0}>
-                    <svg width={0} height={0}>
-                        <linearGradient id="instagramGradient" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#f09433" />
-                            <stop offset="25%" stopColor="#e6683c" />
-                            <stop offset="50%" stopColor="#dc2743" />
-                            <stop offset="75%" stopColor="#cc2366" />
-                            <stop offset="100%" stopColor="#bc1888" />
-                        </linearGradient>
-                    </svg>
-                    <IconButton data-testid="notify-button"
-                        component="a"
-                        href="https://www.instagram.com/openai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="OpenAI Instagram"
+            <Box mt={0}>
+
+                <IconButton data-testid="notify-button"
+                    component="a"
+                    href="https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="OpenAI Instagram"
+                    sx={{
+                        width: { xs: 30, sm: 40, md: 50 },
+                        height: { xs: 30, sm: 40, md: 50 },
+                        padding: 0,
+                        borderRadius: '50%',
+                        backgroundColor: '#fff',
+                        px: "8px",
+                          transform: {
+                        xs: 'none', // No transform on mobile
+                        sm: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        md: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        lg: 'rotate(270deg) scale(1.2)', // Apply on tablet
+                    },
+
+                    }}
+                >
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
                     >
-                        <InstagramIcon sx={{
-                            fill: 'url(#instagramGradient)',
-                            backgroundColor: '#fff',
-                            width: { xs: 20, sm: 30, md: 40 },
-                            height: { xs: 20, sm: 30, md: 40 },
-                            borderRadius: '50%',
-
-                            fontSize: { xs: 20, sm: 30, md: 40 }, cursor: 'pointer'
-                        }} />
-                    </IconButton>
-                    <IconButton data-testid="notify-button"
-                        color="primary"
-                        aria-label="Twitter"
-                        onClick={() => window.open('https://twitter.com/your_username', '_blank')}
+                        <Image
+                            src="/instaIcon1.svg"
+                            alt="Twitter"
+                            fill
+                            style={{ objectFit: 'contain', borderRadius: '50%' }}
+                        />
+                    </Box>
+                </IconButton>
+                <IconButton
+                    component="a"
+                    href="https://twitter.com/yourprofile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    sx={{
+                        width: { xs: 30, sm: 40, md: 50 },
+                        height: { xs: 30, sm: 40, md: 50 },
+                        padding: 0,
+                        borderRadius: '50%',
+                        backgroundColor: '#fff',
+                        px: "8px",
+                         transform: {
+                        xs: 'none', // No transform on mobile
+                        sm: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        md: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        lg: 'rotate(270deg) scale(1.2)', // Apply on tablet
+                    },
+                    }}
+                >
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
                     >
-                        <TwitterIcon sx={{
-                            backgroundColor: '#fff',
-                            width: { xs: 20, sm: 30, md: 40 },
-                            height: { xs: 20, sm: 30, md: 40 },
-                            borderRadius: '50%',
+                        <Image
+                            src="/twitterIcon1.svg"
+                            alt="Twitter"
+                            fill
+                            style={{ objectFit: 'contain', borderRadius: '50%' }}
+                        />
+                    </Box>
+                </IconButton>
+                <IconButton data-testid="notify-button"
+                    component="a"
+                    href="https://youtube.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    color="error"        // red theme—YouTube style
+                    size="large"
+                    sx={{
+                        width: { xs: 30, sm: 40, md: 50 },
+                        height: { xs: 30, sm: 40, md: 50 },
+                        padding: 0,
+                        borderRadius: '50%',
+                        backgroundColor: '#fff',
+                        px: "8px",
+                        transform: {
+                        xs: 'none', // No transform on mobile
+                        sm: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        md: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        lg: 'rotate(270deg) scale(1.2)', // Apply on tablet
+                    },
 
-                            fontSize: { xs: 20, sm: 30, md: 40 }, cursor: 'pointer'
-                        }} />
-                    </IconButton>
-                    <IconButton data-testid="notify-button"
-                        component="a"
-                        href="https://youtube.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="YouTube"
-                        color="error"        // red theme—YouTube style
-                        size="large"
+                    }}
+                >
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
                     >
-                        <YouTubeIcon fontSize="inherit"
-                            sx={{
-                                backgroundColor: '#fff',
-                                width: { xs: 20, sm: 30, md: 40 },
-                                height: { xs: 20, sm: 30, md: 40 },
-                                borderRadius: '50%',
-
-                                fontSize: { xs: 20, sm: 30, md: 40 }, cursor: 'pointer'
-                            }} />
-                    </IconButton>
-                    <IconButton data-testid="notify-button"
-                        component="a"
-                        href="https://www.linkedin.com/in/your_username"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                        color="primary"
-                        size="large"
+                        <Image
+                            src="/YoutubeIcon1.svg"
+                            alt="Twitter"
+                            fill
+                            style={{ objectFit: 'contain', borderRadius: '50%' }}
+                        />
+                    </Box>
+                </IconButton>
+                <IconButton data-testid="notify-button"
+                    component="a"
+                    href="https://www.linkedin.com/in/your_username"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    color="primary"
+                    sx={{
+                        width: { xs: 30, sm: 40, md: 50 },
+                        height: { xs: 30, sm: 40, md: 50 },
+                        padding: 0,
+                        borderRadius: '50%',
+                        backgroundColor: '#fff',
+                        px: "8px",
+                        transform: {
+                        xs: 'none', // No transform on mobile
+                        sm: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        md: 'rotate(270deg) scale(1.2)', // Apply on tablet and desktop
+                        lg: 'rotate(270deg) scale(1.2)', // Apply on tablet
+                    },
+                    }}
+                >
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
                     >
-                        <LinkedInIcon data-testid="notify-button" fontSize="inherit"
-                            sx={{
-                                backgroundColor: '#fff',
-                                width: { xs: 20, sm: 30, md: 40 },
-                                height: { xs: 20, sm: 30, md: 40 },
-                                borderRadius: '50%',
+                        <Image
+                            src="/LinkedIcon1.svg"
+                            alt="Twitter"
+                            fill
+                            style={{ objectFit: 'contain', borderRadius: '50%' }}
+                        />
+                    </Box>
+                </IconButton>
 
-                                fontSize: { xs: 20, sm: 30, md: 40 }, cursor: 'pointer'
-                            }} />
-                    </IconButton>
+            </Box>
 
-                </Box>
-
-            </Grid>
         </Grid>
+        </Grid >
     )
 }
 

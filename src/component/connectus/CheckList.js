@@ -1,6 +1,7 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Image from 'next/image';
 
 function CheckList() {
   return (
@@ -10,7 +11,7 @@ function CheckList() {
       alignContent="center"
       justifyContent="space-evenly"
       textAlign="left"
-      padding={{xs:"30px",sm:"50px",md:"60px"}}>
+      padding={{ xs: "30px", sm: "50px", md: "60px" }}>
       <Grid>
         <Typography variant="body1"
           component={"p"}
@@ -29,10 +30,46 @@ function CheckList() {
 
 
       </Grid>
-      <Grid>
-        <LocationOnIcon data-testid="notify-button" fontSize="large" color="primary" />
-      </Grid>
+      <Grid
+        container
+        alignItems="center"
+        spacing={2}
+        component="a"
+        href="https://www.google.com/maps/place/202+Kothari+Manjur,+Janjeerwala+Square,+Near+Janjeerwala+Square,+Diamond+Colony,+New+Palasia,+Indore,+Madhya+Pradesh+452001/@22.719568,75.857727,17z/data=!3m1!4b1!4m6!3m5!1s0x3962f9c8d7e8f0a5:0x7c6b2d8e9f8c4b1!8m2!3d22.719568!4d75.8599157!16s%2Fg%2F11c1lq_5t?entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
 
+        data-testid="notify-button"
+        sx={{
+          textDecoration: 'none',
+          color: 'inherit',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'scale(1.02)',
+            backgroundColor: '#f0f0f0',
+            borderRadius: 2,
+          },
+        }}
+      >
+        {/* Icon Section */}
+        <Grid item>
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              position: 'relative',
+            }}
+          >
+            <Image
+              src="/locationicon.svg" // ✅ Replace with your actual icon
+              alt="Location Icon"
+              layout="fill"
+              objectFit="contain"
+            />
+          </Box>
+        </Grid>
+      </Grid>
     </Grid>
   )
 }

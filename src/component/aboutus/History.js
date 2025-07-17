@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function OurStories() {
@@ -16,16 +17,29 @@ export default function OurStories() {
   }, []);
 
   return (
-    <div style={{ padding: "4rem", fontFamily: "Akatab,Sans-serif", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "1.2rem" }}}>
+    <Box sx={{
+      display: "block",
+      justifyItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      maxWidth: "1400px",
+      margin: "0 auto",
+      px: { xs: 6, sm: 4, md: 8 },
+      py: { xs: 2, sm: 6, md: 1 },
+      fontFamily: "Akatab,Sans-serif",
+      fontWeight: "400",
+      fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" }
+    }}>
       {data.map((item, index) => (
-        <div key={index} style={{ marginBottom: "0.5rem" }}>
-          <h4 style={{ color: "black" }}>{item.heading}</h4>
+        <Box key={index} style={{ marginBottom: "0.5rem" }}>
+          <h5 style={{ color: "black", objectFit: "contain" }}>{item.heading}</h5>
+          <h5 style={{ color: "black" }}>{item.h6}</h5>
           {item.paragraphs.map((p, i) => (
-            <p key={i} style={{ lineHeight: 1.2 }}>{p}</p>
+            <p key={i} style={{ fontFamily: "Akatab,Sans-serif", lineHeight: 1.5 }}>{p}</p>
           ))}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 }
 

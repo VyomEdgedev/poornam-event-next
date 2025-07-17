@@ -5,7 +5,7 @@ function Philosophy() {
     return (
         <>
             <Box container
-                padding="30px">
+                padding="5px">
                 <Grid container
                     display="flex"
                     justifyContent="space-evenly"

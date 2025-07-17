@@ -12,6 +12,7 @@ function FreeCall() {
         display="flex"
         justifyItems="center"
         justifyContent="space-evenly"
+       
        padding={{xs:"20px",sm:"30px",md:"40px"}}>
       
             <Grid  lineHeight="60px"  >
