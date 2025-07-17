@@ -36,7 +36,7 @@ const FAQSection = ({
   return (
     <Box sx={{ backgroundColor, py: padding, px: padding }}>
       <Typography
-        variant={"h1"}
+        variant={"h2"}
         align="center"
         sx={{
           fontFamily: titleFontFamily,
