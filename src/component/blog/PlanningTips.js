@@ -34,21 +34,21 @@ const PlanningTips = () => {
             },
             {
                 id: 2,
-                image: "/Planning1.svg",
+                image: "/planning1.svg",
                 title: "Venue & Vendor Insights",
                 description: "Discover the best options available.",
                 color: "#D9D9D980"
             },
             {
                 id: 3,
-                image: "/Planning2.svg",
+                image: "/planning2.svg",
                 title: "Real Couple Stories",
                 description: "Inspiration from those who have walked the path.",
                 color: "#D9D9D980"
             },
             {
                 id: 4,
-                image: "/Planning3.svg",
+                image: "/planning3.svg",
                 title: "Budget Hacks",
                 description: "Smart solutions for cost-effective planning.",
                 color: "#D9D9D980"
