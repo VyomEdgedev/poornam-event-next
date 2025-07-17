@@ -48,7 +48,7 @@ const PlanningTips = () => {
             },
             {
                 id: 4,
-                image: "planning3.svg",
+                image: "/planning3.svg",
                 title: "Budget Hacks",
                 description: "Smart solutions for cost-effective planning.",
                 color: "#D9D9D980"

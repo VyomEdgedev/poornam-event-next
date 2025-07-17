@@ -63,7 +63,7 @@ const RecentPosts = () => {
       </Typography>
 
 
-      <Grid container spacing={4} alignContent={"center"} justifyContent={"center"}>
+      <Grid container spacing={4} marginBottom={5} alignContent={"center"} justifyContent={"center"}>
         {postsData.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
             <Card
