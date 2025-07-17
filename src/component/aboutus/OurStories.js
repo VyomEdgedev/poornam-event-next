@@ -15,7 +15,14 @@ export default function OurStories() {
   return (
 
 
-    <Box sx={{ padding: "3rem" }}>
+    <Box 
+    display="block"
+    justifyItems="center"
+    justifyContent="center"
+    width="100%"
+    maxWidth="1350px"
+    margin="0 auto"
+    sx={{ padding: {xs:"40px", sm:"40px", md:"40px"} }}>
       {Story.map((story, index) => (
         <Box key={index} sx={{ marginBottom: "1.5rem" }}>
           {/* Heading */}

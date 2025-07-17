@@ -15,8 +15,11 @@ function Chat() {
         <Grid container
             justifyContent="space-evenly"
             alignItems="center"
-            sx={{ bgcolor: "#FFFAED", p: 2 }} spacing={2}
-            direction={isSmOrBelow600 ? 'column' : 'row'} >
+            sx={{ bgcolor: "#FFF7E4", p: 2 }} 
+            spacing={{ xs: 1, sm: 2, md: 20}}
+            direction={isSmOrBelow600 ? 'column' : 'row'}
+
+        >
 
             {/* Left Content */}
             <Grid item xs={12} sm={8} md={4}>

@@ -215,6 +215,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { red } from '@mui/material/colors';
 
 const MyForm = () => {
     const [formData, setFormData] = useState({
@@ -246,15 +247,18 @@ const MyForm = () => {
         <Box sx={{
             px: { xs: 12, sm: 15, md: 7 },
             py: { xs: 2, sm: 5, md: 7 },
-            fontFamily: "Akatab, sans-serif"
+            fontFamily: "Akatab, sans-serif",
+          
         }}>
             <Grid
                 container
                 spacing={{ xs: 2, sm: 5, md: 7 }}
+                px={{ xs: 2, sm: 5, md: 20 }}
                 display="flex"
                 alignItems="flex-start"
-                justifyContent="center"
+                justifyContent="space-evenly"
                 sx={{ width: "100%" }}
+                
             >
                 {/* Left Side - Title + Image */}
                 <Grid
@@ -281,8 +285,8 @@ const MyForm = () => {
                     <Box
                         sx={{
                             width: "100%",
-                            maxWidth: { xs: 300, sm: 400, md: 500 },
-                            height: { xs: 250, sm: 300, md: 520 },
+                            maxWidth: { xs: 350, sm: 400, md: 440 },
+                            height: { xs: 250, sm: 300, md: 510 },
                             borderRadius: 2,
                             overflow: "hidden",
                             position: "relative",
@@ -304,7 +308,8 @@ const MyForm = () => {
                 </Grid>
 
                 {/* Right Side - Form */}
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={4} md={6}
+                  >
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
@@ -339,8 +344,9 @@ const MyForm = () => {
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
                                     '& .MuiInputBase-root': {
-                                        height: { xs: '30px', md: '35px' },
-                                        fontSize: { xs: "1rem", md: "1.1rem" },
+                                        height: { xs: '30px',sm:'35px', md: '35px' },
+                                        width: { xs: '100%',sm:'100%', md: '100%' },
+                                        fontSize: { xs: "1rem", sm:'1rem' ,md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
                                     '& .MuiInputBase-input::placeholder': {

@@ -16,7 +16,7 @@ const PlanningTips = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
     const responsiveSpacing = isBelow1150
-        ? { xs: 2, sm: 2 }   // spacing when screen is small
+        ? { xs: 2, sm: 2 , md: 3}   // spacing when screen is small
         : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
 
     // JSON data structure
@@ -77,7 +77,9 @@ const PlanningTips = () => {
         <Grid sx={{
             // backgroundColor: '#FFF8F3',
             minHeight: '40vh',
-            py: { xs: 4, sm: 1, md: 2, lg: 3 },
+            py: { xs: 4, sm: 2, md: 2, lg: 3 },
+             px: { xs: 4, sm: 7, md: 4, lg: 3 },
+           mb: { xs: 4, sm: 4, md: 3, lg: 4}
         }}          >
 
             <Container maxWidth="lg">
@@ -86,8 +88,8 @@ const PlanningTips = () => {
                     alignItems={isBelow1150 ? 'center' : "center"}
                     justifyContent={isBelow1150 ? 'center' : 'center'}     >
                     {/* Left Column - Main Content */}
-                    <Grid item xs={12} md={6}>
-                        <Box sx={{ pr: { xs: 0, md: 4 } }}>
+                    <Grid item xs={12} sm={8} md={6}>
+                        <Box sx={{ py: { xs: 0,sm:3, md: 4 } }}>
                             <Typography
                                 variant="h2"
                                 component="h2"
@@ -127,8 +129,9 @@ const PlanningTips = () => {
                     </Grid>
 
                     {/* Right Column - Service Cards */}
-                    <Grid item xs={12} md={6}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1.5, sm: 2 } }}>
+                    <Grid item xs={12} sm={8 } md={6}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', 
+                            gap: { xs: 1.5, sm: 2, md:2 } }}>
                             {sectionData.services.map((service, index) => (
                                 <Card
                                     key={service.id}
@@ -145,12 +148,12 @@ const PlanningTips = () => {
                                     }}
                                 >
                                     <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1.5, sm: 2 } }}>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1.5, sm: 2 , md:2} }}>
                                             {/* Icon */}
                                             <Box
                                                 sx={{
-                                                    width: { xs: 48, sm: 60 },
-                                                    height: { xs: 48, sm: 60 },
+                                                    width: { xs: 48, sm: 60, md: 60 },
+                                                    height: { xs: 48, sm: 60, md: 60 },
                                                     backgroundColor: service.color,
                                                     borderRadius: 50,
                                                     display: 'flex',
@@ -171,7 +174,7 @@ const PlanningTips = () => {
                                                     sx={{
                                                         fontFamily: 'Akatab,Sans-serif',
                                                         fontWeight: 500,
-                                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                                        fontSize: { xs: '1rem', sm: '1.1rem' , md: '1.2rem' },
                                                         color: '#000000',
                                                         mb: 0.5,
                                                         cursor: 'pointer'
@@ -186,7 +189,7 @@ const PlanningTips = () => {
                                                         fontFamily: 'Akatab,Sans-serif',
                                                         fontWeight: 400,
                                                         color: '#000000',
-                                                        fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                                                        fontSize: { xs: '0.85rem', sm: '0.9rem', md: '1rem' },
                                                         lineHeight: 1.4,
                                                         cursor: 'pointer'
                                                     }}

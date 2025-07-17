@@ -54,12 +54,12 @@ const SearchFilter = () => {
   const [selectedLocations, setSelectedLocations] = useState([]);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isBelow1250 = useMediaQuery('(max-width:1250px),(spacing:50px)');
 
-  const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 0 }   // spacing when screen is small
-    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
+  const responsiveSpacing = isBelow1250
+    ? { xs: 2, sm: 2, md: 5 }   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 10 }; // spacing when screen is large
 
   const categories = ['Tips', 'Trends', 'Venues', 'Real Weddings', 'Budget'];
   const locations = ['Indore', 'Bhopal', 'Jabalpur', 'Goa', 'Udaipur'];
@@ -90,21 +90,27 @@ const SearchFilter = () => {
       <Container width="100%" maxWidth="lg" sx={{ py: { xs: 1, sm: 1, md: 4 } }}    >
         <Grid container
           spacing={responsiveSpacing}
-          alignItems={isBelow1150 ? 'center' : "center"}
-          justifyContent={isBelow1150 ? 'center' : 'center'}>
+          alignItems={isBelow1250 ? 'center' : "center"}
+          justifyContent={isBelow1250 ? 'center' : 'center'}
+        >
           {/* Left Side - Main Heading */}
-          <Grid item xs={12} md={6} sx={{ py: { xs: 0, sm: 2, md: 2 } }}>
-            <StyledPaper elevation={0}>
+          <Grid item xs={12} md={6} sx={{ py: { xs: 1, sm: 2, md: 2 } }}
+            width={{ xs: '495px', sm: '495px', md: '495px' }}
+          >
+
+            <StyledPaper elevation={0}
+            >
               <Typography
                 variant="h2"
                 component="h2"
                 sx={{
-                  fontSize: { xs: '2rem', md: '3rem' },
+                  fontSize: { xs: '2rem', sm: '2rem', md: '3rem' },
                   fontWeight: '400',
                   color: '#000000',
                   lineHeight: 1.2,
                   mb: 1,
                   fontFamily: 'Gloock,serif',
+
                 }}
               >
                 {` Find What You Need`}
@@ -115,7 +121,7 @@ const SearchFilter = () => {
                 sx={{
                   color: '#000000',
                   fontFamily: 'Akatab,Sans-serif',
-                  fontSize: { xs: '0.95rem', md: '1.125rem' },
+                  fontSize: { xs: '0.95rem', sm: "1", md: '1.125rem' },
                   lineHeight: 1.2,
                 }}
               >
@@ -125,7 +131,7 @@ const SearchFilter = () => {
           </Grid>
 
           {/* Right Side - Search and Filters */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} sm={8} md={6}>
             <StyledPaper elevation={0}>
               {/* Search Input */}
               <Box sx={{ mb: 3 }}>

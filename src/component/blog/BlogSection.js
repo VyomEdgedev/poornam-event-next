@@ -43,12 +43,12 @@ const BlogSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
   const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 1 }   // spacing when screen is small
-    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
+    ? { xs: 2, sm: 1, md: 6 }   // spacing when screen is small
+    : { xs: 2, sm: 3, md: 6 }; // spacing when screen is large
 
   return (
     <Box
-      sx={{ py: 2, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFF7E4" }}>
+      sx={{ py: 5, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFF7E4" }}>
       <Container maxWidth="xl">
         {/* Header */}
         <Box
@@ -97,7 +97,7 @@ const BlogSection = () => {
               <Box sx={{ px: 0 }}>
                 <Card
                   sx={{
-                    width: "80%",
+                    width: { xs: "100%", sm: "100%", md: "460px" },
                     height: "auto",
                     display: "flex",
                     flexDirection: "column",
@@ -115,8 +115,8 @@ const BlogSection = () => {
                   <CardMedia
                     component="img"
                     sx={{
-                      width: "100%",
-                      height: "300px",
+                      width: { xs: "100%", sm: "100%", md: "458px" },
+                      height: "350px",
                       objectFit: "cover",
                       margin: "0 auto",
                     }}
