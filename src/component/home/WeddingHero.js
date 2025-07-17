@@ -8,7 +8,7 @@ export default function WeddingSection() {
   return (
     <Box
       sx={{
-        py:{xs:1, md:2},
+        py:{xs:1, sm:2, md:2},
         px: { xs: 2,sm: 4, md: 7 },
         // maxWidth: "1200px",
         width: "100%",
@@ -28,8 +28,9 @@ export default function WeddingSection() {
             fontFamily: 'Gloock, serif',
             fontWeight: 400,
             color: "#000D1F",
-            mb: {xs:0.5, sm:0.6},
+            mb: {xs:0.8, sm:0.6},
             lineHeight: 1.2,
+            
             
           }}
         >

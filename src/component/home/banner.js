@@ -28,10 +28,12 @@ export default function HeroSection() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: "row" },
+            flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "stretch",
             justifyContent: "space-between",  
-            padding: "0px 10px",
+            padding: { xs: "0 0px", sm: "0 10px", md: "0 10px" },
+            
+
           }}
         >
 
@@ -45,9 +47,9 @@ export default function HeroSection() {
               <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
 
             </Box>
-            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"90px",lg:"170px"}, left:{xs:0,md:0} }}>
+            <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"130px",lg:"170px"}, left:{xs:0,sm:0,md:0,}, mt:{xs:"4px",sm:"15px",md:0,lg:0}}}>
             <Typography
-              variant="h2"
+              variant="h1"
               component="h1"
               fontWeight="regular"
               sx={{
@@ -56,10 +58,10 @@ export default function HeroSection() {
                 // fontSize: { xs: "1.4rem", sm: "2.4rem", md: "3.5rem" },
                 fontFamily: 'Gloock, serif',
                 // width:"900px",
-                textAlign: { xs: "left", md: "left" },
+                textAlign: { xs: "left", sm: "left", md: "left" },
                 ml:5,
                 mb:1,
-                whiteSpace:{xs:'wrap',md:'nowrap'},
+                whiteSpace:{xs:'wrap',md:'nowrap', lg:'nowrap'},
                 zIndex:7
                   
               }}
@@ -102,7 +104,7 @@ export default function HeroSection() {
             <Stack
               direction={{ xs: "row", sm: "row" }}
               spacing={2}
-              marginTop={5}
+              marginTop={{xs: 0, sm: 0, md: 4, lg:5}}
               marginLeft={5}
               alignContent={{xs:"center",md:"flex-start"}}
             >
