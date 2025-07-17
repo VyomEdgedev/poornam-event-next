@@ -48,7 +48,7 @@ const BlogSection = () => {
 
   return (
     <Box
-      sx={{ py: 2, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFFAED" }}>
+      sx={{ py: 2, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFF7E4" }}>
       <Container maxWidth="xl">
         {/* Header */}
         <Box
