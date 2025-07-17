@@ -86,127 +86,151 @@ const SearchFilter = () => {
   };
 
   return (
-    <Grid  backgroundColor="#FFFAED">
-       <Container width="100%" maxWidth="lg" sx={{ py: { xs: 1, sm: 1, md: 4 }  }}    >
-      <Grid container
-        spacing={responsiveSpacing}
-        alignItems={isBelow1150 ? 'center' : "center"}
-        justifyContent={isBelow1150 ? 'center' : 'center'}>
-        {/* Left Side - Main Heading */}
-        <Grid item xs={12} md={6} sx={{ py: { xs: 0, sm: 2, md: 2 } }}>
-          <StyledPaper elevation={0}>
-            <Typography
-              variant="h2"
-              component="h2"
-              sx={{
-                fontSize: { xs: '2rem', md: '3rem' },
-                fontWeight: '400',
-                color: '#000000',
-                lineHeight: 1.2,
-                mb: 1,
-                fontFamily: 'Gloock,serif',
-              }}
-            >
-              {` Find What You Need`}
-            </Typography>
-            <Typography
-              variant="body1"
-              component="p"
-              sx={{
-                color: '#000000',
-                fontFamily: 'Akatab,Sans-serif',
-                fontSize: { xs: '0.95rem', md: '1.125rem' },
-                lineHeight: 1.2,
-              }}
-            >
-              {` Search for valuable insights to aid your planning journey.`}
-            </Typography>
-          </StyledPaper>
-        </Grid>
-
-        {/* Right Side - Search and Filters */}
-        <Grid item xs={12} md={6}>
-          <StyledPaper elevation={0}>
-            {/* Search Input */}
-            <Box sx={{ mb: 3 }}>
+    <Grid backgroundColor="#FFF7E4">
+      <Container width="100%" maxWidth="lg" sx={{ py: { xs: 1, sm: 1, md: 4 } }}    >
+        <Grid container
+          spacing={responsiveSpacing}
+          alignItems={isBelow1150 ? 'center' : "center"}
+          justifyContent={isBelow1150 ? 'center' : 'center'}>
+          {/* Left Side - Main Heading */}
+          <Grid item xs={12} md={6} sx={{ py: { xs: 0, sm: 2, md: 2 } }}>
+            <StyledPaper elevation={0}>
               <Typography
-                variant="h6"
-                 component="h6"
-                sx={{ mb: 2, fontWeight: 600, color: '#000D1F', fontFamily: "Akatab,Sans-serif" }}
-              >
-                {`Search`}
-              </Typography>
-              <TextField
-                fullWidth
-                placeholder="How to plan haldi?"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                variant="outlined"
+                variant="h2"
+                component="h2"
                 sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 2,
-                    backgroundColor: 'background.default',
-                  },
+                  fontSize: { xs: '2rem', md: '3rem' },
+                  fontWeight: '400',
+                  color: '#000000',
+                  lineHeight: 1.2,
+                  mb: 1,
+                  fontFamily: 'Gloock,serif',
                 }}
-              />
-            </Box>
-
-            {/* Filter by Category */}
-            <Box sx={{ mb: 3 }}>
-              <Typography
-                variant="h6"
-                 component="h6"
-                sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
               >
-                {`  Filter by Category`}
+                {` Find What You Need`}
               </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {categories.map((category) => (
-                  <FilterChip
-                    key={category}
-                    label={category}
-                    selected={selectedCategories.includes(category)}
-                    onClick={() => handleCategoryToggle(category)}
-                    clickable
-                  />
-                ))}
-              </Box>
-            </Box>
-
-            {/* Filter by Location */}
-            <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
-                component="h6"
-                sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}
+                variant="body1"
+                component="p"
+                sx={{
+                  color: '#000000',
+                  fontFamily: 'Akatab,Sans-serif',
+                  fontSize: { xs: '0.95rem', md: '1.125rem' },
+                  lineHeight: 1.2,
+                }}
               >
-                {`  Filter by Location`}
+                {` Search for valuable insights to aid your planning journey.`}
               </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {locations.map((location) => (
-                  <FilterChip
-                    key={location}
-                    label={location}
-                    selected={selectedLocations.includes(location)}
-                    onClick={() => handleLocationToggle(location)}
-                    clickable
-                  />
-                ))}
+            </StyledPaper>
+          </Grid>
+
+          {/* Right Side - Search and Filters */}
+          <Grid item xs={12} md={6}>
+            <StyledPaper elevation={0}>
+              {/* Search Input */}
+              <Box sx={{ mb: 3 }}>
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  sx={{ mb: 0, fontWeight: 600, color: '#000D1F', fontFamily: "Akatab,Sans-serif" }}
+                >
+                  {`Search`}
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="small"
+                  placeholder="How to plan haldi?"
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  variant="outlined"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      borderRadius: 2,
+                      backgroundColor: 'background.default',
+                    },
+                  }}
+                />
               </Box>
-            </Box>
 
-            {/* Search Button */}
-            <Box sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
+              {/* Filter by Category */}
+              <Box sx={{ mb: 3 }}>
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  sx={{ mb: 0, fontWeight: 600, color: 'text.primary' }}
+                >
+                  {`  Filter by Category`}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {categories.map((category) => (
+                    <FilterChip
+                      key={category}
+                      label={category}
+                      selected={selectedCategories.includes(category)}
+                      onClick={() => handleCategoryToggle(category)}
+                      clickable
+                      variant="filled"
+                      sx={{
+                        margin: "4px",
+                        fontWeight: 500,
+                        fontFamily: 'Akatab, sans-serif',
+                        backgroundColor: selectedCategories.includes(category) ? 'primary.main' : 'grey.300',
+                        color: selectedCategories.includes(category) ? 'white' : 'black',
+                        '&:hover': {
+                          backgroundColor: selectedCategories.includes(category) ? 'primary.dark' : 'grey.400',
+                        }
+                      }}
+                    />
+                  ))}
+                </Box>
+              </Box>
 
-              <CustomButton
-                onClick={handleSearch} data-testid="notify-button">{`Search`}</CustomButton>
-            </Box>
-          </StyledPaper>
+              {/* Filter by Location */}
+              <Box sx={{ mb: 3 }}>
+                <Typography
+                  variant="h6"
+                  component="h6"
+                  sx={{ mb: 0, fontWeight: 600, color: 'text.primary' }}
+                >
+                  {`  Filter by Location`}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {locations.map((location) => (
+                    <FilterChip
+                      key={location}
+                      label={location}
+                      selected={selectedLocations.includes(location)}
+                      onClick={() => handleLocationToggle(location)}
+                      clickable
+                      variant="filled"
+                      sx={{
+                        margin: "4px",
+                        fontWeight: 500,
+                        fontFamily: 'Akatab, sans-serif',
+                        backgroundColor: selectedCategories.includes(location) ? 'primary.main' : 'grey.300',
+                        color: selectedCategories.includes(location) ? 'white' : 'black',
+                        '&:hover': {
+                          backgroundColor: selectedCategories.includes(location) ? 'primary.dark' : 'grey.400',
+                        }
+                      }}
+
+                    />
+                  ))}
+                </Box>
+              </Box>
+
+              {/* Search Button */}
+              <Box sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
+
+                <CustomButton
+                  onClick={handleSearch} data-testid="notify-button">{`Search`}</CustomButton>
+              </Box>
+            </StyledPaper>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
     </Grid>
-   
+
   );
 };
 
