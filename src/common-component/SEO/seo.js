@@ -20,7 +20,8 @@ const SEO = ({
     console.warn('SEO component: "metaTitle" is required but missing.');
     return null;
   }
-const finalOgImage = ogImage || '/logo.png';
+
+const finalOgImage = ogImage || `${baseUrl}/og-image.jpg`;
   return (
     <Head>
       {/* General Meta */}

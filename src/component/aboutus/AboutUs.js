@@ -14,6 +14,7 @@ import SEO from "@/common-component/SEO/seo";
 
 export default function AboutUS() {
   const [open, setOpen] = useState(false)
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   const handleWeddingPlan = () => {
     // Add your navigation or action logic here
     setOpen(true)
@@ -29,10 +30,10 @@ export default function AboutUS() {
           canonical='http://www.poornamevents.com/about-us'
           ogTitle='About Poornam Events | Wedding Planner in MP'
           ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
-          ogImage='https://www.poornamevent.com/og-image.jpg'
+          ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='About Poornam Events | Wedding Planner in MP'
           twitterDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
-           twitterImage='https://www.poornamevent.com/logoo.jpg'
+           twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />
       </>

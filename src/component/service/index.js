@@ -8,6 +8,7 @@ import WeddingFooter from './WeddingFooter';
 import SEO from '@/common-component/SEO/seo';
 
 const Service = () => {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   return (
     <>
 
@@ -19,11 +20,11 @@ const Service = () => {
         canonical='http://www.poornamevents.com/services'
         ogTitle='Wedding Planner Services | Indore, Bhopal & Ujjain'
         ogDescriptio='Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more.'
-        ogImage='https://www.poornamevent.com/og-image.jpg'
+        ogImage={`${SITE_URL}/og-image.jpg`}
         twitterTitle='Wedding Planner Services | Indore, Bhopal & Ujjain'
         twitterDescription='Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more.'
-        twitterImage='https://www.poornamevent.com/logoo.jpg'
-        robots="index, follow"//  default
+        twitterImage={`${SITE_URL}/logoo.jpg`}
+        robots="index, follow"//  default'
       />
       <CustomBanner
         title="We Don't Just Plan Weddings"

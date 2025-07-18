@@ -15,6 +15,7 @@ const Portfolio = () => {
   const handleportfolio = () => {
     // Handle button click logic here
   }
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   const myFAQData = [
     {
       question: 'Do you only plan weddings in Indore?',
@@ -46,10 +47,10 @@ const Portfolio = () => {
           canonical='http://www.poornamevents.com/portfolio'
           ogTitle='Wedding Gallery  | Poornam Events'
           ogDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
-          ogImage='https://www.poornamevent.com/og-image.jpg'
+          ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='Wedding Gallery  | Poornam Events'
           twitterDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
-            twitterImage='https://www.poornamevent.com/logoo.jpg'
+            twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />
       </>
