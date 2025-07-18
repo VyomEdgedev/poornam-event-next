@@ -8,6 +8,7 @@ import PicksSection from './PicksSection';
 import SEO from '@/common-component/SEO/seo';
 
 const Blog = () => {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   return (
     <>
       <>
@@ -19,10 +20,10 @@ const Blog = () => {
           canonical='http://www.poornamevents.com/blog'
           ogTitle='Wedding Planning Tips & Real Weddings Blog'
           ogDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
-          ogImage='https://poornamevent.com/assets/blog-og.jpg'
+          ogImage={`${SITE_URL}/blog-og.jpg`}
           twitterTitle='Wedding Planning Tips & Real Weddings Blog'
           twitterDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
-          twitterImage='https://poornamevent.com/assets/blog-twitter.jpg'
+          twitterImage={`${SITE_URL}/blog-twitter.jpg`}
           robots="index, follow"
         />
       </>

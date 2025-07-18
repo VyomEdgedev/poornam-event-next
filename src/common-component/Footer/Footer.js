@@ -236,7 +236,7 @@ const Footer = () => {
               <Typography
                 variant="body2"
 
-                sx={{ fontSize: "13px", textAlign: "center", color: "black" }}
+                sx={{ fontSize: "13px", textAlign: "center", color: "black" , }}
               >
                 <Link href="/disclaimer" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Disclaimer

@@ -19,6 +19,7 @@ import SEO from "@/common-component/SEO/seo";
 
 
 export default function HomePage() {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
   return (
     <>
       <>
@@ -30,10 +31,10 @@ export default function HomePage() {
           canonical='http://www.poornamevents.com/'
           ogTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
           ogDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
-          ogImage='https://www.poornamevent.com/og-image.jpg'
+          ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
           twitterDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
-           twitterImage='https://www.poornamevent.com/logoo.jpg'
+           twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />
       </>

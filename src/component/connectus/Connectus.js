@@ -13,6 +13,7 @@ import SEO from "@/common-component/SEO/seo";
 
 
 export default function ContactUs() {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   return (
     <>
       <>
@@ -24,10 +25,10 @@ export default function ContactUs() {
           canonical='http://www.poornamevents.com/contact'
           ogTitle='Contact Poornam Events | Wedding Planner in MP'
           ogDescription='Get in touch with Poornam Events. Book your consultation for an unforgettable wedding experience.'
-          ogImage='https://www.poornamevent.com/og-image.jpg'
+          ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle="Contact Poornam Events | Wedding Planner in MP"
           twitterDescription='Get in touch with Poornam Events. Book your consultation for an unforgettable wedding experience.'
-          twitterImage='https://www.poornamevent.com/logoo.jpg'
+          twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />
       </>
