@@ -7,6 +7,7 @@ import ShowCase from './ShowCase'
 import RecentPosts from './RecentPosts'
 import SocialMediaFollow from './SocialMediaFollow'
 import FAQSection from '@/common-component/Faq/FAQSection'
+import SEO from '@/common-component/SEO/seo'
 
 
 
@@ -36,6 +37,22 @@ const Portfolio = () => {
 
   return (
     <>
+      <>
+        <SEO
+          url='http://www.poornamevents.com/portfolio'
+          metaTitle='Wedding Gallery  | Poornam Events'
+          metaDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
+          keywords='wedding portfolio Indore, wedding gallery'
+          canonical='http://www.poornamevents.com/portfolio'
+          ogTitle='Wedding Gallery  | Poornam Events'
+          ogDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle='Wedding Gallery  | Poornam Events'
+          twitterDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
+            twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"
+        />
+      </>
       <CustomBanner
         title="Let’s Make Shaadi Magic Together!"
         // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."

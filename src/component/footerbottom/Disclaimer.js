@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CustomBanner from '@/common-component/banner/CustomBanner';
+import SEO from '@/common-component/SEO/seo';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -47,7 +48,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingRight: 0,
   '&::before': {
     content: '"•"',
-    color: "#000000" ,
+    color: "#000000",
     fontWeight: 600,
     position: 'absolute',
     left: '8px',
@@ -148,136 +149,152 @@ export default function Disclaimer() {
 
   return (
     <>
-     <CustomBanner 
-  showLogo={true}
-  logoSrc="/logo.png"
-  height="30vh"
-  />
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      {/* Header Section */}
-      <StyledPaper elevation={3}>
-        <Box textAlign="center" mb={3}>
-          <Typography 
-            variant={isMobile ? "h4" : "h3"} 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-             fontWeight: 700,
-              fontFamily: "Akatab,Sans-serif",
-              backgroundColor:'#001538',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              mb: 2,
-            
-            }}
-          >
-            {disclaimerData.title}
-          </Typography>
-          <Chip 
-            label={`Last Updated: ${disclaimerData.lastUpdated}`}
-            color="#001538"
-            variant="outlined"
-            sx={{ mb: 2 }}
-          />
-          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
-           dangerouslySetInnerHTML={{
-              __html: `    Welcome to <strong>{disclaimerData.companyName}!</strong>`,
-            }}
-          />
-        </Box>
-        
-        <Divider sx={{ my: 3 }} />
-        
-        <Typography variant="body1" >
-          {disclaimerData.description}
-        </Typography>
-        
-        <Typography variant="body1" >
-         {` This disclaimer outlines how to interpret the information on our website.`}
-        </Typography>
-      </StyledPaper>
-
-      {/* Disclaimer Sections */}
-      {disclaimerData.sections.map((section, index) => (
-        <StyledPaper key={index} elevation={2}>
-          <SectionTitle variant="h5" component="h2">
-            {section.title}
-          </SectionTitle>
-          
-          {section.content && (
-            <Typography variant="body1"  sx={{ mb: 2 }}>
-              {section.content}
-            </Typography>
-          )}
-
-          {section.highlight && (
-            <Typography 
-              variant="body1" 
-              
-              sx={{ 
+      <>
+        <SEO
+          url='http://www.poornamevents.com/disclaimer'
+          metaTitle='Disclaimer • Poornam Events'
+          metaDescription='Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website.'
+          keywords='wedding planning disclaimer, Poornam disclaimer'
+          canonical='http://www.poornamevents.com/disclaimer'
+          ogTitle='Disclaimer • Poornam Events'
+          ogDescription='Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website.'
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle='Disclaimer • Poornam Events'
+          twitterDescription='Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website.'
+          twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"//  default
+        />
+      </>
+      <CustomBanner
+        showLogo={true}
+        logoSrc="/logo.png"
+        height="30vh"
+      />
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        {/* Header Section */}
+        <StyledPaper elevation={3}>
+          <Box textAlign="center" mb={3}>
+            <Typography
+              variant={isMobile ? "h4" : "h3"}
+              component="h1"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Akatab,Sans-serif",
+                backgroundColor: '#001538',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
                 mb: 2,
-                fontWeight: 500,
-                color: theme.palette.primary.main
-              }}
-            >
-              {section.highlight}
-            </Typography>
-          )}
 
-          {section.additionalContent && (
-            <Typography variant="body1"  sx={{ mb: 2 }}>
-              {section.additionalContent}
-            </Typography>
-          )}
-          
-          {section.items && (
-            <List sx={{ py: 0 }}>
-              {section.items.map((item, itemIndex) => (
-                <StyledListItem key={itemIndex} disablePadding>
-                  <ListItemText 
-                    primary={item}
-                    primaryTypographyProps={{
-                      variant: 'body1',
-                      sx: { lineHeight: 1.6 }
-                    }}
-                  />
-                </StyledListItem>
-              ))}
-            </List>
-          )}
-          
-          {section.note && (
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                mt: 2, 
-                fontStyle: 'italic', 
-                color: 'text.secondary',
-                borderLeft: `3px solid ${theme.palette.secondary.main}`,
-                pl: 2,
-                py: 1
               }}
             >
-              {section.note}
+              {disclaimerData.title}
             </Typography>
-          )}
-          
-          {section.contactInfo && (
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                {section.contactInfo.company}
-              </Typography>
-              <Typography variant="body1" color="#000000">
-                {section.contactInfo.email}
-              </Typography>
-              <Typography variant="body1" color="#000000">
-                {section.contactInfo.phone}
-              </Typography>
-            </Box>
-          )}
+            <Chip
+              label={`Last Updated: ${disclaimerData.lastUpdated}`}
+              color="#001538"
+              variant="outlined"
+              sx={{ mb: 2 }}
+            />
+            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
+              dangerouslySetInnerHTML={{
+                __html: `    Welcome to <strong>{disclaimerData.companyName}!</strong>`,
+              }}
+            />
+          </Box>
+
+          <Divider sx={{ my: 3 }} />
+
+          <Typography variant="body1" >
+            {disclaimerData.description}
+          </Typography>
+
+          <Typography variant="body1" >
+            {` This disclaimer outlines how to interpret the information on our website.`}
+          </Typography>
         </StyledPaper>
-      ))}
-    </Container>
+
+        {/* Disclaimer Sections */}
+        {disclaimerData.sections.map((section, index) => (
+          <StyledPaper key={index} elevation={2}>
+            <SectionTitle variant="h5" component="h2">
+              {section.title}
+            </SectionTitle>
+
+            {section.content && (
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                {section.content}
+              </Typography>
+            )}
+
+            {section.highlight && (
+              <Typography
+                variant="body1"
+
+                sx={{
+                  mb: 2,
+                  fontWeight: 500,
+                  color: theme.palette.primary.main
+                }}
+              >
+                {section.highlight}
+              </Typography>
+            )}
+
+            {section.additionalContent && (
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                {section.additionalContent}
+              </Typography>
+            )}
+
+            {section.items && (
+              <List sx={{ py: 0 }}>
+                {section.items.map((item, itemIndex) => (
+                  <StyledListItem key={itemIndex} disablePadding>
+                    <ListItemText
+                      primary={item}
+                      primaryTypographyProps={{
+                        variant: 'body1',
+                        sx: { lineHeight: 1.6 }
+                      }}
+                    />
+                  </StyledListItem>
+                ))}
+              </List>
+            )}
+
+            {section.note && (
+              <Typography
+                variant="body2"
+                sx={{
+                  mt: 2,
+                  fontStyle: 'italic',
+                  color: 'text.secondary',
+                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  pl: 2,
+                  py: 1
+                }}
+              >
+                {section.note}
+              </Typography>
+            )}
+
+            {section.contactInfo && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                  {section.contactInfo.company}
+                </Typography>
+                <Typography variant="body1" color="#000000">
+                  {section.contactInfo.email}
+                </Typography>
+                <Typography variant="body1" color="#000000">
+                  {section.contactInfo.phone}
+                </Typography>
+              </Box>
+            )}
+          </StyledPaper>
+        ))}
+      </Container>
     </>
   );
 }

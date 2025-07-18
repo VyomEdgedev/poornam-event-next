@@ -13,22 +13,42 @@ import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
 import HomeSnapshot from "./HomeSnapshot"
-export default function  HomePage() {
+import SEO from "@/common-component/SEO/seo";
+
+
+
+
+export default function HomePage() {
   return (
     <>
-  
-  <Banner></Banner>
-    <WeddingHero></WeddingHero>
-    <OurServices></OurServices>
- <AboutSection></AboutSection>
+      <>
+        <SEO
+          url='http://www.poornamevents.com/'
+          metaTitle='Wedding Planner in Indore | Poornam Events'
+          metaDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
+          keywords='wedding planner Indore, destination wedding planner Bhopal, themed weddings Ujjain'
+          canonical='http://www.poornamevents.com/'
+          ogTitle='Wedding Planner in Indore | Poornam Events'
+          ogDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle='Wedding Planner in Indore | Poornam Events'
+          twitterDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
+           twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"
+        />
+      </>
+      <Banner></Banner>
+      <WeddingHero></WeddingHero>
+      <OurServices></OurServices>
+      <AboutSection></AboutSection>
 
-   <OurPortfolio></OurPortfolio>
-   <Testimonials></Testimonials>
-  <HomeSnapshot></HomeSnapshot>
-   <ResourcesSection></ResourcesSection>
-   <FAQSection></FAQSection>
-  <InspirationSection></InspirationSection>
- <ContactSection></ContactSection>
-  </>
+      <OurPortfolio></OurPortfolio>
+      <Testimonials></Testimonials>
+      <HomeSnapshot></HomeSnapshot>
+      <ResourcesSection></ResourcesSection>
+      <FAQSection></FAQSection>
+      <InspirationSection></InspirationSection>
+      <ContactSection></ContactSection>
+    </>
   )
 }
