@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CustomBanner from '@/common-component/banner/CustomBanner';
+import SEO from '@/common-component/SEO/seo';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),

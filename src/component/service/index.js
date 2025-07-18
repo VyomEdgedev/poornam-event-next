@@ -5,6 +5,7 @@ import SignatureAddOns from './SignatureAddOns';
 import Experience from './Experience';
 import WeddingChecklist from './WeddingChecklist';
 import WeddingFooter from './WeddingFooter';
+import SEO from '@/common-component/SEO/seo';
 
 const Service = () => {
   return (
