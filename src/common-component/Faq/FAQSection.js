@@ -34,7 +34,7 @@ const FAQSection = ({
   };
 
   return (
-    <Box sx={{ backgroundColor, py: padding, px: padding }}>
+    <Box sx={{ backgroundColor, py: 3, px: 4 }}>
       <Typography
         variant={"h2"}
         align="center"
@@ -98,20 +98,28 @@ const FAQSection = ({
                     sx={{ 
                       minHeight: 48,
                       '& .MuiAccordionSummary-content': {
-                        marginY: { xs: 1, sm: 2 , md: 2 , lg: 2 },
+                        marginY: { xs: 2, sm: 3 , md: 2 , lg: 2 },
                       },
                     }}
                   >
                     <Typography
                       sx={{
+                        textAlign: {xs:"left", sm:"left", md:"left", lg:"left"},
                         width:{
-                          xs: '320px',
+                          xs: '270px',
                           sm: '250px',
                           md: '350px',
                           lg: '450px'
                         },
+                        ml:{
+                          xs: 1,
+                          sm: 0,
+                          md: 0,
+                          lg: 0
+                        },
+                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: bodyFontFamily,
-                        fontWeight: 500,
+                        fontWeight: 700,
                         color: textColor,
                       }}
                     >
@@ -128,6 +136,7 @@ const FAQSection = ({
                     <Typography
                       variant="body1"
                       sx={{
+                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,
                         color: textColor,

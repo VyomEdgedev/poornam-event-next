@@ -239,7 +239,7 @@ const Form = () => {
                         }
                     }}
                 >
-                    Let's Begin the Dream
+                    {`Let's Begin the Dream`}
                 </Button>
             </Box>
         </Box>
