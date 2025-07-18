@@ -4,18 +4,27 @@ import CustomButton from "@/common-component/button/CustomButton";
 import { Box, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function HeroSection() {
   const [open, setOpen] = useState(false)
-    const handleWeddingPlan = () => {
-    // Add your navigation or action logic here
+  const [autoOpened, setAutoOpened] = useState(false);
+const handleWeddingPlan = () => {
     setOpen(true)
   };
 
   const handleTalkToPlanner = () => {
      window.open("https://wa.me/919610366885", "_blank");
   };
+useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!autoOpened) {
+        setOpen(true);
+        setAutoOpened(true);
+      }
+    }, 7000);
 
+    return () => clearTimeout(timer);
+  }, [autoOpened]);
   return (
     <Box
       sx={{
