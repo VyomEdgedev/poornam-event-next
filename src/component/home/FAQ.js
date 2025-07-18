@@ -114,8 +114,9 @@ export default function FAQSection() {
                           md: '350px',
                           lg: '450px'
                         },
+                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: 'Akatab, Sans-serif',
-                        fontWeight: 500,
+                        fontWeight: 700,
                         color: '#001538',
                       }}
                     >
@@ -136,8 +137,9 @@ export default function FAQSection() {
                     }}
                   >
                     <Typography
-                      variant="body2"
+                      variant="body1"
                       sx={{
+                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: 'Akatab, Sans-serif',
                         fontWeight: 400,
                         color: '#001538',
