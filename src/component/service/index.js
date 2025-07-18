@@ -26,7 +26,9 @@ const Service = () => {
       }
     }
   }}
+  
   />
+
 <ShaddiService/> 
 <SignatureAddOns/>
 <Experience /> 

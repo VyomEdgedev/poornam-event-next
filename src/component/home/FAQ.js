@@ -13,19 +13,19 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 const faqData = [
   {
     question: 'Do you only plan weddings in Indore?',
-    answer: 'Absolutely. We’ve pulled off 3-day prep shaadis with a smile.',
+    answer: 'Do you only plan weddings in Indore?',
   },
   {
     question: 'Can you help with last-minute weddings?',
-    answer: "Absolutely. We’ve pulled off 3-day prep shaadis with a smile.",
+    answer: " Absolutely. We’ve pulled off 3-day prep shaadis with a smile.",
   },
   {
     question: 'Do you provide decorators and photographers too?',
-    answer: 'Absolutely. We’ve pulled off 3-day prep shaadis with a smile.',
+    answer: 'Do you provide decorators and photographers too?',
   },
   {
     question: 'Do you offer budget planning help?',
-    answer: 'Absolutely. We’ve pulled off 3-day prep shaadis with a smile.',
+    answer: 'Of course! We even have a free planner you can download.',
   },
 ];
 
@@ -41,7 +41,7 @@ export default function FAQSection() {
   return (
     <Box sx={{ backgroundColor: '#fdf8ef', py: 3, px: 4 }}>
       <Typography
-        variant="h4"
+        variant="h3"
         align="center"
         sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 }}
       >
@@ -90,7 +90,7 @@ export default function FAQSection() {
                     expandIcon={
                       <ChevronRightIcon
                         sx={{
-                          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                          transform: isOpen ? 'rotate(180deg)' : 'rotate(90deg)',
                           transition: 'transform 0.4s ease',
                           color: '#001538',
                         }}
@@ -108,6 +108,12 @@ export default function FAQSection() {
                   >
                     <Typography
                       sx={{
+                        width:{
+                          xs: '320px',
+                          sm: '250px',
+                          md: '350px',
+                          lg: '450px'
+                        },
                         fontFamily: 'Akatab, Sans-serif',
                         fontWeight: 500,
                         color: '#001538',
