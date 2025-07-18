@@ -88,21 +88,28 @@ const FAQSection = ({
                     expandIcon={
                       <ChevronRightIcon
                         sx={{
-                          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                          transform: isOpen ? 'rotate(180deg)' : 'rotate(90deg)',
                           transition: 'transform 0.4s ease',
                           color: textColor,
+                          marginX:"58px"
                         }}
                       />
                     }
-                    sx={{
+                    sx={{ 
                       minHeight: 48,
                       '& .MuiAccordionSummary-content': {
-                        marginY: '8px',
+                        marginY: { xs: 1, sm: 2 , md: 2 , lg: 2 },
                       },
                     }}
                   >
                     <Typography
                       sx={{
+                        width:{
+                          xs: '320px',
+                          sm: '250px',
+                          md: '350px',
+                          lg: '450px'
+                        },
                         fontFamily: bodyFontFamily,
                         fontWeight: 500,
                         color: textColor,
@@ -119,7 +126,7 @@ const FAQSection = ({
                 <Grid item xs={12} sm={6}>
                   <Box sx={{ p: 2 }}>
                     <Typography
-                      variant="body2"
+                      variant="body1"
                       sx={{
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,

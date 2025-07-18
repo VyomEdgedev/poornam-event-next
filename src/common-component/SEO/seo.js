@@ -20,7 +20,7 @@ const SEO = ({
     console.warn('SEO component: "metaTitle" is required but missing.');
     return null;
   }
-
+const finalOgImage = ogImage || '/logo.png';
   return (
     <Head>
       {/* General Meta */}
@@ -40,7 +40,7 @@ const SEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={ogTitle || metaTitle} />
       <meta property="og:description" content={ogDescription || metaDescription} />
-      {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="og:image" content={finalOgImage} />
 
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />

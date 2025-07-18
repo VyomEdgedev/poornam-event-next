@@ -62,16 +62,18 @@ export default function ClientTestimonials() {
   sx={{
     width: isMobile || isTablet ? "100%" : "70%",
     overflowX: 'auto',
+    overflowY: "visible",
     "&::-webkit-scrollbar": {height: 6,},
   }}
 >
   <Box
     sx={{
       display: "flex",
-      gap: 2,
+      gap:2,
       flexWrap:"nowrap",
-
       justifyContent:  "flex-start",
+        
+    
     }}
   >
     {testimonials.map((item, index) => (
@@ -81,10 +83,15 @@ export default function ClientTestimonials() {
           minWidth: isMobile ? 260 : 260,
           maxWidth: isMobile ? 280 : 280,
           flexShrink: 0,
-          bgcolor: "#fff",
+          mt:2,
+          mb:2,
+          // bgcolor: "#fff",
           borderRadius: 4,
-          p: '12px',
-          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+          // border:"1px  #DAA412",
+          p: '11px',
+          boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
+          overflow: "visible",
+          
         }}
       >
         <Stack direction="row" spacing={1} alignItems="center" mb={1}>
@@ -103,7 +110,7 @@ export default function ClientTestimonials() {
           {item.text}
         </Typography>
 
-        <Stack direction="row" spacing={0.5}>
+        <Stack direction="row" spacing={0.5} mb={1}>
           {[...Array(5)].map((_, i) => (
             <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 18 }} />
           ))}

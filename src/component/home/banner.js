@@ -98,7 +98,7 @@ export default function HeroSection() {
               }}
             >
              {` Luxury meets laughter, chaos choreographed-beautiful weddings across
-              Indore, Bhopal & Jabalpur.`}
+              Indore, Bhopal & Ujjain.`}
             </Typography>
             
             <Stack

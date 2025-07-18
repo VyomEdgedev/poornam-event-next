@@ -30,8 +30,8 @@ const navItems = [
   { label: "About", href: "/aboutus" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Connect us", href: "/connectus" },
+  { label: "Blogs", href: "/blog" },
+  { label: "Connect us", href: "/contact" },
 ];
 
 export default function Header() {
@@ -96,9 +96,9 @@ export default function Header() {
             </Box>
           ) : (
             <Box display="flex" justifyContent="space-between" width="100%">
-              <Box display="flex" alignItems="center">
-                <Image src="/logo.png" alt="Logo" width={50} height={50} />
-              </Box>
+               <Link href="/" passHref>
+    <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' }} />
+  </Link>
               <Box
               >
                 <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)}>
