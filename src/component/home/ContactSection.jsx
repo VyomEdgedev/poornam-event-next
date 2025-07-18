@@ -1,26 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Typography, TextField } from '@mui/material';
 import CustomButton from '@/common-component/button/CustomButton';
 
 export default function ContactSection() {
-    const handleLetChat = () => {
+    const [open, setOpen] = useState(false)
+    const handleWeddingPlan = () => {
         // Add your navigation or action logic here
-        console.log("Let's Chat clicked");
+        setOpen(true)
+    };
+    const [formData, setFormData] = useState({
+        name: '',
+        message: ''
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        setErrors(prev => ({ ...prev, [name]: '' }));
+    };
+
+    const handleLetChat = (e) => {
+        e.preventDefault();
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = 'Name is required';
+        if (!formData.message.trim()) newErrors.message = 'Message is required';
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
+        // Your submit logic here
+        console.log("Form submitted:", formData);
     };
 
     return (
         <Box sx={{ px: 2, py: { xs: 4, sm: 6, md: 10 } }}>
-            <Grid container spacing={{ xs: 3, sm: 1, md: 3 }} justifyContent="center" display="flex"
-            sx={{
+            <Grid
+                container
+                spacing={{ xs: 3, sm: 1, md: 3 }}
+                justifyContent="center"
+                sx={{
                     display: {
                         xs: 'grid',
                         sm: 'flex',
                         md: 'flex',
-                    }, 
-                    
-                   
+                    },
                 }}
-            
             >
                 {/* Left Text Side */}
                 <Grid item xs={12} md={8}>
@@ -34,13 +62,19 @@ export default function ContactSection() {
                             lineHeight: 1.2,
                         }}
                         dangerouslySetInnerHTML={{
-                            __html: `Get in Touch with <br />
-                            the Heart Behind <br />
-                            the Brand`,
+                            __html: `Get in Touch with <br /> the Heart Behind <br /> the Brand`,
                         }}
                     />
-                    <Typography variant="body1" component={"p"} sx={{ color: '#000000', fontFamily: "Akatab, Sans-serif", fontWeight: '400' }}>
-                        {` Let’s connect and make your dream wedding a reality.`}
+                    <Typography
+                        variant="body1"
+                        component="p"
+                        sx={{
+                            color: '#000000',
+                            fontFamily: 'Akatab, Sans-serif',
+                            fontWeight: 400,
+                        }}
+                    >
+                        {`Let’s connect and make your dream wedding a reality.`}
                     </Typography>
                 </Grid>
 
@@ -48,6 +82,8 @@ export default function ContactSection() {
                 <Grid item xs={12} md={6}>
                     <Box
                         component="form"
+                        onSubmit={handleLetChat}
+                        noValidate
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -55,33 +91,109 @@ export default function ContactSection() {
                             width: { xs: '100%', sm: '400px', md: '600px' },
                         }}
                     >
+                        {/* Name Field */}
                         <Box>
-                            <Typography variant="body1" component={"p"} sx={{ mb: 0.5, fontFamily: "Akatab, Sans-serif", fontWeight: '500', color: '#000000' }}>
+                            <Typography
+                                variant="body1"
+                                component="label"
+                                htmlFor="user-name"
+                                sx={{
+                                    mb: 0.5,
+                                    fontFamily: 'Akatab, Sans-serif',
+                                    fontWeight: 500,
+                                    color: '#000000',
+                                }}
+                            >
                                 {` Your Name`}
                             </Typography>
                             <TextField
-                                fullWidth
+                                id="user-name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 placeholder="Enter your name"
                                 variant="outlined"
                                 size="small"
+                                fullWidth
+                                error={!!errors.name}
+                                helperText={errors.name}
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#ccc',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#1976d2', // Hover color
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#DAA412', // Focus (click) color
+                                            borderWidth: 2,
+                                        },
+                                    },
+                                }}
+
                             />
                         </Box>
 
+                        {/* Message Field */}
                         <Box>
-                            <Typography variant="body1" component={"p"} sx={{ mb: 0.5, fontFamily: "Akatab, Sans-serif", fontWeight: '500', color: '#000000' }}>
+                            <Typography
+                                variant="body1"
+                                component="label"
+                                htmlFor="user-message"
+                                sx={{
+                                    mb: 0.5,
+                                    fontFamily: 'Akatab, Sans-serif',
+                                    fontWeight: 500,
+                                    color: '#000000',
+                                }}
+                            >
                                 {`   Your Message`}
                             </Typography>
                             <TextField
-                                fullWidth
+                                id="user-message"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="How can we help you?"
                                 variant="outlined"
                                 size="small"
+                                fullWidth
                                 multiline
                                 rows={3}
+                                error={!!errors.message}
+                                  helperText={errors.message}
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#ccc',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#1976d2', // Hover color
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#DAA412', // Focus (click) color
+                                            borderWidth: 2,
+                                        },
+                                    },
+                                }}
+
+
                             />
                         </Box>
-                        <CustomButton data-testid="notify-button" onClick={handleLetChat} sx={{ mt: 1 }}>
-                            {`Let's Chat`}
+
+                        {/* Submit Button */}
+                        <CustomButton data-testid="notify-button"
+                            type="submit"
+                            variant="primary"
+                            onClick={handleWeddingPlan}
+                            sx={{
+                                fontFamily: "Akatab,Sans-serif",
+                                fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
+                                fontWeight: 400,
+                            }}
+                        >
+                            Let's Chat
                         </CustomButton>
                     </Box>
                 </Grid>
@@ -89,4 +201,3 @@ export default function ContactSection() {
         </Box>
     );
 }
-
