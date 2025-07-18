@@ -5,6 +5,7 @@ import SearchFilter from './SearchFilter';
 import PlanningTips from './PlanningTips';
 import BlogSection from './BlogSection';
 import PicksSection from './PicksSection';
+import SEO from '@/common-component/SEO/seo';
 
 const Blog = () => {
   return (
