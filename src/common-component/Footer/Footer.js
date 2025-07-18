@@ -85,8 +85,8 @@ const Footer = () => {
                   { label: "About", href: "/aboutus" },
                   { label: "Services", href: "/services" },
                   { label: "Portfolio", href: "/portfolio" },
-                  { label: "Blogs", href: "/blogs" },
-                  { label: "Connect us", href: "/connectus" },
+                  { label: "Blogs", href: "/blog" },
+                  { label: "Connect us", href: "/contact" },
                 ].map((item) => (
                   <Link key={item.href} href={item.href} style={{ textDecoration: "none" }} >
                     <Typography
@@ -186,13 +186,14 @@ const Footer = () => {
                     info@poornamevents.com
                   </Box>
                 </Typography>
+                
                 <Box>
                   {[
-                    { icon: FacebookIcon, url: "https://www.facebook.com/share/1F1cZcuxff/" },
+                    { icon: FacebookIcon, url: "https://www.facebook.com/poornamevents" },
                     { icon: InstagramIcon, url: "https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw==" },
                     { icon: TwitterIcon, url: "https://twitter.com" },
-                    { icon: YouTubeIcon, url: "https://youtube.com" },
-                    { icon: LinkedIn, url: "https://linkedin.com" },
+                    { icon: YouTubeIcon, url: "https://www.youtube.com/@poornam-wedding-planner" },
+                    { icon: LinkedIn, url: "https://www.linkedin.com/company/poornam-events/" },
                   ].map(({ icon: Icon, url }, i) => (
                     <IconButton
                       key={i}
@@ -241,7 +242,7 @@ const Footer = () => {
                   Disclaimer
                 </Link>{" "}
                 |
-                <Link href="/privacy" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/privacy-policy" underline="hover" style={{ color: "black", textDecoration: "none" }}>
                   Privacy Policy
                 </Link>{" "}
                 |

@@ -1,6 +1,6 @@
 import React from 'react'
 import Blog from '../component/blog/index'
-const blogs = () => {
+const blog = () => {
   return (
     <>
     <Blog/>
@@ -8,4 +8,4 @@ const blogs = () => {
   )
 }
 
-export default blogs
+export default blog
