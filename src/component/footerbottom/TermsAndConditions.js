@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CustomBanner from '@/common-component/banner/CustomBanner';
+import SEO from '@/common-component/SEO/seo';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -159,6 +160,22 @@ export default function TermsAndConditions() {
 
   return (
     <>
+      <>
+        <SEO
+          url='http://www.poornamevents.com/terms'
+          metaTitle='Terms & Conditions • Poornam Events'
+          metaDescription='Terms of use for Poornam Events website, bookings, pricing & services.'
+          keywords='terms Poornam Events, terms wedding planner'
+          canonical='http://www.poornamevents.com/terms'
+          ogTitle='Terms & Conditions • Poornam Events'
+          ogDescription='Terms of use for Poornam Events website, bookings, pricing & services.'
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle='Terms & Conditions • Poornam Events'
+          twitterDescription='Terms of use for Poornam Events website, bookings, pricing & services.'
+            twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"
+        />
+      </>
       <CustomBanner
         showLogo={true}
         logoSrc="/logo.png"
@@ -276,10 +293,10 @@ export default function TermsAndConditions() {
         {/* Changes Notice */}
         <StyledPaper elevation={2} sx={{ bgcolor: 'grey.50' }}>
           <SectionTitle variant="h5" component="h2">
-         {`   Changes to These Terms`}
+            {`   Changes to These Terms`}
           </SectionTitle>
           <Typography variant="body1">
-           {` We may update these Terms occasionally. Any changes will be reflected on this page with an updated date.
+            {` We may update these Terms occasionally. Any changes will be reflected on this page with an updated date.
             Your continued use of the site after any changes means you accept the updated Terms.`}
           </Typography>
         </StyledPaper>

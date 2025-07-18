@@ -5,10 +5,27 @@ import SearchFilter from './SearchFilter';
 import PlanningTips from './PlanningTips';
 import BlogSection from './BlogSection';
 import PicksSection from './PicksSection';
+import SEO from '@/common-component/SEO/seo';
 
 const Blog = () => {
   return (
     <>
+      <>
+        <SEO
+          url='http://www.poornamevents.com/blog'
+          metaTitle='Wedding Planning Tips & Real Weddings Blog'
+          metaDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
+          keywords='wedding planning tips India, blog destination wedding'
+          canonical='http://www.poornamevents.com/blog'
+          ogTitle='Wedding Planning Tips & Real Weddings Blog'
+          ogDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
+          ogImage='https://poornamevent.com/assets/blog-og.jpg'
+          twitterTitle='Wedding Planning Tips & Real Weddings Blog'
+          twitterDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
+          twitterImage='https://poornamevent.com/assets/blog-twitter.jpg'
+          robots="index, follow"
+        />
+      </>
       <CustomBanner
         title="Shaadi Ki Planning? Gyaan Bhi, Fun Bhi!"
         //   subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
@@ -23,7 +40,7 @@ const Blog = () => {
             md: {
               width: '100%',
               background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)',
-             
+
             }
           }
         }}

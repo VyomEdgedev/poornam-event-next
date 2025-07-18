@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CustomBanner from '@/common-component/banner/CustomBanner';
+import SEO from '@/common-component/SEO/seo';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -184,106 +185,104 @@ export default function PrivacyPolicy() {
 
   return (
     <>
-      <CustomBanner 
-  showLogo={true}
-  logoSrc="/logo.png"
-  height="30vh"
-  />
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      {/* Header Section */}
-      <StyledPaper elevation={3}>
-        <Box textAlign="center" mb={3}>
-          <Typography 
-            variant={isMobile ? "h4" : "h3"} 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-              fontWeight: 700,
-              fontFamily: "Akatab,Sans-serif",
-              background: "#001538",
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              mb: 2
-            }}
-          >
-            {privacyData.title}
+      <>
+        <SEO
+          url='http://www.poornamevents.com/privacy-policy'
+          metaTitle='Privacy Policy • Poornam Events'
+          metaDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
+          keywords='privacy policy India wedding planner'
+          canonical='http://www.poornamevents.com/privacy-policy'
+          ogTitle='Privacy Policy • Poornam Events'
+          ogDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle=' Privacy Policy • Poornam Events'
+          twitterDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
+           twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"
+        />
+      </>
+
+
+      <CustomBanner
+        showLogo={true}
+        logoSrc="/logo.png"
+        height="30vh"
+      />
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        {/* Header Section */}
+        <StyledPaper elevation={3}>
+          <Box textAlign="center" mb={3}>
+            <Typography
+              variant={isMobile ? "h4" : "h3"}
+              component="h1"
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                fontFamily: "Akatab,Sans-serif",
+                background: "#001538",
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                mb: 2
+              }}
+            >
+              {privacyData.title}
+            </Typography>
+            <Chip
+              label={`Last Updated: ${privacyData.lastUpdated}`}
+              color="#001538"
+              variant="outlined"
+              sx={{ mb: 2 }}
+            />
+            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
+              dangerouslySetInnerHTML={{
+                __html: `   Welcome to <strong>{privacyData.companyName}!</strong>`,
+              }}
+            />
+
+
+          </Box>
+
+          <Divider sx={{ my: 3 }} />
+
+          <Typography variant="body1" >
+            {privacyData.description}
           </Typography>
-          <Chip 
-            label={`Last Updated: ${privacyData.lastUpdated}`}
-            color="#001538"
-            variant="outlined"
-            sx={{ mb: 2 }}
-          />
-          <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
-               dangerouslySetInnerHTML={{
-              __html: `   Welcome to <strong>{privacyData.companyName}!</strong>`,
-            }}
-          />
-           
-     
-        </Box>
-        
-        <Divider sx={{ my: 3 }} />
-        
-        <Typography variant="body1" >
-          {privacyData.description}
-        </Typography>
-        
-        <Typography variant="body1" >
-       {`   This Privacy Policy explains how we collect, use, share, and protect your information when you use our website, contact us, or plan your dream wedding with us.`}
-        </Typography>
-      </StyledPaper>
 
-      {/* Privacy Sections */}
-      {privacyData.sections.map((section, index) => (
-        <StyledPaper key={index} elevation={2}>
-          <SectionTitle variant="h5" component="h2">
-            {section.title}
-          </SectionTitle>
-          
-          {section.content && (
-            <Typography variant="body1"  sx={{ mb: 2 }}>
-              {section.content}
-            </Typography>
-          )}
+          <Typography variant="body1" >
+            {`   This Privacy Policy explains how we collect, use, share, and protect your information when you use our website, contact us, or plan your dream wedding with us.`}
+          </Typography>
+        </StyledPaper>
 
-          {section.websiteUrl && (
-            <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
-              {section.websiteUrl}
-            </Typography>
-          )}
+        {/* Privacy Sections */}
+        {privacyData.sections.map((section, index) => (
+          <StyledPaper key={index} elevation={2}>
+            <SectionTitle variant="h5" component="h2">
+              {section.title}
+            </SectionTitle>
 
-          {section.additionalContent && (
-            <Typography variant="body1"  sx={{ mb: 2 }}>
-              {section.additionalContent}
-            </Typography>
-          )}
-          
-          {section.items && (
-            <List sx={{ py: 0 }}>
-              {section.items.map((item, itemIndex) => (
-                <StyledListItem key={itemIndex} disablePadding>
-                  <ListItemText 
-                    primary={item}
-                    primaryTypographyProps={{
-                      variant: 'body1',
-                      sx: { lineHeight: 1.6 }
-                    }}
-                  />
-                </StyledListItem>
-              ))}
-            </List>
-          )}
-
-          {section.subsections && section.subsections.map((subsection, subIndex) => (
-            <Box key={subIndex} sx={{ mt: 3 }}>
-              <Typography variant="h6" sx={{ fontWeight: 500, mb: 1 }}>
-                {subsection.subtitle}
+            {section.content && (
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                {section.content}
               </Typography>
+            )}
+
+            {section.websiteUrl && (
+              <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
+                {section.websiteUrl}
+              </Typography>
+            )}
+
+            {section.additionalContent && (
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                {section.additionalContent}
+              </Typography>
+            )}
+
+            {section.items && (
               <List sx={{ py: 0 }}>
-                {subsection.items.map((item, itemIndex) => (
+                {section.items.map((item, itemIndex) => (
                   <StyledListItem key={itemIndex} disablePadding>
-                    <ListItemText 
+                    <ListItemText
                       primary={item}
                       primaryTypographyProps={{
                         variant: 'body1',
@@ -293,47 +292,67 @@ export default function PrivacyPolicy() {
                   </StyledListItem>
                 ))}
               </List>
-            </Box>
-          ))}
+            )}
 
-          {section.contactEmail && (
-            <Typography variant="body1" sx={{ mt: 2, fontStyle: 'italic' }}>
-              {section.contactEmail}
-            </Typography>
-          )}
-          
-          {section.note && (
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                mt: 2, 
-                fontStyle: 'italic', 
-                color: 'text.secondary',
-                borderLeft: `3px solid ${theme.palette.secondary.main}`,
-                pl: 2,
-                py: 1
-              }}
-            >
-              {section.note}
-            </Typography>
-          )}
-          
-          {section.contactInfo && (
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                {section.contactInfo.company}
+            {section.subsections && section.subsections.map((subsection, subIndex) => (
+              <Box key={subIndex} sx={{ mt: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 500, mb: 1 }}>
+                  {subsection.subtitle}
+                </Typography>
+                <List sx={{ py: 0 }}>
+                  {subsection.items.map((item, itemIndex) => (
+                    <StyledListItem key={itemIndex} disablePadding>
+                      <ListItemText
+                        primary={item}
+                        primaryTypographyProps={{
+                          variant: 'body1',
+                          sx: { lineHeight: 1.6 }
+                        }}
+                      />
+                    </StyledListItem>
+                  ))}
+                </List>
+              </Box>
+            ))}
+
+            {section.contactEmail && (
+              <Typography variant="body1" sx={{ mt: 2, fontStyle: 'italic' }}>
+                {section.contactEmail}
               </Typography>
-              <Typography variant="body1" color="#000000">
-                {section.contactInfo.email}
+            )}
+
+            {section.note && (
+              <Typography
+                variant="body2"
+                sx={{
+                  mt: 2,
+                  fontStyle: 'italic',
+                  color: 'text.secondary',
+                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  pl: 2,
+                  py: 1
+                }}
+              >
+                {section.note}
               </Typography>
-              <Typography variant="body1" color="#000000">
-                {section.contactInfo.phone}
-              </Typography>
-            </Box>
-          )}
-        </StyledPaper>
-      ))}
-    </Container>
+            )}
+
+            {section.contactInfo && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                  {section.contactInfo.company}
+                </Typography>
+                <Typography variant="body1" color="#000000">
+                  {section.contactInfo.email}
+                </Typography>
+                <Typography variant="body1" color="#000000">
+                  {section.contactInfo.phone}
+                </Typography>
+              </Box>
+            )}
+          </StyledPaper>
+        ))}
+      </Container>
     </>
   );
 }

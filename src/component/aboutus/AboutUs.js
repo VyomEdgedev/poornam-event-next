@@ -10,6 +10,7 @@ import ContactSection from "../home/ContactSection";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import SEO from "@/common-component/SEO/seo";
 
 export default function AboutUS() {
   const [open, setOpen] = useState(false)
@@ -19,6 +20,23 @@ export default function AboutUS() {
   };
   return (
     <>
+      <>
+        <SEO
+          url='http://www.poornamevents.com/about-us'
+          metaTitle='About Poornam Events | Wedding Planner in MP'
+          metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+          keywords='wedding planner in MP, about Poornam Events'
+          canonical='http://www.poornamevents.com/about-us'
+          ogTitle='About Poornam Events | Wedding Planner in MP'
+          ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+          ogImage='https://www.poornamevent.com/og-image.jpg'
+          twitterTitle='About Poornam Events | Wedding Planner in MP'
+          twitterDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+           twitterImage='https://www.poornamevent.com/logoo.jpg'
+          robots="index, follow"
+        />
+      </>
+
       <CustomBanner
         title="Let's Make Shaadi Magic Together!"
         subtitle="From planning to 'I do', we' ve got your back!"
@@ -42,14 +60,14 @@ export default function AboutUS() {
 
 
       <OurStories></OurStories>
-     <MagicMakers></MagicMakers>
+      <MagicMakers></MagicMakers>
 
       <Owners></Owners>
       <History></History>
       <PoornamVows></PoornamVows>
       <Philosophy></Philosophy>
       <Snapshot></Snapshot>
-              <ContactSection></ContactSection>
+      <ContactSection></ContactSection>
     </>
   )
 }

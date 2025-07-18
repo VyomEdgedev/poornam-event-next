@@ -1,0 +1,20 @@
+
+# robots.txt for Poornam Events (Next.js App)
+# SEO-optimized, clean, and AI-ready
+
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /server/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /*?*
+
+Allow: /_next/static/
+Allow: /images/
+Allow: /assets/
+Allow: /fonts/
+
+# Sitemap(s) - Ensure you generate sitemap dynamically or statically
+Sitemap: https://www.poornamevents.com/sitemap.xml
