@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomButton from '@/common-component/button/CustomButton';
 import { Card, Grid, Typography, styled, Box } from '@mui/material';
+import { useRouter } from 'next/router';
 
 import Image from 'next/image';
 
@@ -115,11 +116,12 @@ const HeroCard = styled(Card)(({ theme }) => ({
 }));
 
 const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
-  backgroundColor: 'transparent',
+   backgroundColor: 'transparent',
   boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
   border: '1px solid #e0e0e0',
   borderRadius: '12px',
-  width: isHighlighted ? "1058px" : "340px",
+  width:'340px',
+  // width: isHighlighted ? "1058px" : "340px",
   height: '132px',
   display: 'flex',
   flexDirection: 'row',
@@ -127,10 +129,21 @@ const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
   padding: '16px 16px 16px 0px',
   alignItems: 'center',
   gap: theme.spacing(2),
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-5px) scale(1.02)',
+    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
+    cursor: 'pointer',
+  },
   '& .MuiCardContent-root': {
     padding: theme.spacing(2)
   },
+    [theme.breakpoints.up('xl')]: {
+    width: isHighlighted ? "1058px" : "340px",
+  },
+  
   [theme.breakpoints.down('md')]: {
+    // width: isHighlighted ? "100%" : "100%",
     // width: '100%', 
     maxWidth: '340px', // Standard card width
     height: 'auto',
@@ -138,7 +151,7 @@ const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    textAlign: 'center',
+    textAlign: 'center', 
     height: 'auto',
     minHeight: '180px',
     marginLeft: '10px',
@@ -261,6 +274,14 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
 }));
 
 const ShaddiService = () => {
+  const router = useRouter();
+  
+  
+  
+  const handleNavigate = () => {
+
+    router.push('/servicessubpage');
+  };
   return (
     <MainContainer>
       {/* Title */}
@@ -270,7 +291,7 @@ const ShaddiService = () => {
 
       {/* Hero Section */}
       <HeroCard >
-        <Grid container spacing={2}>
+        <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
           <Grid item xs={12} md={8}>
             <HeroImageContainer>
               <Image
@@ -290,7 +311,8 @@ const ShaddiService = () => {
               <HeroDescription>
                 {servicesData.hero.description}
               </HeroDescription>
-              <CustomButton data-testid="notify-button" >
+              <CustomButton data-testid="notify-button" onClick={() => handleNavigate()}
+              style={{ cursor: 'pointer' }} >
                 {servicesData.hero.buttonText}
               </CustomButton>
             </HeroContent>
@@ -299,7 +321,7 @@ const ShaddiService = () => {
       </HeroCard>
 
       {/* Services Grid */}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
         {servicesData.services.map((service) => (
           <Grid item xs={12}
             sm={service.isHighlighted ? 12 : 6}
