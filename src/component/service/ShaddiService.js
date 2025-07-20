@@ -291,7 +291,7 @@ const ShaddiService = () => {
 
       {/* Hero Section */}
       <HeroCard >
-        <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
+        <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" }}>
           <Grid item xs={12} md={8}>
             <HeroImageContainer>
               <Image
@@ -321,7 +321,7 @@ const ShaddiService = () => {
       </HeroCard>
 
       {/* Services Grid */}
-      <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
+      <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "center" , lg: "center" }}>
         {servicesData.services.map((service) => (
           <Grid item xs={12}
             sm={service.isHighlighted ? 12 : 6}
