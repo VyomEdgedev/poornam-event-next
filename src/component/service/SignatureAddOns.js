@@ -75,7 +75,7 @@ const SignatureAddOns = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 4, lg: 2 }}>
+        <Grid container spacing={{ xs: 2, md: 4, lg: 2 }}justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
           {addOns.map((addon, index) => (
             <Grid item xs={6} md={4} lg={2} key={index}>
               <Box

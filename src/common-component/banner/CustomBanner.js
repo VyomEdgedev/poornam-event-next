@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import CustomButton from '../button/CustomButton';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import BreadcrumbsComponent from '../breadcrumbs/BreadcrumbsComponent';
 // Custom styled components
 const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   position: 'relative',
@@ -28,6 +28,7 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
     height: height === '100vh' ? '60vh' : height === '450px' ? '300px' : height,
     minHeight: '280px',
   },
+  
 }));
 
 const BackgroundImage = styled('img')(({ theme }) => ({
@@ -129,16 +130,16 @@ const ContentContainer = styled(Container)(({ theme, contentalignment, contentpo
     position: 'relative',
     top: 'auto',
     left: 'auto',
-    padding: '40px 20px',
-    alignItems: contentalignment?.md?.horizontal || contentalignment?.mobile?.horizontal || 'center',
-    textAlign: contentalignment?.md?.textAlign || contentalignment?.mobile?.textAlign || 'center',
+    padding: '40px 40px',
+    // alignItems: contentalignment?.md?.horizontal || contentalignment?.mobile?.horizontal || 'center',
+    // textAlign: contentalignment?.md?.textAlign || contentalignment?.mobile?.textAlign || 'center',
     width: '100%',
     maxWidth: '100%',
   },
   [theme.breakpoints.down('sm')]: {
-    padding: '20px 15px',
-    alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
-    textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
+    padding: '20px 28px',
+    // alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
+    // textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
   },
 }));
 
@@ -172,9 +173,9 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     marginTop:"35px",
-    fontSize: headingstyle?.responsive?.sm?.fontSize || '22px',
-    lineHeight: headingstyle?.responsive?.sm?.lineHeight || '1.2',
-    marginBottom: headingstyle?.responsive?.sm?.marginBottom || '5px',
+    fontSize: headingstyle?.responsive?.sm?.fontSize || '18px',
+    lineHeight: headingstyle?.responsive?.sm?.lineHeight || '1',
+    marginBottom: headingstyle?.responsive?.sm?.marginBottom || '4px',
   },
   [theme.breakpoints.down('xs')]: {
     fontSize: headingstyle?.responsive?.xs?.fontSize || '20px',
@@ -281,6 +282,25 @@ const ButtonContainer = styled(Box)(({ theme, buttonscontainer }) => ({
   },
 }));
 
+const BreadcrumbsWrapper = styled(Box)(({ theme, breadcrumbsPosition }) => ({
+  position: 'absolute',
+  top: breadcrumbsPosition.top,
+  left: breadcrumbsPosition.left,
+  zIndex: 4, // Higher than overlay but below logo if needed
+  [theme.breakpoints.down('lg')]: {
+    top: breadcrumbsPosition.lg?.top || breadcrumbsPosition.top,
+    left: breadcrumbsPosition.lg?.left || breadcrumbsPosition.left,
+  },
+  [theme.breakpoints.down('md')]: {
+    top: breadcrumbsPosition.md?.top || breadcrumbsPosition.top,
+    left: breadcrumbsPosition.md?.left || breadcrumbsPosition.left,
+  },
+  [theme.breakpoints.down('sm')]: {
+    top: breadcrumbsPosition.sm?.top || breadcrumbsPosition.top,
+    left: breadcrumbsPosition.sm?.left || breadcrumbsPosition.left,
+  },
+}));
+
 // Main Banner Component
 const CustomBanner = ({
   // Content props
@@ -288,6 +308,16 @@ const CustomBanner = ({
   subtitle,
   paragraphSubtitle,
   buttons = [],
+  breadcrumbs,
+   breadcrumbsPosition = {
+    top: '20px',
+    left: '20px',
+    // Responsive positions
+    lg: { top: '15px', left: '15px' },
+    md: { top: '10px', left: '10px' },
+    sm: { top: '10px', left: '10px' }
+  },
+  breadcrumbsSx = {},
   
   // Image props
   backgroundImage,
@@ -397,6 +427,17 @@ const CustomBanner = ({
       {/* Overlay */}
       {overlay && <Overlay overlay={overlay} />}
       
+      {/* Breadcrumbs - Added this new section */}
+     {breadcrumbs && (
+  <BreadcrumbsWrapper 
+    breadcrumbsPosition={breadcrumbsPosition}
+    sx={breadcrumbsSx}
+  >
+    <BreadcrumbsComponent items={breadcrumbs} />
+  </BreadcrumbsWrapper>
+)}
+
+
       {/* Logo */}
       {showLogo && logoSrc && (
         <LogoContainer 

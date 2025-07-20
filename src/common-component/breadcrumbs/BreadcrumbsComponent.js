@@ -4,7 +4,7 @@ import { Home, NavigateNext } from '@mui/icons-material';
 
 const BreadcrumbsComponent = ({ 
   items = [], 
-  separator = <NavigateNext fontSize="small" />,
+  separator = <NavigateNext fontSize="small" sx={{ color: '#DAA412' }} />,
   showHomeIcon = true,
   maxItems = 8,
   homeIconColor = '#DAA412',
@@ -39,7 +39,7 @@ const BreadcrumbsComponent = ({
             return (
               <Typography
                 key={index}
-                color="text.primary"
+                color="#DAA412"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
@@ -62,6 +62,7 @@ const BreadcrumbsComponent = ({
               color="inherit"
               href={item.href}
               sx={{
+                
                 display: 'flex',
                 alignItems: 'center',
                 textDecoration: 'none',
@@ -74,7 +75,7 @@ const BreadcrumbsComponent = ({
               onClick={item.onClick}
             >
               {isHome && showHomeIcon && (
-                <Home sx={{ mr: 0.5, color: homeIconColor }} fontSize="inherit" />
+                <Home sx={{ mr: 0, color: homeIconColor }} fontSize="inherit" />
               )}
               {item.label}
             </Link>

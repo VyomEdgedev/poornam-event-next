@@ -12,7 +12,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-
+import { useRouter } from 'next/router';
 const blogData = {
   title: "Latest From the Blog",
   viewAllText: "View All Blogs",
@@ -45,6 +45,12 @@ const BlogSection = () => {
   const responsiveSpacing = isBelow1150
     ? { xs: 2, sm: 1, md: 6 }   // spacing when screen is small
     : { xs: 2, sm: 3, md: 6 }; // spacing when screen is large
+  const router = useRouter();
+
+    const handleNavigate = () => {
+  
+      router.push('/subblog');
+    };
 
   return (
     <Box
@@ -67,7 +73,7 @@ const BlogSection = () => {
           >
             {blogData.title}
           </Typography>
-          <Button data-testid="notify-button"
+          <Button onClick={() => handleNavigate() } data-testid="notify-button"
             variant="contained"
             sx={{
               backgroundColor: "#ffa726",
