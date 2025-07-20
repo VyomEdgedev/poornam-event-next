@@ -21,7 +21,7 @@ const SEO = ({
     return null;
   }
 
-const finalOgImage = ogImage || `${baseUrl}/og-image.jpg`;
+const finalOgImage = 'https://res.cloudinary.com/dtidgvjlt/image/upload/v1753038213/logo_kjfvsf.png';
   return (
     <Head>
       {/* General Meta */}
@@ -48,7 +48,7 @@ const finalOgImage = ogImage || `${baseUrl}/og-image.jpg`;
       <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={twitterTitle || metaTitle} />
       <meta name="twitter:description" content={twitterDescription || metaDescription} />
-      {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+      {twitterImage && <meta name="twitter:image" content={finalOgImage} />}
     </Head>
   );
 };
