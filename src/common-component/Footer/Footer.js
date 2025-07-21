@@ -16,14 +16,15 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { LinkedIn } from "@mui/icons-material";
 import Image from "next/image";
-import { color } from "framer-motion";
+import { red } from "@mui/material/colors";
+
 
 
 const Footer = () => {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#011d4a", padding: "2px" }}>
       {/* Top dark blue section */}
-      <Box sx={{ backgroundColor: "#011d4a", color: "#FFF1CA", pt: 4, pb: 5 }}>
+      <Box sx={{ color: "#FFF1CA", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} sx={{
 
@@ -57,13 +58,14 @@ const Footer = () => {
                       width={100}
                       height={60}
                       style={{ height: "auto" }}
+
                     />
                   </Box>
                 </a>
               </Link>
               <Typography
                 variant="body2"
-                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif" }}
+                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "14px" }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -215,7 +217,7 @@ const Footer = () => {
       </Box>
 
       {/* Bottom mustard section */}
-      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
+      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 0.5 }}>
         <Container maxWidth="lg">
           <Grid container sx={{ display: { xs: "block", md: "flex" } }} alignItems="center" justifyContent="space-between">
             {/* Left - Copyright */}
@@ -261,42 +263,70 @@ const Footer = () => {
               item
               xs={12}
               md={4}
-              sx={{ textAlign: { xs: "center", md: "right" } }}
+              sx={{
+                textAlign: { xs: "center", md: "right" },
+                position: "relative",
+                mt: { xs: 1, md: 0 },
+              }}
             >
               <Typography
                 variant="body2"
                 component="span"
-                sx={{ fontSize: "13px" }}
+                sx={{ fontSize: '13px', color: 'black' }}
               >
-                Developed by{" "}
+                Developed by{' '}
                 <Link
                   href="https://vyomedge.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  color="inherit"
-                  underline="hover"
-                  sx={{ fontWeight: 600 }}
-                  style={{ color: "black", textDecoration: "none" }}
+                  passHref
+                  legacyBehavior
                 >
-                  Vyomedge
+                  <Box
+                    component="a"
+                    sx={{
+                      fontWeight: 600,
+                      color: 'black',
+                      textDecoration: 'none',
+                      '&:hover': {
+                        color: 'black',
+                        textDecoration: 'none',
+                      },
+                    }}
+                  >
+                    Vyomedge
+                  </Box>
                 </Link>
               </Typography>
-              <Box component="span" sx={{ ml: 0, }}
 
+              {/* Responsive logo wrapper */}
+              <Box
+                sx={{
+                  display: "inline-block",
+                  mt: { xs: 1, md: 0 },
+                  position: { xs: "static", md: "absolute" },
+                  top: { md: "-25px" },
+                  right: { xs: "-20", sm: "-20", md: "-45px" },
+                  height: "20px",
+
+                }}
               >
                 <a
+                  color="black"
                   href="https://vyomedge.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ display: "inline-block" }}
                 >
                   <Image
-
                     src="/developer.png"
                     alt="Developer Logo"
-                    width={60}
-                    height={24}
-                    style={{ height: "24px", width: "auto" }}
+                    width={30}
+                    height={30}
+                    sx={{
+                      width: { xs: "10px", sm: "20px", md: "30px" },
+                      height: { xs: "10px", sm: "20px", md: "30px" } // inherits responsive height from Box
+                    }}
                   />
                 </a>
               </Box>

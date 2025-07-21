@@ -105,20 +105,45 @@ export default function Header() {
               </Link>
               <Box
               >
-                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)} 
-                sx={{
-                  backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
-                  boxShadow: 'none',
-                }}>
-                  <MenuIcon  />
+                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)}
+                  sx={{
+                    backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
+                    boxShadow: 'none',
+                  }}>
+                  <MenuIcon />
                 </IconButton>
               </Box>
+              <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}
+                PaperProps={{
+                  sx: {
+                    zIndex: 1300, // ✅ Use colon instead of equal
+                  },
+                }}>
+                {/* WhatsApp Button at Top */}
+                <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "center", zIndex: 1300 }}>
+                  <IconButton
+                    component="a" // ✅ required to make href work
+                    href="https://wa.me/919519066885"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ color: "#25D366" }}
 
-              <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}>
+                  >
+                    <WhatsAppIcon />
+                  </IconButton>
+                </ListItem>
+
+                {/* Menu Items */}
                 <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
-                  <List sx={{ backgroundColor: "#0A163ED4", color: "#CBEFFF", height: "667px", padding: " 11% 25% " }}>
+                  <List
+                    sx={{
+                      backgroundColor: "#0A163ED4",
+                      color: "#CBEFFF",
+                      height: "667px",
+                      padding: "15% 25%",
+                    }}
+                  >
                     {navItems.map((item, index) => (
-
                       <React.Fragment key={index}>
                         <ListItem disablePadding>
                           <ListItemButton component="a" href={item.href}>
@@ -127,18 +152,12 @@ export default function Header() {
                         </ListItem>
                         <hr />
                       </React.Fragment>
-
-
-
                     ))}
-                    <ListItem>
-                      <IconButton href="https://wa.me/919519066885" target="_blank" sx={{ color: "#25D366" }} data-testid="notify-button">
-                        <WhatsAppIcon data-testid="notify-button" />
-                      </IconButton>
-                    </ListItem>
                   </List>
                 </Box>
               </Drawer>
+
+
             </Box>
           )}
         </Toolbar>
