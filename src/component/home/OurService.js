@@ -53,6 +53,20 @@ const services = [
       "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
     cta: "Learn More",
   },
+   {
+    title: "Food and Beverages",
+    image: "/homeservices5.png",
+    description:
+      "More than just pretty flowers...",
+    cta: "Learn More",
+  },
+   {
+    title: "Guest Hospitality & Logistics",
+    image: "/homeservices5.png",
+    description:
+      "Because a happy guest = a happy shaadi...",
+    cta: "Learn More",
+  },
 ];
 
 const FlipCard = ({ service }) => {
@@ -123,7 +137,7 @@ const FlipCard = ({ service }) => {
               position: "absolute",
               bottom: 0,
               width: "100%",
-              bgcolor: "rgba(0, 0, 0, 0.45)",
+              bgcolor: "rgba(0, 0, 0, 0.5)",
               color: "#fff",
               py: 1,
               px: 2,
@@ -142,7 +156,7 @@ const FlipCard = ({ service }) => {
             position: "absolute",
             width: "100%",
             height: "100%",
-            borderRadius: 4,
+            borderRadius: 2,
             backfaceVisibility: "hidden",
             transform: "rotateX(180deg)",
             background: "#000",
