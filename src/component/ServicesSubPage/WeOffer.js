@@ -4,7 +4,8 @@ import Image from 'next/image';
 
 function WeOffer() {
     return (
-        <Box textAlign="center" bgcolor="#FFFCF5">
+        <Box textAlign="center" bgcolor="#FFFCF5"
+        px={{xs : "5%", sm:"10%", md: "15%"}} >
             <Typography sx={{
                 fontSize: { xs: "2rem", sm: "2rem", md: "2.1rem" }
                 , fontFamily: "Gloock"

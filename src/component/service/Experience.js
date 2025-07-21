@@ -1,5 +1,21 @@
 import React from "react";
 import Image from "next/image";
+import { Box, Grid} from '@mui/material';
+
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
+    title: 'Bed',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
+    title: 'Kitchen',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
+    title: 'Sink',
+  },
+];
 
 const Experience = () => {
   return (
@@ -67,37 +83,82 @@ const Experience = () => {
               </div>
             </div>
           </div>
+    <Box sx={{ maxWidth: 900, mx: 'auto', p: 2 }}>
+      <Grid container spacing={1}>
+        {/* Left Large Image */}
+        <Grid item xs={12} sm={6}>
+          <Box
+            sx={{
+              borderRadius: 3,
+              overflow: 'hidden',
+              height: '100%',
+            }}
+          >
+            <Image
+              src="/experience1.png"
+              alt="Wedding Ritual"
+              width={600}
+              height={800}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: 2,
+              }}
+            />
+          </Box>
+        </Grid>
 
-          <div className="right-content">
-            <div className="main-image">
-              <Image
-                src="/experience1.png"
-                alt="Traditional Indian Wedding Ceremony"
-                width={600}
-                height={400}
-                layout="responsive"
-              />
-            </div>
-
-            <div className="side-image">
-              <div className="side-image" id="side-image-1">
+        {/* Right: Two stacked images */}
+        <Grid item xs={12} sm={6} md={2}>
+          <Grid container direction={{xs:"column", sm:"column", md:"coloum"}} 
+          spacing={0}>
+            <Grid item>
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                }}
+              >
                 <Image
-                  src="/experience2.jpg"
-                  alt="Wedding Decorations"
-                  width={250}
-                  height={160}
+                     src="/experience3.jpg"
+                  alt="Question Cards"
+                  width={100}
+                  height={50}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    borderRadius: 5,
+                  }}
                 />
-              </div>
-              <div className="side-image" id="side-image-2">
+              </Box>
+            </Grid>
+            <Grid item>
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                }}
+              >
                 <Image
-                  src="/experience3.jpg"
-                  alt="Wedding Planning"
-                  width={250}
-                  height={160}
+                    src="/experience2.jpg"
+                  alt="Help Desk"
+                  width={50}
+                  height={50}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    borderRadius: 5,
+                  }}
                 />
-              </div>
-            </div>
-          </div>
+              </Box>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
         </div>
       </div>
     </section>

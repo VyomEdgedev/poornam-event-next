@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  Grid, 
-  Avatar, 
-  Container 
+import {
+  Box,
+  Typography,
+  Grid,
+  Avatar,
+  Container
 } from '@mui/material';
 import Image from 'next/image';
 
@@ -42,12 +42,12 @@ const SignatureAddOns = () => {
     <Box
       sx={{
         // backgroundColor: '#DAA412',
-        py: { xs: 6, md: 8, lg: 2 },
-        px: { xs: 4, md: 3, lg:2}
+        py: { xs: 4, sm: 4, md: 8, lg: 2 },
+        px: { xs: 4, sm: 4, md: 3, lg: 2 }
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 6, sm: 6, md: 8 } }}>
           <Typography
             variant="h2"
             component="h2"
@@ -59,14 +59,14 @@ const SignatureAddOns = () => {
               mb: 1
             }}
           >
-           {` Signature Add-Ons`}
+            {` Signature Add-Ons`}
           </Typography>
           <Typography
             variant="h6"
             component="p"
             sx={{
               fontFamily: 'Akatab, sans-serif',
-              fontSize: { xs: '1rem', md: '1.125rem' , lg:'1.125rem'},
+              fontSize: { xs: '1rem', md: '1.125rem', lg: '1.125rem' },
               fontWeight: '400',
               color: '#000000'
             }}
@@ -75,18 +75,18 @@ const SignatureAddOns = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 4, lg: 2 }}justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
+        <Grid container spacing={{ xs: 0, sm: 2, md: 1, lg: 2 }} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
           {addOns.map((addon, index) => (
-            <Grid item xs={6} md={4} lg={2} key={index}>
+            <Grid item xs={1} sm={2} md={4} lg={2} key={index}>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   textAlign: 'center',
-                  justifyContent:'center',
-                  padding: { xs: 5, md: 0 , lg: 0 },
-                  
+                  justifyContent: 'center',
+                  padding: { xs: 1, sm: 0, md: 0, lg: 0 },
+
                 }}
 
               >
@@ -108,17 +108,17 @@ const SignatureAddOns = () => {
                       transform: 'translateY(-2px)',
                     },
                     transition: 'all 0.3s ease',
-                   
+
                   }}
-               >
-                <Image
+                >
+                  <Image
                     src={addon.image}
                     alt={addon.title}
                     width={32}
                     height={36}
                     style={{ objectFit: 'contain' }}
                   />
-                 </Box>
+                </Box>
 
                 <Typography
                   variant="h6"
@@ -127,16 +127,16 @@ const SignatureAddOns = () => {
                     fontFamily: 'Akatab, sans-serif',
                     fontSize: { xs: '0.875rem', md: '1rem', lg: '1.125rem' },
                     fontWeight: 500,
-                    width:'150px',
+                    width: '150px',
                     color: '#000D1F',
-                    mt:1,
+                    mt: 1,
                     mb: 1,
                     lineHeight: 1.2
                   }}
                 >
                   {addon.title}
                 </Typography>
-                
+
                 <Typography
                   variant="body2"
                   component="p"
@@ -145,7 +145,7 @@ const SignatureAddOns = () => {
                     fontSize: { xs: '0.75rem', md: '0.875rem', lg: '1rem' },
                     color: 'rgba(0, 0, 0, 0.7)',
                     lineHeight: 1.2,
-                    width:'200px'
+                    width: '200px'
                   }}
                 >
                   {addon.description}

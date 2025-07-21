@@ -330,8 +330,8 @@ const CustomBanner = ({
   logoSrc,
   logoAlt = "Company Logo",
   logoPosition = {
-    top: '14.15px',
-    left: '68.07px',
+    top: '18.15px',
+    left: '42.07px',
     width: '113.92px',
     height:'143.62px',
     // Enhanced responsive logo positions

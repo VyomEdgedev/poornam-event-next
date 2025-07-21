@@ -8,6 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 const services = [
   {
@@ -15,8 +16,8 @@ const services = [
     image: "/homeservices1.png",
     description:
       "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
-      cta: "Learn More",
-  
+    cta: "Learn More",
+
   },
   {
     title: "Intimate Weddings",
@@ -43,19 +44,25 @@ const services = [
     image: "/homeservices4.png",
     description:
       "Because you don’t want to be managing the DJ during your own varmala.",
-      cta: "Learn More",
+    cta: "Learn More",
   },
   {
     title: "Special Effects",
     image: "/homeservices5.png",
     description:
       "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
-      cta: "Learn More",
+    cta: "Learn More",
   },
 ];
 
 const FlipCard = ({ service }) => {
   const [flipped, setFlipped] = useState(false);
+
+  const router = useRouter();
+  const handleNavigate = () => {
+
+    router.push('/services');
+  };
 
   return (
     <Box
@@ -171,7 +178,7 @@ const FlipCard = ({ service }) => {
         >
           {service.guests && (
             <Typography
-            
+
               sx={{
                 bgcolor: "rgba(255,255,255,0.8)",
                 color: "#0D1A46",
@@ -195,7 +202,7 @@ const FlipCard = ({ service }) => {
             component="p"
             sx={{
               color: "#f5f5f5",
-              frontFamily: "Akatab,Sans-serif",color: "#FFFBF0", 
+              frontFamily: "Akatab,Sans-serif", color: "#FFFBF0",
               lineHeight: 1.2,
               mb: 2,
               zIndex: 2,
@@ -222,6 +229,8 @@ const FlipCard = ({ service }) => {
                   bgcolor: "#B8850D",
                 },
               }}
+              onClick={() => handleNavigate()}
+              style={{ cursor: 'pointer' }}
             >
               {service.cta}
             </Button>
@@ -239,8 +248,8 @@ export default function OurServices() {
   return (
     <Box
       sx={{
-        px: { xs: 2, md: 10 },
-        py: { xs: 4, md: 4 },
+        px: { xs: 2, sm: 8, md: 10 },
+        py: { xs: 4, sm: 6, md: 4 },
         bgcolor: "#FFFAED",
         textAlign: "center",
       }}
@@ -257,7 +266,7 @@ export default function OurServices() {
         Our Services
       </Typography>
       <Typography variant="body1" component="p" color="#000000" fontFamily={"Akatab,Sans-serif"} fontWeight={400} mb={{ xs: 2, md: 4 }}>
-        Everything You Need, Delivered Beautifully
+        {` Everything You Need, Delivered Beautifully`}
       </Typography>
 
       <Grid container spacing={4} justifyContent="center">

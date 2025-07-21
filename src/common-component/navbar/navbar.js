@@ -34,11 +34,14 @@ const navItems = [
   { label: "Connect us", href: "/contact" },
 ];
 
+
 export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [openDrawer, setOpenDrawer] = useState(false);
   const pathname = usePathname();
+  const isDarkBg = true;
+  const iconColor = isDarkBg ? '#FFFFFF' : '#192249';
 
   return (
     <AppBar
@@ -81,7 +84,8 @@ export default function Header() {
                         py: 0.5,
                         minWidth: "auto",
                         fontSize: "14px",
-                        "&:hover": {backgroundColor: "#192249",
+                        "&:hover": {
+                          backgroundColor: "#192249",
                         },
                       }}
                     >
@@ -96,14 +100,17 @@ export default function Header() {
             </Box>
           ) : (
             <Box display="flex" justifyContent="space-between" width="100%">
-               <Link href="/" passHref>
-    <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' }} />
-  </Link>
+              <Link href="/" passHref>
+                <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' }} />
+              </Link>
               <Box
               >
-                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)}>
-                  <MenuIcon />
-
+                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)} 
+                sx={{
+                  backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
+                  boxShadow: 'none',
+                }}>
+                  <MenuIcon  />
                 </IconButton>
               </Box>
 
@@ -125,8 +132,8 @@ export default function Header() {
 
                     ))}
                     <ListItem>
-                      <IconButton href="https://wa.me/919519066885" target="_blank" sx={{ color: "#25D366" }}  data-testid="notify-button">
-                        <WhatsAppIcon   data-testid="notify-button"/>
+                      <IconButton href="https://wa.me/919519066885" target="_blank" sx={{ color: "#25D366" }} data-testid="notify-button">
+                        <WhatsAppIcon data-testid="notify-button" />
                       </IconButton>
                     </ListItem>
                   </List>

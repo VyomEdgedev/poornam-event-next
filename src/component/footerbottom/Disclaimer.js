@@ -77,7 +77,7 @@ const disclaimerData = {
     },
     {
       title: "2. Service Availability Disclaimer",
-      content: "Wedding planning is a dynamic process. While we offer a wide range of services across Indore, Bhopal, Jabalpur, and destination locations:",
+      content: "Wedding planning is a dynamic process. While we offer a wide range of services across Indore, Bhopal and destination locations:",
       items: [
         "Availability of venues, vendors, or specific services may change without notice",
         "Visuals used on the site may represent past events, concepts, or client-specific customizations",
