@@ -26,6 +26,7 @@ const BreadcrumbsComponent = ({
             color: 'text.secondary',
           },
           '& .MuiBreadcrumbs-li': {
+            color: '#DAA412',
             display: 'flex',
             alignItems: 'center',
           }

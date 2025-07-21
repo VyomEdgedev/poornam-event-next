@@ -32,7 +32,8 @@ const CapturedMomentsData = [
 
 const CapturedMoments = () => {
     return (
-        <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Container maxWidth="lg" sx={{ py: 8 }}
+        px={{xs : "5%", sm:"10%", md: "15%"}} >
             <Typography
                 variant="h3"
                 component="h2"

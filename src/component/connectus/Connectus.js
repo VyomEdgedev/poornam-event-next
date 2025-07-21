@@ -6,7 +6,7 @@ import SocialMedia from "./SocialMedia";
 import CheatSheet from "./CheatSheet";
 import FreeCall from "./FreeCall";
 import Planner from "./Planner";
-import FAQSection from "../home/FAQ";
+import FAQ from "./FAQ";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import SEO from "@/common-component/SEO/seo";
@@ -60,7 +60,7 @@ export default function ContactUs() {
       <CheatSheet></CheatSheet>
       <FreeCall></FreeCall>
       <Planner></Planner>
-      <FAQSection></FAQSection>
+      <FAQ></FAQ>
     </>
   )
 }

@@ -36,7 +36,7 @@ const Service = () => {
           breadcrumbs={[
     { href: '/',  isHome: true },
     // { href: '/blog', label: 'Blog' },
-    { label: 'services' }
+    { label: 'Services' }
   ]}
   // Optional: customize breadcrumbs position
   breadcrumbsPosition={{

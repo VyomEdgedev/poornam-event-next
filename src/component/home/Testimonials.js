@@ -43,8 +43,8 @@ export default function ClientTestimonials() {
     <Box
       sx={{
         bgcolor: "white",
-        px: { xs: 2, sm: 3,  md: 5 },
-        py: { xs: 4,sm: 5, md: 5 },
+        px: { xs: 2, sm: 3, md: 4 },
+        py: { xs: 4, sm: 5, md: 5 },
       }}
     >
       <Box
@@ -56,90 +56,97 @@ export default function ClientTestimonials() {
           justifyContent: "space-between",
         }}
       >
-        
-       {/* Left - Testimonials Grid */}
-<Box
-  sx={{
-    width: isMobile || isTablet ? "100%" : "70%",
-    overflowX: 'auto',
-    overflowY: "visible",
-    "&::-webkit-scrollbar": {height: 6,},
-  }}
->
-  <Box
-    sx={{
-      display: "flex",
-      gap:2,
-      flexWrap:"nowrap",
-      justifyContent:  "flex-start",
-        
-    
-    }}
-  >
-    {testimonials.map((item, index) => (
-      <Paper
-        key={index}
-        sx={{
-          minWidth: isMobile ? 260 : 260,
-          maxWidth: isMobile ? 280 : 280,
-          flexShrink: 0,
-          mt:2,
-          mb:2,
-          // bgcolor: "#fff",
-          borderRadius: 4,
-          // border:"1px  #DAA412",
-          p: '11px',
-          boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
-          overflow: "visible",
-          
-        }}
-      >
-        <Stack direction="row" spacing={1} alignItems="center" mb={1}>
-          <Avatar src={item.avatar} sx={{ width: 36, height: 36 }} />
-          <Typography variant="h6" fontWeight={600} fontFamily={"Akatab,Sans-serif"} color="#000000" >
-            {item.name}
-          </Typography>
-        </Stack>
 
-        <Typography
-          variant="body1"
-          component="p"
-          color="#000000"
-          sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif",fontWeight:'400' ,}}
+        {/* Left - Testimonials Grid */}
+        <Box
+          sx={{
+
+            borderRadius: "20px",
+            width: isMobile || isTablet ? "100%" : "75%",
+            overflowX: 'auto',
+            overflowY: "visible",
+            "&::-webkit-scrollbar": { height: 6, },
+          }}
         >
-          {item.text}
-        </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              flexWrap: "nowrap",
+              justifyContent: "flex-start",
 
-        <Stack direction="row" spacing={0.5} mb={1}>
-          {[...Array(5)].map((_, i) => (
-            <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 18 }} />
-          ))}
-        </Stack>
-      </Paper>
-    ))}
-  </Box>
-</Box>
+
+            }}
+          >
+            {testimonials.map((item, index) => (
+              <Paper
+                key={index}
+                sx={{
+                  minWidth: isMobile ? 260 : 260,
+                  maxWidth: isMobile ? 280 : 280,
+                  flexShrink: 0,
+                  mt: 2,
+                  mb: 2,
+
+                  // bgcolor: "#fff",
+                  borderRadius: 4,
+                  // border:"1px  #DAA412",
+                  p: '11px',
+                  boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
+                  overflow: "visible",
+
+                }}
+              >
+                <Stack direction="row" spacing={1} alignItems="center" mb={1}>
+                  <Avatar src={item.avatar} sx={{ width: 30, height: 30 }} />
+                  <Typography variant="h6" fontWeight={600} fontFamily={"Akatab,Sans-serif"} color="#000000" >
+                    {item.name}
+                  </Typography>
+                </Stack>
+
+                <Typography
+                  variant="body1"
+                  component="p"
+                  color="#000000"
+                  sx={{ fontStyle: "italic", mb: 2, frontFamily: "Akatab,Sans-serif", fontWeight: '400', }}
+                >
+                  {item.text}
+                </Typography>
+
+                <Stack direction="row" spacing={0.5} mb={1}>
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 18 }} />
+                  ))}
+                </Stack>
+              </Paper>
+            ))}
+          </Box>
+        </Box>
 
 
         {/* Right - Heading */}
-        <Box sx={{ textAlign: isMobile ? "center" : "right", mt:{ xs: 7, sm: 0} ,mb:{xs: 2, sm: 0} }}>
+        <Box sx={{
+          textAlign: isMobile ? "center" : "right",
+          mt: { xs: 7, sm: 0, md: 1 },
+          mb: { xs: 2, sm: 0, md: 1 }
+        }}>
           <Typography
             variant="h2"
             fontWeight="bold"
             sx={{
-             fontFamily: 'Gloock, serif',
+              fontFamily: 'Gloock, serif',
               fontWeight: "400",
               color: "#000000",
               mb: 1,
-              
+
             }}
           >
-           {` Client Testimonials `}
+            {` Client Testimonials `}
           </Typography>
           <Typography variant="body1" component="p" color="text.secondary" sx={{
             frontFamily: "Akatab,Sans-serif",
             color: "#000000",
-            fontWeight:'400'
+            fontWeight: '400'
           }}>
             {`Love From Our Couples`}
           </Typography>

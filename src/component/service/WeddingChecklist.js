@@ -119,19 +119,19 @@ const WeddingChecklist = () => {
   ];
 
   return (
-    <Box sx={{ 
-      py: 4,
-      px: 2
+    <Box sx={{
+      py: 5,
+      px: { xs: 8, sm: 6, md: 2 }
     }}>
       <StyledPaper elevation={3}>
-        <Box sx={{ 
-          display: 'flex', 
+        <Box sx={{
+          display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'flex-start',
           gap: 4
         }}>
           {/* Main Title Section */}
-          <Box sx={{ 
+          <Box sx={{
             flex: isMobile ? 'none' : 1,
             minWidth: isMobile ? '100%' : '300px',
             mb: isMobile ? 3 : 0
@@ -144,12 +144,12 @@ const WeddingChecklist = () => {
           </Box>
 
           {/* Events Grid */}
-          <Box sx={{ 
+          <Box sx={{
             flex: isMobile ? 'none' : 1,
             width: '100%',
             maxWidth: isMobile ? '100%' : '600px'
           }}>
-            <Box sx={{ 
+            <Box sx={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
               gap: 3,
@@ -158,8 +158,8 @@ const WeddingChecklist = () => {
               {events.map((event, index) => (
                 <EventItem key={index}>
                   <IconWrapper>
-                    <IconImage 
-                      src={event.icon} 
+                    <IconImage
+                      src={event.icon}
                       alt={`Icon for ${event.text}`}
                       onError={(e) => {
                         // Fallback if image doesn't load
