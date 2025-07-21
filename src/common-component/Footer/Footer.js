@@ -171,7 +171,7 @@ const Footer = () => {
                 </Typography>
 
                 <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
-                  Phone: 9610366885
+                  Phone: 9519066885
                 </Typography>
 
                 <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
