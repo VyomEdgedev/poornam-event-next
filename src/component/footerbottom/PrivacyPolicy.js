@@ -173,7 +173,7 @@ const privacyData = {
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
         email: "info@poornamevents.com",
-        phone: "+91-9610366885"
+        phone: "+91-9519066885"
       }
     }
   ]

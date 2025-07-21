@@ -8,7 +8,7 @@ function Page404() {
   const router = useRouter();
 
   const handlePage404W = () => {
-    window.open("https://wa.me/919610366885", "_blank");
+    window.open("https://wa.me/919519066885", "_blank");
   };
 
   const handlePage404 = (path) => {

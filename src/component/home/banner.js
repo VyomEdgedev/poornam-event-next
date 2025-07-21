@@ -51,6 +51,7 @@ useEffect(() => {
           <Box flex={1} display="flex" flexDirection="column" justifyContent="center"  position="relative"
          >
             <Box mb={2} sx={{display: { xs: "none", sm:"block", md: "block" },position:"absolute" , top:10 , left:19 ,zIndex:6}
+
             
           }>
               <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
