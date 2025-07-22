@@ -37,10 +37,10 @@ export default function ContactSection() {
     };
 
     return (
-        <Box sx={{ px: 2, py: { xs: 4, sm: 6, md: 10 } }}>
+        <Box sx={{ px: 2, py: { xs: 4, sm: 6, md: 5 } }}>
             <Grid
                 container
-                spacing={{ xs: 3, sm: 1, md: 3 }}
+                spacing={{ xs: 3, sm: 1, md: 10 }}
                 justifyContent="center"
                 sx={{
                     display: {

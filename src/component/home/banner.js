@@ -5,6 +5,7 @@ import { Box, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import { useEffect, useState } from "react";
+import { color } from "framer-motion";
 export default function HeroSection() {
   const [open, setOpen] = useState(false)
   const [autoOpened, setAutoOpened] = useState(false);
@@ -15,16 +16,16 @@ const handleWeddingPlan = () => {
   const handleTalkToPlanner = () => {
      window.open("https://wa.me/919519066885", "_blank");
   };
-useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!autoOpened) {
-        setOpen(true);
-        setAutoOpened(true);
-      }
-    }, 7000);
+// useEffect(() => {
+//     const timer = setTimeout(() => {
+//       if (!autoOpened) {
+//         setOpen(true);
+//         setAutoOpened(true);
+//       }
+//     }, 7000);
 
-    return () => clearTimeout(timer);
-  }, [autoOpened]);
+//     return () => clearTimeout(timer);
+//   }, [autoOpened]);
   return (
     <Box
       sx={{
@@ -33,14 +34,14 @@ useEffect(() => {
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
-      <ConnectModal open={open} setOpen={setOpen} />
+      {/* <ConnectModal open={open} setOpen={setOpen} /> */}
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "stretch",
             justifyContent: "space-between",  
-            padding: { xs: "0 0px", sm: "0 10px", md: "0 10px" },
+            padding: { xs: "0 0px", sm: "5px 10px", md: "0 10px" },
             
 
           }}
@@ -50,7 +51,7 @@ useEffect(() => {
           {/* Text Section */}
           <Box flex={1} display="flex" flexDirection="column" justifyContent="center"  position="relative"
          >
-            <Box mb={2} sx={{display: { xs: "none", sm:"block", md: "block" },position:"absolute" , top:10 , left:19 ,zIndex:6}
+            <Box mb={2} sx={{display: { xs: "none", sm:"none", md: "block" },position:"absolute" , top:10 , left:19 ,zIndex:6}
 
             
           }>
@@ -144,9 +145,9 @@ useEffect(() => {
                   fontWeight: 400,
                   whiteSpace: "nowrap",
                   "&:hover": {
-                    borderColor: "#f4ce6a",
-                    color: "#f4ce6a",
-                    
+                    // borderColor: "#f4ce6a",
+                    backgroundColor: "#DAA412",
+                    color: "#FFFFFF",
                   }
                 }}
                 onClick={handleTalkToPlanner}

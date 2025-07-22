@@ -23,14 +23,14 @@ import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-
+import CloseIcon from '@mui/icons-material/Close';
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/aboutus" },
+  { label: "Home", href: "/" },  
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Blogs", href: "/blog" },
+  { label: "About", href: "/aboutus" },
   { label: "Connect us", href: "/contact" },
 ];
 
@@ -51,7 +51,12 @@ export default function Header() {
         backdropFilter: "none",
         WebkitBackdropFilter: "none",
         boxShadow: "none",
-        zIndex: 1300,
+        marginTop:{
+          xs: 0,
+          md: "10px",
+          lg: "15px",
+          xl:"20px"
+        },
       }}
     >
       <Container maxWidth="xl">
@@ -99,9 +104,9 @@ export default function Header() {
               </IconButton>
             </Box>
           ) : (
-            <Box display="flex" justifyContent="space-between" width="100%">
+            <Box display="flex" justifyContent="space-between" width="100%" mt={0.7}>
               <Link href="/" passHref>
-                <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' }} />
+                <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' , marginLeft: '12px' }} />
               </Link>
               <Box
               >
@@ -116,11 +121,41 @@ export default function Header() {
               <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}
                 PaperProps={{
                   sx: {
-                    zIndex: 1300, // ✅ Use colon instead of equal
-                  },
+                    zIndex: 1300,
+                     // ✅ Use colon instead of equal
+                  }
                 }}>
-                {/* WhatsApp Button at Top */}
-                <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "center", zIndex: 1300 }}>
+                <ListItem
+                  sx={{
+                    backgroundColor: "#0A163ED4",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    zIndex: 1300,
+                    py: 1,
+                    px: 2,
+                  }}
+                >
+                  {/* WhatsApp Button (left) */}
+                  <IconButton
+                    component="a"
+                    href="https://wa.me/919519066885"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ color: "#25D366" }}
+                  >
+                    <WhatsAppIcon />
+                  </IconButton>
+                  {/* Close Button (right) */}
+                  <IconButton
+                    edge="end"
+                    onClick={() => setOpenDrawer(false)}
+                    sx={{ color: "#DAA412" }}
+                  >
+                    <CloseIcon sx={{ fontSize: 24 }} />
+                  </IconButton>
+                </ListItem>
+                {/* <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "align-end", zIndex: 1300 }}>
                   <IconButton
                     component="a" // ✅ required to make href work
                     href="https://wa.me/919519066885"
@@ -130,16 +165,17 @@ export default function Header() {
 
                   >
                     <WhatsAppIcon />
+                    <CloseIcon sx={{ fontSize: 24, color: "red" ,alignItems:""}} />
                   </IconButton>
-                </ListItem>
+                </ListItem> */}
 
                 {/* Menu Items */}
-                <Box width={250} role="presentation" onClick={() => setOpenDrawer(false)}>
+                <Box width={250} height={"100%"} role="presentation" onClick={() => setOpenDrawer(false)}>
                   <List
                     sx={{
                       backgroundColor: "#0A163ED4",
                       color: "#CBEFFF",
-                      height: "667px",
+                      height: "100%",
                       padding: "15% 25%",
                     }}
                   >

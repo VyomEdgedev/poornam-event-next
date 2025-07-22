@@ -263,7 +263,7 @@ export default function OurServices() {
     <Box
       sx={{
         px: { xs: 2, sm: 8, md: 10 },
-        py: { xs: 4, sm: 6, md: 4 },
+        py: { xs: 4, sm: 6, md: 2 },
         bgcolor: "#FFFAED",
         textAlign: "center",
       }}

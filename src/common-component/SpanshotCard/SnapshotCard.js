@@ -16,7 +16,7 @@ import { Subtitles } from '@mui/icons-material';
 
 export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, caption, tags = []  }) {
   return (
-    <Card sx={{ m: 2, boxShadow: 3, textAlign: "left" }}>
+    <Card sx={{ m: 2, boxShadow: 3, textAlign: "left", }}>
       <CardHeader
         avatar={<Avatar src={avatarSrc}  />}
         action={
@@ -36,7 +36,7 @@ export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, cap
       />
 
       <CardContent>
-        <Typography variant="body2" color="text.primary">
+        <Typography variant="body2" color="text.primary" mb={1}>
           {caption}
         </Typography>
          <Stack direction="row" spacing={1} flexWrap="wrap">

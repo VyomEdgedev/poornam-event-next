@@ -4,7 +4,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 
-export default function Snapshot() {
+export default function   Snapshot() {
   return (
   <Grid  bgcolor="#FFFAED"
   padding="2%"> 
@@ -44,7 +44,8 @@ export default function Snapshot() {
         {`  A scrapbook of memories shared by our couples.`}
         </Typography>
 
-        <SnapshotCard
+        <SnapshotCard 
+        
           avatarSrc="/images/profile.jpg"
           title="Priya"
           Subtitles="2 days ago at Udaipur"
