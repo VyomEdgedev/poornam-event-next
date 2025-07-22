@@ -30,7 +30,7 @@ export default function AboutSection() {
           lineHeight: 1.75,
           frontFamily: "Akatab,Sans-serif",
           color: "#000000",
-          fontWeight: '500',
+          fontWeight: '400',
           // textAlign: "center",
           mb: 2,
         }}
@@ -50,7 +50,7 @@ export default function AboutSection() {
           lineHeight: 1.75,
           frontFamily: "Akatab,Sans-serif",
           color: "#000000",
-          fontWeight: '500',
+          fontWeight: '400',
           mb: 4,
         }}
       >
@@ -62,7 +62,7 @@ export default function AboutSection() {
         <CustomButton   data-testid="notify-button">
           <Link href="/aboutus" passHref legacyBehavior>
             <Button   data-testid="notify-button"  sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap' }}>
-           {`   Meet Our Story`}
+           {`Meet Our Story`}
             </Button>
           </Link>
         </CustomButton>

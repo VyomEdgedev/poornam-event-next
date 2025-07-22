@@ -33,7 +33,7 @@ export default function InspirationSection() {
       {`  Inspirations & Blogs`}
       </Typography>
 
-      <Grid container spacing={{xs: 4, sm: 4}} justifyContent="center">
+      <Grid container spacing={{xs: 4, sm: 2 , md: 6}} justifyContent="center">
         {data.map((item, index) => (
           <Grid item key={index} xs={6} sm={3}>
             <Box

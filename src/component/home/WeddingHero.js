@@ -8,7 +8,7 @@ export default function WeddingSection() {
   return (
     <Box
       sx={{
-        py:{xs:1, sm:2, md:2},
+        py:{xs:1, sm:2, md:2, lg:3},
         px: { xs: 2,sm: 4, md: 7 },
         // maxWidth: "1200px",
         width: "100%",
@@ -16,7 +16,7 @@ export default function WeddingSection() {
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
-        alignItems: "center",
+        // alignItems: "center",
         gap: { xs: 3, sm:4, md: 6 },
       }}
     >
