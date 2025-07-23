@@ -43,7 +43,7 @@ export default function ClientTestimonials() {
     <Box
       sx={{
         bgcolor: "white",
-        px:{ xs: 2, sm: 0, md: 14, lg: 10, xl: 20},
+        px:{ xs: 2, sm: 0, md: 14, lg: 10, xl: 21},
         py: { xs: 4, sm: 5, md: 5 },
       }}
     >
@@ -135,6 +135,24 @@ export default function ClientTestimonials() {
                     color="#000000"
                   >
                     {item.name}
+
+
+                    <Box
+    component="span"
+    sx={{
+      display: 'inline-block',
+      marginLeft:"80px"
+      
+      
+    }}
+  >
+    <Box
+      component="img"
+      src="/search.png"
+      alt="Google logo"
+      sx={{ width: 17, height: 17 }}
+    />
+  </Box>
                   </Typography>
                 </Stack>
 
@@ -150,8 +168,9 @@ export default function ClientTestimonials() {
                   }}
                 >
                   {item.text}
+                  
                 </Typography>
-
+                  
                 <Stack direction="row" spacing={0.5} mb={1}>
                   {[...Array(5)].map((_, i) => (
                     <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 18 }} />

@@ -22,11 +22,11 @@ import Image from "next/image";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
-import CloseIcon from '@mui/icons-material/Close';
+import { usePathname } from "next/navigation";
+import CloseIcon from "@mui/icons-material/Close";
 
 const navItems = [
-  { label: "Home", href: "/" },  
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Blogs", href: "/blog" },
@@ -34,130 +34,154 @@ const navItems = [
   { label: "Connect us", href: "/contact" },
 ];
 
-
 export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [openDrawer, setOpenDrawer] = useState(false);
   const pathname = usePathname();
   const isDarkBg = true;
-  const iconColor = isDarkBg ? '#FFFFFF' : '#192249';
+  const iconColor = isDarkBg ? "#FFFFFF" : "#192249";
 
   return (
     <AppBar
       position="fixed"
-      
       sx={{
         backgroundColor: "transparent",
         backdropFilter: "none",
         WebkitBackdropFilter: "none",
         boxShadow: "none",
-        marginTop:{
-          xs: "7px",
+
+        marginTop: {
+          xs: "0px",
           md: "10px",
           lg: "15px",
-          xl:"20px"
+          xl: "20px",
         },
       }}
     >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "center" }}>
-          {!isMobile ? (
-            <Box
-              display="flex"
-              alignItems="center"
-              sx={{
-                backgroundColor: "rgba(10, 17, 56, 0.85)",
-                borderRadius: "30px",
-                px: 2,
-                py: 1,
-                width: "fit-content",
-              }}
-              gap={2}
-            >
-              {navItems.map((item, index) => {
-                const isActive = pathname === item.href;
+      <Toolbar disableGutters sx={{ justifyContent: "center" }}>
+        {!isMobile ? (
+          <Box
+            display="flex"
+            alignItems="center"
+            sx={{
+              backgroundColor: "rgba(10, 17, 56, 0.85)",
+              borderRadius: "30px",
+              px: 2,
+              py: 1,
+              width: "fit-content",
+            }}
+            gap={2}
+          >
+            {navItems.map((item, index) => {
+              const isActive = pathname === item.href;
 
-                return (
-                  <Link key={index} href={item.href} style={{ textDecoration: "none" }}>
-                    <Button
-                      sx={{
-                        color: isActive ? "#DAA412" : "#FFFFFF",
-                        borderRadius: "20px",
-                        textTransform: "none",
-                        fontWeight: 500,
-                        px: 2,
-                        py: 0.5,
-                        minWidth: "auto",
-                        fontSize: "14px",
-                        "&:hover": {
-                          backgroundColor: "#192249",
-                        },
-                      }}
-                    >
-                      {item.label}
-                    </Button>
-                  </Link>
-                );
-              })}
-              <IconButton href="https://wa.me/919519066885" target="_blank" sx={{ color: "#25D366" }}>
-                <WhatsAppIcon />
+              return (
+                <Link
+                  key={index}
+                  href={item.href}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    sx={{
+                      color: isActive ? "#DAA412" : "#FFFFFF",
+                      borderRadius: "20px",
+                      textTransform: "none",
+                      fontWeight: 500,
+                      px: 2,
+                      py: 0.5,
+                      minWidth: "auto",
+                      fontSize: "14px",
+                      "&:hover": {
+                        backgroundColor: "#192249",
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
+              );
+            })}
+            <IconButton
+              href="https://wa.me/919519066885"
+              target="_blank"
+              sx={{ color: "#25D366" }}
+            >
+              <WhatsAppIcon />
+            </IconButton>
+          </Box>
+        ) : (
+          <Box
+            display="flex"
+            justifyContent={"space-between"}
+            width="100%"
+            backgroundColor="rgba(0, 13, 31, 0.4)"
+            padding={0.5}
+          >
+            <Link href="/" passHref>
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={65}
+                height={65}
+                style={{ cursor: "pointer", marginLeft: "-2px" }}
+              />
+            </Link>
+            <Box>
+              <IconButton
+                onClick={() => setOpenDrawer(true)}
+                sx={{
+                  color: "#DAA412",
+                  // backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
+                  boxShadow: "none",
+                }}
+              >
+                <MenuIcon />
               </IconButton>
             </Box>
-          ) : (
-            <Box  display="flex"  justifyContent={"space-between"} paddingTop={0.5} width="100%"  backgroundColor="rgba(0, 13, 31, 0.4)" >
-              <Link href="/" passHref>
-                <Image src="/logo.png" alt="Logo" width={40} height={40} style={{ cursor: 'pointer' , marginLeft: '-2px' }} />
-              </Link>
-              <Box
+            <Drawer
+              anchor="right"
+              open={openDrawer}
+              onClose={() => setOpenDrawer(false)}
+              PaperProps={{
+                sx: {
+                  zIndex: 1300,
+                  // ✅ Use colon instead of equal
+                },
+              }}
+            >
+              <ListItem
+                sx={{
+                  backgroundColor: "#0A163ED4",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  zIndex: 1300,
+                  py: 1,
+                  px: 2,
+                  width: "fit-content",
+                }}
               >
-                <IconButton onClick={() => setOpenDrawer(true) }
-                  sx={{
-                    color:"#DAA412",
-                    // backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
-                    boxShadow: 'none',
-                  }}>
-                  <MenuIcon/>
-                </IconButton>
-              </Box>
-              <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}
-                PaperProps={{
-                  sx: {
-                    zIndex: 1300,
-                     // ✅ Use colon instead of equal
-                  }
-                }}>
-                <ListItem
-                  sx={{
-                    backgroundColor: "#0A163ED4",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    zIndex: 1300,
-                    py: 1,
-                    px: 2,
-                  }}
+                {/* WhatsApp Button (left) */}
+                <IconButton
+                  component="a"
+                  href="https://wa.me/919519066885"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ color: "#25D366" }}
                 >
-                  {/* WhatsApp Button (left) */}
-                  <IconButton
-                    component="a"
-                    href="https://wa.me/919519066885"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{ color: "#25D366" }}
-                  >
-                    <WhatsAppIcon />
-                  </IconButton>
-                  {/* Close Button (right) */}
-                  <IconButton
-                    edge="end"
-                    onClick={() => setOpenDrawer(false)}
-                    sx={{ color: "#DAA412" }}
-                  >
-                    <CloseIcon sx={{ fontSize: 24 }} />
-                  </IconButton>
-                </ListItem>
-                {/* <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "align-end", zIndex: 1300 }}>
+                  <WhatsAppIcon />
+                </IconButton>
+                {/* Close Button (right) */}
+                <IconButton
+                  edge="end"
+                  onClick={() => setOpenDrawer(false)}
+                  sx={{ color: "#DAA412" }}
+                >
+                  <CloseIcon sx={{ fontSize: 24 }} />
+                </IconButton>
+              </ListItem>
+              {/* <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "align-end", zIndex: 1300 }}>
                   <IconButton
                     component="a" // ✅ required to make href work
                     href="https://wa.me/919519066885"
@@ -171,35 +195,37 @@ export default function Header() {
                   </IconButton>
                 </ListItem> */}
 
-                {/* Menu Items */}
-                <Box width={250} height={"100%"} role="presentation" onClick={() => setOpenDrawer(false)}>
-                  <List
-                    sx={{
-                      backgroundColor: "#0A163ED4",
-                      color: "#CBEFFF",
-                      height: "100%",
-                      padding: "15% 25%",
-                    }}
-                  >
-                    {navItems.map((item, index) => (
-                      <React.Fragment key={index}>
-                        <ListItem disablePadding>
-                          <ListItemButton component="a" href={item.href}>
-                            <ListItemText primary={item.label} />
-                          </ListItemButton>
-                        </ListItem>
-                        <hr />
-                      </React.Fragment>
-                    ))}
-                  </List>
-                </Box>
-              </Drawer>
-
-
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
+              {/* Menu Items */}
+              <Box
+                width={250}
+                height={"100%"}
+                role="presentation"
+                onClick={() => setOpenDrawer(false)}
+              >
+                <List
+                  sx={{
+                    backgroundColor: "#0A163ED4",
+                    color: "#CBEFFF",
+                    height: "100%",
+                    padding: "15% 25%",
+                  }}
+                >
+                  {navItems.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <ListItem disablePadding>
+                        <ListItemButton component="a" href={item.href}>
+                          <ListItemText primary={item.label} />
+                        </ListItemButton>
+                      </ListItem>
+                      <hr />
+                    </React.Fragment>
+                  ))}
+                </List>
+              </Box>
+            </Drawer>
+          </Box>
+        )}
+      </Toolbar>
     </AppBar>
   );
 }

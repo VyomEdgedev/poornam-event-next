@@ -67,7 +67,7 @@ const FAQSection = ({
             <Grid
               container
               key={index}
-              spacing={2}
+              spacing={isTabletUp ? { md: 2, lg: 6, xl: 6 } : 0}
               alignItems="flex-start"
               sx={{ borderBottom: `1px solid ${borderColor}`, mb: 2 }}
             >
@@ -88,7 +88,10 @@ const FAQSection = ({
                     expandIcon={
                       <ChevronRightIcon
                         sx={{
-                          transform: isOpen ? 'rotate(180deg)' : 'rotate(90deg)',
+                          transform: {
+          xs: isOpen ? 'rotate(270deg)' : 'rotate(-90deg)', // Mobile view
+          sm: isOpen ? 'rotate(-180deg)' : 'rotate(90deg)', // Tablet and up
+        },
                           transition: 'transform 0.4s ease',
                           color: textColor,
                           marginX:"58px"
@@ -132,7 +135,13 @@ const FAQSection = ({
               {/* Answer - right side (tablet/desktop), below (mobile) */}
               {isOpen && (
                 <Grid item xs={12} sm={6}>
-                  <Box sx={{ p: 2 }}>
+                  <Box sx={{
+                      paddingTop: { xs: 0, sm: 1, md: 1, lg: 1 },
+                      paddingLeft: { xs: 3, sm: 2 },
+                      transition: "opacity 0.4s ease",
+                      opacity: 1,
+                      
+                    }}>
                     <Typography
                       variant="body1"
                       sx={{
@@ -140,7 +149,7 @@ const FAQSection = ({
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,
                         color: textColor,
-                        lineHeight: 0.85,
+                        lineHeight: 1.3,
                       }}
                     >
                       {item.answer}

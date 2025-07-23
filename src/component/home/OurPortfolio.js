@@ -38,21 +38,21 @@ const PortfolioSection = () => {
       id: "img3"
     },
     {
-      src: "/portfolio4.jpg",
-      alt: "portfolio Image 4",
-      id: "img4"
+      src: "/portfolio5.jpg",
+      alt: "portfolio Image 5",
+      id: "img5"
     },
     {
-      src: "/portfolio5.jpg",
-      alt: "portfolio Image 5", 
-      id: "img5"
+      src: "/portfolio4.jpg",
+      alt: "portfolio Image 4", 
+      id: "img4"
 
 
     }
   ];
 
   // Common image component with hover effects
-  const PortfolioImage = ({ src, alt }) => (
+  const PortfolioImage = ({ src, alt, children }) => (
     <Box
       sx={{
         position: 'relative', 
@@ -67,6 +67,19 @@ const PortfolioSection = () => {
         },
       }}
     >
+       {children && (
+    <Box
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 2,
+      }}
+    >
+      {children}
+    </Box>
+  )}
       <Image
         src={src}
         alt={alt}
@@ -183,7 +196,11 @@ const PortfolioSection = () => {
               src={portfolioImages[5].src} 
               alt={portfolioImages[5].alt} 
               >
-                <Button   data-testid="notify-button" sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} zIndex={5}>Click</Button>
+                <Button   data-testid="notify-button" 
+                sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                backgroundColor: "#000000", color:"#FFFFFF" , 
+                width:{ xs: '100%', sm: '290px' , md: '210px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '16px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'}} zIndex={5}>
+                  View Full Wedding Stories</Button>
               </PortfolioImage>
             
           </Box>
@@ -233,6 +250,27 @@ const PortfolioSection = () => {
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
             />
+            {/* <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 1.5,
+              height: '150px',
+         
+              mb: 1.5,
+            }}
+          >
+            <PortfolioImage 
+              src={portfolioImages[5].src} 
+              alt={portfolioImages[5].alt} 
+              >
+                <Button   data-testid="notify-button" 
+                sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                backgroundColor: "#000000", color:"#FFFFFF" , 
+                width:{ xs: '290px', sm: '290px' , md: '220px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '16px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'}} zIndex={5}>
+                  View Full Wedding Stories</Button>
+              </PortfolioImage>
+              </Box> */}
           </Box>
         </Box>
 
@@ -278,6 +316,7 @@ const PortfolioSection = () => {
               gridTemplateColumns: '1fr 1fr',
               gap: 1.5,
               height: '150px',
+              mb: 1.5,
             }}
           >
             <PortfolioImage 
@@ -288,7 +327,29 @@ const PortfolioSection = () => {
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
             />
-          </Box>
+             </Box>
+             {/* <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 1.5,
+              height: '150px',
+         
+              mb: 1.5,
+            }}
+          >
+            <PortfolioImage 
+              src={portfolioImages[5].src} 
+              alt={portfolioImages[5].alt} 
+              >
+                <Button   data-testid="notify-button" 
+                sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                backgroundColor: "#000000", color:"#FFFFFF" , 
+                width:{ xs: '290px', sm: '290px' , md: '220px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '16px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'}} zIndex={5}>
+                  View Full Wedding Stories</Button>
+              </PortfolioImage>
+              </Box> */}
+         
         </Box>
       </Container>
     </Box>

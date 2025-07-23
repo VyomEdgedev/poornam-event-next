@@ -32,7 +32,7 @@ useEffect(() => {
     <Box
       sx={{
         backgroundColor: "#030b1d",
-        pt: { xs: 8, sm: 5, md: 1, lg: 0,xl:0 },
+        pt: { xs: 10, sm: 10, md: 1, lg: 0,xl:0 },
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
