@@ -23,7 +23,7 @@ const data = [
 
 export default function InspirationSection() {
   return (
-    <Box sx={{ py: {xs: 4, md: 4}, px: 4, textAlign: 'center' }}>
+    <Box sx={{ py: {xs: 4, md: 4}, px: {xs: 4, sm:2,md: 2,lg: 10,xl: 20}, textAlign: 'center' }}>
       <Typography
 
         variant="h2"
@@ -34,13 +34,13 @@ export default function InspirationSection() {
       {`  Inspirations & Blogs`}
       </Typography>
 
-      <Grid container spacing={{xs: 4, sm: 2 , md: 6}} justifyContent="center">
+      <Grid container spacing={{xs: 2, sm: 1 , md: 2, lg: 11}} justifyContent="center" padding="0px 0px" >
         {data.map((item, index) => (
-          <Grid item key={index} xs={6} sm={3}>
+          <Grid item key={index} xs={6} sm={2} md={12}>
             <Box
               sx={{
-                width: { xs: 130, sm: 180, lg:230 },
-                height: {xs: 130, sm: 180 , lg:230},
+                width: { xs: 130, sm: 150, md:180, lg:230 },
+                height: {xs: 130, sm: 150 ,md:180, lg:230},
                 mx: 'auto',
                 borderRadius: '50%',
                 overflow: 'hidden',
@@ -99,7 +99,7 @@ export default function InspirationSection() {
                   textAlign: 'center',
                   color: '#fff',
                   fontWeight: 'bold',
-                  fontSize: '1.1rem',
+                  fontSize: {xs:"14px",sm:"16px",md:"18px",lg:"18px"},
                   zIndex: 2,
                   transform: 'translateY(0)',  // base position
     transition: 'transform 0.6s ease-in-out', // ⬅️ slower and smooth

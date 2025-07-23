@@ -53,7 +53,7 @@ const Footer = () => {
               </Link>
               <Typography
                 variant="h6"
-                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "5px", }}
+                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "1px", }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -82,10 +82,11 @@ const Footer = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        fontSize: "14px",
+                        fontSize: "15px",
                         mb: 0.5,
-                        color: "white",
+                        color: "#E4E4E4",
                         textDecoration: "none",
+                        fontWeight:400,
                         underline: "none",
                         "&:hover": {
                           textDecoration: "underline",
@@ -102,10 +103,10 @@ const Footer = () => {
 
             {/* Services */}
             <Grid item xs={12} sm={4} md={2} paddingLeft={{xs: "11px", sm: "11px", md: "0px"}}>
-              <Box sx={{ textAlign: "left", width: "200px", padding: "10px", display: { xs: "contents", md: "grid" }, gap: "5px" }}>
+              <Box sx={{ textAlign: "left", width: "240px", padding: "10px", display: { xs: "contents", md: "grid" }, gap: "5px" }}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "#E4E4E4" }}
+                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "#E4E4E4" ,fontFamily: "Akatab,Sans-serif" }}
                 >
                   Services
                 </Typography>
@@ -128,7 +129,8 @@ const Footer = () => {
                       sx={{
                         fontSize: "15px",
                         mb: 0.5,
-                        color: "white",
+                        color: "#E4E4E4",
+                        fontWeight:400,
                         textDecoration: "none",
                         '&:hover': {
                           textDecoration: "underline",
@@ -155,16 +157,25 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "white" }}
+                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "#E4E4E4", fontFamily: "Akatab,Sans-serif" }}
                 >
                   Contact
                 </Typography>
 
-                <Typography variant="body2" sx={{ fontSize: "15px", color: "white" }}>
+                {/* <Typography variant="body2" sx={{ fontSize: "15px", color: "#E4E4E4" ,fontWeight:400,}}>
                   Phone: 9519066885
-                </Typography>
+                </Typography> */}
+                <Typography variant="body2" sx={{ fontSize: "15px", color: "#E4E4E4", fontWeight: 400 }}>
+  Phone: <a href="tel:9519066005" style={{ color: "#E4E4E4", textDecoration: "none" }}
+  onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
+                    onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+  >
+    
+    9519066885</a>
+</Typography>
 
-                <Typography variant="body2" sx={{ fontSize: "15px", color: "white" }}>
+
+                <Typography variant="body2" sx={{ fontSize: "15px", color: "#E4E4E4" ,fontWeight:400,}}>
                   Email:{" "}
                   <Box
                     component="a"
@@ -243,7 +254,7 @@ const Footer = () => {
                 sx={{
                   fontSize: "14px",
                   textAlign: { xs: "center", md: "left" },
-                  paddingLeft: { xs: 0, md: 2 },
+                  paddingLeft: { xs: 0, md: 1 },
                  
                 }}
               >
@@ -284,7 +295,7 @@ const Footer = () => {
               sx={{
                 textAlign: { xs: "center", md: "right" },
                 position: "relative",
-                mt: { xs: 1, md: 0 },
+                mt: { xs: 0, md: 0 },
               }}
             >
               <Typography
@@ -321,9 +332,9 @@ const Footer = () => {
               <Box
                 sx={{
                   display: "inline-block",
-                  mt: { xs: 1, md: 0 },
+                  mt: { xs: 0, md: 0,lg:1 },
                   position: { xs: "static",sm: "static", md: "absolute" },
-                  top: { md: "-43px" },
+                  top: { md: "-35px", lg: "-65px" },
                   right: { xs: "-20px", sm: "-20px", md: "10px" },
                   height: "20px",
 
@@ -341,14 +352,18 @@ const Footer = () => {
                     }}
                 >
                   <Image
-                    src="/developer.png"
-                    alt="Developer Logo"
-                    width={45}
-                    height={45}
-          
-        
+  src="/developer.png"
+  alt="Developer Logo"
+  width={50}
+  height={50}
+  sizes="(max-width: 600px) 25px, (max-width: 960px) 40px ,(max-width: 1200px) 50px,90vw,"
+  style={{
+    width: "100%",
+    height: "auto",
+ 
+  }}
+/>
 
-                  />
                 </a>
               </Box>
 
