@@ -77,7 +77,7 @@ export default function ConnectModal({ open, setOpen }) {
           }}
           aria-label="close"
         >
-          <CloseIcon sx={{ fontSize: 24, color: "red" }} />
+          <CloseIcon sx={{ fontSize: 24, color: "#DAA412" }} />
         </IconButton>
         
         {/* Form Content */}
