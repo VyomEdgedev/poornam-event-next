@@ -10,24 +10,18 @@ import {
   ListItemText
 } from "@mui/material";
 import Link from "next/link";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import { LinkedIn } from "@mui/icons-material";
 import Image from "next/image";
-import { red } from "@mui/material/colors";
+
 
 
 
 const Footer = () => {
   return (
-    <Box sx={{ backgroundColor: "#011d4a", padding: "2px" }}>
+    <Box sx={{ backgroundColor: "#011d4a", padding: "2px"  }}>
       {/* Top dark blue section */}
       <Box sx={{ color: "#FFF1CA", pt: 4, pb: 5 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} sx={{
-
             "@media (min-width:600px)": {
               justifyContent: "flex-start"
             },
@@ -45,7 +39,7 @@ const Footer = () => {
                   width: "100%",
                 },
                 "@media (min-width:900px)": {
-                  width: "30%", // 900px se upar full width
+                  width: "41%", // 900px se upar full width
                 },
               }}
             >
@@ -64,8 +58,8 @@ const Footer = () => {
                 </a>
               </Link>
               <Typography
-                variant="body2"
-                sx={{ fontSize: "13px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "14px" }}
+                variant="h6"
+                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "14px", }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -74,11 +68,11 @@ const Footer = () => {
             </Grid>
 
             {/* Quick Links - 16.6% on desktop */}
-            <Grid item xs={12} sm={4} md={2}>
-              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: { xs: "contents", md: "grid" }, gap: "1px" }}>
+            <Grid item xs={12} sm={4} md={2}  paddingLeft={{xs: "11px", sm: "11px", md: "0px"}}>
+              <Box sx={{ textAlign: "left", width: "130px", padding: "10px", display: { xs: "contents", md: "grid" }, gap: "1px",}}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "#E4E4E4", fontFamily: "Akatab,Sans-serif" }}
+                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "#E4E4E4", fontFamily: "Akatab,Sans-serif" }}
                 >
                   Quick Links
                 </Typography>
@@ -94,7 +88,7 @@ const Footer = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        fontSize: "13px",
+                        fontSize: "14px",
                         mb: 0.5,
                         color: "white",
                         textDecoration: "none",
@@ -113,11 +107,11 @@ const Footer = () => {
             </Grid>
 
             {/* Services */}
-            <Grid item xs={12} sm={4} md={2} >
+            <Grid item xs={12} sm={4} md={2} paddingLeft={{xs: "11px", sm: "11px", md: "0px"}}>
               <Box sx={{ textAlign: "left", width: "200px", padding: "10px", display: { xs: "contents", md: "grid" }, gap: "5px" }}>
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "#E4E4E4" }}
+                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "#E4E4E4" }}
                 >
                   Services
                 </Typography>
@@ -131,14 +125,14 @@ const Footer = () => {
                 ].map((service) => (
                   <Link
                     key={service}
-                    href="#"
+                    href="/servicessubpage"
                     style={{ textDecoration: "none" }}
                   >
                     <Typography
 
                       variant="body2"
                       sx={{
-                        fontSize: "13px",
+                        fontSize: "15px",
                         mb: 0.5,
                         color: "white",
                         textDecoration: "none",
@@ -156,7 +150,7 @@ const Footer = () => {
             </Grid>
 
             {/* Contact */}
-            <Grid item xs={12} sm={4} md={2}>
+            <Grid item xs={12} sm={4} md={2} paddingLeft={{xs: "11px", sm: "11px", md: "0px"}}>
               <Box sx={{
                 textAlign: "left",
                 width: "250px",
@@ -167,16 +161,16 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontSize: "14px", mb: 1, fontWeight: 600, color: "white" }}
+                  sx={{ fontSize: "16px", mb: 1, fontWeight: 600, color: "white" }}
                 >
                   Contact
                 </Typography>
 
-                <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
+                <Typography variant="body2" sx={{ fontSize: "15px", color: "white" }}>
                   Phone: 9519066885
                 </Typography>
 
-                <Typography variant="body2" sx={{ fontSize: "13px", color: "white" }}>
+                <Typography variant="body2" sx={{ fontSize: "15px", color: "white" }}>
                   Email:{" "}
                   <Box
                     component="a"
@@ -188,28 +182,56 @@ const Footer = () => {
                     info@poornamevents.com
                   </Box>
                 </Typography>
+<Box>
+  {[
+    {
+      img: "/facebook1.svg",
+      url: "https://www.facebook.com/poornamevents",
+      alt: "Facebook",
+    },
+    {
+      img: "/instagram.svg",
+      url: "https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw==",
+      alt: "Instagram",
+    },
+    {
+      img: "/X.svg",
+      url: "https://x.com/",
+      alt: "Twitter",
+    },
+    {
+      img: "/youtube.svg",
+      url: "https://www.youtube.com/@poornam-wedding-planner",
+      alt: "YouTube",
+    },
+    {
+      img: "/linkedin.svg",
+      url: "https://www.linkedin.com/company/poornam-events/",
+      alt: "LinkedIn",
+    },
+  ].map(({ img, url, alt }, i) => (
+    <Box
+      key={i}
+      component="a"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{ p: 0.5, display: 'inline-block' }}
+    >
+      <Box
+        component="img"
+        src={img}
+        alt={alt}
+        sx={{
+          width: 28,
+          height: 28,
+          objectFit: 'contain',
+        }}
+      />
+    </Box>
+  ))}
+</Box>
 
-                <Box>
-                  {[
-                    { icon: FacebookIcon, url: "https://www.facebook.com/poornamevents" },
-                    { icon: InstagramIcon, url: "https://www.instagram.com/poornamevents?igsh=MXc5cTd3Z2x3ejRsaw==" },
-                    { icon: TwitterIcon, url: "https://twitter.com" },
-                    { icon: YouTubeIcon, url: "https://www.youtube.com/@poornam-wedding-planner" },
-                    { icon: LinkedIn, url: "https://www.linkedin.com/company/poornam-events/" },
-                  ].map(({ icon: Icon, url }, i) => (
-                    <IconButton
-                      key={i}
-                      sx={{ color: "#DAA412", p: 0.5 }}
-                      size="small"
-                      component="a"
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon fontSize="small" />
-                    </IconButton>
-                  ))}
-                </Box>
               </Box>
             </Grid>
           </Grid>
@@ -217,16 +239,18 @@ const Footer = () => {
       </Box>
 
       {/* Bottom mustard section */}
-      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 0.5 }}>
+      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py:1.5 }}>
         <Container maxWidth="lg">
-          <Grid container sx={{ display: { xs: "block", md: "flex" } }} alignItems="center" justifyContent="space-between">
+          <Grid container sx={{ display: { xs: "block", md: "flex" } }} alignItems={{xs: "center", md: "center"}} justifyContent={{xs: "center", md: "space-between"}}>
             {/* Left - Copyright */}
             <Grid item xs={12} md={4}>
               <Typography
                 variant="body2"
                 sx={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                   textAlign: { xs: "center", md: "left" },
+                  paddingLeft: { xs: 0, md: 2 },
+                 
                 }}
               >
                 © 2025 Poornam Events.
@@ -238,21 +262,21 @@ const Footer = () => {
               <Typography
                 variant="body2"
 
-                sx={{ fontSize: "13px", textAlign: "center", color: "black", }}
+                sx={{ fontSize: "14px", textAlign: "center", color: "black", }}
               >
-                <Link href="/disclaimer" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                <Link href="/disclaimer" underline="hover" style={{ color: "black", textDecoration: "none" , }}>
                   Disclaimer
                 </Link>{" "}
-                |
-                <Link href="/privacy-policy" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                &nbsp;|&nbsp;
+                <Link href="/privacy-policy" underline="hover" style={{ color: "black", textDecoration: "none", mx: 2 }}>
                   Privacy Policy
+                </Link>{"  "}
+                &nbsp;|&nbsp;
+                <Link href="/terms" underline="hover" style={{ color: "black", textDecoration: "none" ,mx:2  }}>
+                   T&C
                 </Link>{" "}
-                |
-                <Link href="/terms" underline="hover" style={{ color: "black", textDecoration: "none" }}>
-                  T&C
-                </Link>{" "}
-                |
-                <Link href="/cookies" underline="hover" style={{ color: "black", textDecoration: "none" }}>
+                &nbsp;|&nbsp;
+                <Link href="/cookies" underline="hover" style={{ color: "black", textDecoration: "none" , mx: 1 }}>
                   Cookies
                 </Link>
               </Typography>
@@ -272,7 +296,7 @@ const Footer = () => {
               <Typography
                 variant="body2"
                 component="span"
-                sx={{ fontSize: '13px', color: 'black' }}
+                sx={{ fontSize: '14px', color: 'black' }}
               >
                 Developed by{' '}
                 <Link
@@ -304,9 +328,9 @@ const Footer = () => {
                 sx={{
                   display: "inline-block",
                   mt: { xs: 1, md: 0 },
-                  position: { xs: "static", md: "absolute" },
-                  top: { md: "-25px" },
-                  right: { xs: "-20", sm: "-20", md: "-45px" },
+                  position: { xs: "static",sm: "static", md: "absolute" },
+                  top: { md: "-43px" },
+                  right: { xs: "-20px", sm: "-20px", md: "10px" },
                   height: "20px",
 
                 }}
@@ -321,15 +345,17 @@ const Footer = () => {
                   <Image
                     src="/developer.png"
                     alt="Developer Logo"
-                    width={30}
-                    height={30}
+                    width={45}
+                    height={45}
                     sx={{
                       width: { xs: "10px", sm: "20px", md: "30px" },
-                      height: { xs: "10px", sm: "20px", md: "30px" } // inherits responsive height from Box
+                      height: { xs: "10px", sm: "20px", md: "30px" } 
                     }}
                   />
                 </a>
               </Box>
+
+
             </Grid>
           </Grid>
         </Container>

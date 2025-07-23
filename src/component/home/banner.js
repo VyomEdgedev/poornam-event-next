@@ -16,16 +16,18 @@ const handleWeddingPlan = () => {
   const handleTalkToPlanner = () => {
      window.open("https://wa.me/919519066885", "_blank");
   };
-// useEffect(() => {
-//     const timer = setTimeout(() => {
-//       if (!autoOpened) {
-//         setOpen(true);
-//         setAutoOpened(true);
-//       }
-//     }, 7000);
+useEffect(() => {
+  const alreadyShown = localStorage.getItem("weddingModalShown");
 
-//     return () => clearTimeout(timer);
-//   }, [autoOpened]);
+  if (!alreadyShown) {
+    const timer = setTimeout(() => {
+      setOpen(true);
+      localStorage.setItem("weddingModalShown", "true");
+    }, 7000);
+
+    return () => clearTimeout(timer);
+  }
+}, []);
   return (
     <Box
       sx={{
@@ -34,7 +36,7 @@ const handleWeddingPlan = () => {
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
-      {/* <ConnectModal open={open} setOpen={setOpen} /> */}
+      <ConnectModal open={open} setOpen={setOpen} />
         <Box
           sx={{
             display: "flex",
@@ -70,10 +72,11 @@ const handleWeddingPlan = () => {
                 fontFamily: 'Gloock, serif',
                 // width:"900px",
                 textAlign: { xs: "left", sm: "left", md: "left" },
-                ml:5,
+                ml:{xs:3,sm:2,md:5,lg:5},
                 mb:1,
                 whiteSpace:{xs:'wrap',md:'nowrap', lg:'nowrap'},
-                zIndex:7
+                zIndex:7,
+                letterSpacing:"2px"
                   
               }}
             >
@@ -86,7 +89,8 @@ const handleWeddingPlan = () => {
               sx={{ color: "#FFF5D9", mb: 2, fontWeight: 400,
                 frontFamily: "Akatab,Sans-serif",
                 textAlign: { xs: "left", md: "left" },
-                ml:5,
+                ml:{xs:3,sm:2,md:5,lg:5},
+                letterSpacing:"1px"
                }}
             >
            {`   Let’s Make Yours Legendary`}
@@ -101,8 +105,8 @@ const handleWeddingPlan = () => {
                 fontWeight: 400,
                 whiteSpace:{xs:'wrap',md:'nowrap'},
                 mb: 3,
-                ml:5,
-                
+                ml:{xs:3,sm:2,md:5,lg:5},
+                letterSpacing:"0.5px"
                 
                 
 
@@ -116,7 +120,7 @@ const handleWeddingPlan = () => {
               direction={{ xs: "row", sm: "row" }}
               spacing={2}
               marginTop={{xs: 0, sm: 0, md: 4, lg:5}}
-              marginLeft={5}
+              marginLeft={{xs: 3, sm: 3, md: 5, lg:5}}
               alignContent={{xs:"center",md:"flex-start"}}
             >
               <CustomButton   data-testid="notify-button"

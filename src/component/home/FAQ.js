@@ -41,9 +41,10 @@ export default function FAQSection() {
   return (
     <Box sx={{ backgroundColor: '#fdf8ef', py: 3, px: 4 }}>
       <Typography
-        variant="h3"
+        variant="h2"
+        component={"h2"}
         align="center"
-        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 }}
+        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 ,  }}
       >
         FAQ’s
       </Typography>

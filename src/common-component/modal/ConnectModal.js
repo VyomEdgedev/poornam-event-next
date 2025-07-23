@@ -27,14 +27,7 @@ export default function ConnectModal({ open, setOpen }) {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
 
-  // Auto-open after 7 seconds (only if not already opened manually)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(prevOpen => !prevOpen ? true : prevOpen);
-    }, 7000);
 
-    return () => clearTimeout(timer);
-  }, [setOpen]);
 
   const handleClose = () => setOpen(false);
 

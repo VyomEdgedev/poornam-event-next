@@ -6,13 +6,14 @@ const tools = [
     title: 'Budget Calculator',
     icon: '/cal.png', // Replace with your actual path or image URL
   },
-  {
-    title: 'Wedding Checklist',
-    icon: '/checklist0.png',
-  },
+  
   {
     title: 'Top 10 Mandap Themes for 2025',
     icon: '/Vector.png',
+  },
+  {
+    title: 'Wedding Checklist',
+    icon: '/checklist0.png',
   },
 ];
 

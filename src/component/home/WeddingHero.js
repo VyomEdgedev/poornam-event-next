@@ -8,7 +8,7 @@ export default function WeddingSection() {
   return (
     <Box
       sx={{
-        py:{xs:1, sm:2, md:2, lg:3},
+        py:{xs:3, sm:2, md:2, lg:3},
         px: { xs: 2,sm: 4, md: 7 },
         // maxWidth: "1200px",
         width: "100%",
@@ -30,6 +30,7 @@ export default function WeddingSection() {
             color: "#000D1F",
             mb: {xs:0.8, sm:0.6},
             lineHeight: 1.2,
+            letterSpacing: "0.7px",
             
             
           }}
@@ -44,7 +45,7 @@ export default function WeddingSection() {
         </Typography>
 
         <Typography
-          variant="h4"
+          variant="h5"
           component="h4"
           sx={{ mb: 0, frontFamily: "Akatab,Sans-serif",color: "#000D1F", fontWeight: 400 , lineHeight: 1.2}}
         >
@@ -61,7 +62,7 @@ export default function WeddingSection() {
         </Typography>
 
         <Typography
-          variant="h4"
+          variant="h5"
           component="h4"
           sx={{
             frontFamily: "Akatab,Sans-serif",
@@ -98,7 +99,7 @@ export default function WeddingSection() {
               borderRadius: 3,
               boxShadow: 3,
               objectFit: "cover",
-              height: { xs: 180, sm: 220, md: 261 },
+              height: { xs: 220, sm: 220, md: 261 },
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -119,7 +120,7 @@ export default function WeddingSection() {
               boxShadow: 3,
               objectFit: "cover",
               mt: { xs: 4, sm: 6, md: 8 },
-              height: { xs: 160, sm: 200, md: 259 },
+              height: { xs: 210, sm: 200, md: 259 },
             }}
             onError={(e) => {
               e.target.onerror = null;

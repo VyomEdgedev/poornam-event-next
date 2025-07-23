@@ -15,7 +15,7 @@ export default function AboutSection() {
         sx={{
           fontFamily: 'Gloock, serif',
           fontWeight: "400",
-          color: "#0D1A46",
+          color:"#000D1F",
           mb: 3,
         }}
       >
@@ -61,7 +61,7 @@ export default function AboutSection() {
       <Box display="flex">
         <CustomButton   data-testid="notify-button">
           <Link href="/aboutus" passHref legacyBehavior>
-            <Button   data-testid="notify-button"  sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap' }}>
+            <Button   data-testid="notify-button"  sx={{ textDecoration: 'none', color: 'inherit', whiteSpace: 'nowrap', fontSize: '16px', textTransform: 'capitalize'  }}>
            {`Meet Our Story`}
             </Button>
           </Link>
