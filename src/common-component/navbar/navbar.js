@@ -46,6 +46,7 @@ export default function Header() {
   return (
     <AppBar
       position="fixed"
+      
       sx={{
         backgroundColor: "transparent",
         backdropFilter: "none",
@@ -104,18 +105,19 @@ export default function Header() {
               </IconButton>
             </Box>
           ) : (
-            <Box display="flex" justifyContent="space-between" width="100%" mt={0.7}>
+            <Box  display="flex"  justifyContent={"space-between"} paddingTop={0.5} width="100%"  backgroundColor="rgba(0, 13, 31, 0.4)" >
               <Link href="/" passHref>
-                <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ cursor: 'pointer' , marginLeft: '12px' }} />
+                <Image src="/logo.png" alt="Logo" width={40} height={40} style={{ cursor: 'pointer' , marginLeft: '-2px' }} />
               </Link>
               <Box
               >
-                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true) }
+                <IconButton onClick={() => setOpenDrawer(true) }
                   sx={{
-                    backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
+                    color:"#DAA412",
+                    // backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
                     boxShadow: 'none',
                   }}>
-                  <MenuIcon />
+                  <MenuIcon/>
                 </IconButton>
               </Box>
               <Drawer anchor="right" open={openDrawer} onClose={() => setOpenDrawer(false)}

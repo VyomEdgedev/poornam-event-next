@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
+import ConnectModal from '@/common-component/modal/ConnectModal';
 
 const tools = [
   {
@@ -16,10 +17,15 @@ const tools = [
     icon: '/checklist0.png',
   },
 ];
-
+// const [open, setOpen] = useState(false)
+// const handleDownloadClick = () => {
+//   setOpen(true)
+// }
 export default function ResourcesSection() {
   return (
+    
     <Box sx={{ py:{ xs: 4, md: 8 }, px: 0, backgroundColor: '#fff' }} >
+      {/* <ConnectModal open={open} setOpen={setOpen} /> */}
       <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg: 25 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
         <Grid item xs={12} md={8} justifyItems={'center'}>
@@ -35,7 +41,7 @@ export default function ResourcesSection() {
           <Typography variant="h6" component="h6" sx={{ mt: 2 }}>
             Grab your free tools:
           </Typography>
-          <Button
+          <Button 
             variant="contained"
             sx={{
               mt: 2,
@@ -51,6 +57,7 @@ export default function ResourcesSection() {
             }}
           >
             Download Your Kit Now
+           
           </Button>
         </Grid>
 

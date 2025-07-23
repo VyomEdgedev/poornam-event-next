@@ -18,14 +18,10 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, caption, tags = []  }) {
   const [hover, setHover] = useState(false);
   return (
-    <Card sx={{ m: 2, boxShadow: 0, textAlign: "left",position: 'relative' }}>
+    <Card sx={{ m: 2, boxShadow: 0, textAlign: "left",position: 'relative',}}>
       <CardHeader
         avatar={<Avatar src={avatarSrc}  />}
-        action={
-          <IconButton  data-testid="notify-button">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        
         title={title}
        Subtitles={Subtitles}
       />
@@ -39,8 +35,10 @@ export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, cap
         height="400"
         image={imageSrc}
         alt="Instagram post"
+        
+        
       />
- {/* Instagram icon overlay */}
+ 
         {hover && (
           <Box
             sx={{
@@ -55,6 +53,7 @@ export default function SnapshotCard({ avatarSrc, title,Subtitles, imageSrc, cap
               justifyContent: 'center',
               cursor: 'pointer',
               transition: 'background-color 0.2s ease',
+              
             }}
             onClick={() => window.open('https://www.instagram.com/poornamevents/', '_blank')}
           >

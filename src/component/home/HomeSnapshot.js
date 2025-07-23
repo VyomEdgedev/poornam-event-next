@@ -46,8 +46,8 @@ export default function   Snapshot() {
 
         <SnapshotCard 
         
-          avatarSrc="/images/profile.jpg"
-          title="Priya"
+          avatarSrc="/logo.png"
+          title="Poornam"
           Subtitles="2 days ago at Udaipur"
           imageSrc="/snapshot.jpg"
           caption="Every detail was perfectly curated!"
