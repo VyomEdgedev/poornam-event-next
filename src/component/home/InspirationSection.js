@@ -16,13 +16,14 @@ const data = [
   },
   {
     label: 'Decoration',
-    image: '/blog1.jpg',
+    image: '/blog4.jpg',
   },
+  
 ];
 
 export default function InspirationSection() {
   return (
-    <Box sx={{ py: {xs: 4, md: 8}, px: 4, textAlign: 'center' }}>
+    <Box sx={{ py: {xs: 4, md: 4}, px: 4, textAlign: 'center' }}>
       <Typography
 
         variant="h2"
@@ -38,8 +39,8 @@ export default function InspirationSection() {
           <Grid item key={index} xs={6} sm={3}>
             <Box
               sx={{
-                width: { xs: 130, sm: 180 },
-                height: {xs: 130, sm: 180},
+                width: { xs: 130, sm: 180, lg:230 },
+                height: {xs: 130, sm: 180 , lg:230},
                 mx: 'auto',
                 borderRadius: '50%',
                 overflow: 'hidden',
@@ -92,7 +93,7 @@ export default function InspirationSection() {
                 className="label-text"
                 sx={{
                   position: 'absolute',
-                  bottom: 18,
+                  bottom: 25,
                   left: 0,
                   right: 0,
                   textAlign: 'center',

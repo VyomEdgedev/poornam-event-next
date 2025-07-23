@@ -40,7 +40,7 @@ export default function ContactSection() {
         <Box sx={{ px: 2, py: { xs: 4, sm: 6, md: 5 } }}>
             <Grid
                 container
-                spacing={{ xs: 3, sm: 1, md: 10 }}
+                spacing={{ xs: 3, sm: 4, md: 5}}
                 justifyContent="center"
                 sx={{
                     display: {
@@ -53,8 +53,8 @@ export default function ContactSection() {
                 {/* Left Text Side */}
                 <Grid item xs={12} md={8}>
                     <Typography
-                        variant="h3"
-                        component="h3"
+                        variant="h2"
+                        component="h2"
                         sx={{
                             fontFamily: 'Gloock, serif',
                             fontWeight: 400,
@@ -188,10 +188,11 @@ export default function ContactSection() {
                             variant="primary"
                             onClick={handleWeddingPlan}
                             sx={{
+                                width: { xs: "128px", sm: "120px", md: "120px" }, 
                                 fontFamily: "Akatab,Sans-serif",
                                 fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
                                 fontWeight: 400,
-                            }}
+                                padding: "2px 8px",                          }}
                         >
                             Let's Chat
                         </CustomButton>

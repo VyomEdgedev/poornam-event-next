@@ -159,7 +159,7 @@ const FlipCard = ({ service }) => {
             borderRadius: 2,
             backfaceVisibility: "hidden",
             transform: "rotateX(180deg)",
-            background: "#000",
+            background: "#000D1F",
             border: "1px solid rgba(255,255,255,0.15)",
             color: "#fff",
             px: 3,

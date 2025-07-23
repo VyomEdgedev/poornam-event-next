@@ -49,7 +49,7 @@ export default function HomePage() {
       <ResourcesSection></ResourcesSection>
       <FAQSection></FAQSection>
       <InspirationSection></InspirationSection>
-      <ContactSection></ContactSection>
+      <ContactSection></ContactSection> 
     </>
   )
 }

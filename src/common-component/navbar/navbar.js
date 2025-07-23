@@ -52,7 +52,7 @@ export default function Header() {
         WebkitBackdropFilter: "none",
         boxShadow: "none",
         marginTop:{
-          xs: 0,
+          xs: "7px",
           md: "10px",
           lg: "15px",
           xl:"20px"
@@ -110,7 +110,7 @@ export default function Header() {
               </Link>
               <Box
               >
-                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true)}
+                <IconButton edge="end" color="inherit" onClick={() => setOpenDrawer(true) }
                   sx={{
                     backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
                     boxShadow: 'none',

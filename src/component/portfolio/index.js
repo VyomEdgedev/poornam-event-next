@@ -18,20 +18,20 @@ const Portfolio = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   const myFAQData = [
     {
-      question: 'Do you only plan weddings in Indore?',
-      answer: 'Your custom answer here.',
+      question: 'What events do you showcase in your portfolio?',
+      answer: 'We feature weddings, pre-wedding shoots, engagements, and other curated celebrations.',
     },
     {
-      question: 'Can you help with last-minute weddings?',
-      answer: 'Absolutely. We’ve pulled off 3-day prep shaadis with a smile..',
+      question: 'Are these real events?',
+      answer: 'Yes, all events shown are real and managed by our expert team.',
     },
     {
-      question: 'Do you provide decorators and photographers too?',
-      answer: 'Your custom answer here.',
+      question: 'Can I get ideas from your portfolio for my event?',
+      answer: 'Yes, we tailor every event to your vision, even if inspired by past work.',
     },
     {
-      question: 'Do you offer budget planning help?',
-      answer: 'Your custom answer here.',
+      question: 'How often do you update your portfolio?',
+      answer: 'We add fresh content regularly to showcase our latest events.',
     },
 
   ];
