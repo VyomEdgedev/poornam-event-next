@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <Box sx={{
       bgcolor: "#fff", marginTop: "10px", marginBottom: "10px", py: { xs: 3, md: 2 },
-      px: { xs: 2, md: 7 },
+      px: { xs: 2, sm: 4, md: 20 ,lg: 10, xl: 25 },
     }}>
 
       <Typography

@@ -103,6 +103,7 @@ const FlipCard = ({ service }) => {
           transition: "transform 0.9s ease",
           transform: flipped ? "rotateX(180deg)" : "rotateX(0deg)",
           transformOrigin: "bottom",
+          
         }}
       >
         {/* Front Side */}
@@ -285,7 +286,7 @@ export default function OurServices() {
 
       <Grid container spacing={4} justifyContent="center">
         {services.map((service, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={3}  lg={3} xl={3} key={index}>
             <FlipCard service={service} />
           </Grid>
         ))}

@@ -19,14 +19,14 @@ const Footer = () => {
   return (
     <Box sx={{ backgroundColor: "#011d4a", padding: "2px"  }}>
       {/* Top dark blue section */}
-      <Box sx={{ color: "#FFF1CA", pt: 4, pb: 5 }}>
+      <Box sx={{ color: "#FFF1CA", pt: { xs: 0, sm: 0, md: 2, lg: 4, xl: 4 }, pb: 5 }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4} sx={{
+          <Grid container spacing={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 2 }} sx={{
             "@media (min-width:600px)": {
               justifyContent: "flex-start"
             },
             "@media (min-width:900px)": {
-              justifyContent: "center"
+              justifyContent: "space-evenly"
             },
           }}>
             {/* Logo and About - 50% width on desktop */}
@@ -34,13 +34,7 @@ const Footer = () => {
               item
               xs={12}
               sx={{
-                width: "100%",
-                "@media (min-width:600px)": {
-                  width: "100%",
-                },
-                "@media (min-width:900px)": {
-                  width: "41%", // 900px se upar full width
-                },
+                width: { xs: "100%", sm:"100%", md: "30%" ,lg:"30%",xl:"40%"},
               }}
             >
               <Link href="/" passHref legacyBehavior>
@@ -49,7 +43,7 @@ const Footer = () => {
                     <Image
                       src="/logo.png"
                       alt="Logo"
-                      width={100}
+                      width={120}
                       height={60}
                       style={{ height: "auto" }}
 
@@ -59,7 +53,7 @@ const Footer = () => {
               </Link>
               <Typography
                 variant="h6"
-                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "14px", }}
+                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "5px", }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -116,16 +110,16 @@ const Footer = () => {
                   Services
                 </Typography>
                 {[
-                  "Destination Weddings",
-                  "Intimate Wedding",
-                  "Themed & Designer Weddings",
-                  "Artist Management",
-                  "Prewedding & Photography",
-                  "Special Effects",
-                ].map((service) => (
+      { label: "Destination Weddings", href: "/servicessubpage" },
+      { label: "Intimate Wedding", href: "/services" },
+      { label: "Themed & Designer Weddings", href: "/services" },
+      { label: "Artist Management", href: "/services" },
+      { label: "Prewedding & Photography", href: "/services" },
+      { label: "Special Effects", href: "/services" },
+                ].map((item) => (
                   <Link
-                    key={service}
-                    href="/servicessubpage"
+                    key={item.href}
+                    href={item.href}
                     style={{ textDecoration: "none" }}
                   >
                     <Typography
@@ -141,16 +135,16 @@ const Footer = () => {
                         },
                       }}
                     >
-                      {service}
+                      {item.label}
                     </Typography>
-                  </Link>
+                   </Link>
 
                 ))}
               </Box>
             </Grid>
 
             {/* Contact */}
-            <Grid item xs={12} sm={4} md={2} paddingLeft={{xs: "11px", sm: "11px", md: "0px"}}>
+            <Grid item xs={12} sm={4} md={2} paddingLeft={{xs: "10px", sm: "10px", md: "0px"}}>
               <Box sx={{
                 textAlign: "left",
                 width: "250px",
@@ -216,7 +210,7 @@ const Footer = () => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      sx={{ p: 0.5, display: 'inline-block' }}
+      sx={{ pr: 1,mt:1, display: 'inline-block' }}
     >
       <Box
         component="img"
@@ -341,16 +335,19 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ display: "inline-block" }}
+                  sx={{
+                      width: { xs: "10px", sm: "20px", md: "30px", },
+                      height: { xs: "10px", sm: "20px", md: "30px" } 
+                    }}
                 >
                   <Image
                     src="/developer.png"
                     alt="Developer Logo"
                     width={45}
                     height={45}
-                    sx={{
-                      width: { xs: "10px", sm: "20px", md: "30px" },
-                      height: { xs: "10px", sm: "20px", md: "30px" } 
-                    }}
+          
+        
+
                   />
                 </a>
               </Box>

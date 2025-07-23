@@ -43,7 +43,7 @@ export default function ClientTestimonials() {
     <Box
       sx={{
         bgcolor: "white",
-        px: { xs: 2, sm: 3, md: 4 },
+        px:{ xs: 2, sm: 0, md: 14, lg: 10, xl: 20},
         py: { xs: 4, sm: 5, md: 5 },
       }}
     >
@@ -63,7 +63,7 @@ export default function ClientTestimonials() {
             mt: { xs: 2, sm: 0, md: 1 },
             mb: { xs: 2, sm: 0, md: 1 },
             order: isMobile || isTablet ? 0 : 1,
-            width: isMobile || isTablet ? "100%" : "25%",
+            width: isMobile || isTablet ? "100%" : "20%",
           }}
         >
           <Typography
@@ -96,7 +96,7 @@ export default function ClientTestimonials() {
         <Box
           sx={{
             borderRadius: "20px",
-            width: isMobile || isTablet ? "100%" : "75%",
+            width: isMobile || isTablet ? "100%" : "70%",
             overflowX: "auto",
             overflowY: "visible",
             order: isMobile || isTablet ? 1 : 0,

@@ -9,7 +9,7 @@ export default function WeddingSection() {
     <Box
       sx={{
         py:{xs:3, sm:2, md:2, lg:3},
-        px: { xs: 2,sm: 4, md: 7 },
+        px: { xs: 2,sm: 2, md: 20 , lg: 10, xl: 26 },
         // maxWidth: "1200px",
         width: "100%",
         margin: "auto", 
@@ -18,9 +18,10 @@ export default function WeddingSection() {
         justifyContent: "space-between",
         // alignItems: "center",
         gap: { xs: 3, sm:4, md: 6 },
+        
       }}
     >
-      <Box sx={{ flex: 1, maxWidth: { md: "55%" }}}>
+      <Box sx={{ flex: 1, maxWidth: { sm: "100%", md: "40%" }}}>
         <Typography
           variant="h2"
           component="h2"
@@ -84,8 +85,8 @@ export default function WeddingSection() {
 
       <Grid
         container
-        spacing={1}
-        sx={{ maxWidth: { xs: "100%", md: "55%" }, justifyContent: "center" }}
+        spacing={{xs: 1, sm: 0, md: 2, lg: 1, xl: 2}}
+        sx={{ maxWidth: { xs: "100%", sm: "100%", md: "100%", lg: "60%", xl: "55%" }, justifyContent: {xs:"center", sm:"center", md:"center", lg:"flex-end", xl:"flex-end"}  }}
       >
         <Grid item xs={6} sm={6} md={6} >
           <Box
@@ -99,7 +100,7 @@ export default function WeddingSection() {
               borderRadius: 3,
               boxShadow: 3,
               objectFit: "cover",
-              height: { xs: 220, sm: 220, md: 261 },
+              height: { xs: 220, sm: 200, md: 230, lg: 260, xl: 260 },
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -119,8 +120,8 @@ export default function WeddingSection() {
               borderRadius: 1,
               boxShadow: 3,
               objectFit: "cover",
-              mt: { xs: 4, sm: 6, md: 8 },
-              height: { xs: 210, sm: 200, md: 259 },
+              mt: { xs: 4, sm: 4, md: 4 , lg: 8, xl: 8 },
+              height: { xs: 210, sm: 200, md: 220, lg: 260, xl: 260 },
             }}
             onError={(e) => {
               e.target.onerror = null;

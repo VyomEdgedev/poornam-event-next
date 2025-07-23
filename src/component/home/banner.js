@@ -32,7 +32,7 @@ useEffect(() => {
     <Box
       sx={{
         backgroundColor: "#030b1d",
-        pt: { xs: 8, sm: 5, md: 0 },
+        pt: { xs: 8, sm: 5, md: 1, lg: 0,xl:0 },
         px: { xs: 0, sm: 0, md: 1 },
       }}
     >
@@ -53,11 +53,17 @@ useEffect(() => {
           {/* Text Section */}
           <Box flex={1} display="flex" flexDirection="column" justifyContent="center"  position="relative"
          >
-            <Box mb={2} sx={{display: { xs: "none", sm:"none", md: "block" },position:"absolute" , top:10 , left:19 ,zIndex:6}
+            <Box mb={2} sx={{display: { xs: "none", sm:"none", md: "block" },position:"absolute" , top:10 , left:19 ,zIndex:6,  width: { xs: 80, sm: 80, md: 80, lg: 120 }, }
 
             
           }>
-              <Image src={"/logo.png"} alt="Logo" width={120} height={120}/>
+              <Image src={"/logo.png"} alt="Logo" width={120} height={120}
+              
+               style={{
+      width: "100%",      // allow the image to fill its wrapper
+      height: "auto",
+    }}
+         />
 
             </Box>
             <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"130px",lg:"170px"}, left:{xs:0,sm:0,md:0,}, mt:{xs:"4px",sm:"15px",md:0,lg:0}}}>
@@ -103,7 +109,8 @@ useEffect(() => {
                 textAlign: { xs: "left", md: "left" },
                 frontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
-                whiteSpace:{xs:'wrap',md:'nowrap'},
+                whiteSpace:{xs:'wrap', sm:'wrap',md:'nowrap'},
+                width:{xs:'85%', sm:'80%',md:'100%'},
                 mb: 3,
                 ml:{xs:3,sm:2,md:5,lg:5},
                 letterSpacing:"0.5px"

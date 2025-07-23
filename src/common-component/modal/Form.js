@@ -66,7 +66,7 @@ const Form = () => {
       <Box
         sx={{
           width: { xs: "100%", sm: "40%", md: "40%" },
-          height: { xs: 200, sm: 300, md: "70vh" },
+          height: { xs: 200, sm: 300, md: "65vh" },
           position: "relative",
           borderRadius: 2,
           overflow: "hidden",
@@ -120,10 +120,11 @@ const Form = () => {
               height: "40px",
               fontFamily: "Akatab, sans-serif",
               "& fieldset": {
-                borderColor: "#000000",
+                borderColor: "#808080",
+                
               },
               "&:hover fieldset": {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
@@ -153,10 +154,11 @@ const Form = () => {
               height: "40px",
               fontFamily: "Akatab, sans-serif",
               "& fieldset": {
-                borderColor: "#000000",
+                borderColor: "#808080",
+               
               },
               "&:hover fieldset": {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
@@ -189,10 +191,11 @@ const Form = () => {
               height: "40px",
               fontFamily: "Akatab, sans-serif",
               "& fieldset": {
-                borderColor: "#000000",
+                borderColor: "#808080",
+                
               },
               "&:hover fieldset": {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
@@ -223,20 +226,20 @@ const Form = () => {
             "& .MuiInputBase-root": {
               fontFamily: "Akatab, sans-serif",
               "& fieldset": {
-                borderColor: "#000000",
+                borderColor: "#808080",
               },
               "&:hover fieldset": {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
                 borderColor: "#DAA412",
               },
-            "& input::placeholder": {
-              color: "#222222",
-              opacity: 1,
-            },
+            "& input::placeholder, & textarea::placeholder": {
+  color: "#222222",
+  opacity: 1,
+},
           }}
           name="message"
           value={formData.message}
