@@ -141,7 +141,7 @@ export default function ClientTestimonials() {
     component="span"
     sx={{
       display: 'inline-block',
-      marginLeft:"80px"
+      marginLeft:"55px"
       
       
     }}

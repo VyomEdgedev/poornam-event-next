@@ -114,7 +114,7 @@ export default function FAQSection() {
                     <Typography
                       sx={{
                         width: {
-                          xs: "100%",
+                          xs: "270px",
                           sm: "250px",
                           md: "350px",
                           lg: "450px",
