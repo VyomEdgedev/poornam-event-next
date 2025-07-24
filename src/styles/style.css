@@ -6,7 +6,8 @@
 }
 body {
   zoom:0.9;
- line-height: 1.6;
+  /* cursor: url("/cursor.png"),  auto; */
+  line-height: 1.6;
   color:#000000;
   font-family: 'Akatab', sans-serif;
 }

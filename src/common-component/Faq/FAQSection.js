@@ -112,7 +112,7 @@ const FAQSection = ({
                           xs: '270px',
                           sm: '250px',
                           md: '350px',
-                          lg: '450px'
+                          lg: '550px'
                         },
                         ml:{
                           xs: 1,
