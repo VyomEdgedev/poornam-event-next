@@ -150,7 +150,7 @@ export default function FAQSection() {
                           xs: "100%",
                           sm: "250px",
                           md: "350px",
-                          lg: "450px",
+                          lg: "550px",
                         },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: "Akatab, Sans-serif",
