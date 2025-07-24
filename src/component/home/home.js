@@ -45,7 +45,7 @@ export default function HomePage() {
 
       <OurPortfolio></OurPortfolio>
       <Testimonials></Testimonials>
-      {/* <HomeSnapshot></HomeSnapshot> */}
+      <HomeSnapshot></HomeSnapshot>
       <ResourcesSection></ResourcesSection>
       <FAQSection></FAQSection>
       <InspirationSection></InspirationSection>
