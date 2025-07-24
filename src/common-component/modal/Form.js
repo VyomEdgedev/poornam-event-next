@@ -129,7 +129,7 @@ const Form = () => {
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             "& input::placeholder": {
               color: "#222222",
@@ -163,7 +163,7 @@ const Form = () => {
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             "& input::placeholder": {
               color: "#222222",
@@ -200,7 +200,7 @@ const Form = () => {
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             "& input::placeholder": {
               color: "#222222",
@@ -234,7 +234,7 @@ const Form = () => {
             },
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
               {
-                borderColor: "#DAA412",
+                borderColor: "#011d4a",
               },
             "& input::placeholder, & textarea::placeholder": {
   color: "#222222",

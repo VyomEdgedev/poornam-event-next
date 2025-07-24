@@ -40,7 +40,7 @@ export default function ContactSection() {
         <Box sx={{ px:{ xs: 2, sm: 0, md: 14, lg: 5, xl: 10}, py: { xs: 4, sm: 6, md: 5 } }}>
             <Grid
                 container
-                spacing={{ xs: 3, sm: 4, md: 6,lg:22}}
+                spacing={{ xs: 3, sm: 4, md: 6,lg:18}}
                 justifyContent="center"
                 sx={{
                     display: {
@@ -126,7 +126,7 @@ export default function ContactSection() {
                                             borderColor: '#1976d2', // Hover color
                                         },
                                         '&.Mui-focused fieldset': {
-                                            borderColor: '#DAA412', // Focus (click) color
+                                            borderColor: '#011d4a', // Focus (click) color
                                             borderWidth: 2,
                                         },
                                     },
@@ -172,7 +172,7 @@ export default function ContactSection() {
                                             borderColor: '#1976d2', // Hover color
                                         },
                                         '&.Mui-focused fieldset': {
-                                            borderColor: '#DAA412', // Focus (click) color
+                                            borderColor: '#011d4a', // Focus (click) color
                                             borderWidth: 2,
                                         },
                                     },

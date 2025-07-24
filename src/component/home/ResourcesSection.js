@@ -27,7 +27,7 @@ const handleDownloadClick = () => {
     
     <Box sx={{ py:{ xs: 4, md: 8 }, px: 0, backgroundColor: '#fff' }} >
       <ConnectModal open={open} setOpen={setOpen} />
-      <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg:15 }} alignItems="center" justifyContent={'space-evenly'}>
+      <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg:45 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
         <Grid item xs={12} md={8} justifyItems={'center'}>
           <Typography
