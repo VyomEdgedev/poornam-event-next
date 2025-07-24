@@ -69,7 +69,7 @@ export default function Header() {
               borderRadius: "30px",
               px: 2,
               py: 1,
-              width: "fit-content",
+              
             }}
             gap={2}
           >
@@ -134,6 +134,7 @@ export default function Header() {
                   color: "#DAA412",
                   // backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
                   boxShadow: "none",
+                  marginTop:"15px",
                 }}
               >
                 <MenuIcon />
@@ -159,7 +160,7 @@ export default function Header() {
                   zIndex: 1300,
                   py: 1,
                   px: 2,
-                  width: "fit-content",
+                
                 }}
               >
                 {/* WhatsApp Button (left) */}
@@ -176,7 +177,9 @@ export default function Header() {
                 <IconButton
                   edge="end"
                   onClick={() => setOpenDrawer(false)}
-                  sx={{ color: "#DAA412" }}
+                  sx={{ color: "#DAA412", 
+               
+                  }}
                 >
                   <CloseIcon sx={{ fontSize: 24 }} />
                 </IconButton>
