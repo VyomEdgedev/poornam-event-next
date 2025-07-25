@@ -2,10 +2,10 @@ import { Grid, Typography, Stack, Box } from '@mui/material'
 import React from 'react'
 import IconButton from '@mui/material/IconButton';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import XIcon from '@mui/icons-material/X';
 function SocialMedia() {
   return (
     <Grid
@@ -14,6 +14,7 @@ function SocialMedia() {
       justifyItems="center"
       justifyContent="space-evenly"
       padding="10px"
+      marginBottom={{xs: 3, sm: 4, md: 5, lg: 6, xl: 7}}
     >
 
       <Grid container>
@@ -22,7 +23,7 @@ function SocialMedia() {
           component={'h3'}
           textAlign="center"
           padding="20px"
-          sx={{ fontFamily: 'Gloock', fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }, lineHeight: 1 }}
+          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "32px" }, lineHeight: 1 }}
           dangerouslySetInnerHTML={{
             __html: `  Follow Us <br />
                         on <br /> Social Media`,
@@ -37,6 +38,21 @@ function SocialMedia() {
           display="flex"
           justifyItems="center"
           justifyContent="space-evenly">
+              <IconButton data-testid="notify-button"
+            color="primary"
+            aria-label="Facebook"
+            onClick={() => window.open('https://www.facebook.com/poornamevents', '_blank')}
+          >
+            <FacebookIcon sx={{
+              backgroundColor: '#fff',
+              // color:"black",
+              width: { xs: 55, sm: 70, md: 80 },
+              height: { xs: 55, sm: 70, md: 80 },
+              borderRadius: '50%',
+             
+              fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
+            }} />
+          </IconButton>
           <svg width={0} height={0}>
             <linearGradient id="instagramGradient" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#f09433" />
@@ -57,30 +73,32 @@ function SocialMedia() {
             <InstagramIcon sx={{
               fill: 'url(#instagramGradient)',
               backgroundColor: '#fff',
-              width: { xs: 60, sm: 70, md: 80 },
-              height: { xs: 60, sm: 70, md: 80 },
+              width: { xs: 55, sm: 70, md: 80 },
+              height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
               
-              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+              fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
           <IconButton data-testid="notify-button"
             color="primary"
             aria-label="Twitter"
-            onClick={() => window.open('https://twitter.com/your_username', '_blank')}
+            onClick={() => window.open('https://x.com/', '_blank')}
           >
-            <TwitterIcon sx={{
-              backgroundColor: '#fff',
-              width: { xs: 60, sm: 70, md: 80 },
-              height: { xs: 60, sm: 70, md: 80 },
+            <XIcon sx={{
+              // backgroundColor: '#fff',
+              color:"black",
+              width: { xs: 55, sm: 70, md: 80 },
+              height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
              
-              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+              fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
+        
           <IconButton data-testid="notify-button"
             component="a"
-            href="https://youtube.com"
+            href="https://www.youtube.com/@poornam-wedding-planner"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"
@@ -89,16 +107,16 @@ function SocialMedia() {
           >
             <YouTubeIcon fontSize="inherit" sx={{
               backgroundColor: '#fff',
-              width: { xs: 60, sm: 70, md: 80 },
-              height: { xs: 60, sm: 70, md: 80 },
+              width: { xs: 55, sm: 70, md: 80 },
+              height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
              
-              fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+              fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
           <IconButton data-testid="notify-button"
             component="a"
-            href="https://www.linkedin.com/in/your_username"
+            href="https://www.linkedin.com/company/poornam-events/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -108,10 +126,10 @@ function SocialMedia() {
             <LinkedInIcon data-testid="notify-button"
               fontSize="inherit" sx={{
                 backgroundColor: '#fff',
-                width: { xs: 60, sm: 70, md: 80 },
-                height: { xs: 60, sm: 70, md: 80 },
+                width: { xs: 55, sm: 70, md: 80 },
+                height: { xs: 55, sm: 70, md: 80 },
                
-                fontSize: { xs: 30, sm: 40, md: 60 }, cursor: 'pointer'
+                fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
               }}
             />
           </IconButton>

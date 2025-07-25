@@ -6,6 +6,7 @@ import Experience from './Experience';
 import WeddingChecklist from './WeddingChecklist';
 import WeddingFooter from './WeddingFooter';
 import SEO from '@/common-component/SEO/seo';
+import CookiesBanner from '../footerbottom/cookies';
 
 const Service = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
@@ -41,11 +42,11 @@ const Service = () => {
   // Optional: customize breadcrumbs position
   breadcrumbsPosition={{
     top: '370px',
-    left: '40px',
+    left: '43px',
     lg: { top: '320px', left: '50px' },
     md: { top: '280px', left: '20px' },
-    sm: { top: '260px', left: '10px' },
-    xs: { top: '210px', left: '20px' }
+    sm: { top: '330px', left: '3px' },
+    xs: { top: '250px', left: '20px' }
   }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
@@ -63,6 +64,7 @@ const Service = () => {
       <Experience />
       <WeddingChecklist />
       <WeddingFooter />
+      
 
     </>
   )

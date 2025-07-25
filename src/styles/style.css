@@ -6,7 +6,8 @@
 }
 body {
   zoom:0.9;
-  /* cursor: url("/cursor.png"),  auto; */
+ cursor: url("/cursor1.svg") 16 16, auto;
+  
   line-height: 1.6;
   color:#000000;
   font-family: 'Akatab', sans-serif;
@@ -33,7 +34,7 @@ body {
 
 .left-content {
   padding-right: 20px;
-  
+
 }
 
 .title {
@@ -62,6 +63,7 @@ body {
   font-weight: 900;
   margin-bottom: 0.25em;
   color: #2c2c2c;
+
 }
 
 .process-steps {
@@ -74,7 +76,7 @@ body {
 
 
 .step-content {
-  display: flex;
+  display: contents;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -91,11 +93,11 @@ body {
 
 .step-subtitle {
     font-family: "Akatab";
-  font-size: 1rem;
+  font-size: 16px;
  font-weight: 800;
   color: #000D1F;
   border-bottom: 1px solid #DAA412;
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   white-space: nowrap;
 }
 
@@ -109,7 +111,7 @@ body {
 .right-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 5px;
+  gap: 0px;
   width: 436px;
  height: 400px;
  border-radius: 8px;
@@ -207,7 +209,14 @@ body {
     padding-right: 0;
     text-align: center;
   }
-  
+  .process-section{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+  }
+ 
   .title {
     font-size: 2rem;
   }
@@ -216,6 +225,7 @@ body {
   }
   
   .process-steps {
+    width: 50%;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
@@ -257,9 +267,21 @@ body {
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
+    width:"50%";
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   .poornam-section {
+    
     padding: 40px 0;
+  }
+  .process-section{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
   }
   .title {
     font-size: 1.8rem;
@@ -270,6 +292,7 @@ body {
   }
   
   .process-steps {
+    width: 50%;
     gap: 15px;
   }
   

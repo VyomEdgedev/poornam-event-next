@@ -9,8 +9,9 @@ import {
   Grid,
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import FAQSection from '@/common-component/Faq/FAQSection';
 
-const faqData = [
+const myFAQData = [
   {
     question: 'What does a wedding planner actually do?',
     answer: 'Think of us as your behind-the-scenes superheroes. From budget planning, vendor management, decor design, to handling last-minute family drama — we do everything except walk down the aisle for you.',
@@ -54,131 +55,132 @@ const faqData = [
 ];
 
 export default function FAQ() {
-  const [expanded, setExpanded] = useState(null);
-  const theme = useTheme();
-  const isTabletUp = useMediaQuery(theme.breakpoints.up('sm'));
 
-  const handleChange = (panel) => (_, isExpanded) => {
-    setExpanded(isExpanded ? panel : null);
-  };
+  // const [expanded, setExpanded] = useState(null);
+  // const theme = useTheme();
+  // const isTabletUp = useMediaQuery(theme.breakpoints.up('sm'));
 
-  return (
-    <Box sx={{ backgroundColor: '#fdf8ef', py: 3, px: 4 }}>
-      <Typography
-        variant="h3"
-        align="center"
-        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 }}
-      >
-        FAQ’s
-      </Typography>
-      <Typography
-        variant="subtitle1"
-        align="center"
-        sx={{
-          mb: 4,
-          fontFamily: 'Akatab, Sans-serif',
-          fontWeight: 400,
-        }}
-      >
-        Your Questions, Answered
-      </Typography>
+  // const handleChange = (panel) => (_, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : null);
+  // };
 
-      <Box maxWidth="lg" mx="auto">
-        {faqData.map((item, index) => {
-          const isOpen = expanded === index;
+  // return (
+  //   <Box sx={{ backgroundColor: '#fdf8ef', py: 3, px: 4 }}>
+  //     <Typography
+  //       variant="h3"
+  //       align="center"
+  //       sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 1 }}
+  //     >
+  //       FAQ’s
+  //     </Typography>
+  //     <Typography
+  //       variant="subtitle1"
+  //       align="center"
+  //       sx={{
+  //         mb: 4,
+  //         fontFamily: 'Akatab, Sans-serif',
+  //         fontWeight: 400,
+  //       }}
+  //     >
+  //       Your Questions, Answered
+  //     </Typography>
 
-          return (
-            <Grid
-              container
-              key={index}
-              spacing={2}
-              alignItems="flex-start"
-              sx={{
-                borderBottom: '1px solid #e0b855',
-                mb: 2,
-              }}
-            >
-              <Grid item xs={12} sm={6}>
-                <Accordion
-                  expanded={isOpen}
-                  onChange={handleChange(index)}
-                  disableGutters
-                  square
-                  elevation={0}
-                  sx={{
-                    backgroundColor: 'transparent',
-                    '&::before': { display: 'none' },
-                  }}
-                >
-                  <AccordionSummary
-                    expandIcon={
-                      <ChevronRightIcon
-                        sx={{
-                          transform: isOpen ? 'rotate(180deg)' : 'rotate(90deg)',
-                          transition: 'transform 0.4s ease',
-                          color: '#001538',
-                        }}
-                      />
-                    }
-                    sx={{
-                      minHeight: 48,
-                      '& .MuiAccordionSummary-content': {
-                        marginY: '8px',
-                        fontFamily: 'Akatab, Sans-serif',
-                        fontWeight: 500,
-                        color: '#001538',
-                      },
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        width:{
-                          xs: '320px',
-                          sm: '250px',
-                          md: '350px',
-                          lg: '450px'
-                        },
-                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
-                        fontFamily: 'Akatab, Sans-serif',
-                        fontWeight: 700,
-                        color: '#001538',
-                      }}
-                    >
-                      {item.question}
-                    </Typography>
-                  </AccordionSummary>
-                </Accordion>
-              </Grid>
+  //     <Box maxWidth="lg" mx="auto">
+  //       {faqData.map((item, index) => {
+  //         const isOpen = expanded === index;
 
-              {/* Answer right on desktop, below on mobile */}
-              {isOpen && (
-                <Grid item xs={12} sm={6}>
-                  <Box
-                    sx={{
-                      p: 2,
-                      transition: 'opacity 0.4s ease',
-                      opacity: 1,
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
-                        fontFamily: 'Akatab, Sans-serif',
-                        fontWeight: 400,
-                        color: '#001538',
-                        lineHeight: 1,
-                      }}
-                    >
-                      {item.answer}
-                    </Typography>
-                  </Box>
-                </Grid>
-              )}
-            </Grid>
-          );
-        })}
-      </Box>
-    </Box>
-  );
+  //         return (
+  //           <Grid
+  //             container
+  //             key={index}
+  //             spacing={2}
+  //             alignItems="flex-start"
+  //             sx={{
+  //               borderBottom: '1px solid #e0b855',
+  //               mb: 2,
+  //             }}
+  //           >
+  //             <Grid item xs={12} sm={6}>
+  //               <Accordion
+  //                 expanded={isOpen}
+  //                 onChange={handleChange(index)}
+  //                 disableGutters
+  //                 square
+  //                 elevation={0}
+  //                 sx={{
+  //                   backgroundColor: 'transparent',
+  //                   '&::before': { display: 'none' },
+  //                 }}
+  //               >
+  //                 <AccordionSummary
+  //                   expandIcon={
+  //                     <ChevronRightIcon
+  //                       sx={{
+  //                         transform: isOpen ? 'rotate(180deg)' : 'rotate(90deg)',
+  //                         transition: 'transform 0.4s ease',
+  //                         color: '#001538',
+  //                       }}
+  //                     />
+  //                   }
+  //                   sx={{
+  //                     minHeight: 48,
+  //                     '& .MuiAccordionSummary-content': {
+  //                       marginY: '8px',
+  //                       fontFamily: 'Akatab, Sans-serif',
+  //                       fontWeight: 500,
+  //                       color: '#001538',
+  //                     },
+  //                   }}
+  //                 >
+  //                   <Typography
+  //                     sx={{
+  //                       width:{
+  //                         xs: '320px',
+  //                         sm: '250px',
+  //                         md: '350px',
+  //                         lg: '450px'
+  //                       },
+  //                       fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+  //                       fontFamily: 'Akatab, Sans-serif',
+  //                       fontWeight: 700,
+  //                       color: '#001538',
+  //                     }}
+  //                   >
+  //                     {item.question}
+  //                   </Typography>
+  //                 </AccordionSummary>
+  //               </Accordion>
+  //             </Grid>
+
+  //             {/* Answer right on desktop, below on mobile */}
+  //             {isOpen && (
+  //               <Grid item xs={12} sm={6}>
+  //                 <Box
+  //                   sx={{
+  //                     p: 2,
+  //                     transition: 'opacity 0.4s ease',
+  //                     opacity: 1,
+  //                   }}
+  //                 >
+  //                   <Typography
+  //                     variant="body1"
+  //                     sx={{
+  //                       fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+  //                       fontFamily: 'Akatab, Sans-serif',
+  //                       fontWeight: 400,
+  //                       color: '#001538',
+  //                       lineHeight: 1,
+  //                     }}
+  //                   >
+  //                     {item.answer}
+  //                   </Typography>
+  //                 </Box>
+  //               </Grid>
+  //             )}
+  //           </Grid>
+  //         );
+  //       })}
+  //     </Box>
+  //   </Box>
+  // );
 }

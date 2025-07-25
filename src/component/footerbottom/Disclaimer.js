@@ -38,7 +38,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     left: 0,
     width: '50px',
     height: '3px',
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#011d4a",
     borderRadius: '2px',
   },
 }));
@@ -190,17 +190,10 @@ export default function Disclaimer() {
             >
               {disclaimerData.title}
             </Typography>
-            <Chip
-              label={`Last Updated: ${disclaimerData.lastUpdated}`}
-              color="#001538"
-              variant="outlined"
-              sx={{ mb: 2 }}
-            />
-            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
-              dangerouslySetInnerHTML={{
-                __html: `    Welcome to <strong>{disclaimerData.companyName}!</strong>`,
-              }}
-            />
+            
+            
+            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
+              Welcome to {disclaimerData.companyName}!</Typography>
           </Box>
 
           <Divider sx={{ my: 3 }} />
@@ -234,7 +227,7 @@ export default function Disclaimer() {
                 sx={{
                   mb: 2,
                   fontWeight: 500,
-                  color: theme.palette.primary.main
+
                 }}
               >
                 {section.highlight}
@@ -269,8 +262,9 @@ export default function Disclaimer() {
                 sx={{
                   mt: 2,
                   fontStyle: 'italic',
-                  color: 'text.secondary',
-                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  // color: 'text.secondary',
+                  // borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  borderLeft: "3px solid #011d4a",
                   pl: 2,
                   py: 1
                 }}

@@ -32,7 +32,7 @@ const weddingThemesData = [
 
 const ShowCase = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 2 }}>
+    <Container maxWidth="xl" sx={{ py: 2, }}>
       <Typography
         variant="h3"
         component="h3"
@@ -51,7 +51,7 @@ const ShowCase = () => {
         {`Highlighting exquisite captures from different weddings.`}
       </Typography>
       <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
-        <CustomButton data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}>{`Browse Gallery`}</CustomButton>
+        <CustomButton data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}> {` Filter by Category `}</CustomButton>
 
         <CustomButton data-testid="notify-button"
           variant="outlined"
@@ -68,17 +68,18 @@ const ShowCase = () => {
             fontWeight: 400,
             "&:hover": {
               borderColor: "#f4ce6a",
-              color: "#f4ce6a",
+              backgroundColor: "#DAA412",
+                    color: "#FFFFFF",
                cursor: 'pointer'
             }
           }}
-
+          
         >
-          {` Filter by Category `}
+         {`Browse Gallery`}
         </CustomButton>
 
       </Box>
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
         {weddingThemesData.map(({ id, tag, image, alt, title, description }) => (
           <Grid item key={id} xs={12} sm={6} md={4}>
             <Card
@@ -101,9 +102,8 @@ const ShowCase = () => {
               <Box
                 sx={{
                   position: "relative",
-                  width: "340px",
+                  width: "350px",
                   height: 300,
-                  backgroundColor: "red",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

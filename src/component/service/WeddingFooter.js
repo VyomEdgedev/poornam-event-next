@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { LocationOn, Email } from '@mui/icons-material';
+import Image from 'next/image';
 
 const WeddingFooter = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 1, md: 8} }}>
+    <Container maxWidth="xl" sx={{ py: { xs: 1, md: 8}, px: { xs: 15,sm: 0, md: 0 , lg: 0, xl: 21 } }}>
       <Box
         sx={{
           display: 'flex',
@@ -12,7 +13,7 @@ const WeddingFooter = () => {
           justifyContent: 'space-evenly',
           flexWrap: 'wrap',
           
-          gap: { xs: 2, md: 4 },
+          gap: { xs: 2, md: 2 },
           // backgroundColor: 'red',
         }}
       >
@@ -55,12 +56,7 @@ const WeddingFooter = () => {
               gap: 1
             }}
           >
-            <LocationOn
-              sx={{
-                color: '#000000',
-                fontSize: 20
-              }}
-            />
+            <Image src="/weddingfooter1.png" alt="Email Icon" width={40} height={40} />
             <Typography
               variant="body2"
               sx={{
@@ -84,12 +80,7 @@ const WeddingFooter = () => {
               gap: 1
             }}
           >
-            <Email
-              sx={{
-                color: '#666',
-                fontSize: 20
-              }}
-            />
+            <Image src="/weddingfooter.png" alt="Email Icon" width={40} height={40} />
             <Typography
               variant="body2"
               sx={{

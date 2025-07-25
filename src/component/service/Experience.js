@@ -40,7 +40,7 @@ const Experience = () => {
                 </div>
                 <div className="step-arrow">
                   <Image
-                    src="/Arrow.png"
+                    src="/Arrow.svg"
                     alt="Arrow"
                     width={30}
                     height={20}
@@ -54,7 +54,7 @@ const Experience = () => {
                 </div>
                 <div className="step-arrow">
                   <Image
-                    src="/Arrow.png"
+                    src="/Arrow.svg"
                     alt="Arrow"
                     width={30}
                     height={20}
@@ -68,7 +68,7 @@ const Experience = () => {
                 </div>
                 <div className="step-arrow">
                   <Image
-                    src="/Arrow.png"
+                    src="/Arrow.svg"
                     alt="Arrow"
                     width={30}
                     height={20}
@@ -83,12 +83,13 @@ const Experience = () => {
               </div>
             </div>
           </div>
-    <Box sx={{ maxWidth: 900, mx: 'auto', p: 2 }}>
-      <Grid container spacing={1}>
+    <Box sx={{   p: 2 , position:"relative"}}>
+      <Grid container spacing={1} justifyContent={{xs:"center", sm:"center", md:"center"}} >
         {/* Left Large Image */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} position={"relative"}>
           <Box
             sx={{
+              position: 'relative',
               borderRadius: 3,
               overflow: 'hidden',
               height: '100%',
@@ -97,8 +98,8 @@ const Experience = () => {
             <Image
               src="/experience1.png"
               alt="Wedding Ritual"
-              width={600}
-              height={800}
+              width={257}
+              height={380}
               style={{
                 width: '100%',
                 height: '100%',
@@ -111,23 +112,26 @@ const Experience = () => {
 
         {/* Right: Two stacked images */}
         <Grid item xs={12} sm={6} md={2}>
-          <Grid container direction={{xs:"column", sm:"column", md:"coloum"}} 
-          spacing={0}>
+          <Grid container direction={{xs:"column", sm:"column", md:"coloum"}}  
+          spacing={0}x={{ flexWrap: { xs: "nowrap" } }}>
             <Grid item>
               <Box
                 sx={{
+                  position:{xs:"initial", sm:"initial", md:"absolute"},
+                  top: 90,
                   borderRadius: 3,
                   overflow: 'hidden',
+                  
                 }}
               >
                 <Image
                      src="/experience3.jpg"
                   alt="Question Cards"
-                  width={100}
-                  height={50}
+                  width={119}
+                  height={100}
                   style={{
                     width: '100%',
-                    height: 'auto',
+                    // height: 'auto',
                     objectFit: 'cover',
                     borderRadius: 5,
                   }}
@@ -137,18 +141,21 @@ const Experience = () => {
             <Grid item>
               <Box
                 sx={{
+                   position:{xs:"initial", sm:"initial", md:"absolute"},
+                  top: 200,
                   borderRadius: 3,
-                  overflow: 'hidden',
+                  // overflow: 'hidden',
+              
                 }}
               >
                 <Image
                     src="/experience2.jpg"
                   alt="Help Desk"
-                  width={50}
-                  height={50}
+                  width={119}
+                  height={225}
                   style={{
                     width: '100%',
-                    height: 'auto',
+                    // height: 'auto',
                     objectFit: 'cover',
                     borderRadius: 5,
                   }}

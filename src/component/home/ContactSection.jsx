@@ -123,7 +123,7 @@ export default function ContactSection() {
                                             borderColor: '#ccc',
                                         },
                                         '&:hover fieldset': {
-                                            borderColor: '#1976d2', // Hover color
+                                            borderColor: '#011d4a', // Hover color
                                         },
                                         '&.Mui-focused fieldset': {
                                             borderColor: '#011d4a', // Focus (click) color
@@ -169,7 +169,7 @@ export default function ContactSection() {
                                             borderColor: '#ccc',
                                         },
                                         '&:hover fieldset': {
-                                            borderColor: '#1976d2', // Hover color
+                                            borderColor: '#011d4a', // Hover color
                                         },
                                         '&.Mui-focused fieldset': {
                                             borderColor: '#011d4a', // Focus (click) color

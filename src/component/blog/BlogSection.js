@@ -5,14 +5,14 @@ import {
   Typography,
   Button,
   Card,
-  CardMedia,
   CardContent,
   Grid,
-  Chip,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+
 const blogData = {
   title: "Latest From the Blog",
   viewAllText: "View All Blogs",
@@ -22,7 +22,7 @@ const blogData = {
       title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
       subtitle: "Learn how to make every rupee feel like a royal investment.",
       category: "Budget & Planning",
-      image: "./blogsection1.png",
+      image: "/blogsection1.png",
       imageAlt: "Wedding venue with golden lights and decorations",
     },
     {
@@ -31,7 +31,7 @@ const blogData = {
       subtitle:
         "Beyond Goa and Udaipur — these hidden gems are chef's kiss for intimate vibes.",
       category: "Destination Weddings",
-      image: "./blogsection2.png",
+      image: "/blogsection2.png",
       imageAlt:
         "Wedding planning infographic with venue and catering statistics",
     },
@@ -43,18 +43,17 @@ const BlogSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
   const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 1, md: 6 }   // spacing when screen is small
-    : { xs: 2, sm: 3, md: 6 }; // spacing when screen is large
+    ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }   // spacing when screen is small
+    : { xs: 2, sm: 3, md: 2 , lg: 8, xl: 25}; // spacing when screen is large
   const router = useRouter();
 
     const handleNavigate = () => {
-  
       router.push('/subblog');
     };
 
   return (
     <Box
-      sx={{ py: 5, px: { xs: 2, sm: 8, md: 10 }, backgroundColor: "#FFF7E4" }}>
+      sx={{ py: 5, px: { xs: 2, sm: 8, md: 5, lg: 10, xl: 3 },  backgroundColor: "#FFF7E4" }}>
       <Container maxWidth="xl">
         {/* Header */}
         <Box
@@ -63,7 +62,7 @@ const BlogSection = () => {
             variant="h2"
             component="h2"
             sx={{
-              fontSize: { xs: "1.8rem", sm: "2rem", md: "3rem" },
+              // fontSize: { xs: "1.8rem", sm: "2rem", md: "3rem" },
               fontFamily: "Gloock,serif",
               fontWeight: 400,
               color: "#000000",
@@ -82,7 +81,7 @@ const BlogSection = () => {
               py: 1.5,
               borderRadius: 25,
               textTransform: "none",
-              fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
+              fontSize: { xs: "16px", sm: "16px", md: "16px" },
               fontWeight: 500,
               fontFamily: "Akatab,Sans-serif",
 
@@ -103,7 +102,7 @@ const BlogSection = () => {
               <Box sx={{ px: 0 }}>
                 <Card
                   sx={{
-                    width: { xs: "100%", sm: "100%", md: "460px" },
+                    width: { xs: "350px", sm: "400px", md: "460px", lg: "460px", xl: "460px" },
                     height: "auto",
                     display: "flex",
                     flexDirection: "column",
@@ -118,17 +117,23 @@ const BlogSection = () => {
                     cursor: 'pointer'
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      width: { xs: "100%", sm: "100%", md: "458px" },
-                      height: "350px",
-                      objectFit: "cover",
-                      margin: "0 auto",
-                    }}
-                    image={post.image}
-                    alt={post.imageAlt}
-                  />
+                  <Box sx={{
+                    position: 'relative',
+                    width: { xs: "100%", sm: "100%", md: "460px" ,lg: "460px", xl: "460px"},
+                    height: { xs: "250px", sm: "250px", md: "300px" , lg: "350px", xl: "350px"},
+                    margin: "0 auto",
+                  }}>
+                    <Image
+                      src={post.image}
+                      alt={post.imageAlt}
+                      fill
+                      style={{
+              
+                        objectFit: "cover",
+                      }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </Box>
                   <Typography
                     variant="h6"
                     component="h6"
@@ -138,14 +143,14 @@ const BlogSection = () => {
                       color: "#000000",
                       mb: 1,
                       lineHeight: 1.4,
-                      textAlign: "center",
+                      textAlign: "cover",
                       pt: 2,
-                      px: 2,
+                      px: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
                     }}
                   >
                     {post.title}
                   </Typography>
-                  <CardContent sx={{ p: 2.5, flexGrow: 1 }}>
+                  <CardContent sx={{ p: 1.5, flexGrow: 1 }}>
                     <Typography
                       label={post.category}
                       sx={{
@@ -166,7 +171,7 @@ const BlogSection = () => {
                       component="h6"
                       sx={{
                         color: "#000000",
-                        fontSize: { xs: "1rem", sm: "1rem", md: "1rem" },
+                        fontSize: { xs: "16px", sm: "16px", md: "16px" },
                         fontWeight: 500,
                         fontFamily: "Akatab,Sans-serif",
                         lineHeight: 1.5,

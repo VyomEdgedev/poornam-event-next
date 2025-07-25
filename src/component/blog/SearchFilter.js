@@ -14,12 +14,7 @@ import {
 import { styled } from '@mui/material/styles';
 import CustomButton from '@/common-component/button/CustomButton';
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  borderRadius: theme.spacing(2),
-  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
 
-}));
 
 const SearchButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#D4A574',
@@ -43,6 +38,7 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   backgroundColor: selected ? theme.palette.primary.main : theme.palette.background.default,
   color: selected ? 'white' : theme.palette.text.primary,
   border: `1px solid ${theme.palette.divider}`,
+  borderRadius:"6px",
   '&:hover': {
     backgroundColor: selected ? theme.palette.primary.dark : theme.palette.action.hover,
   },
@@ -58,8 +54,8 @@ const SearchFilter = () => {
   const isBelow1250 = useMediaQuery('(max-width:1250px),(spacing:50px)');
 
   const responsiveSpacing = isBelow1250
-    ? { xs: 2, sm: 2, md: 5 }   // spacing when screen is small
-    : { xs: 2, sm: 1, md: 10 }; // spacing when screen is large
+    ? { xs: 2, sm: 0, md: 2, lg: 6, xl: 25}   // spacing when screen is small
+    : { xs: 2, sm: 0, md: 2, lg: 6, xl: 25 }; // spacing when screen is large
 
   const categories = ['Tips', 'Trends', 'Venues', 'Real Weddings', 'Budget'];
   const locations = ['Indore', 'Bhopal', 'Jabalpur', 'Goa', 'Udaipur'];
@@ -87,24 +83,22 @@ const SearchFilter = () => {
 
   return (
     <Grid backgroundColor="#FFF7E4">
-      <Container width="100%" maxWidth="lg" sx={{ py: { xs: 1, sm: 1, md: 4 } }}    >
+      <Container width="100%" maxWidth="xl" sx={{ py: { xs: 1, sm: 1, md: 4 } ,px: { xs: 2, sm: 0, md: 0,lg:10, xl: 0 }}}    >
         <Grid container
           spacing={responsiveSpacing}
           alignItems={isBelow1250 ? 'center' : "center"}
           justifyContent={isBelow1250 ? 'center' : 'center'}
         >
           {/* Left Side - Main Heading */}
-          <Grid item xs={12} md={6} sx={{ py: { xs: 1, sm: 2, md: 2 } }}
-            width={{ xs: '495px', sm: '495px', md: '495px' }}
+          <Grid item xs={12} md={6} sx={{ py: { xs: 1, sm: 2, md: 2 },  px:{ xs: 2, sm: 4, md: 0,lg:0, xl: 0}} }
+            width={{ xs: '495px', sm: '495px', md: '400px', lg:'495px', xl:'495px' }}
           >
 
-            <StyledPaper elevation={0}
-            >
+           
               <Typography
                 variant="h2"
-                component="h2"
+                component="h2" 
                 sx={{
-                  fontSize: { xs: '2rem', sm: '2rem', md: '3rem' },
                   fontWeight: '400',
                   color: '#000000',
                   lineHeight: 1.2,
@@ -121,18 +115,18 @@ const SearchFilter = () => {
                 sx={{
                   color: '#000000',
                   fontFamily: 'Akatab,Sans-serif',
-                  fontSize: { xs: '0.95rem', sm: "1", md: '1.125rem' },
+                  fontSize: { xs: '15px', sm: "16px", md: '18px' },
                   lineHeight: 1.2,
                 }}
               >
                 {` Search for valuable insights to aid your planning journey.`}
               </Typography>
-            </StyledPaper>
+            
           </Grid>
 
           {/* Right Side - Search and Filters */}
           <Grid item xs={12} sm={8} md={6}>
-            <StyledPaper elevation={0}>
+           
               {/* Search Input */}
               <Box sx={{ mb: 3 }}>
                 <Typography
@@ -180,7 +174,7 @@ const SearchFilter = () => {
                         margin: "4px",
                         fontWeight: 500,
                         fontFamily: 'Akatab, sans-serif',
-                        backgroundColor: selectedCategories.includes(category) ? 'primary.main' : 'grey.300',
+                        backgroundColor: selectedCategories.includes(category) ? 'primary.main' : '#0000000D',
                         color: selectedCategories.includes(category) ? 'white' : 'black',
                         '&:hover': {
                           backgroundColor: selectedCategories.includes(category) ? 'primary.dark' : 'grey.400',
@@ -213,7 +207,7 @@ const SearchFilter = () => {
                         margin: "4px",
                         fontWeight: 500,
                         fontFamily: 'Akatab, sans-serif',
-                        backgroundColor: selectedCategories.includes(location) ? 'primary.main' : 'grey.300',
+                        backgroundColor: selectedCategories.includes(location) ? 'primary.main' : '#0000000D',
                         color: selectedCategories.includes(location) ? 'white' : 'black',
                         '&:hover': {
                           backgroundColor: selectedCategories.includes(location) ? 'primary.dark' : 'grey.400',
@@ -231,7 +225,7 @@ const SearchFilter = () => {
                 <CustomButton
                   onClick={handleSearch} data-testid="notify-button">{`Search`}</CustomButton>
               </Box>
-            </StyledPaper>
+         
           </Grid>
         </Grid>
       </Container>

@@ -35,6 +35,9 @@ const Footer = () => {
               xs={12}
               sx={{
                 width: { xs: "100%", sm:"100%", md: "30%" ,lg:"30%",xl:"40%"},
+                marginLeft: { xs: "0px", sm: "0px", md: "0px", lg: "-10px", xl: "-10px" },
+                
+                
               }}
             >
               <Link href="/" passHref legacyBehavior>
@@ -53,7 +56,7 @@ const Footer = () => {
               </Link>
               <Typography
                 variant="h6"
-                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "1px", }}
+                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "0px", }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
@@ -334,7 +337,7 @@ const Footer = () => {
                   display: "inline-block",
                   mt: { xs: 0, md: 0,lg:1 },
                   position: { xs: "static",sm: "static", md: "absolute" },
-                  top: { md: "-35px", lg: "-65px" },
+                  top: { md: "-35px", lg: "-55px", xl: "-55px" },
                   right: { xs: "-20px", sm: "-20px", md: "10px" },
                   height: "20px",
 
