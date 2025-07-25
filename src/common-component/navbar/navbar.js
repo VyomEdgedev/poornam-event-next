@@ -24,6 +24,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CloseIcon from "@mui/icons-material/Close";
+import style from "@/styles/style.module.scss"
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -60,10 +61,12 @@ export default function Header() {
       }}
     >
       <Toolbar disableGutters sx={{ justifyContent: "center" }}>
-        {!isMobile ? (
+       
+        {/* desktop navbar  */}
           <Box
             display="flex"
             alignItems="center"
+            className={style.deskop_nav_bar}
             sx={{
               backgroundColor: "rgba(10, 17, 56, 0.85)",
               borderRadius: "30px",
@@ -110,13 +113,15 @@ export default function Header() {
               <WhatsAppIcon />
             </IconButton>
           </Box>
-        ) : (
+
+        {/* mobile navbar */}
           <Box
             display="flex"
             justifyContent={"space-between"}
             width="100%"
             backgroundColor="rgba(0, 13, 31, 0.4)"
             padding={0.5}
+            className={style.mobile_nav_bar}
           >
             <Link href="/" passHref>
               <Image
@@ -227,7 +232,7 @@ export default function Header() {
               </Box>
             </Drawer>
           </Box>
-        )}
+
       </Toolbar>
     </AppBar>
   );
