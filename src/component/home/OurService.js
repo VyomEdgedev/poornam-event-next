@@ -75,7 +75,7 @@ const FlipCard = ({ service }) => {
   const router = useRouter();
   const handleNavigate = () => {
 
-    router.push('/services');
+    router.push('/servicessubpage');
   };
 
   return (

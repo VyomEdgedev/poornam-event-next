@@ -38,7 +38,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     left: 0,
     width: '50px',
     height: '3px',
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#011d4a",
     borderRadius: '2px',
   },
 }));
@@ -227,18 +227,11 @@ export default function PrivacyPolicy() {
             >
               {privacyData.title}
             </Typography>
-            <Chip
-              label={`Last Updated: ${privacyData.lastUpdated}`}
-              color="#001538"
-              variant="outlined"
-              sx={{ mb: 2 }}
-            />
-            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
-              dangerouslySetInnerHTML={{
-                __html: `   Welcome to <strong>{privacyData.companyName}!</strong>`,
-              }}
-            />
-
+           
+          
+<Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
+Welcome to {privacyData.companyName}
+</Typography>
 
           </Box>
 
@@ -328,7 +321,7 @@ export default function PrivacyPolicy() {
                   mt: 2,
                   fontStyle: 'italic',
                   color: 'text.secondary',
-                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  borderLeft: "3px solid #011d4a",
                   pl: 2,
                   py: 1
                 }}

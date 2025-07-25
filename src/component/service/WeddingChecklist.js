@@ -13,10 +13,10 @@ const MainTitle = styled(Typography)(({ theme }) => ({
   color: '#000000',
   marginBottom: theme.spacing(4),
   [theme.breakpoints.down('md')]: {
-    fontSize: '2rem',
+    fontSize: '32px',
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: '2rem',
+    fontSize: '32px',
   },
 }));
 
@@ -65,7 +65,7 @@ const IconImage = styled('img')(({ theme }) => ({
 
 const EventText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Akatab, sans-serif',
-  fontSize: '1.25rem',
+  fontSize: '18px',
   color: '#000000',
   fontWeight: 400,
   width: '160px',
@@ -73,7 +73,7 @@ const EventText = styled(Typography)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '0.9rem',
+    fontSize: '14px',
     width: 'auto',
     height: 'auto',
   },
@@ -137,7 +137,7 @@ const WeddingChecklist = () => {
           }}>
             <Box sx={{
               display: 'grid',
-              // gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : 'repeat(2, 1fr)',
               gap: 3,
               alignItems: 'baseline',
               width: '100%',

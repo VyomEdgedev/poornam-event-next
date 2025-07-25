@@ -11,7 +11,7 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   position: 'relative',
   width: '100%',
   height: height || '450px',
-  // backgroundColor: backgroundcolor || 'rgba(0, 13, 31, 1)',
+  backgroundColor: backgroundcolor || 'rgba(0, 13, 31, 1)',
   display: 'flex',
   alignItems: 'center',
   overflow: 'hidden',

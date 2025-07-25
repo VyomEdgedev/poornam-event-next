@@ -38,6 +38,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     left: 0,
     width: '50px',
     height: '3px',
+    backgroundColor:"#011d4a",
     borderRadius: '2px',
   },
 }));
@@ -48,6 +49,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   '&::before': {
     content: '"•"',
     color: '#001538',
+    
     fontWeight: 600,
     position: 'absolute',
     left: '8px',
@@ -200,18 +202,11 @@ export default function TermsAndConditions() {
             >
               {termsData.title}
             </Typography>
-            <Chip
-              label={`Last Updated: ${termsData.lastUpdated}`}
-              color="#001538"
-              variant="outlined"
-              sx={{ mb: 2 }}
-            />
-            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}
-              dangerouslySetInnerHTML={{
-                __html: ` Welcome to <strong>{termsData.companyName}</strong> — {termsData.description}`,
-              }}
-
-            />
+            
+           
+            <Typography variant="h6" color="#000000" sx={{ fontStyle: 'italic' }}>
+              Welcome to {termsData.companyName}  — {termsData.description}
+            </Typography>
           </Box>
 
           <Divider sx={{ my: 3 }} />
@@ -220,12 +215,15 @@ export default function TermsAndConditions() {
             {`  Before you explore, book, or contact us through our website, please take a moment to read our terms.`}
           </Typography>
 
-          <Typography variant="body1" sx={{ fontWeight: 500 }}
-            dangerouslySetInnerHTML={{
-              __html: `  By accessing or using <strong>{termsData.website}</strong>, you agree to the following terms and conditions:`,
-            }}
-          />
+         <Typography
+  variant="body1"
+  sx={{ fontWeight: 500 }}
+  dangerouslySetInnerHTML={{
+    __html: `By accessing or using <strong>${termsData.website}</strong>, you agree to the following terms and conditions:`,
+  }}
+/>
 
+<Typography variant="body1" sx={{ fontWeight: 500 }}></Typography>
 
         </StyledPaper>
 
@@ -265,7 +263,7 @@ export default function TermsAndConditions() {
                   mt: 2,
                   fontStyle: 'italic',
                   color: '#000000',
-                  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+                  borderLeft: "3px solid #011d4a",
                   pl: 2,
                   py: 1
                 }}

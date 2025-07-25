@@ -6,6 +6,7 @@ import Experience from './Experience';
 import WeddingChecklist from './WeddingChecklist';
 import WeddingFooter from './WeddingFooter';
 import SEO from '@/common-component/SEO/seo';
+import CookiesBanner from '../footerbottom/cookies';
 
 const Service = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;

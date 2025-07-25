@@ -52,13 +52,13 @@ const servicesData = {
     },
     {
       id: 7,
-      image: "/serviceimg8.png",
+      image: "/serviceimg6.png",
       title: "Artist Management",
       description: "Don't lift a finger. We'll plan the entire shaadi."
     },
     {
       id: 8,
-      image: "/serviceimg8.png",
+      image: "/serviceimg4.png",
       title: "Prewedding & Photography",
       description: "Because you don't want to be managing the DJ during your own varmala."
     },
@@ -71,7 +71,7 @@ const servicesData = {
 
     {
       id: 10,
-      image: "/serviceimg8.png",
+      image: "/serviceimg5.png",
       title: "Special Effects",
       description: "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
       isHighlighted: true
@@ -82,8 +82,9 @@ const servicesData = {
 // Styled Components
 const MainContainer = styled(Box)(({ theme }) => ({
   maxWidth: '1200px',
-  margin: '0 auto',
-  padding: theme.spacing(8),
+  margin: '0px auto',
+  
+  padding: theme.spacing(1),
   [theme.breakpoints.down('md')]: {
     padding: theme.spacing(1),
   }
@@ -128,9 +129,10 @@ const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
   overflow: 'hidden',
   padding: '16px 16px 16px 0px',
   alignItems: 'center',
-  gap: theme.spacing(2),
+  gap: theme.spacing(1),
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
+    border: '1px solid #DAA412',
     transform: 'translateY(-5px) scale(1.02)',
     boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
     cursor: 'pointer',
@@ -139,7 +141,7 @@ const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
     padding: theme.spacing(2)
   },
     [theme.breakpoints.up('xl')]: {
-    width: isHighlighted ? "1058px" : "340px",
+    width: isHighlighted ? "1185px" : "340px",
   },
   
   [theme.breakpoints.down('md')]: {
@@ -172,8 +174,12 @@ const ImageContainer = styled(Box)(({ theme }) => ({
     objectFit: 'cover',
   },
   [theme.breakpoints.down('sm')]: {
-    width: '100px',
-    height: '100px',
+    width: '200px',
+    height: '150px',
+  },
+  [theme.breakpoints.down('xs')]: {
+    width: '200px',
+    height: '200px',
   },
 }));
 
@@ -190,8 +196,7 @@ const HeroImageContainer = styled(Box)({
 });
 const ServiceContent = styled(Box)(({ theme }) => ({
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
+ flexDirection: 'column',
   flex: 1,
   height: '100%',
   gap: theme.spacing(1),
@@ -200,11 +205,12 @@ const ServiceContent = styled(Box)(({ theme }) => ({
   }
 }));
 const ServiceTitle = styled(Typography)(({ theme }) => ({
+
   fontFamily: 'Akatab,Sans-serif',
+   alignItems: 'flex-start',
   fontWeight: 600,
   fontSize: '20px',
   color: '#000D1F',
-  marginBottom: theme.spacing(0.5),
   [theme.breakpoints.down('sm')]: {
     fontSize: '18px',
   },
@@ -225,7 +231,7 @@ const ServiceDescription = styled(Typography)(({ theme }) => ({
 }));
 
 const HeroContent = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(0),
+
   display: 'flex',
   marginLeft: '40px',
   flexDirection: 'column',
@@ -283,7 +289,7 @@ const ShaddiService = () => {
     router.push('/servicessubpage');
   };
   return (
-    <MainContainer>
+    <MainContainer sx={{py:{ xs: 4, md: 8 }}}>
       {/* Title */}
       <StyledTypography variant="h2" >
         Our Shaadi Services
@@ -291,7 +297,7 @@ const ShaddiService = () => {
 
       {/* Hero Section */}
       <HeroCard >
-        <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" }}>
+        <Grid container spacing={2}  justifyContent={'space-between'}>
           <Grid item xs={12} md={8}>
             <HeroImageContainer>
               <Image
@@ -321,7 +327,7 @@ const ShaddiService = () => {
       </HeroCard>
 
       {/* Services Grid */}
-      <Grid container spacing={2} justifyContent={{ xs: "center", sm: "center", md: "center" , lg: "center" }}>
+      <Grid container spacing={2} justifyContent={{ xs: 'center', md: 'center' , lg: 'space-between'}}>
         {servicesData.services.map((service) => (
           <Grid item xs={12}
             sm={service.isHighlighted ? 12 : 6}
