@@ -1,6 +1,8 @@
 import React from 'react';
-import { Breadcrumbs, Link, Typography, Box } from '@mui/material';
+import { Breadcrumbs, Typography, Box } from '@mui/material';
 import { Home, NavigateNext } from '@mui/icons-material';
+import Link from 'next/link';
+
 
 const BreadcrumbsComponent = ({ 
   items = [], 
@@ -57,13 +59,13 @@ const BreadcrumbsComponent = ({
           }
 
           return (
-            <Link
+            <Typography
+              component={Link}
               key={index}
               underline="hover"
               color="inherit"
               href={item.href}
               sx={{
-                
                 display: 'flex',
                 alignItems: 'center',
                 textDecoration: 'none',
@@ -79,7 +81,7 @@ const BreadcrumbsComponent = ({
                 <Home sx={{ mr: 0, color: homeIconColor }} fontSize="inherit" />
               )}
               {item.label}
-            </Link>
+            </Typography>
           );
         })}
       </Breadcrumbs>
