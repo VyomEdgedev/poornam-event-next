@@ -77,7 +77,7 @@ export default function CookiesBanner() {
           onClick={() => setShowBanner(true)}
           sx={{ mt: 2, display: 'block', mx: 'auto' }}
         >
-          Show Cookie Banner Again
+          {`Show Cookie Banner Again`}
         </Button>
       </Box>
     );
@@ -105,11 +105,11 @@ export default function CookiesBanner() {
             <CookieIcon sx={{ fontSize: 32, color: '#ffa726', mt: 0.5 }} />
             <Box sx={{ flex: 1 }}>
               <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold', mb: 1 }}>
-                We Use Cookies (Not the Wedding Wale Wale)
+                {`We Use Cookies (Not the Wedding Wale Wale)`}
               </Typography>
               <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.5 }}>
-                This website uses cookies to give you a better, faster, and more personalized experience. 
-                By continuing to browse, you agree to our use of cookies as per our Privacy Policy.
+                  {`This website uses cookies to give you a better, faster, and more personalized experience. 
+                  By continuing to browse, you agree to our use of cookies as per our Privacy Policy.`}
               </Typography>
             </Box>
           </Box>
@@ -181,7 +181,7 @@ export default function CookiesBanner() {
           pb: 1 
         }}>
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-            Cookie Preferences
+            {`Cookie Preferences`}
           </Typography>
           <IconButton
             aria-label="close"
@@ -197,7 +197,7 @@ export default function CookiesBanner() {
           <Box sx={{ mb: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                Necessary Cookies
+                {`Necessary Cookies`}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Typography variant="body2" sx={{ color: 'success.main', fontWeight: 'bold' }}>
@@ -206,7 +206,7 @@ export default function CookiesBanner() {
               </Box>
             </Box>
             <Typography variant="body2" color="text.secondary">
-              These are essential for the website to function properly (you can't turn these off).
+              {`These are essential for the website to function properly (you can't turn these off).`}
             </Typography>
           </Box>
 
@@ -216,7 +216,7 @@ export default function CookiesBanner() {
           <Box sx={{ mb: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                Analytics Cookies
+                {`Analytics Cookies`}
               </Typography>
               <FormControlLabel
                 control={
@@ -241,7 +241,7 @@ export default function CookiesBanner() {
           <Box sx={{ mb: 2 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                Marketing Cookies
+                {`Marketing Cookies`}
               </Typography>
               <FormControlLabel
                 control={
@@ -256,7 +256,7 @@ export default function CookiesBanner() {
               />
             </Box>
             <Typography variant="body2" color="text.secondary">
-              Allow us to show you personalized ads and offers on platforms like Instagram, Google, and YouTube.
+              {`Allow us to show you personalized ads and offers on platforms like Instagram, Google, and YouTube.`}
             </Typography>
           </Box>
         </DialogContent>
@@ -274,7 +274,7 @@ export default function CookiesBanner() {
               '&:hover': { backgroundColor: '#1565c0' }
             }}
           >
-            Save My Preferences
+            {`Save My Preferences`}
           </Button>
         </DialogActions>
       </Dialog>
