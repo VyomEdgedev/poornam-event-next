@@ -3,22 +3,7 @@ import { Box, Typography, Paper, useTheme, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  borderRadius: '16px',
-  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-  position: 'relative',
-  overflow: 'hidden',
-  maxWidth: '1200px',
-  margin: '0 auto',
-  backgroundColor: '#f5f3f0',
-  [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(3),
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: theme.spacing(2),
-  },
-}));
+
 
 const MainTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Gloock, serif',
@@ -120,15 +105,16 @@ const WeddingChecklist = () => {
 
   return (
     <Box sx={{
+       backgroundColor: '#FFF7E4',
       py: 5,
-      px: { xs: 8, sm: 6, md: 2 }
+      px: { xs: 4, sm: 4, md: 5, lg: 30, xl: 32 },
     }}>
-      <StyledPaper elevation={3}>
+      
         <Box sx={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'flex-start',
-          gap: 4
+          gap: { xs: 1, sm: 4, md: 5, lg: 4, xl: 4 },
         }}>
           {/* Main Title Section */}
           <Box sx={{
@@ -147,12 +133,13 @@ const WeddingChecklist = () => {
           <Box sx={{
             flex: isMobile ? 'none' : 1,
             width: '100%',
-            maxWidth: isMobile ? '100%' : '600px'
+            // maxWidth: isMobile ? '100%' : '600px'
           }}>
             <Box sx={{
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              // gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
               gap: 3,
+              alignItems: 'baseline',
               width: '100%',
             }}>
               {events.map((event, index) => (
@@ -175,7 +162,7 @@ const WeddingChecklist = () => {
             </Box>
           </Box>
         </Box>
-      </StyledPaper>
+    
     </Box>
   );
 };

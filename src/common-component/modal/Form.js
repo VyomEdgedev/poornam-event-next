@@ -59,17 +59,18 @@ const Form = () => {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         gap: 3,
-        p: 2,
+        p: 1,
+      
       }}
     >
       {/* Left Side - Image */}
       <Box
         sx={{
           width: { xs: "100%", sm: "40%", md: "40%" },
-          height: { xs: 200, sm: 300, md: "65vh" },
+          height: { xs: 200, sm: 300,md:"auto"},
           position: "relative",
           borderRadius: 2,
-          overflow: "hidden",
+          // overflow: "hidden",
         }}
       >
         <Image
@@ -77,7 +78,7 @@ const Form = () => {
           alt="Wedding planning imagery"
           fill
           style={{ objectFit: "cover" }}
-          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+          // sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           priority
         />
       </Box>

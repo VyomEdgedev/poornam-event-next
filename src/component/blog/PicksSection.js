@@ -45,11 +45,11 @@ const PicksSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
   const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 2 }   // spacing when screen is small
-    : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
+    ? { xs: 2, sm: 2 , md:2, lg:2,xl:6}   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 2, lg: 2, xl: 6}; // spacing when screen is large
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
+    <Container maxWidth="xl" sx={{ py: 6 }}>
       <Grid container spacing={responsiveSpacing}
         alignItems={isBelow1150 ? 'center' : "center"}
         justifyContent={isBelow1150 ? 'center' : 'center'}>
@@ -97,7 +97,7 @@ const PicksSection = () => {
                 key={item.id}
                 sx={{
                   display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
+                  flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row' },
                   boxShadow: 'none',
                   border: '1px solid',
                   borderColor: 'divider',
@@ -114,7 +114,7 @@ const PicksSection = () => {
                 <CardMedia
                   component="img"
                   sx={{
-                    width: { xs: '100%', sm: 140 },
+                    width: { xs: '100%', sm: 140, md: 140 },
                     height: { xs: 200, sm: 120 },
                     objectFit: 'cover',
                     borderRadius: { xs: 0, sm: '8px 0 0 8px' }
@@ -134,7 +134,7 @@ const PicksSection = () => {
                     variant="h6"
                     component="h6"
                     sx={{
-                      fontSize: { xs: '1rem', sm: '1rem', md: '1.25rem' },
+                      fontSize: { xs: '16px', sm: '16px', md: '18px' },
                       fontWeight: 600,
                       fontFamily: "Akatab,Sans-serif",
                       mb: 0.70,

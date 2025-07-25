@@ -16,8 +16,8 @@ const PlanningTips = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
     const responsiveSpacing = isBelow1150
-        ? { xs: 2, sm: 2 , md: 3}   // spacing when screen is small
-        : { xs: 2, sm: 1, md: 8 }; // spacing when screen is large
+        ? { xs: 2, sm: 2 , md: 3, lg: 6, xl: 14}   // spacing when screen is small
+        : { xs: 2, sm: 1, md: 8, lg: 6, xl: 14}; // spacing when screen is large
 
     // JSON data structure
     const sectionData = {
@@ -78,7 +78,7 @@ const PlanningTips = () => {
             // backgroundColor: '#FFF8F3',
             minHeight: '40vh',
             py: { xs: 4, sm: 2, md: 2, lg: 3 },
-             px: { xs: 4, sm: 7, md: 4, lg: 3 },
+             px: { xs: 4, sm: 4, md: 2, lg: 3 },
            mb: { xs: 4, sm: 4, md: 3, lg: 4}
         }}          >
 
@@ -99,10 +99,10 @@ const PlanningTips = () => {
                                     fontSize: { xs: '1.6rem', sm: '2rem', md: '2.8rem' },
                                     fontWeight: 400,
                                     lineHeight: 1.2,
-                                    mb: 3,
+                                    mb: 2,
                                     fontFamily: 'Gloock,serif',
                                     color: '#000D1F',
-                                    width: { xs: '100%', sm: '100%', md: '520px' }
+                                    width: { xs: '380px', sm: '380px', md: '380px', lg: '520px', xl: '520px' },
                                 }}
                             >
                                 <span style={{ color: '#DAA412' }}>{sectionData.title}</span>
@@ -114,7 +114,7 @@ const PlanningTips = () => {
                                 variant="h5"
                                 component="h5"
                                 sx={{
-                                    fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.5rem' },
+                                    // fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.5rem' },
                                     fontWeight: 500,
                                     fontFamily: "Akatab,Sans-serif",
                                     color: '#000D1F',
@@ -142,7 +142,8 @@ const PlanningTips = () => {
                                         transition: 'all 0.3s ease',
                                         '&:hover': {
                                             transform: 'translateY(-2px)',
-                                            boxShadow: '0 8px 30px rgba(0,0,0,0.12)'
+                                            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+                                            border: '1px solid #DAA412'
                                         },
                                         cursor: 'pointer'
                                     }}

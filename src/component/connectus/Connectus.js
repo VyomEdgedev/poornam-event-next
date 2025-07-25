@@ -6,13 +6,57 @@ import SocialMedia from "./SocialMedia";
 import CheatSheet from "./CheatSheet";
 import FreeCall from "./FreeCall";
 import Planner from "./Planner";
-import FAQ from "./FAQ";
+
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import SEO from "@/common-component/SEO/seo";
+import FAQSection from "@/common-component/Faq/FAQSection";
 
 
 export default function ContactUs() {
+  const myFAQData = [
+  {
+    question: 'What does a wedding planner actually do?',
+    answer: 'Think of us as your behind-the-scenes superheroes. From budget planning, vendor management, decor design, to handling last-minute family drama — we do everything except walk down the aisle for you.',
+  },
+  {
+    question: 'Do you only work in Indore?',
+    answer: " While we’re proudly rooted in Indore, we’ve planned weddings in Bhopal, Jabalpur, and across India. If your heart says “Shimla ki Shaadi”, our bags are already packed.",
+  },
+  {
+    question: 'Can I hire you just for wedding day coordination?',
+    answer: "Yes! If you’ve done the heavy lifting and just need a pro team to handle the “big day” chaos, we offer on-day execution services too. We'll make sure everything runs smoother than a sangeet playlist.",
+  },
+  {
+    question: 'Do you plan small, intimate weddings too?',
+    answer: 'Absolutely. From 500-guest big fat weddings to 50-person hilltop vows — we design every event with the same love, drama, and attention to detail.',
+  },
+   {
+    question: 'How far in advance should I book Poornam Events?',
+    answer: 'The sooner, the better — especially during peak wedding seasons (Oct–Feb). Some couples book us 9–12 months in advance. Others call us two weeks before. Either way, we deliver magic.',
+  },
+   {
+    question: 'Do you handle destination wedding?',
+    answer: 'Yes! Whether it’s a royal palace in Rajasthan or a beach in Kerala, we manage logistics, travel, stay, and every tiny flower petal that needs to fall just right.',
+  },
+   {
+    question: ' What if I already have some vendors booked?',
+    answer: 'No problem! We can seamlessly collaborate with your chosen vendors or suggest our trusted ones. Either way, your wedding will be chef’s kiss perfect.',
+  },
+   {
+    question: 'Is hiring a wedding planner expensive?',
+    answer: 'Not when you consider the time, stress, and money we help you save. Plus, we tailor our packages based on your vision and budget. Trust us — we know how to party smart.',
+  },
+   {
+    question: 'Will you help with the “not-so-fun” stuff too?',
+    answer: 'You mean budgeting, guest RSVP chaos, or handling that one auntie who wants to change the seating chart? Yup. We’ve got it all covered.',
+  },
+   {
+    question: ' How do I get started with Poornam Events?',
+    answer: 'Easy! Just head to our Connect With Us page, fill out the form, or drop us a WhatsApp. We’ll set up a vibe-check call, and take it from there. Your dream wedding starts with a simple hello!',
+  },
+];
+
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   return (
     <>
@@ -60,7 +104,8 @@ export default function ContactUs() {
       <CheatSheet></CheatSheet>
       <FreeCall></FreeCall>
       <Planner></Planner>
-      <FAQ></FAQ>
+      <FAQSection faqData={myFAQData} />;
+
     </>
   )
 }

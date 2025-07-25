@@ -11,7 +11,7 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   position: 'relative',
   width: '100%',
   height: height || '450px',
-  backgroundColor: backgroundcolor || 'rgba(0, 13, 31, 1)',
+  // backgroundColor: backgroundcolor || 'rgba(0, 13, 31, 1)',
   display: 'flex',
   alignItems: 'center',
   overflow: 'hidden',
@@ -25,8 +25,12 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
     minHeight: '300px',
   },
   [theme.breakpoints.down('sm')]: {
+    height: height === '100vh' ? '60vh' : height === '450px' ? '380px' : height,
+    minHeight: '320px',
+  },
+  [theme.breakpoints.down('xs')]: {
     height: height === '100vh' ? '60vh' : height === '450px' ? '300px' : height,
-    minHeight: '280px',
+    minHeight: '540px',
   },
   
 }));
@@ -78,7 +82,7 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
     zIndex: 3,
     width: logoposition?.width || '80px',
     height: 'auto',
-    
+   
     // Enhanced responsive logo positioning
     [theme.breakpoints.down('lg')]: {
       top: logoposition?.lg?.top || logoposition?.mobile?.top || '25px',
@@ -103,88 +107,102 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
 const ContentContainer = styled(Container)(({ theme, contentalignment, contentposition }) => ({
   position: 'absolute',
   top: '190px',
-  left: '40px',
+  left: '37px',
   zIndex: 3,
   display: 'flex',
+
   flexDirection: 'column',
   alignItems: contentalignment?.horizontal || 'flex-start',
   justifyContent: contentalignment?.vertical || 'center',
   textAlign: contentalignment?.textAlign || 'left',
   maxWidth: '1200px',
   padding: '0 20px',
-  // backgroundColor:"red",
+
   // Enhanced responsive positioning
   [theme.breakpoints.down('xl')]: {
-    top: contentposition?.xl?.top || '120px',
-    left: contentposition?.xl?.left || '35px',
+    top: contentposition?.xl?.top || '190px',
+    left: contentposition?.xl?.left || '37px',
     maxWidth: '1000px',
   },
   [theme.breakpoints.down('lg')]: {
-    top: contentposition?.lg?.top || '100px',
-    left: contentposition?.lg?.left || '30px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
+    top: contentposition?.lg?.top || '190px',
+    left: contentposition?.lg?.left || '37px',
+    // paddingLeft: '15px',
+    // paddingRight: '15px',
     maxWidth: '900px',
   },
   [theme.breakpoints.down('md')]: {
     position: 'relative',
-    top: 'auto',
-    left: 'auto',
-    padding: '40px 40px',
+    top: '20px',
+    left: '2px',
+    // padding: '40px 40px',
     // alignItems: contentalignment?.md?.horizontal || contentalignment?.mobile?.horizontal || 'center',
     // textAlign: contentalignment?.md?.textAlign || contentalignment?.mobile?.textAlign || 'center',
     width: '100%',
     maxWidth: '100%',
   },
+
   [theme.breakpoints.down('sm')]: {
-    padding: '20px 28px',
+    position: 'relative',
+    top: '30px',
+    left: '2px',
+    padding: '0px 16px',
+    // alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
+    // textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
+  },
+  [theme.breakpoints.down('xs')]: {
+    position: 'relative',
+    top: '20px',
+    left: '2px',
+    
+    // padding: '20px 28px',
     // alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
     // textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
   },
 }));
 
 const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
+
   fontFamily: headingstyle?.fontFamily || "'Gloock', serif",
   fontWeight: headingstyle?.fontWeight || '400',
   fontSize: headingstyle?.fontSize ||'48px',
-  letterSpacing: headingstyle?.letterSpacing || '-0.02em',
+  letterSpacing: headingstyle?.letterSpacing || '0.03em',
   lineHeight: headingstyle?.lineHeight || '1.13',
   color: headingstyle?.color || 'rgba(255, 255, 255, 1)',
   marginBottom: headingstyle?.marginBottom || '8px',
-  maxWidth: headingstyle?.maxWidth || '950px',
+  // maxWidth: headingstyle?.maxWidth || '950px',
   
   
   
   // Enhanced responsive typography
   [theme.breakpoints.down('xl')]: {
     fontSize: headingstyle?.responsive?.xl?.fontSize || '44px',
-    maxWidth: headingstyle?.responsive?.xl?.maxWidth || '550px',
+    // maxWidth: headingstyle?.responsive?.xl?.maxWidth || '1050px',
   },
   [theme.breakpoints.down('lg')]: {
-    fontSize: headingstyle?.responsive?.lg?.fontSize || '40px',
+    fontSize: headingstyle?.responsive?.lg?.fontSize || '30px',
     lineHeight: headingstyle?.responsive?.lg?.lineHeight || '1.15',
-    maxWidth: headingstyle?.responsive?.lg?.maxWidth || '500px',
+    // maxWidth: headingstyle?.responsive?.lg?.maxWidth || '550px',
   },
   [theme.breakpoints.down('md')]: {
     fontSize: headingstyle?.responsive?.md?.fontSize || '24px ',
     lineHeight: headingstyle?.responsive?.md?.lineHeight || '1.2',
-    maxWidth: headingstyle?.responsive?.md?.maxWidth || '100%',
+    // maxWidth: headingstyle?.responsive?.md?.maxWidth || '100%',
     marginBottom: headingstyle?.responsive?.md?.marginBottom || '12px',
   },
   [theme.breakpoints.down('sm')]: {
-    marginTop:"35px",
     fontSize: headingstyle?.responsive?.sm?.fontSize || '18px',
     lineHeight: headingstyle?.responsive?.sm?.lineHeight || '1',
     marginBottom: headingstyle?.responsive?.sm?.marginBottom || '4px',
   },
   [theme.breakpoints.down('xs')]: {
-    fontSize: headingstyle?.responsive?.xs?.fontSize || '20px',
+    fontSize: headingstyle?.responsive?.xs?.fontSize || '17px',
     lineHeight: headingstyle?.responsive?.xs?.lineHeight || '1',
   },
 }));
 
 const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
-  fontFamily: subheadingstyle?.fontFamily || "'Akatab', sans-serif",
+  fontFamily: subheadingstyle?.fontFamily || "'Akatab',Sans-serif",
   fontWeight: subheadingstyle?.fontWeight || '600',
   fontSize: subheadingstyle?.fontSize || '26px !important',
   letterSpacing: subheadingstyle?.letterSpacing || '0.02em',
@@ -330,10 +348,11 @@ const CustomBanner = ({
   logoSrc,
   logoAlt = "Company Logo",
   logoPosition = {
-    top: '18.15px',
-    left: '42.07px',
-    width: '113.92px',
-    height:'143.62px',
+    top: '10px',
+    left: '37px',
+    width: '120px',
+    height:'120px',
+  
     // Enhanced responsive logo positions
     xl: { top: '12px', left: '60px', width: '100px' },
     lg: { top: '10px', left: '50px', width: '90px' },
@@ -361,8 +380,8 @@ const CustomBanner = ({
     paddingTop: '120px',
     paddingBottom: '60px',
     // Enhanced responsive positioning
-    xl: { top: '120px', left: '60px' },
-    lg: { top: '100px', left: '50px' },
+    // xl: { top: '120px', left: '60px' },
+    lg: { top: '123px', left: '50px' },
     md: { paddingTop: '40px', paddingBottom: '40px' },
     sm: { paddingTop: '30px', paddingBottom: '30px' },
     mobile: { paddingTop: '100px' }
@@ -528,5 +547,4 @@ const CustomBanner = ({
 };
 
 export default CustomBanner;
-
 

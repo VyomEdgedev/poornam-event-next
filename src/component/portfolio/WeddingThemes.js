@@ -32,7 +32,7 @@ const weddingThemesData = [
 
 const WeddingThemes = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 3 }}>
+    <Container maxWidth="xl" sx={{ py: 3 }}>
       <Typography
         variant="h3"
         component="h3"
@@ -53,7 +53,7 @@ const WeddingThemes = () => {
       <Box textAlign="center" mb={4}>
         <CustomButton data-testid="notify-button">{`View All Themes`}</CustomButton>
       </Box>
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
         {weddingThemesData.map(({ id, tag, image, alt, title, description }) => (
           <Grid item key={id} xs={12} sm={6} md={4}>
             <Card
@@ -75,9 +75,9 @@ const WeddingThemes = () => {
               <Box
                 sx={{
                   position: "relative",
-                  width: "340px",
+                  width: "350px",
                   height: 300,
-                  backgroundColor: "red",
+                 
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

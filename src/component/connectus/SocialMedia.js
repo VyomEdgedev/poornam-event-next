@@ -86,11 +86,11 @@ function SocialMedia() {
                     rel="noopener noreferrer"
                     aria-label="OpenAI Instagram"
                     sx={{
-                        width: { xs: 30, sm: 40, md: 50 },
-                        height: { xs: 30, sm: 40, md: 50 },
+                        width: { xs: 45, sm: 40, md: 50 },
+                        height: { xs: 45, sm: 40, md: 50 },
                         padding: 0,
                         borderRadius: '50%',
-                        backgroundColor: '#fff',
+                        // backgroundColor: '#fff',
                         px: "8px",
                           transform: {
                         xs: 'none', // No transform on mobile
@@ -123,11 +123,11 @@ function SocialMedia() {
                     rel="noopener noreferrer"
                     aria-label="Twitter"
                     sx={{
-                        width: { xs: 30, sm: 40, md: 50 },
-                        height: { xs: 30, sm: 40, md: 50 },
+                        width: { xs: 45, sm: 40, md: 50 },
+                        height: { xs: 45, sm: 40, md: 50 },
                         padding: 0,
                         borderRadius: '50%',
-                        backgroundColor: '#fff',
+                        // backgroundColor: '#fff',
                         px: "8px",
                          transform: {
                         xs: 'none', // No transform on mobile
@@ -154,18 +154,18 @@ function SocialMedia() {
                 </IconButton>
                 <IconButton data-testid="notify-button"
                     component="a"
-                    href="https://youtube.com"
+                    href="https://www.youtube.com/@poornam-wedding-planner"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="YouTube"
                     color="error"        // red theme—YouTube style
                     size="large"
                     sx={{
-                        width: { xs: 30, sm: 40, md: 50 },
-                        height: { xs: 30, sm: 40, md: 50 },
+                        width: { xs: 45, sm: 40, md: 50 },
+                        height: { xs: 45, sm: 40, md: 50 },
                         padding: 0,
                         borderRadius: '50%',
-                        backgroundColor: '#fff',
+                        
                         px: "8px",
                         transform: {
                         xs: 'none', // No transform on mobile
@@ -193,17 +193,16 @@ function SocialMedia() {
                 </IconButton>
                 <IconButton data-testid="notify-button"
                     component="a"
-                    href="https://www.linkedin.com/in/your_username"
+                    href="https://www.linkedin.com/company/poornam-events/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                     color="primary"
                     sx={{
-                        width: { xs: 30, sm: 40, md: 50 },
-                        height: { xs: 30, sm: 40, md: 50 },
+                        width: { xs: 45, sm: 40, md: 50 },
+                        height: { xs: 45, sm: 40, md: 50 },
                         padding: 0,
                         borderRadius: '50%',
-                        backgroundColor: '#fff',
                         px: "8px",
                         transform: {
                         xs: 'none', // No transform on mobile

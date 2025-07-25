@@ -14,27 +14,27 @@ const SignatureAddOns = () => {
     {
       title: "Venue Support",
       description: "We provide venue assistance",
-      image: "/Group1.jpg"
+      image: "/Group1.svg"
     },
     {
       title: "Eco-Friendly Setup",
       description: "Zero-waste decor, paperless invites",
-      image: "/Group2.jpg"
+      image: "/Group2.svg"
     },
     {
       title: "Customized Wedding Favors",
       description: "Personalized gifts for guests",
-      image: "/Group3.jpg"
+      image: "/Group3.svg"
     },
     {
       title: "Drone + Cinematic Video Services",
       description: "Professional aerial coverage",
-      image: "/Group5.jpg"
+      image: "/Group4.svg"
     },
     {
       title: "On-ground Crisis Manager",
       description: "Expert event coordination",
-      image: "/Group4.jpg"
+      image: "/Group5.svg"
     }
   ];
 
@@ -43,18 +43,18 @@ const SignatureAddOns = () => {
       sx={{
         // backgroundColor: '#DAA412',
         py: { xs: 4, sm: 4, md: 8, lg: 2 },
-        px: { xs: 4, sm: 4, md: 3, lg: 2 }
+        px: { xs: 4, sm: 0, md: 1, lg: 2, xl: 20 }
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Box sx={{ textAlign: 'center', mb: { xs: 6, sm: 6, md: 8 } }}>
           <Typography
             variant="h2"
             component="h2"
             sx={{
               fontFamily: 'Gloock, serif',
-              fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
-              fontWeight: 'bold',
+              // fontSize: { xs: '32px', md: '40px', lg: '48px' },
+              fontWeight: '400',
               color: 'black',
               mb: 1
             }}
@@ -66,7 +66,7 @@ const SignatureAddOns = () => {
             component="p"
             sx={{
               fontFamily: 'Akatab, sans-serif',
-              fontSize: { xs: '1rem', md: '1.125rem', lg: '1.125rem' },
+              fontSize: { xs: '16px', md: '18px', lg: '18px' },
               fontWeight: '400',
               color: '#000000'
             }}
@@ -75,9 +75,9 @@ const SignatureAddOns = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 0, sm: 2, md: 1, lg: 2 }} justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}>
+        <Grid container  spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }} justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" , xl: "center"}}>
           {addOns.map((addon, index) => (
-            <Grid item xs={1} sm={2} md={4} lg={2} key={index}>
+            <Grid item size={{ xs: 12, sm: 4, lg: "auto" }}  key={index}>
               <Box
                 sx={{
                   display: 'flex',

@@ -93,7 +93,7 @@ useEffect(() => {
               variant="h5"
               component={"h5"}
               sx={{ color: "#FFF5D9", mb: 2, fontWeight: 400,
-                frontFamily: "Akatab,Sans-serif",
+                fontFamily: "Akatab,Sans-serif ",
                 textAlign: { xs: "left", md: "left" },
                 ml:{xs:3,sm:2,md:5,lg:5},
                 letterSpacing:"1px"
@@ -107,7 +107,7 @@ useEffect(() => {
               sx={{
                 color: "#FFF5D9",
                 textAlign: { xs: "left", md: "left" },
-                frontFamily: "Akatab,Sans-serif",
+                fontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 whiteSpace:{xs:'wrap', sm:'wrap',md:'nowrap'},
                 width:{xs:'85%', sm:'80%',md:'100%'},

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { red } from '@mui/material/colors';
 
 const MyForm = () => {
     const [formData, setFormData] = useState({
@@ -15,37 +14,80 @@ const MyForm = () => {
         yourMessage: ''
     });
 
+    const [errors, setErrors] = useState({
+        fullName: false,
+        email: false,
+        phone: false,
+        location: false,
+        numberOfGuests: false,
+        yourMessage: false
+    });
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        const re = /^[0-9]{10,15}$/;
+        return re.test(phone);
+    };
+
     const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [name]: value
         });
+
+        // Clear error when user types
+        if (errors[name]) {
+            setErrors({
+                ...errors,
+                [name]: false
+            });
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
-        // Handle form submission logic here
+        
+        // Validate form
+        const newErrors = {
+            fullName: !formData.fullName.trim(),
+            email: !formData.email.trim() || !validateEmail(formData.email),
+            phone: !formData.phone.trim() || !validatePhone(formData.phone),
+            location: !formData.location.trim(),
+            numberOfGuests: !formData.numberOfGuests.trim(),
+            yourMessage: !formData.yourMessage.trim()
+        };
+
+        setErrors(newErrors);
+
+        // Check if there are any errors
+        if (!Object.values(newErrors).some(error => error)) {
+            console.log('Form Data:', formData);
+            // Handle form submission logic here
+        }
     };
 
-    const isBelow900 = useMediaQuery('(max-width:900px),(spacing:20px)');
-    const responsiveSpacing = isBelow900
+    const isBelow900 = useMediaQuery('(max-width:900px)');
+    const responsiveSpacing = isBelow900 ? 2 : 5;
+
     return (
         <Box sx={{
-            px: { xs: 12, sm: 15, md: 7 },
-            py: { xs: 2, sm: 5, md: 7 },
+            px: { xs: 12, sm: 10, md: 0, lg: 0, xl:24 },
+            py: { xs: 2, sm: 5, md: 7 , lg: 5, xl: 7 },
             fontFamily: "Akatab, sans-serif",
-          
         }}>
             <Grid
                 container
-                spacing={{ xs: 2, sm: 5, md: 7 }}
-                px={{ xs: 2, sm: 5, md: 20 }}
+                spacing={{ xs: 2, sm: 5, md: 7, lg: 4, xl: 0 }}
+                // px={{ xs: 2, sm: 5, md: 20 }}
                 display="flex"
                 alignItems="flex-start"
                 justifyContent="space-evenly"
                 sx={{ width: "100%" }}
-                
             >
                 {/* Left Side - Title + Image */}
                 <Grid
@@ -60,7 +102,7 @@ const MyForm = () => {
                             fontWeight: "400",
                             fontFamily: "Gloock, serif",
                             color: "#000000",
-                            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+                            fontSize: { xs: "24px", sm: "32px", md: "40px" },
                             lineHeight: 1.2
                         }}
                         dangerouslySetInnerHTML={{
@@ -68,17 +110,15 @@ const MyForm = () => {
                         }}
                     />
 
-
                     <Box
                         sx={{
                             width: "100%",
-                            maxWidth: { xs: 350, sm: 400, md: 440 },
-                            height: { xs: 250, sm: 300, md: 510 },
+                            maxWidth: { xs: 350, sm: 400, md: 440 , lg: 440, xl: 440 },
+                            height: { xs: 250, sm: 300, md: 510, lg: 510, xl:510 },
                             borderRadius: 2,
                             overflow: "hidden",
                             position: "relative",
                             px: { xs: 5, sm: 10, md: 2 },
-
                         }}
                     >
                         <Image
@@ -95,19 +135,18 @@ const MyForm = () => {
                 </Grid>
 
                 {/* Right Side - Form */}
-                <Grid item xs={12} sm={4} md={6}
-                  >
+                <Grid item xs={12} sm={4} md={6}>
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
+                        noValidate // This disables HTML5 validation
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
                             gap: 3,
-                            maxWidth: { xs: 350, sm: 400, md: 500 },
+                            maxWidth: { xs: 350, sm: 400, md: 400, lg: 500, xl: 600 },
                             width: { xs: "100%", sm: "350px", md: "540px" },
                             mx: { xs: 0, sm: 0, md: 0 },
-
                         }}
                     >
                         {/* Full Name */}
@@ -130,10 +169,19 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
-                                        height: { xs: '30px',sm:'35px', md: '35px' },
-                                        width: { xs: '100%',sm:'100%', md: '100%' },
-                                        fontSize: { xs: "1rem", sm:'1rem' ,md: "1.1rem" },
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        height: { xs: '30px', sm: '35px', md: '35px' },
+                                        width: { xs: '100%', sm: '100%', md: '100%' },
+                                        fontSize: { xs: "1rem", sm: '1rem', md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
                                     '& .MuiInputBase-input::placeholder': {
@@ -143,7 +191,8 @@ const MyForm = () => {
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleChange}
-                                required
+                                error={errors.fullName}
+                                helperText={errors.fullName ? "Full name is required" : ""}
                             />
                         </Box>
 
@@ -166,7 +215,16 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
@@ -179,7 +237,8 @@ const MyForm = () => {
                                 type="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                required
+                                error={errors.email}
+                                helperText={errors.email ? "Please enter a valid email" : ""}
                             />
                         </Box>
 
@@ -202,7 +261,16 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
@@ -214,7 +282,8 @@ const MyForm = () => {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                required
+                                error={errors.phone}
+                                helperText={errors.phone ? "Please enter a valid phone number (10-15 digits)" : ""}
                             />
                         </Box>
 
@@ -237,7 +306,16 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
@@ -271,7 +349,16 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         height: { xs: '30px', md: '35px' },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
@@ -283,7 +370,8 @@ const MyForm = () => {
                                 name="location"
                                 value={formData.location}
                                 onChange={handleChange}
-                                required
+                                error={errors.location}
+                                helperText={errors.location ? "Location is required" : ""}
                             />
                         </Box>
 
@@ -306,9 +394,18 @@ const MyForm = () => {
                                 fullWidth
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         height: { xs: '30px', md: '35px' },
-                                        fontSize: { xs: "1rem", md: "1.1rem" },
+                                        fontSize: { xs: "16px", md: "18px" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
                                     '& .MuiInputBase-input::placeholder': {
@@ -318,7 +415,8 @@ const MyForm = () => {
                                 name="numberOfGuests"
                                 value={formData.numberOfGuests}
                                 onChange={handleChange}
-                                required
+                                error={errors.numberOfGuests}
+                                helperText={errors.numberOfGuests ? "Number of guests is required" : ""}
                             />
                         </Box>
 
@@ -327,7 +425,7 @@ const MyForm = () => {
                             <Typography variant="body1"
                                 component="p"
                                 sx={{
-                                    fontSize: { xs: "1rem", md: "1.1rem" },
+                                    fontSize: { xs: "16px", md: "18px" },
                                     fontFamily: "Akatab, sans-serif",
                                     mb: 1.5,
                                     fontWeight: "600"
@@ -339,10 +437,19 @@ const MyForm = () => {
                                 placeholder="Your Message"
                                 variant="outlined"
                                 fullWidth
+
                                 sx={{
                                     fontFamily: "Akatab, sans-serif",
-                                    '& .MuiInputBase-root': {
-                                        height: { xs: '30px', md: '35px' },
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#011d4a',
+                                        },
                                         fontSize: { xs: "1rem", md: "1.1rem" },
                                         fontFamily: "Akatab, sans-serif"
                                     },
@@ -353,7 +460,8 @@ const MyForm = () => {
                                 name="yourMessage"
                                 value={formData.yourMessage}
                                 onChange={handleChange}
-                                required
+                                error={errors.yourMessage}
+                                helperText={errors.yourMessage ? "Message is required" : ""}
                             />
                         </Box>
 
@@ -361,20 +469,20 @@ const MyForm = () => {
                         <Button data-testid="notify-button"
                             type="submit"
                             variant="contained"
-                            fullWidth
                             sx={{
                                 bgcolor: "#DAA412",
                                 color: "#fff",
                                 borderRadius: "25px",
                                 py: { xs: 1.5, md: 2 },
-                                mt: 3,
+                                mt: 1,
+                                width: { xs: "200px", md: "250px" },
                                 textTransform: "none",
-                                fontSize: { xs: "1rem", md: "1.1rem" },
+                                fontSize: { xs: "14px", md: "18px" },
                                 fontFamily: "Akatab, sans-serif",
                                 fontWeight: "600",
                                 height: { xs: '45px', md: '50px' },
                                 "&:hover": {
-                                    bgcolor: "#C4941A"
+                                    bgcolor: "#011d4a" // Changed hover color to #011d4a
                                 }
                             }}
                         >

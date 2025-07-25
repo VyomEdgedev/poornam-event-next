@@ -93,7 +93,7 @@ export default function FAQSection() {
                       <ChevronRightIcon
                         sx={{
                           transform: {
-                            xs: isOpen ? "rotate(270deg)" : "rotate(-90deg)", // Mobile view
+                             xs: "rotate(-90deg)", // Mobile view
                             sm: isOpen ? "rotate(-180deg)" : "rotate(90deg)", // Tablet and up
                           },
                           transition: "transform 0.3s ease",
