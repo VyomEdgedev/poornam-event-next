@@ -1,23 +1,41 @@
 import { Grid, Box, Typography, TextField } from '@mui/material'
 import CustomButton from '@/common-component/button/CustomButton'
-import React from 'react'
-
-
-const handleLetChat = () => {
-  // Add your navigation or action logic here
-  console.log("Let's Chat clicked");
-};
+import React, { useState } from 'react'
 function WeddingKit() {
+ const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleNotifyClick = () => {
+    if (!email) {
+      setError('Email is required');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+
+    setError('');
+    console.log("Let's Chat clicked"); // or perform further action
+  };
+  
   return (
 
-    <Box px="10%" py="10px" textAlign="center" bgcolor="#FFFAF0" >
+    <Box px={{xs : "5%", sm:"2%", md: "0%", lg:"10%"}} py={{xs : "5px", sm:"10px", md: "10px"}} textAlign="center" bgcolor="#FFF7E4" >
       <Box container
         display="flex"
         justifyContent="space-evenly"
         alignItems="center"
         textAlign="center"
       
-      sx={{ flexDirection: { xs: 'column', md: 'row' }, margin: 2, padding: 1, gap: 5 }}// column on mobile, row on desktop
+      sx={{ flexDirection: { xs: 'column', sm:'row', md: 'row' }, margin: 2, padding: 1, gap: 5 }}// column on mobile, row on desktop
       >
       <Box textAlign="left"  sx={{ width: { xs: "100%", sm: "50%" }}}>
         <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.2rem" },   fontFamily: 'Gloock, serif', }}>
@@ -41,12 +59,16 @@ function WeddingKit() {
             placeholder="Enter your email address"
             variant="outlined"
             size="small"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={Boolean(error)}
+              helperText={error}
           />
         </Box>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, frontFamily: "Akatab,Sans-serif", fontWeight: '500' }}>
          {` Big shhadi secrets and  surprises are on the way. stay tuned!`}
         </Typography>
-        <CustomButton  data-testid="notify-button" onClick={handleLetChat} sx={
+        <CustomButton  data-testid="notify-button" onClick={handleNotifyClick} sx={
           { mt: 2, width: 130, height: 50 }
         }>{`Notify Me`}</CustomButton>
       </Box>

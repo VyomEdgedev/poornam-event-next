@@ -3,8 +3,8 @@ import { Box, Typography, Grid, Avatar, useMediaQuery, useTheme } from '@mui/mat
 import { keyframes } from '@emotion/react';
 
 const vows = [
-  { img: '/AboutVows3.png' },
-  { img: '/AboutVows4.png' },
+  { img: '/AboutVows3.png', },
+  { img: '/AboutVows4.png' }, 
   { img: '/AboutVows5.png' },
   { img: '/AboutVows6.png' },
   { img: '/AboutVows7.png' },
@@ -18,6 +18,17 @@ const rotate = keyframes`
   }
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }`;
+// Add this animation above component
+const fireGlow = keyframes`
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(255, 140, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(255, 87, 34, 0.6);
   }
 `;
 
@@ -70,6 +81,7 @@ const PoornamVows = () => {
             my: { xs: 2, sm: 3, md: 4 },
           }}
         >
+          
           {/* Orbiting container */}
           <Box
             sx={{
@@ -141,7 +153,9 @@ const PoornamVows = () => {
               borderRadius: '50%',
               overflow: 'hidden',
               border: '3px solid #ccc',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              // boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              animation: `${fireGlow} 1.5s ease-in-out infinite`,
+              background: 'radial-gradient(circle at center, rgba(255, 87, 34, 0.3), transparent)',
             }}
           >
             <Avatar

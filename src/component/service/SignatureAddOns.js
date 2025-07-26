@@ -41,8 +41,8 @@ const SignatureAddOns = () => {
   return (
     <Box
       sx={{
-        // backgroundColor: '#DAA412',
-        py: { xs: 4, sm: 4, md: 8, lg: 2 },
+        backgroundColor: '#FFF7E4',
+        py: { xs: 4, sm: 4, md: 8, lg: 4 },
         px: { xs: 4, sm: 0, md: 1, lg: 2, xl: 20 }
       }}
     >

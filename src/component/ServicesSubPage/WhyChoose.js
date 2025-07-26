@@ -5,8 +5,9 @@ import React from 'react'
 
 const WhyChoose = () => {
     return (
-        <Box px={{xs : "5%", sm:"10%", md: "15%"}} 
-         py = {{xs : "20px", sm:"20px", md: "20px"}} 
+        <Box
+        //  px={{xs : "5%", sm:"10%", md: "15%"}} 
+        //  py = {{xs : "20px", sm:"20px", md: "20px"}} 
          textAlign = "center" >
     <Box container
         display="flex"
