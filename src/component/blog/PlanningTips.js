@@ -78,7 +78,7 @@ const PlanningTips = () => {
             // backgroundColor: '#FFF8F3',
             minHeight: '40vh',
             py: { xs: 4, sm: 2, md: 2, lg: 3 },
-             px: { xs: 4, sm: 4, md: 2, lg: 3 },
+             px: { xs: 2, sm: 2, md: 2, lg: 3 },
            mb: { xs: 4, sm: 4, md: 3, lg: 4}
         }}          >
 
@@ -102,7 +102,8 @@ const PlanningTips = () => {
                                     mb: 2,
                                     fontFamily: 'Gloock,serif',
                                     color: '#000D1F',
-                                    width: { xs: '380px', sm: '380px', md: '380px', lg: '520px', xl: '520px' },
+                                    width: { xs: '350px', sm: '380px', md: '380px', lg: '520px', xl: '520px' },
+
                                 }}
                             >
                                 <span style={{ color: '#DAA412' }}>{sectionData.title}</span>

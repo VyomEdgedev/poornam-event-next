@@ -38,11 +38,11 @@ function ServicesSubPage() {
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
           top: '370px',
-          left: '50px',
+          left: '43px',
           lg: { top: '320px', left: '50px' },
           md: { top: '280px', left: '20px' },
-          sm: { top: '260px', left: '10px' },
-          xs: { top: '210px', left: '20px' }
+          sm: { top: '260px', left: '3px' },
+          xs: { top: '250px', left: '20px' }
         }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
