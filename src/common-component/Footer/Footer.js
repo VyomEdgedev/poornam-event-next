@@ -56,7 +56,7 @@ const Footer = () => {
               </Link>
               <Typography
                 variant="h6"
-                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", padding: "0px", }}
+                sx={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Akatab,Sans-serif", paddingLeft:"15px", }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
                 meet timeless celebration. We don’t just plan weddings — we
