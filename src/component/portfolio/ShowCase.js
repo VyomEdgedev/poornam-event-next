@@ -51,8 +51,7 @@ const ShowCase = () => {
         {`Highlighting exquisite captures from different weddings.`}
       </Typography>
       <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
-        <CustomButton data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}> {` Filter by Category `}</CustomButton>
-
+       
         <CustomButton data-testid="notify-button"
           variant="outlined"
           sx={{
@@ -75,8 +74,10 @@ const ShowCase = () => {
           }}
           
         >
-         {`Browse Gallery`}
+          {` Filter by Category `}
+         
         </CustomButton>
+           <CustomButton data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}>{`Browse Gallery`} </CustomButton>
 
       </Box>
       <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
