@@ -15,6 +15,7 @@ function SocialMedia() {
       justifyContent="space-evenly"
       padding="10px"
       marginBottom={{xs: 3, sm: 4, md: 5, lg: 6, xl: 7}}
+      spacing={{ xs: 1, sm:1, md: 3, lg: 4, xl: 20 }}
     >
 
       <Grid container>
@@ -22,10 +23,11 @@ function SocialMedia() {
           variant='h3'
           component={'h3'}
           textAlign="center"
+          
           padding="20px"
-          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "32px" }, lineHeight: 1 }}
+          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "36px" }, lineHeight: 1.3 }}
           dangerouslySetInnerHTML={{
-            __html: `  Follow Us <br />
+            __html: `  Follow Us
                         on <br /> Social Media`,
           }}
         />
