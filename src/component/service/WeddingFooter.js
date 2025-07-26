@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const WeddingFooter = () => {
   return (
-    <Container maxWidth="xl" sx={{ py: { xs: 1, md: 8}, px: { xs: 15,sm: 0, md: 0 , lg: 0, xl: 21 } }}>
+    <Container maxWidth="xl" sx={{ py: { xs: 2, md: 8}, px: { xs: 15,sm: 0, md: 0 , lg: 0, xl: 21 } }}>
       <Box
         sx={{
           display: 'flex',
@@ -93,7 +93,8 @@ const WeddingFooter = () => {
             >
               Available at{' '}
               <Box
-                component="span"
+                component="a"
+                href="mailto:info@poornamevents.com"
                 sx={{
                   color: '#DAA412',
                   textDecoration: 'none',

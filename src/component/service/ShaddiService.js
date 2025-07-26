@@ -106,14 +106,16 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 const HeroCard = styled(Card)(({ theme }) => ({
   display: 'flex',
-  backgroundColor: 'transparent',
   boxShadow: 'none',
   border: 'none',
   overflow: 'hidden',
   marginBottom: theme.spacing(3),
   '& .MuiCardContent-root': {
     padding: 0,
-  }
+  },
+  [theme.breakpoints.down('sm')]: {
+    
+  },
 }));
 
 const ServiceCard = styled(Card)(({ theme, isHighlighted }) => ({
@@ -192,7 +194,7 @@ const HeroImageContainer = styled(Box)({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-  }
+  },
 });
 const ServiceContent = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -231,7 +233,6 @@ const ServiceDescription = styled(Typography)(({ theme }) => ({
 }));
 
 const HeroContent = styled(Box)(({ theme }) => ({
-
   display: 'flex',
   marginLeft: '40px',
   flexDirection: 'column',
@@ -277,6 +278,10 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     width: '100%',
   },
+  [theme.breakpoints.down('sm')]: {
+    padding:"0px 20px",
+  },
+
 }));
 
 const ShaddiService = () => {

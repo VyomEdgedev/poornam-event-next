@@ -26,18 +26,21 @@ const Subtext = () => {
                 <Box>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.25rem" },
+                            fontSize: { xs: "24px", sm: "28px", md: "36px" },
                             fontWeight: 600,
                             frontFamily: "Akatab,serif",
-                            
+                            lineHeight: "1.2",
+                            // letterSpacing: "0.02em",
+                            whiteSpace:{xs:'normal',sm:'normal',md:'normal',lg:"nowrap"},
+                            marginBottom:"10px"
                         }}
                     >
                         {SubtextData.heading}
                     </Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem" },
-
+                            fontSize: { xs: "16px", sm: "20px", md: "24px" },
+                            lineHeight: "1.5",
                             frontFamily: "Akatab,serif",
                         }}
                     >
@@ -46,7 +49,7 @@ const Subtext = () => {
 
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
+                            fontSize: { xs: "16px", sm: "20px", md: "24px" },
                             fontWeight: 600,
                              frontFamily: "Akatab,serif",
                         }}
@@ -55,7 +58,7 @@ const Subtext = () => {
                     </Typography>
                     <Typography
                         sx={{
-                            fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
+                            fontSize: { xs: "16px", sm: "20px", md: "24px" },
 
                          frontFamily: "Akatab,serif",
                         }}
@@ -65,7 +68,7 @@ const Subtext = () => {
                     <Box>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
+                                fontSize: { xs: "16px", sm: "20px", md: "24px" },
 
                                frontFamily: "Akatab,serif",
                             }}
@@ -74,7 +77,7 @@ const Subtext = () => {
                         </Typography>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
+                                fontSize: { xs: "16px", sm: "20px", md: "24px" },
 
                                   frontFamily: "Akatab,serif",
                             }}
@@ -83,7 +86,7 @@ const Subtext = () => {
                         </Typography>
                         <Typography
                             sx={{
-                                fontSize: { xs: "1rem", sm: "1.3rem", md: "1.2rem" },
+                                fontSize: { xs: "16px", sm: "20px", md: "24px" },
                                 fontWeight: 600,
                                   frontFamily: "Akatab,serif",
                             }}

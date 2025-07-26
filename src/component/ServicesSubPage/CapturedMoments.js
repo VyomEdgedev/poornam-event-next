@@ -33,12 +33,12 @@ const CapturedMomentsData = [
 const CapturedMoments = () => {
     return (
         <Container maxWidth="lg" sx={{ py: 8 }}
-        px={{xs : "5%", sm:"10%", md: "15%"}} >
+        px={{xs : "5%", sm:"5%", md: "15%"}} >
             <Typography
                 variant="h3"
                 component="h2"
                 align="center"
-                sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif', fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
+                sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif', fontSize: { xs: '32px', sm: '32px', md: '48px' } }}
             >
                 {`  Captured Moments from Destination Weddings`}
             </Typography>
@@ -50,10 +50,10 @@ const CapturedMoments = () => {
             >
                 {`   Scroll through stories written in flowers, lights, and smiles.`}
             </Typography>
-            <Box textAlign="center" mb={6}>
+            <Box textAlign="center" mb={{ xs: 3, md: 4 }}>
                 <CustomButton>{`View All`}</CustomButton>
             </Box>
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }} justifyContent="center">
                 {CapturedMomentsData.map(({ id, tag, image, alt, title, description }) => (
                     <Grid item key={id} xs={12} sm={6} md={4}>
                         <Card

@@ -43,7 +43,7 @@ const YourDream = () => {
                 {`Real Talk About [Service Name]s`}
             </Typography>
 
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 7 }} justifyContent="center">
                 {YourDreamData.map(({ id, tag, image, alt, title, description, ctr }) => (
                     <Grid item key={id} xs={12} sm={6} md={4}>
                         <Card

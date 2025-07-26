@@ -25,7 +25,7 @@ const BlogCard = () => {
         sx={{
           position: 'relative',
           borderRadius: 2,
-          width: { xs: '100%', sm: 500, md: 987 },
+          width: { xs: '100%', sm: "100%", md: "100%", lg: "74%", xl: "74%" },
           height: 449,
           overflow: 'hidden'
         }}
@@ -44,7 +44,7 @@ const BlogCard = () => {
             top: 10,
             right: 10,
             color: 'white',
-            bgcolor: 'rgba(0,0,0,0.4)',
+            // bgcolor: 'rgba(0,0,0,0.4)',
             '&:hover': { bgcolor: 'rgba(0,0,0,0.6)' }
           }}
         >

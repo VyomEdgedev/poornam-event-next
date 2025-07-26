@@ -6,9 +6,10 @@ import YourDream from './YourDream'
 import WeOffer from './WeOffer';
 import WhyPoornam from './WhyPoornam';
 import WeddingKit from './WeddingKit';
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import CapturedMoments from './CapturedMoments';
-import FAQSection from '../home/FAQ';
+import FAQSection from '@/common-component/Faq/FAQSection';
+
 
 const handleWeddingPlan = () => {
   // Add your navigation or action logic here
@@ -20,6 +21,27 @@ const handleTalkToPlanner = () => {
   console.log("Talk to Our Planner clicked");
 };
 function ServicesSubPage() {
+  const myFAQData = [
+  {
+    question: ' What guest size qualifies as an intimate wedding?',
+    answer: 'Anywhere between 20 to 100 guests — basically anyone you’d personally hug at your reception.',
+  },
+  {
+    question: 'Is it possible to make a small wedding look luxurious?',
+    answer: " Absolutely! With fewer guests, your budget allows for richer décor, curated food, and personalized experiences.",
+  },
+  {
+    question: 'Do you work with home venues?',
+    answer: "Yes! We love transforming home gardens, terraces, courtyards, and even drawing rooms into magical spaces.",
+  },
+  
+  {
+    question: 'Can we still have a sangeet or mehendi for small weddings?',
+    answer: " Of course! In fact, we make them even more fun with interactive setups and cozy vibe-focused entertainment.",
+  },
+  
+];
+
   return (
     <>
       <CustomBanner
@@ -38,11 +60,11 @@ function ServicesSubPage() {
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
           top: '370px',
-          left: '43px',
+          left: '47px',
           lg: { top: '320px', left: '50px' },
           md: { top: '280px', left: '20px' },
-          sm: { top: '260px', left: '3px' },
-          xs: { top: '250px', left: '20px' }
+          sm: { top: '330px', left: '7px' },
+          xs: { top: '200px', left: '20px' }
         }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
@@ -55,7 +77,7 @@ function ServicesSubPage() {
           }
         }}>
         <Stack
-          direction={{ xs: "column", sm: "row" }}
+          direction={{ xs: "row", sm: "row" }}
           spacing={2}
           marginLeft={0}
         >
@@ -64,7 +86,7 @@ function ServicesSubPage() {
             onClick={handleWeddingPlan}
             sx={{
               fontFamily: "Akatab,Sans-serif",
-              fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
+              fontSize: { xs: "15px", sm: "16px", md: "16px" },
               fontWeight: 400,
               width: { xs: "178px", sm: "auto" },
             }}
@@ -96,14 +118,22 @@ function ServicesSubPage() {
 
         </Stack>
       </CustomBanner>
+<Box sx={{
+     px: { xs: 2, sm: 5, md:8 ,lg: 22, xl: 28 },
+                py: { xs: 4, sm: 6, md: 8 },
+    //             // bgcolor: '#f8f9fa'
+}}  >
 
-      <WhyChoose></WhyChoose>
-      <WeOffer></WeOffer>
+   <WhyChoose/>
+      <WeOffer/>
+      
+      <WhyPoornam/>
+</Box>
+     
       <CapturedMoments></CapturedMoments>
-      <WhyPoornam></WhyPoornam>
       <YourDream></YourDream>
       <WeddingKit></WeddingKit>
-      <FAQSection></FAQSection>
+      <FAQSection faqData={myFAQData} />;
     </>
   )
 }
