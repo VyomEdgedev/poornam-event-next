@@ -8,8 +8,9 @@ function Planner() {
                 display="flex"
                 // justifyContent="space-evenly"
                 justifyItems="center"
+                justifyContent={{xs:"center",sm:"center", md:"center"}}
                 sx={{ bgcolor: "#0D2650", color: "#D7A10F" }}
-                padding={{ xs: "10px", sm: "20px", md: "30px" }}
+                padding={{ xs: "10px", sm: "20px", md: "20px" }}
                 
                 
                 >
@@ -22,8 +23,8 @@ function Planner() {
                          fontSize: { xs: "16px", sm: "16px", md: "20px" },
                          width: { xs: "100px", sm: "150px", md: "200px" },
                          textAlign: "center",
-                         paddingLeft:{xs:"0px",sm:"10px",md:"20px"},
-                         marginLeft:{xs:"5px",sm:"5px",md:"10px", lg:"220px", xl:"240px"},
+                         paddingLeft:{xs:"0px",sm:"5px",md:"10px"},
+                         marginLeft:{xs:"5px",sm:"5px",md:"10px", lg:"-100px", xl:"-120px"},
                          
                          }}>
                             {`Wedding Planner in Indore`}</Typography>
@@ -33,7 +34,7 @@ function Planner() {
                     flexItem
                     sx={{
                         mx: 1,
-                        height: '40px',
+                       height: { xs: "70px", sm: "60px", md: "60px" },
                         backgroundColor: "#FFE6A3",
                         width: '2px',
                         marginLeft:{xs:"0px",sm:"5px",md:"10px", lg:"50px", xl:"50px"},
@@ -59,7 +60,7 @@ function Planner() {
                     flexItem
                     sx={{
                         mx: 1,
-                        height: '40px',
+                        height: { xs: "70px", sm: "60px", md: "60px" },
                         backgroundColor: "#FFE6A3",
                         width: '2px',
                         marginLeft:{xs:"5px",sm:"10px",md:"10px", lg:"50px", xl:"50px"},
@@ -81,7 +82,7 @@ function Planner() {
                     flexItem
                     sx={{
                         mx: 1,
-                        height: '40px',
+                        height: { xs: "70px", sm: "60px", md: "60px" },
                         backgroundColor: "#FFE6A3",
                         width: '2px',
                         marginLeft:{xs:"0px",sm:"10px",md:"10px", lg:"50px", xl:"50px"},
