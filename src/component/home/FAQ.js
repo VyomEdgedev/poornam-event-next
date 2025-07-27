@@ -136,7 +136,7 @@ export default function FAQSection() {
                 <Grid item xs={12} sm={6}>
                   <Box
                     sx={{
-                      paddingTop: { xs: 0, sm: 1, md: 1, lg: 1 },
+                      paddingTop: { xs: 0, sm: 2, md: 1.5, lg: 2 },
                       paddingLeft: { xs: 2, sm: 2 },
                       transition: "opacity 0.4s ease",
                       opacity: 1,
@@ -148,8 +148,8 @@ export default function FAQSection() {
                       sx={{
                         width: {
                           xs: "100%",
-                          sm: "250px",
-                          md: "350px",
+                          sm: "280px",
+                          md: "380px",
                           lg: "550px",
                         },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },

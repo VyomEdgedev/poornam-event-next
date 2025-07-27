@@ -448,40 +448,37 @@ const Footer = () => {
               </Typography>
 
               {/* Responsive logo wrapper */}
-              <Box
+           <Box
                 sx={{
                   display: "inline-block",
-                  mt: { xs: 0, md: 0, lg: 1 },
+                  // mt: { xs: 0, md: 0, lg: 1 },
                   position: { xs: "static", sm: "static", md: "absolute" },
-                  top: { md: "-35px", lg: "-55px", xl: "-55px" },
-                  right: { xs: "-20px", sm: "-20px", md: "10px" },
-                  height: "20px",
+                  top: { md: "-50px", lg: "-50px" },
+                  right: { md: "10px", lg: "10px" },
+                  width: { xs: "20px", sm: "30px", md: "50px" },
                 }}
               >
+                <Link href="https://vyomedge.com/" passHref legacyBehavior>
                 <a
                   color="black"
-                  href="https://vyomedge.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: "inline-block" }}
-                  sx={{
-                    width: { xs: "12px", sm: "20px", md: "30px" },
-                    height: { xs: "12px", sm: "20px", md: "30px" },
-                  }}
+                  style={{ display: "inline-block", width: "100%" }}
                 >
                   <Image
                     src="/developer.png"
                     alt="Developer Logo"
-                    width={50}
-                    height={50}
-                    sizes="(max-width: 600px) 25px, (max-width: 960px) 40px ,(max-width: 1200px) 50px,90vw,"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                    }}
+                    layout="responsive"
+                    width={100}
+                    height={100}
+                    priority
                   />
                 </a>
-              </Box>
+                </Link>
+              </Box> 
+  
+
+
             </Grid>
           </Grid>
         </Container>

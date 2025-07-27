@@ -12,7 +12,7 @@ function Philosophy() {
                     justifyItems="center"
                 >
                     <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" }, fontFamily: "Gloock,Sans-serif " }}>
+                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },alignSelf:"center", fontFamily: "Gloock,Sans-serif " }}>
                           {` Our Philosophy`}</Typography>
                     </Grid>
 
@@ -73,7 +73,7 @@ function Philosophy() {
                         </Card>
                     </Grid>
                     <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" }, fontFamily: "Gloock,Sans-serif" }}>
+                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" }, alignSelf:"center",fontFamily: "Gloock,Sans-serif" }}>
                             { `Why We Exist`}
                         </Typography>
                           

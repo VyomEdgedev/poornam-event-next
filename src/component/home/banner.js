@@ -128,6 +128,7 @@ useEffect(() => {
               spacing={2}
               marginTop={{xs: 0, sm: 0, md: 4, lg:5}}
               marginLeft={{xs: 3, sm: 3, md: 5, lg:5}}
+              marginBottom ={{xs: 3, sm: 3, md: 0, lg:0}}
               alignContent={{xs:"center",md:"flex-start"}}
             >
               <CustomButton   data-testid="notify-button"

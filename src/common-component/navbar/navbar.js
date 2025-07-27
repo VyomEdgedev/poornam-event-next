@@ -221,7 +221,18 @@ export default function Header() {
                   {navItems.map((item, index) => (
                     <React.Fragment key={index}>
                       <ListItem disablePadding>
-                        <ListItemButton component="a" href={item.href}>
+                        <ListItemButton component={Link} href={item.href} selected={pathname === item.href}
+                           sx={{
+                          borderRadius: "10px",
+                          backgroundColor:
+                            pathname === item.href ? "#192249" : "transparent",
+                          color:
+                            pathname === item.href ? "#DAA412" : "#CBEFFF",
+                          "&:hover": {
+                            backgroundColor: "#192249",
+                          },
+                        }}
+                        >
                           <ListItemText primary={item.label} />
                         </ListItemButton>
                       </ListItem>
