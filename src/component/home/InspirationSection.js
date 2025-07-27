@@ -23,7 +23,7 @@ const data = [
 
 export default function InspirationSection() {
   return (
-    <Box sx={{ py: {xs: 4, md: 4}, px: {xs: 4, sm:2,md: 2,lg: 10,xl: 20}, textAlign: 'center' }}>
+    <Box sx={{ py: {xs: 4, md: 4}, px: {xs: 16, sm:2,md: 2,lg: 10,xl: 20}, textAlign: 'center' }}>
       <Typography
 
         variant="h2"

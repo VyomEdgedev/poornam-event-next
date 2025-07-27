@@ -3,13 +3,13 @@ import { Box, Typography, Grid, Avatar, useMediaQuery, useTheme } from '@mui/mat
 import { keyframes } from '@emotion/react';
 
 const vows = [
-  { img: '/AboutVows3.png', },
-  { img: '/AboutVows4.png' }, 
-  { img: '/AboutVows5.png' },
-  { img: '/AboutVows6.png' },
-  { img: '/AboutVows7.png' },
-  { img: '/AboutVows1.png' },
-  { img: '/AboutVows2.png' },
+  { img: '/AboutVows3.png', title:"Emotions Ka Khayal"  },
+  { img: '/AboutVows4.png' , title:"Riwaaz Ko Rang Denge"}, 
+  { img: '/AboutVows5.png'  , title:"Aapki Tension,Ab Hamari" },
+  { img: '/AboutVows6.png' , title:"Banayenge SapneKo Haqiqat"},
+  { img: '/AboutVows7.png' , title:"Sunenge Dil Se"},
+  { img: '/AboutVows1.png' ,title:"Yaadon Ka Wada" },
+  { img: '/AboutVows2.png' , title:"Har Scene,Screen-Ready"},
 ];
 
 const rotate = keyframes`
@@ -130,10 +130,11 @@ const PoornamVows = () => {
                         mt: 0.5, 
                         fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem' },
                         textAlign: 'center',
-                        maxWidth: '80px'
+                        maxWidth: '80px',
+                        // transform: `rotate(${-((index / vows.length) * 360)}deg)`,
                       }}
                     >
-                      {vow.title}
+                      {/* {vow.title} */}
                     </Typography>
                   )}
                 </Box>

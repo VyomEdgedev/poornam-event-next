@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -8,29 +8,36 @@ import {
   Paper,
   useMediaQuery,
   useTheme,
+  Fade,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const testimonials = [
   {
     name: "Aditi & Nikhil",
     avatar: "/review1.png",
     text: "Poornam Events turned our dream wedding into a beautiful reality!",
+    rating: 5, 
   },
   {
     name: "Shruti & Raj",
     avatar: "/review2.png",
     text: "They made our special day a magical story to tell.",
+    rating: 4, 
   },
   {
     name: "Ishita & Aryan",
     avatar: "/review3.png",
     text: "From decor to coordination — absolutely flawless experience!",
+    rating: 5, 
   },
   {
     name: "Megha & Kabir",
     avatar: "/review4.png",
     text: "Couldn’t have asked for a better team on our big day!",
+    rating: 5, 
   },
 ];
 
@@ -38,12 +45,40 @@ export default function ClientTestimonials() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const scrollRef = useRef(null);
+
+
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+
+  useEffect(() => {
+    const checkScroll = () => {
+      const el = scrollRef.current;
+      if (el) {
+        setAtStart(el.scrollLeft <= 5);
+        setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 5);
+      }
+    };
+
+    const el = scrollRef.current;
+    if (el) {
+      checkScroll();
+      el.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
+    }
+
+    return () => {
+      if (el) el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, []);
 
   return (
     <Box
       sx={{
         bgcolor: "white",
-        px:{ xs: 2, sm: 0, md: 14, lg: 10, xl: 21},
+        px: { xs: 2, sm: 0, md: 14, lg: 10, xl: 21 },
         py: { xs: 4, sm: 5, md: 5 },
       }}
     >
@@ -56,7 +91,7 @@ export default function ClientTestimonials() {
           justifyContent: "space-between",
         }}
       >
-        {/* Right - Heading */}
+  
         <Box
           sx={{
             textAlign: isMobile ? "center" : "right",
@@ -70,7 +105,7 @@ export default function ClientTestimonials() {
             variant="h2"
             fontWeight="bold"
             sx={{
-              fontFamily: 'Gloock, serif',
+              fontFamily: "Gloock, serif",
               fontWeight: "400",
               color: "#000000",
               mb: 1,
@@ -81,7 +116,6 @@ export default function ClientTestimonials() {
           <Typography
             variant="body1"
             component="p"
-            color="text.secondary"
             sx={{
               fontFamily: "Akatab,Sans-serif",
               color: "#000000",
@@ -92,92 +126,155 @@ export default function ClientTestimonials() {
           </Typography>
         </Box>
 
-        {/* Left - Testimonials */}
+
         <Box
           sx={{
-            borderRadius: "20px",
+            position: "relative",
             width: isMobile || isTablet ? "100%" : "70%",
-            overflowX: "auto",
-            overflowY: "visible",
-            order: isMobile || isTablet ? 1 : 0,
-            "&::-webkit-scrollbar": { height: 6 },
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              gap: 2,
-              flexWrap: "nowrap",
-              justifyContent: "flex-start",
-            }}
-          >
-            {testimonials.map((item, index) => (
-              <Paper
-                key={index}
+          
+          {!isMobile && !isTablet && (
+            <Fade in={!atStart}>
+              <Box
+                onClick={() => {
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollBy({ left: -280, behavior: "smooth" });
+                  }
+                }}
                 sx={{
-                  minWidth: isMobile ? 260 : 260,
-                  maxWidth: isMobile ? 280 : 280,
-                  flexShrink: 0,
-                  mt: 2,
-                  mb: 2,
-                  borderRadius: 4,
-                  p: "11px",
-                  boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
-                  overflow: "visible",
+                  position: "absolute",
+                  left: -15,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 40,
+                  height: 40,
+                  bgcolor: "#ffffff",
+                  borderRadius: "50%",
+                  boxShadow: 3,
+                  p: 1,
+                  cursor: "pointer",
+                  zIndex: 2,
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="center" mb={1}>
-                  <Avatar src={item.avatar} sx={{ width: 30, height: 30 }} />
-                  <Typography
-                    variant="h6"
-                    fontWeight={600}
-                    fontFamily={"Akatab,Sans-serif"}
-                    color="#000000"
-                  >
-                    {item.name}
+                <ArrowBackIosNewIcon fontSize="medium" />
+              </Box>
+            </Fade>
+          )}
 
+          {!isMobile && !isTablet && (
+            <Fade in={!atEnd}>
+              <Box
+                onClick={() => {
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollBy({ left: 280, behavior: "smooth" });
+                  }
+                }}
+                sx={{
+                  position: "absolute",
+                  right: -15,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 40,
+                  height: 40,
+                  bgcolor: "#ffffff",
+                  borderRadius: "50%",
+                  boxShadow: 3,
+                  p: 1,
+                  cursor: "pointer",
+                  zIndex: 2,
+                }}
+              >
+                <ArrowForwardIosIcon fontSize="medium" />
+              </Box>
+            </Fade>
+          )}
 
-                    <Box
-    component="span"
-    sx={{
-      display: 'inline-block',
-      marginLeft:"55px"
-      
-      
-    }}
-  >
-    <Box
-      component="img"
-      src="/search.png"
-      alt="Google logo"
-      sx={{ width: 17, height: 17 }}
-    />
-  </Box>
-                  </Typography>
-                </Stack>
-
-                <Typography
-                  variant="body1"
-                  component="p"
-                  color="#000000"
+          <Box
+            ref={scrollRef}
+            sx={{
+              borderRadius: "20px",
+              overflowX: "auto",
+              overflowY: "visible",
+              "&::-webkit-scrollbar": { height: 6 },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                flexWrap: "nowrap",
+                justifyContent: "flex-start",
+              }}
+            >
+              {testimonials.map((item, index) => (
+                <Paper
+                  key={index}
                   sx={{
-                    fontStyle: "italic",
+                    minWidth: isMobile ? 260 : 260,
+                    maxWidth: isMobile ? 280 : 280,
+                    flexShrink: 0,
+                    mt: 2,
                     mb: 2,
-                    fontFamily: "Akatab,Sans-serif",
-                    fontWeight: "400",
+                    borderRadius: 4,
+                    p: "11px",
+                    boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
+                    overflow: "visible",
                   }}
                 >
-                  {item.text}
+                  <Stack direction="row" spacing={1} alignItems="center" mb={1}>
+                    <Avatar src={item.avatar} sx={{ width: 30, height: 30 }} />
+                    <Typography
+                      variant="h6"
+                      fontWeight={600}
+                      fontFamily={"Akatab,Sans-serif"}
+                      color="#000000"
+                    >
+                      {item.name}
+                      
+                    </Typography>
+                  </Stack>
+
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    color="#000000"
+                    sx={{
+                      fontStyle: "italic",
+                      mb: 2,
+                      fontFamily: "Akatab,Sans-serif",
+                      fontWeight: "400",
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+
+                  <Stack direction="row" spacing={0.5} mb={1}>
+                    <Box
+                        component="span"
+                        sx={{
+                          display: "inline-block",
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src="/search.png"
+                          alt="Google logo"
+                          sx={{ width: 17, height: 17, mr: 1.2 }}
+                        />
+                      </Box>
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon
+                        key={i}
+                        sx={{ 
+                          color: i < item.rating ? "#FFD700":"#ccc", fontSize: 18}}
+                      />
+                    ))}
+                  </Stack>
                   
-                </Typography>
-                  
-                <Stack direction="row" spacing={0.5} mb={1}>
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} sx={{ color: "#FFD700", fontSize: 18 }} />
-                  ))}
-                </Stack>
-              </Paper>
-            ))}
+                </Paper>
+              ))}
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -185,4 +282,5 @@ export default function ClientTestimonials() {
   );
 }
 
+ 
 

@@ -9,14 +9,15 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from 'next/router';
-
+import Link from "next/link";
 const services = [
   {
     title: "Destination Weddings",
     image: "/homeservices1.png",
     description:
       "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
-    cta: "Learn More",
+    cta: "Learn More",  
+    link: "/servicessubpage",
 
   },
   {
@@ -26,18 +27,21 @@ const services = [
       "Smaller weddings, bigger heart.We specialize in private, cozy affairs- beautifully styled, deeply personal, and easy on the chaos.",
     guests: "50 guests, 500 memories, 0 stress",
     cta: "Learn More",
+    link: "/services",
   },
   {
     title: "Themed & Designer Weddings",
     image: "/homeservices2.png",
     description: "Enjoy your big day while we handle the details.",
     cta: "Learn More",
+    link: "/services",
   },
   {
     title: "Artist Management",
     image: "/homeservices3.png",
     description: "Don’t lift a finger. We’ll plan the entire show.",
     cta: "Learn More",
+    link: "/services",
   },
   {
     title: "Prewedding & Photography",
@@ -45,6 +49,7 @@ const services = [
     description:
       "Because you don’t want to be managing the DJ during your own varmala.",
     cta: "Learn More",
+    link: "/services",
   },
   {
     title: "Special Effects",
@@ -52,6 +57,7 @@ const services = [
     description:
       "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
     cta: "Learn More",
+    link: "/services",
   },
    {
     title: "Food and Beverages",
@@ -59,6 +65,7 @@ const services = [
     description:
       "More than just pretty flowers...",
     cta: "Learn More",
+    link: "/services",
   },
    {
     title: "Guest Hospitality & Logistics",
@@ -66,17 +73,15 @@ const services = [
     description:
       "Because a happy guest = a happy shaadi...",
     cta: "Learn More",
+    link: "/services",
   },
 ];
 
 const FlipCard = ({ service }) => {
   const [flipped, setFlipped] = useState(false);
 
-  const router = useRouter();
-  const handleNavigate = () => {
 
-    router.push('/servicessubpage');
-  };
+
 
   return (
     <Box
@@ -225,7 +230,8 @@ const FlipCard = ({ service }) => {
           >
             {service.description}
           </Typography>
-          {service.cta && (
+          {service.cta && service.link && (
+            <Link href={service.link} passHref>
             <Button
               variant="contained"
               size="small"
@@ -244,11 +250,12 @@ const FlipCard = ({ service }) => {
                   bgcolor: "#B8850D",
                 },
               }}
-              onClick={() => handleNavigate()}
-              style={{ cursor: 'pointer' }}
+              
+              // style={{ cursor: 'pointer' }}
             >
               {service.cta}
             </Button>
+            </Link>
           )}
         </Box>
       </Box>
@@ -263,7 +270,7 @@ export default function OurServices() {
   return (
     <Box
       sx={{
-        px: { xs: 2, sm: 8, md: 10 },
+        px: { xs: 2, sm: 8, md: 6 },
         py: { xs: 4, sm: 6, md: 2 },
         bgcolor: "#FFFAED",
         textAlign: "center",
@@ -284,7 +291,7 @@ export default function OurServices() {
         {` Everything You Need, Delivered Beautifully`}
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      <Grid container spacing={{ xs: 2, sm: 3, md: 2, lg: 4}} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={3}  lg={3} xl={3} key={index}>
             <FlipCard service={service} />
