@@ -4,6 +4,7 @@ import CustomButton from "@/common-component/button/CustomButton";
 import { Box, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { color } from "framer-motion";
 export default function HeroSection() {
@@ -57,6 +58,9 @@ useEffect(() => {
 
             
           }>
+
+            <Link href="/" passHref>
+
               <Image src={"/logo.png"} alt="Logo" width={120} height={120}
               
                style={{
@@ -64,7 +68,7 @@ useEffect(() => {
       height: "auto",
     }}
          />
-
+</Link>
             </Box>
             <Box sx={{ zIndex:5 , width:{xs:'100%',md:'100%'},height:{xs:'100%',md:'50%'}, position:{xs:"initial",sm:"initial",md:"absolute"}, top:{xs:"20px",sm:"100px",md:"130px",lg:"170px"}, left:{xs:0,sm:0,md:0,}, mt:{xs:"4px",sm:"15px",md:0,lg:0}}}>
             <Typography
