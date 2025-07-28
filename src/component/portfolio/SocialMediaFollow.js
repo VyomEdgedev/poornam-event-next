@@ -42,10 +42,14 @@ function SocialMedia() {
           justifyContent="space-evenly">
               <IconButton data-testid="notify-button"
             color="primary"
+            component="a"
+            href="https://www.facebook.com/poornamevents" 
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Facebook"
-            onClick={() => window.open('https://www.facebook.com/poornamevents', '_blank')}
           >
             <FacebookIcon sx={{
+              
               backgroundColor: '#fff',
               // color:"black",
               width: { xs: 55, sm: 70, md: 80 },
@@ -85,7 +89,9 @@ function SocialMedia() {
           <IconButton data-testid="notify-button"
             color="primary"
             aria-label="Twitter"
-            onClick={() => window.open('https://x.com/', '_blank')}
+             href="https://x.com/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <XIcon sx={{
               // backgroundColor: '#fff',
