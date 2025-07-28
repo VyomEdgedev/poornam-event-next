@@ -61,7 +61,7 @@ const services = [
   },
    {
     title: "Food and Beverages",
-    image: "/homeservices5.png",
+    image: "/homeservices6.png",
     description:
       "More than just pretty flowers...",
     cta: "Learn More",
@@ -69,7 +69,7 @@ const services = [
   },
    {
     title: "Guest Hospitality & Logistics",
-    image: "/homeservices5.png",
+    image: "/homeservices7.png",
     description:
       "Because a happy guest = a happy shaadi...",
     cta: "Learn More",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "../connectus/Form";
 import Chat from "./Chat";
 import CheckList from "./CheckList";
@@ -11,6 +11,7 @@ import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import SEO from "@/common-component/SEO/seo";
 import FAQSection from "@/common-component/Faq/FAQSection";
+import ConnectModal from "@/common-component/modal/ConnectModal";
 
 
 export default function ContactUs() {
@@ -58,6 +59,10 @@ export default function ContactUs() {
 ];
 
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
+   const [open, setOpen] = useState(false)
+  const handleWeddingPlan=() =>{
+   
+    setOpen(true)}
   return (
     <>
       <>
@@ -94,7 +99,9 @@ export default function ContactUs() {
           }
         }}
       >
-        <CustomButton data-testid="notify-button">{`Plan my Wedding`}</CustomButton>
+        
+        <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan my Wedding`}</CustomButton>
+        <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner >
 
       <Form></Form>

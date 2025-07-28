@@ -1,12 +1,16 @@
+import ConnectModal from '@/common-component/modal/ConnectModal';
 import { Grid, Typography, Button } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
 const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page reload
-    console.log('Form submitted');
+    
 };
 
 function FreeCall() {
+     const [open, setOpen] = useState(false)
+    const handleSubmit = (e) => {
+         setOpen(true)
+};
     return (
         <Grid container 
         display="flex"
@@ -14,7 +18,7 @@ function FreeCall() {
         justifyContent="space-evenly"
        
        padding={{xs:"20px",sm:"30px",md:"40px"}}>
-      
+      <ConnectModal open={open} setOpen={setOpen} />
             <Grid  lineHeight="60px"  >
                 <Typography sx={{ fontFamily:"Gloock,Sans-serif",fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" }}}>
                     {`Just Want to Chat Wedding Vibes Over Coffee?`}</Typography>

@@ -72,7 +72,7 @@ export default function Owners() {
                         position: 'relative'
                     }}>
                         <Image
-                            src="/AadiJain.png"
+                            src="/RichiAnandJain.png"
                             alt="Richi Anand Jain"
                             fill
                             style={{ objectFit: 'cover' }}

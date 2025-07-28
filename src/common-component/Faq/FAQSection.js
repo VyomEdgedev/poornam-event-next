@@ -81,10 +81,9 @@ const FAQSection = ({
                 },
                 borderBottom: `1px solid ${borderColor}`,
                 mb: 2,
-                '&:last-child': { borderBottom: 'none' }
               }}
             >
-              <Grid item xs={12} sm={6}>
+              <Grid item sx={{width:{xs:"100%" ,sm:"50%"}}}>
                 <Accordion
                   expanded={isOpen}
                   onChange={handleChange(index)}
@@ -101,7 +100,7 @@ const FAQSection = ({
                       <ChevronRightIcon
                         sx={{
                           transform: {
-                            xs: "rotate(-90deg)",
+                            xs: "rotate(90deg)",
                             sm: isOpen ? 'rotate(-180deg)' : 'rotate(90deg)',
                           },
                           
@@ -125,12 +124,6 @@ const FAQSection = ({
                     <Typography
                       component="h3"
                       sx={{
-                        width: {
-                          xs: '270px',
-                          sm: '250px',
-                          md: '380px',
-                          lg: '450px',
-                        },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: bodyFontFamily,
                         fontWeight: 700,
@@ -144,7 +137,7 @@ const FAQSection = ({
               </Grid>
 
               {isOpen && (
-                <Grid item xs={12} sm={6}>
+                <Grid item sx={{width:{sm:"50%"}}}>
                   <Box
                     sx={{
                       paddingTop: { xs: 0, sm: 1.3 },
@@ -157,12 +150,6 @@ const FAQSection = ({
                       id={`faq-content-${index}`}
                       aria-labelledby={`faq-header-${index}`}
                       sx={{
-                        width: {
-                          xs: '100%',
-                          sm: '250px',
-                          md: '500px',
-                          lg: '550px',
-                        },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,

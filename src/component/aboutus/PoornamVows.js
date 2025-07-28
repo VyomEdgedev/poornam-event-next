@@ -134,7 +134,7 @@ const PoornamVows = () => {
                         // transform: `rotate(${-((index / vows.length) * 360)}deg)`,
                       }}
                     >
-                      {/* {vow.title} */}
+                      {vow.title}
                     </Typography>
                   )}
                 </Box>
