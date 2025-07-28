@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import CustomButton from '@/common-component/button/CustomButton';
+import ConnectModal from '@/common-component/modal/ConnectModal';
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted');
-};
+
 
 function Chat() {
+     const [open, setOpen] = useState(false)
+     const handleSubmit = (e) => {
+     setOpen(true)
+  
+};
     const theme = useTheme();
     const isSmOrBelow600 = useMediaQuery(theme.breakpoints.down('sm')); // sm = 600px
 
@@ -20,7 +23,7 @@ function Chat() {
             direction={isSmOrBelow600 ? 'column' : 'row'}
 
         >
-
+<ConnectModal open={open} setOpen={setOpen} />
             {/* Left Content */}
             <Grid item xs={12} sm={8} md={4}>
                 <Typography

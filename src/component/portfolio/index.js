@@ -1,20 +1,19 @@
 import CustomBanner from '@/common-component/banner/CustomBanner'
 import CustomButton from '@/common-component/button/CustomButton'
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import WeddingThemes from './WeddingThemes'
 import ShowCase from './ShowCase'
 import RecentPosts from './RecentPosts'
 import SocialMediaFollow from './SocialMediaFollow'
 import FAQSection from '@/common-component/Faq/FAQSection'
 import SEO from '@/common-component/SEO/seo'
+import ConnectModal from '@/common-component/modal/ConnectModal'
 
 
 
 const Portfolio = () => {
-  const handleportfolio = () => {
-    // Handle button click logic here
-  }
+ 
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   const myFAQData = [
     {
@@ -35,7 +34,10 @@ const Portfolio = () => {
     },
 
   ];
-
+   const [open, setOpen] = useState(false)
+const handleportfolio=() =>{
+     
+    setOpen(true)}
   return (
     <>
       <>
@@ -74,6 +76,7 @@ const Portfolio = () => {
       ><CustomButton data-testid="notify-button" onClick={handleportfolio}>
           {` Plan My Wedding`}
         </CustomButton>
+        <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner>
 
       <WeddingThemes />
@@ -88,4 +91,4 @@ const Portfolio = () => {
   )
 }
 
-export default Portfolio
+export default Portfolio;
