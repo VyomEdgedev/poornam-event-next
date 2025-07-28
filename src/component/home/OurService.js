@@ -291,7 +291,7 @@ export default function OurServices() {
         {` Everything You Need, Delivered Beautifully`}
       </Typography>
 
-      <Grid container spacing={{ xs: 2, sm: 3, md: 2, lg: 4}} justifyContent="center">
+      <Grid container spacing={{ xs: 2, sm: 3, md: 2, lg: 2.2}} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={3}  lg={3} xl={3} key={index}>
             <FlipCard service={service} />

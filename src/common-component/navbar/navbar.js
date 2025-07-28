@@ -122,6 +122,7 @@ export default function Header() {
             backgroundColor="rgba(0, 13, 31, 0.4)"
             padding={0.5}
             className={style.mobile_nav_bar}
+            sx={{px:"18px"}}
           >
             <Link href="/" passHref>
               <Image
