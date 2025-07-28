@@ -207,7 +207,7 @@ const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
   fontSize: subheadingstyle?.fontSize || '26px !important',
   letterSpacing: subheadingstyle?.letterSpacing || '0.02em',
   lineHeight: subheadingstyle?.lineHeight || '1.37',
-  color: subheadingstyle?.color || 'rgba(255, 245, 217, 1)',
+  color: subheadingstyle?.color || "#FFFFFF",
   marginBottom: subheadingstyle?.marginBottom || '10px',
   maxWidth: subheadingstyle?.maxWidth || '900px',
   

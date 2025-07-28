@@ -64,12 +64,12 @@ const handleTalkToPlanner = () => {
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
-          top: '370px',
+          top: '400px',
           left: '47px',
-          lg: { top: '320px', left: '50px' },
-          md: { top: '280px', left: '20px' },
+          lg: { top: '350px', left: '60px' },
+          md: { top: '300px', left: '20px' },
           sm: { top: '330px', left: '7px' },
-          xs: { top: '200px', left: '20px' }
+          xs: { top: '310px', left: '20px' }
         }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',

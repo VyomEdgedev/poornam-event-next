@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumbs, Typography, Box } from '@mui/material';
 import { Home, NavigateNext } from '@mui/icons-material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const BreadcrumbsComponent = ({ 
@@ -28,7 +29,7 @@ const BreadcrumbsComponent = ({
             color: 'text.secondary',
           },
           '& .MuiBreadcrumbs-li': {
-            color: '#DAA412',
+            color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
           }
@@ -42,16 +43,16 @@ const BreadcrumbsComponent = ({
             return (
               <Typography
                 key={index}
-                color="#DAA412"
+                color="#FFFFFF"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
                   fontWeight: 500,
-                  fontSize: '0.875rem'
+                  fontSize: {xs: '12px', md: '14px'},
                 }}
               >
                 {isHome && showHomeIcon && (
-                  <Home sx={{ mr: 0.5, color: homeIconColor }} fontSize="inherit" />
+                  <Home sx={{ mr: 0.5, color: homeIconColor }} fontSize="3rem" />
                 )}
                 {item.label}
               </Typography>
@@ -69,7 +70,7 @@ const BreadcrumbsComponent = ({
                 display: 'flex',
                 alignItems: 'center',
                 textDecoration: 'none',
-                fontSize: '0.875rem',
+                fontSize: {xs: '13px', md: '14px'},
                 cursor: 'pointer',
                 '&:hover': {
                   textDecoration: 'underline',
@@ -78,7 +79,14 @@ const BreadcrumbsComponent = ({
               onClick={item.onClick}
             >
               {isHome && showHomeIcon && (
-                <Home sx={{ mr: 0, color: homeIconColor }} fontSize="inherit" />
+                 <Image
+    src="home.svg"
+    alt="Home"
+    width={16}
+    height={16}
+    // style={{ marginRight: 6 }}
+  />
+                // <Home sx={{ mr: 0, color: homeIconColor }} fontSize="inherit" />
               )}
               {item.label}
             </Typography>
