@@ -113,12 +113,12 @@ const Experience = () => {
         {/* Right: Two stacked images */}
         <Grid item xs={12} sm={6} md={2}>
           <Grid container direction={{xs:"column", sm:"column", md:"coloum"}}  
-          spacing={0}x={{ flexWrap: { xs: "nowrap" } }}>
+          spacing={0}  sx={{ flexWrap: { xs: "nowrap" } }}>
             <Grid item>
               <Box
                 sx={{
                   position:{xs:"initial", sm:"initial", md:"absolute"},
-                  top: 90,
+                  top: 40,
                   borderRadius: 3,
                   overflow: 'hidden',
                   
@@ -130,7 +130,7 @@ const Experience = () => {
                   width={119}
                   height={100}
                   style={{
-                    width: '100%',
+                    // width: '100%',
                     // height: 'auto',
                     objectFit: 'cover',
                     borderRadius: 5,
@@ -142,8 +142,9 @@ const Experience = () => {
               <Box
                 sx={{
                    position:{xs:"initial", sm:"initial", md:"absolute"},
-                  top: 200,
+                  top: 150,
                   borderRadius: 3,
+                 
                   // overflow: 'hidden',
               
                 }}
@@ -152,9 +153,9 @@ const Experience = () => {
                     src="/experience2.jpg"
                   alt="Help Desk"
                   width={119}
-                  height={225}
+                  height={130}
                   style={{
-                    width: '100%',
+                    // width: '100%',
                     // height: 'auto',
                     objectFit: 'cover',
                     borderRadius: 5,
