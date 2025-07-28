@@ -66,7 +66,7 @@ const PoornamVows = () => {
       margin="0 auto"
       sx={{ px: { xs: 1, sm: 2, md: 3 } }}
     >
-      <Box sx={{ p: 1, textAlign: "center", width: "100%" }}>
+      <Box sx={{  textAlign: "center", width: "100%" }}>
         <Typography
           sx={{
             fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2.5rem" },
@@ -147,7 +147,7 @@ const PoornamVows = () => {
                           md: "0.8rem",
                         },
                         textAlign: "center",
-                        maxWidth: "80px",
+                        // maxWidth: "80px",
                       }}
                     >
                       {vow.title}
