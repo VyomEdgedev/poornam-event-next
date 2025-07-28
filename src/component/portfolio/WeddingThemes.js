@@ -7,7 +7,7 @@ const weddingThemesData = [
   {
     id: 1,
     tag: "Rajasthan",
-    image: "/portfolio2.png",
+    image: "/wedding1.png",
     alt: "Royal Rajasthani Theme",
     title: "Royal Rajasthani",
     description: "A regal affair in royal palaces."
@@ -15,16 +15,16 @@ const weddingThemesData = [
   {
     id: 2,
     tag: "Beach",
-    image: "/portfolio2.png",
-    alt: "Royal Rajasthani Theme",
+    image: "/wedding2.png",
+    alt: "Beach Theme",
     title: "Boho Beach",
     description: "An elegant beach ceremony."
   },
   {
     id: 3,
     tag: "Modern",
-    image: "/portfolio2.png",
-    alt: "Royal Rajasthani Theme",
+    image: "/wedding3.png",
+    alt: "Modern Chic Theme",
     title: "Minimal Chic",
     description: "Simplicity meets elegance."
   }
