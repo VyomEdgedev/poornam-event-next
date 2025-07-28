@@ -205,6 +205,7 @@ export default function ClientTestimonials() {
                 gap: 2,
                 flexWrap: "nowrap",
                 justifyContent: "flex-start",
+                paddingX:2
               }}
             >
               {testimonials.map((item, index) => (

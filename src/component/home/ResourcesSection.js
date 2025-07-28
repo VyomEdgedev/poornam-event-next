@@ -29,7 +29,7 @@ const handleDownloadClick = () => {
       <ConnectModal open={open} setOpen={setOpen} />
       <Grid container spacing={{ xs: 6, sm: 5, md: 5 ,lg:45 }} alignItems="center" justifyContent={'space-evenly'}>
         {/* Left Section */}
-        <Grid item xs={12} md={8} justifyItems={'center'}>
+        <Grid item xs={12} md={8} >
           <Typography
             variant="h2"
             sx={{ fontFamily: 'serif', fontWeight: 700, mb: 1 }}
@@ -39,7 +39,7 @@ const handleDownloadClick = () => {
           <Typography variant="body1" component={"p"} color="textSecondary">
             Love From Our Couples
           </Typography>
-          <Typography variant="h6" component="h6" sx={{ mt: 2 }}>
+          <Typography variant="h6" component="h6" sx={{ mt: 2 ,fontSize:"1.50rem" }}>
             Grab your free tools:
           </Typography>
           <Button 
