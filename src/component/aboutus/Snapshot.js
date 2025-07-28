@@ -47,7 +47,7 @@ export default function Snapshot() {
           </Typography>
 
           <SnapshotCard
-            avatarSrc="/images/profile.jpg"
+            avatarSrc="/logo.png"
             title="Team Poornam"
             imageSrc="/snapshot2.png"
             caption="Laughter, chai, and dance practice!"
