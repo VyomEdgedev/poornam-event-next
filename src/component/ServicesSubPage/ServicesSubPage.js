@@ -1,6 +1,6 @@
 import CustomBanner from '@/common-component/banner/CustomBanner';
 import CustomButton from '@/common-component/button/CustomButton';
-import React from 'react'
+import React, { useState } from 'react'
 import WhyChoose from './WhyChoose';
 import YourDream from './YourDream'
 import WeOffer from './WeOffer';
@@ -9,18 +9,23 @@ import WeddingKit from './WeddingKit';
 import { Box, Stack } from '@mui/material';
 import CapturedMoments from './CapturedMoments';
 import FAQSection from '@/common-component/Faq/FAQSection';
+import ConnectModal from '@/common-component/modal/ConnectModal';
 
 
+
+function ServicesSubPage() {
+const [open, setOpen] = useState(false)
 const handleWeddingPlan = () => {
   // Add your navigation or action logic here
-  console.log("Plan My Wedding clicked");
+   setOpen(true)
 };
 
 const handleTalkToPlanner = () => {
   // Add your navigation or action logic here
-  console.log("Talk to Our Planner clicked");
+  window.open("https://wa.me/919519066885", "_blank");
 };
-function ServicesSubPage() {
+
+
   const myFAQData = [
   {
     question: ' What guest size qualifies as an intimate wedding?',
@@ -115,7 +120,7 @@ function ServicesSubPage() {
           >
             {`   Book Consultation`}
           </CustomButton>
-
+            <ConnectModal open={open} setOpen={setOpen} />
         </Stack>
       </CustomBanner>
 <Box sx={{
