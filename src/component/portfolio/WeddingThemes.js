@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Typography, Grid, Card, CardContent, Box, Chip } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
+import ConnectModal from "@/common-component/modal/ConnectModal";
 
 const weddingThemesData = [
   {
@@ -31,8 +32,13 @@ const weddingThemesData = [
 ];
 
 const WeddingThemes = () => {
+  const [open, setOpen] = useState(false)
+  const handleThemes = () => {
+    setOpen(true)
+  }
   return (
     <Container maxWidth="xl" sx={{ py: 3 }}>
+      <ConnectModal open={open} setOpen={setOpen} />
       <Typography
         variant="h3"
         component="h3"
@@ -51,7 +57,7 @@ const WeddingThemes = () => {
         {`Choose from a variety of stunning wedding themes. `}
       </Typography>
       <Box textAlign="center" mb={4}>
-        <CustomButton data-testid="notify-button">{`View All Themes`}</CustomButton>
+        <CustomButton  data-testid="notify-button" onClick={handleThemes}>{`View All Themes`}</CustomButton>
       </Box>
       <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
         {weddingThemesData.map(({ id, tag, image, alt, title, description }) => (

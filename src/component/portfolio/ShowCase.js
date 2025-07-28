@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Typography, Grid, Card, CardContent, Box, Chip } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
+import ConnectModal from "@/common-component/modal/ConnectModal";
 
 const weddingThemesData = [
   {
@@ -31,8 +32,17 @@ const weddingThemesData = [
 ];
 
 const ShowCase = () => {
+  const [open, setOpen] = useState(false)
+
+  const handleFilter = () => {
+    setOpen(true)
+  }
+  const handleBrowse = () => {
+    setOpen(true)
+  }
   return (
     <Container maxWidth="xl" sx={{ py: 2, }}>
+      <ConnectModal open={open} setOpen={setOpen} />
       <Typography
         variant="h3"
         component="h3"
@@ -52,7 +62,7 @@ const ShowCase = () => {
       </Typography>
       <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
        
-        <CustomButton data-testid="notify-button"
+        <CustomButton onClick={handleFilter} data-testid="notify-button" 
           variant="outlined"
           sx={{
             color: "#000D1F",
@@ -77,7 +87,7 @@ const ShowCase = () => {
           {` Filter by Category `}
          
         </CustomButton>
-           <CustomButton data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}>{`Browse Gallery`} </CustomButton>
+           <CustomButton onClick={handleBrowse} data-testid="notify-button" sx={{ width: { xs: "178px", sm: "auto" } }}>{`Browse Gallery`} </CustomButton>
 
       </Box>
       <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
