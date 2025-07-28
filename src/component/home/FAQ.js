@@ -74,9 +74,10 @@ export default function FAQSection() {
                 borderBottom: "1px solid #e0b855",
                 mb: 2,
                 flexDirection: { xs: "column", sm: "row" },
+                flexWrap: "nowrap"
               }}
             >
-              <Grid item xs={12} sm={6}>
+              <Grid item sx={{width:{xs:"100%" ,sm:"50%"}}}>
                 <Accordion
                   expanded={isOpen}
                   onChange={handleChange(index)}
@@ -93,7 +94,7 @@ export default function FAQSection() {
                       <ChevronRightIcon
                         sx={{
                           transform: {
-                             xs: "rotate(-90deg)", // Mobile view
+                             xs: "rotate(90deg)", // Mobile view
                             sm: isOpen ? "rotate(-180deg)" : "rotate(90deg)", // Tablet and up
                           },
                           transition: "transform 0.3s ease",
@@ -113,12 +114,6 @@ export default function FAQSection() {
                   >
                     <Typography
                       sx={{
-                        width: {
-                          xs: "270px",
-                          sm: "250px",
-                          md: "350px",
-                          lg: "450px",
-                        },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: "Akatab, Sans-serif",
                         fontWeight: 700,
@@ -133,7 +128,7 @@ export default function FAQSection() {
 
               {/* Answer right on desktop, below on mobile */}
               {isOpen && (
-                <Grid item xs={12} sm={6}>
+                <Grid item sx={{width:{sm:"45%"}}} >
                   <Box
                     sx={{
                       paddingTop: { xs: 0, sm: 2, md: 1.5, lg: 2 },
@@ -146,12 +141,6 @@ export default function FAQSection() {
                     <Typography
                       variant="body1"
                       sx={{
-                        width: {
-                          xs: "100%",
-                          sm: "280px",
-                          md: "380px",
-                          lg: "550px",
-                        },
                         fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                         fontFamily: "Akatab, Sans-serif",
                         fontWeight: 400,
