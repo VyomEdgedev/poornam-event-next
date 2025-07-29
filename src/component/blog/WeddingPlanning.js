@@ -12,8 +12,8 @@ export default function WeddingPlanning() {
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
 
   const responsiveSpacing = isBelow1150
-    ? { xs: 3, sm: 2, md: 5, lg: 6, xl: 8 }   // spacing when screen is small
-    : { xs: 3, sm: 2, md:  5, lg: 6, xl: 8}; // spacing when screen is large 
+    ? { xs: 3, sm: 2, md: 16, lg: 4, xl: 9 }   // spacing when screen is small
+    : { xs: 3, sm: 2, md:  16, lg: 4, xl: 9}; // spacing when screen is large 
 
     const handleWeddingPlan = () => {
     setOpen(true)

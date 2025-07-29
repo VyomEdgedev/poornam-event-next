@@ -45,8 +45,8 @@ const PicksSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
   const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 2 , md:2, lg:2,xl:6}   // spacing when screen is small
-    : { xs: 2, sm: 1, md: 2, lg: 2, xl: 6}; // spacing when screen is large
+    ? { xs: 2, sm: 2 , md:0, lg:2,xl:6}   // spacing when screen is small
+    : { xs: 2, sm: 1, md: 0, lg: 2, xl: 6}; // spacing when screen is large
 
   return (
     <Container maxWidth="xl" sx={{ py: 6 }}>
@@ -65,7 +65,8 @@ const PicksSection = () => {
                 fontWeight: 400,
                 lineHeight: 1.2,
                 mb: 2,
-                color: '#000000'
+                color: '#000000',
+                textAlign: { xs: 'center', md: 'center', lg: 'left' }
               }}
             >
               {picksData.title}
@@ -79,8 +80,9 @@ const PicksSection = () => {
                 fontWeight: 400,
                 fontFamily: "Akatab,Sans-serif",
                 lineHeight: 1.2,
-                width: { xs: '100%', md: '75%' },
-                mb: { xs: 4, md: 0 }
+                width: { xs: '100%', md: '88%',lg:'75%' },
+                textAlign: { xs: 'center', md: 'center', lg: 'left' },
+                mb: { xs: 4, md: 2, lg: 4 }
               }}
             >
               {picksData.subtitle}
