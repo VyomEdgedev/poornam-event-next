@@ -52,8 +52,8 @@ const SearchFilter = () => {
   const isBelow1250 = useMediaQuery("(max-width:1250px),(spacing:50px)");
 
   const responsiveSpacing = isBelow1250
-    ? { xs: 2, sm: 0, md: 2, lg: 6, xl: 25 } // spacing when screen is small
-    : { xs: 2, sm: 0, md: 2, lg: 6, xl: 25 }; // spacing when screen is large
+    ? { xs: 2, sm: 0, md: 10, lg: 16, xl: 25 } // spacing when screen is small
+    : { xs: 2, sm: 0, md: 10, lg: 16, xl: 25 }; // spacing when screen is large
 
   const categories = ["Tips", "Trends", "Venues", "Real Weddings", "Budget"];
   const locations = ["Indore", "Bhopal", "Jabalpur", "Goa", "Udaipur"];

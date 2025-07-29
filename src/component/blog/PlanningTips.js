@@ -16,8 +16,8 @@ const PlanningTips = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
     const responsiveSpacing = isBelow1150
-        ? { xs: 2, sm: 2 , md: 3, lg: 6, xl: 14}   // spacing when screen is small
-        : { xs: 2, sm: 1, md: 8, lg: 6, xl: 14}; // spacing when screen is large
+        ? { xs: 2, sm: 1 , md:6, lg: 6, xl: 15}   // spacing when screen is small
+        : { xs: 2, sm: 1, md: 3, lg: 6, xl: 15}; // spacing when screen is large
 
     // JSON data structure
     const sectionData = {

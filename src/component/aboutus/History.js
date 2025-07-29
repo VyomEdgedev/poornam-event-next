@@ -24,7 +24,7 @@ export default function OurStories() {
       width: "100%",
       maxWidth: "1400px",
       margin: "0 auto",
-      px: { xs: 6, sm: 4, md: 8 },
+      px: { xs: 6, sm: 4, md:12, lg:22, xl:22 },
       py: { xs: 2, sm: 6, md: 1 },
       fontFamily: "Akatab,Sans-serif",
       fontWeight: "400",

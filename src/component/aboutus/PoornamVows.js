@@ -54,8 +54,8 @@ const PoornamVows = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
-  const containerSize = isMobile ? 280 : isTablet ? 400 : 600;
-  const radius = isMobile ? 120 : isTablet ? 140 : 220;
+  const containerSize = isMobile ? 275 : isTablet ? 400 : 600;
+  const radius = isMobile ? 115 : isTablet ? 160 : 220;
   const avatarSize = isMobile ? 60 : isTablet ? 80 : 120;
   const centerSize = isMobile ? 100 : isTablet ? 150 : 200;
 
@@ -64,9 +64,11 @@ const PoornamVows = () => {
       container
       width="fit-content"
       margin="0 auto"
-      sx={{ px: { xs: 1, sm: 2, md: 3 } }}
+      
+      sx={{ px: { xs: 0, sm: 1, md: 3 } }}
     >
-      <Box sx={{  textAlign: "center", width: "100%" }}>
+      <Box sx={{  textAlign: "center", width: "100%", }}>
+        <Box sx={{ my: { xs:0, sm: 3, md: 4 }, paddingBottom: { xs: 4, sm: 2, md: 0 }  }}>
         <Typography
           sx={{
             fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2.5rem" },
@@ -74,6 +76,7 @@ const PoornamVows = () => {
           }}
           variant="h3"
           fontWeight="bold"
+       
           gutterBottom
         >
           Poornam Vows
@@ -88,6 +91,7 @@ const PoornamVows = () => {
         >
           {` Poornam's 7 Pheras of Promise  `}
         </Typography>
+        </Box>
         <Box
           sx={{
             position: "relative",
