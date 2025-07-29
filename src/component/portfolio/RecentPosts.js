@@ -11,6 +11,7 @@ import {
   IconButton
 } from '@mui/material';
 import { PlayArrow } from '@mui/icons-material';
+import Link from 'next/link';
 
 const postsData = [
   {
@@ -111,24 +112,27 @@ const RecentPosts = () => {
 
                
                 {post.videoThumbnail && (
-                  <IconButton
-                    sx={{
-                      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                      color: 'white',
-                      borderRadius: 2,
-                      '&:hover': {
-                        backgroundColor: 'rgba(0, 0, 0, 0.9)'
-                      },
-                      width: 60,
-                      height: 42,
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)'
-                    }}
-                  >
-                    <PlayArrow sx={{ fontSize: 30 }} />
-                  </IconButton>
+                  <Link href={"https://www.youtube.com/@poornam-wedding-planner"} target="_blank" passHref legacyBehavior>
+                    <IconButton
+                      sx={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        color: 'white',
+                        borderRadius: 2,
+                        '&:hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.9)'
+                        },
+                        width: 60,
+                        height: 42,
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                      component="a"
+                    >
+                      <PlayArrow sx={{ fontSize: 30 }} color='inherit'/>
+                    </IconButton>
+                  </Link>
                 )}
 
                 

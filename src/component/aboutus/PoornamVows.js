@@ -55,9 +55,9 @@ const PoornamVows = () => {
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const containerSize = isMobile ? 280 : isTablet ? 400 : 600;
-  const radius = isMobile ? 90 : isTablet ? 140 : 220;
+  const radius = isMobile ? 120 : isTablet ? 140 : 220;
   const avatarSize = isMobile ? 60 : isTablet ? 80 : 120;
-  const centerSize = isMobile ? 120 : isTablet ? 150 : 200;
+  const centerSize = isMobile ? 100 : isTablet ? 150 : 200;
 
   return (
     <Grid
