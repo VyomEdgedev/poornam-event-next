@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Typography, Grid, Card, CardContent, Box, Chip } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
-import ConnectModal from "@/common-component/modal/ConnectModal";
+
 
 const weddingThemesData = [
   {
@@ -32,13 +32,13 @@ const weddingThemesData = [
 ];
 
 const WeddingThemes = () => {
-  const [open, setOpen] = useState(false)
+
   const handleThemes = () => {
-    setOpen(true)
+   console.log('Themes clicked');
   }
   return (
     <Container maxWidth="xl" sx={{ py: 3 }}>
-      <ConnectModal open={open} setOpen={setOpen} />
+      
       <Typography
         variant="h3"
         component="h3"
