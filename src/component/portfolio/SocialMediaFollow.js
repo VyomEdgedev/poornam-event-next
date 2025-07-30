@@ -12,14 +12,14 @@ function SocialMedia() {
       container
       display="flex"
       justifyItems="center"
-      justifyContent={{xs: "center", sm: "evenly", md: "start", lg: "start", xl: "start"}}
+      justifyContent={{xs: "center", sm: "center", md: "start", lg: "start", xl: "start"}}
       padding="10px"
      
       marginBottom={{xs: 2, sm: 4, md: 5, lg: 6, xl: 7}}
-      spacing={{ xs: 0, sm:10, md: 4, lg: 5, xl: 5 }}
+      spacing={{ xs: 0, sm:0, md: 4, lg: 5, xl: 5 }}
     >
 
-      <Grid container sx={{px:{xs: 0, sm: 2, md: 4, lg: 18, xl: 30}}}>
+      <Grid container sx={{px:{xs: 0, sm: 1, md: 4, lg: 18, xl: 30}}}>
         <Typography
           variant='h3'
           component={'h3'}
