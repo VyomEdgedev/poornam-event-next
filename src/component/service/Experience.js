@@ -1,19 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import { Box, Grid} from '@mui/material';
+import { Box, Grid } from "@mui/material";
 
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
-    title: 'Bed',
+    img: "https://images.unsplash.com/photo-1549388604-817d15aa0110",
+    title: "Bed",
   },
   {
-    img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
-    title: 'Kitchen',
+    img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3",
+    title: "Kitchen",
   },
   {
-    img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
-    title: 'Sink',
+    img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6",
+    title: "Sink",
   },
 ];
 
@@ -39,12 +39,7 @@ const Experience = () => {
                   </div>
                 </div>
                 <div className="step-arrow">
-                  <Image
-                    src="/Arrow.svg"
-                    alt="Arrow"
-                    width={30}
-                    height={20}
-                  />
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
                 </div>
                 <div className="process-step">
                   <div className="step-content">
@@ -53,12 +48,7 @@ const Experience = () => {
                   </div>
                 </div>
                 <div className="step-arrow">
-                  <Image
-                    src="/Arrow.svg"
-                    alt="Arrow"
-                    width={30}
-                    height={20}
-                  />
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
                 </div>
                 <div className="process-step">
                   <div className="step-content">
@@ -67,12 +57,7 @@ const Experience = () => {
                   </div>
                 </div>
                 <div className="step-arrow">
-                  <Image
-                    src="/Arrow.svg"
-                    alt="Arrow"
-                    width={30}
-                    height={20}
-                  />
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
                 </div>
                 <div className="process-step">
                   <div className="step-content">
@@ -83,7 +68,7 @@ const Experience = () => {
               </div>
             </div>
           </div>
-    <Box sx={{   p: 2 , position:"relative"}}>
+                 <Box sx={{   p: 2 , position:"relative"}}>
       <Grid container spacing={1} justifyContent={{xs:"center", sm:"center", md:"center"}} >
         {/* Left Large Image */}
         <Grid item xs={12} sm={6} position={"relative"}>
@@ -167,6 +152,8 @@ const Experience = () => {
         </Grid>
       </Grid>
     </Box>
+  
+
         </div>
       </div>
     </section>
@@ -174,3 +161,5 @@ const Experience = () => {
 };
 
 export default Experience;
+
+

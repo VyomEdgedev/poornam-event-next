@@ -3,6 +3,13 @@ import { Box, Grid, Typography } from "@mui/material";
 
 const WhyPoornam = () => {
   return (
+    <Box
+        sx={{
+          px: { xs: 10, sm: 12, md: 8, lg: 22, xl: 33 },
+          py: { xs: 4, sm: 6, md: 8 },
+          //             // bgcolor: '#f8f9fa'
+        }}
+      >
     <Box>
       <Grid container spacing={{ xs: 5, md: 2 }}>
         <Grid size={{ xs: 12, md: 4 }}>
@@ -58,6 +65,7 @@ const WhyPoornam = () => {
           </Typography>
         </Grid>
       </Grid>
+    </Box>
     </Box>
   );
 };
