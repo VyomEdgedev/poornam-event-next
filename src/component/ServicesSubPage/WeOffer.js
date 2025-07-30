@@ -257,7 +257,7 @@ function WeOffer() {
                 justifyContent="space-evenly"
                 justifyItems="center"
                 padding="20px"
-                sx={{ gap: 5 }}>
+                sx={{ gap: 6 }}>
                 <Grid container spacing={4} justifyContent="center">
                     <Grid item xs={12} sm={6} md={3}>
                         <Box textAlign="center">

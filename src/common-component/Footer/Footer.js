@@ -124,7 +124,7 @@ const Footer = () => {
                   { label: "Home", href: "/" },
                   { label: "About", href: "/aboutus" },
                   { label: "Services", href: "/services" },
-                  { label: "Portfolio", href: "/portfolio" },
+                  { label: "Gallery", href: "/gallery" },
                   { label: "Blogs", href: "/blog" },
                   { label: "Connect us", href: "/contact" },
                 ].map((item) => (

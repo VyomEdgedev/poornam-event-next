@@ -17,7 +17,7 @@ const Portfolio = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
   const myFAQData = [
     {
-      question: 'What events do you showcase in your portfolio?',
+      question: 'What events do you showcase in your gallery?',
       answer: 'We feature weddings, pre-wedding shoots, engagements, and other curated celebrations.',
     },
     {
@@ -25,11 +25,11 @@ const Portfolio = () => {
       answer: 'Yes, all events shown are real and managed by our expert team.',
     },
     {
-      question: 'Can I get ideas from your portfolio for my event?',
+      question: 'Can I get ideas from your gallery for my event?',
       answer: 'Yes, we tailor every event to your vision, even if inspired by past work.',
     },
     {
-      question: 'How often do you update your portfolio?',
+      question: 'How often do you update your gallery?',
       answer: 'We add fresh content regularly to showcase our latest events.',
     },
 
@@ -42,16 +42,16 @@ const handleportfolio=() =>{
     <>
       <>
         <SEO
-          url='http://www.poornamevents.com/portfolio'
+          url='http://www.poornamevents.com/gallery'
           metaTitle='Wedding Gallery  | Poornam Events'
-          metaDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
-          keywords='wedding portfolio Indore, wedding gallery'
-          canonical='http://www.poornamevents.com/portfolio'
+          metaDescription='Browse our gallery of weddings curated in Indore, Bhopal & destination locations.'
+          keywords='wedding gallery Indore, wedding gallery'
+          canonical='http://www.poornamevents.com/gallery'
           ogTitle='Wedding Gallery  | Poornam Events'
-          ogDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
+          ogDescription='Browse our gallery of weddings curated in Indore, Bhopal & destination locations.'
           ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='Wedding Gallery  | Poornam Events'
-          twitterDescription='Browse our portfolio of weddings curated in Indore, Bhopal & destination locations.'
+          twitterDescription='Browse our gallery of weddings curated in Indore, Bhopal & destination locations.'
             twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />

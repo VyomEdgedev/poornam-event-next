@@ -29,7 +29,7 @@ import style from "@/styles/style.module.scss"
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Blogs", href: "/blog" },
   { label: "About", href: "/aboutus" },
   { label: "Connect us", href: "/contact" },
