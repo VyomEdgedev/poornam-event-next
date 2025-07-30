@@ -1,7 +1,7 @@
 import Portfolio from '@/component/portfolio'
 import React from 'react'
 
-const portfolio = () => {
+const Gallery = () => {
   return (
     <>
       <Portfolio />  
@@ -9,4 +9,4 @@ const portfolio = () => {
   )
 }
 
-export default portfolio
+export default Gallery
