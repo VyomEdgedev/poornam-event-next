@@ -11,6 +11,7 @@ import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import SEO from "@/common-component/SEO/seo";
+import { Box } from "@mui/material";
 
 export default function AboutUS() {
   const [open, setOpen] = useState(false)
@@ -37,7 +38,7 @@ export default function AboutUS() {
           robots="index, follow"
         />
       </>
-
+<Box sx={{ overflow: 'hidden' }}>
       <CustomBanner
         title="Let's Make Shaadi Magic Together!"
         subtitle="From planning to 'I do', we've got your back!"
@@ -69,6 +70,8 @@ export default function AboutUS() {
       <Philosophy></Philosophy>
       <Snapshot></Snapshot>
       <ContactSection></ContactSection>
+      </Box>
     </>
+
   )
 }

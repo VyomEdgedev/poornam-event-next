@@ -32,7 +32,8 @@ const CapturedMomentsData = [
 
 const CapturedMoments = () => {
     return (
-        <Container maxWidth="lg" sx={{ py: 8 }}
+        <Box sx={{backgroundColor:"#FFF7E4"}}>
+        <Container maxWidth="lg" sx={{ py: 8  }   }
         px={{xs : "5%", sm:"5%", md: "15%"}} >
             <Typography
                 variant="h3"
@@ -77,7 +78,7 @@ const CapturedMoments = () => {
                                     position:"relative",
                                     width: "340px",
                                     height: 300,
-                                    backgroundColor: "red",
+                                   
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -114,6 +115,7 @@ const CapturedMoments = () => {
                 ))}
             </Grid>
         </Container>
+        </Box>
     )
 }
 

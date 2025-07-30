@@ -63,7 +63,6 @@ const YourDream = () => {
                                     position:"relative",
                                     width: "340px",
                                     height: 300,
-                                    backgroundColor: "red",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",

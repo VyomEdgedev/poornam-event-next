@@ -28,7 +28,7 @@ function WeddingKit() {
   
   return (
 
-    <Box px={{xs : "5%", sm:"2%", md: "0%", lg:"10%"}} py={{xs : "5px", sm:"10px", md: "10px"}} textAlign="center" bgcolor="#FFF7E4" >
+    <Box px={{xs : "5%", sm:"2%", md: "0%", lg:"5%" ,xl:"10%"}} py={{xs : "5px", sm:"10px", md: "10px"}} textAlign="center" bgcolor="#FFF7E4" >
       <Box container
         display="flex"
         justifyContent="space-evenly"

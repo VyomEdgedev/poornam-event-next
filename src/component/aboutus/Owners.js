@@ -20,7 +20,7 @@ export default function Owners() {
             <Grid container spacing={responsiveSpacing}
                 alignItems={isBelow1150 ? 'center' : "center"}
                 justifyContent={isBelow1150 ? 'center' : 'center'}
-                gap={{ xs: 4, sm: 4, md: 15 }}>
+                gap={{ xs: 4, sm: 4, md: 5, lg: 15 }}>
                 {/* Card 1 */}
                 <Grid item xs={1} sm={6} md={5}>
                     <Card sx={{
