@@ -358,7 +358,7 @@ const Footer = () => {
                 sx={{
                   fontSize: "14px",
                   textAlign: { xs: "center", md: "left" },
-                  paddingLeft: { xs: 0,sm: 0, md: 2, lg: 4.5 , xl:5},
+                  paddingLeft: { xs: 0,sm: 0, md: 2, lg: 4.5 , xl:1.4},
                 }}
               >
                 © 2025 Poornam Events.
