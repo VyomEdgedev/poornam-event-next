@@ -1,9 +1,12 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Box, Typography, Card, CardMedia, Chip, IconButton
+  Box, Typography, Card, CardMedia, Chip, IconButton,
+  CircularProgress
 } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
+import axios from 'axios';
+import { apiClient } from '@/lib/api-client';
 
 const cardData = {
   image: "/SubBlog.png",
@@ -14,6 +17,31 @@ const cardData = {
 };
 
 const BlogCard = () => {
+ const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+    
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await apiClient.get('/api/blogs/event');
+          console.log(response);
+        const data = response.data.blogs;
+        if (Array.isArray(data)) {
+          setPosts(data);
+        } else {
+          setPosts([]);
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+  // if (loading) return <CircularProgress sx={{ m: 5 }} />;
+  if (error) return <Typography color="error">Error: {error}</Typography>;
   return (
     <Box  display="flex"
             justifyContent="center"
@@ -21,6 +49,7 @@ const BlogCard = () => {
             flexDirection="column"
             px={{ xs: 2, sm: 6, md: 10 }}
             py={5}>
+               {posts.map((post, idx) => (
       <Card
         sx={{
           position: 'relative',
@@ -32,8 +61,8 @@ const BlogCard = () => {
       >
         <CardMedia
           component="img"
-          image={cardData.image}
-          alt={cardData.title}
+          image={post.featuredImage?.url}
+          alt={post.title}
           sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
 
@@ -69,7 +98,7 @@ const BlogCard = () => {
              frontFamily: "Akatab,Sans-serif",
             }}
           >
-            Category: {cardData.category}
+            Category: {post.category?.name || "N/A"}
           </Typography>
           <Typography
             sx={{
@@ -78,10 +107,11 @@ const BlogCard = () => {
               frontFamily: "Akatab,Sans-serif",
             }}
           >
-            {cardData.title}
+            {post.title}
+
           </Typography>
           <Chip
-            label={`${cardData.author} | ${cardData.date}`}
+            label={`${post.authorName || "Author"} | ${new Date(post.createdAt).toLocaleDateString('en-GB')}`}
             variant="outlined"
             sx={{
               mt: 1,
@@ -93,6 +123,7 @@ const BlogCard = () => {
           />
         </Box>
       </Card>
+           ))}
     </Box>
 
   );
