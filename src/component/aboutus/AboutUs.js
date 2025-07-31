@@ -46,6 +46,20 @@ export default function AboutUS() {
         backgroundImage="/AboutUsBanner.png"
         showLogo={true}
         logoSrc="/logo.png"
+         breadcrumbs={[
+          { href: "/", isHome: true },
+          // { href: '/blog', label: 'Blog' },
+          { label: "About" },
+        ]}
+        // Optional: customize breadcrumbs position
+        breadcrumbsPosition={{
+          top: "400px",
+          left: "43px",
+          lg: { top: "350px", left: "60px" },
+          md: { top: "300px", left: "10px" },
+          sm: { top: "330px", left: "3px" },
+          xs: { top: "310px", left: "20px" },
+        }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
           width: '70%',
