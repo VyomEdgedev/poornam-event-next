@@ -132,7 +132,7 @@ const BlogSection = () => {
             <Grid item xs={12} sm={8} md={6} key={post._id || idx}>
               <Box sx={{ px: 0 }}>
                 <Card 
-                onClick={() => router.push('/${post._id ||idx}')}
+                onClick={() => router.push(`/blog/${post._id}`)}
                   sx={{
                     width: { xs: "350px", sm: "400px", md: "460px", lg: "460px", xl: "460px" },
                     height: "auto",

@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { Card, CardMedia, Container, Typography, Box, Grid, Chip, CircularProgress } from '@mui/material';
-import { apiClient } from '@/lib/api-client';
+import React, { useEffect, useState } from "react";
+import {
+  Card,
+  CardMedia,
+  Container,
+  Typography,
+  Box,
+  Grid,
+  Chip,
+  CircularProgress,
+} from "@mui/material";
+import { apiClient } from "@/lib/api-client";
 
+import { useRouter } from "next/router";
 const Subtext = () => {
-
-    // const SubtextData = {
-    //     heading: "Learn how to make every rupee feel like a royal investment.",
-    //     paragraph: "Because luxuryisn't always about the price tag - its about the experience. At Poornam Events, we specialize in crafting unforgettable weddings that feel grand, graceful, and deeply personal - without blowing your budget. From curated vendor deals to smat styling choices, we turn mindful spending into magical moments.",
-    //     subHeading: "Smart. Elegant. Worth every rupee.",
-    //     line: "Let us show you how royalty is vibe, not just a budget",
-    //     line1: "Big dreams don't need big budgets.",
-    //     line2: "They just need the right people planning them. we help you invest where it truly matters",
-    //     line3: "- emotions, experience, and lifelong memories."
-    // };
- const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-    
+  const router = useRouter();
+  const { id } = router.query;
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await apiClient.get('/api/blogs/event');
-          console.log(response);
-       const blogs = response.data.blogs;
-        if (Array.isArray(blogs) && blogs.length > 0) {
-          setDescription(blogs[0].description);
+        const response = await apiClient.get(`api/blogs/${id}/event`);
+        console.log(response);
+        const blog = response.data.blog;
+        if (blog && blog.description) {
+          setDescription(blog.description);
         } else {
-          setDescription('No description found.');
+          setDescription("No description found.");
         }
       } catch (error) {
         setError(error);
@@ -34,23 +36,31 @@ const Subtext = () => {
         setLoading(false);
       }
     };
+   if(id){
     fetchBlogs();
-  }, []);
+     
+   }
+  }, [id]);
 
-  if (loading) return <CircularProgress sx={{ m: 5 }} />;
-  if (error) return <Typography color="error">Error: {error.message || "Something went wrong"}</Typography>;
+  // if (loading) return <CircularProgress sx={{ m: 5 }} />;
+  if (error)
     return (
-        <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-            px={{ xs: 2, sm: 6, md: 10 }}
-            py={4}
-        >
-            <Box maxWidth="1100px" width="100%" textAlign="left">
-                <Box>
-                    {/* <Typography
+      <Typography color="error">
+        Error: {error.message || "Something went wrong"}
+      </Typography>
+    );
+  return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      px={{ xs: 2, sm: 6, md: 10 }}
+      py={4}
+    >
+      <Box maxWidth="1100px" width="100%" textAlign="left">
+        <Box>
+          {/* <Typography
                         sx={{
                             fontSize: { xs: "24px", sm: "28px", md: "36px" },
                             fontWeight: 600,
@@ -63,17 +73,16 @@ const Subtext = () => {
                     >
                         {SubtextData.heading}
                     </Typography> */}
-                    <Typography
-          sx={{
-            fontSize: { xs: "16px", sm: "20px", md: "24px" },
-            lineHeight: "1.5",
-            fontFamily: "Akatab,Sans-serif",
-          }}
-         
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+          <Typography
+            sx={{
+              fontSize: { xs: "16px", sm: "20px", md: "24px" },
+              lineHeight: "1.5",
+              fontFamily: "Akatab,Sans-serif",
+            }}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
 
-                    {/* <Typography
+          {/* <Typography
                         sx={{
                             fontSize: { xs: "16px", sm: "20px", md: "24px" },
                             fontWeight: 600,
@@ -91,9 +100,9 @@ const Subtext = () => {
                     >
                         {SubtextData.line}
                     </Typography> */}
-                    {/* <Box>
-                     */}
-                        {/* <Typography
+          {/* <Box>
+           */}
+          {/* <Typography
                             sx={{
                                 fontSize: { xs: "16px", sm: "20px", md: "24px" },
 
@@ -102,7 +111,7 @@ const Subtext = () => {
                         >
                             {SubtextData.line1}
                         </Typography> */}
-                        {/* <Typography
+          {/* <Typography
                             sx={{
                                 fontSize: { xs: "16px", sm: "20px", md: "24px" },
 
@@ -120,11 +129,11 @@ const Subtext = () => {
                         >
                             {SubtextData.line3}
                         </Typography> */}
-                    {/* </Box> */}
-                </Box>
-            </Box>
+          {/* </Box> */}
         </Box>
-    );
+      </Box>
+    </Box>
+  );
 };
 
 export default Subtext;
