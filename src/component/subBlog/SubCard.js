@@ -36,7 +36,7 @@ const BlogCard = () => {
         console.log(response);
         const data = response.data.blog;
         if (data) {
-          setPosts(data); // wrap single blog in array
+          setPosts(data);
         } else {
           setPosts(null);
         }
