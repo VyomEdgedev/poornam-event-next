@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -9,33 +9,36 @@ import {
   Grid,
   useTheme,
   useMediaQuery,
+  CircularProgress,
 } from "@mui/material";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import axios from "axios";
+import { apiClient } from "@/lib/api-client";
 
 const blogData = {
   title: "Latest From the Blog",
   viewAllText: "View All Blogs",
-  posts: [
-    {
-      id: 1,
-      title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
-      subtitle: "Learn how to make every rupee feel like a royal investment.",
-      category: "Budget & Planning",
-      image: "/blogsection1.png",
-      imageAlt: "Wedding venue with golden lights and decorations",
-    },
-    {
-      id: 2,
-      title: "Top 5 Destination Wedding Locations You Haven't Considered Yet",
-      subtitle:
-        "Beyond Goa and Udaipur — these hidden gems are chef's kiss for intimate vibes.",
-      category: "Destination Weddings",
-      image: "/blogsection2.png",
-      imageAlt:
-        "Wedding planning infographic with venue and catering statistics",
-    },
-  ],
+  // posts: [
+  //   {
+  //     id: 1,
+  //     title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
+  //     subtitle: "Learn how to make every rupee feel like a royal investment.",
+  //     category: "Budget & Planning",
+  //     image: "/blogsection1.png",
+  //     imageAlt: "Wedding venue with golden lights and decorations",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Top 5 Destination Wedding Locations You Haven't Considered Yet",
+  //     subtitle:
+  //       "Beyond Goa and Udaipur — these hidden gems are chef's kiss for intimate vibes.",
+  //     category: "Destination Weddings",
+  //     image: "/blogsection2.png",
+  //     imageAlt:
+  //       "Wedding planning infographic with venue and catering statistics",
+  //   },
+  // ],
 };
 
 const BlogSection = () => {
@@ -46,8 +49,36 @@ const BlogSection = () => {
     ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }   // spacing when screen is small
     : { xs: 2, sm: 3, md: 2 , lg: 8, xl: 25}; // spacing when screen is large
   const router = useRouter();
+ const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+    
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await apiClient.get('/api/blogs/event');
+          console.log(response);
+        const data = response.data.blogs;
+        if (Array.isArray(data)) {
+          setPosts(data);
+        } else {
+          setPosts([]);
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+  // if (loading) return <CircularProgress sx={{ m: 5 }} />;
+  if (error) return <Typography color="error">Error: {error}</Typography>;
 
-    const handleNavigate = () => {
+  const sortedPosts = [...posts]
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 2);
+  const handleNavigate = () => {
       router.push('/subblog');
     };
 
@@ -97,10 +128,11 @@ const BlogSection = () => {
         <Grid container spacing={responsiveSpacing}
           alignItems={isBelow1150 ? 'center' : "center"}
           justifyContent={isBelow1150 ? 'center' : 'center'} sx={{ px: 0 }}>
-          {blogData.posts.map((post) => (
-            <Grid item xs={12} sm={8} md={6} key={post.id}>
+          {sortedPosts.map((post,idx) => (
+            <Grid item xs={12} sm={8} md={6} key={post._id || idx}>
               <Box sx={{ px: 0 }}>
-                <Card
+                <Card 
+                onClick={() => router.push(`/blog/${post._id}`)}
                   sx={{
                     width: { xs: "350px", sm: "400px", md: "460px", lg: "460px", xl: "460px" },
                     height: "auto",
@@ -124,12 +156,12 @@ const BlogSection = () => {
                     margin: "0 auto",
                   }}>
                     <Image
-                      src={post.image}
-                      alt={post.imageAlt}
+                      src={post.featuredImage?.url}
+                      alt={post.featuredImage?.altText}
                       fill
                       style={{
-              
-                        objectFit: "cover",
+                        objectPosition: "center",
+                        // objectFit: "cover",
                       }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
@@ -163,7 +195,7 @@ const BlogSection = () => {
                         mb: 1.5,
                         height: 24
                       }}>
-                      {post.category}
+                      {post.category?.name}
                     </Typography>
 
                     <Typography
@@ -180,7 +212,7 @@ const BlogSection = () => {
                         textAlign: "center",
                       }}
                     >
-                      {post.subtitle}
+                      {post.authorName}
                     </Typography>
                   </CardContent>
                 </Card>

@@ -17,7 +17,7 @@ export const SubBlog = () => {
           { href: '/', isHome: true },
            { href: '/blog', label: 'Blog' },
         //  { href: '/services', label: 'services' },
-          { href: '/subblog', label: 'Sub Blog page' }
+          { href: '/subblog', label: 'Blog details' }
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
