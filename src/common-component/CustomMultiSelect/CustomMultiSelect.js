@@ -37,7 +37,12 @@ export default function CustomMultiSelect({
   ...props
 }) {
   const theme = useTheme();
-
+    const getObjById = (id) => names.find(n => n._id === id);
+      const handleChange = (event) => {
+    const selectedIds = event.target.value;
+    const selectedObjs = selectedIds.map(id => getObjById(id)).filter(Boolean);
+    onChange(selectedObjs);
+  };
   return (
     <FormControl
       variant="outlined"
@@ -74,8 +79,8 @@ export default function CustomMultiSelect({
     >
       <Select
         multiple
-        value={value}
-        onChange={onChange}
+        value={value.map(obj=>obj._id)}
+        onChange={handleChange}
         input={<OutlinedInput />}
          renderValue={(selected) =>
           selected.length === 0 ? (
@@ -111,10 +116,10 @@ export default function CustomMultiSelect({
                 scrollbarColor: 'transparent',
               }}
             >
-              {selected.map((value) => (
+              {value.map((obj) => (
                 <Chip
-                  key={value}
-                  label={value}
+                  key={obj._id}
+                  label={obj.name}
                   sx={{
                     borderRadius: "30px",
                     height: 28,
@@ -176,12 +181,12 @@ export default function CustomMultiSelect({
       >
         {names.map((name) => (
           <MenuItem
-            key={name}
-            value={name}
-            style={getStyles(name, value, theme)}
+            key={name?._id}
+            value={name?._id}
+            style={getStyles(name._id, value.map(obj=>obj._id), theme)}
           >
-            <Box sx={{ flex: 1 }}>{name}</Box>
-            {value.includes(name) && (
+            <Box sx={{ flex: 1 }}>{name.name}</Box>
+            {value.some(obj =>obj._id === name._id) && (
               <CheckIcon color="success" fontSize="small" />
             )}
           </MenuItem>

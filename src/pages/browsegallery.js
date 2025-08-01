@@ -1,10 +1,10 @@
 import FilterGallery from '@/component/portfolio/FilterGallery'
 import React from 'react'
 
-const id = () => {
+const browsegallery = () => {
   return (
     <FilterGallery/>
   )
 }
 
-export default id
+export default browsegallery

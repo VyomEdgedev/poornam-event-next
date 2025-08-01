@@ -190,9 +190,9 @@ const Footer = () => {
                   { label: "Artist Management", href: "/services" },
                   { label: "Prewedding & Photography", href: "/services" },
                   { label: "Special Effects", href: "/services" },
-                ].map((item) => (
+                ].map((item,i) => (
                   <Link
-                    key={item.href}
+                    key={i}
                     href={item.href}
                     style={{ textDecoration: "none" }}
                   >
