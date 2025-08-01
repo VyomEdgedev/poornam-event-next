@@ -1,52 +1,85 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Typography, Grid, Card, CardContent, Box, Chip } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
+import { apiClient } from "@/lib/api-client";
 
 
-const weddingThemesData = [
-  {
-    id: 1,
-    tag: "Rajasthan",
-    image: "/show1.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Royal Rajasthani",
-    description: "A regal affair in royal palaces."
-  },
-  {
-    id: 2,
-    tag: "Beach",
-    image: "/show2.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Boho Beach",
-    description: "An elegant beach ceremony."
-  },
-  {
-    id: 3,
-    tag: "Modern",
-    image: "/show3.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Minimal Chic",
-    description: "Simplicity meets elegance."
-  }
-];
+// const weddingThemesData = [
+//   {
+//     id: 1,
+//     tag: "Rajasthan",
+//     image: "/show1.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Royal Rajasthani",
+//     description: "A regal affair in royal palaces."
+//   },
+//   {
+//     id: 2,
+//     tag: "Beach",
+//     image: "/show2.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Boho Beach",
+//     description: "An elegant beach ceremony."
+//   },
+//   {
+//     id: 3,
+//     tag: "Modern",
+//     image: "/show3.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Minimal Chic",
+//     description: "Simplicity meets elegance."
+//   }
+// ];
 const namesList = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
+  
+     "All",
+"Haldi",
+"Mehndi",
+"Sangeet",
+"Wedding",
+"Reception",
+"Engagement",
+"Bride & Groom",
+"Ceremonies",
+"Decor",
+"Photoshoot",
+];
+const staticDescriptions = [
+  "A regal affair in royal palaces.",
+  "An elegant beach ceremony.",
+  "Simplicity meets elegance."
 ];
 
 const ShowCase = () => {
-  
+  const [ themes, setThemes ] = useState();
+  const [loading, setLoading] = useState(true);
   const [selectedNames, setSelectedNames] = React.useState([]);
+console.log(themes);
+
+  useEffect(()=>{
+    const fetchThemes = async () => {
+      try{
+        const response = await apiClient.get('/api/portfolio/event');
+        console.log(response);
+        const data = response.data;
+        if(Array.isArray(data)){
+          setThemes(data);
+        }else{
+          setThemes([]);
+        }
+      }catch(error){
+        setError(error);
+      }finally{
+        setLoading(false);
+      }
+    }
+    fetchThemes();
+  },[])
+
+
+  
 const handleChange = (event) => {
     setSelectedNames(
       typeof event.target.value === 'string'
@@ -117,8 +150,12 @@ const handleChange = (event) => {
           
       </Box>
       <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
-        {weddingThemesData.map(({ id, tag, image, alt, title, description }) => (
-          <Grid item key={id} xs={12} sm={6} md={4}>
+        {loading? (
+          <Typography>Loading...</Typography>
+        ):(
+          themes?.map((item, idx) =>(
+
+          <Grid item key={item._id} xs={12} sm={6} md={4}>
             <Card
               sx={{
                 width: "100%",
@@ -132,7 +169,7 @@ const handleChange = (event) => {
               elevation={1}
             >
               <Chip
-                label={tag}
+                label={item.category?.name || "No Category"}
                 size="small"
                 sx={{ position: "absolute", top: 8, left: 8, backgroundColor: "#ddd", fontSize: 11, zIndex: 2 }}
               />
@@ -150,8 +187,8 @@ const handleChange = (event) => {
                 }}
               >
                 <Image
-                  src={image}
-                  alt={alt}
+                  src={item?.images[0]?.url}
+                  alt={item.category?.name || "No Tiltle"}
                   layout="fill"
                   objectFit="cover"
                 />
@@ -169,15 +206,16 @@ const handleChange = (event) => {
                       cursor: 'pointer'
                     }
                   }}>
-                  {title}
+                  {item.category?.name || "No Tiltle"}
                 </Typography>
                 <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem' } }}>
-                  {description}
+                  {staticDescriptions[idx] || "A beautiful wedding  monent."}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-        ))}
+          )
+          ))}
       </Grid>
     </Container>
   );
