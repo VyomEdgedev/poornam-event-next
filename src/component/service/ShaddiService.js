@@ -114,15 +114,14 @@ const HeroCard = styled(Card)(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
 
-const ServiceCard = styled(Card)(({ theme, isLastItem }) => ({
+const ServiceCard = styled(Card)(({ theme, isSelected }) => ({
   backgroundColor: "transparent",
   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  border: "1px solid #e0e0e0",
+  border: isSelected ? "1px solid #DAA412" : "1px solid #e0e0e0",
   borderRadius: "12px",
   width: "340px",
   height: "118px",
   display: "flex",
-
   flexDirection: "row",
   overflow: "hidden",
   alignItems: "center",
@@ -138,8 +137,6 @@ const ServiceCard = styled(Card)(({ theme, isLastItem }) => ({
     width: "100%",
     height: "auto",
     minHeight: "132px",
-    
-  
   },
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
@@ -338,9 +335,10 @@ const ShaddiService = () => {
               display="flex"
               justifyContent="center"
             >
-              <ServiceCard
-                onClick={() => setSelectedService(service)}
-              >
+                             <ServiceCard
+                 onClick={() => setSelectedService(service)}
+                 isSelected={selectedService?.id === service.id}
+               >
                 <ImageContainer>
                   <Image
                     src={service.image}

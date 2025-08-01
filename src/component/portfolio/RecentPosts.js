@@ -21,7 +21,7 @@ const postsData = [
     description: "Beautiful beach wedding setup",
     publishDate: "October 10, 2023",
     videoThumbnail: true,
-    image: "/recent.png" // ✅ image added
+    image: "/recent.png" 
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const postsData = [
     description: "Stunning garden flowers",
     publishDate: "October 5, 2023",
     videoThumbnail: true,
-    image: "/recent2.png" // ✅ image added
+    image: "/recent2.png" 
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const postsData = [
     description: "Rustic decor inspiration",
     publishDate: "September 20, 2023",
     videoThumbnail: true,
-    image: "/recent3.png" // ✅ image added
+    image: "/recent3.png" 
   }
 ];
 
