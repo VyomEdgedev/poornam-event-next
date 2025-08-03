@@ -60,10 +60,20 @@ const Subtext = () => {
               lineHeight: "1.5",
               fontFamily: "Akatab,Sans-serif",
               "& *": {
-                fontFamily: "Akatab, Sans-serif", // All children will inherit this font
+                fontFamily: "Akatab, Sans-serif",
               },
-              "&  h1, & h2, & h3, & h4 ": {
+              "&  h1, ": {
                 fontFamily: "Gloock, serif",
+                fontWeight: 400,
+                color: "#000D1F",
+              },
+              "& h2 & h3, & h4 ": {
+                fontFamily: "Akatab,Sans-serif",
+                fontWeight: 600,
+                color: "#000D1F",
+              },
+              "&   & h5, & h6 , & p ": {
+                fontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 color: "#000D1F",
               },

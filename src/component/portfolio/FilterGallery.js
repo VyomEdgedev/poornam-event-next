@@ -53,8 +53,8 @@ const FilterGallery = () => {
       const filterParam = router.query.filter || "all";
       const filterIds = filterParam.split(",");
       
-      console.log("FilterGallery - URL filter param:", filterParam);
-      console.log("FilterGallery - Filter IDs:", filterIds);
+      // console.log("FilterGallery - URL filter param:", filterParam);
+      // console.log("FilterGallery - Filter IDs:", filterIds);
       
       if (filterIds.includes("all")) {
         setSelectedFilters([{ _id: "all", name: "All" }]);
@@ -92,7 +92,7 @@ const handleFilterChange = (selectedObjs) => {
   const otherSelections = selectedObjs.filter(obj => obj._id !== "all");
   
   if (hasAll && otherSelections.length > 0) {
-    // Remove "All" and keep only other selections
+    
     const finalSelection = otherSelections;
     setSelectedFilters(finalSelection);
     setThemes(
@@ -103,12 +103,12 @@ const handleFilterChange = (selectedObjs) => {
     const filterQuery = finalSelection.map(obj => obj._id).join(",");
     router.replace(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`, undefined, { shallow: true });
   } else if (hasAll) {
-    // Only "All" is selected
+
     setSelectedFilters([{_id:"all", name:"All"}]);
     setThemes(allThemes);
     router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
   } else {
-    // Only specific categories are selected
+   
     setSelectedFilters(selectedObjs);
     setThemes(
       allThemes.filter((item) =>
@@ -133,7 +133,7 @@ const handleFilterChange = (selectedObjs) => {
               { href: "/gallery", label: "Gallery" },
           { href: "/browsegallery", label: "Browse Gallery" },
             ]}
-            // Optional: customize breadcrumbs position
+          
             breadcrumbsPosition={{
               top: "400px",
               left: "43px",
@@ -177,7 +177,7 @@ const handleFilterChange = (selectedObjs) => {
       >
         {`Highlighting exquisite captures from different weddings.`}
       </Typography>
-      <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">|
+      <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
         <CustomMultiSelect
       names={categories}
       value={selectedFilters}
