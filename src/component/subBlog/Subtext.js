@@ -72,13 +72,25 @@ const Subtext = () => {
                 fontWeight: 600,
                 color: "#000D1F",
               },
+              "& h3, & h4 ": {
+                fontSize: { xs: "20px", sm: "22px", md: "28px" },
+              },
+
               "&   & h5, & h6 , & p ": {
                 fontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 color: "#000D1F",
+                // fontSize: { xs: "16px", sm: "18px", md: "22px" },
+              },
+              "&  p ": {
+                fontFamily: "Akatab,Sans-serif",
+                fontWeight: 400,
+                color: "#000D1F",
+                fontSize:{xs:"16px", sm:"16px", md:"16px", lg:"18px"}
               },
               "& ul, & ol": {
-                paddingLeft: "25px",
+                paddingLeft: "50px",
+                fontSize: { xs: "16px", sm: "16px", md: "18px" },
               },
             }}
             dangerouslySetInnerHTML={{ __html: description }}
