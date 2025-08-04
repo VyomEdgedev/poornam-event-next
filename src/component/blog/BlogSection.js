@@ -79,7 +79,7 @@ const BlogSection = () => {
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 2);
   const handleNavigate = () => {
-      router.push('/subblog');
+      router.push('#');
     };
 
   return (

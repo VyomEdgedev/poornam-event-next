@@ -112,7 +112,7 @@ export default function CustomMultiSelect({
                   background: 'none',
                   borderRadius: 2,
                 },
-                scrollbarWidth: 'thin',
+                scrollbarWidth: 'none',
                 scrollbarColor: 'transparent',
               }}
             >
