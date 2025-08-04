@@ -1,5 +1,6 @@
+import Service from '@/component/service'
 import React from 'react'
-import Service from '../component/service'
+
 const services = () => {
   return (
     <>

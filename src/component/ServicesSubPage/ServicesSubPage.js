@@ -1,6 +1,6 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WhyChoose from "./WhyChoose";
 import YourDream from "./YourDream";
 import WeOffer from "./WeOffer";
@@ -10,8 +10,14 @@ import { Box, Stack } from "@mui/material";
 import CapturedMoments from "./CapturedMoments";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import { useRouter } from "next/router";
+import { apiClient } from "@/lib/api-client";
 
 function ServicesSubPage() {
+  const router = useRouter();
+  const { uid } = router.query;
+  const [service, setService] = useState(null);
+
   const [open, setOpen] = useState(false);
   const handleWeddingPlan = () => {
     // Add your navigation or action logic here
@@ -46,13 +52,37 @@ function ServicesSubPage() {
         " Of course! In fact, we make them even more fun with interactive setups and cozy vibe-focused entertainment.",
     },
   ];
-
+useEffect(() => {
+    if (!uid) return;
+    
+    const fetchService = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        console.log("Fetching service with uid:", uid);
+        const response = await apiClient.get(`/api/service/AllServicePages/event/${uid}`);
+        console.log("API Response:", response);
+        setService(response.data[0]);
+      } catch (err) {
+        console.error("Error fetching service:", err);
+        setError(err.message || "Failed to fetch service");
+        setService(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchService();
+  }, [uid]);
+  const title = service?.title ||"Service";
+  const description = service?.meta?.description || "Service Description" ;
+  const bannerImage = service?.featuredImage?.url ||"/serviceSPBanner.png";
   return (
     <>
       <CustomBanner
-        title="Destination Weddings."
+        title={title}
         // subtitle="From planning to 'I do', we' ve got your back!"
-        paragraphSubtitle="From the palaces of Udaipur to the beaches of Goa, Poornam Events plans Usforgettable destination weddings that look royal, feel intimate , and run like clockwork."
+        paragraphSubtitle={description}
         backgroundImage="/serviceSPBanner.png"
         showLogo={true}
         logoSrc="/logo.png"
@@ -60,7 +90,7 @@ function ServicesSubPage() {
           { href: "/", isHome: true },
           // { href: '/blog', label: 'Blog' },
           { href: "/services", label: "services" },
-          { href: "/servicessubpage", label: "Destination Wedding" },
+          { href: `/services/${uid}`, label: title },
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
@@ -134,9 +164,9 @@ function ServicesSubPage() {
 
         <WhyPoornam />
       {/* </Box> */}
-      <CapturedMoments></CapturedMoments>
+      {/* <CapturedMoments></CapturedMoments>
       <YourDream></YourDream>
-      <WeddingKit></WeddingKit>
+      <WeddingKit></WeddingKit> */}
       <FAQSection faqData={myFAQData} />;
     </>
   );

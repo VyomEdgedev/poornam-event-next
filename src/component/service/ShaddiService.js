@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "@/common-component/button/CustomButton";
 import { Card, Grid, Typography, styled, Box } from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { apiClient } from "@/lib/api-client";
 
 const servicesData = {
   hero: {
@@ -13,80 +14,80 @@ const servicesData = {
     buttonText: "Learn More",
   },
   services: [
-    {
-      id: 1,
-      image: "/serviceimg2.png",
-      title: "Destination Weddings",
-      description: "Shaadi + Vacation = Best Decision Ever",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 2,
-      image: "/serviceimg3.png",
-      title: "Themed & Designer Weddings",
-      description:
-        "Vintage Bollywood? Royal Rajput? We say YES to all the drama.",
-        gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 3,
-      image: "/serviceimg4.png",
-      title: "Full Wedding Planning",
-      description: "Don't lift a finger. We'll plan the entire shaadi.",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 4,
-      image: "/serviceimg5.png",
-      title: "Intimate Weddings",
-      description: "50 guests. 500 memories. 0 stress.",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 5,
-      image: "/serviceimg6.png",
-      title: "Wedding Day Coordination",
-      description:
-        "Because you don't want to be managing the DJ during your own varmala.",
-        gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 6,
-      image: "/serviceimg7.png",
-      title: "Food and Beverages",
-      description: "More than just pretty flowers.",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 7,
-      image: "/serviceimg6.png",
-      title: "Artist Management",
-      description: "Don't lift a finger. We'll plan the entire shaadi.",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 8,
-      image: "/serviceimg4.png",
-      title: "Prewedding & Photography",
-      description:
-        "Because you don't want to be managing the DJ during your own varmala.",
-       gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 9,
-      image: "/serviceimg9.png",
-      title: "Guest Hospitality & Logistics",
-      description: "Because a happy guest = a happy shaadi.",
-      gridProps: { xs: 12, sm: 6, md: 4 }
-    },
-    {
-      id: 10,
-      image: "/serviceimg5.png",
-      title: "Special Effects",
-      description:
-        "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
-        gridProps: { xs: 12, sm: 12, md: 12 }
-    },
+    // {
+    //   id: 1,
+    //   image: "/serviceimg2.png",
+    //   title: "Destination Weddings",
+    //   description: "Shaadi + Vacation = Best Decision Ever",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 2,
+    //   image: "/serviceimg3.png",
+    //   title: "Themed & Designer Weddings",
+    //   description:
+    //     "Vintage Bollywood? Royal Rajput? We say YES to all the drama.",
+    //     gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 3,
+    //   image: "/serviceimg4.png",
+    //   title: "Full Wedding Planning",
+    //   description: "Don't lift a finger. We'll plan the entire shaadi.",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 4,
+    //   image: "/serviceimg5.png",
+    //   title: "Intimate Weddings",
+    //   description: "50 guests. 500 memories. 0 stress.",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 5,
+    //   image: "/serviceimg6.png",
+    //   title: "Wedding Day Coordination",
+    //   description:
+    //     "Because you don't want to be managing the DJ during your own varmala.",
+    //     gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 6,
+    //   image: "/serviceimg7.png",
+    //   title: "Food and Beverages",
+    //   description: "More than just pretty flowers.",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 7,
+    //   image: "/serviceimg6.png",
+    //   title: "Artist Management",
+    //   description: "Don't lift a finger. We'll plan the entire shaadi.",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 8,
+    //   image: "/serviceimg4.png",
+    //   title: "Prewedding & Photography",
+    //   description:
+    //     "Because you don't want to be managing the DJ during your own varmala.",
+    //    gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 9,
+    //   image: "/serviceimg9.png",
+    //   title: "Guest Hospitality & Logistics",
+    //   description: "Because a happy guest = a happy shaadi.",
+    //   gridProps: { xs: 12, sm: 6, md: 4 }
+    // },
+    // {
+    //   id: 10,
+    //   image: "/serviceimg5.png",
+    //   title: "Special Effects",
+    //   description:
+    //     "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
+    //     gridProps: { xs: 12, sm: 12, md: 12 }
+    // },
   ],
 };
 
@@ -258,19 +259,17 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
 
 function highlightSpecificWords(text, keywords) {
   const regex = new RegExp(`(${keywords.join("|")})`, "gi");
-  // text ko split karo, jo matching part ho usko wrap karo span se color ke liye
   const parts = text.split(regex);
-
   return parts.map((part, index) => {
     if (keywords.some((word) => word.toLowerCase() === part.toLowerCase())) {
-      // Match hua to color change kar do
+     
       return (
         <span key={index} style={{ color: "#DAA520", fontWeight: "bold" }}>
           {part}
         </span>
       );
     }
-    // Baaki normal text waisa hi
+
     return part;
   });
 }
@@ -281,10 +280,43 @@ function trimText(text, maxLength = 100) {
 const ShaddiService = () => {
   const router = useRouter();
   const [selectedService, setSelectedService] = useState(null);
-  const handleNavigate = () => {
-    router.push("/servicessubpage");
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const 
+  handleNavigate = (uid) => {
+    console.log(uid, "uid");
+    router.push(`/services/${uid}`);
   };
 
+useEffect (() => {
+  const fetchServices = async () => {
+    try {
+      const response = await apiClient.get("api/service/AllServicePages/event");
+      console.log(response,"response");
+      const data = response.data; 
+      if (Array.isArray(data)) {
+
+        const formattedServices = data.map((item, idx) => ({
+          id: item._id || idx,
+          image: item.featuredImage?.url || "/default.png",
+          title: item.meta?.title || "No Title",
+          description: item.meta?.description || "No Description",
+          gridProps: { xs: 12, sm: 6, md: 4 },
+          uid: item.uid
+        }));
+        setServices(formattedServices);
+      } else {
+        setServices([]);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchServices();
+},[]);
   return (
     <MainContainer sx={{ py: { xs: 4, md: 8 }, px: { xs: 4, md: 8 } }}>
       <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
@@ -305,17 +337,16 @@ const ShaddiService = () => {
           <Grid item xs={12} md={4}>
             <HeroContent>
               <HeroTitle>
-                {" "}
-                {selectedService
-                  ? selectedService.title
-                  : servicesData.hero.title}
-              </HeroTitle>
+          {selectedService
+            ? selectedService.title
+            : services[0]?.title || servicesData.hero.title}
+        </HeroTitle>
               <HeroDescription>
                 {selectedService
                    ? trimText(selectedService.description, 100)
     : trimText(servicesData.hero.description, 100)}
               </HeroDescription>
-              <CustomButton onClick={handleNavigate}>
+              <CustomButton onClick={() =>  {handleNavigate(services[0]?.uid)}} >
                 {servicesData.hero.buttonText}
               </CustomButton>
             </HeroContent>
@@ -325,45 +356,43 @@ const ShaddiService = () => {
 
       {/* Services Grid */}
       <Grid container spacing={2} justifyContent={{ xs: "center", md: "start" }}>
-        {servicesData.services.map((service) => {
-          
-           return (
-          <Grid
-              item
-              key={service.id}
-              {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
-              display="flex"
-              justifyContent="center"
-            >
-                             <ServiceCard
-                 onClick={() => setSelectedService(service)}
-                 isSelected={selectedService?.id === service.id}
-               >
-                <ImageContainer>
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    width={100}
-                    height={125}
-                  />
-                </ImageContainer>
-                <ServiceContent>
-                  <ServiceTitle>{service.title}</ServiceTitle>
-                  <ServiceDescription>
-                    {highlightSpecificWords(service.description, [
-                      "Vintage",
-                      "Bollywood",
-                      "Royal",
-                      "Rajput",
-                      "YES",
-                    ])}
-                  </ServiceDescription>
-                </ServiceContent>
-              </ServiceCard>
-            </Grid>
-          );
-        })}
-      </Grid>
+  {(services.length ? services : servicesData.services).map((service)  => (
+    <Grid
+      item
+      key={service.id}
+      //  onClick={() => {handleNavigate(service.uid)}}
+      {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
+      display="flex"
+      justifyContent="center"
+    >
+      <ServiceCard
+        onClick={() => setSelectedService(service)}
+        isSelected={selectedService?.id === service.id}
+      >
+        <ImageContainer>
+          <Image
+            src={service.image}
+            alt={service.title}
+            width={100}
+            height={125}
+          />
+        </ImageContainer>
+        <ServiceContent>
+          <ServiceTitle>{service.title}</ServiceTitle>
+          <ServiceDescription>
+            {highlightSpecificWords(service.description, [
+              "Vintage",
+              "Bollywood",
+              "Royal",
+              "Rajput",
+              "YES",
+            ])}
+          </ServiceDescription>
+        </ServiceContent>
+      </ServiceCard>
+    </Grid>
+  ))}
+</Grid>
       {/* <Grid container spacing={2} sx={{ mt: 0 }}>
   <Grid
     item
