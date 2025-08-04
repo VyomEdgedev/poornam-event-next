@@ -373,12 +373,13 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useRouter } from 'next/router';
 
 const PortfolioSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-
+  const router = useRouter();
   // Images
   const portfolioImages = [
     {
@@ -421,6 +422,9 @@ const PortfolioSection = () => {
   const handleOpenModal = (index) => {
     setCurrentIndex(index);
     setOpen(true);
+  };
+  const handlegallery = () => {
+    router.push('/gallery')
   };
 
   const handleCloseModal = () => setOpen(false);
@@ -523,7 +527,7 @@ const PortfolioSection = () => {
           <PortfolioImage 
             src={portfolioImages[0].src} 
             alt={portfolioImages[0].alt} 
-            // onClick={() => handleOpenModal(0)} // Uncomment if you want image click to open modal
+            onClick={() => handleOpenModal(0)} // Uncomment if you want image click to open modal
           />
 
           {/* Middle Column */}
@@ -539,7 +543,7 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[1].src} 
               alt={portfolioImages[1].alt} 
-              // onClick={() => handleOpenModal(1)}
+              onClick={() => handleOpenModal(1)}
             />
             
             {/* Bottom section - Two small boxes */}
@@ -554,12 +558,12 @@ const PortfolioSection = () => {
               <PortfolioImage 
                 src={portfolioImages[2].src} 
                 alt={portfolioImages[2].alt} 
-                // onClick={() => handleOpenModal(2)}
+                onClick={() => handleOpenModal(2)}
               />
               <PortfolioImage 
                 src={portfolioImages[3].src} 
                 alt={portfolioImages[3].alt} 
-                // onClick={() => handleOpenModal(3)}
+                onClick={() => handleOpenModal(3)}
               />
             </Box>
           </Box>
@@ -576,20 +580,22 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
-              // onClick={() => handleOpenModal(4)}
+              onClick={() => handleOpenModal(4)}
             />
             
             <PortfolioImage 
               src={portfolioImages[5].src} 
               alt={portfolioImages[5].alt} 
+              // onClick={() => handleOpenModal(5)}
             >
               <Button
                 data-testid="notify-button"
-                onClick={() => handleOpenModal(5)}
+                onClick={() => handlegallery()}
                 sx={{
                   position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
                   backgroundColor: "#000000", color:"#FFFFFF" , 
-                  width:{ xs: '100%', sm: '290px' , md: '210px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '16px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'
+
+                  width:{ xs: '100%', sm: '290px' , md: '210px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '16px', md: '15px', lg: '16px', xl: '16px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'
                 }}
                 zIndex={5}
               >
@@ -615,7 +621,7 @@ const PortfolioSection = () => {
           <PortfolioImage 
             src={portfolioImages[0].src} 
             alt={portfolioImages[0].alt} 
-            // onClick={() => handleOpenModal(0)}
+            onClick={() => handleOpenModal(0)}
           />
 
           {/* Right side - Grid of smaller images */}
@@ -631,23 +637,38 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[1].src} 
               alt={portfolioImages[1].alt} 
-              // onClick={() => handleOpenModal(1)}
+              onClick={() => handleOpenModal(1)}
             />
             <PortfolioImage 
               src={portfolioImages[2].src} 
               alt={portfolioImages[2].alt} 
-              // onClick={() => handleOpenModal(2)}
+              onClick={() => handleOpenModal(2)}
             />
             <PortfolioImage 
               src={portfolioImages[3].src} 
               alt={portfolioImages[3].alt} 
-              // onClick={() => handleOpenModal(3)}
+              onClick={() => handleOpenModal(3)}
             />
             <PortfolioImage 
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
-              // onClick={() => handleOpenModal(4)}
-            />
+              onClick={() => handleOpenModal(4)}
+            >
+              <Button
+                data-testid="notify-button"
+                onClick={() => handlegallery()}
+                sx={{
+                  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                  backgroundColor: "#000000", color:"#FFFFFF" , 
+                  padding: { xs: '10px 16px', sm: '10px 20px', md: '10px 22px' },
+                  width:{ xs: '100%', sm: '140px' , md: '220px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '13px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'
+                }}
+                zIndex={5}
+              >
+                View Full Wedding Stories
+              </Button>
+            </PortfolioImage>
+            
           </Box>
         </Box>
 
@@ -664,7 +685,7 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[0].src} 
               alt={portfolioImages[0].alt} 
-              // onClick={() => handleOpenModal(0)}
+              onClick={() => handleOpenModal(0)}
             />
           </Box>
 
@@ -681,12 +702,12 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[1].src} 
               alt={portfolioImages[1].alt} 
-              // onClick={() => handleOpenModal(1)}
+              onClick={() => handleOpenModal(1)}
             />
             <PortfolioImage 
               src={portfolioImages[2].src} 
               alt={portfolioImages[2].alt} 
-              // onClick={() => handleOpenModal(2)}
+              onClick={() => handleOpenModal(2)}
             />
           </Box>
 
@@ -702,13 +723,27 @@ const PortfolioSection = () => {
             <PortfolioImage 
               src={portfolioImages[3].src} 
               alt={portfolioImages[3].alt} 
-              // onClick={() => handleOpenModal(3)}
+              onClick={() => handleOpenModal(3)}
             />
             <PortfolioImage 
               src={portfolioImages[4].src} 
               alt={portfolioImages[4].alt} 
-              // onClick={() => handleOpenModal(4)}
-            />
+              onClick={() => handleOpenModal(4)}
+            >
+               <Button
+                data-testid="notify-button"
+                onClick={() => handlegallery()}
+                sx={{
+                  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                  backgroundColor: "#000000", color:"#FFFFFF" , 
+                  padding: { xs: '10px 16px', sm: '10px 20px', md: '10px 22px' },
+                  width:{ xs: '140px', sm: '140px' , md: '220px', lg: '290px', xl: '290px'}, borderRadius: 50, height: '55px', fontSize: { xs: '12px', sm: '13px'}, fontFamily: "Akatab,Sans-serif",fontWeight: '500' , textTransform: 'capitalize'
+                }}
+                zIndex={5}
+              >
+                View Full  <br />Wedding Stories
+              </Button>
+            </PortfolioImage>
           </Box>
         </Box>
       </Container>
