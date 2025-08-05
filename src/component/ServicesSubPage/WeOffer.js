@@ -1,67 +1,104 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
+import { apiClient } from '@/lib/api-client';
 
-function WeOffer() {
+// JSON data structure for WeOffer services
+const weOfferData = [
+  {
+    id: 1,
+    icon: "/WeOffer1.svg",
+    title: "Venue Selection",
+    description: "We help you find the perfect venue."
+  },
+  {
+    id: 2,
+    icon: "/WeOffer2.svg",
+    title: "Catering Services",
+    description: "Exquisite menus tailored for your taste."
+  },
+  {
+    id: 3,
+    icon: "/WeOffer3.svg",
+    title: "Decor & Design",
+    description: "Transforming spaces into magical venues."
+  },
+  {
+    id: 4,
+    icon: "/WeOffer4.svg",
+    title: "Entertainment",
+    description: "Live bands, DJs, performers, and more."
+  },
+  {
+    id: 5,
+    icon: "/WeOffer5.svg",
+    title: "Transportation",
+    description: "Seamless transfers for you and your guests."
+  },
+  {
+    id: 6,
+    icon: "/WeOffer6.svg",
+    title: "Wedding Coordination",
+    description: "On-the-day management for peace of mind"
+  },
+  {
+    id: 7,
+    icon: "/WeOffer7.svg",
+    title: "Photography & Videography",
+    description: "Capturing every moment beautifully."
+  },
+  {
+    id: 8,
+    icon: "/WeOffer8.svg",
+    title: "Guest Management",
+    description: "RSVPs and guest accommodations handled."
+  }
+];
+
+function WeOffer({serviceId}) {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+useEffect(() => {
+  const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const response = await apiClient.get(`api/service/getServicePageById/${serviceId}/event`);
+        let categoryArr;
+        if (Array.isArray(response.data.serviceCategory)) {
+          categoryArr = response.data.serviceCategory;
+        } else if (response.data.serviceCategory) {
+          
+          categoryArr = [response.data.serviceCategory];
+        }
+        setCategories(categoryArr);
+      } catch (err) {
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+   fetchCategories();
+  }, [serviceId]);
+
     return (
          <Box
                 sx={{
                   px: { xs: 2, sm: 1, md: 1, lg: 15, xl: 28 },
                   py: { xs: 4, sm: 6, md: 8 },
-                              bgcolor: "#FFF7E4"
+                    bgcolor: "#FFF7E4"
                 }}
               >
         <Box textAlign="center"
         px={{xs : "5%", sm:"10%", md: "15%"}} >
             <Typography sx={{
-                fontSize: { xs: "2rem", sm: "2rem", md: "2.1rem" }
+                fontSize: { xs: "32px", sm: "32px", md: "34px" }
                 , fontFamily: "Gloock"
             }}>
                 {`What's inside Your 'Shaadi ka Pitara'?`}</Typography>
-            <Grid container
-                display="flex"
-                justifyContent="space-evenly"
-                justifyItems="center"
-                padding="20px"
-                sx={{ gap: 5 }}>
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3} >
-                        <Box textAlign="center" >
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer1.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{   frontFamily: "Akatab,Sans-serif", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                    {`Venue Selection`} </Typography>
-                                <Typography variant="body2"  color="text.primary" sx={{ width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"},   frontFamily: "Akatab,Sans-serif", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                    {`We help you find the perfect venue.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
+            
+            <Grid container spacing={4} justifyContent="center" sx={{ mt: 3 }}>
+                {categories.map((service, index) => (
+                    <Grid item xs={12} sm={6} md={3} key={service.id || index} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box textAlign="center">
                             <Box
                                 sx={{
@@ -72,263 +109,42 @@ function WeOffer() {
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
+                                    margin: '0 auto',
                                 }}
                             >
                                 <Image
-                                    src="/WeOffer2.svg"
-                                    alt="Centered Icon"
+                                    src={service.image?.url || "/Weoffer1.svg"}
+                                    alt={service.name}
                                     width={40}
                                     height={40}
                                     objectFit="contain"
                                 />
                             </Box>
                             <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                  {`  Catering Services`}</Typography>
-                                <Typography variant="body2" color="text.primary" sx={{ width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"}, fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                   {` Exquisite menus tailored for your taste.`}
+                                <Typography 
+                                    fontWeight={600} 
+                                    sx={{ 
+                                        fontFamily: "Akatab,Sans-serif", 
+                                        fontSize: { xs: "13px", sm: "13px", md: "13px" } 
+                                    }}
+                                >
+                                    {service.name}
+                                </Typography>
+                                <Typography 
+                                    variant="body2" 
+                                    color="text.primary" 
+                                    sx={{ 
+                                        width: {xs:"100%", sm:"180px", md:"200px", lg:"100%"}, 
+                                        fontFamily: "Akatab,Sans-serif", 
+                                        fontSize: { xs: "16px", sm: "16px", md: "16px" } 
+                                    }}
+                                >
+                                    {service.description}
                                 </Typography>
                             </Box>
-
                         </Box>
                     </Grid>
-                </Grid>
-            </Grid>
-            <Grid container
-                display="flex"
-                justifyContent="space-evenly"
-                justifyItems="center"
-                padding="20px"
-                sx={{ gap: 5 }}>
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer3.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                  {`  Decor & Design`} </Typography>
-                                <Typography variant="body2" color="text.primary" sx={{width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"}, fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                   {` Transforming spaces into magical venues.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer4.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                   {` Entertainment `}</Typography>
-                                <Typography variant="body2" color="text.primary" sx={{ width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"},fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                   {` Live bands, DJs, performers, and more.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid container
-                display="flex"
-                justifyContent="space-evenly"
-                justifyItems="center"
-                padding="20px"
-                sx={{ gap: 5 }}>
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer5.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                  {`  Transportation`} </Typography>
-                                <Typography variant="body2" color="text.primary" sx={{width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"}, fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" }, width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"}}}>
-                                   {` Seamless transfers for ou and your guests.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer6.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "5px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                  {`  Wedding Coordination`} </Typography>
-                                <Typography variant="body2" color="text.primary" sx={{width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"},  fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                  {`  On-the-day management for peace of mind`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid container
-                display="flex"
-                justifyContent="space-evenly"
-                justifyItems="center"
-                padding="20px"
-                sx={{ gap: 6 }}>
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer7.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                   {` Photography & Videography`}</Typography>
-                                <Typography variant="body2" color="text.primary" sx={{width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"}, fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                    {`Captuing every moment beautifully.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box textAlign="center">
-                            <Box
-                                sx={{
-                                    width: 80,
-                                    height: 80,
-                                    borderRadius: '50%',
-                                    border: '2px solid #DAA412',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: '0 auto', // centers the circle itself
-
-                                }}
-                            >
-                                <Image
-                                    src="/WeOffer8.svg"
-                                    alt="Centered Icon"
-                                    width={40}
-                                    height={40}
-                                    objectFit="contain"
-                                />
-                            </Box>
-                            <Box sx={{ padding: "10px" }}>
-                                <Typography fontWeight={600} sx={{ fontFamily: "Akatab", fontSize: { xs: "0.8rem", sm: "0.8rem", md: "0.8rem" } }}>
-                                   {` Guest Management`}</Typography>
-                                <Typography variant="body2" color="text.primary" sx={{ width:{xs:"100%", sm:"180px",md:"200px", lg:"100%"},fontFamily: "Akatab", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
-                                  {`RSVPs and guest accommodations handled.`}
-                                </Typography>
-                            </Box>
-
-                        </Box>
-                    </Grid>
-                </Grid>
+                ))}
             </Grid>
         </Box>
     </Box>
