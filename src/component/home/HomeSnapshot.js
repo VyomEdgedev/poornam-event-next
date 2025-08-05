@@ -47,7 +47,7 @@ export default function   Snapshot() {
         <SnapshotCard 
         
           avatarSrc="/logo.png"
-          title="Poornam"
+          title="Poornam Events"
           Subtitles="2 days ago at Udaipur"
           imageSrc="/snapshot.jpg"
           caption="Every detail was perfectly curated!"

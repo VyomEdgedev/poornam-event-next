@@ -3,7 +3,8 @@ import { color } from 'framer-motion'
 import React from 'react'
 
 
-const WhyChoose = () => {
+const WhyChoose = ({ title }) => {
+
     return (
         <Box
          px={{xs : "5%", sm:"10%", md: "14%"}} 
@@ -26,7 +27,7 @@ const WhyChoose = () => {
         />
         <Box sx={{ textAlign: "left" }} >
             <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.1rem" }, fontFamily: "Gloock,Sans-serif" }}>
-                {`Destination Wedding with Poornam?`}</Typography>
+                {`${title} with Poornam?`}</Typography>
             <Typography sx={{ frontFamily: "Akatab,Sans-serif", fontSize: { xs: "1rem", sm: "1rem", md: "1rem" } }}>
                 {`Weddings are once-in-a-lifetime. So why settle for a banquet hall when you can say "I do" by the sea, in the hills, or under a palace dome?
                         A destination wedding isn't just a ceremony. It's a celebration + vacation + reunion + memory factory. And with Poornam Events handling every detail – it becomes effortless magic.`}

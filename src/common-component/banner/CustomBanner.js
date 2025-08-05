@@ -470,8 +470,9 @@ const CustomBanner = ({
 
       {/* Logo */}
       {showLogo && logoSrc && (
+        <Link href="/" style={{ display: "block" }}>
         <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
-          <Link href="/" style={{ display: "block" }}>
+          
             <Image
               src={logoSrc}
               alt={logoAlt}
@@ -479,8 +480,9 @@ const CustomBanner = ({
               height={500} // You can adjust
               style={{ width: "100%", height: "auto" }}
             />
-          </Link>
+          
         </LogoContainer>
+        </Link>
       )}
 
       {/* Main Content */}

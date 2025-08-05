@@ -17,7 +17,8 @@ function ServicesSubPage() {
   const router = useRouter();
   const { uid } = router.query;
   const [service, setService] = useState(null);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); 
   const [open, setOpen] = useState(false);
   const handleWeddingPlan = () => {
     // Add your navigation or action logic here
@@ -53,16 +54,15 @@ function ServicesSubPage() {
     },
   ];
 useEffect(() => {
-    if (!uid) return;
-    
+    // if (!uid) return;
     const fetchService = async () => {
       setLoading(true);
       setError(null);
       try {
         console.log("Fetching service with uid:", uid);
-        const response = await apiClient.get(`/api/service/AllServicePages/event/${uid}`);
+        const response = await apiClient.get(`api/service/getServicePageById/6890870b66eb7d1031848759/event`);
         console.log("API Response:", response);
-        setService(response.data[0]);
+        setService(response.data);
       } catch (err) {
         console.error("Error fetching service:", err);
         setError(err.message || "Failed to fetch service");
@@ -159,14 +159,14 @@ useEffect(() => {
           //             // bgcolor: '#f8f9fa'
         }}
       > */}
-        <WhyChoose />
-        <WeOffer />
+        <WhyChoose title={title}/>
+        <WeOffer  serviceId={service?._id}/>
 
         <WhyPoornam />
       {/* </Box> */}
-      {/* <CapturedMoments></CapturedMoments>
+    <CapturedMoments title={title} />
       <YourDream></YourDream>
-      <WeddingKit></WeddingKit> */}
+      <WeddingKit></WeddingKit>
       <FAQSection faqData={myFAQData} />;
     </>
   );

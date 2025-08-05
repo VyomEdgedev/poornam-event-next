@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
+import { apiClient } from '@/lib/api-client';
 
 // JSON data structure for WeOffer services
 const weOfferData = [
@@ -54,7 +55,31 @@ const weOfferData = [
   }
 ];
 
-function WeOffer() {
+function WeOffer({serviceId}) {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+useEffect(() => {
+  const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const response = await apiClient.get(`api/service/getServicePageById/${serviceId}/event`);
+        let categoryArr;
+        if (Array.isArray(response.data.serviceCategory)) {
+          categoryArr = response.data.serviceCategory;
+        } else if (response.data.serviceCategory) {
+          
+          categoryArr = [response.data.serviceCategory];
+        }
+        setCategories(categoryArr);
+      } catch (err) {
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+   fetchCategories();
+  }, [serviceId]);
+
     return (
          <Box
                 sx={{
@@ -72,8 +97,8 @@ function WeOffer() {
                 {`What's inside Your 'Shaadi ka Pitara'?`}</Typography>
             
             <Grid container spacing={4} justifyContent="center" sx={{ mt: 3 }}>
-                {weOfferData.map((service, index) => (
-                    <Grid item xs={12} sm={6} md={3} key={service.id} sx={{ display: 'flex', justifyContent: 'center' }}>
+                {categories.map((service, index) => (
+                    <Grid item xs={12} sm={6} md={3} key={service.id || index} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box textAlign="center">
                             <Box
                                 sx={{
@@ -88,8 +113,8 @@ function WeOffer() {
                                 }}
                             >
                                 <Image
-                                    src={service.icon}
-                                    alt={service.title}
+                                    src={service.image?.url || "/Weoffer1.svg"}
+                                    alt={service.name}
                                     width={40}
                                     height={40}
                                     objectFit="contain"
@@ -103,7 +128,7 @@ function WeOffer() {
                                         fontSize: { xs: "13px", sm: "13px", md: "13px" } 
                                     }}
                                 >
-                                    {service.title}
+                                    {service.name}
                                 </Typography>
                                 <Typography 
                                     variant="body2" 
