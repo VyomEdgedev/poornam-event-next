@@ -18,7 +18,7 @@ function ServicesSubPage() {
   const { uid } = router.query;
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); 
+  const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const handleWeddingPlan = () => {
     // Add your navigation or action logic here
@@ -53,15 +53,15 @@ function ServicesSubPage() {
         " Of course! In fact, we make them even more fun with interactive setups and cozy vibe-focused entertainment.",
     },
   ];
-useEffect(() => {
+  useEffect(() => {
     // if (!uid) return;
     const fetchService = async () => {
       setLoading(true);
       setError(null);
       try {
-        console.log("Fetching service with uid:", uid);
-        const response = await apiClient.get(`api/service/getServicePageById/6890870b66eb7d1031848759/event`);
-        console.log("API Response:", response);
+        const response = await apiClient.get(
+          `api/service/getServicePageById/6890870b66eb7d1031848759/event`
+        );
         setService(response.data);
       } catch (err) {
         console.error("Error fetching service:", err);
@@ -71,12 +71,12 @@ useEffect(() => {
         setLoading(false);
       }
     };
-    
+
     fetchService();
   }, [uid]);
-  const title = service?.title ||"Service";
-  const description = service?.meta?.description || "Service Description" ;
-  const bannerImage = service?.featuredImage?.url ||"/serviceSPBanner.png";
+  const title = service?.title || "Service";
+  const description = service?.meta?.description || "Service Description";
+  const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
   return (
     <>
       <CustomBanner
@@ -159,12 +159,11 @@ useEffect(() => {
           //             // bgcolor: '#f8f9fa'
         }}
       > */}
-        <WhyChoose title={title}/>
-        <WeOffer  serviceId={service?._id}/>
-
-        <WhyPoornam />
+      <WhyChoose title={title} />
+      <WeOffer serviceId={service?._id} />
+      <WhyPoornam />
       {/* </Box> */}
-    <CapturedMoments title={title} />
+      <CapturedMoments title={title} />
       <YourDream></YourDream>
       <WeddingKit></WeddingKit>
       <FAQSection faqData={myFAQData} />;

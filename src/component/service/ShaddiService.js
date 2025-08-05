@@ -230,15 +230,15 @@ const HeroContent = styled(Box)(({ theme }) => ({
   },
 }));
 
-const HeroTitle = styled(Typography,{
-  shouldForwardProp: (prop) => prop !== 'isLong'
-})(({ theme,isLong }) => ({
+const HeroTitle = styled(Typography, {
+  shouldForwardProp: (prop) => prop !== "isLong",
+})(({ theme, isLong }) => ({
   fontFamily: "Gloock, serif",
   width: "314px",
   fontWeight: 400,
   fontSize: "36px",
   color: "#000000",
-    lineHeight: isLong ? 1.1 : 1.3,
+  lineHeight: isLong ? 1.1 : 1.3,
   marginBottom: theme.spacing(0.5),
   [theme.breakpoints.down("md")]: { width: "100%", fontSize: "30px" },
   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
@@ -262,7 +262,6 @@ function highlightSpecificWords(text, keywords) {
   const parts = text.split(regex);
   return parts.map((part, index) => {
     if (keywords.some((word) => word.toLowerCase() === part.toLowerCase())) {
-     
       return (
         <span key={index} style={{ color: "#DAA520", fontWeight: "bold" }}>
           {part}
@@ -283,40 +282,40 @@ const ShaddiService = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const 
-  handleNavigate = (uid) => {
+  const handleNavigate = (uid) => {
     console.log(uid, "uid");
     router.push(`/services/${uid}`);
   };
 
-useEffect (() => {
-  const fetchServices = async () => {
-    try {
-      const response = await apiClient.get("api/service/AllServicePages/event");
-      console.log(response,"response");
-      const data = response.data; 
-      if (Array.isArray(data)) {
-
-        const formattedServices = data.map((item, idx) => ({
-          id: item._id || idx,
-          image: item.featuredImage?.url || "/default.png",
-          title: item.meta?.title || "No Title",
-          description: item.meta?.description || "No Description",
-          gridProps: { xs: 12, sm: 6, md: 4 },
-          uid: item.uid
-        }));
-        setServices(formattedServices);
-      } else {
-        setServices([]);
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await apiClient.get(
+          "api/service/AllServicePages/event"
+        );
+        console.log(response, "response");
+        const data = response.data;
+        if (Array.isArray(data)) {
+          const formattedServices = data.map((item, idx) => ({
+            id: item._id || idx,
+            image: item.featuredImage?.url || "/default.png",
+            title: item.meta?.title || "No Title",
+            description: item.meta?.description || "No Description",
+            gridProps: { xs: 12, sm: 6, md: 4 },
+            uid: item.uid,
+          }));
+          setServices(formattedServices);
+        } else {
+          setServices([]);
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  fetchServices();
-},[]);
+    };
+    fetchServices();
+  }, []);
   return (
     <MainContainer sx={{ py: { xs: 4, md: 8 }, px: { xs: 4, md: 8 } }}>
       <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
@@ -337,16 +336,20 @@ useEffect (() => {
           <Grid item xs={12} md={4}>
             <HeroContent>
               <HeroTitle>
-          {selectedService
-            ? selectedService.title
-            : services[0]?.title || servicesData.hero.title}
-        </HeroTitle>
+                {selectedService
+                  ? selectedService.title
+                  : services[0]?.title || servicesData.hero.title}
+              </HeroTitle>
               <HeroDescription>
                 {selectedService
-                   ? trimText(selectedService.description, 100)
-    : trimText(servicesData.hero.description, 100)}
+                  ? trimText(selectedService.description, 100)
+                  : trimText(servicesData.hero.description, 100)}
               </HeroDescription>
-              <CustomButton onClick={() =>  {handleNavigate(services[0]?.uid)}} >
+              <CustomButton
+                onClick={() => {
+                  handleNavigate(services[0]?.uid);
+                }}
+              >
                 {servicesData.hero.buttonText}
               </CustomButton>
             </HeroContent>
@@ -355,44 +358,50 @@ useEffect (() => {
       </HeroCard>
 
       {/* Services Grid */}
-      <Grid container spacing={2} justifyContent={{ xs: "center", md: "start" }}>
-  {(services.length ? services : servicesData.services).map((service)  => (
-    <Grid
-      item
-      key={service.id}
-      //  onClick={() => {handleNavigate(service.uid)}}
-      {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
-      display="flex"
-      justifyContent="center"
-    >
-      <ServiceCard
-        onClick={() => setSelectedService(service)}
-        isSelected={selectedService?.id === service.id}
+      <Grid
+        container
+        spacing={2}
+        justifyContent={{ xs: "center", md: "start" }}
       >
-        <ImageContainer>
-          <Image
-            src={service.image}
-            alt={service.title}
-            width={100}
-            height={125}
-          />
-        </ImageContainer>
-        <ServiceContent>
-          <ServiceTitle>{service.title}</ServiceTitle>
-          <ServiceDescription>
-            {highlightSpecificWords(service.description, [
-              "Vintage",
-              "Bollywood",
-              "Royal",
-              "Rajput",
-              "YES",
-            ])}
-          </ServiceDescription>
-        </ServiceContent>
-      </ServiceCard>
-    </Grid>
-  ))}
-</Grid>
+        {(services.length ? services : servicesData.services).map((service) => (
+          <Grid
+            item
+            key={service.id}
+            onClick={() => {
+              handleNavigate(service.uid);
+            }}
+            {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
+            display="flex"
+            justifyContent="center"
+          >
+            <ServiceCard
+              onClick={() => setSelectedService(service)}
+              isSelected={selectedService?.id === service.id}
+            >
+              <ImageContainer>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={100}
+                  height={125}
+                />
+              </ImageContainer>
+              <ServiceContent>
+                <ServiceTitle>{service.title}</ServiceTitle>
+                <ServiceDescription>
+                  {highlightSpecificWords(service.description, [
+                    "Vintage",
+                    "Bollywood",
+                    "Royal",
+                    "Rajput",
+                    "YES",
+                  ])}
+                </ServiceDescription>
+              </ServiceContent>
+            </ServiceCard>
+          </Grid>
+        ))}
+      </Grid>
       {/* <Grid container spacing={2} sx={{ mt: 0 }}>
   <Grid
     item

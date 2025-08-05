@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Typography, Grid, Card, CardContent, Box } from "@mui/material";
 import CustomButton from '@/common-component/button/CustomButton';
 import Image from 'next/image';
+import { apiClient } from '@/lib/api-client';
+import { useRouter } from 'next/router';
 
 
 const YourDreamData = [
@@ -32,6 +34,40 @@ const YourDreamData = [
 ];
 
 const YourDream = () => {
+      const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const [categoryName, setCategoryName] = useState('');
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await apiClient.get(
+          `api/service/getServicePageById/6890870b66eb7d1031848759/event`
+        );
+        console.log("API blogs:", response);
+        if (response?.data?.relatedBlogs) {
+          setBlogs(response.data.relatedBlogs);
+        } else {
+          setBlogs([]);
+        }
+        if (response?.data?.name) {
+        setCategoryName(response.data.name);
+      } else {
+        setCategoryName('General');
+      }
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+        setBlogs([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+    
+
     return (
         <Container maxWidth="lg" sx={{ py: 8 }}>
             <Typography
@@ -40,12 +76,12 @@ const YourDream = () => {
                 align="center"
                 sx={{ fontWeight: "400", mb: 2, fontFamily: 'Gloock,serif', fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
             >
-                {`Real Talk About [Service Name]s`}
+                {`Real Talk About  ${categoryName}`}
             </Typography>
 
             <Grid container spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 7 }} justifyContent="center">
-                {YourDreamData.map(({ id, tag, image, alt, title, description, ctr }) => (
-                    <Grid item key={id} xs={12} sm={6} md={4}>
+                {blogs.map(( blog,index ) => (
+                    <Grid item key={blog._id || index} xs={12} sm={6} md={4}>
                         <Card
                             sx={{
                                 width: "95%",
@@ -61,7 +97,7 @@ const YourDream = () => {
                             <Box
                                 sx={{
                                     position:"relative",
-                                    width: "340px",
+                                    width: "100%",
                                     height: 300,
                                     display: "flex",
                                     justifyContent: "center",
@@ -73,10 +109,11 @@ const YourDream = () => {
                                 }}
                             >
                                 <Image
-                                    src={image}
-                                    alt={alt}
+                                    src={blog.featuredImage?.url || "/YourDream1.png"}
+                                    alt={blog.alt || "Royal Rajasthani Theme"}
                                     layout="fill"
                                     objectFit="cover"
+                                    
                                 />
                              { /*  <img
                                     src={image}
@@ -89,12 +126,12 @@ const YourDream = () => {
                             </Box>
                             <CardContent>
                                 <Typography variant="subtitle1" component="div" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '400', fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1rem' } }}>
-                                    {title}
+                                    {blog.meta.title}
                                 </Typography>
                                 <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem'}, mb:2, whiteSpace:"nowrap" }}>
-                                    {description}
+                                    {/* {description} */}
                                 </Typography>
-                                <CustomButton>{ctr}</CustomButton>
+                                <CustomButton onClick={() => router.push(`/blog/${blog._id}`)}>Read More</CustomButton>
                             </CardContent>
                         </Card>
                     </Grid>

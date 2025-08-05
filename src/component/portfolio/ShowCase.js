@@ -102,12 +102,12 @@ const ShowCase = () => {
 
   console.log("themes", categories);
   console.log("selectedNames", selectedNames);
-  const handleBrowse = () => {
-    const filters = selectedNames.filter((obj) => obj._id !== "all");
-    const filterQuery =
-      filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
-    router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
-  };
+  // const handleBrowse = () => {
+  //   const filters = selectedNames.filter((obj) => obj._id !== "all");
+  //   const filterQuery =
+  //     filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
+  //   router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
+  // };
 
   return (
     <Container maxWidth="xl" sx={{ py: 2 }}>
@@ -146,13 +146,13 @@ const ShowCase = () => {
           onChange={handleChange}
           label="Filter by Category"
         />
-        <CustomButton
+        {/* <CustomButton
           onClick={handleBrowse}
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
           {`Browse Gallery`}{" "}
-        </CustomButton>
+        </CustomButton> */}
       </Box>
       <Grid
         container

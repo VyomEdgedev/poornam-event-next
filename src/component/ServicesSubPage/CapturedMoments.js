@@ -11,6 +11,7 @@ import {
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
+import { useRouter } from "next/router";
 
 const CapturedMomentsData = [
   {
@@ -38,31 +39,41 @@ const CapturedMomentsData = [
     description: "Simplicity meets elegance.",
   },
 ];
-
-const CapturedMoments = ({title}) => {
+const staticDescriptions = [
+  "A regal affair in royal palaces.",
+  "An elegant beach ceremony.",
+  "Simplicity meets elegance.",
+];
+const CapturedMoments = ({ title }) => {
   const [moments, setMoments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categoryName, setCategoryName] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    const fetchMoments = async () => {
+      setLoading(true);
+      try {
+        const response = await apiClient.get(
+          `api/service/getServicePageById/6890870b66eb7d1031848759/event`
+        );
+        console.log("API", response);
+        if (response.data.relatedPortfolios) {
+          setMoments(response.data.relatedPortfolios);
+        } else {
+          setMoments([]);
+        }
+      } catch (err) {
+        setMoments([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMoments();
+  }, []);
 
-useEffect(() => {
-        const fetchMoments = async () => {
-            setLoading(true);
-            try {
-                const response = await apiClient.get(`api/service/getServicePageById/6890870b66eb7d1031848759/event`);
-                if (response.data.Portfolio) {
-                    setMoments([response.data.Portfolio]);
-                } else {
-                    setMoments([]);
-                }
-            } catch (err) {
-                setMoments([]);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchMoments();
-    }, []);
-
-
+  const handleViewAll = () => {
+    router.push("/gallery");
+  };
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
       <Container
@@ -91,14 +102,14 @@ useEffect(() => {
           {`   Scroll through stories written in flowers, lights, and smiles.`}
         </Typography>
         <Box textAlign="center" mb={{ xs: 3, md: 4 }}>
-          <CustomButton>{`View All`}</CustomButton>
+          <CustomButton onClick={handleViewAll}>{`View All`}</CustomButton>
         </Box>
         <Grid
           container
           spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }}
           justifyContent="center"
         >
-          {moments.map(( portfolio, index ) => (
+          {moments.map((portfolio, index) => (
             <Grid item key={portfolio._id || index} xs={12} sm={6} md={4}>
               <Card
                 sx={{
@@ -110,11 +121,18 @@ useEffect(() => {
                 }}
                 elevation={1}
               >
-                {/* <Chip
-                                label={tag}
-                                size="small"
-                                sx={{ position: "absolute", top: 8, left: 8, backgroundColor: "#ddd", fontSize: 11, zIndex:2 }}
-                            /> */}
+                <Chip
+                  label={portfolio.category}
+                  size="small"
+                  sx={{
+                    position: "absolute",
+                    top: 8,
+                    left: 8,
+                    backgroundColor: "#ddd",
+                    fontSize: 11,
+                    zIndex: 2,
+                  }}
+                />
                 <Box
                   sx={{
                     position: "relative",
@@ -130,7 +148,7 @@ useEffect(() => {
                   }}
                 >
                   <Image
-                    src={portfolio.featuredImage?.url || "/YourDream1.png"}
+                    src={portfolio.images?.[0]?.url || "/YourDream1.png"}
                     alt={portfolio.featuredImage?.altText || "Your Dream Theme"}
                     layout="fill"
                     objectFit="cover"
@@ -158,7 +176,7 @@ useEffect(() => {
                       fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
                     }}
                   >
-                    {portfolio.description || "No Description"}
+                    {staticDescriptions[index] || "No Description"}
                   </Typography>
                 </CardContent>
               </Card>
