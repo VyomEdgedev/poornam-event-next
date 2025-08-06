@@ -4,7 +4,10 @@ import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
+import { apiClient } from "@/lib/api-client";
+import SuccessModal from "./SuccessModal";
 const Form = () => {
+  const [openSuccess, setOpenSuccess] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -46,49 +49,53 @@ const [loading, setLoading] = useState(false);
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setLoading(true);
-      console.log("Form Data:", formData);
-      // Handle form submission logic here
-       setTimeout(() => {
-      setLoading(false);
-      toast.success("Form submitted successfully!");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (validateForm()) {
+    setLoading(true);
+    try {
+      const payload = {
+        formType: "contactus",
+        fullName: formData?.fullName,
+        message: formData?.message,
+        email: formData?.email,
+        phoneNo: formData?.phone,
+        sourcePage: "/model",
+      };
+      const response = await apiClient.post("/api/userform/event", payload);
+   
       setFormData({
         fullName: "",
         email: "",
         phone: "",
         message: "",
       });
-    }, 1200);
+       setOpenSuccess(true);
+      setTimeout(() => {
+        setOpenSuccess(false);
+      }, 1500);
+    } catch (error) {
+      const errorMsg =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "";
+
+      if (
+        errorMsg.includes("E11000") ||
+        errorMsg.includes("duplicate key")
+      ) {
+        toast.error("You are already registered!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   } else {
     toast.error("Please fill all required fields correctly.");
   }
-    };
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   if (validateForm()) {
-//     setLoading(true);
-//     try {
-//       const response = await apiClient.post("/api/form", formData);
-//       toast.success("Form submitted successfully!");
-//       setFormData({
-//         fullName: "",
-//         email: "",
-//         phone: "",
-//         message: "",
-//       });
-//     } catch (error) {
-//       toast.error("Something went wrong. Please try again.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   } else {
-//     toast.error("Please fill all required fields correctly.");
-//   }
-// };
+};
   return (
     <Box
       sx={{
@@ -99,6 +106,7 @@ const [loading, setLoading] = useState(false);
       
       }}
     >
+      <SuccessModal open={openSuccess} setOpen={setOpenSuccess} />
       {/* Left Side - Image */}
       <Box
         sx={{
