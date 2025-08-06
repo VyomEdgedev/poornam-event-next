@@ -131,7 +131,7 @@ const YourDream = () => {
                                 <Typography variant="body1" component="p" sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: "#000000", fontSize: { xs: '0.9rem', sm: '0.9rem', md: '1.125rem'}, mb:2, whiteSpace:"nowrap" }}>
                                     {/* {description} */}
                                 </Typography>
-                                <CustomButton onClick={() => router.push(`/blog/${blog._id}`)}>Read More</CustomButton>
+                                <CustomButton onClick={() => router.push(`/blog/${blog.uid}`)}>Read More</CustomButton>
                             </CardContent>
                         </Card>
                     </Grid>

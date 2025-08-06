@@ -7,12 +7,12 @@ export default async function handler(req, res) {
 
   let blogs;
   try {
-    const blogResponse = await apiClient.get("/api/blogs/event");
+    const blogResponse = await apiClient.get("/api/blogs/all/event");
     const data = blogResponse.data.blogs;
 
     if (Array.isArray(data)) {
       const obj = {};
-      blogs = data.map((item) => (obj.page = `/blog/${item?._id}`));
+      blogs = data.map((item) => (obj.page = `blog/${item?.uid}`));
     }
   } catch (error) {
     console.log("Error fetching blogs:", error);
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     if (Array.isArray(portfolioData)) {
       const obj = {};
       portfolio = portfolioData.map(
-        (val) => (obj.page = `gallery/${val?._id}`)
+        (val) => (obj.page = `gallery/${val?.uid}`)
       );
     }
   } catch (error) {

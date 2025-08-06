@@ -252,8 +252,6 @@ const SearchFilter = () => {
                 ))}
               </Box>
             </Box>
-
-            {/* Search Button */}
             <Box
               sx={{
                 display: "flex",
