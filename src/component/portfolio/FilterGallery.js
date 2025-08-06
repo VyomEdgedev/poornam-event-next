@@ -1,11 +1,13 @@
 import CustomBanner from '@/common-component/banner/CustomBanner'
 import CustomMultiSelect from '@/common-component/CustomMultiSelect/CustomMultiSelect';
 import { apiClient } from '@/lib/api-client';
-import { Box, Card, CardContent, Chip, Container, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Chip, Container, Grid, Typography ,Dialog, IconButton } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const FilterGallery = () => {
   const [themes, setThemes] = useState([]);
   const [allThemes, setAllThemes] = useState([]);
@@ -13,7 +15,8 @@ const FilterGallery = () => {
   const [selectedFilters, setSelectedFilters] = useState([{ _id: "all", name: "All" }]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-
+  const [open, setOpen] = useState(false); 
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchAllThemes = async () => {
@@ -79,16 +82,13 @@ const FilterGallery = () => {
 
 const handleFilterChange = (selectedObjs) => {
   console.log("FilterGallery - Selected objects:", selectedObjs);
-  
-
   if (selectedObjs.length === 0) {
     setSelectedFilters([{_id:"all", name:"All"}]);
     setThemes(allThemes);
     router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
     return;
   }
-
-  const hasAll = selectedObjs.some(obj => obj._id === "all");
+const hasAll = selectedObjs.some(obj => obj._id === "all");
   const otherSelections = selectedObjs.filter(obj => obj._id !== "all");
   
   if (hasAll && otherSelections.length > 0) {
@@ -119,6 +119,19 @@ const handleFilterChange = (selectedObjs) => {
     router.replace(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`, undefined, { shallow: true });
   }
 };
+
+ const handleOpenModal = (idx) => {
+    setCurrentIndex(idx);
+    setOpen(true);
+  };
+  const handleCloseModal = () => setOpen(false);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? themes.length - 1 : prev - 1));
+  };
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === themes.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <>
     <CustomBanner
@@ -229,6 +242,7 @@ const handleFilterChange = (selectedObjs) => {
                     textAlign: "center",
                     minHeight: { xs: 250, sm: 280, md: 300 },
                   }}
+                   onClick={() => handleOpenModal(idx)}
                 >
                   <Image
                     src={item?.images[0]?.url}
@@ -272,6 +286,50 @@ const handleFilterChange = (selectedObjs) => {
           ))
         )}
       </Grid>
+    <Dialog
+          open={open}
+          onClose={handleCloseModal}
+          fullScreen
+          PaperProps={{
+            sx: { backgroundColor: 'rgba(0,0,0,0.5)' }
+          }}
+        >
+          <Box sx={{ position: 'relative', height: '100vh', width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* Close Button */}
+            <IconButton
+              onClick={handleCloseModal}
+              sx={{ position: 'absolute', top: 20, right: 20, color: "#DAA412", zIndex: 10 }}
+            >
+              <CloseIcon fontSize="large" />
+            </IconButton>
+            {/* Left Arrow */}
+            <IconButton
+              onClick={handlePrev}
+              sx={{ position: 'absolute', left: 20,color: "#DAA412", zIndex: 10 }}
+            >
+              <ArrowBackIosNewIcon fontSize="large" />
+            </IconButton>
+            {/* Image */}
+            <Box sx={{ maxWidth: '90vw', maxHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {themes.length > 0 && (
+                <Image
+                  src={themes[currentIndex]?.images[0]?.url}
+                  alt={themes[currentIndex]?.category?.name || "No Title"}
+                  width={900}
+                  height={600}
+                  style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
+                />
+              )}
+            </Box>
+            {/* Right Arrow */}
+            <IconButton
+              onClick={handleNext}
+              sx={{ position: 'absolute', right: 20, color: "#DAA412", zIndex: 10 }}
+            >
+              <ArrowForwardIosIcon fontSize="large" />
+            </IconButton>
+          </Box>
+        </Dialog>
     </Container>
  
 

@@ -32,7 +32,7 @@ export default function ContactSection() {
       return;
     }
 
-    // Your submit logic here
+
     console.log("Form submitted:", formData);
   };
 
@@ -173,10 +173,10 @@ export default function ContactSection() {
                       borderColor: "#ccc",
                     },
                     "&:hover fieldset": {
-                      borderColor: "#011d4a", // Hover color
+                      borderColor: "#011d4a",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#011d4a", // Focus (click) color
+                      borderColor: "#011d4a",
                       borderWidth: 2,
                     },
                   },
