@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography, Grid } from '@mui/material';
+import { TextField, Button, Box, Typography, Grid ,CircularProgress} from '@mui/material';
 import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { apiClient } from '@/lib/api-client';
 const MyForm = () => {
     const [formData, setFormData] = useState({
         fullName: '',
@@ -22,7 +24,7 @@ const MyForm = () => {
         numberOfGuests: false,
         yourMessage: false
     });
-
+const [loading, setLoading] = useState(false);
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
@@ -51,7 +53,7 @@ const MyForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        setLoading(true);
         // Validate form
         const newErrors = {
             fullName: !formData.fullName.trim(),
@@ -63,16 +65,71 @@ const MyForm = () => {
         };
 
         setErrors(newErrors);
-
+        setTimeout(() => {
         // Check if there are any errors
         if (!Object.values(newErrors).some(error => error)) {
-            console.log('Form Data:', formData);
-            // Handle form submission logic here
-        }
+        
+        toast.success("Form submitted successfully!");
+        setFormData({
+            fullName: '',
+            email: '',
+            phone: '',
+            weddingDate: '',
+            location: '',
+            numberOfGuests: '',
+            yourMessage: ''
+        });
+        
+    } else {
+        toast.error("Please fill all required fields correctly.");
+    }
+    setLoading(false);
+    },1000);
     };
 
-    const isBelow900 = useMediaQuery('(max-width:900px)');
-    const responsiveSpacing = isBelow900 ? 2 : 5;
+// const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+
+//     const newErrors = {
+//         fullName: !formData.fullName.trim(),
+//         email: !formData.email.trim() || !validateEmail(formData.email),
+//         phone: !formData.phone.trim() || !validatePhone(formData.phone),
+//         location: !formData.location.trim(),
+//         numberOfGuests: !formData.numberOfGuests.trim(),
+//         yourMessage: !formData.yourMessage.trim()
+//     };
+
+//     setErrors(newErrors);
+
+//     if (Object.values(newErrors).some(error => error)) {
+//         toast.error("Please fill all required fields correctly.");
+//         setLoading(false);
+//         return;
+//     }
+
+//     try {
+//         await apiClient.post("/api/form", formData);
+//         toast.success("Form submitted successfully!");
+//         setFormData({
+//             fullName: '',
+//             email: '',
+//             phone: '',
+//             weddingDate: '',
+//             location: '',
+//             numberOfGuests: '',
+//             yourMessage: ''
+//         });
+//     } catch (error) {
+//         toast.error("Something went wrong. Please try again.");
+//     } finally {
+//         setLoading(false);
+//     }
+// };
+
+const isBelow900 = useMediaQuery('(max-width:900px)');
+const responsiveSpacing = isBelow900 ? 2 : 5;
 
     return (
         <Box sx={{
@@ -482,15 +539,20 @@ const MyForm = () => {
                                 fontWeight: "600",
                                 height: { xs: '45px', md: '50px' },
                                 "&:hover": {
-                                    bgcolor: "#011d4a" // Changed hover color to #011d4a
+                                    bgcolor: "#DAA412" // Changed hover color to #011d4a
                                 }
                             }}
                         >
-                            {`Let's Begin the Dream`}
+                           {loading ? (
+                                <CircularProgress size={24} sx={{ color: "#fff" }} />
+                            ) : (
+                                `Let's Begin the Dream`
+                            )}
                         </Button>
                     </Box>
                 </Grid>
             </Grid>
+            <ToastContainer />
         </Box>
     );
 };

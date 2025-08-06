@@ -175,4 +175,15 @@ p  { font-size: 18px ;
 }
 
   
-
+.Toastify__toast--success {
+/* Your custom color */
+  background: #fff !important; /* Optional: background color */
+  color: #000 !important;      /* Optional: text color */
+}
+.Toastify__progress-bar--success {
+  background: #DAA412 !important;
+}
+.Toastify__toast-icon.Toastify--animate-icon.Toastify__toast-icon--success{
+  fill: #DAA412 !important;
+  color: #DAA412 !important;
+}

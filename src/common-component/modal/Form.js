@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import Image from "next/image";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
 const Form = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -16,7 +18,7 @@ const Form = () => {
     phone: false,
     message: false,
   });
-
+const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -48,11 +50,45 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setLoading(true);
       console.log("Form Data:", formData);
       // Handle form submission logic here
-    }
-  };
-
+       setTimeout(() => {
+      setLoading(false);
+      toast.success("Form submitted successfully!");
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }, 1200);
+  } else {
+    toast.error("Please fill all required fields correctly.");
+  }
+    };
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   if (validateForm()) {
+//     setLoading(true);
+//     try {
+//       const response = await apiClient.post("/api/form", formData);
+//       toast.success("Form submitted successfully!");
+//       setFormData({
+//         fullName: "",
+//         email: "",
+//         phone: "",
+//         message: "",
+//       });
+//     } catch (error) {
+//       toast.error("Something went wrong. Please try again.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   } else {
+//     toast.error("Please fill all required fields correctly.");
+//   }
+// };
   return (
     <Box
       sx={{
@@ -252,6 +288,7 @@ const Form = () => {
           type="submit"
           variant="contained"
           fullWidth
+            disabled={loading}
           sx={{
             bgcolor: "#DAA412",
             color: "#fff",
@@ -266,7 +303,11 @@ const Form = () => {
             },
           }}
         >
-          {`Let's Begin the Dream`}
+          {loading ? (
+    <CircularProgress size={24} sx={{ color: "#fff" }} />
+  ) : (
+    `Let's Begin the Dream`
+  )}
         </Button>
       </Box>
     </Box>

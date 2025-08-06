@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Box, Grid, Typography, TextField } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
-
+import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import { ToastContainer, toast } from "react-toastify";
+import { apiClient } from "@/lib/api-client";
 export default function ContactSection() {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const notify = () => toast.success("successfully submitted");
   const handleWeddingPlan = () => {
     // Add your navigation or action logic here
     setOpen(true);
@@ -23,18 +28,48 @@ export default function ContactSection() {
 
   const handleLetChat = (e) => {
     e.preventDefault();
+    setLoading(true);
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setLoading(false);
       return;
     }
-
-
-    console.log("Form submitted:", formData);
+    setTimeout(() => {
+      toast.success("Successfully submitted!");
+      setFormData({ name: "", message: "" });
+      setLoading(false); // Stop loading after submit
+      console.log("Form submitted:", formData);
+    }, 1200);
   };
+
+//   const handleLetChat = async (e) => {
+//   e.preventDefault();
+//   setLoading(true);
+
+//   const newErrors = {};
+//   if (!formData.name.trim()) newErrors.name = "Name is required";
+//   if (!formData.message.trim()) newErrors.message = "Message is required";
+
+//   if (Object.keys(newErrors).length > 0) {
+//     setErrors(newErrors);
+//     setLoading(false);
+//     return;
+//   }
+
+//   try {
+//     await apiClient.post('/api/contact', formData);
+//     toast.success("Successfully submitted!");
+//     setFormData({ name: "", message: "" });
+//   } catch (error) {
+//     toast.error("Something went wrong. Please try again.");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
 
   return (
     <Box
@@ -198,11 +233,16 @@ export default function ContactSection() {
                 padding: "2px 8px",
               }}
             >
-              Let's Chat
+              {loading ? (
+                <CircularProgress size={20} sx={{ color: "#fff" }} />
+              ) : (
+                "Let's Chat"
+              )}
             </CustomButton>
           </Box>
         </Grid>
       </Grid>
+      <ToastContainer />
     </Box>
   );
 }
