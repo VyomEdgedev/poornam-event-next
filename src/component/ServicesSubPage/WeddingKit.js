@@ -1,17 +1,22 @@
-import { Grid, Box, Typography, TextField } from '@mui/material'
+import { Grid, Box, Typography, TextField, CircularProgress } from '@mui/material'
 import CustomButton from '@/common-component/button/CustomButton'
 import React, { useState } from 'react'
+import { apiClient } from '@/lib/api-client';
+import { toast } from 'react-toastify';
 function WeddingKit() {
  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-
+const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleNotifyClick = () => {
+  const handleNotifyClick = async () => {
+     setError('');
+    setSuccess('');
     if (!email) {
       setError('Email is required');
       return;
@@ -22,9 +27,32 @@ function WeddingKit() {
       return;
     }
 
-    setError('');
-    console.log("Let's Chat clicked"); // or perform further action
-  };
+    setLoading(true);
+    try {
+       const payload = {
+        formType: "notify",
+        email: email.trim(),
+        sourcePage: "/services",
+      };
+      const response = await apiClient.post('/api/userform/event', { email });
+       toast.success("Thank you! You are now subscribed.");
+      setEmail('');
+    } catch (error) {
+      const errorMsg =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "";
+
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+        toast.error("You are already subscribed!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+};
   
   return (
 
@@ -63,14 +91,29 @@ function WeddingKit() {
             onChange={(e) => setEmail(e.target.value)}
             error={Boolean(error)}
               helperText={error}
+              disabled={loading}
           />
         </Box>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, frontFamily: "Akatab,Sans-serif", fontWeight: '500' }}>
          {` Big shhadi secrets and  surprises are on the way. stay tuned!`}
         </Typography>
-        <CustomButton  data-testid="notify-button" onClick={handleNotifyClick} sx={
-          { mt: 2, width: 130, height: 50 }
-        }>{`Notify Me`}</CustomButton>
+        {success && (
+            <Typography variant="body2" color="success.main" sx={{ mt: 1 }}>
+              {success}
+            </Typography>
+          )}
+          <CustomButton
+            data-testid="notify-button"
+            onClick={handleNotifyClick}
+            sx={{ mt: 2, width: 130, height: 50 }}
+            disabled={loading}
+          >
+             {loading ? (
+              <CircularProgress size={20} sx={{ color: "#fff" }} />
+            ) : (
+              "Notify Me"
+            )}
+          </CustomButton>
       </Box>
     </Box>
 
