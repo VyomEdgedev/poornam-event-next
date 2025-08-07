@@ -110,7 +110,7 @@ const CapturedMoments = ({ title }) => {
         <Box textAlign="center" mb={{ xs: 3, md: 4 }}>
           <CustomButton
             disabled={moments.length === 0}
-            onClick={() =>
+              onClick={() =>
               handleViewAll(
                 typeof moments[0]?.category === "object"
                   ? moments[0]?.category?._id
@@ -140,7 +140,7 @@ const CapturedMoments = ({ title }) => {
                 elevation={1}
               >
                 <Chip
-                  label={portfolio.category}
+                  label={portfolio.category?.name}
                   size="small"
                   sx={{
                     position: "absolute",
@@ -182,7 +182,7 @@ const CapturedMoments = ({ title }) => {
                       fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
                     }}
                   >
-                    {portfolio.name}
+                    {portfolio?.name}
                   </Typography>
                   <Typography
                     variant="body1"
