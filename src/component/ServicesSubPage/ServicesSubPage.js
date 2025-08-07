@@ -62,10 +62,7 @@ function ServicesSubPage() {
         const response = await apiClient.get(
           `api/service/getServicePageById/${id}/event`
         );
-    
-        console.log("API", response);
         setService(response.data);
-        console.log("service", service);
       } catch (err) {
         console.error("Error fetching service:", err);
         setError(err.message || "Failed to fetch service");
@@ -168,7 +165,7 @@ function ServicesSubPage() {
       {/* </Box> */}
       <CapturedMoments title={title} porfioId={id} />
       <YourDream blogId={id} />
-      <WeddingKit/>
+      <WeddingKit />
       <FAQSection faqData={myFAQData} />
     </>
   );
