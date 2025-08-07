@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Box, Grid, Typography, TextField } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
-
+import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import { ToastContainer, toast } from "react-toastify";
+import { apiClient } from "@/lib/api-client";
+import SuccessModal from "@/common-component/modal/SuccessModal";
 export default function ContactSection() {
-  const [open, setOpen] = useState(false);
-  const handleWeddingPlan = () => {
-    // Add your navigation or action logic here
-    setOpen(true);
-  };
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     message: "",
   });
 
@@ -21,19 +24,67 @@ export default function ContactSection() {
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleLetChat = (e) => {
+  // const handleLetChat = (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   const newErrors = {};
+  //   if (!formData.name.trim()) newErrors.name = "Name is required";
+  //   if (!formData.message.trim()) newErrors.message = "Message is required";
+
+  //   if (Object.keys(newErrors).length > 0) {
+  //     setErrors(newErrors);
+  //     setLoading(false);
+  //     return;
+  //   }
+  //   setTimeout(() => {
+  //     toast.success("Successfully submitted!");
+  //     setFormData({ name: "", message: "" });
+  //     setLoading(false); // Stop loading after submit
+  //     console.log("Form submitted:", formData);
+  //   }, 1200);
+  // };
+  const handleLetChat = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.fullName.trim()) newErrors.fullName = "fullName is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setLoading(false);
       return;
     }
 
-    // Your submit logic here
-    console.log("Form submitted:", formData);
+    try {
+      const payload = {
+        formType: "home",
+        fullName: formData?.fullName,
+        message: formData?.message,
+        sourcePage: "/home",
+      };
+      const response = await apiClient.post("/api/userform/event", payload);
+      setFormData({ fullName: "", message: "" });
+      setOpenSuccess(true);
+      setTimeout(() => {
+        setOpenSuccess(false);
+      }, 1500);
+    } catch (error) {
+      const errorMsg =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "";
+
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+        toast.error("You are already registered!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,6 +94,7 @@ export default function ContactSection() {
         py: { xs: 4, sm: 6, md: 5 },
       }}
     >
+      <SuccessModal open={openSuccess} setOpen={setOpenSuccess} />
       <Grid
         container
         spacing={{ xs: 3, sm: 4, md: 6, lg: 18 }}
@@ -113,15 +165,15 @@ export default function ContactSection() {
               </Typography>
               <TextField
                 id="user-name"
-                name="name"
-                value={formData.name}
+                name="fullName"
+                value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Enter your name"
                 variant="outlined"
                 size="small"
                 fullWidth
-                error={!!errors.name}
-                helperText={errors.name}
+                error={!!errors.fullName}
+                helperText={errors.fullName}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
@@ -173,10 +225,10 @@ export default function ContactSection() {
                       borderColor: "#ccc",
                     },
                     "&:hover fieldset": {
-                      borderColor: "#011d4a", // Hover color
+                      borderColor: "#011d4a",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#011d4a", // Focus (click) color
+                      borderColor: "#011d4a",
                       borderWidth: 2,
                     },
                   },
@@ -189,8 +241,7 @@ export default function ContactSection() {
               data-testid="notify-button"
               type="submit"
               variant="primary"
-              onClick={handleWeddingPlan}
-              sx={{
+          sx={{
                 width: { xs: "128px", sm: "120px", md: "120px" },
                 fontFamily: "Akatab,Sans-serif",
                 fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
@@ -198,11 +249,28 @@ export default function ContactSection() {
                 padding: "2px 8px",
               }}
             >
-              Let's Chat
+              {loading ? (
+                <CircularProgress size={20} sx={{ color: "#fff" }} />
+              ) : (
+                "Let's Chat"
+              )}
             </CustomButton>
           </Box>
         </Grid>
       </Grid>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        // transition={Bounce}
+      />
     </Box>
   );
 }

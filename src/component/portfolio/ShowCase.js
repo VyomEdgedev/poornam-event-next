@@ -7,13 +7,17 @@ import {
   CardContent,
   Box,
   Chip,
+  Dialog,
+  IconButton,
 } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
 import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
-
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const staticDescriptions = [
   "A regal affair in royal palaces.",
   "An elegant beach ceremony.",
@@ -29,6 +33,12 @@ const ShowCase = () => {
   ]);
   const [categories, setCategories] = useState([{ _id: "all", name: "All" }]);
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const portfolioImages = themes.map((item) => ({
+    src: item?.images[0]?.url,
+    alt: item.category?.name || "No Title",
+  }));
 
   useEffect(() => {
     const fetchThemes = async () => {
@@ -67,6 +77,22 @@ const ShowCase = () => {
     fetchThemes();
   }, []);
 
+  const handleOpenModal = (index) => {
+    setCurrentIndex(index);
+    setOpen(true);
+  };
+  const handleCloseModal = () => setOpen(false);
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? portfolioImages.length - 1 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev === portfolioImages.length - 1 ? 0 : prev + 1
+    );
+  };
   const handleChange = (selectedObjs) => {
     console.log("Selected objects:", selectedObjs);
 
@@ -99,15 +125,12 @@ const ShowCase = () => {
       );
     }
   };
-
-  console.log("themes", categories);
-  console.log("selectedNames", selectedNames);
-  // const handleBrowse = () => {
-  //   const filters = selectedNames.filter((obj) => obj._id !== "all");
-  //   const filterQuery =
-  //     filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
-  //   router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
-  // };
+  const handleBrowse = () => {
+    const filters = selectedNames.filter((obj) => obj._id !== "all");
+    const filterQuery =
+      filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
+    router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
+  };
 
   return (
     <Container maxWidth="xl" sx={{ py: 2 }}>
@@ -145,14 +168,15 @@ const ShowCase = () => {
           value={selectedNames}
           onChange={handleChange}
           label="Filter by Category"
+          multiple={true}
         />
-        {/* <CustomButton
+        <CustomButton
           onClick={handleBrowse}
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
           {`Browse Gallery`}{" "}
-        </CustomButton> */}
+        </CustomButton>
       </Box>
       <Grid
         container
@@ -201,6 +225,7 @@ const ShowCase = () => {
                     textAlign: "center",
                     minHeight: { xs: 250, sm: 280, md: 300 },
                   }}
+                  onClick={() => handleOpenModal(idx)}
                 >
                   <Image
                     src={item?.images[0]?.url}
@@ -244,6 +269,87 @@ const ShowCase = () => {
           ))
         )}
       </Grid>
+      <Dialog
+        open={open}
+        onClose={handleCloseModal}
+        fullScreen
+        PaperProps={{
+          sx: { backgroundColor: "rgba(0,0,0,0.5)" },
+        }}
+      >
+        <Box
+          sx={{
+            position: "relative",
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {/* Close Button */}
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+              color: "#DAA412",
+              zIndex: 10,
+            }}
+          >
+            <CloseIcon fontSize="large" />
+          </IconButton>
+          {/* Left Arrow */}
+          <IconButton
+            onClick={handlePrev}
+            sx={{
+              position: "absolute",
+              left: 20,
+              color: "#DAA412",
+              zIndex: 10,
+            }}
+          >
+            <ArrowBackIosNewIcon fontSize="large" />
+          </IconButton>
+          {/* Image */}
+          <Box
+            sx={{
+              maxWidth: "90vw",
+              maxHeight: "90vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {portfolioImages.length > 0 && (
+              <Image
+                src={portfolioImages[currentIndex].src}
+                alt={portfolioImages[currentIndex].alt}
+                width={900}
+                height={600}
+                style={{
+                  objectFit: "contain",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                }}
+              />
+            )}
+          </Box>
+          {/* Right Arrow */}
+          <IconButton
+            onClick={handleNext}
+            sx={{
+              position: "absolute",
+              right: 20,
+              color: "#DAA412",
+              zIndex: 10,
+            }}
+          >
+            <ArrowForwardIosIcon fontSize="large" />
+          </IconButton>
+        </Box>
+      </Dialog>
     </Container>
   );
 };

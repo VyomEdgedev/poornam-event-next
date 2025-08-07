@@ -13,32 +13,32 @@ import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
 
-const CapturedMomentsData = [
-  {
-    id: 1,
-    tag: "Rajasthan",
-    image: "/YourDream1.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Royal Rajasthani",
-    description: "A regal affair in royal palaces.",
-  },
-  {
-    id: 2,
-    tag: "Beach",
-    image: "/YourDream1.png",
-    alt: "Boho Beach Theme",
-    title: "Boho Beach",
-    description: "An elegant beach ceremony.",
-  },
-  {
-    id: 3,
-    tag: "Modern",
-    image: "/YourDream1.png",
-    alt: "Minimal Chic Theme",
-    title: "Minimal Chic ",
-    description: "Simplicity meets elegance.",
-  },
-];
+// const CapturedMomentsData = [
+//   {
+//     id: 1,
+//     tag: "Rajasthan",
+//     image: "/YourDream1.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Royal Rajasthani",
+//     description: "A regal affair in royal palaces.",
+//   },
+//   {
+//     id: 2,
+//     tag: "Beach",
+//     image: "/YourDream1.png",
+//     alt: "Boho Beach Theme",
+//     title: "Boho Beach",
+//     description: "An elegant beach ceremony.",
+//   },
+//   {
+//     id: 3,
+//     tag: "Modern",
+//     image: "/YourDream1.png",
+//     alt: "Minimal Chic Theme",
+//     title: "Minimal Chic ",
+//     description: "Simplicity meets elegance.",
+//   },
+// ];
 const staticDescriptions = [
   "A regal affair in royal palaces.",
   "An elegant beach ceremony.",
@@ -71,8 +71,14 @@ const CapturedMoments = ({ title }) => {
     fetchMoments();
   }, []);
 
-  const handleViewAll = () => {
-    router.push("/gallery");
+  const handleViewAll = (category_id) => {
+    const id =
+      typeof category_id === "object" && category_id !== null
+        ? category_id._id
+        : category_id;
+    if (id) {
+      router.push(`/browsegallery?filter=${id}`);
+    }
   };
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
@@ -102,8 +108,20 @@ const CapturedMoments = ({ title }) => {
           {`   Scroll through stories written in flowers, lights, and smiles.`}
         </Typography>
         <Box textAlign="center" mb={{ xs: 3, md: 4 }}>
-          <CustomButton onClick={handleViewAll}>{`View All`}</CustomButton>
+          <CustomButton
+            disabled={moments.length === 0}
+            onClick={() =>
+              handleViewAll(
+                typeof moments[0]?.category === "object"
+                  ? moments[0]?.category?._id
+                  : moments[0]?.category
+              )
+            }
+          >
+            View All
+          </CustomButton>
         </Box>
+
         <Grid
           container
           spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }}

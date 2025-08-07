@@ -18,26 +18,30 @@ const testimonials = [
   {
     name: "Aditi & Nikhil",
     avatar: "/review1.png",
+    alt: "Aditi & Nikhil",
     text: "Poornam Events turned our dream wedding into a beautiful reality!",
-    rating: 5, 
+    rating: 5,
   },
   {
     name: "Shruti & Raj",
     avatar: "/review2.png",
+    alt: "shruti & raj",
     text: "They made our special day a magical story to tell.",
-    rating: 4, 
+    rating: 4,
   },
   {
     name: "Ishita & Aryan",
     avatar: "/review3.png",
+    alt: "ishita & aryan",
     text: "From decor to coordination — absolutely flawless experience!",
-    rating: 5, 
+    rating: 5,
   },
   {
     name: "Megha & Kabir",
     avatar: "/review4.png",
+    alt: "megha & kabir",
     text: "Couldn’t have asked for a better team on our big day!",
-    rating: 5, 
+    rating: 5,
   },
 ];
 
@@ -47,10 +51,8 @@ export default function ClientTestimonials() {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const scrollRef = useRef(null);
 
-
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
-
 
   useEffect(() => {
     const checkScroll = () => {
@@ -91,7 +93,6 @@ export default function ClientTestimonials() {
           justifyContent: "space-between",
         }}
       >
-  
         <Box
           sx={{
             textAlign: isMobile ? "center" : "right",
@@ -126,20 +127,21 @@ export default function ClientTestimonials() {
           </Typography>
         </Box>
 
-
         <Box
           sx={{
             position: "relative",
             width: isMobile || isTablet ? "100%" : "70%",
           }}
         >
-          
           {!isMobile && !isTablet && (
             <Fade in={!atStart}>
               <Box
                 onClick={() => {
                   if (scrollRef.current) {
-                    scrollRef.current.scrollBy({ left: -280, behavior: "smooth" });
+                    scrollRef.current.scrollBy({
+                      left: -280,
+                      behavior: "smooth",
+                    });
                   }
                 }}
                 sx={{
@@ -167,7 +169,10 @@ export default function ClientTestimonials() {
               <Box
                 onClick={() => {
                   if (scrollRef.current) {
-                    scrollRef.current.scrollBy({ left: 280, behavior: "smooth" });
+                    scrollRef.current.scrollBy({
+                      left: 280,
+                      behavior: "smooth",
+                    });
                   }
                 }}
                 sx={{
@@ -205,7 +210,7 @@ export default function ClientTestimonials() {
                 gap: 2,
                 flexWrap: "nowrap",
                 justifyContent: "flex-start",
-                paddingX:2
+                paddingX: 2,
               }}
             >
               {testimonials.map((item, index) => (
@@ -224,7 +229,11 @@ export default function ClientTestimonials() {
                   }}
                 >
                   <Stack direction="row" spacing={1} alignItems="center" mb={1}>
-                    <Avatar src={item.avatar} sx={{ width: 30, height: 30 }} />
+                    <Avatar
+                      src={item.avatar}
+                      alt={item.alt}
+                      sx={{ width: 30, height: 30 }}
+                    />
                     <Typography
                       variant="h6"
                       fontWeight={600}
@@ -232,7 +241,6 @@ export default function ClientTestimonials() {
                       color="#000000"
                     >
                       {item.name}
-                      
                     </Typography>
                   </Stack>
 
@@ -252,27 +260,28 @@ export default function ClientTestimonials() {
 
                   <Stack direction="row" spacing={0.5} mb={1}>
                     <Box
-                        component="span"
-                        sx={{
-                          display: "inline-block",
-                        }}
-                      >
-                        <Box
-                          component="img"
-                          src="/search.png"
-                          alt="Google logo"
-                          sx={{ width: 17, height: 17, mr: 1.2 }}
-                        />
-                      </Box>
+                      component="span"
+                      sx={{
+                        display: "inline-block",
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src="/search.png"
+                        alt="Google logo"
+                        sx={{ width: 17, height: 17, mr: 1.2 }}
+                      />
+                    </Box>
                     {[...Array(5)].map((_, i) => (
                       <StarIcon
                         key={i}
-                        sx={{ 
-                          color: i < item.rating ? "#FFD700":"#ccc", fontSize: 18}}
+                        sx={{
+                          color: i < item.rating ? "#FFD700" : "#ccc",
+                          fontSize: 18,
+                        }}
                       />
                     ))}
                   </Stack>
-                  
                 </Paper>
               ))}
             </Box>
@@ -282,6 +291,3 @@ export default function ClientTestimonials() {
     </Box>
   );
 }
-
- 
-

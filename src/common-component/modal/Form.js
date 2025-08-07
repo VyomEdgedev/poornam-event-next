@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import Image from "next/image";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import { apiClient } from "@/lib/api-client";
+import SuccessModal from "./SuccessModal";
 const Form = () => {
+  const [openSuccess, setOpenSuccess] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -16,7 +21,7 @@ const Form = () => {
     phone: false,
     message: false,
   });
-
+const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -44,15 +49,53 @@ const Form = () => {
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (validateForm()) {
+    setLoading(true);
+    try {
+      const payload = {
+        formType: "contactus",
+        fullName: formData?.fullName,
+        message: formData?.message,
+        email: formData?.email,
+        phoneNo: formData?.phone,
+        sourcePage: "/model",
+      };
+      const response = await apiClient.post("/api/userform/event", payload);
+   
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+       setOpenSuccess(true);
+      setTimeout(() => {
+        setOpenSuccess(false);
+      }, 1500);
+    } catch (error) {
+      const errorMsg =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Form Data:", formData);
-      // Handle form submission logic here
+      if (
+        errorMsg.includes("E11000") ||
+        errorMsg.includes("duplicate key")
+      ) {
+        toast.error("You are already registered!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
     }
-  };
-
+  } else {
+    toast.error("Please fill all required fields correctly.");
+  }
+};
   return (
     <Box
       sx={{
@@ -63,6 +106,7 @@ const Form = () => {
       
       }}
     >
+      <SuccessModal open={openSuccess} setOpen={setOpenSuccess} />
       {/* Left Side - Image */}
       <Box
         sx={{
@@ -252,6 +296,7 @@ const Form = () => {
           type="submit"
           variant="contained"
           fullWidth
+            disabled={loading}
           sx={{
             bgcolor: "#DAA412",
             color: "#fff",
@@ -266,7 +311,11 @@ const Form = () => {
             },
           }}
         >
-          {`Let's Begin the Dream`}
+          {loading ? (
+    <CircularProgress size={24} sx={{ color: "#fff" }} />
+  ) : (
+    `Let's Begin the Dream`
+  )}
         </Button>
       </Box>
     </Box>
