@@ -56,8 +56,7 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await apiClient.get("/api/blogs/event");
-        console.log(response);
+        const response = await apiClient.get('/api/blogs/all/event');
         const data = response.data.blogs;
         if (Array.isArray(data)) {
           setPosts(data);
@@ -73,7 +72,7 @@ const BlogSection = () => {
     fetchBlogs();
   }, []);
   // if (loading) return <CircularProgress sx={{ m: 5 }} />;
-  if (error) return <Typography color="error">Error: {error}</Typography>;
+  // if (error) return <Typography color="error">Error: {error}</Typography>;
 
   const sortedPosts = [...posts]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -141,8 +140,8 @@ const BlogSection = () => {
           {sortedPosts.map((post, idx) => (
             <Grid item xs={12} sm={8} md={6} key={post._id || idx}>
               <Box sx={{ px: 0 }}>
-                <Card
-                  onClick={() => router.push(`/blog/${post._id}`)}
+                <Card 
+                onClick={() => router.push(`/blog/${post.uid}`)}
                   sx={{
                     width: {
                       xs: "350px",
