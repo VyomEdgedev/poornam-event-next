@@ -77,7 +77,10 @@ useEffect(() => {
         setLoading(false);
       }
     };
-   fetchCategories();
+    if(serviceId){
+      fetchCategories();
+    }
+   
   }, [serviceId]);
 
     return (
@@ -97,7 +100,7 @@ useEffect(() => {
                 {`What's inside Your 'Shaadi ka Pitara'?`}</Typography>
             
             <Grid container spacing={4} justifyContent="center" sx={{ mt: 3 }}>
-                {categories.map((service, index) => (
+                {(categories).map((service, index) => (
                     <Grid item xs={12} sm={6} md={3} key={service.id || index} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Box textAlign="center">
                             <Box

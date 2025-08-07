@@ -15,7 +15,7 @@ import { apiClient } from "@/lib/api-client";
 
 function ServicesSubPage() {
   const router = useRouter();
-  const { uid } = router.query;
+  const { id } = router.query;
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -54,15 +54,18 @@ function ServicesSubPage() {
     },
   ];
   useEffect(() => {
-    // if (!uid) return;
+    if (!id) return;
     const fetchService = async () => {
       setLoading(true);
       setError(null);
       try {
         const response = await apiClient.get(
-          `api/service/getServicePageById/6890870b66eb7d1031848759/event`
+          `api/service/getServicePageById/${id}/event`
         );
+    
+        console.log("API", response);
         setService(response.data);
+        console.log("service", service);
       } catch (err) {
         console.error("Error fetching service:", err);
         setError(err.message || "Failed to fetch service");
@@ -73,7 +76,7 @@ function ServicesSubPage() {
     };
 
     fetchService();
-  }, [uid]);
+  }, [id]);
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
   const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
@@ -90,7 +93,7 @@ function ServicesSubPage() {
           { href: "/", isHome: true },
           // { href: '/blog', label: 'Blog' },
           { href: "/services", label: "services" },
-          { href: `/services/${uid}`, label: title },
+          { href: `/services/${id}`, label: title },
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
@@ -114,7 +117,7 @@ function ServicesSubPage() {
           },
         }}
       >
-        <Stack direction={{ xs: "row", sm: "row" }} spacing={2} marginLeft={0}>
+        {/* <Stack direction={{ xs: "row", sm: "row" }} spacing={2} marginLeft={0}>
           <CustomButton
             variant="primary"
             onClick={handleWeddingPlan}
@@ -150,7 +153,7 @@ function ServicesSubPage() {
             {`   Book Consultation`}
           </CustomButton>
           <ConnectModal open={open} setOpen={setOpen} />
-        </Stack>
+        </Stack> */}
       </CustomBanner>
       {/* <Box
         sx={{
@@ -160,13 +163,13 @@ function ServicesSubPage() {
         }}
       > */}
       <WhyChoose title={title} />
-      <WeOffer serviceId={service?._id} />
+      <WeOffer serviceId={id} />
       <WhyPoornam />
       {/* </Box> */}
-      <CapturedMoments title={title} />
-      <YourDream></YourDream>
-      <WeddingKit></WeddingKit>
-      <FAQSection faqData={myFAQData} />;
+      <CapturedMoments title={title} porfioId={id} />
+      <YourDream blogId={id} />
+      <WeddingKit/>
+      <FAQSection faqData={myFAQData} />
     </>
   );
 }

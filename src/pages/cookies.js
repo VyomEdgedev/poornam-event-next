@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-const cookies = () => {
-  return (
-    <div>cookies</div>
-  )
-}
+// const cookies = () => {
+//   return (
+//     <div>cookies</div>
+//   )
+// }
 
-export default cookies
+// export default cookies
