@@ -24,13 +24,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CookiesBanner({ open, onClose }) {
+export default function CookiesBanner() {
+  const [showBanner, setShowBanner] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const [preferences, setPreferences] = useState({
     necessary: true,
     analytics: false,
     marketing: false,
   });
+  
   useEffect(() => {
     const cookiePref = Cookies.get(COOKIE_KEY);
     if (cookiePref) {
@@ -42,15 +44,20 @@ export default function CookiesBanner({ open, onClose }) {
           marketing: !!parsed.marketing,
         });
       } catch (e) {
-
+        // If parsing fails, show banner
+        setShowBanner(true);
       }
+    } else {
+      // If no cookie preferences exist, show banner
+      setShowBanner(true);
     }
-  }, [])
+  }, []);
+  
   useEffect(() => {
-    if (!open) setShowPreferences(false);
-  }, [open]);
+    if (!showBanner) setShowPreferences(false);
+  }, [showBanner]);
 
-  if (!open) return null;
+  if (!showBanner) return null;
   const savePreferencesToCookie = (prefs) => {
     Cookies.set(COOKIE_KEY, JSON.stringify(prefs), { expires: 365, sameSite: "Lax" });
   };
@@ -62,7 +69,7 @@ export default function CookiesBanner({ open, onClose }) {
     }
      setPreferences(newPrefs);
     savePreferencesToCookie(newPrefs);
-    onClose();
+    setShowBanner(false);
     
   };
 
@@ -74,7 +81,7 @@ export default function CookiesBanner({ open, onClose }) {
     }
     setPreferences(newPrefs);
     savePreferencesToCookie(newPrefs);
-    onClose();
+    setShowBanner(false);
   };
 
   const handleManagePreferences = () => {
@@ -84,7 +91,7 @@ export default function CookiesBanner({ open, onClose }) {
   const handleSavePreferences = () => {
     setShowPreferences(false);
     savePreferencesToCookie(preferences);
-    onClose();
+    setShowBanner(false);
   };
 
   const handlePreferenceChange = (type) => (event) => {
@@ -273,8 +280,8 @@ export default function CookiesBanner({ open, onClose }) {
               />
             </Box>
             <Typography variant="body2" color="text.secondary">
-              Help us understand how users interact with our site so we can
-              improve the experience.
+              {`Help us understand how users interact with our site so we can
+              improve the experience.`}
             </Typography>
           </Box>
           <Divider sx={{ my: 2 }} />
