@@ -152,7 +152,7 @@ const CapturedMoments = ({ title, porfioId }) => {
                   elevation={1}
                 >
                   <Chip
-                    label={portfolio.category?.name}
+                    label={portfolio.category?.name || "General"}
                     size="small"
                     sx={{
                       position: "absolute",

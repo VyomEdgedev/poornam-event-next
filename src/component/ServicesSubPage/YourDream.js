@@ -13,32 +13,32 @@ import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const YourDreamData = [
-  {
-    id: 1,
-    image: "/YourDream1.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Udaipur",
-    description: "For that royal Rajasthani Magic.",
-    ctr: "Read More",
-  },
-  {
-    id: 2,
-    image: "/YourDream2.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Goa",
-    description: "For Beachside vows & sunset pheras.",
-    ctr: "Read More",
-  },
-  {
-    id: 3,
-    image: "/YourDream3.png",
-    alt: "Royal Rajasthani Theme",
-    title: "Mahabaleshwar",
-    description: "For mountain serenity & mity mornings.",
-    ctr: "Read More",
-  },
-];
+// const YourDreamData = [
+//   {
+//     id: 1,
+//     image: "/YourDream1.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Udaipur",
+//     description: "For that royal Rajasthani Magic.",
+//     ctr: "Read More",
+//   },
+//   {
+//     id: 2,
+//     image: "/YourDream2.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Goa",
+//     description: "For Beachside vows & sunset pheras.",
+//     ctr: "Read More",
+//   },
+//   {
+//     id: 3,
+//     image: "/YourDream3.png",
+//     alt: "Royal Rajasthani Theme",
+//     title: "Mahabaleshwar",
+//     description: "For mountain serenity & mity mornings.",
+//     ctr: "Read More",
+//   },
+// ];
 
 const YourDream = ({ blogId }) => {
   const [blogs, setBlogs] = useState([]);
@@ -74,6 +74,8 @@ const YourDream = ({ blogId }) => {
       fetchBlogs();
     }
   }, [blogId]);
+
+  if (!categoryName) return null;
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -138,11 +140,6 @@ const YourDream = ({ blogId }) => {
                     layout="fill"
                     objectFit="cover"
                   />
-                  {/*  <img
-                                    src={image}
-                                    alt={alt}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />*/}
                 </Box>
                 <CardContent>
                   <Typography
@@ -168,7 +165,6 @@ const YourDream = ({ blogId }) => {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {/* {description} */}
                   </Typography>
                   <CustomButton
                     onClick={() => router.push(`/blog/${blog.uid}`)}
