@@ -2,7 +2,7 @@ import { Grid, Box, Typography, TextField, CircularProgress } from '@mui/materia
 import CustomButton from '@/common-component/button/CustomButton'
 import React, { useState } from 'react'
 import { apiClient } from '@/lib/api-client';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 function WeddingKit() {
  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -30,7 +30,7 @@ const [loading, setLoading] = useState(false);
     setLoading(true);
     try {
        const payload = {
-        formType: "notify",
+        formType: "contactus",
         email: email.trim(),
         sourcePage: "/services",
       };
@@ -116,7 +116,19 @@ const [loading, setLoading] = useState(false);
           </CustomButton>
       </Box>
     </Box>
-
+<ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        // transition={Bounce}
+      />
     </Box >
 
 
