@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomButton from "@/common-component/button/CustomButton";
-import { Card, Grid, Typography, styled, Box } from "@mui/material";
+import { Card, Grid, Typography, styled, Box, CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
@@ -298,7 +298,7 @@ const ShaddiService = () => {
         if (Array.isArray(data)) {
           const formattedServices = data.map((item, idx) => ({
             id: item._id || idx,
-            image: item.featuredImage?.url || "/default.png",
+            image: item.featuredImage?.url || "/serviceimg2.png",
             title: item.meta?.title || "No Title",
             description: item.meta?.description || "No Description",
             gridProps: { xs: 12, sm: 6, md: 4 },
@@ -309,7 +309,7 @@ const ShaddiService = () => {
           setServices([]);
         }
       } catch (error) {
-        setError(error);
+        setError(error?.message || "Something went wrong!");
       } finally {
         setLoading(false);
       }
@@ -319,9 +319,8 @@ const ShaddiService = () => {
   return (
     <MainContainer sx={{ py: { xs: 4, md: 8 }, px: { xs: 4, md: 8 } }}>
       <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
-
-      {/* Hero Section */}
-      <HeroCard>
+     {/* Hero Section */}
+       <HeroCard>
         <Grid container spacing={1}>
           <Grid item xs={12} md={8}>
             <HeroImageContainer>
@@ -433,6 +432,7 @@ const ShaddiService = () => {
         </ServiceDescription>
       </ServiceContent>
     </ServiceCard>
+    
   </Grid>
 </Grid> */}
     </MainContainer>

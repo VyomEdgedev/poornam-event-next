@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -11,10 +11,13 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
+import CookiesBanner from "@/component/footerbottom/cookies";
 
 const Footer = () => {
+  const [open, setOpen] = useState(false);
   return (
     <Box sx={{ backgroundColor: "#011d4a", padding: "2px" }}>
+      
       {/* Top dark blue section */}
       <Box
         sx={{
@@ -396,13 +399,12 @@ const Footer = () => {
                   T&C
                 </Link>{" "}
                 &nbsp;|&nbsp;
-                <Link
-                  href="/cookies"
-                  underline="hover"
-                  style={{ color: "black", textDecoration: "none", mx: 1 }}
-                >
-                  Cookies
-                </Link>
+                <span
+        onClick={() => setOpen(true)}
+        style={{ color: "black", textDecoration: "none", mx: 1, cursor: "pointer" }}
+      >
+        Cookies
+      </span>
               </Typography>
             </Grid>
 
@@ -482,7 +484,9 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Container>
+        <CookiesBanner open={open} onClose={() => setOpen(false)} />
       </Box>
+      
     </Box>
   );
 };

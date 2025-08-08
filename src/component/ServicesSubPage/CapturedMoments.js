@@ -12,7 +12,7 @@ import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
-
+import CircularProgress from "@mui/material/CircularProgress";
 // const CapturedMomentsData = [
 //   {
 //     id: 1,
@@ -44,7 +44,7 @@ const staticDescriptions = [
   "An elegant beach ceremony.",
   "Simplicity meets elegance.",
 ];
-const CapturedMoments = ({ title }) => {
+const CapturedMoments = ({ title, porfioId }) => {
   const [moments, setMoments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categoryName, setCategoryName] = useState("");
@@ -54,9 +54,8 @@ const CapturedMoments = ({ title }) => {
       setLoading(true);
       try {
         const response = await apiClient.get(
-          `api/service/getServicePageById/6890870b66eb7d1031848759/event`
+          `api/service/getServicePageById/${porfioId}/event`
         );
-        console.log("API", response);
         if (response.data.relatedPortfolios) {
           setMoments(response.data.relatedPortfolios);
         } else {
@@ -68,8 +67,10 @@ const CapturedMoments = ({ title }) => {
         setLoading(false);
       }
     };
-    fetchMoments();
-  }, []);
+    if (porfioId) {
+      fetchMoments();
+    }
+  }, [porfioId]);
 
   const handleViewAll = (category_id) => {
     const id =
@@ -110,7 +111,7 @@ const CapturedMoments = ({ title }) => {
         <Box textAlign="center" mb={{ xs: 3, md: 4 }}>
           <CustomButton
             disabled={moments.length === 0}
-              onClick={() =>
+            onClick={() =>
               handleViewAll(
                 typeof moments[0]?.category === "object"
                   ? moments[0]?.category?._id
@@ -121,86 +122,104 @@ const CapturedMoments = ({ title }) => {
             View All
           </CustomButton>
         </Box>
-
-        <Grid
-          container
-          spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }}
-          justifyContent="center"
-        >
-          {moments.map((portfolio, index) => (
-            <Grid item key={portfolio._id || index} xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                }}
-                elevation={1}
-              >
-                <Chip
-                  label={portfolio.category?.name}
-                  size="small"
+        {loading ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: 300,
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Grid
+            container
+            spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }}
+            justifyContent="center"
+          >
+            {moments.map((portfolio, index) => (
+              <Grid item key={portfolio._id || index} xs={12} sm={6} md={4}>
+                <Card
                   sx={{
-                    position: "absolute",
-                    top: 8,
-                    left: 8,
-                    backgroundColor: "#ddd",
-                    fontSize: 11,
-                    zIndex: 2,
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: "relative",
-                    width: "340px",
-                    height: 300,
-
+                    width: "100%",
+                    height: "100%",
                     display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: 14,
-                    textAlign: "center",
-                    minHeight: { xs: 250, sm: 280, md: 300 },
+                    flexDirection: "column",
+                    position: "relative",
                   }}
+                  elevation={1}
                 >
-                  <Image
-                    src={portfolio.images?.[0]?.url || "/YourDream1.png"}
-                    alt={portfolio.featuredImage?.altText || "Your Dream Theme"}
-                    layout="fill"
-                    objectFit="cover"
+                  <Chip
+                    label={portfolio.category?.name}
+                    size="small"
+                    sx={{
+                      position: "absolute",
+                      top: 8,
+                      left: 8,
+                      backgroundColor: "#ddd",
+                      fontSize: 11,
+                      zIndex: 2,
+                    }}
                   />
-                </Box>
-                <CardContent backgroundColor="#FFFCF5">
-                  <Typography
-                    variant="subtitle1"
-                    component="div"
+                  <Box
                     sx={{
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "400",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
+                      position: "relative",
+                      width: "340px",
+                      height: 300,
+
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: 14,
+                      textAlign: "center",
+                      minHeight: { xs: 250, sm: 280, md: 300 },
                     }}
                   >
-                    {portfolio?.name}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    sx={{
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "500",
-                      color: "#000000",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
-                    }}
-                  >
-                    {staticDescriptions[index] || "No Description"}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                    <Image
+                      src={portfolio.images?.[0]?.url || "/YourDream1.png"}
+                      alt={
+                        portfolio.featuredImage?.altText || "Your Dream Theme"
+                      }
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </Box>
+                  <CardContent backgroundColor="#FFFCF5">
+                    <Typography
+                      variant="subtitle1"
+                      component="div"
+                      sx={{
+                        fontFamily: "Akatab,Sans-serif",
+                        fontWeight: "400",
+                        fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
+                      }}
+                    >
+                      {portfolio?.name}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      sx={{
+                        fontFamily: "Akatab,Sans-serif",
+                        fontWeight: "500",
+                        color: "#000000",
+                        fontSize: {
+                          xs: "0.9rem",
+                          sm: "0.9rem",
+                          md: "1.125rem",
+                        },
+                      }}
+                    >
+                      {staticDescriptions[index] || "No Description"}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Container>
     </Box>
   );

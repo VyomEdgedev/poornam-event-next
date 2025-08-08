@@ -106,7 +106,7 @@ const BlogSection = () => {
           >
             {blogData.title}
           </Typography>
-          <Button
+          {/* <Button
             onClick={() => handleNavigate()}
             data-testid="notify-button"
             variant="contained"
@@ -127,7 +127,7 @@ const BlogSection = () => {
             }}
           >
             {blogData.viewAllText}
-          </Button>
+          </Button> */}
         </Box>
 
         <Grid
