@@ -14,7 +14,7 @@ import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
 
 const Footer = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   return (
     <Box sx={{ backgroundColor: "#011d4a", padding: "2px" }}>
       
@@ -400,7 +400,7 @@ const Footer = () => {
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <span
-        onClick={() => setOpen(true)}
+      
         style={{ color: "black", textDecoration: "none", mx: 1, cursor: "pointer" }}
       >
         Cookies
@@ -484,7 +484,6 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Container>
-        <CookiesBanner open={open} onClose={() => setOpen(false)} />
       </Box>
       
     </Box>
