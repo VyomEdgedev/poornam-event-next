@@ -8,66 +8,45 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Paper,
+  styled,
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  textAlign: "center",
+  color: (theme.vars ?? theme).palette.text.secondary,
+  ...theme.applyStyles("dark", {
+    backgroundColor: "#1A2027",
+  }),
+}));
 
 const Footer = () => {
   // const [open, setOpen] = useState(false);
   return (
-    <Box sx={{ backgroundColor: "#011d4a", padding: "2px" }}>
-      
+    <Box sx={{ backgroundColor: "#011d4a" }}>
       {/* Top dark blue section */}
-      <Box
-        sx={{
-          color: "#FFF1CA",
-          pt: { xs: 0, sm: 0, md: 2, lg: 4, xl: 4 },
-          pb: 5,
-        }}
-      >
-        <Container maxWidth="lg">
+      <Container>
+        <Box sx={{ flexGrow: 1,py:5}}>
           <Grid
             container
-            spacing={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 2 }}
-            sx={{
-              "@media (min-width:600px)": {
-                justifyContent: "flex-start",
-              },
-              "@media (min-width:900px)": {
-                justifyContent: "space-evenly",
-              },
-            }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+            alignItems={"flex-start"}
+            spacing={4}
           >
-            {/* Logo and About - 50% width on desktop */}
-            <Grid
-              item
-              xs={12}
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "30%",
-                  lg: "30%",
-                  xl: "40%",
-                },
-                marginLeft: {
-                  xs: "0px",
-                  sm: "0px",
-                  md: "0px",
-                  lg: "-10px",
-                  xl: "-10px",
-                },
-              }}
-            >
+            <Grid size={{ xs: 12, sm: 12, md: 4,lg:4 }} item>
               <Link href="/" passHref legacyBehavior>
                 <a>
                   <Box sx={{ display: "inline-block" }}>
                     <Image
                       src="/logo.png"
                       alt="Logo"
-                      width={120}
-                      height={60}
+                      width={140}
+                      height={80}
                       style={{ height: "auto" }}
                     />
                   </Box>
@@ -79,13 +58,7 @@ const Footer = () => {
                   fontSize: "16px",
                   lineHeight: 1.6,
                   fontFamily: "Akatab,Sans-serif",
-                  paddingLeft: {
-                    xs: "10px",
-                    sm: "10px",
-                    md: "13px",
-                    lg: "15px",
-                    xl: "15px",
-                  },
+                  color:"#FFF1CA"
                 }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
@@ -93,22 +66,11 @@ const Footer = () => {
                 create moments that live forever.`}
               </Typography>
             </Grid>
-
-            {/* Quick Links - 16.6% on desktop */}
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              md={2}
-              paddingLeft={{ xs: "11px", sm: "11px", md: "0px" }}
-            >
+            <Grid size={{ xs: 4, sm: 3, md: 2,lg:2 }} sx={{pt:5}}>
               <Box
                 sx={{
                   textAlign: "left",
-                  width: "130px",
-                  padding: "10px",
                   display: { xs: "contents", md: "grid" },
-                  gap: "1px",
                 }}
               >
                 <Typography
@@ -156,22 +118,11 @@ const Footer = () => {
                 ))}
               </Box>
             </Grid>
-
-            {/* Services */}
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              md={2}
-              paddingLeft={{ xs: "11px", sm: "11px", md: "0px" }}
-            >
+            <Grid size={{ xs: 8, sm: 4, md: 3,lg:3 }}  sx={{pt:5}}>
               <Box
                 sx={{
                   textAlign: "left",
-                  width: "240px",
-                  padding: "10px",
                   display: { xs: "contents", md: "grid" },
-                  gap: "5px",
                 }}
               >
                 <Typography
@@ -193,7 +144,7 @@ const Footer = () => {
                   { label: "Artist Management", href: "/services" },
                   { label: "Prewedding & Photography", href: "/services" },
                   { label: "Special Effects", href: "/services" },
-                ].map((item,i) => (
+                ].map((item, i) => (
                   <Link
                     key={i}
                     href={item.href}
@@ -218,22 +169,12 @@ const Footer = () => {
                 ))}
               </Box>
             </Grid>
-
-            {/* Contact */}
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              md={2}
-              paddingLeft={{ xs: "10px", sm: "10px", md: "0px" }}
-            >
+            <Grid size={{ xs: 12, sm: 5, md: 3,lg:3 }}  sx={{pt:5}}>
               <Box
                 sx={{
                   textAlign: "left",
-                  width: "250px",
-                  padding: { xs: "1px", md: "10px" },
+                  // width: "250px",
                   display: { xs: "grid", md: "grid" },
-                  gap: "5px",
                 }}
               >
                 <Typography
@@ -342,8 +283,8 @@ const Footer = () => {
               </Box>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
 
       {/* Bottom mustard section */}
       <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
@@ -361,7 +302,6 @@ const Footer = () => {
                 sx={{
                   fontSize: "14px",
                   textAlign: { xs: "center", md: "left" },
-                  paddingLeft: { xs: 0,sm: 0, md: 2, lg: 4.5 , xl:1.4},
                 }}
               >
                 © 2025 Poornam Events.
@@ -400,11 +340,15 @@ const Footer = () => {
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <span
-      
-        style={{ color: "black", textDecoration: "none", mx: 1, cursor: "pointer" }}
-      >
-        Cookies
-      </span>
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    mx: 1,
+                    cursor: "pointer",
+                  }}
+                >
+                  Cookies
+                </span>
               </Typography>
             </Grid>
 
@@ -450,7 +394,7 @@ const Footer = () => {
               </Typography>
 
               {/* Responsive logo wrapper */}
-           <Box
+              <Box
                 sx={{
                   display: "inline-block",
                   // mt: { xs: 0, md: 0, lg: 1 },
@@ -461,31 +405,27 @@ const Footer = () => {
                 }}
               >
                 <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                <a
-                  color="black"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "inline-block", width: "100%" }}
-                >
-                  <Image
-                    src="/developer.png"
-                    alt="Developer Logo"
-                    layout="responsive"
-                    width={100}
-                    height={100}
-                    priority
-                  />
-                </a>
+                  <a
+                    color="black"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "inline-block", width: "100%" }}
+                  >
+                    <Image
+                      src="/developer.png"
+                      alt="Developer Logo"
+                      layout="responsive"
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                  </a>
                 </Link>
-              </Box> 
-  
-
-
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
-      
     </Box>
   );
 };
