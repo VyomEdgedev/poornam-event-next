@@ -15,8 +15,7 @@ export default function   Snapshot() {
     // }
   // }, []);
   return (
-  <Grid  bgcolor="#FFFAED"
-  padding="2%"> 
+  <Grid  bgcolor="#FFFAED" pt={3}> 
        
     <Grid
       container

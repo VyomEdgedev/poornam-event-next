@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   useTheme,
   Fade,
+  Container,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -77,217 +78,222 @@ export default function ClientTestimonials() {
   }, []);
 
   return (
-    <Box
-      sx={{
-        bgcolor: "white",
-        px: { xs: 2, sm: 0, md: 14, lg: 10, xl: 21 },
-        py: { xs: 4, sm: 5, md: 5 },
-      }}
-    >
+    <Container>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: isMobile || isTablet ? "column" : "row",
-          gap: 4,
-          alignItems: "center",
-          justifyContent: "space-between",
+          bgcolor: "white",
+          py: 3,
         }}
       >
         <Box
           sx={{
-            textAlign: isMobile ? "center" : "right",
-            mt: { xs: 2, sm: 0, md: 1 },
-            mb: { xs: 2, sm: 0, md: 1 },
-            order: isMobile || isTablet ? 0 : 1,
-            width: isMobile || isTablet ? "100%" : "20%",
+            display: "flex",
+            flexDirection: isMobile || isTablet ? "column" : "row",
+            // gap: 4,
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <Typography
-            variant="h2"
-            fontWeight="bold"
-            sx={{
-              fontFamily: "Gloock, serif",
-              fontWeight: "400",
-              color: "#000000",
-              mb: 1,
-            }}
-          >
-            Client Testimonials
-          </Typography>
-          <Typography
-            variant="body1"
-            component="p"
-            sx={{
-              fontFamily: "Akatab,Sans-serif",
-              color: "#000000",
-              fontWeight: "400",
-            }}
-          >
-            Love From Our Couples
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            position: "relative",
-            width: isMobile || isTablet ? "100%" : "70%",
-          }}
-        >
-          {!isMobile && !isTablet && (
-            <Fade in={!atStart}>
-              <Box
-                onClick={() => {
-                  if (scrollRef.current) {
-                    scrollRef.current.scrollBy({
-                      left: -280,
-                      behavior: "smooth",
-                    });
-                  }
-                }}
-                sx={{
-                  position: "absolute",
-                  left: -15,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: 40,
-                  height: 40,
-                  bgcolor: "#ffffff",
-                  borderRadius: "50%",
-                  boxShadow: 3,
-                  p: 1,
-                  cursor: "pointer",
-                  zIndex: 2,
-                }}
-              >
-                <ArrowBackIosNewIcon fontSize="medium" />
-              </Box>
-            </Fade>
-          )}
-
-          {!isMobile && !isTablet && (
-            <Fade in={!atEnd}>
-              <Box
-                onClick={() => {
-                  if (scrollRef.current) {
-                    scrollRef.current.scrollBy({
-                      left: 280,
-                      behavior: "smooth",
-                    });
-                  }
-                }}
-                sx={{
-                  position: "absolute",
-                  right: -15,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: 40,
-                  height: 40,
-                  bgcolor: "#ffffff",
-                  borderRadius: "50%",
-                  boxShadow: 3,
-                  p: 1,
-                  cursor: "pointer",
-                  zIndex: 2,
-                }}
-              >
-                <ArrowForwardIosIcon fontSize="medium" />
-              </Box>
-            </Fade>
-          )}
-
           <Box
-            ref={scrollRef}
             sx={{
-              borderRadius: "20px",
-              overflowX: "auto",
-              overflowY: "visible",
-              "&::-webkit-scrollbar": { height: 6 },
+              textAlign: isMobile ? "center" : "right",
+              mt: { xs: 2, sm: 0, md: 1 },
+              mb: { xs: 2, sm: 0, md: 1 },
+              order: isMobile || isTablet ? 0 : 1,
+              width: isMobile || isTablet ? "100%" : "20%",
             }}
           >
-            <Box
+            <Typography
+              variant="h2"
+              fontWeight="bold"
               sx={{
-                display: "flex",
-                gap: 2,
-                flexWrap: "nowrap",
-                justifyContent: "flex-start",
-                paddingX: 2,
+                fontFamily: "Gloock, serif",
+                fontWeight: "400",
+                color: "#000000",
+                mb: 1,
               }}
             >
-              {testimonials.map((item, index) => (
-                <Paper
-                  key={index}
+              Client Testimonials
+            </Typography>
+            <Typography
+              variant="body1"
+              component="p"
+              sx={{
+                fontFamily: "Akatab,Sans-serif",
+                color: "#000000",
+                fontWeight: "400",
+              }}
+            >
+              Love From Our Couples
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              position: "relative",
+              width: isMobile || isTablet ? "100%" : "70%",
+            }}
+          >
+            {!isMobile && !isTablet && (
+              <Fade in={!atStart}>
+                <Box
+                  onClick={() => {
+                    if (scrollRef.current) {
+                      scrollRef.current.scrollBy({
+                        left: -280,
+                        behavior: "smooth",
+                      });
+                    }
+                  }}
                   sx={{
-                    minWidth: isMobile ? 260 : 260,
-                    maxWidth: isMobile ? 280 : 280,
-                    flexShrink: 0,
-                    mt: 2,
-                    mb: 2,
-                    borderRadius: 4,
-                    p: "11px",
-                    boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
-                    overflow: "visible",
+                    position: "absolute",
+                    left: -15,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: 40,
+                    height: 40,
+                    bgcolor: "#ffffff",
+                    borderRadius: "50%",
+                    boxShadow: 3,
+                    p: 1,
+                    cursor: "pointer",
+                    zIndex: 2,
                   }}
                 >
-                  <Stack direction="row" spacing={1} alignItems="center" mb={1}>
-                    <Avatar
-                      src={item.avatar}
-                      alt={item.alt}
-                      sx={{ width: 30, height: 30 }}
-                    />
-                    <Typography
-                      variant="h6"
-                      fontWeight={600}
-                      fontFamily={"Akatab,Sans-serif"}
-                      color="#000000"
-                    >
-                      {item.name}
-                    </Typography>
-                  </Stack>
+                  <ArrowBackIosNewIcon fontSize="medium" />
+                </Box>
+              </Fade>
+            )}
 
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    color="#000000"
+            {!isMobile && !isTablet && (
+              <Fade in={!atEnd}>
+                <Box
+                  onClick={() => {
+                    if (scrollRef.current) {
+                      scrollRef.current.scrollBy({
+                        left: 280,
+                        behavior: "smooth",
+                      });
+                    }
+                  }}
+                  sx={{
+                    position: "absolute",
+                    right: -15,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: 40,
+                    height: 40,
+                    bgcolor: "#ffffff",
+                    borderRadius: "50%",
+                    boxShadow: 3,
+                    p: 1,
+                    cursor: "pointer",
+                    zIndex: 2,
+                  }}
+                >
+                  <ArrowForwardIosIcon fontSize="medium" />
+                </Box>
+              </Fade>
+            )}
+
+            <Box
+              ref={scrollRef}
+              sx={{
+                borderRadius: "20px",
+                overflowX: "auto",
+                overflowY: "visible",
+                "&::-webkit-scrollbar": { height: 6 },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  flexWrap: "nowrap",
+                  justifyContent: "flex-start",
+                }}
+              >
+                {testimonials.map((item, index) => (
+                  <Paper
+                    key={index}
                     sx={{
-                      fontStyle: "italic",
+                      minWidth: isMobile ? 260 : 260,
+                      maxWidth: isMobile ? 280 : 280,
+                      flexShrink: 0,
+                      mt: 2,
                       mb: 2,
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "400",
+                      borderRadius: 4,
+                      p: "11px",
+                      boxShadow: "0px 6px 24px rgba(0, 0, 0, 0.12)",
+                      overflow: "visible",
                     }}
                   >
-                    {item.text}
-                  </Typography>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      alignItems="center"
+                      mb={1}
+                    >
+                      <Avatar
+                        src={item.avatar}
+                        alt={item.alt}
+                        sx={{ width: 30, height: 30 }}
+                      />
+                      <Typography
+                        variant="h6"
+                        fontWeight={600}
+                        fontFamily={"Akatab,Sans-serif"}
+                        color="#000000"
+                      >
+                        {item.name}
+                      </Typography>
+                    </Stack>
 
-                  <Stack direction="row" spacing={0.5} mb={1}>
-                    <Box
-                      component="span"
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      color="#000000"
                       sx={{
-                        display: "inline-block",
+                        fontStyle: "italic",
+                        mb: 2,
+                        fontFamily: "Akatab,Sans-serif",
+                        fontWeight: "400",
                       }}
                     >
+                      {item.text}
+                    </Typography>
+
+                    <Stack direction="row" spacing={0.5} mb={1}>
                       <Box
-                        component="img"
-                        src="/search.png"
-                        alt="Google logo"
-                        sx={{ width: 17, height: 17, mr: 1.2 }}
-                      />
-                    </Box>
-                    {[...Array(5)].map((_, i) => (
-                      <StarIcon
-                        key={i}
+                        component="span"
                         sx={{
-                          color: i < item.rating ? "#FFD700" : "#ccc",
-                          fontSize: 18,
+                          display: "inline-block",
                         }}
-                      />
-                    ))}
-                  </Stack>
-                </Paper>
-              ))}
+                      >
+                        <Box
+                          component="img"
+                          src="/search.png"
+                          alt="Google logo"
+                          sx={{ width: 17, height: 17, mr: 1.2 }}
+                        />
+                      </Box>
+                      {[...Array(5)].map((_, i) => (
+                        <StarIcon
+                          key={i}
+                          sx={{
+                            color: i < item.rating ? "#FFD700" : "#ccc",
+                            fontSize: 18,
+                          }}
+                        />
+                      ))}
+                    </Stack>
+                  </Paper>
+                ))}
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }

@@ -39,7 +39,7 @@ const BackgroundImage = styled("img")(({ theme }) => ({
   top: 0,
   left: 0,
   width: "100%",
-  height: "100%",
+  height: "450px",
   objectFit: "cover",
   zIndex: 1,
 
@@ -54,7 +54,7 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
   top: 0,
   left: 0,
   width: overlay?.width || "65%",
-  height: "100%",
+  height: "450px",
   zIndex: 2,
   background:
     overlay?.background ||
@@ -444,104 +444,113 @@ const CustomBanner = ({
   ...props
 }) => {
   return (
-    <BannerSection
-      height={height}
-      backgroundcolor={backgroundColor}
-      className={className}
-      {...props}
-    >
-      {/* Background Image */}
+    <>
       {backgroundImage && (
-        <BackgroundImage src={backgroundImage} alt={backgroundAlt} />
+        <BackgroundImage
+          src={backgroundImage}
+          height={100}
+          alt={backgroundAlt}
+        />
       )}
-
-      {/* Overlay */}
       {overlay && <Overlay overlay={overlay} />}
-
-      {/* Breadcrumbs - Added this new section */}
-      {breadcrumbs && (
-        <BreadcrumbsWrapper
-          breadcrumbsPosition={breadcrumbsPosition}
-          sx={breadcrumbsSx}
+      <Container>
+        <BannerSection
+          height={height}
+          backgroundcolor={backgroundColor}
+          className={className}
+          {...props}
         >
-          <BreadcrumbsComponent items={breadcrumbs} />
-        </BreadcrumbsWrapper>
-      )}
+          {/* Background Image */}
 
-      {/* Logo */}
-      {showLogo && logoSrc && (
-        <Link href="/" style={{ display: "block" }}>
-        <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
-          
-            <Image
-              src={logoSrc}
-              alt={logoAlt}
-              width={500} // You can adjust
-              height={500} // You can adjust
-              style={{ width: "100%", height: "auto" }}
-            />
-          
-        </LogoContainer>
-        </Link>
-      )}
+          {/* Overlay */}
 
-      {/* Main Content */}
-      <ContentContainer
-        contentalignment={contentAlignment}
-        contentposition={contentPosition}
-      >
-        {/* Title */}
-        {title && (
-          <MainHeading variant="h2" headingstyle={headingStyle}>
-            {title}
-          </MainHeading>
-        )}
+          {/* Breadcrumbs - Added this new section */}
+          {breadcrumbs && (
+            <BreadcrumbsWrapper
+              breadcrumbsPosition={breadcrumbsPosition}
+              sx={breadcrumbsSx}
+            >
+              <BreadcrumbsComponent items={breadcrumbs} />
+            </BreadcrumbsWrapper>
+          )}
 
-        {/* Subtitle */}
-        {subtitle && (
-          <SubHeading variant="h2" subheadingstyle={subheadingStyle}>
-            {subtitle}
-          </SubHeading>
-        )}
+          {/* Logo */}
+          {showLogo && logoSrc && (
+            <Link href="/" style={{ display: "block" }}>
+              <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
+                <Image
+                  src={logoSrc}
+                  alt={logoAlt}
+                  width={500} // You can adjust
+                  height={500} // You can adjust
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </LogoContainer>
+            </Link>
+          )}
 
-        {/* Paragraph Subtitle */}
-        {paragraphSubtitle && (
-          <ParagraphSubtitle variant="body1" paragraphstyle={paragraphStyle}>
-            {paragraphSubtitle}
-          </ParagraphSubtitle>
-        )}
+          {/* Main Content */}
+          <ContentContainer
+            contentalignment={contentAlignment}
+            contentposition={contentPosition}
+          >
+            {/* Title */}
+            {title && (
+              <MainHeading variant="h2" headingstyle={headingStyle}>
+                {title}
+              </MainHeading>
+            )}
 
-        {/* Buttons */}
-        {buttons.length > 0 && (
-          <ButtonContainer buttonscontainer={buttonsContainer}>
-            {buttons.map((button, index) => (
-              <CustomButton
-                key={index}
-                variant={button.variant || "primary"}
-                onClick={button.onClick}
-                disabled={button.disabled}
-                type={button.type}
-                className={button.className}
-                sx={{
-                  // Responsive button styling
-                  "@media (max-width: 600px)": {
-                    width: "100%",
-                    maxWidth: "300px",
-                  },
-                  ...button.sx,
-                }}
-                {...button.props}
+            {/* Subtitle */}
+            {subtitle && (
+              <SubHeading variant="h2" subheadingstyle={subheadingStyle}>
+                {subtitle}
+              </SubHeading>
+            )}
+
+            {/* Paragraph Subtitle */}
+            {paragraphSubtitle && (
+              <ParagraphSubtitle
+                variant="body1"
+                paragraphstyle={paragraphStyle}
               >
-                {button.text || button.children}
-              </CustomButton>
-            ))}
-          </ButtonContainer>
-        )}
+                {paragraphSubtitle}
+              </ParagraphSubtitle>
+            )}
 
-        {/* Custom children content */}
-        {children}
-      </ContentContainer>
-    </BannerSection>
+            {/* Buttons */}
+            {buttons.length > 0 && (
+              <ButtonContainer buttonscontainer={buttonsContainer}>
+                {buttons.map((button, index) => (
+                  <CustomButton
+                    key={index}
+                    variant={button.variant || "primary"}
+                    onClick={button.onClick}
+                    disabled={button.disabled}
+                    type={button.type}
+                    className={button.className}
+                    sx={{
+                      // Responsive button styling
+                      "@media (max-width: 600px)": {
+                        width: "100%",
+                        maxWidth: "300px",
+                      },
+                      ...button.sx,
+                    }}
+                    {...button.props}
+                  >
+                    {button.text || button.children}
+                  </CustomButton>
+                ))}
+              </ButtonContainer>
+            )}
+
+            {/* Custom children content */}
+            {children}
+          </ContentContainer>
+        </BannerSection>
+      </Container>
+    </>
   );
 };
 
