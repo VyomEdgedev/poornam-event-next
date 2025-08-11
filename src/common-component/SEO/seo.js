@@ -49,6 +49,16 @@ const finalOgImage = 'https://res.cloudinary.com/dtidgvjlt/image/upload/v1753038
       <meta name="twitter:title" content={twitterTitle || metaTitle} />
       <meta name="twitter:description" content={twitterDescription || metaDescription} />
       {twitterImage && <meta name="twitter:image" content={finalOgImage} />}
+
+       <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "logo": "/favicon.ico"
+            })
+          }}
+        />
+
     </Head>
   );
 };
