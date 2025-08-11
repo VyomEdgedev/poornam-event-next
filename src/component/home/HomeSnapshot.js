@@ -50,18 +50,18 @@ export default function   Snapshot() {
         {`  A scrapbook of memories shared by our couples.`}
         </Typography>
 
-        {/* <SnapshotCard 
+   <SnapshotCard 
          
-          // avatarSrc="/logo.png"
-          // title="Poornam Events"
-          // Subtitles="2 days ago at Udaipur"
-          // imageSrc="/snapshot.jpg"
-          // caption="Every detail was perfectly curated!"
-          //  tags={['#WeddingGoals', '#PerfectDay']}
+          avatarSrc="/logo.png"
+          title="Poornam Events"
+          Subtitles="2 days ago at Udaipur"
+          imageSrc="/snapshot.jpg"
+          caption="Every detail was perfectly curated!"
+           tags={['#WeddingGoals', '#PerfectDay']}
 
           
-        /> */}
-           <div style={{ maxWidth: '540px', margin: 'auto', marginTop: '20px' }}>
+        />
+           {/* <div style={{ maxWidth: '540px', margin: 'auto', marginTop: '20px' }}>
             <blockquote
               className="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/poornamevents"
@@ -79,7 +79,7 @@ export default function   Snapshot() {
                 width: '99.375%',
               }}
             ></blockquote>
-          </div>
+          </div> */}
       </Grid>
     </Grid>
   </Grid>
