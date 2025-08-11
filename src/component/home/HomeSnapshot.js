@@ -5,14 +5,14 @@ import { Grid, Typography } from '@mui/material';
 import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 
 export default function   Snapshot() {
-  //   useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.setAttribute('src', 'https://www.instagram.com/embed.js');
-  //   script.setAttribute('async', '');
-  //   document.body.appendChild(script);
-  //   if (window.instgrm) {
-  //     window.instgrm.Embeds.process();
-  //   }
+    // useEffect(() => {
+    // const script = document.createElement('script');
+    // script.setAttribute('src', 'https://www.instagram.com/embed.js');
+    // script.setAttribute('async', '');
+    // document.body.appendChild(script);
+    // if (window.instgrm) {
+    //   window.instgrm.Embeds.process();
+    // }
   // }, []);
   return (
   <Grid  bgcolor="#FFFAED"
