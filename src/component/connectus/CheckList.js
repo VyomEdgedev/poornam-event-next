@@ -17,7 +17,7 @@ function CheckList() {
           component={"p"}
           sx={{ frontFamily: "Akatab,Sans-serif", fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" } }}
           dangerouslySetInnerHTML={{
-            __html: `    <strong>Visit Our Studio (We Server Chai & Checklists)</strong>`,
+            __html: `    <strong>Visit Our Studio (We Serve Chai & Checklists)</strong>`,
           }}
         />
         <Typography variant="body1"

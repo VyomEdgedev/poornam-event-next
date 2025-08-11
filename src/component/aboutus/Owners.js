@@ -71,7 +71,7 @@ export default function Owners() {
       <Grid
         container
         rowSpacing={{ xs: 2, sm: 3 }}
-        columnSpacing={{ sm: 2, md: 3, lg: 5 }}
+        columnSpacing={{ xs: 2, sm: 3, md: 15.25, lg: 15.25 }}
         justifyContent={{ xs: "center", sm: "center", md: "center", lg: "flex-start" }}
       >
         {owners.map((owner) => (

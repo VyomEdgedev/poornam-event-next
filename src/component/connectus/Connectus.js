@@ -83,7 +83,7 @@ export default function ContactUs() {
       </>
       <CustomBanner
         title="Let's Make Shaadi Magic Together!"
-        subtitle="From planning to 'I do', we' ve got your back!"
+        subtitle="From planning to 'I do', we've got your back!"
         // paragraphSubtitle="Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with ❤️, dhol, and a bit of dholak. For brides, grooms, families, and even the baaratis. Let’s get planning, Poornam-style."
         backgroundImage="/ConnectUsBanner.png"
         showLogo={true}
@@ -91,7 +91,7 @@ export default function ContactUs() {
          breadcrumbs={[
           { href: "/", isHome: true },
           // { href: '/blog', label: 'Blog' },
-          { label: "Connectus" },
+          { label: "Connect us" },
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
@@ -114,7 +114,7 @@ export default function ContactUs() {
         }}
       >
         
-        <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan my Wedding`}</CustomButton>
+        <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan My Wedding`}</CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner >
 
