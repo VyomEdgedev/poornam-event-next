@@ -123,8 +123,8 @@ const PortfolioSection = () => {
   );
 
   return (
-    <Box sx={{ bgcolor: '#FFFAED', py: { xs: 6, md: 7 }, px:{ xs: 2, sm: 0, md: 12, lg: 7.5, xl: 20} }}>
-      <Container maxWidth="xl">
+    <Box sx={{ bgcolor: '#FFFAED', py: 3}}>
+      <Container >
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
           <Typography
             variant="h2"
