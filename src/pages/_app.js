@@ -64,3 +64,6 @@ App.propTypes = {
   emotionCache: PropTypes.object,
   pageProps: PropTypes.object.isRequired,
 };
+export const metadata = {
+  icon: "/favicon.ico",
+}
