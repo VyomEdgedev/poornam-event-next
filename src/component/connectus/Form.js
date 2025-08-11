@@ -142,22 +142,18 @@ const MyForm = () => {
       });
       setOpenSuccess(true);
     } catch (error) {
-  const errorMsg =
-    error?.response?.data?.error ||
-    error?.response?.data?.message ||
-    error?.message ||
-    "";
+      const errorMsg =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        error?.message ||
+        "";
 
-  if (
-    errorMsg.includes("E11000") ||
-    errorMsg.includes("duplicate key")
-  ) {
-    toast.error("You are already registered!");
-  } else {
-    toast.error("Something went wrong. Please try again.");
-  }
-}
- finally {
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+        toast.error("You are already registered!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
       setLoading(false);
     }
   };
@@ -410,9 +406,9 @@ const MyForm = () => {
                 type="date"
                 variant="outlined"
                 fullWidth
-               inputProps={{
-    min: today, 
-  }}
+                inputProps={{
+                  min: today,
+                }}
                 sx={{
                   fontFamily: "Akatab, sans-serif",
                   "& .MuiOutlinedInput-root": {
