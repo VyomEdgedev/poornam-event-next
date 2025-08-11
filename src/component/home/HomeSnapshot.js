@@ -10,8 +10,6 @@ export default function   Snapshot() {
     script.setAttribute('src', 'https://www.instagram.com/embed.js');
     script.setAttribute('async', '');
     document.body.appendChild(script);
-
-    // Optional: reload the embed script after appending
     if (window.instgrm) {
       window.instgrm.Embeds.process();
     }
