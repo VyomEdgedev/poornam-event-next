@@ -6,9 +6,10 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Container,
 } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Link from "next/link";
 const services = [
   {
@@ -16,9 +17,8 @@ const services = [
     image: "/homeservices1.png",
     description:
       "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
-    cta: "Learn More",  
+    cta: "Learn More",
     link: "/servicessubpage",
-
   },
   {
     title: "Intimate Weddings",
@@ -59,19 +59,17 @@ const services = [
     cta: "Learn More",
     link: "/services",
   },
-   {
+  {
     title: "Food and Beverages",
     image: "/homeservices6.png",
-    description:
-      "More than just pretty flowers...",
+    description: "More than just pretty flowers...",
     cta: "Learn More",
     link: "/services",
   },
-   {
+  {
     title: "Guest Hospitality & Logistics",
     image: "/homeservices7.png",
-    description:
-      "Because a happy guest = a happy shaadi...",
+    description: "Because a happy guest = a happy shaadi...",
     cta: "Learn More",
     link: "/services",
   },
@@ -80,23 +78,19 @@ const services = [
 const FlipCard = ({ service }) => {
   const [flipped, setFlipped] = useState(false);
 
-
-
-
   return (
     <Box
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       sx={{
         width: "100%",
-        height: 360,
+        height: {xs:330,sm:350},
         perspective: 1500,
         cursor: "pointer",
         transition: "transform 0.4s ease-in-out",
         "&:hover": {
           transform: "scale(1.02)",
         },
-
       }}
     >
       <Box
@@ -108,7 +102,6 @@ const FlipCard = ({ service }) => {
           transition: "transform 0.9s ease",
           transform: flipped ? "rotateX(180deg)" : "rotateX(0deg)",
           transformOrigin: "bottom",
-          
         }}
       >
         {/* Front Side */}
@@ -168,7 +161,7 @@ const FlipCard = ({ service }) => {
             background: "#000D1F",
             border: "1px solid rgba(255,255,255,0.15)",
             color: "#fff",
-            px: 3,
+            px: {xs:1,sm:2,md:3},
             py: 3,
             boxShadow: "inset 0 0 10px rgba(255,255,255,0.1)",
             display: "flex",
@@ -198,7 +191,6 @@ const FlipCard = ({ service }) => {
         >
           {service.guests && (
             <Typography
-
               sx={{
                 bgcolor: "rgba(255,255,255,0.8)",
                 color: "#0D1A46",
@@ -214,7 +206,12 @@ const FlipCard = ({ service }) => {
               {service.guests}
             </Typography>
           )}
-          <Typography variant="h5" fontWeight={600} fontFamily={"Akatab,Sans-serif"} sx={{ mb: 1, zIndex: 2 }}>
+          <Typography
+            variant="h5"
+            fontWeight={600}
+            fontFamily={"Akatab,Sans-serif"}
+            sx={{ mb: 1, zIndex: 2 }}
+          >
             {service.title}
           </Typography>
           <Typography
@@ -222,7 +219,8 @@ const FlipCard = ({ service }) => {
             component="p"
             sx={{
               color: "#f5f5f5",
-              frontFamily: "Akatab,Sans-serif", color: "#FFFBF0",
+              frontFamily: "Akatab,Sans-serif",
+              color: "#FFFBF0",
               lineHeight: 1.2,
               mb: 2,
               zIndex: 2,
@@ -232,29 +230,29 @@ const FlipCard = ({ service }) => {
           </Typography>
           {service.cta && service.link && (
             <Link href={service.link} passHref>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{
-                bgcolor: "#D7A10F",
-                color: "#FFFFFF",
-                textTransform: "none",
-                fontWeight: 600,
-                borderRadius: "999px",
-                px: 3,
-                py: 0.8,
-                fontSize: "0.85rem",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                zIndex: 2,
-                "&:hover": {
-                  bgcolor: "#B8850D",
-                },
-              }}
-              
-              // style={{ cursor: 'pointer' }}
-            >
-              {service.cta}
-            </Button>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{
+                  bgcolor: "#D7A10F",
+                  color: "#FFFFFF",
+                  textTransform: "none",
+                  fontWeight: 600,
+                  borderRadius: "999px",
+                  px: 3,
+                  py: 0.8,
+                  fontSize: "0.85rem",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  zIndex: 2,
+                  "&:hover": {
+                    bgcolor: "#B8850D",
+                  },
+                }}
+
+                // style={{ cursor: 'pointer' }}
+              >
+                {service.cta}
+              </Button>
             </Link>
           )}
         </Box>
@@ -270,34 +268,46 @@ export default function OurServices() {
   return (
     <Box
       sx={{
-        px: { xs: 2, sm: 8, md: 6 },
         py: { xs: 4, sm: 6, md: 2 },
         bgcolor: "#FFFAED",
         textAlign: "center",
       }}
     >
-      <Typography
-        variant="h2"
-        sx={{
-          fontFamily: 'Gloock, serif',
-          fontWeight: "400",
-          color: "#0D1A46",
-          mb: 1,
-        }}
-      >
-        Our Services
-      </Typography>
-      <Typography variant="body1" component="p" color="#000000" fontFamily={"Akatab,Sans-serif"} fontWeight={400} mb={{ xs: 2, md: 4 }}>
-        {` Everything You Need, Delivered Beautifully`}
-      </Typography>
+      <Container>
+          <Typography
+            variant="h2"
+            sx={{
+              fontFamily: "Gloock, serif",
+              fontWeight: "400",
+              color: "#0D1A46",
+              mb: 1,
+            }}
+          >
+            Our Services
+          </Typography>
+          <Typography
+            variant="body1"
+            component="p"
+            color="#000000"
+            fontFamily={"Akatab,Sans-serif"}
+            fontWeight={400}
+            mb={{ xs: 2, md: 4 }}
+          >
+            {` Everything You Need, Delivered Beautifully`}
+          </Typography>
 
-      <Grid container spacing={{ xs: 2, sm: 3, md: 2, lg: 2.2,xl:3.6}} justifyContent="center">
-        {services.map((service, index) => (
-          <Grid item xs={12} sm={6} md={3}  lg={3} xl={3} key={index}>
-            <FlipCard service={service} />
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }}
+            justifyContent="center"
+          >
+            {services.map((service, index) => (
+              <Grid item xs={12} size={{ xs: 6, sm: 4, md: 3 ,lg:3}} key={index}>
+                <FlipCard service={service} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+      </Container>
     </Box>
   );
 }

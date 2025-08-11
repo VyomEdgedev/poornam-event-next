@@ -1,62 +1,65 @@
-import React from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import React from "react";
+import { Box, Container, Grid, Typography } from "@mui/material";
 
 const data = [
   {
-    label: 'Latest Trends',
-    image: '/blog1.jpg',
+    label: "Latest Trends",
+    image: "/blog1.jpg",
   },
   {
-    label: 'Celebrity',
-    image: '/blog2.jpg',
+    label: "Celebrity",
+    image: "/blog2.jpg",
   },
   {
-    label: 'Fashion',
-    image: '/blog3.jpg',
+    label: "Fashion",
+    image: "/blog3.jpg",
   },
   {
-    label: 'Decoration',
-    image: '/blog4.jpg',
+    label: "Decoration",
+    image: "/blog4.jpg",
   },
-  
 ];
 
 export default function InspirationSection() {
   return (
-    <Box sx={{ py: {xs: 4, md: 4}, px: {xs: 16, sm:2,md: 2,lg: 10,xl: 20}, textAlign: 'center' }}>
+    <Container>
+    <Box sx={{ textAlign: "center" ,py:5}}>
       <Typography
-
         variant="h2"
         component={"h2"}
-
-        sx={{ fontFamily: 'Gloock, serif', fontWeight: 400, mb: 6 }}
+        sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 6 }}
       >
-      {`  Inspirations & Blogs`}
+        {`Inspirations & Blogs`}
       </Typography>
 
-      <Grid container spacing={{xs: 2, sm: 1 , md: 2, lg: 11}} justifyContent="center" padding="0px 0px" >
+      {/* <Grid
+        container
+        spacing={5}
+        justifyContent="center"
+        padding="0px 0px"
+      > */}
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} justifyContent="center">
         {data.map((item, index) => (
-          <Grid item key={index} xs={6} sm={2} md={12}>
+          <Grid item key={index} size={{ xs: 6, sm: 4, md: 3 }}>
             <Box
               sx={{
-                width: { xs: 130, sm: 150, md:180, lg:230 },
-                height: {xs: 130, sm: 150 ,md:180, lg:230},
-                mx: 'auto',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                position: 'relative',
-                cursor: 'pointer',
-                transition: 'transform 0.8s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
+                width: { xs: 150, sm: 170, md: 200, lg: 230 },
+                height: { xs: 150, sm: 170, md: 200, lg: 230 },
+                mx: "auto",
+                borderRadius: "50%",
+                overflow: "hidden",
+                position: "relative",
+                cursor: "pointer",
+                transition: "transform 0.8s ease",
+                "&:hover": {
+                  transform: "scale(1.05)",
                 },
-                '&:hover .overlay': {
-                  backdropFilter: 'blur(3px)',
+                "&:hover .overlay": {
+                  backdropFilter: "blur(3px)",
                 },
-                '&:hover .label-text': {
-                  transform: 'translateY(-50px)',
-                //   top:"100px",
-                  
+                "&:hover .label-text": {
+                  transform: "translateY(-50px)",
+                  //   top:"100px",
                 },
               }}
             >
@@ -66,9 +69,9 @@ export default function InspirationSection() {
                 src={item.image}
                 alt={item.label}
                 sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
                 }}
               />
 
@@ -76,14 +79,14 @@ export default function InspirationSection() {
               <Box
                 className="overlay"
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                  backdropFilter: 'blur(0px)',
-                  transition: 'all 0.4s ease',
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  backdropFilter: "blur(0px)",
+                  transition: "all 0.4s ease",
                   zIndex: 1,
                 }}
               />
@@ -92,18 +95,17 @@ export default function InspirationSection() {
               <Typography
                 className="label-text"
                 sx={{
-                  position: 'absolute',
+                  position: "absolute",
                   bottom: 25,
                   left: 0,
                   right: 0,
-                  textAlign: 'center',
-                  color: '#fff',
-                  fontWeight: 'bold',
-                  fontSize: {xs:"14px",sm:"16px",md:"18px",lg:"18px"},
+                  textAlign: "center",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: { xs: "14px", sm: "16px", md: "18px", lg: "18px" },
                   zIndex: 2,
-                  transform: 'translateY(0)',  // base position
-    transition: 'transform 0.6s ease-in-out', // ⬅️ slower and smooth
-                  
+                  transform: "translateY(0)", // base position
+                  transition: "transform 0.6s ease-in-out", // ⬅️ slower and smooth
                 }}
               >
                 {item.label}
@@ -113,5 +115,6 @@ export default function InspirationSection() {
         ))}
       </Grid>
     </Box>
+    </Container>
   );
 }
