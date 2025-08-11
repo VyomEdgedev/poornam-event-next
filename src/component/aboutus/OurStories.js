@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 const Story = [
@@ -31,7 +30,7 @@ export default function OurStories() {
             component="h2"
             sx={{
               color: "black",
-              // fontSize: "clamp(1.5rem, 5vw, 2rem)",
+             
               fontFamily: "Gloock, serif",
               fontWeight: 400,
               mb: 1.5,
