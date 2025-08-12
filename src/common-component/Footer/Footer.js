@@ -41,12 +41,12 @@ const Footer = () => {
             <Grid size={{ xs: 12, sm: 12, md: 4,lg:4 }} item>
               <Link href="/" passHref legacyBehavior>
                 <a>
-                  <Box sx={{ display: "inline-block" }}>
+                  <Box sx={{ display: "inline-block" ,mb:2}}>
                     <Image
-                      src="/logo.png"
+                      src="/logo2.png"
                       alt="Logo"
-                      width={140}
-                      height={80}
+                      width={100}
+                      height={40}
                       style={{ height: "auto" }}
                     />
                   </Box>
@@ -66,7 +66,7 @@ const Footer = () => {
                 create moments that live forever.`}
               </Typography>
             </Grid>
-            <Grid size={{ xs: 4, sm: 3, md: 2,lg:2 }} sx={{pt:5}}>
+            <Grid size={{ xs: 4, sm: 3, md: 2,lg:2 }} pt={{sx:0,sm:0,md:5}}>
               <Box
                 sx={{
                   textAlign: "left",
@@ -96,7 +96,7 @@ const Footer = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none" ,width:"fit-content"}}
                   >
                     <Typography
                       variant="body2"
@@ -118,7 +118,7 @@ const Footer = () => {
                 ))}
               </Box>
             </Grid>
-            <Grid size={{ xs: 8, sm: 4, md: 3,lg:3 }}  sx={{pt:5}}>
+            <Grid size={{ xs: 8, sm: 4, md: 3,lg:3 }}  pt={{sx:0,sm:0,md:5}}>
               <Box
                 sx={{
                   textAlign: "left",
@@ -148,7 +148,7 @@ const Footer = () => {
                   <Link
                     key={i}
                     href={item.href}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none" ,width:"fit-content"}}
                   >
                     <Typography
                       variant="body2"
@@ -169,7 +169,7 @@ const Footer = () => {
                 ))}
               </Box>
             </Grid>
-            <Grid size={{ xs: 12, sm: 5, md: 3,lg:3 }}  sx={{pt:5}}>
+            <Grid size={{ xs: 12, sm: 5, md: 3,lg:3 }}  pt={{sx:0,sm:0,md:5}}>
               <Box
                 sx={{
                   textAlign: "left",
@@ -337,18 +337,7 @@ const Footer = () => {
                   style={{ color: "black", textDecoration: "none", mx: 2 }}
                 >
                   T&C
-                </Link>{" "}
-                &nbsp;|&nbsp;
-                <span
-                  style={{
-                    color: "black",
-                    textDecoration: "none",
-                    mx: 1,
-                    cursor: "pointer",
-                  }}
-                >
-                  Cookies
-                </span>
+                </Link>
               </Typography>
             </Grid>
 
@@ -398,10 +387,11 @@ const Footer = () => {
                 sx={{
                   display: "inline-block",
                   // mt: { xs: 0, md: 0, lg: 1 },
-                  position: { xs: "static", sm: "static", md: "absolute" },
-                  top: { md: "-50px", lg: "-50px" },
+                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
+                  top: {xs:"0px", md: "-50px", lg: "-50px" },
                   right: { md: "10px", lg: "10px" },
                   width: { xs: "20px", sm: "30px", md: "50px" },
+                  marginLeft:"8px"
                 }}
               >
                 <Link href="https://vyomedge.com/" passHref legacyBehavior>

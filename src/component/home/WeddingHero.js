@@ -53,7 +53,7 @@ export default function WeddingSection() {
 
           <Typography
             // variant="h5"
-            component="h5"
+            component="h4"
             sx={{
               mb: 1,
               fontFamily: "Akatab,Sans-serif",
@@ -78,7 +78,6 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-            variant="h5"
             component="h4"
             sx={{
               fontFamily: "Akatab,Sans-serif",
@@ -91,7 +90,6 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-            variant="body1"
             component="p"
             sx={{
               fontFamily: "Akatab,Sans-serif",
@@ -107,7 +105,7 @@ export default function WeddingSection() {
         </Box>
 
         <Grid
-          mt={{xs:5,sm:2}}
+          mt={{xs:5,sm:3,md:0}}
           container
           spacing={3}
           sx={{

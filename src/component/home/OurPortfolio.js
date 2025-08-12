@@ -469,7 +469,7 @@ const PortfolioSection = () => {
         <Box
           sx={{
             position: "relative",
-            height: "100vh",
+            height: "150vh",
             width: "100%",
             display: "flex",
             alignItems: "center",
@@ -483,8 +483,9 @@ const PortfolioSection = () => {
               position: "absolute",
               top: 20,
               right: 20,
-              color: "#DAA412",
+              color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412"
             }}
           >
             <CloseIcon fontSize="large" />
@@ -495,8 +496,9 @@ const PortfolioSection = () => {
             sx={{
               position: "absolute",
               left: 20,
-              color: "#DAA412",
+            color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412 !important"
             }}
           >
             <ArrowBackIosNewIcon fontSize="large" />
@@ -510,16 +512,17 @@ const PortfolioSection = () => {
               justifyContent: "center",
             }}
           >
-            <Image
+          <Box sx={{height:"100vh",width:"100%"}}>
+              <Image
               src={portfolioImages[currentIndex].src}
               alt={portfolioImages[currentIndex].alt}
-              width={900}
-              height={600}
+             fill
               style={{
                 objectFit: "contain",
                 // maxWidth: "100%",
               }}
             />
+          </Box>
           </Box>
           {/* Right Arrow */}
           <IconButton
@@ -527,8 +530,9 @@ const PortfolioSection = () => {
             sx={{
               position: "absolute",
               right: 20,
-              color: "#DAA412",
+               color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412 !important"
             }}
           >
             <ArrowForwardIosIcon fontSize="large" />
