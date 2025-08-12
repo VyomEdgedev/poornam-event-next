@@ -32,7 +32,7 @@ function MagicMakers() {
         </Typography>
         <Typography
           sx={{
-            frontFamily: "Akatab,Sans-serif",
+            fontFamily: "Akatab,Sans-serif",
           }}
         >
           {`The heart and soul behind your dreamy Shaadi.`}

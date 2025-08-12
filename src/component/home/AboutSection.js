@@ -27,12 +27,12 @@ export default function AboutSection() {
         </Typography>
 
         <Typography
-          variant="body1"
+          variant="p"
           sx={{
             color: "#000D1F",
             fontSize: "1rem",
             lineHeight: 1.75,
-            frontFamily: "Akatab,Sans-serif",
+            fontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight: "400",
             // textAlign: "center",
@@ -52,7 +52,7 @@ export default function AboutSection() {
             color: "#000000",
             // fontSize: "1rem",
             lineHeight: 1.75,
-            frontFamily: "Akatab,Sans-serif",
+            fontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight: "400",
             mb: 4,

@@ -25,7 +25,7 @@ function CheckList() {
             variant="body1"
             component={"p"}
             sx={{
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" },
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}
@@ -37,7 +37,7 @@ function CheckList() {
             variant="body1"
             component={"p"}
             sx={{
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               fontSize: { xs: "0.8rem", sm: "1rem", md: "1.1rem" },
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}

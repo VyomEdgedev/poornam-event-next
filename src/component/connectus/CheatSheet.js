@@ -50,7 +50,7 @@ function CheatSheet() {
                 component="p"
                 width="250px"
                 px={2}
-                frontFamily="Akatab,Sans-serif"
+                fontFamily="Akatab,Sans-serif"
               >
                 {`"I want a destination wedding but don't know where!" `}
               </Typography>
@@ -58,7 +58,7 @@ function CheatSheet() {
             <Typography
               variant="body1"
               component="p"
-              frontFamily="Akatab,Sans-serif"
+              fontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
               <strong>{`We've got suggestions.`}</strong>
@@ -89,7 +89,7 @@ function CheatSheet() {
                 component="p"
                 width="250px"
                 px={2}
-                frontFamily="Akatab,Sans-serif"
+                fontFamily="Akatab,Sans-serif"
               >
                 {`"Mom wants 500 guests, I want 50!" `}
               </Typography>
@@ -97,7 +97,7 @@ function CheatSheet() {
             <Typography
               variant="body1"
               component="p"
-              frontFamily="Akatab,Sans-serif"
+              fontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
               <strong>{`We'll negotiate for you.`}</strong>
@@ -128,7 +128,7 @@ function CheatSheet() {
                 component="p"
                 width="250px"
                 px={2}
-                frontFamily="Akatab,Sans-serif"
+                fontFamily="Akatab,Sans-serif"
               >
                 {`"Need someone to handle everything!" `}
               </Typography>
@@ -136,7 +136,7 @@ function CheatSheet() {
             <Typography
               variant="body1"
               component="p"
-              frontFamily="Akatab,Sans-serif"
+              fontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
               <strong>{`We love everything`}</strong>

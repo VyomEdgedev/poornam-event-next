@@ -42,7 +42,7 @@ export default function ResourcesSection() {
           >
             <Typography
               variant="h2"
-              sx={{ fontFamily: "serif", fontWeight: 700, mb: 1 }}
+              sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 1 }}
             >
               Resources
             </Typography>
