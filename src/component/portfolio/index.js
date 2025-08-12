@@ -96,7 +96,7 @@ const Portfolio = () => {
       <WeddingThemes />
       <ShowCase />
       <RecentPosts />
-      <FAQSection faqData={myFAQData} />;
+      <FAQSection faqData={myFAQData} />
       <SocialMediaFollow />
     </>
   );
