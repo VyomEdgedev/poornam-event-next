@@ -109,7 +109,7 @@ const FlipCard = ({ service }) => {
           sx={{
             width: "100%",
             height: "100%",
-            borderRadius: 4,
+            borderRadius: 2,
             overflow: "hidden",
             backfaceVisibility: "hidden",
             boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
@@ -136,7 +136,7 @@ const FlipCard = ({ service }) => {
               position: "absolute",
               bottom: 0,
               width: "100%",
-              bgcolor: "rgba(0, 0, 0, 0.5)",
+              bgcolor: "rgba(0, 0, 0, 0.6)",
               color: "#fff",
               py: 1,
               px: 2,
@@ -286,7 +286,6 @@ export default function OurServices() {
             Our Services
           </Typography>
           <Typography
-            variant="body1"
             component="p"
             color="#000000"
             fontFamily={"Akatab,Sans-serif"}

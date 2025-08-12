@@ -30,7 +30,7 @@ export default function HeroSection() {
     }
   }, []);
   return (
-    <Box sx={{ backgroundColor: "#030b1d", pt: { xs: 12, md: 0 } }}>
+    <Box sx={{ backgroundColor: "#030b1d", overflow:"hidden",pt: { xs: 12, md: 0 } }}>
       <Container>
         <Box>
           <ConnectModal open={open} setOpen={setOpen} />
@@ -40,6 +40,7 @@ export default function HeroSection() {
               flexDirection: { xs: "column", sm: "column", md: "row" },
               alignItems: "stretch",
               justifyContent: "space-between",
+              
             }}
           >
             {/* Text Section */}
@@ -58,12 +59,12 @@ export default function HeroSection() {
                   top: 10,
                   left: 0,
                   zIndex: 6,
-                  width: { xs: 80, sm: 80, md: 80, lg: 120 },
+                  width: { xs: 80, sm: 80, md: 80, lg: 100 },
                 }}
               >
                 <Link href="/" passHref>
                   <Image
-                    src={"/logo.png"}
+                    src={"/logo2.png"}
                     alt="Logo"
                     width={120}
                     height={120}
@@ -87,16 +88,11 @@ export default function HeroSection() {
               >
                 <Typography
                   component="h1"
-                  fontWeight="regular"
+                  fontWeight="400"
                   sx={{
                     color: "#E6C365",
-                    // position:"absolute",
-                    // fontSize: { xs: "1.4rem", sm: "2.4rem", md: "3.5rem" },
                     fontFamily: "Gloock, serif",
-                    // width:"900px",
                     textAlign: { xs: "left", sm: "left", md: "left" },
-                    // ml: { xs: 3, sm: 2, md: 5, lg: 5 },
-                    mb: 1,
                     whiteSpace: { xs: "wrap", md: "nowrap", lg: "nowrap" },
                     zIndex: 7,
                     letterSpacing: "2px",
@@ -106,10 +102,9 @@ export default function HeroSection() {
                 </Typography>
 
                 <Typography
-                  component="h5"
+                  component="h2"
                   sx={{
                     color: "#FFF5D9",
-                    mb: 2,
                     fontWeight: 400,
                     fontFamily: "Akatab,Sans-serif ",
                     textAlign: { xs: "left", md: "left" },
@@ -120,16 +115,14 @@ export default function HeroSection() {
                   {`   Let’s Make Yours Legendary`}
                 </Typography>
                 <Typography
-                  component="p"
+                  component="h6"
                   sx={{
                     color: "#FFF5D9",
                     textAlign: { xs: "left", md: "left" },
                     fontFamily: "Akatab,Sans-serif",
                     fontWeight: 400,
                     whiteSpace: { xs: "wrap", sm: "wrap", md: "nowrap" },
-                    width: { xs: "85%", sm: "80%", md: "100%" },
                     mb: 3,
-                    // ml: { xs: 3, sm: 2, md: 5, lg: 5 },
                     letterSpacing: "0.5px",
                   }}
                 >
@@ -194,12 +187,14 @@ export default function HeroSection() {
                 overflow: { xs: "visible", md: "hidden" },
                 // borderRadius: 2,
                 zIndex: 1,
+                position:"relative",
+                right:{md:"-150px"}
               }}
             >
               <Image
                 src="/sadhi.png"
                 alt="Bridal Hero"
-                width={1000}
+                width={500}
                 height={800}
                 style={{
                   width: "100%",
