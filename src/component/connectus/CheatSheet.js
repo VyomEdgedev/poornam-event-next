@@ -16,7 +16,7 @@ function CheatSheet() {
         >
           {`Still Confused?`}
           <br />
-          {` Here's Cheat Sheet`}
+          {` Here's a Cheat Sheet`}
         </Typography>
       </Box>
       <Grid
@@ -100,7 +100,7 @@ function CheatSheet() {
               frontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
-              <strong>{`We'll nogotiate for you.`}</strong>
+              <strong>{`We'll negotiate for you.`}</strong>
             </Typography>
           </Box>
         </Grid>
@@ -130,7 +130,7 @@ function CheatSheet() {
                 px={2}
                 frontFamily="Akatab,Sans-serif"
               >
-                {`"Need someone to handle everthing!" `}
+                {`"Need someone to handle everything!" `}
               </Typography>
             </Box>
             <Typography
@@ -139,7 +139,7 @@ function CheatSheet() {
               frontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
-              <strong>{`We love everthing`}</strong>
+              <strong>{`We love everything`}</strong>
             </Typography>
           </Box>
         </Grid>

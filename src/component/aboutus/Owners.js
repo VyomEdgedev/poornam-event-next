@@ -23,8 +23,8 @@ function OwnerCard({ image, alt, headline, description }) {
   return (
     <Card
       sx={{
-        width: { xs: 360, sm: 350, md: 450, lg: 500 },
-        height: { xs: 400, sm: 400, md: 500, lg: 550 },
+        width: { xs: 360, sm: 350, md: 400, lg: 450 },
+        height: { xs: 400, sm: 400, md: 450, lg: 500 },
         position: "relative",
         mx: { xs: "auto", sm: 0 },
         mt: { xs: 2, sm: 0 },
@@ -71,13 +71,13 @@ export default function Owners() {
       <Grid
         container
         rowSpacing={{ xs: 2, sm: 3 }}
-        columnSpacing={{ xs: 2, sm: 3, md: 15.25, lg: 15.25 }}
-        justifyContent={{ xs: "center", sm: "center", md: "center", lg: "flex-start" }}
+        columnSpacing={10}
+        justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" }}
       >
         {owners.map((owner) => (
-          <Grid key={owner.alt} item xs={12} sm={"auto"}>
+          <Box key={owner.alt} item xs={12} sm={"auto"}>
             <OwnerCard {...owner} />
-          </Grid>
+          </Box>
         ))}
       </Grid>
     </Container>
