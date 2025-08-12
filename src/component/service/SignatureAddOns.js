@@ -42,12 +42,12 @@ const SignatureAddOns = () => {
     <Box
       sx={{
         backgroundColor: '#FFF7E4',
-        py: { xs: 4, sm: 4, md: 8, lg: 4 },
-        px: { xs: 4, sm: 0, md: 1, lg: 2, xl: 20 }
+        py: { xs: 4, sm: 2, md: 8, lg: 4 },
+     
       }}
     >
       <Container maxWidth="xl">
-        <Box sx={{ textAlign: 'center', mb: { xs: 6, sm: 6, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
           <Typography
             variant="h2"
             component="h2"
@@ -75,9 +75,11 @@ const SignatureAddOns = () => {
           </Typography>
         </Box>
 
-        <Grid container  spacing={{ xs: 2, sm: 2, md: 2, lg: 7, xl: 6 }} justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" , xl: "center"}}>
+        <Grid container
+          spacing={{ xs: 2, sm: 2, md: 2, lg: 7, xl: 6 }} 
+        justifyContent={{ xs: "center", sm: "center", md: "center", lg: "center" , xl: "center"}}>
           {addOns.map((addon, index) => (
-            <Grid item size={{ xs: 12, sm: 4, lg: "auto" }}  key={index}>
+            <Grid item size={{ xs: 6, sm: 4,md:"auto", lg: "auto" }}  key={index}>
               <Box
                 sx={{
                   display: 'flex',

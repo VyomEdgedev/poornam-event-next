@@ -46,18 +46,8 @@ const SearchFilter = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isBelow1250 = useMediaQuery("(max-width:1250px),(spacing:50px)");
-
-  const responsiveSpacing = isBelow1250
-    ? { xs: 2, sm: 0, md: 10, lg: 16, xl: 25 } // spacing when screen is small
-    : { xs: 2, sm: 0, md: 10, lg: 16, xl: 25 }; // spacing when screen is large
-
   const categories = ["Tips", "Trends", "Venues", "Real Weddings", "Budget"];
   const locations = ["Indore", "Bhopal", "Jabalpur", "Goa", "Udaipur"];
-
   const handleCategoryToggle = (category) => {
     setSelectedCategories((prev) =>
       prev.includes(category)
@@ -84,45 +74,33 @@ const SearchFilter = () => {
   };
 
   return (
-    <Grid backgroundColor="#FFF7E4">
+    <Box backgroundColor="#FFF7E4">
       <Container
-        width="100%"
-        maxWidth="xl"
         sx={{
-          py: { xs: 1, sm: 1, md: 4 },
-          px: { xs: 2, sm: 0, md: 0, lg: 10, xl: 0 },
+          py: { xs: 2, sm: 3, md: 4 },
         }}
       >
         <Grid
           container
-          spacing={responsiveSpacing}
-          alignItems={isBelow1250 ? "center" : "center"}
-          justifyContent={isBelow1250 ? "center" : "center"}
+          justifyContent={{ xs: "center" }}
+          alignItems={{ xs: "center" }}
+          spacing={{ xs: 3, sm: 5, md: 7.5, lg: 18 }}
+          columns={{ xs: 12, sm: 12, md: 12 }}
         >
           {/* Left Side - Main Heading */}
           <Grid
             item
-            xs={12}
-            md={6}
+            size={{ xs: 12, sm: 12, md: 6 }}
             sx={{
               py: { xs: 1, sm: 2, md: 2 },
-              px: { xs: 2, sm: 4, md: 0, lg: 0, xl: 0 },
-            }}
-            width={{
-              xs: "495px",
-              sm: "495px",
-              md: "400px",
-              lg: "495px",
-              xl: "495px",
             }}
           >
             <Typography
-              variant="h2"
-              component="h2"
+             component="h2"
               sx={{
                 fontWeight: "400",
                 color: "#000000",
-                lineHeight: 1.2,
+
                 mb: 1,
                 fontFamily: "Gloock,serif",
               }}
@@ -130,13 +108,11 @@ const SearchFilter = () => {
               {` Find What You Need`}
             </Typography>
             <Typography
-              variant="body1"
               component="p"
               sx={{
+                  fontWeight: "400",
                 color: "#000000",
                 fontFamily: "Akatab,Sans-serif",
-                fontSize: { xs: "15px", sm: "16px", md: "18px" },
-                lineHeight: 1.2,
               }}
             >
               {` Search for valuable insights to aid your planning journey.`}
@@ -144,15 +120,15 @@ const SearchFilter = () => {
           </Grid>
 
           {/* Right Side - Search and Filters */}
-          <Grid item xs={12} sm={8} md={6}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }}>
             {/* Search Input */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+               
                 component="h6"
                 sx={{
                   mb: 0,
-                  fontWeight: 600,
+                  fontWeight: 500,
                   color: "#000D1F",
                   fontFamily: "Akatab,Sans-serif",
                 }}
@@ -178,9 +154,9 @@ const SearchFilter = () => {
             {/* Filter by Category */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+              
                 component="h6"
-                sx={{ mb: 0, fontWeight: 600, color: "text.primary" }}
+                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
               >
                 {`  Filter by Category`}
               </Typography>
@@ -195,7 +171,7 @@ const SearchFilter = () => {
                     variant="filled"
                     sx={{
                       margin: "4px",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       fontFamily: "Akatab, sans-serif",
                       backgroundColor: selectedCategories.includes(category)
                         ? "#DAA412"
@@ -217,9 +193,9 @@ const SearchFilter = () => {
             {/* Filter by Location */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+               
                 component="h6"
-                sx={{ mb: 0, fontWeight: 600, color: "text.primary" }}
+                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
               >
                 {`  Filter by Location`}
               </Typography>
@@ -255,7 +231,7 @@ const SearchFilter = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: isMobile ? "center" : "flex-start",
+                // justifyContent: isMobile ? "center" : "flex-start",
               }}
             >
               <CustomButton
@@ -266,7 +242,7 @@ const SearchFilter = () => {
           </Grid>
         </Grid>
       </Container>
-    </Grid>
+    </Box>
   );
 };
 

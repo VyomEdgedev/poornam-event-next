@@ -1,89 +1,181 @@
-import { Grid, Typography, Box, Card, CardContent } from '@mui/material';
-import React from 'react'
+import {
+  Grid,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Container,
+} from "@mui/material";
+import React from "react";
 
 function Philosophy() {
-    return (
-        <>
-            <Box container
-                padding="5px">
-                <Grid container
-                    display="flex"
-                    justifyContent="space-evenly"
-                    justifyItems="center"
-                >
-                    <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },alignSelf:"center", fontFamily: "Gloock,Sans-serif " }}>
-                          {` Our Philosophy`}</Typography>
-                    </Grid>
+  return (
+    <>
+      <Container>
+        {/* First Section */}
+        <Box sx={{ py: 4 }}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+            alignItems="center"
+            justifyContent="center"
+          >
+            {/* Title */}
+            <Grid
+              item
+              size={{ xs: 12, sm: 12, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
+              <Typography
+                component="h2"
+                sx={{
+                    fontFamily: "Gloock, serif",
+                  fontWeight:400,
+                  color:"#000000"
+                }}
+              >
+                {` Our Philosophy`}
+              </Typography>
+            </Grid>
 
-                    <Grid container
-                        component="img"
-                        src="/Book.svg"
-                        alt="Sample"
-                        alignItems="center"
-                        sx={{ padding: "30px" }}
-                    />
-                    <Grid>
-                        <Card sx={{ maxWidth: 400, m: 2, p: 2, boxShadow: 3 }}>
-                            <CardContent>
-                                {/* Main title text */}
-                                <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Akatab,Sans-serif">
-                                    {`   Our Humble Beginnings`}
-                                </Typography>
+            {/* Image */}
+            <Grid
+              item
+              size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
+              <Box
+                component="img"
+                src="/Book.svg"
+                alt="Book illustration"
+                sx={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  padding: 2,
+                }}
+              />
+            </Grid>
 
-                                {/* Supporting description text */}
-                                <Typography variant="body2" color="text.secondary" fontFamily="Akatab,Sans-serif">
-                                    {` Founded by a passionate team, Poornam began
-                                    with the idea of bringing joy and creativity to
-                                    Indian weddings.`}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Box>
+            {/* Card */}
+            <Grid item size={{ xs: 12, sm: 8, md: 4 }}>
+              <Card
+                sx={{
+                  boxShadow: 3,
+                  height: "100%",
+                }}
+              >
+                <CardContent sx={{ p: 3 }}>
+                  <Typography
+                    component="h5"
+                    fontWeight="700"
+                    gutterBottom
+                    fontFamily="Akatab, Sans-serif"
+                    color="#000000"
+                    sx={{ mb: 2 }}
+                  >
+                    {`Our Humble Beginnings`}
+                  </Typography>
+                  <Typography
+                    component="p"
+                    color="#000000"
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ lineHeight: 1.6 }}
+                  >
+                    {`Founded by a passionate team, Poornam began
+                    with the idea of bringing joy and creativity to
+                    Indian weddings.`}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
 
-            <Box container
-                padding="30px">
-                <Grid container
-                    display="flex"
-                    justifyContent="space-evenly"
-                    justifyItems="center"
-                >
-                    <Grid container
-                        component="img"
-                        src="/Dart.svg"
-                        alt="Sample"
-                        alignItems="center"
-                        sx={{ padding: "30px" }}
-                    />
-                    <Grid>
-                        <Card sx={{ maxWidth: 400, m: 2, p: 2, boxShadow: 3 }}>
-                            <CardContent>
-                                {/* Main title text */}
-                                <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Akatab,Sans-serif">
-                                    {`  Our Mission`}
-                                </Typography>
+        
+        {/* Second Section */}
+        <Box sx={{ py: 4 }}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+            alignItems="center"
+            justifyContent="center"
+            sx={{
+              flexDirection: { xs: "column-reverse", md: "row" }, // Reverse on mobile
+            }}
+          >
+            {/* Image */}
+             {/* Card */}
+             <Grid item size={{ xs: 12, sm: 8, md: 4 }}>
+              <Card
+                sx={{
+                  boxShadow: 3,
+                  height: "100%",
+                }}
+              >
+                <CardContent sx={{ p: 3 }}>
+                  <Typography
+                    component="h5"
+                    fontWeight="700"
+                    gutterBottom
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ mb: 2 }}
+                  >
+                    Our Mission
+                  </Typography>
+                  <Typography
+                    component="p"
+                    color="#000000"
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ lineHeight: 1.6 }}
+                  >
+                    {`To create memorable moments filled with creativity, care, joy, and authenticity.`}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid
+              item
+                size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
+              <Box
+                component="img"
+                src="/Dart.svg"
+                alt="Dart illustration"
+                sx={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  padding: 2,
+                }}
+              />
+            </Grid>
 
-                                {/* Supporting description text */}
-                                <Typography variant="body2" color="text.secondary" fontFamily="Akatab,Sans-serif">
-                                    {`  To create memorable moments filled with creativity, care, joy, and authenticity.`}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" }, alignSelf:"center",fontFamily: "Gloock,Sans-serif" }}>
-                            { `Why We Exist`}
-                        </Typography>
-                          
-                    </Grid>
-                </Grid>
+           
 
+            {/* Title */}
+            <Grid
+              item
+              size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center", flexDirection: "column-reverse" }}
+            >
+              <Typography
+                component="h2"
+                sx={{
+                    fontFamily: "Gloock, serif",
+                  mt: { xs: 2, md: 0 },
+                }}
+              >
+                {`Why We Exist`}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
 
-            </Box>
-        </>
-    )
+      </Container>
+    </>
+  );
 }
 
 export default Philosophy;

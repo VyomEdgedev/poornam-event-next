@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Akatab:wght@400;700;800;900&display=swap');
 @keyframes slideEffect {
   0% {
     transform: rotate(-45deg) translateY(-100%);
@@ -100,80 +101,47 @@
 
 
 
+/* ===== Default (Mobile First) ===== */
+h1 { font-size: 28px !important; }
+h2 { font-size: 24px !important; }
+h3 { font-size: 20px !important; }
+h4 { font-size: 18px !important; }
+h5 { font-size: 16px !important; }
+h6 { font-size: 14px !important; }
+p  { font-size: 14px !important; }
 
-/* Default (large screens) */
-h1 { font-size: 48px!important;
-    font-family: 'Gloock', serif;
-;
-
+/* ===== Tablet (481px - 768px) ===== */
+@media (min-width: 481px) and (max-width: 768px) {
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 28px !important; }
+  h3 { font-size: 24px !important; }
+  h4 { font-size: 20px !important; }
+  h5 { font-size: 18px !important; }
+  h6 { font-size: 16px !important; }
+  p  { font-size: 15px !important; }
 }
 
-h2 { font-size: 42px !important;
-   font-family: 'Gloock,serif'
-}
-h3 { font-size: 32px  }
-h4 { font-size: 28px  }
-h5 { font-size: 24px  }
-h6 { font-size: 20px  }
-p  { font-size: 18px ; 
- font-family: "Akatab,Sans-serif"
-}
-
-/* Extra Large (≤1200px) */
-@media (max-width: 1200px) {
-  h1 { font-size: 48px ; }
-  h2 { font-size: 36px ; }
-  h3 { font-size: 30px ; }
-  h4 { font-size: 26px ;}
-  h5 { font-size: 22px ;}
-  h6 { font-size: 18px ; }
-  p  { font-size: 16px ; }
+/* ===== Laptop (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  h1 { font-size: 40px !important; }
+  h2 { font-size: 32px !important; }
+  h3 { font-size: 28px !important; }
+  h4 { font-size: 24px !important; }
+  h5 { font-size: 20px !important; }
+  h6 { font-size: 18px !important; }
+  p  { font-size: 16px !important; }
 }
 
-/* Large (≤992px) */
-@media (max-width: 992px) {
-  h1 { font-size: 36px !important ; }
-  h2 { font-size: 32px !important  }
-  h3 { font-size: 28px  }
-  h4 { font-size: 24px  }
-  h5 { font-size: 20px  }
-  h6 { font-size: 18px }
-  p  { font-size: 15px }
+/* ===== Desktop (1025px and above) ===== */
+@media (min-width: 1025px) {
+  h1 { font-size: 48px !important; }
+  h2 { font-size: 36px !important; }
+  h3 { font-size: 30px !important; }
+  h4 { font-size: 26px !important; }
+  h5 { font-size: 22px !important; }
+  h6 { font-size: 18px !important; }
+  p  { font-size: 16px !important; }
 }
-
-/* Medium (≤768px) */
-@media (max-width: 768px) {
-  h1 { font-size: 32px !important }
-  h2 { font-size: 28px  }
-  h3 { font-size: 24px  }
-  h4 { font-size: 22px  }
-  h5 { font-size: 18px  }
-  h6 { font-size: 16px  }
-  p  { font-size: 14px  }
-}
-
-/* Small (≤576px) */
-@media (max-width: 576px) {
-  h1 { font-size: 28px  }
-  h2 { font-size: 24px }
-  h3 { font-size: 22px  }
-  h4 { font-size: 20px  }
-  h5 { font-size: 16px  }
-  h6 { font-size: 14px  }
-  p  { font-size: 13px  }
-}
-
-/* Extra Small (≤400px) */
-@media (max-width: 400px) {
-  h1 { font-size: 24px  };
-  h2 { font-size: 22px  };
-  h3 { font-size: 20px  };
-  h4 { font-size: 18px  };
-  h5 { font-size: 15px  };
-  h6 { font-size: 13px  };
-  p  { font-size: 12px  };
-}
-
   
 .Toastify__toast--success {
 /* Your custom color */

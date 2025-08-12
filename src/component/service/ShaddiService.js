@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomButton from "@/common-component/button/CustomButton";
-import { Card, Grid, Typography, styled, Box, CircularProgress } from "@mui/material";
+import { Card, Grid, Typography, styled, Box, CircularProgress, Container } from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
@@ -317,91 +317,90 @@ const ShaddiService = () => {
     fetchServices();
   }, []);
   return (
-    <MainContainer sx={{ py: { xs: 4, md: 8 }, px: { xs: 4, md: 8 } }}>
+    <Container sx={{ py: { xs: 4, md: 4 } }}>
       <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
-     {/* Hero Section */}
-       <HeroCard>
-        <Grid container spacing={1}>
-          <Grid item xs={12} md={8}>
-            <HeroImageContainer>
-              <Image
-                src={servicesData.hero.image}
-                alt={servicesData.hero.title}
-                width={480}
-                height={480}
-              />
-            </HeroImageContainer>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <HeroContent>
-              <HeroTitle>
-                {selectedService
-                  ? selectedService.title
-                  : services[0]?.title || servicesData.hero.title}
-              </HeroTitle>
-              <HeroDescription>
-                {selectedService
-                  ? trimText(selectedService.description, 100)
-                  : trimText(servicesData.hero.description, 100)}
-              </HeroDescription>
-              <CustomButton
-                onClick={() => {
-                  handleNavigate(services[0]?.uid);
-                }}
-              >
-                {servicesData.hero.buttonText}
-              </CustomButton>
-            </HeroContent>
-          </Grid>
+        {/* Hero Section */}
+      <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
+        <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
+          <HeroImageContainer>
+            <Image
+              src={servicesData.hero.image}
+              alt={servicesData.hero.title}
+              width={480}
+              height={480}
+            />
+          </HeroImageContainer>
         </Grid>
-      </HeroCard>
-
-      {/* Services Grid */}
-      <Grid
-        container
-        spacing={2}
-        justifyContent={{ xs: "center", md: "start" }}
-      >
-        {(services.length ? services : servicesData.services).map((service) => (
-          <Grid
-            item
-            key={service.id}
-            onClick={() => {
-              handleNavigate(service.uid);
-            }}
-            {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
-            display="flex"
-            justifyContent="center"
-          >
-            <ServiceCard
-              onClick={() => setSelectedService(service)}
-              isSelected={selectedService?.id === service.id}
+        <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
+          <HeroContent>
+            <HeroTitle>
+              {selectedService
+                ? selectedService.title
+                : services[0]?.title || servicesData.hero.title}
+            </HeroTitle>
+            <HeroDescription>
+              {selectedService
+                ? trimText(selectedService.description, 100)
+                : trimText(servicesData.hero.description, 100)}
+            </HeroDescription>
+            <CustomButton
+              onClick={() => {
+                handleNavigate(services[0]?.uid);
+              }}
             >
-              <ImageContainer>
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={100}
-                  height={125}
-                />
-              </ImageContainer>
-              <ServiceContent>
-                <ServiceTitle>{service.title}</ServiceTitle>
-                <ServiceDescription>
-                  {highlightSpecificWords(service.description, [
-                    "Vintage",
-                    "Bollywood",
-                    "Royal",
-                    "Rajput",
-                    "YES",
-                  ])}
-                </ServiceDescription>
-              </ServiceContent>
-            </ServiceCard>
-          </Grid>
-        ))}
+              {servicesData.hero.buttonText}
+            </CustomButton>
+          </HeroContent>
+        </Grid>
       </Grid>
-      {/* <Grid container spacing={2} sx={{ mt: 0 }}>
+
+      <MainContainer >
+        {/* Services Grid */}
+        <Grid
+          container
+          spacing={2}
+          justifyContent={{ xs: "center", md: "start" }}
+        >
+          {(services.length ? services : servicesData.services).map((service) => (
+            <Grid
+              item
+              key={service.id}
+              onClick={() => {
+                handleNavigate(service.uid);
+              }}
+              {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
+              display="flex"
+              justifyContent="center"
+            >
+              <ServiceCard
+                onClick={() => setSelectedService(service)}
+                isSelected={selectedService?.id === service.id}
+              >
+                <ImageContainer>
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    width={100}
+                    height={125}
+                  />
+                </ImageContainer>
+                <ServiceContent>
+                  <ServiceTitle>{service.title}</ServiceTitle>
+                  <ServiceDescription>
+                    {highlightSpecificWords(service.description, [
+                      "Vintage",
+                      "Bollywood",
+                      "Royal",
+                      "Rajput",
+                      "YES",
+                    ])}
+                  </ServiceDescription>
+                </ServiceContent>
+              </ServiceCard>
+            </Grid>
+          ))}
+        </Grid>
+        {/* <Grid container spacing={2} sx={{ mt: 0 }}>
   <Grid
     item
     xs={12}
@@ -435,7 +434,8 @@ const ShaddiService = () => {
     
   </Grid>
 </Grid> */}
-    </MainContainer>
+      </MainContainer>
+    </Container>
   );
 };
 

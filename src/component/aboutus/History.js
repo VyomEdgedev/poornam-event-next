@@ -1,11 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function OurStories() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/AboutHistory.json") // ✅ Must match filename in public/
+    fetch("/AboutHistory.json") 
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
@@ -17,29 +17,29 @@ export default function OurStories() {
   }, []);
 
   return (
+    <Container>
     <Box sx={{
       display: "block",
       justifyItems: "center",
       justifyContent: "center",
       width: "100%",
-      maxWidth: "1400px",
       margin: "0 auto",
-      px: { xs: 6, sm: 4, md:5, lg:18, xl:18 },
-      py: { xs: 2, sm: 6, md: 1 },
+      py: { xs: 1, sm: 2, md: 1 },
       fontFamily: "Akatab,Sans-serif",
       fontWeight: "400",
-      fontSize: { xs: "0.8rem", sm: "1rem", md: "1.5rem" }
+      color:"#000000",
+      
     }}>
       {data.map((item, index) => (
         <Box key={index} style={{ marginBottom: "0.5rem" }}>
-          <h5 style={{ color: "black", objectFit: "contain" }}>{item.heading}</h5>
-          <h5 style={{ color: "black" }}>{item.h6}</h5>
+          <Typography component="h6" sx={{  color: "black", mb: 1.5 , fontFamily: "Akatab,Sans-serif",}}>{item.heading}</Typography>
           {item.paragraphs.map((p, i) => (
-            <p key={i} style={{ fontFamily: "Akatab,Sans-serif", lineHeight: 1.5 }}>{p}</p>
+            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",}}>{p}</Typography>
           ))}
         </Box>
       ))}
     </Box>
+    </Container>
   );
 }
 
