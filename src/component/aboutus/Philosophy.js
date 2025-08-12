@@ -13,7 +13,7 @@ function Philosophy() {
     <>
       <Container>
         {/* First Section */}
-        <Box sx={{ py: 4 }}>
+        <Box sx={{py:{xs:3, md:4}}}>
           <Grid
             container
             spacing={{ xs: 1, md: 3 }}
@@ -94,7 +94,7 @@ function Philosophy() {
 
         
         {/* Second Section */}
-        <Box sx={{ py: 4 }}>
+        <Box sx={{ py: {xs:0.5, sm:2, md:3} }}>
           <Grid
             container
             spacing={{ xs: 1, md: 3 }}
@@ -164,7 +164,7 @@ function Philosophy() {
                 component="h2"
                 sx={{
                     fontFamily: "Gloock, serif",
-                  mt: { xs: 2, md: 0 },
+                  mt: { xs: 1, md: 0 },
                 }}
               >
                 {`Why We Exist`}

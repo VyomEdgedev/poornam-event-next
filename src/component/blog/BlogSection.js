@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import axios from "axios";
 import { apiClient } from "@/lib/api-client";
+import Link from "next/link";
 
 const blogData = {
   title: "Latest From the Blog",
@@ -76,7 +77,7 @@ const BlogSection = () => {
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 2);
 
-  // Show nothing until blogs are available (hide section when no blogs or while loading)
+
   if (loading) return null;
   if (error) return null;
   if (!sortedPosts.length) return null;
@@ -100,7 +101,6 @@ const BlogSection = () => {
            
             component="h2"
             sx={{
-              // fontSize: { xs: "1.8rem", sm: "2rem", md: "3rem" },
               fontFamily: "Gloock,serif",
               fontWeight: 400,
               color: "#000000",
@@ -121,9 +121,12 @@ const BlogSection = () => {
         >
           {sortedPosts.map((post, idx) => (
             <Grid item xs={12} sm={8} md={6} key={post._id || idx}>
-              <Box sx={{ px: 0 }}>
+              <Box>
+                <Link href={`/blog/${post.uid}`} 
+                style={{textDecoration:"none"}}
+                >
                 <Card 
-                onClick={() => router.push(`/blog/${post.uid}`)}
+                // onClick={() => router.push(`/blog/${post.uid}`)}
                   sx={{
                     width: {
                       xs: "350px",
@@ -228,6 +231,7 @@ const BlogSection = () => {
                     </Typography>
                   </CardContent>
                 </Card>
+                </Link>
               </Box>
             </Grid>
           ))}

@@ -126,15 +126,14 @@ export default function CookiesBanner() {
             {/* <CookieIcon sx={{ fontSize: 32, color: '#ffa726', mt: 0.5 }} /> */}
             <Box sx={{ flex: 1 ,}}>
               <Typography
-                variant="h5"
                 component="h5"
-                sx={{ fontWeight: "bold", mb: 1 }}
+                sx={{  fontWeight: "900"  , fontFamily:"Akatab,Sans-serif",mb: 1 }}
               >
                 {`We Use Cookies (Not the Wedding Wale Wale)`}
               </Typography>
               <Typography
-                variant="p"
-                sx={{  color: "rgba(255,255,255,0.8)", lineHeight: 1, }}
+                component="p"
+                sx={{  color: "rgba(255,255,255,0.8)", lineHeight: 1.1, }}
               >
                 {`This website uses cookies to give you a better, faster, and more personalized experience.  
                 By continuing to browse, you agree to our use of cookies as per our Privacy Policy.`}
@@ -143,19 +142,20 @@ export default function CookiesBanner() {
           </Box>
           <Box
             sx={{
-              display: "flex",
+              display:{xs:"block", sm:"flex"},
               alignItems: "center",
               gap: 2,
-              flexWrap: "wrap",
-              justifyContent: { xs: "stretch", sm: "flex-end" },
+              // flexWrap: "wrap",
+              // justifyContent: { xs: "flex", sm: "flex-end",},
               mt: { xs: 2, sm: 0 },
             }}
           >
+            <Box sx={{display:"flex", alignItems:"Center", gap:"10px" , mt:1,mb:0.5}}>
             <CustomButton
               onClick={handleAcceptAll}
               sx={{
                 fontWeight: "bold",
-                flex: { xs: 1, sm: "none" },
+
               }}
             >
               Accept All
@@ -163,32 +163,36 @@ export default function CookiesBanner() {
             <CustomButton
               variant="outlined"
               onClick={handleManagePreferences}
+              
               sx={{
                 borderColor: "white",
+                width:"250px",
                 color: "white",
                 "&:hover": {
                   borderColor: "#ffa726",
                   backgroundColor: "rgba(255,167,38,0.1)",
                 },
-                flex: { xs: 1, sm: "none" },
+               
               }}
             >
               Manage Preferences
             </CustomButton>
+            </Box >
             <CustomButton
               variant="text"
               onClick={handleRejectNonEssential}
               sx={{
                 color: "rgba(255,255,255,0.7)",
                 "&:hover": {
-                  color: "white",
+                           color: "white",
                   backgroundColor: "rgba(255,255,255,0.1)",
                 },
-                flex: { xs: 1, sm: "none" },
+                
               }}
             >
               Reject Non-Essential
             </CustomButton>
+            
           </Box>
         </Box>
       </Paper>
@@ -222,7 +226,7 @@ export default function CookiesBanner() {
           <IconButton
             aria-label="close"
             onClick={() => setShowPreferences(false)}
-            sx={{ color: "grey.500" }}
+            sx={{ color: "#DAA412" }}
           >
             <CloseIcon />
           </IconButton>
@@ -238,19 +242,19 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+             <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
                 {`Necessary Cookies`}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Typography
-                  variant="body2"
-                  sx={{ color: "success.main", fontWeight: "bold" }}
+                  component="p"
+                  sx={{ color: "#DAA412", fontWeight: "bold" }}
                 >
                   ✔ Always Active
                 </Typography>
               </Box>
             </Box>
-            <Typography variant="body2" color="text.secondary">
+            <Typography component="p" color='#000000'>
               {`These are essential for the website to function properly (you can't turn these off).`}
             </Typography>
           </Box>
@@ -265,7 +269,7 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
                 {`Analytics Cookies`}
               </Typography>
               <FormControlLabel
@@ -279,7 +283,7 @@ export default function CookiesBanner() {
                 sx={{ m: 0 }}
               />
             </Box>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="p" color="#000000">
               {`Help us understand how users interact with our site so we can
               improve the experience.`}
             </Typography>
@@ -295,7 +299,7 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
                 {`Marketing Cookies`}
               </Typography>
               <FormControlLabel
@@ -309,7 +313,7 @@ export default function CookiesBanner() {
                 sx={{ m: 0 }}
               />
             </Box>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="p" color="#000000">
               {`Allow us to show you personalized ads and offers on platforms like Instagram, Google, and YouTube.`}
             </Typography>
           </Box>
