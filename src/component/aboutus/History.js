@@ -33,7 +33,7 @@ export default function OurStories() {
         <Box key={index} style={{ marginBottom: "0.5rem" }}>
           <Typography variant="h6" sx={{  color: "black", mb: 1.5 }}>{item.heading}</Typography>
           {item.paragraphs.map((p, i) => (
-            <Typography variant="p" sx={{ lineHeight: 1.5 }}>{p}</Typography>
+            <Typography variant="p" key={i} sx={{ lineHeight: 1.5 }}>{p}</Typography>
           ))}
         </Box>
       ))}
