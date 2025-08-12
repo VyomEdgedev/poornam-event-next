@@ -35,7 +35,21 @@ const Subtext = () => {
     }
   }, [id]);
 
-  if (loading) return <CircularProgress sx={{ m: 5 }} />;
+  if (loading) return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="200px"
+    >
+      <CircularProgress 
+        sx={{ 
+          color: "#DAA412",
+          m: 5 
+        }} 
+      />
+    </Box>
+  );
   if (error)
     return (
       <Typography color="error">

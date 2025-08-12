@@ -191,7 +191,7 @@ const SearchFilter = () => {
             </Box>
 
             {/* Filter by Location */}
-            <Box sx={{ mb: 3 }}>
+            {/* <Box sx={{ mb: 3 }}>
               <Typography
                
                 component="h6"
@@ -227,11 +227,11 @@ const SearchFilter = () => {
                   />
                 ))}
               </Box>
-            </Box>
+            </Box> */}
             <Box
               sx={{
                 display: "flex",
-                // justifyContent: isMobile ? "center" : "flex-start",
+                
               }}
             >
               <CustomButton

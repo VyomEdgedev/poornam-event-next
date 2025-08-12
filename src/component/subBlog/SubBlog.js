@@ -8,7 +8,7 @@ import Subtext from "./Subtext";
 export const SubBlog = () => {
   return (
     <Box>
-      <CustomBanner
+      {/* <CustomBanner
         backgroundImage="/SubBlogBanner.png"
         showLogo={true}
         logoSrc="/logo.png"
@@ -38,7 +38,7 @@ export const SubBlog = () => {
             },
           },
         }}
-      ></CustomBanner>
+      ></CustomBanner> */}
       <SubCard></SubCard>
       <Subtext></Subtext>
       <FAQSection></FAQSection>
