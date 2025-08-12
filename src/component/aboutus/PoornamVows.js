@@ -64,33 +64,33 @@ const PoornamVows = () => {
       container
       width="fit-content"
       margin="0 auto"
-      
       sx={{ px: { xs: 0, sm: 1, md: 3 } }}
     >
-      <Box sx={{  textAlign: "center", width: "100%", }}>
-        <Box sx={{ my: { xs:0, sm: 3, md: 4 }, paddingBottom: { xs: 4, sm: 2, md: 0 }  }}>
-        <Typography
+      <Box sx={{ textAlign: "center", width: "100%" }}>
+        <Box
           sx={{
-            fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2.5rem" },
-            fontFamily: "Gloock,Sans-serif",
+            my: { xs: 0, sm: 3, md: 4 },
+            paddingBottom: { xs: 4, sm: 2, md: 0 },
           }}
-          variant="h3"
-          fontWeight="bold"
-       
-          gutterBottom
         >
-          Poornam Vows
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.2rem" },
-            fontFamily: "Akatab,Sans-serif",
-          }}
-          variant="subtitle1"
-          gutterBottom
-        >
-          {` Poornam's 7 Pheras of Promise  `}
-        </Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              fontFamily: "Gloock,Sans-serif",
+            }}
+            fontWeight="400"
+            gutterBottom
+          >
+            Poornam Vows
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: "Akatab,Sans-serif",
+            }}
+            gutterBottom
+          >
+            {` Poornam's 7 Pheras of Promise  `}
+          </Typography>
         </Box>
         <Box
           sx={{
@@ -103,9 +103,9 @@ const PoornamVows = () => {
         >
           <Box
             sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
+              position: "absolute",
+              width: "100%",
+              height: "100%",
               animation: `${rotateParent} 20s linear infinite`,
             }}
           >

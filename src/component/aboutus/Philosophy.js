@@ -1,89 +1,156 @@
-import { Grid, Typography, Box, Card, CardContent } from '@mui/material';
-import React from 'react'
+import {
+  Grid,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Container,
+} from "@mui/material";
+import React from "react";
 
 function Philosophy() {
-    return (
-        <>
-            <Box container
-                padding="5px">
-                <Grid container
-                    display="flex"
-                    justifyContent="space-evenly"
-                    justifyItems="center"
-                >
-                    <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" },alignSelf:"center", fontFamily: "Gloock,Sans-serif " }}>
-                          {` Our Philosophy`}</Typography>
-                    </Grid>
+  return (
+    <>
+      <Container>
+        {/* First Section */}
+        <Box sx={{ py: 4 }}>
+          <Grid 
+            container 
+            spacing={{ xs: 2, sm: 4, md: 6, lg: 15}} 
+            alignItems="center" 
+            justifyContent="center"
+          >
+            {/* Title */}
+            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontFamily: "Gloock, Sans-serif",
+                  mb: { xs: 2, md: 0 }
+                }}
+              >
+               {` Our Philosophy`}
+              </Typography>
+            </Grid>
 
-                    <Grid container
-                        component="img"
-                        src="/Book.svg"
-                        alt="Sample"
-                        alignItems="center"
-                        sx={{ padding: "30px" }}
-                    />
-                    <Grid>
-                        <Card sx={{ maxWidth: 400, m: 2, p: 2, boxShadow: 3 }}>
-                            <CardContent>
-                                {/* Main title text */}
-                                <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Akatab,Sans-serif">
-                                    {`   Our Humble Beginnings`}
-                                </Typography>
+            {/* Image */}
+            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Box
+                component="img"
+                src="/Book.svg"
+                alt="Book illustration"
+                sx={{ 
+                  maxWidth: "100%",
+                  height: "auto",
+                  padding: 2
+                }}
+              />
+            </Grid>
 
-                                {/* Supporting description text */}
-                                <Typography variant="body2" color="text.secondary" fontFamily="Akatab,Sans-serif">
-                                    {` Founded by a passionate team, Poornam began
-                                    with the idea of bringing joy and creativity to
-                                    Indian weddings.`}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Box>
+            {/* Card */}
+            <Grid item xs={12} md={4}>
+              <Card sx={{ 
+                maxWidth: 400, 
+                mx: "auto",
+                boxShadow: 3,
+                height: "100%"
+              }}>
+                <CardContent sx={{ p: 3 }}>
+                  <Typography
+                    variant="h6"
+                    fontWeight="bold"
+                    gutterBottom
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ mb: 2 }}
+                  >
+                    {`Our Humble Beginnings`}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="#000000"
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ lineHeight: 1.6 }}
+                  >
+                    {`Founded by a passionate team, Poornam began
+                    with the idea of bringing joy and creativity to
+                    Indian weddings.`}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
 
-            <Box container
-                padding="30px">
-                <Grid container
-                    display="flex"
-                    justifyContent="space-evenly"
-                    justifyItems="center"
-                >
-                    <Grid container
-                        component="img"
-                        src="/Dart.svg"
-                        alt="Sample"
-                        alignItems="center"
-                        sx={{ padding: "30px" }}
-                    />
-                    <Grid>
-                        <Card sx={{ maxWidth: 400, m: 2, p: 2, boxShadow: 3 }}>
-                            <CardContent>
-                                {/* Main title text */}
-                                <Typography variant="h6" component="div" fontWeight="bold" gutterBottom fontFamily="Akatab,Sans-serif">
-                                    {`  Our Mission`}
-                                </Typography>
+        {/* Second Section */}
+        <Box sx={{ py: {xs:2,md:4} }}>
+          <Grid 
+            container 
+            spacing={{ xs: 2, sm: 4, md: 6, lg: 15 }} 
+            alignItems="center" 
+            justifyContent="center"
+          >
+            {/* Image */}
+            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Box
+                component="img"
+                src="/Dart.svg"
+                alt="Dart illustration"
+                sx={{ 
+                  maxWidth: "100%",
+                  height: "auto",
+                  padding: 2
+                }}
+              />
+            </Grid>
 
-                                {/* Supporting description text */}
-                                <Typography variant="body2" color="text.secondary" fontFamily="Akatab,Sans-serif">
-                                    {`  To create memorable moments filled with creativity, care, joy, and authenticity.`}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid container padding="30px">
-                        <Typography sx={{ fontSize: { xs: "2rem", sm: "2rem", md: "2.5rem" }, alignSelf:"center",fontFamily: "Gloock,Sans-serif" }}>
-                            { `Why We Exist`}
-                        </Typography>
-                          
-                    </Grid>
-                </Grid>
+            {/* Card */}
+            <Grid item xs={12} md={4}>
+              <Card sx={{ 
+                maxWidth: 400, 
+                mx: "auto",
+                boxShadow: 3,
+                height: "100%"
+              }}>
+                <CardContent sx={{ p: 3 }}>
+                  <Typography
+                    variant="h6"
+                    fontWeight="bold"
+                    gutterBottom
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ mb: 2 }}
+                  >
+                    Our Mission
+                  </Typography>
+                  <Typography
+                    variant="p"
+                    color="#000000"
+                    fontFamily="Akatab, Sans-serif"
+                    sx={{ lineHeight: 1.6 }}
+                  >
+                    {`To create memorable moments filled with creativity, care, joy, and authenticity.`}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
 
-
-            </Box>
-        </>
-    )
+            {/* Title */}
+            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontFamily: "Gloock, Sans-serif",
+                  fontSize: { xs: '2rem', md: '3rem' },
+                  mt: { xs: 2, md: 0 }
+                }}
+              >
+                {`Why We Exist`}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
+    </>
+  );
 }
 
 export default Philosophy;
