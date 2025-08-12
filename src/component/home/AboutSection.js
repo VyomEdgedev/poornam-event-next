@@ -11,7 +11,7 @@ export default function AboutSection() {
           bgcolor: "#fff",
           marginTop: "10px",
           marginBottom: "10px",
-          py: {sm:3,md:5},
+          py: {xs:3,md:5},
         }}
       >
         <Typography
@@ -62,7 +62,7 @@ export default function AboutSection() {
           brings emotion, elegance, and flawless execution to every event.`}
         </Typography>
 
-        <Box display="flex">
+        <Box sx={{display: "flex", justifyContent: {xs:"center" ,sm:"flex-start"}}}>
           <CustomButton data-testid="notify-button">
             <Link href="/aboutus" passHref legacyBehavior>
               <Button

@@ -203,6 +203,7 @@ export default function ClientTestimonials() {
                 overflowX: "auto",
                 overflowY: "visible",
                 "&::-webkit-scrollbar": { height: 6 },
+                px:2
               }}
             >
               <Box

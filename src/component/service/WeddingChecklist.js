@@ -130,7 +130,7 @@ const WeddingChecklist = () => {
           justifyItems={"center"} justifyContent={"center"}
 
         >  {/* Main Title Section */}
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 4 }} >
+          <Grid item size={{ xs: 12,md: 6, lg: 4 }} >
             <MainTitle variant="h2"
               textAlign={{ xs: "center", sm: "start" }}>
             {`  Shaadi Mein
@@ -138,16 +138,15 @@ const WeddingChecklist = () => {
               Hai?`}
             </MainTitle>
           </Grid>
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 8 }} justifyContent={"center"}>
-            <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-             justifyContent={{xs:"space-around", sm:"space-around", md:"space-between",lg:"space-between"}}
+          <Grid item size={{ xs: 12 , md: 6, lg: 8 }} justifyContent={"center"}>
+            <Grid container spacing={2} columns={12}
+             justifyContent={{xs:"space-around" }}
             >
 
               <Grid display="flex"
                 borderBottom="2px solid grey"
                 justifyContent={"center"}
                 gap={3}
-
                 alignItems={"center"}
                 py={3}
                 flex="nowrap">
