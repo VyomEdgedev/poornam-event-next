@@ -83,11 +83,11 @@ const PlanningTips = () => {
           {/* Left Column - Main Content */}
           <Grid item size={{ xs: 12, sm: 12, md: 6 }} justifyContent={"center"}>
             <Typography
-              variant="h2"
+              component="h2"
               sx={{
                 cursor: "pointer",
                 fontWeight: 400,
-                lineHeight: 1.2,
+               
                 mb: 2,
                 fontFamily: "Gloock,serif",
                 color: "#000D1F",
@@ -99,7 +99,7 @@ const PlanningTips = () => {
             </Typography>
 
             <Typography
-              variant="h5"
+              component="h5"
               sx={{
                 fontWeight: 500,
                 fontFamily: "Akatab,Sans-serif",
@@ -165,7 +165,7 @@ const PlanningTips = () => {
                       {/* Content */}
                       <Box sx={{ flex: 1 }}>
                         <Typography
-                          variant="h6"
+                         
                           component="h6"
                           sx={{
                             fontFamily: "Akatab,Sans-serif",
@@ -179,13 +179,13 @@ const PlanningTips = () => {
                           {service.title}
                         </Typography>
                         <Typography
-                          variant="p"
+                        
                           component="p"
                           sx={{
                             fontFamily: "Akatab,Sans-serif",
                             fontWeight: 400,
                             color: "#000000",
-                            lineHeight: 1.4,
+                           
                             cursor: "pointer",
                           }}
                         >

@@ -97,7 +97,7 @@ const BlogSection = () => {
         {/* Header */}
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography
-            variant="h2"
+           
             component="h2"
             sx={{
               // fontSize: { xs: "1.8rem", sm: "2rem", md: "3rem" },
@@ -105,7 +105,7 @@ const BlogSection = () => {
               fontWeight: 400,
               color: "#000000",
               mb: 3,
-              fontFamily: "serif",
+             
             }}
           >
             {blogData.title}
@@ -178,14 +178,14 @@ const BlogSection = () => {
                     />
                   </Box>
                   <Typography
-                    variant="h6"
+                    
                     component="h6"
                     sx={{
                       fontWeight: 400,
                       fontFamily: "Akatab,Sans-serif",
                       color: "#000000",
                       mb: 1,
-                      lineHeight: 1.4,
+                     
                       textAlign: "cover",
                       pt: 2,
                       px: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
@@ -195,9 +195,10 @@ const BlogSection = () => {
                   </Typography>
                   <CardContent sx={{ p: 1.5, flexGrow: 1 }}>
                     <Typography
+                    component={"h6"}
                       label={post.category}
                       sx={{
-                        fontWeight: 400,
+                      
                         fontFamily: "Akatab,Sans-serif",
                         color: "#00000080",
                         textAlign: "center",
@@ -210,15 +211,15 @@ const BlogSection = () => {
                     </Typography>
 
                     <Typography
-                      variant="h6"
+                     
                       component="h6"
                       sx={{
                         color: "#000000",
-                        fontSize: { xs: "16px", sm: "16px", md: "16px" },
-                        fontWeight: 500,
+                      
+                        fontWeight: 400,
                         fontFamily: "Akatab,Sans-serif",
-                        lineHeight: 1.5,
-                        fontWeight: 500,
+                    
+                       
                         fontWeight: "bold",
                         textAlign: "center",
                       }}
