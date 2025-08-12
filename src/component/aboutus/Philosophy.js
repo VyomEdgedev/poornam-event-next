@@ -66,7 +66,7 @@ function Philosophy() {
                     {`Our Humble Beginnings`}
                   </Typography>
                   <Typography
-                    variant="body1"
+                    variant="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
                     sx={{ lineHeight: 1.6 }}
@@ -139,7 +139,6 @@ function Philosophy() {
                 variant="h2"
                 sx={{
                   fontFamily: "Gloock, Sans-serif",
-                  fontSize: { xs: '2rem', md: '3rem' },
                   mt: { xs: 2, md: 0 }
                 }}
               >
