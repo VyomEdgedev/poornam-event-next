@@ -1,4 +1,4 @@
-import { Grid, Typography, Stack, Box } from '@mui/material'
+import { Grid, Typography, Stack, Box, Container } from '@mui/material'
 import React from 'react'
 import IconButton from '@mui/material/IconButton';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -8,25 +8,26 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 function SocialMedia() {
   return (
-    <Grid
+    <Container>
+      <Grid columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
       container
-      display="flex"
-      justifyItems="center"
-      justifyContent={{xs: "center", sm: "center", md: "start", lg: "start", xl: "start"}}
-      padding="10px"
      
-      marginBottom={{xs: 2, sm: 4, md: 5, lg: 6, xl: 7}}
-      spacing={{ xs: 0, sm:0, md: 4, lg: 5, xl: 5 }}
+      py="10px"
+      marginBottom={{xs: 2, sm: 4, md: 4, lg: 4, xl: 4}}
+     // spacing={{ xs: 0, sm:0, md: 4, lg: 5, xl: 5 }}
     >
 
-      <Grid container sx={{px:{xs: 0, sm: 1, md: 4, lg: 18, xl: 30}}}>
+      <Grid    item size={{ xs: 12, sm: 6, md: 4 }}
+      //sx={{px:{xs: 0, sm: 1, md: 4, lg: 18, xl: 30}}}
+      textAlign={{xs:"center", sm:"start"}}
+      >
         <Typography
           variant='h3'
           component={'h3'}
-          textAlign="center"
-          
-          padding="20px"
-          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "36px" }, lineHeight: 1.3 }}
+         
+         
+         // padding="20px"
+          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "36px" }, lineHeight: 1.5 }}
           dangerouslySetInnerHTML={{
             __html: `  Follow Us
                         on <br /> Social Media`,
@@ -34,13 +35,15 @@ function SocialMedia() {
         />
 
       </Grid>
-      <Grid container
-
-        padding="1px">
-        <Box mt={2}
+      <Grid   item size={{ xs: 12, sm: 6, md: 8 }}
+       // padding="1px"
+       // justifyContent={{xs:"center", sm:"end"}}
+        >
+        <Box 
+        //mt={2}
           display="flex"
-          justifyItems="center"
-          justifyContent="space-evenly">
+         // justifyItems="center"
+          justifyContent={{xs:"center", sm:"flex-end"}}>
               <IconButton data-testid="notify-button"
             color="primary"
             component="a"
@@ -48,15 +51,14 @@ function SocialMedia() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
+         
           >
             <FacebookIcon sx={{
-              
+               borderRadius: '50%',
               backgroundColor: '#fff',
               // color:"black",
               width: { xs: 55, sm: 70, md: 80 },
               height: { xs: 55, sm: 70, md: 80 },
-              borderRadius: '50%',
-             
               fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
@@ -83,7 +85,6 @@ function SocialMedia() {
               width: { xs: 55, sm: 70, md: 80 },
               height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
-              
               fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
@@ -100,7 +101,6 @@ function SocialMedia() {
               width: { xs: 55, sm: 70, md: 80 },
               height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
-             
               fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
@@ -119,11 +119,10 @@ function SocialMedia() {
               width: { xs: 55, sm: 70, md: 80 },
               height: { xs: 55, sm: 70, md: 80 },
               borderRadius: '50%',
-             
               fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
             }} />
           </IconButton>
-          <IconButton data-testid="notify-button"
+        {  <IconButton data-testid="notify-button"
             component="a"
             href="https://www.linkedin.com/company/poornam-events/"
             target="_blank"
@@ -133,20 +132,24 @@ function SocialMedia() {
             size="large"
           >
             <LinkedInIcon data-testid="notify-button"
-              fontSize="inherit" sx={{
+              fontSize="inherit"
+              borderRadius="50%"
+              sx={{
                 backgroundColor: '#fff',
                 width: { xs: 55, sm: 70, md: 80 },
                 height: { xs: 55, sm: 70, md: 80 },
-               
-                fontSize: { xs: 25, sm: 40, md: 60 }, cursor: 'pointer'
+                fontSize: { xs: 25, sm: 40, md: 60 }, 
+                cursor: 'pointer', 
+                
               }}
             />
-          </IconButton>
+          </IconButton>}
 
         </Box>
 
       </Grid>
     </Grid>
+    </Container>
   )
 }
 
