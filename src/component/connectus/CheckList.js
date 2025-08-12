@@ -30,7 +30,7 @@ function CheckList() {
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}
             dangerouslySetInnerHTML={{
-              __html: `    <strong>Visit Our Studio (We Server Chai & Checklists)</strong>`,
+              __html: `    <strong>Visit Our Studio (We Serve Chai & Checklists)</strong>`,
             }}
           />
           <Typography

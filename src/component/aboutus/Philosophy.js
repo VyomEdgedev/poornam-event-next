@@ -14,47 +14,56 @@ function Philosophy() {
       <Container>
         {/* First Section */}
         <Box sx={{ py: 4 }}>
-          <Grid 
-            container 
-            spacing={{ xs: 2, sm: 4, md: 6, lg: 15}} 
-            alignItems="center" 
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+            alignItems="center"
             justifyContent="center"
           >
             {/* Title */}
-            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+            <Grid
+              item
+              size={{ xs: 12, sm: 12, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
               <Typography
                 variant="h2"
                 sx={{
                   fontFamily: "Gloock, Sans-serif",
-                  mb: { xs: 2, md: 0 }
+                  // mb: { xs: 2, md: 0 },
                 }}
               >
-               {` Our Philosophy`}
+                {` Our Philosophy`}
               </Typography>
             </Grid>
 
             {/* Image */}
-            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+            <Grid
+              item
+              size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
               <Box
                 component="img"
                 src="/Book.svg"
                 alt="Book illustration"
-                sx={{ 
+                sx={{
                   maxWidth: "100%",
                   height: "auto",
-                  padding: 2
+                  padding: 2,
                 }}
               />
             </Grid>
 
             {/* Card */}
-            <Grid item xs={12} md={4}>
-              <Card sx={{ 
-                maxWidth: 400, 
-                mx: "auto",
-                boxShadow: 3,
-                height: "100%"
-              }}>
+            <Grid item size={{ xs: 12, sm: 8, md: 4 }}>
+              <Card
+                sx={{
+                  boxShadow: 3,
+                  height: "100%",
+                }}
+              >
                 <CardContent sx={{ p: 3 }}>
                   <Typography
                     variant="h6"
@@ -81,36 +90,28 @@ function Philosophy() {
           </Grid>
         </Box>
 
+        
         {/* Second Section */}
-        <Box sx={{ py: {xs:2,md:4} }}>
-          <Grid 
-            container 
-            spacing={{ xs: 2, sm: 4, md: 6, lg: 15 }} 
-            alignItems="center" 
+        <Box sx={{ py: 4 }}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+            alignItems="center"
             justifyContent="center"
+            sx={{
+              flexDirection: { xs: "column-reverse", md: "row" }, // Reverse on mobile
+            }}
           >
             {/* Image */}
-            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
-              <Box
-                component="img"
-                src="/Dart.svg"
-                alt="Dart illustration"
-                sx={{ 
-                  maxWidth: "100%",
-                  height: "auto",
-                  padding: 2
+             {/* Card */}
+             <Grid item size={{ xs: 12, sm: 8, md: 4 }}>
+              <Card
+                sx={{
+                  boxShadow: 3,
+                  height: "100%",
                 }}
-              />
-            </Grid>
-
-            {/* Card */}
-            <Grid item xs={12} md={4}>
-              <Card sx={{ 
-                maxWidth: 400, 
-                mx: "auto",
-                boxShadow: 3,
-                height: "100%"
-              }}>
+              >
                 <CardContent sx={{ p: 3 }}>
                   <Typography
                     variant="h6"
@@ -132,14 +133,36 @@ function Philosophy() {
                 </CardContent>
               </Card>
             </Grid>
+            <Grid
+              item
+                size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center" }}
+            >
+              <Box
+                component="img"
+                src="/Dart.svg"
+                alt="Dart illustration"
+                sx={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  padding: 2,
+                }}
+              />
+            </Grid>
+
+           
 
             {/* Title */}
-            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+            <Grid
+              item
+              size={{ xs: 12, sm: 4, md: 4 }}
+              sx={{ textAlign: "center", flexDirection: "column-reverse" }}
+            >
               <Typography
                 variant="h2"
                 sx={{
                   fontFamily: "Gloock, Sans-serif",
-                  mt: { xs: 2, md: 0 }
+                  mt: { xs: 2, md: 0 },
                 }}
               >
                 {`Why We Exist`}
@@ -147,6 +170,7 @@ function Philosophy() {
             </Grid>
           </Grid>
         </Box>
+
       </Container>
     </>
   );

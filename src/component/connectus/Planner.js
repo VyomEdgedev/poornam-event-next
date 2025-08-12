@@ -91,6 +91,29 @@ function Planner() {
           </Grid>
         </Container>
       </Box>
+      <Container>
+        <Grid
+          container
+          padding="0px"
+          textAlign="center"
+          sx={{ bgcolor: "#rgba(0, 0, 0, 0.1)" }}
+        >
+          <Typography
+            variant="h6"
+            component="h6"
+            textAlign="center"
+            sx={{
+              padding: "25px",
+              fontFamily: "Akatab,serif",
+              fontSize: { xs: "18px", sm: "16px", md: "21px" },
+            }}
+            dangerouslySetInnerHTML={{
+              __html: `   Planning a wedding in <strong>Madhya Pradesh</strong> or anywhere in <strong>India? </strong>Let <strong>
+                        Poornam Events</strong> be your trusted partner in joy, chaos, and celebration.`,
+            }}
+          />
+        </Grid>
+      </Container>
     </>
   );
 }
