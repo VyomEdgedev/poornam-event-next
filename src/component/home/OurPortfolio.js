@@ -131,7 +131,7 @@ const PortfolioSection = () => {
       <Container>
         <Box sx={{ textAlign: "center", mb: { xs: 4, md: 6 } }}>
           <Typography
-            variant="h2"
+            component="h2"
             sx={{
               fontFamily: "Gloock, serif",
               fontWeight: 400,
@@ -142,7 +142,6 @@ const PortfolioSection = () => {
             Our Gallery
           </Typography>
           <Typography
-            variant="body1"
             component="p"
             sx={{
               fontFamily: "Akatab,Sans-serif",

@@ -1,15 +1,21 @@
-
-
 import React, { useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 
 export default function   Snapshot() {
-     useEffect(() => {
+  useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://www.instagram.com/embed.js';
     script.async = true;
+
+    script.onload = () => {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process(); 
+      }
+    };
+
     document.body.appendChild(script);
+
     return () => {
       document.body.removeChild(script);
     };
@@ -26,7 +32,6 @@ export default function   Snapshot() {
     >
       <Grid>
         <Typography
-        vaeriant="h2"
         component="h2"
           sx={{
             fontWeight:"400",
@@ -42,8 +47,7 @@ export default function   Snapshot() {
           sx={{
           fontFamily: "Akatab,Sans-serif"
           }}
-          variant="body1"
-          component={"p"}
+          component="p"
           gutterBottom
         >
         {`  A scrapbook of memories shared by our couples.`}
@@ -87,6 +91,7 @@ export default function   Snapshot() {
                 View this post on Instagram
               </a>
             </blockquote>
+            
           </Box>
       </Grid>
     </Grid>

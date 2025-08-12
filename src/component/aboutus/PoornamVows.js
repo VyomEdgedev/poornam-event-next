@@ -145,11 +145,18 @@ const PoornamVows = () => {
                   />
                   {vow.title && (
                     <Typography
-                    component="p"
+                    variant="body1"
                       sx={{
-                        mt: 0.5,
+                        mt: 0.2,
                         textAlign: "center",
-                        color:"#000000"
+                        color:"#000000",
+                        fontSize: {
+                          xs: "0.70rem !important",
+                          sm: "0.85rem !important", 
+                          md: "0.95rem !important",
+                          lg: "1rem !important",
+                    
+                        }
                       }}
                     >
                       {vow.title}

@@ -25,8 +25,7 @@ export default function InspirationSection() {
     <Container>
     <Box sx={{ textAlign: "center" ,py:5}}>
       <Typography
-        variant="h2"
-        component={"h2"}
+        component="h2"
         sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 6 }}
       >
         {`Inspirations & Blogs`}

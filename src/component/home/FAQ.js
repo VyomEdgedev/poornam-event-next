@@ -27,7 +27,6 @@ export default function FAQSection({faq=[]}) {
       <Container>
         <Box>
           <Typography
-            variant="h2"
             component={"h2"}
             align="center"
             sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 1 }}
@@ -35,7 +34,7 @@ export default function FAQSection({faq=[]}) {
             FAQ’s
           </Typography>
           <Typography
-            variant="subtitle1"
+            component="p"
             align="center"
             sx={{
               mb: 4,
@@ -101,8 +100,9 @@ export default function FAQSection({faq=[]}) {
                         }}
                       >
                         <Typography
+                        component="h6"
                           sx={{
-                            fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+                           
                             fontFamily: "Akatab, Sans-serif",
                             fontWeight: 700,
                             color: "#001538",
@@ -126,9 +126,9 @@ export default function FAQSection({faq=[]}) {
                         }}
                       >
                         <Typography
-                          variant="body1"
+                          variant="h6"
                           sx={{
-                            fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+                            // fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                             fontFamily: "Akatab, Sans-serif",
                             fontWeight: 400,
                             color: "#001538",
