@@ -166,7 +166,7 @@ const MyForm = () => {
     <Container>
       <Box
         sx={{
-          py:4,
+          py: 4,
           // backgroundColor: "red",
           // px: { xs: 12, sm: 10, md: 0, lg: 0, xl: 24 },
           // py: { xs: 2, sm: 5, md: 7, lg: 5, xl: 7 },
@@ -181,7 +181,7 @@ const MyForm = () => {
           // alignItems="flex-start"
           // justifyContent="space-evenly"
           container
-          spacing={{ xs: 2, md: 5,lg:6 }}
+          spacing={{ xs: 2, md: 5, lg: 6 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
         >
           {/* Left Side - Title + Image */}
@@ -191,47 +191,48 @@ const MyForm = () => {
             item
             size={{ xs: 12, sm: 6, md: 6 }}
           >
-          <Box width={"100%"}>
+            <Box width={"100%"}>
               <Typography
-              component="h2"
-              sx={{
-                fontWeight: "400",
-                fontFamily: "Gloock,Sans-serif",
-                color: "#000000",
-                mb:2
-              }}
-              dangerouslySetInnerHTML={{
-                __html: `Tell Us Everything <br /> (Yes, Even the Drama)`,
-              }}
-            />
-
-            <Box
-              sx={{
-                width: "100%",
-                // maxWidth: { xs: 350, sm: 400, md: 440, lg: 440, xl: 440 },
-                height: { xs: 250, sm: 450, md: 480, lg:500, xl: 500 },
-                borderRadius: 2,
-                overflow: "hidden",
-                position: "relative",
-                // px: { xs: 5, sm: 10, md: 2 },
-              }}
-            >
-              <Image
-                src="/FormImg.png"
-                alt="Wedding planning imagery"
-                fill
-                style={{
-                  objectFit: "cover",
+                component="h2"
+                sx={{
+                  fontWeight: "400",
+                  fontFamily: "Gloock,Sans-serif",
+                  color: "#000000",
+                  mb: 2,
                 }}
-                // sizes="(max-width: 600px) 300px, (max-width: 900px) 350px, 450px"
-                priority
-              />
+              >
+                {`Tell Us Everything `}
+                <br />
+                {`(Yes, Even the Drama)`}
+              </Typography>
+
+              <Box
+                sx={{
+                  width: "100%",
+                  // maxWidth: { xs: 350, sm: 400, md: 440, lg: 440, xl: 440 },
+                  height: { xs: 250, sm: 450, md: 480, lg: 500, xl: 500 },
+                  borderRadius: 2,
+                  overflow: "hidden",
+                  position: "relative",
+                  // px: { xs: 5, sm: 10, md: 2 },
+                }}
+              >
+                <Image
+                  src="/FormImg.png"
+                  alt="Wedding planning imagery"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  // sizes="(max-width: 600px) 300px, (max-width: 900px) 350px, 450px"
+                  priority
+                />
+              </Box>
             </Box>
-          </Box>
           </Grid>
 
           {/* Right Side - Form */}
-          <Grid item  size={{ xs: 12, sm: 6, md: 6 }}>
+          <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -248,12 +249,11 @@ const MyForm = () => {
               {/* Full Name */}
               <Box>
                 <Typography
-                
                   component="p"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -277,7 +277,7 @@ const MyForm = () => {
                       },
                       height: { xs: "30px", sm: "35px", md: "35px" },
                       width: { xs: "100%", sm: "100%", md: "100%" },
-                    
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -299,7 +299,7 @@ const MyForm = () => {
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -322,7 +322,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                     
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -341,13 +341,11 @@ const MyForm = () => {
               {/* Phone */}
               <Box>
                 <Typography
-                 
                   component="p"
                   sx={{
-                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -370,7 +368,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                    
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -392,13 +390,11 @@ const MyForm = () => {
               {/* Wedding Date */}
               <Box>
                 <Typography
-                 
                   component="p"
                   sx={{
-                  
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -424,7 +420,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                    
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -440,13 +436,11 @@ const MyForm = () => {
               {/* Location */}
               <Box>
                 <Typography
-                
                   component="p"
                   sx={{
-                  
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -469,7 +463,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                    
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -487,13 +481,11 @@ const MyForm = () => {
               {/* Number of Guests */}
               <Box>
                 <Typography
-                
                   component="p"
                   sx={{
-                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -516,7 +508,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                     
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -536,13 +528,11 @@ const MyForm = () => {
               {/* Message */}
               <Box>
                 <Typography
-                
                   component="p"
                   sx={{
-                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
-                    mb:0.5,
+                    mb: 0.5,
                     fontWeight: "500",
                   }}
                 >
@@ -564,7 +554,7 @@ const MyForm = () => {
                       "&.Mui-focused fieldset": {
                         borderColor: "#011d4a",
                       },
-                     
+
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
