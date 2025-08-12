@@ -1,4 +1,4 @@
-import { Grid, Typography,Box, Container } from "@mui/material";
+import { Grid, Typography, Box, Container } from "@mui/material";
 import React from "react";
 import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -37,17 +37,18 @@ function SocialMedia() {
           </Grid>
           <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
             <Typography
-              variant="h3"
-              component={"h3"}
+
+              component={"h2"}
               textAlign="center"
               sx={{
-                fontFamily: "Gloock",
-                fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
-                lineHeight: 1.5,
+                fontFamily: "Gloock,Sans-serif",
+                fontWeight: "400"
+
               }}
               dangerouslySetInnerHTML={{
-                __html: `  Follow Us 
-                        on Social Media`,
+                __html: `  Follow Us </br>
+                        on </br>
+                          Social Media`,
               }}
             />
           </Grid>
@@ -58,7 +59,7 @@ function SocialMedia() {
             spacing={isDesktop ? 2 : 1}
             position="relative"
           >
-            <Box mt={0} sx={{display:"flex",flexDirection:{sx:"row",sm:"column"},alignItems:{xs:"center",sm:"flex-end"}, justifyContent:{xs:"center",sm:"flex-end"}}}>
+            <Box mt={0} sx={{ display: "flex", flexDirection: { sx: "row", sm: "column" }, alignItems: { xs: "center", sm: "flex-end" }, justifyContent: { xs: "center", sm: "flex-end" } }}>
               <IconButton
                 data-testid="notify-button"
                 component="a"

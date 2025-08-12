@@ -193,14 +193,11 @@ const MyForm = () => {
           >
           <Box width={"100%"}>
               <Typography
-              variant="h2"
               component="h2"
               sx={{
                 fontWeight: "400",
-                fontFamily: "Gloock, serif",
+                fontFamily: "Gloock,Sans-serif",
                 color: "#000000",
-                fontSize: { xs: "24px", sm: "32px", md: "40px" },
-                lineHeight: 1.2,
                 mb:2
               }}
               dangerouslySetInnerHTML={{
@@ -251,14 +248,13 @@ const MyForm = () => {
               {/* Full Name */}
               <Box>
                 <Typography
-                  variant="body1"
+                
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" },
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {`Full Name `}
@@ -281,7 +277,7 @@ const MyForm = () => {
                       },
                       height: { xs: "30px", sm: "35px", md: "35px" },
                       width: { xs: "100%", sm: "100%", md: "100%" },
-                      fontSize: { xs: "1rem", sm: "1rem", md: "1.1rem" },
+                    
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -299,14 +295,12 @@ const MyForm = () => {
               {/* Email */}
               <Box>
                 <Typography
-                  variant="body1"
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", md: "1.1rem" },
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {` Email `}
@@ -328,7 +322,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                      fontSize: { xs: "1rem", md: "1.1rem" },
+                     
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -347,14 +341,14 @@ const MyForm = () => {
               {/* Phone */}
               <Box>
                 <Typography
-                  variant="body1"
+                 
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", md: "1.1rem" },
+                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {`Phone`}
@@ -376,7 +370,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                      fontSize: { xs: "1rem", md: "1.1rem" },
+                    
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -398,14 +392,14 @@ const MyForm = () => {
               {/* Wedding Date */}
               <Box>
                 <Typography
-                  variant="body1"
+                 
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", md: "1.1rem" },
+                  
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {` Wedding Date (optional)`}
@@ -430,7 +424,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                      fontSize: { xs: "1rem", md: "1.1rem" },
+                    
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -446,14 +440,14 @@ const MyForm = () => {
               {/* Location */}
               <Box>
                 <Typography
-                  variant="body1"
+                
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", md: "1.1rem" },
+                  
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {`Location`}
@@ -475,7 +469,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                      fontSize: { xs: "1rem", md: "1.1rem" },
+                    
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -493,14 +487,14 @@ const MyForm = () => {
               {/* Number of Guests */}
               <Box>
                 <Typography
-                  variant="body1"
+                
                   component="p"
                   sx={{
-                    fontSize: { xs: "1rem", md: "1.1rem" },
+                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {`Number of Guests`}
@@ -522,7 +516,7 @@ const MyForm = () => {
                         borderColor: "#011d4a",
                       },
                       height: { xs: "30px", md: "35px" },
-                      fontSize: { xs: "16px", md: "18px" },
+                     
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -542,14 +536,14 @@ const MyForm = () => {
               {/* Message */}
               <Box>
                 <Typography
-                  variant="body1"
+                
                   component="p"
                   sx={{
-                    fontSize: { xs: "16px", md: "18px" },
+                   
                     fontFamily: "Akatab, sans-serif",
                     mt: 1.5,
                     mb:0.5,
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {`What's on your mind?`}
@@ -570,7 +564,7 @@ const MyForm = () => {
                       "&.Mui-focused fieldset": {
                         borderColor: "#011d4a",
                       },
-                      fontSize: { xs: "1rem", md: "1.1rem" },
+                     
                       fontFamily: "Akatab, sans-serif",
                     },
                     "& .MuiInputBase-input::placeholder": {
@@ -600,7 +594,7 @@ const MyForm = () => {
                   textTransform: "none",
                   fontSize: { xs: "14px", md: "18px" },
                   fontFamily: "Akatab, sans-serif",
-                  fontWeight: "600",
+                  fontWeight: "400",
                   height: { xs: "45px", md: "50px" },
                   "&:hover": {
                     bgcolor: "#DAA412", // Changed hover color to #011d4a
