@@ -20,19 +20,23 @@ function Chat() {
   const isSmOrBelow600 = useMediaQuery(theme.breakpoints.down("sm")); // sm = 600px
 
   return (
-    <Box sx={{ bgcolor: "#FFF7E4" ,py:3}}>
+    <Box sx={{ bgcolor: "#FFF7E4", py: 3 }}>
       <Container>
         <Grid
           container
           //   justifyContent="space-evenly"
-            alignItems="center"
+          alignItems="center"
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
           //   direction={isSmOrBelow600 ? "column" : "row"}
         >
           <ConnectModal open={open} setOpen={setOpen} />
           {/* Left Content */}
-          <Grid item size={{ xs: 12, sm: 5, md: 6 }} textAlign={{xs:"center",sm:"start",md:"start"}}>
+          <Grid
+            item
+            size={{ xs: 12, sm: 5, md: 6 }}
+            textAlign={{ xs: "center", sm: "start", md: "start" }}
+          >
             <Typography
               variant="h6"
               component="h6"
@@ -69,8 +73,8 @@ function Chat() {
             container
             // ✅ Changes here
             // bgcolor={"red"}
-            spacing={{xs:5,sm:4,md:10,lg:15}}
-            justifyContent={{xs:"center",sm:"center",md:"flex-end"}}
+            spacing={{ xs: 5, sm: 4, md: 10, lg: 15 }}
+            justifyContent={{ xs: "center", sm: "center", md: "flex-end" }}
             alignItems="center"
           >
             {/* Call Us */}
@@ -90,8 +94,15 @@ function Chat() {
               </Typography>
               <Typography
                 variant="h6"
-                component="h6"
-                sx={{ fontWeight: 700, fontFamily: "Akatab, sans-serif" }}
+                component="a"
+                href="tel:+919519066885"
+                sx={{
+                  fontWeight: 700,
+                  fontFamily: "Akatab, sans-serif",
+                  textDecoration: "none",
+                  color: "inherit",
+                  "&:hover": { textDecoration: "underline" },
+                }}
               >
                 {` +91 9519066885`}
               </Typography>
@@ -114,10 +125,16 @@ function Chat() {
               </Typography>
               <Typography
                 variant="h6"
+                component="a"
+                href="https://wa.me/919519066885"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   fontWeight: 700,
                   fontFamily: "Akatab, sans-serif",
                   color: "#0D1A46",
+                  textDecoration: "none",
+                  "&:hover": { textDecoration: "underline" },
                 }}
               >
                 {`  +91 9519066885`}
