@@ -37,29 +37,40 @@ function SocialMedia() {
           </Grid>
           <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
             <Typography
-
               component={"h2"}
               textAlign="center"
               sx={{
                 fontFamily: "Gloock,Sans-serif",
-                fontWeight: "400"
-
+                fontWeight: "400",
               }}
-              dangerouslySetInnerHTML={{
-                __html: `  Follow Us </br>
-                        on </br>
-                          Social Media`,
-              }}
-            />
+              // dangerouslySetInnerHTML={{
+              //   __html: `  Follow Us </br>
+              //           on </br>
+              //             Social Media`,
+              // }}
+            >
+              Follow Us <br />
+              on <br />
+              Social Media
+            </Typography>
           </Grid>
           <Grid
-            item size={{ xs: 12, sm: 4, md: 4 }}
+            item
+            size={{ xs: 12, sm: 4, md: 4 }}
             alignItems={isBelow482 ? "center" : "center"}
             justifyContent={isBelow482 ? "coloum" : "row"}
             spacing={isDesktop ? 2 : 1}
             position="relative"
           >
-            <Box mt={0} sx={{ display: "flex", flexDirection: { sx: "row", sm: "column" }, alignItems: { xs: "center", sm: "flex-end" }, justifyContent: { xs: "center", sm: "flex-end" } }}>
+            <Box
+              mt={0}
+              sx={{
+                display: "flex",
+                flexDirection: { sx: "row", sm: "column" },
+                alignItems: { xs: "center", sm: "flex-end" },
+                justifyContent: { xs: "center", sm: "flex-end" },
+              }}
+            >
               <IconButton
                 data-testid="notify-button"
                 component="a"
