@@ -30,7 +30,7 @@ function Philosophy() {
               <Typography
                 component="h2"
                 sx={{
-                  fontFamily: "Gloock, Sans-serif",
+                    fontFamily: "Gloock, serif",
                   fontWeight:400,
                   color:"#000000"
                 }}
@@ -163,7 +163,7 @@ function Philosophy() {
               <Typography
                 component="h2"
                 sx={{
-                  fontFamily: "Gloock, Sans-serif",
+                    fontFamily: "Gloock, serif",
                   mt: { xs: 2, md: 0 },
                 }}
               >

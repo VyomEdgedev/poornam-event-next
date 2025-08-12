@@ -34,7 +34,7 @@ export default function WeddingPlanning() {
                 {` Shaadi Ki Planning?`}
               </Typography>
               <Typography
-                variant="h2"
+                component="h2"
                 fontWeight={400}
                 color="#DAA412"
                 sx={{ fontFamily: "Gloock, serif" }}
@@ -42,7 +42,7 @@ export default function WeddingPlanning() {
                 {` Gyaan Bhi, Fun Bhi!`}
               </Typography>
               <Typography
-                variant="p"
+               
                 component="p"
                 sx={{
                   mt:1,

@@ -65,11 +65,11 @@ const PicksSection = () => {
             }}
           >
             <Typography
-              component="h1"
+              component="h2"
               sx={{
                 fontFamily: "Gloock,serif",
                 fontWeight: 400,
-                lineHeight: 1.2,
+             
                 mb: 2,
                 color: "#000000",
                 textAlign: { xs: "center", md: "center", lg: "left" },
@@ -86,7 +86,7 @@ const PicksSection = () => {
                 width: { xs: "100%", md: "100%", lg: "100%" },
                 textAlign: { xs: "center", md: "center", lg: "left" },
                 mb: { xs: 4, md: 2, lg: 4 },
-                lineHeight: 1.4,
+              
               }}
             >
               {picksData.subtitle}
@@ -151,10 +151,10 @@ const PicksSection = () => {
                   }}
                 >
                   <Typography
-                    variant="h6"
+                  
                     component="h6"
                     sx={{
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontFamily: "Akatab,Sans-serif",
                       mb: 0.7,
                     }}

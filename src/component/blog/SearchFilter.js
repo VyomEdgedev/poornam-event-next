@@ -96,7 +96,7 @@ const SearchFilter = () => {
             }}
           >
             <Typography
-              variant="h2"
+             component="h2"
               sx={{
                 fontWeight: "400",
                 color: "#000000",
@@ -108,8 +108,9 @@ const SearchFilter = () => {
               {` Find What You Need`}
             </Typography>
             <Typography
-              variant="p"
+              component="p"
               sx={{
+                  fontWeight: "400",
                 color: "#000000",
                 fontFamily: "Akatab,Sans-serif",
               }}
@@ -123,11 +124,11 @@ const SearchFilter = () => {
             {/* Search Input */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+               
                 component="h6"
                 sx={{
                   mb: 0,
-                  fontWeight: 600,
+                  fontWeight: 500,
                   color: "#000D1F",
                   fontFamily: "Akatab,Sans-serif",
                 }}
@@ -153,9 +154,9 @@ const SearchFilter = () => {
             {/* Filter by Category */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+              
                 component="h6"
-                sx={{ mb: 0, fontWeight: 600, color: "text.primary" }}
+                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
               >
                 {`  Filter by Category`}
               </Typography>
@@ -170,7 +171,7 @@ const SearchFilter = () => {
                     variant="filled"
                     sx={{
                       margin: "4px",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       fontFamily: "Akatab, sans-serif",
                       backgroundColor: selectedCategories.includes(category)
                         ? "#DAA412"
@@ -192,9 +193,9 @@ const SearchFilter = () => {
             {/* Filter by Location */}
             <Box sx={{ mb: 3 }}>
               <Typography
-                variant="h6"
+               
                 component="h6"
-                sx={{ mb: 0, fontWeight: 600, color: "text.primary" }}
+                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
               >
                 {`  Filter by Location`}
               </Typography>
