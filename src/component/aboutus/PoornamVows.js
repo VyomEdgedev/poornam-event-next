@@ -76,7 +76,7 @@ const PoornamVows = () => {
           <Typography
             component="h2"
             sx={{
-              fontFamily: "Gloock, Sans-serif",
+              fontFamily: "Gloock, serif",
               color:"#000D1F"
             }}
             fontWeight="400"
