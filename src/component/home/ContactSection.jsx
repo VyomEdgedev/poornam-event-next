@@ -99,7 +99,6 @@ export default function ContactSection() {
           {/* Left Text Side */}
           <Grid item size={{ xs: 12, sm: 5, md: 5 }}>
             <Typography
-              variant="h2"
               component="h2"
               sx={{
                 fontFamily: "Gloock, serif",
@@ -112,7 +111,7 @@ export default function ContactSection() {
               }}
             />
             <Typography
-              variant="body1"
+
               component="p"
               sx={{
                 color: "#000000",
@@ -140,8 +139,8 @@ export default function ContactSection() {
               {/* Name Field */}
               <Box>
                 <Typography
-                  variant="body1"
-                  component="label"
+                  component="p"
+                  // component="label"
                   htmlFor="user-name"
                   sx={{
                     mb: 0.5,
@@ -183,8 +182,8 @@ export default function ContactSection() {
               {/* Message Field */}
               <Box>
                 <Typography
-                  variant="body1"
-                  component="label"
+                component="p"
+                  // component="label"
                   htmlFor="user-message"
                   sx={{
                     mb: 0.5,

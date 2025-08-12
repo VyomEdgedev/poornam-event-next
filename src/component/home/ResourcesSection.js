@@ -41,20 +41,19 @@ export default function ResourcesSection() {
             textAlign={{xs:"center",sm:"left"}}
           >
             <Typography
-              variant="h2"
-              sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 1 }}
+              component="h2"
+              sx={{  fontFamily: "Gloock, serif", fontWeight: 400, mb: 1 }}
             >
-              Resources
+              {`Resources`}
             </Typography>
-            <Typography variant="body1" component={"p"} color="textSecondary">
-              Love From Our Couples
+            <Typography  component="p" color="#000000">
+              {`Love From Our Couples`}
             </Typography>
             <Typography
-              variant="h6"
               component="h6"
               sx={{ mt: 2, fontSize: "1.50rem" }}
             >
-              Grab your free tools:
+           {`   Grab your free tools:`}
             </Typography>
             <Button
               onClick={handleDownloadClick}
@@ -98,8 +97,7 @@ export default function ResourcesSection() {
                     sx={{ height: 100, mb: 2 }}
                   />
                   <Typography
-                    variant="body1"
-                    component={"p"}
+                    component="p"
                     sx={{ fontWeight: 400 }}
                   >
                     {tool.title}
