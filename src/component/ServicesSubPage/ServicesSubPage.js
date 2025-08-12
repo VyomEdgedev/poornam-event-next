@@ -166,7 +166,7 @@ function ServicesSubPage() {
       <CapturedMoments title={title} porfioId={id} />
       <YourDream blogId={id} />
       <WeddingKit />
-      <FAQSection faqData={myFAQData} />
+      <FAQSection faqData={service?.faq || []} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import CustomBanner from '@/common-component/banner/CustomBanner'
-import React from 'react'
+import React, { useState } from 'react'
 import WeddingPlanning from './WeddingPlanning';
 import SearchFilter from './SearchFilter';
 import PlanningTips from './PlanningTips';
@@ -9,6 +9,7 @@ import SEO from '@/common-component/SEO/seo';
 
 const Blog = () => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+  const [posts, setPosts] = useState([]);
   return (
     <>
       <>
@@ -62,9 +63,9 @@ const Blog = () => {
       />
 
       <WeddingPlanning />
-      <SearchFilter />
+      <SearchFilter posts ={posts} setPosts= {setPosts} />
       <PlanningTips />
-      <BlogSection />
+      <BlogSection  posts ={posts} setPosts= {setPosts}/>
       <PicksSection />
       
     </>

@@ -23,7 +23,7 @@ const cardData = {
   date: "02-07-2025",
 };
 
-const BlogCard = () => {
+const BlogCard = ({setFaq}) => {
   const [posts, setPosts] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,6 +37,7 @@ const BlogCard = () => {
         const data = response.data.blog;
         if (data) {
           setPosts(data);
+          setFaq(data.faq)
         } else {
           setPosts(null);
         }

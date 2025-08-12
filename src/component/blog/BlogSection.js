@@ -42,7 +42,7 @@ const blogData = {
   // ],
 };
 
-const BlogSection = () => {
+const BlogSection = ({posts, setPosts}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isBelow1150 = useMediaQuery("(max-width:1150px),(spacing:50px)");
@@ -50,7 +50,7 @@ const BlogSection = () => {
     ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 } // spacing when screen is small
     : { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }; // spacing when screen is large
   const router = useRouter();
-  const [posts, setPosts] = useState([]);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

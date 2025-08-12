@@ -1,11 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import { Box } from "@mui/material";
 import FAQSection from "../home/FAQ";
 import SubCard from "./SubCard";
 import Subtext from "./Subtext";
+import { useRouter } from "next/router";
 
+const faqData = [
+  {
+    question: "Do you only plan weddings in Indore?",
+    answer: "Nope! We serve Bhopal, Ujjain, and beyond.",
+  },
+  {
+    question: "Can you help with last-minute weddings?",
+    answer: " Absolutely. We’ve pulled off 3-day prep shaadis with a smile.",
+  },
+  {
+    question: "Do you provide decorators and photographers too?",
+    answer: "Yes! We provide decorators and photographers too.",
+  },
+  {
+    question: "Do you offer budget planning help?",
+    answer: "Of course! We even have a free planner you can download.",
+  },
+];
 export const SubBlog = () => {
+  const [faq, setFaq] = useState([]);
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       console.log("dddddddddddddddddddddddddd", id);
+  //       const response = await apiClient.get(`api/blogs/${id}/event`);
+  //       // console.log('dddddddddddddddddddddddddd' , id)
+  //       console.log(response);
+  //       const blog = response?.data?.blog;
+  //       console.log(blog.faq, "ssssssssssssssssssssssssssss");
+  //       if (blog && blog.faq) {
+  //         setFaq(blog.faq);
+  //       } else {
+  //         setFaq([]);
+  //       }
+  //     } catch (error) {
+  //       // setError(error);
+  //     } finally {
+  //       // setLoading(false);
+  //     }
+  //   };
+
+  //   fetchBlogs();
+  // }, []);
   return (
     <Box>
       {/* <CustomBanner
@@ -39,9 +82,9 @@ export const SubBlog = () => {
           },
         }}
       ></CustomBanner> */}
-      <SubCard></SubCard>
+      <SubCard setFaq={setFaq} ></SubCard>
       <Subtext></Subtext>
-      <FAQSection></FAQSection>
+      <FAQSection faq={faq.length !== 0 ? faq : faqData}></FAQSection>
     </Box>
   );
 };

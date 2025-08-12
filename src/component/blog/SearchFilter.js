@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Container,
   Typography,
   TextField,
-  Button,
+  Grid,
   Chip,
   Paper,
-  Grid,
-  useTheme,
-  useMediaQuery,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CustomButton from "@/common-component/button/CustomButton";
+import { apiClient } from "@/lib/api-client";
 
-const SearchButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#D4A574",
-  color: "white",
-  padding: theme.spacing(1.5, 4),
-  borderRadius: theme.spacing(3),
-  textTransform: "none",
-  fontSize: "1rem",
-  fontWeight: 500,
-  "&:hover": {
-    backgroundColor: "#C19660",
-  },
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-    marginTop: theme.spacing(2),
-  },
-}));
 
 const FilterChip = styled(Chip)(({ theme, selected }) => ({
   margin: theme.spacing(0.5),
@@ -42,12 +28,47 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   },
 }));
 
-const SearchFilter = () => {
+const SearchFilter = ({ setPosts }) => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedLocations, setSelectedLocations] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const [openSuggestions, setOpenSuggestions] = useState(false);
   const categories = ["Tips", "Trends", "Venues", "Real Weddings", "Budget"];
-  const locations = ["Indore", "Bhopal", "Jabalpur", "Goa", "Udaipur"];
+  const debounceTimeout = useRef(null);
+
+  const fetchSuggestions = async (query, categories) => {
+    if (!query) {
+      setSuggestions([]);
+      return;
+    }
+    try {
+      const panel = "event";
+      const queryParams = new URLSearchParams();
+      queryParams.append("query", query);
+      if (categories.length) queryParams.append("categories", categories.join(","));
+      const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
+      const response = await apiClient.get(url);
+      if (response.status === 200) {
+        setSuggestions(response.data.results || []);
+        setOpenSuggestions(true);
+      } else {
+        setSuggestions([]);
+        setOpenSuggestions(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch suggestions:", error);
+      setSuggestions([]);
+      setOpenSuggestions(false);
+    }
+  };
+  useEffect(() => {
+    if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
+    debounceTimeout.current = setTimeout(() => {
+      fetchSuggestions(searchValue, selectedCategories);
+    }, 300); 
+    return () => clearTimeout(debounceTimeout.current);
+  }, [searchValue, selectedCategories]);
+
   const handleCategoryToggle = (category) => {
     setSelectedCategories((prev) =>
       prev.includes(category)
@@ -55,85 +76,40 @@ const SearchFilter = () => {
         : [...prev, category]
     );
   };
-
-  const handleLocationToggle = (location) => {
-    setSelectedLocations((prev) =>
-      prev.includes(location)
-        ? prev.filter((l) => l !== location)
-        : [...prev, location]
-    );
-  };
-
-  const handleSearch = () => {
-    console.log("Search:", {
-      searchValue,
-      selectedCategories,
-      selectedLocations,
-    });
-    // Handle search logic here
+  const handleSuggestionClick = (blog) => {
+    setOpenSuggestions(false);
+    setSearchValue(blog.title);
+    setPosts([blog]); 
   };
 
   return (
-    <Box backgroundColor="#FFF7E4">
-      <Container
-        sx={{
-          py: { xs: 2, sm: 3, md: 4 },
-        }}
-      >
-        <Grid
-          container
-          justifyContent={{ xs: "center" }}
-          alignItems={{ xs: "center" }}
-          spacing={{ xs: 3, sm: 5, md: 7.5, lg: 18 }}
-          columns={{ xs: 12, sm: 12, md: 12 }}
-        >
-          {/* Left Side - Main Heading */}
-          <Grid
-            item
-            size={{ xs: 12, sm: 12, md: 6 }}
-            sx={{
-              py: { xs: 1, sm: 2, md: 2 },
-            }}
-          >
+    <Box backgroundColor="#FFF7E4" position="relative">
+      <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
+        <Grid container justifyContent="center" spacing={7.5}>
+          {/* Heading Section */}
+          <Grid item xs={12} md={6} sx={{ py: 2 }}>
             <Typography
-             component="h2"
-              sx={{
-                fontWeight: "400",
-                color: "#000000",
-
-                mb: 1,
-                fontFamily: "Gloock,serif",
-              }}
+              component="h2"
+              sx={{ fontWeight: 400, color: "#000", mb: 1, fontFamily: "Gloock,serif" }}
             >
-              {` Find What You Need`}
+              Find What You Need
             </Typography>
             <Typography
               component="p"
-              sx={{
-                  fontWeight: "400",
-                color: "#000000",
-                fontFamily: "Akatab,Sans-serif",
-              }}
+              sx={{ fontWeight: 400, color: "#000", fontFamily: "Akatab,Sans-serif" }}
             >
-              {` Search for valuable insights to aid your planning journey.`}
+              Search for valuable insights to aid your planning journey.
             </Typography>
           </Grid>
 
-          {/* Right Side - Search and Filters */}
-          <Grid size={{ xs: 12, sm: 12, md: 6 }}>
-            {/* Search Input */}
+          {/* Search and Filters */}
+          <Grid item xs={12} md={6}>
             <Box sx={{ mb: 3 }}>
               <Typography
-               
                 component="h6"
-                sx={{
-                  mb: 0,
-                  fontWeight: 500,
-                  color: "#000D1F",
-                  fontFamily: "Akatab,Sans-serif",
-                }}
+                sx={{ mb: 0, fontWeight: 500, color: "#000D1F", fontFamily: "Akatab,Sans-serif" }}
               >
-                {`Search`}
+                Search
               </Typography>
               <TextField
                 fullWidth
@@ -142,23 +118,45 @@ const SearchFilter = () => {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: 2,
-                    backgroundColor: "background.default",
-                  },
-                }}
+                autoComplete="off"
+                sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+                onFocus={() => setOpenSuggestions(true)}
               />
+              {/* Suggestions dropdown */}
+              {openSuggestions && suggestions.length > 0 && (
+                <Paper
+                  sx={{
+                    position: "absolute",
+                    zIndex: 10,
+                    mt: 0.5,
+                    width: "100%",
+                    maxHeight: 300,
+                    overflowY: "auto",
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
+                  }}
+                >
+                  <List dense>
+                    {suggestions.map((blog) => (
+                      <ListItem
+                        key={blog._id}
+                        disablePadding
+                        onClick={() => handleSuggestionClick(blog)}
+                      >
+                        <ListItemButton>
+                          <ListItemText primary={blog.title} />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Paper>
+              )}
             </Box>
 
-            {/* Filter by Category */}
+            {/* Category Filter */}
             <Box sx={{ mb: 3 }}>
-              <Typography
-              
-                component="h6"
-                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
-              >
-                {`  Filter by Category`}
+              <Typography component="h6" sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}>
+                Filter by Category
               </Typography>
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {categories.map((category) => (
@@ -176,9 +174,7 @@ const SearchFilter = () => {
                       backgroundColor: selectedCategories.includes(category)
                         ? "#DAA412"
                         : "#0000000D",
-                      color: selectedCategories.includes(category)
-                        ? "white"
-                        : "black",
+                      color: selectedCategories.includes(category) ? "white" : "black",
                       "&:hover": {
                         backgroundColor: selectedCategories.includes(category)
                           ? "#DAA412"
@@ -188,56 +184,6 @@ const SearchFilter = () => {
                   />
                 ))}
               </Box>
-            </Box>
-
-            {/* Filter by Location */}
-            {/* <Box sx={{ mb: 3 }}>
-              <Typography
-               
-                component="h6"
-                sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}
-              >
-                {`  Filter by Location`}
-              </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {locations.map((location) => (
-                  <FilterChip
-                    key={location}
-                    label={location}
-                    selected={selectedLocations.includes(location)}
-                    onClick={() => handleLocationToggle(location)}
-                    clickable
-                    variant="filled"
-                    sx={{
-                      margin: "4px",
-                      fontWeight: 500,
-                      fontFamily: "Akatab, sans-serif",
-                      backgroundColor: selectedLocations.includes(location)
-                        ? "#DAA412"
-                        : "#0000000D",
-                      color: selectedLocations.includes(location)
-                        ? "white"
-                        : "black",
-                      "&:hover": {
-                        backgroundColor: selectedLocations.includes(location)
-                          ? "#DAA412"
-                          : "grey.400",
-                      },
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box> */}
-            <Box
-              sx={{
-                display: "flex",
-                
-              }}
-            >
-              <CustomButton
-                onClick={handleSearch}
-                data-testid="notify-button"
-              >{`Search`}</CustomButton>
             </Box>
           </Grid>
         </Grid>

@@ -47,7 +47,7 @@ const staticDescriptions = [
 const CapturedMoments = ({ title, porfioId }) => {
   const [moments, setMoments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [categoryName, setCategoryName] = useState("");
+
   const router = useRouter();
   useEffect(() => {
     const fetchMoments = async () => {

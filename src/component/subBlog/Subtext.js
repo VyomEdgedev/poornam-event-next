@@ -17,7 +17,7 @@ const Subtext = () => {
     const fetchBlogs = async () => {
       try {
         const response = await apiClient.get(`api/blogs/${id}/event`);
-        console.log(response);
+        // console.log(response);
         const blog = response.data.blog;
         if (blog && blog.description) {
           setDescription(blog.description);
