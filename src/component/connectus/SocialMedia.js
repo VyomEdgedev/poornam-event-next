@@ -40,7 +40,7 @@ function SocialMedia() {
               component={"h2"}
               textAlign="center"
               sx={{
-                fontFamily: "Gloock,Sans-serif",
+                fontFamily: "Gloock, serif",
                 fontWeight: "400",
               }}
               // dangerouslySetInnerHTML={{

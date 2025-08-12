@@ -196,7 +196,7 @@ const MyForm = () => {
                 component="h2"
                 sx={{
                   fontWeight: "400",
-                  fontFamily: "Gloock,Sans-serif",
+                  fontFamily: "Gloock, serif",
                   color: "#000000",
                   mb: 2,
                 }}
