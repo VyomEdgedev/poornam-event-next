@@ -33,7 +33,7 @@ const FAQSection = ({
   return (
     <Box sx={{ backgroundColor, py: 3, px: padding }}>
       <Typography
-        variant="h2"
+       
         component="h2"
         align="center"
         sx={{
@@ -48,7 +48,7 @@ const FAQSection = ({
       
       {subtitle && (
         <Typography
-          variant="subtitle1"
+         component="h6"
           align="center"
           sx={{
             mb: 4,
@@ -122,11 +122,11 @@ const FAQSection = ({
                     }}
                   >
                     <Typography
-                      component="h3"
+                      component="h6"
                       sx={{
-                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+                        
                         fontFamily: bodyFontFamily,
-                        fontWeight: 700,
+                        fontWeight: 600,
                         color: textColor,
                       }}
                     >
@@ -146,15 +146,15 @@ const FAQSection = ({
                     }}
                   >
                     <Typography
-                      variant="body1"
+                     component={"p"}
                       id={`faq-content-${index}`}
                       aria-labelledby={`faq-header-${index}`}
                       sx={{
-                        fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+                       
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,
                         color: textColor,
-                        lineHeight: 1.3,
+                       
                       }}
                     >
                       {item.answer}

@@ -19,11 +19,11 @@ function Planner() {
               sx={{ borderRight: "3px solid #D7A10F" }}
             >
               <Typography
-                variant="h6"
+             
                 component="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
-                  fontSize: { xs: "16px", sm: "16px", md: "20px" },
+                  fontWeight:"600",
                   textAlign: "center",
                   color: "#D7A10F",
                 }}
@@ -38,13 +38,14 @@ function Planner() {
               sx={{ borderRight: { md: "3px solid #D7A10F" } }}
             >
               <Typography
-                variant="h6"
+               
                 component="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
                   fontSize: { xs: "16px", sm: "16px", md: "20px" },
                   textAlign: "center",
                   color: "#D7A10F",
+                   fontWeight:"600",
                 }}
               >
                 {`Wedding Planner Near Me`}
@@ -57,13 +58,14 @@ function Planner() {
               sx={{ borderRight: "3px solid #D7A10F" }}
             >
               <Typography
-                variant="h6"
+               
                 component="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
                   fontSize: { xs: "16px", sm: "16px", md: "20px" },
                   textAlign: "center",
                   color: "#D7A10F",
+                   fontWeight:"600",
                 }}
               >
                 {`Bhopal Wedding Planners`}
@@ -76,13 +78,14 @@ function Planner() {
               //   sx={{ borderRight: "3px solid #D7A10F" }}
             >
               <Typography
-                variant="h6"
+              
                 component="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
                   fontSize: { xs: "16px", sm: "16px", md: "20px" },
                   textAlign: "center",
                   color: "#D7A10F",
+                   fontWeight:"600",
                 }}
               >
                 {`Ujjain Shaadi Experts`}
@@ -99,13 +102,13 @@ function Planner() {
           sx={{ bgcolor: "#rgba(0, 0, 0, 0.1)" }}
         >
           <Typography
-            variant="h6"
+          
             component="h6"
             textAlign="center"
             sx={{
               padding: "25px",
               fontFamily: "Akatab,serif",
-              fontSize: { xs: "18px", sm: "16px", md: "21px" },
+             fontWeight:"400",
             }}
             dangerouslySetInnerHTML={{
               __html: `   Planning a wedding in <strong>Madhya Pradesh</strong> or anywhere in <strong>India? </strong>Let <strong>

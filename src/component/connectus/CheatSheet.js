@@ -10,7 +10,7 @@ function CheatSheet() {
           variant="h2"
           textAlign={"center"}
           sx={{
-            fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2.5rem" },
+           fontWeight:"400",
             fontFamily: "Gloock, serif",
           }}
         >
@@ -46,22 +46,24 @@ function CheatSheet() {
                 />
               </Grid>
               <Typography
-                variant="body1"
+               
                 component="p"
                 width="250px"
                 px={2}
                 fontFamily="Akatab,Sans-serif"
+                fontWeight={600}
               >
                 {`"I want a destination wedding but don't know where!" `}
               </Typography>
             </Box>
             <Typography
-              variant="body1"
+              fontWeight={800}
               component="p"
               fontFamily="Akatab,Sans-serif"
               textAlign="center"
+                color="#000D1F"
             >
-              <strong>{`We've got suggestions.`}</strong>
+              {`We've got suggestions.`}
             </Typography>
           </Box>
         </Grid>
@@ -85,7 +87,7 @@ function CheatSheet() {
                 />
               </Grid>
               <Typography
-                variant="body1"
+                fontWeight={600}
                 component="p"
                 width="250px"
                 px={2}
@@ -95,12 +97,13 @@ function CheatSheet() {
               </Typography>
             </Box>
             <Typography
-              variant="body1"
+              fontWeight={800}
               component="p"
+                color="#000D1F"
               fontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
-              <strong>{`We'll negotiate for you.`}</strong>
+              {`We'll negotiate for you.`}
             </Typography>
           </Box>
         </Grid>
@@ -124,7 +127,7 @@ function CheatSheet() {
                 />
               </Grid>
               <Typography
-                variant="body1"
+                 fontWeight={600}
                 component="p"
                 width="250px"
                 px={2}
@@ -134,12 +137,13 @@ function CheatSheet() {
               </Typography>
             </Box>
             <Typography
-              variant="body1"
+              fontWeight={800}
+              color="#000D1F"
               component="p"
               fontFamily="Akatab,Sans-serif"
               textAlign="center"
             >
-              <strong>{`We love everything`}</strong>
+              {`We love everything`}
             </Typography>
           </Box>
         </Grid>

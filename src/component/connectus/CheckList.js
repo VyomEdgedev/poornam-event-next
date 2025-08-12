@@ -16,29 +16,29 @@ function CheckList() {
         // textAlign="left"
         py={4}
         columns={{ xs: 12, sm: 12, md: 12 }}
-        // padding={{ xs: "30px", sm: "50px", md: "60px" }}
+      // padding={{ xs: "30px", sm: "50px", md: "60px" }}
       >
         <Grid size={{ xs: 12, sm: 8, md: 8 }}
-        alignContent="center"
-        alignItems={"center"} >
+          alignContent="center"
+          alignItems={"center"} >
           <Typography
-            variant="body1"
-            component={"p"}
+
+            component={"h6"}
             sx={{
               fontFamily: "Akatab,Sans-serif",
-              fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" },
+              fontWeight: "700",
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}
             dangerouslySetInnerHTML={{
-              __html: `    <strong>Visit Our Studio (We Serve Chai & Checklists)</strong>`,
+              __html: `    Visit Our Studio (We Serve Chai & Checklists)`,
             }}
           />
           <Typography
-            variant="body1"
+            
             component={"p"}
             sx={{
               fontFamily: "Akatab,Sans-serif",
-              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.1rem" },
+              fontWeight:"400",
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}
             dangerouslySetInnerHTML={{

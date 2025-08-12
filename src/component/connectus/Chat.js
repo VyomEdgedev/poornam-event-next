@@ -38,10 +38,10 @@ function Chat() {
             textAlign={{ xs: "center", sm: "start", md: "start" }}
           >
             <Typography
-              variant="h6"
-              component="h6"
+             
+              component="h2"
               sx={{
-                fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+               
                 fontFamily: "Gloock, serif",
                 fontWeight: 400,
                 color: "#000",
@@ -50,9 +50,9 @@ function Chat() {
               {` Prefer Talking?`}
             </Typography>
             <Typography
-              variant="h6"
+              variant="h2"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.5rem", md: "2.5rem" },
+               
                 fontFamily: "Gloock, serif",
                 fontWeight: 400,
                 mb: 2,
@@ -86,26 +86,30 @@ function Chat() {
                 sx={{ padding: 2 }}
               />
               <Typography
-                variant="h6"
+               
                 component="h6"
-                sx={{ fontFamily: "Akatab, sans-serif" }}
+                sx={{ fontFamily: "Akatab, sans-serif", fontWeight:"400", color:"#000000" }}
               >
                 {`  Call Us`}
               </Typography>
               <Typography
-                variant="h6"
-                component="a"
+              
+                component="h5"
                 href="tel:+919519066885"
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 500,
                   fontFamily: "Akatab, sans-serif",
                   textDecoration: "none",
-                  color: "inherit",
+                  color: "#000000",
                   "&:hover": { textDecoration: "underline" },
                 }}
-              >
-                {` +91 9519066885`}
-              </Typography>
+                  dangerouslySetInnerHTML={{
+                __html: ` <strong> +91 9519066885 </strong>`,
+              }}
+            />
+            
+               
+            
             </Grid>
 
             {/* WhatsApp */}
@@ -117,28 +121,29 @@ function Chat() {
                 sx={{ padding: 2 }}
               />
               <Typography
-                variant="h6"
+
                 component="h6"
-                sx={{ fontFamily: "Akatab, sans-serif", color: "#0D1A46" }}
+                sx={{ fontFamily: "Akatab, sans-serif", fontWeight:"400", color:"#000000" }}
               >
                 {`   WhatsApp`}
               </Typography>
               <Typography
-                variant="h6"
-                component="a"
+              
+                component="h5"
                 href="https://wa.me/919519066885"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 500,
                   fontFamily: "Akatab, sans-serif",
-                  color: "#0D1A46",
+                  color: "#000000",
                   textDecoration: "none",
                   "&:hover": { textDecoration: "underline" },
                 }}
-              >
-                {`  +91 9519066885`}
-              </Typography>
+             dangerouslySetInnerHTML={{
+                __html: ` <strong> +91 9519066885 </strong>`,
+              }}
+            />
             </Grid>
           </Grid>
         </Grid>

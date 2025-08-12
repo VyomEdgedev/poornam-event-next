@@ -24,14 +24,20 @@ function FreeCall() {
         <ConnectModal open={open} setOpen={setOpen} />
         <Grid size={{ xs: 12, sm: 9, md: 9 }} textAlign={{xs:"center",sm:"start"} }>
           <Typography
+          component="h3"
             sx={{
               fontFamily: "Gloock,Sans-serif",
-              fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" },
+            fontWeight:"400"
             }}
           >
             {`Just Want to Chat Wedding Vibes Over Coffee?`}
           </Typography>
-          <Typography>{`We love meeting new couples (and yes, we'll bring the Pinterest boards).`}</Typography>
+          <Typography component="p"
+            sx={{
+               fontFamily: "Akatab,Sans-serif",
+            fontWeight:"400"
+            }}>
+            {`We love meeting new couples (and yes, we'll bring the Pinterest boards).`}</Typography>
           <Button
             data-testid="notify-button"
             type="submit"
@@ -44,7 +50,8 @@ function FreeCall() {
               bgcolor: "#DAA412",
               padding: "5px 10px",
               borderRadius: "15px",
-              marginTop:"20px"
+              marginTop:"20px",
+                fontWeight:"500"
             }}
           >
             {`Schedule a Free 15-min Vibe Check Call`}
