@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Typography } from '@mui/material';
 import SnapshotCard from '../../common-component/SpanshotCard/SnapshotCard';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Snapshot() {
+ 
+    useEffect(() => {
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://www.instagram.com/embed.js');
+    script.setAttribute('async', '');
+    document.body.appendChild(script);
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, []);
   const isBelow1150 = useMediaQuery('(max-width:1150px),(spacing:50px)');
   const responsiveSpacing = isBelow1150
     ? { xs: 2, sm: 1 }   // spacing when screen is small
@@ -46,13 +56,33 @@ export default function Snapshot() {
             {`  Behind the scenes of our creative hustle.`}
           </Typography>
 
-          <SnapshotCard
+          {/* <SnapshotCard
             avatarSrc="/logo.png"
             title="Team Poornam Events"
             imageSrc="/snapshot2.png"
             caption="Laughter, chai, and dance practice!"
 
-          />
+          /> */}
+
+<div style={{ maxWidth: '540px', margin: 'auto', marginTop: '20px' }}>
+            <blockquote
+              className="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/poornamevents"
+              data-instgrm-version="12"
+              style={{
+                background: '#FFF',
+                border: 0,
+                borderRadius: 3,
+                boxShadow:
+                  '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+                margin: '1px',
+                maxWidth: '540px',
+                minWidth: '326px',
+                padding: 0,
+                width: '99.375%',
+              }}
+            ></blockquote>
+          </div>
         </Grid>
       </Grid>
     </Grid>
