@@ -71,12 +71,16 @@ const BlogSection = () => {
     };
     fetchBlogs();
   }, []);
-  // if (loading) return <CircularProgress sx={{ m: 5 }} />;
-  // if (error) return <Typography color="error">Error: {error}</Typography>;
 
   const sortedPosts = [...posts]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 2);
+
+  // Show nothing until blogs are available (hide section when no blogs or while loading)
+  if (loading) return null;
+  if (error) return null;
+  if (!sortedPosts.length) return null;
+
   const handleNavigate = () => {
     router.push("#");
   };
@@ -106,28 +110,6 @@ const BlogSection = () => {
           >
             {blogData.title}
           </Typography>
-          {/* <Button
-            onClick={() => handleNavigate()}
-            data-testid="notify-button"
-            variant="contained"
-            sx={{
-              backgroundColor: "#ffa726",
-              color: "white",
-              px: 4,
-              py: 1.5,
-              borderRadius: 25,
-              textTransform: "none",
-              fontSize: { xs: "16px", sm: "16px", md: "16px" },
-              fontWeight: 500,
-              fontFamily: "Akatab,Sans-serif",
-
-              "&:hover": {
-                backgroundColor: "#ff9800",
-              },
-            }}
-          >
-            {blogData.viewAllText}
-          </Button> */}
         </Box>
 
         <Grid

@@ -4,12 +4,12 @@ import {
   Typography,
   Card,
   CardContent,
-  CardMedia,
   Grid,
   Container,
   useTheme,
   useMediaQuery
 } from '@mui/material';
+import Image from 'next/image';
 
 
 const picksData = {
@@ -49,18 +49,25 @@ const PicksSection = () => {
     : { xs: 2, sm: 1, md: 0, lg: 2, xl: 6}; // spacing when screen is large
 
   return (
-    <Container maxWidth="xl" sx={{ py: 6 }}>
-      <Grid container spacing={responsiveSpacing}
-        alignItems={isBelow1150 ? 'center' : "center"}
-        justifyContent={isBelow1150 ? 'center' : 'center'}>
+    <Container sx={{ py: 6 }}>
+      <Grid
+      container 
+    
+      spacing={{ xs: 2, sm: 2.2, md: 4.25,  xl: 17 }}
+      columns={{ xs: 12, sm: 12, md: 12 }}
+      // spacing={responsiveSpacing}
+        // alignItems={isBelow1150 ? 'center' : "center"}
+        // justifyContent={isBelow1150 ? 'center' : 'center'}
+        
+        >
 
-        <Grid item xs={12} md={5}>
-          <Box sx={{ pr: { md: 4 } }}>
+        <Grid item size={{ xs: 12, sm: 12, md: 6 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Box sx={{ 
+            textAlign: 'center',
+          }}>
             <Typography
-              variant="h2"
-              component="h2"
+            component="h1"
               sx={{
-                fontSize: { xs: '1.8rem', sm: '2rem', md: '3rem' },
                 fontFamily: 'Gloock,serif',
                 fontWeight: 400,
                 lineHeight: 1.2,
@@ -72,17 +79,15 @@ const PicksSection = () => {
               {picksData.title}
             </Typography>
             <Typography
-              variant="body1"
               component="p"
-              color="text.secondary"
+              color="#000000"
               sx={{
-                fontSize: { xs: '0.95rem', sm: '0.95rem', md: '1rem' },
                 fontWeight: 400,
                 fontFamily: "Akatab,Sans-serif",
-                lineHeight: 1.2,
-                width: { xs: '100%', md: '88%',lg:'75%' },
+                width: { xs: '100%', md: '100%', lg: '100%' },
                 textAlign: { xs: 'center', md: 'center', lg: 'left' },
-                mb: { xs: 4, md: 2, lg: 4 }
+                mb: { xs: 4, md: 2, lg: 4 },
+                lineHeight: 1.4
               }}
             >
               {picksData.subtitle}
@@ -90,9 +95,7 @@ const PicksSection = () => {
           </Box>
         </Grid>
 
-        <Grid
-
-          item xs={12} md={7}>
+        <Grid item size={{ xs: 12, sm: 12, md: 6 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {picksData.items.map((item) => (
               <Card
@@ -113,17 +116,24 @@ const PicksSection = () => {
                   cursor: 'pointer'
                 }}
               >
-                <CardMedia
-                  component="img"
+                <Box
                   sx={{
+                    position: 'relative',
                     width: { xs: '100%', sm: 140, md: 140 },
                     height: { xs: 200, sm: 120 },
-                    objectFit: 'cover',
-                    borderRadius: { xs: 0, sm: '8px 0 0 8px' }
+                    borderRadius: { xs: 0, sm: '8px 0 0 8px' },
+                    overflow: 'hidden',
+                    flexShrink: 0
                   }}
-                  image={item.image}
-                  alt={item.title}
-                />
+                >
+                  <Image
+                    src={item.image?.startsWith('./') ? item.image.replace('./','/') : item.image}
+                    alt={item.title}
+                    fill
+                    // sizes="(max-width: 600px) 100vw, 140px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </Box>
                 <CardContent
                   sx={{
                     flex: 1,
@@ -136,7 +146,7 @@ const PicksSection = () => {
                     variant="h6"
                     component="h6"
                     sx={{
-                      fontSize: { xs: '16px', sm: '16px', md: '18px' },
+                      
                       fontWeight: 600,
                       fontFamily: "Akatab,Sans-serif",
                       mb: 0.70,
@@ -145,13 +155,11 @@ const PicksSection = () => {
                   >
                     {item.title}
                   </Typography>
-                  <Typography
-                    variant="body1"
+                  <Typography                
                     component="p"
-                    color="text.secondary"
+                    color="#000000"
                     sx={{
                       lineHeight: 1,
-                      fontSize: { xs: '0.85rem', sm: '0.85rem', md: '0.95rem' },
                       fontWeight: 400,
                       fontFamily: "Akatab,Sans-serif",
                       color: '#000000'
