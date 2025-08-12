@@ -219,7 +219,7 @@ const FlipCard = ({ service }) => {
             component="p"
             sx={{
               color: "#f5f5f5",
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               color: "#FFFBF0",
               lineHeight: 1.2,
               mb: 2,

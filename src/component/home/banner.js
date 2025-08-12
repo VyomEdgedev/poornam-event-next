@@ -86,8 +86,7 @@ export default function HeroSection() {
                 }}
               >
                 <Typography
-                  variant="h1"
-               
+                  component="h1"
                   fontWeight="regular"
                   sx={{
                     color: "#E6C365",
@@ -107,8 +106,7 @@ export default function HeroSection() {
                 </Typography>
 
                 <Typography
-                  variant="h5"
-                  component={"h5"}
+                  component="h5"
                   sx={{
                     color: "#FFF5D9",
                     mb: 2,
@@ -122,8 +120,7 @@ export default function HeroSection() {
                   {`   Let’s Make Yours Legendary`}
                 </Typography>
                 <Typography
-                  variant="p"
-                  component={"p"}
+                  component="p"
                   sx={{
                     color: "#FFF5D9",
                     textAlign: { xs: "left", md: "left" },

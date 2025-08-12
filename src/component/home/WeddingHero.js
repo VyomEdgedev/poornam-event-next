@@ -28,14 +28,12 @@ export default function WeddingSection() {
       >
         <Box sx={{ flex: 1, maxWidth: { sm: "100%", md: "50%" } }}>
           <Typography
-            variant="h2"
             component="h2"
             sx={{
               fontFamily: "Gloock, serif",
               fontWeight: 400,
               color: "#000D1F",
               mb: 2,
-              lineHeight: 1.2,
               letterSpacing: "0.7px",
             }}
           >
@@ -54,11 +52,11 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-            variant="h5"
+            // variant="h5"
             component="h5"
             sx={{
               mb: 1,
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
             }}
@@ -67,12 +65,12 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
+          component="p"
             sx={{
               mb: 2,
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
-              fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" },
             }}
           >
             {` Shaadi ka stress is real. One minute you're choosing napkin colors,
@@ -83,7 +81,7 @@ export default function WeddingSection() {
             variant="h5"
             component="h4"
             sx={{
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
               mb: 1,
@@ -96,7 +94,7 @@ export default function WeddingSection() {
             variant="body1"
             component="p"
             sx={{
-              frontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
               lineHeight: 1.3,

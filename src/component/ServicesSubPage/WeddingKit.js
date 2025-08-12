@@ -79,7 +79,7 @@ const [loading, setLoading] = useState(false);
 
       <Box>
         <Box textAlign="left">
-          <Typography variant="body2" sx={{ mb: 0.5, frontFamily: "Akatab,Sans-serif", fontWeight: '500', color: '#000000' }}>
+          <Typography variant="body2" sx={{ mb: 0.5, fontFamily: "Akatab,Sans-serif", fontWeight: '500', color: '#000000' }}>
             Email*
           </Typography>
           <TextField
@@ -94,7 +94,7 @@ const [loading, setLoading] = useState(false);
               disabled={loading}
           />
         </Box>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, frontFamily: "Akatab,Sans-serif", fontWeight: '500' }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, fontFamily: "Akatab,Sans-serif", fontWeight: '500' }}>
          {` Big shhadi secrets and  surprises are on the way. stay tuned!`}
         </Typography>
         {success && (

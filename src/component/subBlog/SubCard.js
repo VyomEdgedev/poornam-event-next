@@ -109,7 +109,7 @@ const BlogCard = () => {
             <Typography
               sx={{
                 fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                frontFamily: "Akatab,Sans-serif",
+                fontFamily: "Akatab,Sans-serif",
               }}
             >
               Category: {posts?.category?.name || "N/A"}
@@ -118,7 +118,7 @@ const BlogCard = () => {
               sx={{
                 fontSize: { xs: "1.2rem", sm: "1.4rem" },
                 fontWeight: 600,
-                frontFamily: "Akatab,Sans-serif",
+                fontFamily: "Akatab,Sans-serif",
               }}
             >
               {posts.title}
@@ -133,7 +133,7 @@ const BlogCard = () => {
                 color: "white",
                 borderColor: "white",
                 fontSize: "0.8rem",
-                frontFamily: "Akatab,Sans-serif",
+                fontFamily: "Akatab,Sans-serif",
               }}
             />
           </Box>
