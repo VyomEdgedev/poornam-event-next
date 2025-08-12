@@ -15,7 +15,7 @@ function MagicMakers() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        color: "#fff",
+        color: "#FFFFFF",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -23,7 +23,7 @@ function MagicMakers() {
     >
       <Grid sx={{ textAlign: "center" }}>
         <Typography
-          variant="h2"
+          component="h2"
           sx={{
             fontFamily: "Gloock,Sans-serif",
           }}
@@ -31,6 +31,7 @@ function MagicMakers() {
           {`Meet the Magic Makers`}
         </Typography>
         <Typography
+          component="p"
           sx={{
             fontFamily: "Akatab,Sans-serif",
           }}

@@ -47,14 +47,15 @@ function OwnerCard({ image, alt, headline, description }) {
           }}>
         <Box>
           <Typography
-            variant="h5"
-            color="white"
-            sx={{  fontFamily: "Akatab,Sans-serif" }}
+            component="h4"
+            color="#FFFFFF"
+            sx={{  fontFamily: "Akatab,Sans-serif", fontWeight:700 }}
           >
-            <strong>{headline}</strong>
+            {headline}
           </Typography>
           <Typography
-            color="white"
+          component={"p"}
+            color="#FFFFFF"
             sx={{  fontFamily: "Akatab,Sans-serif" }}
           >
             {description}

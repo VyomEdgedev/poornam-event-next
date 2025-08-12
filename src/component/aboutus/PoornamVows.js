@@ -74,9 +74,10 @@ const PoornamVows = () => {
           }}
         >
           <Typography
-            variant="h2"
+            component="h2"
             sx={{
-              fontFamily: "Gloock,Sans-serif",
+              fontFamily: "Gloock, Sans-serif",
+              color:"#000D1F"
             }}
             fontWeight="400"
             gutterBottom
@@ -84,8 +85,10 @@ const PoornamVows = () => {
             Poornam Vows
           </Typography>
           <Typography
+          component="p"
             sx={{
               fontFamily: "Akatab,Sans-serif",
+              color:"#000D1F"
             }}
             gutterBottom
           >
@@ -142,16 +145,11 @@ const PoornamVows = () => {
                   />
                   {vow.title && (
                     <Typography
-                      variant="caption"
+                    component="p"
                       sx={{
                         mt: 0.5,
-                        fontSize: {
-                          xs: "0.6rem",
-                          sm: "0.7rem",
-                          md: "0.8rem",
-                        },
                         textAlign: "center",
-                        // maxWidth: "80px",
+                        color:"#000000"
                       }}
                     >
                       {vow.title}
