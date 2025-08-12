@@ -28,10 +28,11 @@ function Philosophy() {
               sx={{ textAlign: "center" }}
             >
               <Typography
-                variant="h2"
+                component="h2"
                 sx={{
                   fontFamily: "Gloock, Sans-serif",
-                  // mb: { xs: 2, md: 0 },
+                  fontWeight:400,
+                  color:"#000000"
                 }}
               >
                 {` Our Philosophy`}
@@ -66,16 +67,17 @@ function Philosophy() {
               >
                 <CardContent sx={{ p: 3 }}>
                   <Typography
-                    variant="h6"
-                    fontWeight="bold"
+                    component="h5"
+                    fontWeight="700"
                     gutterBottom
                     fontFamily="Akatab, Sans-serif"
+                    color="#000000"
                     sx={{ mb: 2 }}
                   >
                     {`Our Humble Beginnings`}
                   </Typography>
                   <Typography
-                    variant="p"
+                    component="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
                     sx={{ lineHeight: 1.6 }}
@@ -114,8 +116,8 @@ function Philosophy() {
               >
                 <CardContent sx={{ p: 3 }}>
                   <Typography
-                    variant="h6"
-                    fontWeight="bold"
+                    component="h5"
+                    fontWeight="700"
                     gutterBottom
                     fontFamily="Akatab, Sans-serif"
                     sx={{ mb: 2 }}
@@ -123,7 +125,7 @@ function Philosophy() {
                     Our Mission
                   </Typography>
                   <Typography
-                    variant="p"
+                    component="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
                     sx={{ lineHeight: 1.6 }}
@@ -159,7 +161,7 @@ function Philosophy() {
               sx={{ textAlign: "center", flexDirection: "column-reverse" }}
             >
               <Typography
-                variant="h2"
+                component="h2"
                 sx={{
                   fontFamily: "Gloock, Sans-serif",
                   mt: { xs: 2, md: 0 },

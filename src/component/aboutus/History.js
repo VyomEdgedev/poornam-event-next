@@ -27,13 +27,14 @@ export default function OurStories() {
       py: { xs: 1, sm: 2, md: 1 },
       fontFamily: "Akatab,Sans-serif",
       fontWeight: "400",
+      color:"#000000",
       
     }}>
       {data.map((item, index) => (
         <Box key={index} style={{ marginBottom: "0.5rem" }}>
-          <Typography variant="h6" sx={{  color: "black", mb: 1.5 }}>{item.heading}</Typography>
+          <Typography component="h6" sx={{  color: "black", mb: 1.5 , fontFamily: "Akatab,Sans-serif",}}>{item.heading}</Typography>
           {item.paragraphs.map((p, i) => (
-            <Typography variant="p" key={i} sx={{ lineHeight: 1.5 }}>{p}</Typography>
+            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",}}>{p}</Typography>
           ))}
         </Box>
       ))}

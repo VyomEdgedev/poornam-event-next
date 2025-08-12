@@ -16,14 +16,13 @@ export default function OurStories() {
         display="block"
         justifyItems="center"
         justifyContent="center"
-        
         sx={{ py: { xs: "20px", sm: "40px", md: "60px" } }}
       >
         {Story.map((story, index) => (
           <Box key={index}>
             {/* Heading */}
             <Typography
-              variant="h2"
+              component="h2"
               sx={{
                 color: "black",
                 fontFamily: "Gloock, serif",
@@ -37,13 +36,12 @@ export default function OurStories() {
             {/* Paragraphs */}
             {story.paragraphs.map((p, i) => (
               <Typography
-                variant="p"
+                component="p"
                 key={i}
                 sx={{
-                  lineHeight: 1.6,
-
                   fontWeight: 400,
                   fontFamily: "Akatab, sans-serif",
+                  color:"#000000",
                   mb: 1,
                 }}
               >
