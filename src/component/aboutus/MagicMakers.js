@@ -25,7 +25,7 @@ function MagicMakers() {
         <Typography
           component="h2"
           sx={{
-            fontFamily: "Gloock,Sans-serif",
+         fontFamily: "Gloock,serif",
           }}
         >
           {`Meet the Magic Makers`}
