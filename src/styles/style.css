@@ -276,3 +276,15 @@ body {
   }
   
 }
+.css-161ms7l-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+  color: #DAA412 !important; 
+}
+.css-17jyosd-MuiSwitch-thumb {
+  background-color: #DAA412 !important;
+}
+.css-161ms7l-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+    background-color:#DAA412  !important;
+}
+.css-161ms7l-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+    opacity: 1 !important;
+}

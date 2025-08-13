@@ -170,7 +170,7 @@ export default function CookiesBanner() {
                 color: "white",
                 "&:hover": {
                   borderColor: "#ffa726",
-                  backgroundColor: "rgba(255,167,38,0.1)",
+                  backgroundColor: "#DAA412",
                 },
                
               }}
@@ -179,13 +179,15 @@ export default function CookiesBanner() {
             </CustomButton>
             </Box >
             <CustomButton
-              variant="text"
+              variant="outlined"
               onClick={handleRejectNonEssential}
               sx={{
+                borderColor:"white",
                 color: "rgba(255,255,255,0.7)",
                 "&:hover": {
+                  borderColor: "#DAA412",
                            color: "white",
-                  backgroundColor: "rgba(255,255,255,0.1)",
+                
                 },
                 
               }}
