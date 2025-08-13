@@ -45,20 +45,18 @@ const WeddingThemes = () => {
   return (
     <Container maxWidth="xl" sx={{ py: 3 }}>
       <Typography
-        variant="h3"
-        component="h3"
+        component="h2"
         align="center"
         sx={{
           fontWeight: "400",
           mb: 1,
           fontFamily: "Gloock,serif",
-          fontSize: { xs: "2rem", sm: "2rem", md: "3rem" },
         }}
       >
         {` Explore Our Wedding Themes`}
       </Typography>
       <Typography
-        variant="body1"
+       
         component="p"
         align="center"
         sx={{
@@ -93,6 +91,7 @@ const WeddingThemes = () => {
                 elevation={1}
               >
                 <Chip
+                component={"p"}
                   label={tag}
                   size="small"
                   sx={{
@@ -100,7 +99,7 @@ const WeddingThemes = () => {
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                    fontSize: 11,
+                  
                     zIndex: 2,
                   }}
                 />
@@ -128,25 +127,25 @@ const WeddingThemes = () => {
                 </Box>
                 <CardContent>
                   <Typography
-                    variant="body1"
+                   
                     component="p"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "400",
                       cursor: "pointer",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
+                     
                     }}
                   >
                     {title}
                   </Typography>
                   <Typography
-                    variant="body1"
-                    component="p"
+                  
+                    component="h6"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "500",
                       color: "#000000",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
+                     
                     }}
                   >
                     {description}

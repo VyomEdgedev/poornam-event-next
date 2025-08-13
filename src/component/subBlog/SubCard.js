@@ -108,16 +108,18 @@ const BlogCard = ({setFaq}) => {
             }}
           >
             <Typography
+             component={"p"}
               sx={{
-                fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                fontWeight: 600,
                 fontFamily: "Akatab,Sans-serif",
               }}
             >
               Category: {posts?.category?.name || "N/A"}
             </Typography>
             <Typography
+            component={"p"}
               sx={{
-                fontSize: { xs: "1.2rem", sm: "1.4rem" },
+               
                 fontWeight: 600,
                 fontFamily: "Akatab,Sans-serif",
               }}
@@ -129,6 +131,7 @@ const BlogCard = ({setFaq}) => {
                 posts.createdAt
               ).toLocaleDateString("en-GB")}`}
               variant="outlined"
+              component={"p"}
               sx={{
                 mt: 1,
                 color: "white",

@@ -26,7 +26,7 @@ export default function WeddingPlanning() {
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box>
               <Typography
-                variant="h2"
+                component="h2"
                 mb="0.5"
                 fontWeight={400}
                 sx={{ fontFamily: "Gloock, serif", color: "#000000" }}

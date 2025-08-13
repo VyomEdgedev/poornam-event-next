@@ -104,7 +104,7 @@ export default function ContactSection() {
                 fontFamily: "Gloock, serif",
                 fontWeight: 400,
                 mb: { xs: 1, sm: 1, md: 2 },
-                lineHeight: 1.2,
+               
               }}
               dangerouslySetInnerHTML={{
                 __html: `Get in Touch with the Heart Behind the Brand`,

@@ -34,6 +34,7 @@ export default function Snapshot() {
             component="h2"
             sx={{
               fontFamily: "Gloock,Sans-serif",
+              fontWeight:"400",
               mb: 0.5
             }}
           >
@@ -43,6 +44,7 @@ export default function Snapshot() {
           <Typography
             component="p"
             sx={{
+              fontWeight:"400",
               fontFamily: "Akatab,Sans-serif"
             }}
             gutterBottom
