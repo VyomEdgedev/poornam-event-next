@@ -78,16 +78,14 @@ const YourDream = ({ blogId }) => {
   if (!categoryName) return null;
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container sx={{ py: 8 }}>
       <Typography
-        variant="h3"
         component="h2"
         align="center"
         sx={{
           fontWeight: "400",
           mb: 2,
           fontFamily: "Gloock,serif",
-          fontSize: { xs: "2rem", sm: "2rem", md: "3rem" },
         }}
       >
         {`Real Talk About  ${categoryName}`}
@@ -101,19 +99,20 @@ const YourDream = ({ blogId }) => {
             minHeight: 300,
           }}
         >
-          <CircularProgress />
+          <CircularProgress sx={{ color: "#DAA412" }} />
         </Box>
       ) : (
         <Grid
           container
           spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 7 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent="center"
         >
           {blogs.map((blog, index) => (
-            <Grid item key={blog._id || index} xs={12} sm={6} md={4}>
+            <Grid item key={blog._id || index} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
                 sx={{
-                  width: "95%",
+                  width: "100%",
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -143,28 +142,24 @@ const YourDream = ({ blogId }) => {
                 </Box>
                 <CardContent>
                   <Typography
-                    variant="subtitle1"
-                    component="div"
+                    component="h6"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "400",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
                     }}
                   >
                     {blog.meta.title}
                   </Typography>
                   <Typography
-                    variant="body1"
                     component="p"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "500",
                       color: "#000000",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
                       mb: 2,
-                      whiteSpace: "nowrap",
                     }}
                   >
+                    {/* {blog.meta.description} */}
                   </Typography>
                   <CustomButton
                     onClick={() => router.push(`/blog/${blog.uid}`)}
