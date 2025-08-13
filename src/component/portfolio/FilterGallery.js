@@ -292,40 +292,62 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
             sx: { backgroundColor: 'rgba(0,0,0,0.5)' }
           }}
         >
-          <Box sx={{ position: 'relative', height: '100vh', width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt:3 }}>
             {/* Close Button */}
-            <IconButton
-              onClick={handleCloseModal}
-              sx={{ position: 'absolute', top: 20, right: 20, color: "#DAA412", zIndex: 10 }}
-            >
-              <CloseIcon fontSize="large" />
-            </IconButton>
-            {/* Left Arrow */}
-            <IconButton
-              onClick={handlePrev}
-              sx={{ position: 'absolute', left: 20,color: "#DAA412", zIndex: 10 }}
-            >
-              <ArrowBackIosNewIcon fontSize="large" />
-            </IconButton>
+             {/* Close Button */}
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+              color: "#fff",
+              zIndex: 10,
+              backgroundColor:"#DAA412",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
+            }}
+          >
+            <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
+          </IconButton>
+               {/* Left Arrow */}
+          <IconButton
+            onClick={handlePrev}
+            sx={{
+              position: "absolute",
+              left: 20,
+            color: "#fff",
+              zIndex: 10,
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
+            }}
+          >
+            <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
+          </IconButton>
             {/* Image */}
-            <Box sx={{ maxWidth: '90vw', maxHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ height:"100vh",width:"100%", }}>
               {themes.length > 0 && (
                 <Image
                   src={themes[currentIndex]?.images[0]?.url}
                   alt={themes[currentIndex]?.category?.name || "No Title"}
-                  width={900}
-                  height={600}
-                  style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
+                  fill
+                  style={{ objectFit: 'contain' }}
                 />
               )}
             </Box>
-            {/* Right Arrow */}
-            <IconButton
-              onClick={handleNext}
-              sx={{ position: 'absolute', right: 20, color: "#DAA412", zIndex: 10 }}
-            >
-              <ArrowForwardIosIcon fontSize="large" />
-            </IconButton>
+          {/* Right Arrow */}
+          <IconButton
+            onClick={handleNext}
+            sx={{
+              position: "absolute",
+              right: 20,
+               color: "#fff",
+              zIndex: 10,
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
+            }}
+          >
+            <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
+          </IconButton>
           </Box>
         </Dialog>
     </Container>

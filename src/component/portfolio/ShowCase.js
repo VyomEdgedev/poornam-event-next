@@ -268,16 +268,7 @@ const ShowCase = () => {
           sx: { backgroundColor: "rgba(0,0,0,0.5)" },
         }}
       >
-        <Box
-          sx={{
-            position: "relative",
-            height: "100vh",
-            width: "100vw",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+       <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt:3 }}>
           {/* Close Button */}
           <IconButton
             onClick={handleCloseModal}
@@ -285,11 +276,13 @@ const ShowCase = () => {
               position: "absolute",
               top: 20,
               right: 20,
-              color: "#DAA412",
+              color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
-            <CloseIcon fontSize="large" />
+            <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
           {/* Left Arrow */}
           <IconButton
@@ -297,33 +290,23 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               left: 20,
-              color: "#DAA412",
+            color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
-            <ArrowBackIosNewIcon fontSize="large" />
+            <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
           {/* Image */}
-          <Box
-            sx={{
-              maxWidth: "90vw",
-              maxHeight: "90vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <Box sx={{ height:"100vh",width:"100%", }}>
+          
             {portfolioImages.length > 0 && (
               <Image
                 src={portfolioImages[currentIndex].src}
                 alt={portfolioImages[currentIndex].alt}
-                width={900}
-                height={600}
-                style={{
-                  objectFit: "contain",
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                }}
+                fill
+                style={{ objectFit: 'contain' }}
               />
             )}
           </Box>
@@ -333,11 +316,13 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               right: 20,
-              color: "#DAA412",
+               color: "#fff",
               zIndex: 10,
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
             }}
           >
-            <ArrowForwardIosIcon fontSize="large" />
+            <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
         </Box>
       </Dialog>

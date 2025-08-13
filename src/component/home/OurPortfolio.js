@@ -484,10 +484,11 @@ const PortfolioSection = () => {
               right: 20,
               color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412"
+              backgroundColor:"#DAA412",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
-            <CloseIcon fontSize="large" />
+            <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
           {/* Left Arrow */}
           <IconButton
@@ -497,10 +498,11 @@ const PortfolioSection = () => {
               left: 20,
             color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412 !important"
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
-            <ArrowBackIosNewIcon fontSize="large" />
+            <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
           {/* Image */}
           <Box
@@ -531,10 +533,11 @@ const PortfolioSection = () => {
               right: 20,
                color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412 !important"
+              backgroundColor:"#DAA412 !important",
+              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
             }}
           >
-            <ArrowForwardIosIcon fontSize="large" />
+            <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
         </Box>
       </Dialog>

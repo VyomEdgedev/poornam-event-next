@@ -192,7 +192,7 @@ export default function HeroSection() {
                 src="/sadhi.png"
                 alt="Bridal Hero"
                 width={500}
-                height={800}
+                height={405}
                 style={{
                   width: "100%",
                   height: "100%",
