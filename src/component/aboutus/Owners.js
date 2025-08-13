@@ -56,7 +56,7 @@ function OwnerCard({ image, alt, headline, description }) {
           <Typography
           component={"p"}
             color="#FFFFFF"
-            sx={{  fontFamily: "Akatab,Sans-serif" }}
+            sx={{  fontFamily: "Akatab,Sans-serif" , fontWeight:400}}
           >
             {description}
           </Typography>

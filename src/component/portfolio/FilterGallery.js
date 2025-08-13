@@ -174,15 +174,15 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
  <Container maxWidth="xl" sx={{ py: 2, }}>
       
       <Typography
-        variant="h3"
-        component="h3"
+       
+        component="h2"
         align="center"
-        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif', fontSize: { xs: '2rem', sm: '2rem', md: '3rem' } }}
+        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif' }}
       >
         {` Visual Showcase `}
       </Typography>
       <Typography
-        variant="body1"
+       
         component="p"
         align="center"
 
@@ -219,6 +219,7 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                 elevation={1}
               >
                 <Chip
+                component={"p"}
                   label={item.category?.name || "No Category"}
                   size="small"
                   sx={{
@@ -226,7 +227,7 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                    fontSize: 11,
+                   
                     zIndex: 2,
                   }}
                 />
@@ -253,29 +254,26 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                 </Box>
                 <CardContent>
                   <Typography
-                    variant="body1"
+                  
                     component="p"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "400",
-                      fontSize: {
-                        xs: "0.9rem",
-                        sm: "0.9rem",
-                        md: "1rem",
+                    
                         cursor: "pointer",
-                      },
+                   
                     }}
                   >
                     {item.category?.name || "No Title"}
                   </Typography>
                                      <Typography
-                     variant="body1"
-                     component="p"
+                    
+                     component="h6"
                      sx={{
                        fontFamily: "Akatab,Sans-serif",
                        fontWeight: "500",
                        color: "#000000",
-                       fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
+                     
                      }}
                    >
                      {item.description || "A beautiful wedding moment."}

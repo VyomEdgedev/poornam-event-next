@@ -90,7 +90,7 @@ function Philosophy() {
                     component="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
-                    sx={{ lineHeight: 1.6 }}
+                    fontWeight="400"
                   >
                     {`Founded by a passionate team, Poornam began
                     with the idea of bringing joy and creativity to
@@ -134,13 +134,13 @@ function Philosophy() {
                     fontFamily="Akatab, Sans-serif"
                     // sx={{ mb: 2 }}
                   >
-                    Our Mission
+                  {`  Our Mission`}
                   </Typography>
                   <Typography
                     component="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
-                    sx={{ lineHeight: 1.6 }}
+                    fontWeight="400"
                   > 
                     {`To create memorable moments filled with creativity, care, joy, and authenticity.`}
                   </Typography>
@@ -185,6 +185,7 @@ function Philosophy() {
                 component="h2"
                 sx={{
                     fontFamily: "Gloock, serif",
+                    fontWeight:"400"
                   // mt: { xs: 1, md: 0 },
                 }}
               >

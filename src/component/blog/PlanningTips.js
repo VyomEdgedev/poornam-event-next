@@ -87,7 +87,6 @@ const PlanningTips = () => {
               sx={{
                 cursor: "pointer",
                 fontWeight: 400,
-               
                 mb: 2,
                 fontFamily: "Gloock,serif",
                 color: "#000D1F",

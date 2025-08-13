@@ -135,20 +135,20 @@ const ShowCase = () => {
   return (
     <Container maxWidth="xl" sx={{ py: 2 }}>
       <Typography
-        variant="h3"
-        component="h3"
+      
+        component="h2"
         align="center"
         sx={{
           fontWeight: "400",
           mb: 1,
           fontFamily: "Gloock,serif",
-          fontSize: { xs: "2rem", sm: "2rem", md: "3rem" },
+        
         }}
       >
         {` Visual Showcase `}
       </Typography>
       <Typography
-        variant="body1"
+      
         component="p"
         align="center"
         sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
@@ -201,7 +201,8 @@ const ShowCase = () => {
                 }}
                 elevation={1}
               >
-                <Chip
+                <Chip 
+                component={"p"}
                   label={item.category?.name || "No Category"}
                   size="small"
                   sx={{
@@ -209,7 +210,7 @@ const ShowCase = () => {
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                    fontSize: 11,
+                  
                     zIndex: 2,
                   }}
                 />
@@ -236,29 +237,24 @@ const ShowCase = () => {
                 </Box>
                 <CardContent>
                   <Typography
-                    variant="body1"
+                 
                     component="p"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "400",
-                      fontSize: {
-                        xs: "0.9rem",
-                        sm: "0.9rem",
-                        md: "1rem",
-                        cursor: "pointer",
-                      },
+                   
                     }}
                   >
                     {item.category?.name || "No Title"}
                   </Typography>
                   <Typography
-                    variant="body1"
-                    component="p"
+                   
+                    component="h6"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "500",
                       color: "#000000",
-                      fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1.125rem" },
+                     
                     }}
                   >
                     {staticDescriptions[idx] || "A beautiful wedding moment."}

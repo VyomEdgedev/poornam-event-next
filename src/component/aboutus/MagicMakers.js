@@ -26,6 +26,7 @@ function MagicMakers() {
           component="h2"
           sx={{
          fontFamily: "Gloock,serif",
+         fontWeight:"400"
           }}
         >
           {`Meet the Magic Makers`}
@@ -34,6 +35,7 @@ function MagicMakers() {
           component="p"
           sx={{
             fontFamily: "Akatab,Sans-serif",
+             fontWeight:"400"
           }}
         >
           {`The heart and soul behind your dreamy Shaadi.`}

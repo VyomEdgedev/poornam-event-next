@@ -86,6 +86,7 @@ const PoornamVows = () => {
           </Typography>
           <Typography
           component="p"
+           fontWeight="400"
             sx={{
               fontFamily: "Akatab,Sans-serif",
               color:"#000D1F"
@@ -145,7 +146,7 @@ const PoornamVows = () => {
                   />
                   {vow.title && (
                     <Typography
-                    variant="body1"
+                  component={"p"}
                       sx={{
                         mt: 0.2,
                         textAlign: "center",
