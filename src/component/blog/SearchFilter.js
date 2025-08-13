@@ -13,9 +13,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import CustomButton from "@/common-component/button/CustomButton";
 import { apiClient } from "@/lib/api-client";
-
 
 const FilterChip = styled(Chip)(({ theme, selected }) => ({
   margin: theme.spacing(0.5),
@@ -28,29 +26,34 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   },
 }));
 
-const SearchFilter = ({ setPosts }) => {
+const SearchFilter = ({ setPosts, catgeory }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
-  const categories = ["Tips", "Trends", "Venues", "Real Weddings", "Budget"];
   const debounceTimeout = useRef(null);
 
-  const fetchSuggestions = async (query, categories) => {
-    if (!query) {
-      setSuggestions([]);
-      return;
-    }
+  // ✅ API call
+  const fetchSuggestions = async (query, category) => {
     try {
       const panel = "event";
       const queryParams = new URLSearchParams();
-      queryParams.append("query", query);
-      if (categories.length) queryParams.append("categories", categories.join(","));
+
+      queryParams.append("query", query ||category);
+    
+
       const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
       const response = await apiClient.get(url);
+
       if (response.status === 200) {
-        setSuggestions(response.data.results || []);
+        const results = response.data.results || [];
+        setSuggestions(results);
         setOpenSuggestions(true);
+
+        // If filtering only by category, update posts list immediately
+        if (category && !query) {
+          setPosts(results);
+        }
       } else {
         setSuggestions([]);
         setOpenSuggestions(false);
@@ -61,68 +64,102 @@ const SearchFilter = ({ setPosts }) => {
       setOpenSuggestions(false);
     }
   };
+
+  // ✅ Debounce calls
   useEffect(() => {
+    if (!searchValue && !selectedCategory) {
+      setSuggestions([]);
+      setOpenSuggestions(false);
+      return;
+    }
     if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
     debounceTimeout.current = setTimeout(() => {
-      fetchSuggestions(searchValue, selectedCategories);
-    }, 300); 
+      fetchSuggestions(searchValue, selectedCategory);
+    }, 300);
     return () => clearTimeout(debounceTimeout.current);
-  }, [searchValue, selectedCategories]);
+  }, [searchValue, selectedCategory]);
 
-  const handleCategoryToggle = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
+  // ✅ Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".search-suggestion-box")) {
+        setOpenSuggestions(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  // Handlers
+  const handleSearchChange = (e) => setSearchValue(e.target.value);
+
+  const handleCategoryToggle = (categoryName) => {
+    setSelectedCategory((prev) => (prev === categoryName ? null : categoryName));
   };
+
   const handleSuggestionClick = (blog) => {
     setOpenSuggestions(false);
     setSearchValue(blog.title);
-    setPosts([blog]); 
+    setPosts([blog]);
   };
 
   return (
     <Box backgroundColor="#FFF7E4" position="relative">
       <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Grid container justifyContent="center" spacing={7.5}>
-          {/* Heading Section */}
+          {/* Heading */}
           <Grid item xs={12} md={6} sx={{ py: 2 }}>
             <Typography
               component="h2"
-              sx={{ fontWeight: 400, color: "#000", mb: 1, fontFamily: "Gloock,serif" }}
+              sx={{
+                fontWeight: 400,
+                color: "#000",
+                mb: 1,
+                fontFamily: "Gloock,serif",
+              }}
             >
-            {`  Find What You Need`}
+              Find What You Need
             </Typography>
             <Typography
               component="p"
-              sx={{ fontWeight: 400, color: "#000", fontFamily: "Akatab,Sans-serif" }}
+              sx={{
+                fontWeight: 400,
+                color: "#000",
+                fontFamily: "Akatab,Sans-serif",
+              }}
             >
-             {` Search for valuable insights to aid your planning journey.`}
+              Search for valuable insights to aid your planning journey.
             </Typography>
           </Grid>
 
-          {/* Search and Filters */}
+          {/* Search + Filters */}
           <Grid item xs={12} md={6}>
-            <Box sx={{ mb: 3 }}>
+            {/* Search */}
+            <Box sx={{ mb: 3 }} className="search-suggestion-box">
               <Typography
                 component="h6"
-                sx={{ mb: 0, fontWeight: 500, color: "#000D1F", fontFamily: "Akatab,Sans-serif" }}
+                sx={{
+                  mb: 0,
+                  fontWeight: 500,
+                  color: "#000D1F",
+                  fontFamily: "Akatab,Sans-serif",
+                }}
               >
-               {` Search`}
+                Search
               </Typography>
               <TextField
                 fullWidth
                 size="small"
                 placeholder="How to plan haldi?"
                 value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={handleSearchChange}
                 variant="outlined"
                 autoComplete="off"
                 sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
                 onFocus={() => setOpenSuggestions(true)}
               />
-              {/* Suggestions dropdown */}
+
+              {/* Suggestions */}
               {openSuggestions && suggestions.length > 0 && (
                 <Paper
                   sx={{
@@ -153,18 +190,26 @@ const SearchFilter = ({ setPosts }) => {
               )}
             </Box>
 
-            {/* Category Filter */}
+            {/* Categories */}
             <Box sx={{ mb: 3 }}>
-              <Typography component="h6" sx={{ mb: 0, fontWeight: 500,  fontFamily: "Akatab, sans-serif", color: "text.primary" }}>
-              {`  Filter by Category`}
+              <Typography
+                component="h6"
+                sx={{
+                  mb: 0,
+                  fontWeight: 500,
+                  fontFamily: "Akatab, sans-serif",
+                  color: "text.primary",
+                }}
+              >
+                Filter by Category
               </Typography>
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {categories.map((category) => (
+                {catgeory.map((category) => (
                   <FilterChip
-                    key={category}
-                    label={category}
-                    selected={selectedCategories.includes(category)}
-                    onClick={() => handleCategoryToggle(category)}
+                    key={category.name}
+                    label={category.name}
+                    selected={selectedCategory === category.name}
+                    onClick={() => handleCategoryToggle(category.name)}
                     clickable
                     variant="filled"
                     component="p"
@@ -172,14 +217,17 @@ const SearchFilter = ({ setPosts }) => {
                       margin: "4px",
                       fontWeight: 400,
                       fontFamily: "Akatab, sans-serif",
-                      backgroundColor: selectedCategories.includes(category)
-                        ? "#DAA412"
-                        : "#0000000D",
-                      color: selectedCategories.includes(category) ? "white" : "black",
-                      "&:hover": {
-                        backgroundColor: selectedCategories.includes(category)
+                      backgroundColor:
+                        selectedCategory === category.name
                           ? "#DAA412"
-                          : "grey.400",
+                          : "#0000000D",
+                      color:
+                        selectedCategory === category.name ? "white" : "black",
+                      "&:hover": {
+                        backgroundColor:
+                          selectedCategory === category.name
+                            ? "#DAA412"
+                            : "grey.400",
                       },
                     }}
                   />

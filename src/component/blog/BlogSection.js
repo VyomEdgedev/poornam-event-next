@@ -42,7 +42,7 @@ const blogData = {
   // ],
 };
 
-const BlogSection = ({posts, setPosts}) => {
+const BlogSection = ({posts, setPosts , setCategories}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isBelow1150 = useMediaQuery("(max-width:1150px),(spacing:50px)");
@@ -57,13 +57,15 @@ const BlogSection = ({posts, setPosts}) => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await apiClient.get('/api/blogs/all/event');
+        const response = await apiClient.get('/api/blogs/all/event'); 
         const data = response.data.blogs;
         if (Array.isArray(data)) {
           setPosts(data);
         } else {
           setPosts([]);
         }
+         const categoryrepons = await apiClient.get('/api/category/getuserpanel/event');
+         setCategories(categoryrepons.data)
       } catch (error) {
         setError(error);
       } finally {
