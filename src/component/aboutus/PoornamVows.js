@@ -151,6 +151,7 @@ const PoornamVows = () => {
                         mt: 0.2,
                         textAlign: "center",
                         color:"#000000",
+                        width:"100px",
                         fontSize: {
                           xs: "0.70rem !important",
                           sm: "0.85rem !important", 
