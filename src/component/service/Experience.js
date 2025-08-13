@@ -182,7 +182,11 @@ const Experience = () => {
      <div className="poornam-section">
         <div className="content-wrapper">
           <div className="left-content">
-            <h1 className="title">{`The Poornam Experience`}</h1>
+            <Typography  component={"h2"} 
+             fontFamily= "Gloock, serif">
+              {`The Poornam Experience`}
+            </Typography>
+           {/* <h2 className="title"> {`The Poornam Experience`}</h2>*/}
             <p className="subtitle">
               {` We plan weddings the way your dadi tells stories- with love, 
               drama, and perfect timing.`}

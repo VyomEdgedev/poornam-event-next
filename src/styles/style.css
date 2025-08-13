@@ -23,7 +23,9 @@ body {
 }
 
 .poornam-section {
-  padding: 80px 0;
+  padding-top: 40px ;
+  padding-bottom: 80px;
+  
 }
 
 .content-wrapper {
@@ -40,15 +42,16 @@ body {
 }
 
 .title {
-    font-family: "Gloock,serif";
+  font-family: "Gloock , serif";
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 1rem;
   color: #000000;
   line-height: 1.1;
 }
 
 .subtitle {
+  font-family: "Akatab";
   font-size: 1.125rem;
   color: #666;
   margin-bottom: 2rem;
@@ -132,7 +135,7 @@ body {
 
 @media (max-width: 768px) {
   .poornam-section {
-    padding: 60px 0;
+    padding: 30px 0;
   }
   
   .content-wrapper {
@@ -151,6 +154,7 @@ body {
     align-items: center;
     flex-direction: column
   }
+
  
   .title {
     font-size: 2rem;
@@ -209,7 +213,7 @@ body {
   }
   .poornam-section {
     
-    padding: 40px 0;
+    padding: 30px 0;
   }
   .process-section{
     

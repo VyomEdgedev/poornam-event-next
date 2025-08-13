@@ -14,16 +14,9 @@ import Image from "next/image";
 const MainTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
   fontWeight: 400,
-  fontSize: "3rem",
-  lineHeight: 1.4,
   color: "#000000",
   marginBottom: theme.spacing(4),
-  [theme.breakpoints.down("md")]: {
-    fontSize: "32px",
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "32px",
-  },
+
 }));
 
 const EventItem = styled(Box)(({ theme }) => ({
@@ -71,18 +64,12 @@ const IconImage = styled("img")(({ theme }) => ({
 
 const EventText = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab, sans-serif",
-  fontSize: "18px",
   color: "#000000",
   fontWeight: 400,
   width: "160px",
   height: "56px",
   display: "flex",
   alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "14px",
-    width: "auto",
-    height: "auto",
-  },
 }));
 
 const WeddingChecklist = () => {
@@ -148,14 +135,16 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
-                flex="nowrap">
-                <Image
+                py={1}
+                >
+               <Box>
+                 <Image
                   src="/checklist.png"
                   alt='Checklist Image'
                   width={70}
                   height={70}
                 />
+               </Box>
 
                 <Typography
                   component={"h6"}
@@ -164,7 +153,8 @@ const WeddingChecklist = () => {
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                 
+                  alignItems:"center"
                 }}>{`Emcee replaced mid-sangeet`}</Typography>
               </Grid>
 
@@ -173,14 +163,16 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                py={1}
                 flex="wrap">
-                <Image
+               <Box>
+                 <Image
                   src="/checklist1.png"
                   alt='Checklist Image'
                   width={70}
                   height={70}
                 />
+               </Box>
                 <Typography 
                   component={"h6"}
                 sx={{
@@ -188,7 +180,8 @@ const WeddingChecklist = () => {
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                  
+                 
                 }}>{`Baraat came early`}</Typography>
               </Grid>
               <Grid display="flex"
@@ -196,7 +189,7 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                 py={1}
 
                 flex="wrap">
                 <Image
@@ -213,7 +206,7 @@ const WeddingChecklist = () => {
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                
                 }}>{`Phoolon Ki Holi bride entry`}</Typography>
               </Grid>
               <Grid display="flex"
@@ -221,7 +214,7 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                py={1}
                 flex="wrap">
                 <Image
                   src="/checklist3.png"
@@ -236,7 +229,7 @@ const WeddingChecklist = () => {
                   color: "#000000",
                   width: "180px",
                   fontWeight: 400,
-                  height: "56px",
+               
                 }}>{`Sherwani found at 2AM`}</Typography>
               </Grid>
             </Grid>

@@ -100,7 +100,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
   fontWeight: 400,
-  fontSize: "48px",
+
   textAlign: "center",
   marginBottom: theme.spacing(4),
   [theme.breakpoints.down("md")]: { fontSize: "36px" },
@@ -194,16 +194,16 @@ const ServiceContent = styled(Box)(({ theme }) => ({
 const ServiceTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: 600,
-  fontSize: "20px",
+
   color: "#000D1F",
   [theme.breakpoints.down("sm")]: { fontSize: "18px" },
 }));
 
 const ServiceDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
-  fontSize: "14px",
+
   color: "#000000",
-  lineHeight: 1.5,
+
   display: "-webkit-box",
   WebkitLineClamp: 2,
   WebkitBoxOrient: "vertical",
@@ -238,7 +238,7 @@ const HeroTitle = styled(Typography, {
   fontWeight: 400,
   fontSize: "26px !important",
   color: "#000000",
-  lineHeight: isLong ? 1.1 : 1.3,
+
   marginBottom: theme.spacing(0.5),
   [theme.breakpoints.down("md")]: { width: "100%", fontSize: "30px" },
   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
@@ -247,12 +247,12 @@ const HeroTitle = styled(Typography, {
 const HeroDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: "400",
-  fontSize: "16px",
+
   width: "251px",
   color: "#000000",
   textAlign: "left",
   marginBottom: theme.spacing(3),
-  lineHeight: 1.3,
+
   [theme.breakpoints.down("md")]: { width: "100%" },
   [theme.breakpoints.down("sm")]: { padding: "0px 20px" },
 }));
