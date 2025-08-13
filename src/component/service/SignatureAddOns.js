@@ -70,9 +70,7 @@ const SignatureAddOns = () => {
           
           justifyContent={{
             xs: "center",
-            sm: "center",
-            md: "center",
-            lg: "flex-start",
+            lg: "space-between",
           
           }}
         >

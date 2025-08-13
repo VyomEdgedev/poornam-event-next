@@ -1,4 +1,3 @@
-// components/HeroSection.js
 "use client";
 import CustomButton from "@/common-component/button/CustomButton";
 import { Box, Typography, Stack, Container } from "@mui/material";
@@ -6,10 +5,10 @@ import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { color } from "framer-motion";
+
 export default function HeroSection() {
   const [open, setOpen] = useState(false);
-  const [autoOpened, setAutoOpened] = useState(false);
+
   const handleWeddingPlan = () => {
     setOpen(true);
   };
@@ -17,6 +16,7 @@ export default function HeroSection() {
   const handleTalkToPlanner = () => {
     window.open("https://wa.me/919519066885", "_blank");
   };
+
   useEffect(() => {
     const alreadyShown = localStorage.getItem("weddingModalShown");
 
@@ -32,18 +32,17 @@ export default function HeroSection() {
   return (
     <Box sx={{ backgroundColor: "#030b1d", overflow:"hidden",pt: { xs: 12, md: 0 } }}>
       <Container>
-        <Box>
+        <>
           <ConnectModal open={open} setOpen={setOpen} />
           <Box
             sx={{
               display: "flex",
-              flexDirection: { xs: "column", sm: "column", md: "row" },
+              flexDirection: { xs: "column",md: "row" },
               alignItems: "stretch",
               justifyContent: "space-between",
               
             }}
           >
-            {/* Text Section */}
             <Box
               flex={1}
               display="flex"
@@ -54,12 +53,12 @@ export default function HeroSection() {
               <Box
                 mb={2}
                 sx={{
-                  display: { xs: "none", sm: "none", md: "block" },
+                  display: { xs: "none",md: "block" },
                   position: "absolute",
                   top: 10,
                   left: 0,
                   zIndex: 6,
-                  width: { xs: 80, sm: 80, md: 80, lg: 100 },
+                  width: { xs: 80 ,lg: 100 },
                 }}
               >
                 <Link href="/" passHref>
@@ -69,7 +68,7 @@ export default function HeroSection() {
                     width={120}
                     height={120}
                     style={{
-                      width: "100%", // allow the image to fill its wrapper
+                      width: "100%", 
                       height: "auto",
                     }}
                   />
@@ -78,12 +77,12 @@ export default function HeroSection() {
               <Box
                 sx={{
                   zIndex: 5,
-                  width: { xs: "100%", md: "100%" },
+                  width: "100%",
                   height: { xs: "100%", md: "50%" },
-                  position: { xs: "initial", sm: "initial", md: "absolute" },
+                  position: { xs: "initial", md: "absolute" },
                   top: { xs: "20px", sm: "100px", md: "130px", lg: "170px" },
                   left: { xs: 0, sm: 0, md: 0 },
-                  mt: { xs: "4px", sm: "15px", md: 0, lg: 0 },
+                  mt: { xs: "4px", sm: "15px", md: 0 },
                 }}
               >
                 <Typography
@@ -92,8 +91,8 @@ export default function HeroSection() {
                   sx={{
                     color: "#E6C365",
                     fontFamily: "Gloock, serif",
-                    textAlign: { xs: "left", sm: "left", md: "left" },
-                    whiteSpace: { xs: "wrap", md: "nowrap", lg: "nowrap" },
+                    textAlign:"left" ,
+                    whiteSpace: { xs: "wrap", md: "nowrap"},
                     zIndex: 7,
                     letterSpacing: "2px",
                   }}
@@ -134,7 +133,6 @@ export default function HeroSection() {
                   direction={{ xs: "row", sm: "row" }}
                   spacing={2}
                   marginTop={{ xs: 0, sm: 0, md: 4, lg: 5 }}
-                  // marginLeft={{ xs: 3, sm: 3, md: 5, lg: 5 }}
                   marginBottom={{ xs: 3, sm: 3, md: 0, lg: 0 }}
                   alignContent={{ xs: "center", md: "flex-start" }}
                 >
@@ -166,7 +164,6 @@ export default function HeroSection() {
                       fontWeight: 400,
                       whiteSpace: "nowrap",
                       "&:hover": {
-                        // borderColor: "#f4ce6a",
                         backgroundColor: "#DAA412",
                         color: "#FFFFFF",
                       },
@@ -207,7 +204,7 @@ export default function HeroSection() {
               />
             </Box>
           </Box>
-        </Box>
+        </>
       </Container>
     </Box>
   );

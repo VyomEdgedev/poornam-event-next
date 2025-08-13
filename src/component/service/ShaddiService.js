@@ -236,7 +236,7 @@ const HeroTitle = styled(Typography, {
   fontFamily: "Gloock, serif",
   width: "314px",
   fontWeight: 400,
-  fontSize: "36px",
+  fontSize: "26px !important",
   color: "#000000",
   lineHeight: isLong ? 1.1 : 1.3,
   marginBottom: theme.spacing(0.5),
