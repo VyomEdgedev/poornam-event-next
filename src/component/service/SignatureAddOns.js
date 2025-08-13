@@ -55,7 +55,6 @@ const SignatureAddOns = () => {
             component="p"
             sx={{
               fontFamily: "Akatab, sans-serif",
-
               fontWeight: "400",
               color: "#000000",
             }}
@@ -122,13 +121,12 @@ const SignatureAddOns = () => {
                   component="h5"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
-
                     fontWeight: 500,
                     width: "150px",
                     color: "#000D1F",
                     mt: 1,
                     mb: 1,
-                    lineHeight: 1.2,
+                   
                   }}
                 >
                   {addon.title}
@@ -138,9 +136,7 @@ const SignatureAddOns = () => {
                   component="p"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
-
                     color: "rgba(0, 0, 0, 0.7)",
-                    lineHeight: 1.2,
                     width: "200px",
                   }}
                 >
