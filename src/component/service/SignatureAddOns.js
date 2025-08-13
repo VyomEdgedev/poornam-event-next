@@ -52,7 +52,6 @@ const SignatureAddOns = () => {
             {` Signature Add-Ons`}
           </Typography>
           <Typography
-            variant="h6"
             component="p"
             sx={{
               fontFamily: "Akatab, sans-serif",
@@ -77,7 +76,7 @@ const SignatureAddOns = () => {
           {addOns.map((addon, index) => (
             <Grid
               item
-              size={{ xs: 6, sm: 4, md: "4", lg: "auto" }}
+              size={{ xs: 12, sm: 4, md: "4", lg: "auto" }}
               key={index}
             >
               <Box

@@ -125,13 +125,13 @@ const WeddingChecklist = () => {
             gap: { xs: 1, sm: 4, md: 5, lg: 4, xl: 2 },
           }}
         > */}
-        <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
+        <Grid container spacing={0} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
           alignItems={"center"}
           justifyItems={"center"} justifyContent={"center"}
 
         >  {/* Main Title Section */}
           <Grid item size={{ xs: 12,md: 6, lg: 4 }} >
-            <MainTitle variant="h2"
+            <MainTitle component="h2"
               textAlign={{ xs: "center", sm: "start" }}>
             {`  Shaadi Mein
               Kya-Kya Karwaya
@@ -157,9 +157,10 @@ const WeddingChecklist = () => {
                   height={70}
                 />
 
-                <Typography sx={{
+                <Typography
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
@@ -180,9 +181,10 @@ const WeddingChecklist = () => {
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+                <Typography 
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
@@ -203,9 +205,11 @@ const WeddingChecklist = () => {
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+                <Typography 
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
+                 
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
@@ -225,9 +229,10 @@ const WeddingChecklist = () => {
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+                <Typography 
+                component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   width: "180px",
                   fontWeight: 400,
