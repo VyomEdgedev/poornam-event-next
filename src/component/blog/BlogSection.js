@@ -91,7 +91,7 @@ const BlogSection = ({posts, setPosts}) => {
       sx={{
         py: 5,
         px: { xs: 2, sm: 8, md: 5, lg: 10, xl: 3 },
-        backgroundColor: "#FFF7E4",
+        backgroundColor: "#fff",
       }}
     >
       <Container maxWidth="xl">
