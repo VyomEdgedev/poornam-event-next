@@ -125,7 +125,7 @@ export default function ContactUs() {
       <CheatSheet></CheatSheet>
       <FreeCall></FreeCall>
       <Planner></Planner>
-      <FAQSection faqData={myFAQData} />;
+      <FAQSection faqData={myFAQData} />
 
     </>
   )
