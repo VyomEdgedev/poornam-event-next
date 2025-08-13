@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Akatab:wght@400;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Akatab:wght@400;700;800;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akatab:wght@400;500;600;700;800;900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +8,11 @@
   cursor: url("/cursor1.svg") 16 16, auto !important;
 }
 body {
-  zoom:0.9;
+  /* zoom:0.9; */
  font-size: 16px;
   line-height: 1.6;
   color:#000000;
-  font-family: 'Akatab', sans-serif;
+  /* font-family: 'Akatab', sans-serif; */
 }
 
 .container {
