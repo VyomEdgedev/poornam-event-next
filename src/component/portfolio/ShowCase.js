@@ -18,11 +18,6 @@ import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-const staticDescriptions = [
-  "A regal affair in royal palaces.",
-  "An elegant beach ceremony.",
-  "Simplicity meets elegance.",
-];
 
 const ShowCase = () => {
   const [allThemes, setAllThemes] = useState([]);
@@ -37,7 +32,7 @@ const ShowCase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const portfolioImages = themes.map((item) => ({
     src: item?.images[0]?.url,
-    alt: item.category?.name || "No Title",
+    alt: item.category?.name,
   }));
 
   useEffect(() => {
@@ -245,7 +240,7 @@ const ShowCase = () => {
                    
                     }}
                   >
-                    {item.category?.name || "No Title"}
+                    {item.category?.name }
                   </Typography>
                   <Typography
                    
@@ -257,7 +252,7 @@ const ShowCase = () => {
                      
                     }}
                   >
-                    {staticDescriptions[idx] || "A beautiful wedding moment."}
+                    {/* {staticDescriptions[idx] || "A beautiful wedding moment."} */}
                   </Typography>
                 </CardContent>
               </Card>

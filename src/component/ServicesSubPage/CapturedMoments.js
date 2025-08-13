@@ -39,11 +39,11 @@ import CircularProgress from "@mui/material/CircularProgress";
 //     description: "Simplicity meets elegance.",
 //   },
 // ];
-const staticDescriptions = [
-  "A regal affair in royal palaces.",
-  "An elegant beach ceremony.",
-  "Simplicity meets elegance.",
-];
+// const staticDescriptions = [
+//   "A regal affair in royal palaces.",
+//   "An elegant beach ceremony.",
+//   "Simplicity meets elegance.",
+// ];
 const CapturedMoments = ({ title, porfioId }) => {
   const [moments, setMoments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -212,7 +212,7 @@ const CapturedMoments = ({ title, porfioId }) => {
                         },
                       }}
                     >
-                      {staticDescriptions[index] || "No Description"}
+                      {/* {staticDescriptions[index] || "No Description"} */}
                     </Typography>
                   </CardContent>
                 </Card>
