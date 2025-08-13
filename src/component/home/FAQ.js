@@ -149,6 +149,7 @@ export default function FAQSection() {
                             fontWeight: 400,
                             color: "#001538",
                             lineHeight: 1.3,
+                            mb:0.4
                           }}
                         >
                           {item.answer}
