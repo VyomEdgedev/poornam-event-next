@@ -140,7 +140,7 @@ const FAQSection = ({
                 <Grid item sx={{width:{sm:"50%"}}}>
                   <Box
                     sx={{
-                      paddingTop: { xs: 0, sm: 1.3 },
+                      paddingTop: { xs: 0, sm: 1.4 },
                       paddingLeft: { xs: 2, sm: 2 },
                       transition: 'opacity 0.3s ease',
                     }}
@@ -154,6 +154,7 @@ const FAQSection = ({
                         fontFamily: bodyFontFamily,
                         fontWeight: 400,
                         color: textColor,
+                        mb:0.2,
                        
                       }}
                     >

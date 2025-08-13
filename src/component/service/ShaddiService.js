@@ -335,7 +335,7 @@ const ShaddiService = () => {
         container
         spacing={2}
         columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-        sx={{ border: "1px solid #ddd", borderRadius: "8px" }}
+        sx={{ border: "1px solid #ddd", borderRadius: "8px" ,  }}
       >
         <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
           <HeroImageContainer>
@@ -360,6 +360,7 @@ const ShaddiService = () => {
                 : trimText(services[0]?.description, 100)}
             </HeroDescription>
             <CustomButton
+            sx={{mb:1}}
               onClick={() => {
                 handleNavigate(services[0]?.uid);
               }}
