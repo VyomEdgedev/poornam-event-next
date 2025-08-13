@@ -14,16 +14,9 @@ import Image from "next/image";
 const MainTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
   fontWeight: 400,
-  fontSize: "3rem",
-  lineHeight: 1.4,
   color: "#000000",
   marginBottom: theme.spacing(4),
-  [theme.breakpoints.down("md")]: {
-    fontSize: "32px",
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "32px",
-  },
+
 }));
 
 const EventItem = styled(Box)(({ theme }) => ({
@@ -71,18 +64,12 @@ const IconImage = styled("img")(({ theme }) => ({
 
 const EventText = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab, sans-serif",
-  fontSize: "18px",
   color: "#000000",
   fontWeight: 400,
   width: "160px",
   height: "56px",
   display: "flex",
   alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "14px",
-    width: "auto",
-    height: "auto",
-  },
 }));
 
 const WeddingChecklist = () => {
@@ -125,46 +112,49 @@ const WeddingChecklist = () => {
             gap: { xs: 1, sm: 4, md: 5, lg: 4, xl: 2 },
           }}
         > */}
-        <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
+        <Grid container spacing={0} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
           alignItems={"center"}
           justifyItems={"center"} justifyContent={"center"}
 
         >  {/* Main Title Section */}
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 4 }} >
-            <MainTitle variant="h2"
+          <Grid item size={{ xs: 12,md: 6, lg: 4 }} >
+            <MainTitle component="h2"
               textAlign={{ xs: "center", sm: "start" }}>
             {`  Shaadi Mein
               Kya-Kya Karwaya
               Hai?`}
             </MainTitle>
           </Grid>
-          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 8 }} justifyContent={"center"}>
-            <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-             justifyContent={{xs:"space-around", sm:"space-around", md:"space-between",lg:"space-between"}}
+          <Grid item size={{ xs: 12 , md: 6, lg: 8 }} justifyContent={"center"}>
+            <Grid container spacing={2} columns={12}
+             justifyContent={{xs:"space-around" }}
             >
 
               <Grid display="flex"
                 borderBottom="2px solid grey"
                 justifyContent={"center"}
                 gap={3}
-
                 alignItems={"center"}
-                py={3}
-                flex="nowrap">
-                <Image
+                py={1}
+                >
+               <Box>
+                 <Image
                   src="/checklist.png"
                   alt='Checklist Image'
                   width={70}
                   height={70}
                 />
+               </Box>
 
-                <Typography sx={{
+                <Typography
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                 
+                  alignItems:"center"
                 }}>{`Emcee replaced mid-sangeet`}</Typography>
               </Grid>
 
@@ -173,21 +163,25 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                py={1}
                 flex="wrap">
-                <Image
+               <Box>
+                 <Image
                   src="/checklist1.png"
                   alt='Checklist Image'
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+               </Box>
+                <Typography 
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                  
+                 
                 }}>{`Baraat came early`}</Typography>
               </Grid>
               <Grid display="flex"
@@ -195,7 +189,7 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                 py={1}
 
                 flex="wrap">
                 <Image
@@ -204,13 +198,15 @@ const WeddingChecklist = () => {
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+                <Typography 
+                  component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
+                 
                   color: "#000000",
                   fontWeight: 400,
                   width: "180px",
-                  height: "56px",
+                
                 }}>{`Phoolon Ki Holi bride entry`}</Typography>
               </Grid>
               <Grid display="flex"
@@ -218,7 +214,7 @@ const WeddingChecklist = () => {
                 justifyContent={"center"}
                 gap={3}
                 alignItems={"center"}
-                py={3}
+                py={1}
                 flex="wrap">
                 <Image
                   src="/checklist3.png"
@@ -226,13 +222,14 @@ const WeddingChecklist = () => {
                   width={70}
                   height={70}
                 />
-                <Typography sx={{
+                <Typography 
+                component={"h6"}
+                sx={{
                   fontFamily: "Akatab, sans-serif",
-                  fontSize: "18px",
                   color: "#000000",
                   width: "180px",
                   fontWeight: 400,
-                  height: "56px",
+               
                 }}>{`Sherwani found at 2AM`}</Typography>
               </Grid>
             </Grid>

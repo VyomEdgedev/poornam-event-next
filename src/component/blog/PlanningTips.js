@@ -73,6 +73,7 @@ const PlanningTips = () => {
       sx={{
         py: { xs: 4, sm: 2, md: 2, lg: 3 },
       }}
+      bgcolor={"#FFF7E4"}
     >
       <Container>
         <Grid
@@ -87,7 +88,6 @@ const PlanningTips = () => {
               sx={{
                 cursor: "pointer",
                 fontWeight: 400,
-               
                 mb: 2,
                 fontFamily: "Gloock,serif",
                 color: "#000D1F",

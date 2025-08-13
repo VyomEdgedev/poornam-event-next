@@ -64,8 +64,8 @@ const Blog = () => {
 
       <WeddingPlanning />
       <SearchFilter posts ={posts} setPosts= {setPosts} />
-      <PlanningTips />
       <BlogSection  posts ={posts} setPosts= {setPosts}/>
+      <PlanningTips />
       <PicksSection />
       
     </>

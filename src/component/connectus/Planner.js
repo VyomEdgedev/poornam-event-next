@@ -20,7 +20,7 @@ function Planner() {
             >
               <Typography
              
-                component="h6"
+                variant="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
                   fontWeight:"600",
@@ -103,18 +103,21 @@ function Planner() {
         >
           <Typography
           
-            component="h6"
+            variant="h6"
+            // component="h6"
             textAlign="center"
             sx={{
               padding: "25px",
               fontFamily: "Akatab,serif",
              fontWeight:"400",
             }}
-            dangerouslySetInnerHTML={{
-              __html: `   Planning a wedding in <strong>Madhya Pradesh</strong> or anywhere in <strong>India? </strong>Let <strong>
-                        Poornam Events</strong> be your trusted partner in joy, chaos, and celebration.`,
-            }}
-          />
+            // dangerouslySetInnerHTML={{
+            //   __html: `  `,
+            // }}
+          >
+             Planning a wedding in <strong>Madhya Pradesh</strong> or anywhere in <strong>India? </strong>Let <strong>
+                        Poornam Events</strong> be your trusted partner in joy, chaos, and celebration.
+            </Typography>
         </Grid>
       </Container>
     </>

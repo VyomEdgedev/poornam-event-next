@@ -29,13 +29,11 @@ const WeddingFooter = () => {
        >
         <Grid item size={{ xs: 12, sm: 5, md: 5, lg: 5 }}>
           <Typography
-            variant="h4"
-            component="h1"
+           
+            component="h3"
             sx={{
               fontWeight: '400',
               color: '#000000',
-              fontSize: { xs: '1.5rem', md: '2rem', lg: '2.25rem' },
-              lineHeight: 1.2,
               fontFamily: 'Gloock,serif',
               letterSpacing: '6%',
             }}
@@ -64,12 +62,10 @@ const WeddingFooter = () => {
               >
                 <Image src="/weddingfooter1.png" alt="Email Icon" width={40} height={40} />
                 <Typography
-                  variant="body2"
+                 component={"p"}
                   sx={{
                     color: '#000000',
                     fontWeight: '400',
-                    fontSize: { xs: '1rem', md: '1rem', lg: '1rem' },
-                    lineHeight: 1.2,
                     fontFamily: 'Akatab, sans-serif',
 
                   }}
@@ -89,12 +85,10 @@ const WeddingFooter = () => {
               >
                 <Image src="/weddingfooter.png" alt="Email Icon" width={40} height={40} />
                 <Typography
-                  variant="body2"
+                 component={"p"}
                   sx={{
                     color: '#000000',
                     fontWeight: '400',
-                    fontSize: { xs: '1rem', md: '1rem', lg: '1rem' },
-                    lineHeight: 1.2,
                     fontFamily: 'Akatab, sans-serif',
                   }}
                 >

@@ -48,13 +48,13 @@ const RecentPosts = () => {
     <Container maxWidth="lg" sx={{ py: 2 }}>
 
       <Typography
-        variant="h2"
+       
         component="h2"
         align="center"
         sx={{
           mb: 3,
           fontWeight: 400,
-          fontSize: { xs: '2.5rem', md: '3rem' },
+         
           color: '#000000',
           fontFamily: 'Gloock,serif'
         }}
@@ -97,6 +97,7 @@ const RecentPosts = () => {
 
                 
                 <Chip
+                component={"p"}
                   label={post.category}
                   size="small"
                   sx={{
@@ -104,7 +105,7 @@ const RecentPosts = () => {
                     top: 12,
                     left: 12,
                     backgroundColor: '#0000000D',
-                    fontSize: '0.65rem',
+                 
                     fontWeight: 500,
                     cursor: 'pointer'
                   }}
@@ -156,13 +157,13 @@ const RecentPosts = () => {
 
               <CardContent sx={{ pt: 2 }}>
                 <Typography
-                  variant="h6"
+                
                   component="h6"
                   sx={{
                     mb: 1,
                     fontWeight: 400,
                     color: '#000000',
-                    fontSize: '0.85em',
+                  
                     cursor: 'pointer'
                   }}
                 >
@@ -170,13 +171,12 @@ const RecentPosts = () => {
                 </Typography>
 
                 <Typography
-                  variant="body1"
+                 
                   component="p"
                   sx={{
                     width: '100%',
                     color: '#000000',
-                    fontSize: '1rem',
-                    lineHeight: 1.4
+                  
                   }}
                 >
                   Published on {post.publishDate}

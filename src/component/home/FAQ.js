@@ -11,9 +11,26 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+const faqData = [
+  {
+    question: "Do you only plan weddings in Indore?",
+    answer: "Nope! We serve Bhopal, Ujjain, and beyond.",
+  },
+  {
+    question: "Can you help with last-minute weddings?",
+    answer: " Absolutely. We’ve pulled off 3-day prep shaadis with a smile.",
+  },
+  {
+    question: "Do you provide decorators and photographers too?",
+    answer: "Yes! We provide decorators and photographers too.",
+  },
+  {
+    question: "Do you offer budget planning help?",
+    answer: "Of course! We even have a free planner you can download.",
+  },
+];
 
-
-export default function FAQSection({faq=[]}) {
+export default function FAQSection() {
   const [expanded, setExpanded] = useState(null);
   const theme = useTheme();
   const isTabletUp = useMediaQuery(theme.breakpoints.up("sm"));
@@ -27,15 +44,14 @@ export default function FAQSection({faq=[]}) {
       <Container>
         <Box>
           <Typography
-            variant="h2"
-            component={"h2"}
+            component="h2"
             align="center"
             sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 1 }}
           >
             FAQ’s
           </Typography>
           <Typography
-            variant="subtitle1"
+            component="p"
             align="center"
             sx={{
               mb: 4,
@@ -47,7 +63,7 @@ export default function FAQSection({faq=[]}) {
           </Typography>
 
           <Box maxWidth="lg" mx="auto">
-            {faq.map((item, index) => {
+            {faqData.map((item, index) => {
               const isOpen = expanded === index;
 
               return (
@@ -101,9 +117,9 @@ export default function FAQSection({faq=[]}) {
                         }}
                       >
                         <Typography
+                        component="h6"
                           sx={{
-                            fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
-                            fontFamily: "Akatab, Sans-serif",
+                           fontFamily: "Akatab, Sans-serif",
                             fontWeight: 700,
                             color: "#001538",
                           }}
@@ -119,16 +135,16 @@ export default function FAQSection({faq=[]}) {
                     <Grid item sx={{ width: { sm: "45%" } }}>
                       <Box
                         sx={{
-                          paddingTop: { xs: 0, sm: 2, md: 1.5, lg: 2 },
+                          paddingTop: { xs: 0, sm: 2, md: 1.5, },
                           paddingLeft: { xs: 2, sm: 2 },
                           transition: "opacity 0.4s ease",
                           opacity: 1,
                         }}
                       >
                         <Typography
-                          variant="body1"
+                          component="h6"
                           sx={{
-                            fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
+                            // fontSize: { xs: 14, sm: 15, md: 16, lg: 18 },
                             fontFamily: "Akatab, Sans-serif",
                             fontWeight: 400,
                             color: "#001538",

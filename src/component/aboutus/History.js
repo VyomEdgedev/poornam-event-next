@@ -26,15 +26,17 @@ export default function OurStories() {
       margin: "0 auto",
       py: { xs: 1, sm: 2, md: 1 },
       fontFamily: "Akatab,Sans-serif",
-      fontWeight: "400",
+      fontWeight: "500",
       color:"#000000",
       
     }}>
       {data.map((item, index) => (
         <Box key={index} style={{ marginBottom: "0.5rem" }}>
-          <Typography component="h6" sx={{  color: "black", mb: 1.5 , fontFamily: "Akatab,Sans-serif",}}>{item.heading}</Typography>
+          <Typography component="h6" sx={{  color: "black", mb: 0.5 , fontFamily: "Akatab,Sans-serif",fontWeight:600}}>{item.heading}</Typography>
+           <Typography component="p"  sx={{fontFamily: "Akatab,Sans-serif",fontWeight:700,  mb:0.5}}>{item.subheading}</Typography>
           {item.paragraphs.map((p, i) => (
-            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",}}>{p}</Typography>
+           
+            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",fontWeight:400}}>{p}</Typography>
           ))}
         </Box>
       ))}

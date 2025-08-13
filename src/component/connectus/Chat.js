@@ -93,23 +93,21 @@ function Chat() {
                 {`  Call Us`}
               </Typography>
               <Typography
-              
-                component="h5"
+              variant="h6"
+                component="a"
                 href="tel:+919519066885"
                 sx={{
-                  fontWeight: 500,
+                  fontWeight: 800,
                   fontFamily: "Akatab, sans-serif",
                   textDecoration: "none",
                   color: "#000000",
                   "&:hover": { textDecoration: "underline" },
+                  cursor: "pointer",
+                  display: "block"
                 }}
-                  dangerouslySetInnerHTML={{
-                __html: ` <strong> +91 9519066885 </strong>`,
-              }}
-            />
-            
-               
-            
+              >
+              +91 9519066885
+              </Typography>
             </Grid>
 
             {/* WhatsApp */}
@@ -128,22 +126,24 @@ function Chat() {
                 {`   WhatsApp`}
               </Typography>
               <Typography
-              
-                component="h5"
+              variant="h6"
+                component="a"
                 href="https://wa.me/919519066885"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  fontWeight: 500,
+                  fontWeight: 800,
                   fontFamily: "Akatab, sans-serif",
                   color: "#000000",
                   textDecoration: "none",
                   "&:hover": { textDecoration: "underline" },
+                  cursor: "pointer",
+                  display: "block"
+                  
                 }}
-             dangerouslySetInnerHTML={{
-                __html: ` <strong> +91 9519066885 </strong>`,
-              }}
-            />
+              >
+                +91 9519066885
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

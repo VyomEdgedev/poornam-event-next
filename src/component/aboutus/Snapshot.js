@@ -4,12 +4,20 @@ import { Box, Grid, Typography } from '@mui/material';
 export default function Snapshot() {
   useEffect(() => {
     const script = document.createElement('script');
-    script.setAttribute('src', 'https://www.instagram.com/embed.js');
-    script.setAttribute('async', '');
+    script.src = 'https://www.instagram.com/embed.js';
+    script.async = true;
+
+    script.onload = () => {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process(); 
+      }
+    };
+
     document.body.appendChild(script);
-    if (window.instgrm) {
-      window.instgrm.Embeds.process();
-    }
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   return (
@@ -26,6 +34,7 @@ export default function Snapshot() {
             component="h2"
             sx={{
               fontFamily: "Gloock,Sans-serif",
+              fontWeight:"400",
               mb: 0.5
             }}
           >
@@ -35,6 +44,7 @@ export default function Snapshot() {
           <Typography
             component="p"
             sx={{
+              fontWeight:"400",
               fontFamily: "Akatab,Sans-serif"
             }}
             gutterBottom
@@ -59,12 +69,13 @@ export default function Snapshot() {
                 border: 0,
                 borderRadius: '12px',
                 boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                margin: '1px',
+                // margin: '1px',
                 maxWidth: '540px',
                 minWidth: '326px',
                 padding: 0,
                 width: '99.375%',
               }}
+              
             ></blockquote>
           </Box>
         </Grid>

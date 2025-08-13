@@ -35,7 +35,7 @@ const testimonials = [
     avatar: "/review3.png",
     alt: "ishita & aryan",
     text: "From decor to coordination — absolutely flawless experience!",
-    rating: 5,
+    rating: 4.5,
   },
   {
     name: "Megha & Kabir",
@@ -104,8 +104,7 @@ export default function ClientTestimonials() {
             }}
           >
             <Typography
-              variant="h2"
-              fontWeight="bold"
+              component="h2"
               sx={{
                 fontFamily: "Gloock, serif",
                 fontWeight: "400",
@@ -116,7 +115,6 @@ export default function ClientTestimonials() {
               Client Testimonials
             </Typography>
             <Typography
-              variant="body1"
               component="p"
               sx={{
                 fontFamily: "Akatab,Sans-serif",
@@ -203,6 +201,7 @@ export default function ClientTestimonials() {
                 overflowX: "auto",
                 overflowY: "visible",
                 "&::-webkit-scrollbar": { height: 6 },
+                px:2
               }}
             >
               <Box
@@ -240,7 +239,7 @@ export default function ClientTestimonials() {
                         sx={{ width: 30, height: 30 }}
                       />
                       <Typography
-                        variant="h6"
+                        component="h6"
                         fontWeight={600}
                         fontFamily={"Akatab,Sans-serif"}
                         color="#000000"
@@ -250,11 +249,10 @@ export default function ClientTestimonials() {
                     </Stack>
 
                     <Typography
-                      variant="body1"
                       component="p"
                       color="#000000"
                       sx={{
-                        fontStyle: "italic",
+                        // fontStyle: "italic",
                         mb: 2,
                         fontFamily: "Akatab,Sans-serif",
                         fontWeight: "400",

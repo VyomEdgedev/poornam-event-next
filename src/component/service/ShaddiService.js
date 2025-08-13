@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import CustomButton from "@/common-component/button/CustomButton";
-import { Card, Grid, Typography, styled, Box, CircularProgress, Container } from "@mui/material";
+import {
+  Card,
+  Grid,
+  Typography,
+  styled,
+  Box,
+  CircularProgress,
+  Container,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
@@ -100,7 +108,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
   fontWeight: 400,
-  fontSize: "48px",
+
   textAlign: "center",
   marginBottom: theme.spacing(4),
   [theme.breakpoints.down("md")]: { fontSize: "36px" },
@@ -194,16 +202,16 @@ const ServiceContent = styled(Box)(({ theme }) => ({
 const ServiceTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: 600,
-  fontSize: "20px",
+
   color: "#000D1F",
   [theme.breakpoints.down("sm")]: { fontSize: "18px" },
 }));
 
 const ServiceDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
-  fontSize: "14px",
+
   color: "#000000",
-  lineHeight: 1.5,
+
   display: "-webkit-box",
   WebkitLineClamp: 2,
   WebkitBoxOrient: "vertical",
@@ -236,9 +244,9 @@ const HeroTitle = styled(Typography, {
   fontFamily: "Gloock, serif",
   width: "314px",
   fontWeight: 400,
-  fontSize: "36px",
+  fontSize: "26px !important",
   color: "#000000",
-  lineHeight: isLong ? 1.1 : 1.3,
+
   marginBottom: theme.spacing(0.5),
   [theme.breakpoints.down("md")]: { width: "100%", fontSize: "30px" },
   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
@@ -247,12 +255,12 @@ const HeroTitle = styled(Typography, {
 const HeroDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: "400",
-  fontSize: "16px",
+
   width: "251px",
   color: "#000000",
   textAlign: "left",
   marginBottom: theme.spacing(3),
-  lineHeight: 1.3,
+
   [theme.breakpoints.down("md")]: { width: "100%" },
   [theme.breakpoints.down("sm")]: { padding: "0px 20px" },
 }));
@@ -282,6 +290,9 @@ const ShaddiService = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  console.log(services);
+
   const handleNavigate = (uid) => {
     console.log(uid, "uid");
     router.push(`/services/${uid}`);
@@ -318,14 +329,19 @@ const ShaddiService = () => {
   }, []);
   return (
     <Container sx={{ py: { xs: 4, md: 4 } }}>
-      <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
-        {/* Hero Section */}
-      <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
+      <StyledTypography component="h2">{`Our Shaadi Services`}</StyledTypography>
+      {/* Hero Section */}
+      <Grid
+        container
+        spacing={2}
+        columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
+        sx={{ border: "1px solid #ddd", borderRadius: "8px" }}
+      >
         <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
           <HeroImageContainer>
             <Image
-              src={servicesData.hero.image}
-              alt={servicesData.hero.title}
+              src={services[0]?.image}
+              alt={services[0]?.title}
               width={480}
               height={480}
             />
@@ -341,7 +357,7 @@ const ShaddiService = () => {
             <HeroDescription>
               {selectedService
                 ? trimText(selectedService.description, 100)
-                : trimText(servicesData.hero.description, 100)}
+                : trimText(services[0]?.description, 100)}
             </HeroDescription>
             <CustomButton
               onClick={() => {
@@ -354,8 +370,88 @@ const ShaddiService = () => {
         </Grid>
       </Grid>
 
-      <MainContainer >
-        {/* Services Grid */}
+      {/* <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {Array.from(Array(6)).map((_, index) => (
+          <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
+            <Item>{index + 1}</Item>
+          </Grid>
+        ))}
+      </Grid> */}
+
+      {services?.length > 0 && (
+        <Grid
+          py={3}
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 12, sm: 12, md: 12 }}
+        >
+          {services?.map((val, index) => {
+            return (
+              <Grid
+                key={index}
+                size={{ xs: 12, sm: 6, md: 4 }}
+                onClick={() => {
+                  handleNavigate(val.uid);
+                }}
+              >
+                <Box
+                  sx={{
+                    border: "2px solid #ddd",
+                    padding: "10px",
+                    borderRadius: "5px",
+                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    border: "1px solid #DAA412",
+                    transform: "translateY(-2px) scale(1.01)",
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
+                    cursor: "pointer",
+                  },
+                  }}
+                >
+                  <Box sx={{ display: "flex", gap: "12px" }}>
+                    <Image
+                      src={val?.image}
+                      height={100}
+                      width={100}
+                      style={{ border: "1px solid #ddd", borderRadius: "8px" }}
+                    />
+                    <Box>
+                      <Typography
+                        variant="h6"
+                        my={1}
+                        sx={{
+                          fontFamily: "Akatab, Sans-serif",
+                          fontWeight: 700,
+                          lineHeight: 1,
+                        }}
+                      >
+                        {val?.title}
+                      </Typography>
+                      <Typography
+                        variant="p"
+                        component="p"
+                        sx={{
+                          fontFamily: "Akatab, Sans-serif",
+                          fontWeight: 400,
+                          lineHeight: 1,
+                        }}
+                      >
+                        {val?.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Grid>
+            );
+          })}
+        </Grid>
+      )}
+
+      {/* <MainContainer >
         <Grid
           container
           spacing={2}
@@ -400,41 +496,8 @@ const ShaddiService = () => {
             </Grid>
           ))}
         </Grid>
-        {/* <Grid container spacing={2} sx={{ mt: 0 }}>
-  <Grid
-    item
-    xs={12}
-    sm={12}
-    md={12}
-    display="flex"
-    justifyContent="center"
-  >
-    <ServiceCard onClick={() => setSelectedService(servicesData.services[9])}>
-      <ImageContainer>
-        <Image
-          src={servicesData.services[9].image}
-          alt={servicesData.services[9].title}
-          width={100}
-          height={125}
-        />
-      </ImageContainer>
-      <ServiceContent>
-        <ServiceTitle>{servicesData.services[9].title}</ServiceTitle>
-        <ServiceDescription>
-          {highlightSpecificWords(servicesData.services[9].description, [
-            "Vintage",
-            "Bollywood",
-            "Royal",
-            "Rajput",
-            "YES",
-          ])}
-        </ServiceDescription>
-      </ServiceContent>
-    </ServiceCard>
-    
-  </Grid>
-</Grid> */}
-      </MainContainer>
+       
+      </MainContainer> */}
     </Container>
   );
 };

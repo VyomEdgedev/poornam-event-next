@@ -16,7 +16,7 @@ export default function OurStories() {
         display="block"
         justifyItems="center"
         justifyContent="center"
-        sx={{ py: { xs: "20px", sm: "40px", md: "60px" } }}
+        sx={{ py: { xs: "20px", sm: "25px", md: "35px" } }}
       >
         {Story.map((story, index) => (
           <Box key={index}>
@@ -42,7 +42,7 @@ export default function OurStories() {
                   fontWeight: 400,
                   fontFamily: "Akatab, sans-serif",
                   color:"#000000",
-                  mb: 1,
+                  mb: 0.7,
                 }}
               >
                 {p}

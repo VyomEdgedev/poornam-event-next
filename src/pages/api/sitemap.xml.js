@@ -1,9 +1,10 @@
 import { apiClient } from "@/lib/api-client";
+import disclaimer from "../disclaimer";
 
 export default async function handler(req, res) {
   res.setHeader("Content-Type", "application/xml");
   const baseUrl = `https://${req.headers.host}`;
-  const staticPages = ["", "about", "contact", "portfolio"];
+  const staticPages = ["", "aboutus", "contact", "blog","gallery","services","disclaimer","privacy-policy","terms"];
 
   let blogs;
   try {
@@ -31,7 +32,20 @@ export default async function handler(req, res) {
   } catch (error) {
     console.log("Error fetching portfolio:", error);
   }
-  const allUrls = staticPages.concat(blogs, portfolio);
+  let subservices;
+  try {
+    const subservicesResponse = await apiClient.get("api/service/AllServicePages/event");
+    const subservicesData = subservicesResponse.data;
+    if (Array.isArray(subservicesData)) {
+      const obj = {};
+      subservices  = subservicesData.map(
+        (val) => (obj.page = `services/${val.uid}`)
+      );
+    }
+  } catch (error) {
+    console.log("Error fetching subservices:", error);
+  }
+  const allUrls = staticPages.concat(blogs,subservices);
 
   const urls = allUrls.map((page) => {
     return `

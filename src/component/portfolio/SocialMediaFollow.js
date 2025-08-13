@@ -22,12 +22,12 @@ function SocialMedia() {
       textAlign={{xs:"center", sm:"start"}}
       >
         <Typography
-          variant='h3'
-          component={'h3'}
+          
+          component={'h2'}
          
          
          // padding="20px"
-          sx={{ fontFamily: 'Gloock', fontSize: { xs: "24px", sm: "28px", md: "36px" }, lineHeight: 1.5 }}
+          sx={{  fontFamily: 'Gloock,serif'  }}
           dangerouslySetInnerHTML={{
             __html: `  Follow Us
                         on <br /> Social Media`,

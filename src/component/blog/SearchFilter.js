@@ -92,13 +92,13 @@ const SearchFilter = ({ setPosts }) => {
               component="h2"
               sx={{ fontWeight: 400, color: "#000", mb: 1, fontFamily: "Gloock,serif" }}
             >
-              Find What You Need
+            {`  Find What You Need`}
             </Typography>
             <Typography
               component="p"
               sx={{ fontWeight: 400, color: "#000", fontFamily: "Akatab,Sans-serif" }}
             >
-              Search for valuable insights to aid your planning journey.
+             {` Search for valuable insights to aid your planning journey.`}
             </Typography>
           </Grid>
 
@@ -109,7 +109,7 @@ const SearchFilter = ({ setPosts }) => {
                 component="h6"
                 sx={{ mb: 0, fontWeight: 500, color: "#000D1F", fontFamily: "Akatab,Sans-serif" }}
               >
-                Search
+               {` Search`}
               </Typography>
               <TextField
                 fullWidth
@@ -155,8 +155,8 @@ const SearchFilter = ({ setPosts }) => {
 
             {/* Category Filter */}
             <Box sx={{ mb: 3 }}>
-              <Typography component="h6" sx={{ mb: 0, fontWeight: 500, color: "text.primary" }}>
-                Filter by Category
+              <Typography component="h6" sx={{ mb: 0, fontWeight: 500,  fontFamily: "Akatab, sans-serif", color: "text.primary" }}>
+              {`  Filter by Category`}
               </Typography>
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {categories.map((category) => (
@@ -167,6 +167,7 @@ const SearchFilter = ({ setPosts }) => {
                     onClick={() => handleCategoryToggle(category)}
                     clickable
                     variant="filled"
+                    component="p"
                     sx={{
                       margin: "4px",
                       fontWeight: 400,

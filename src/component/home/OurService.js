@@ -190,15 +190,14 @@ const FlipCard = ({ service }) => {
           }}
         >
           {service.guests && (
-            <Typography
+            <Typography 
+            component="p"
               sx={{
                 bgcolor: "rgba(255,255,255,0.8)",
                 color: "#0D1A46",
                 fontWeight: 600,
                 borderRadius: 2,
                 px: 2,
-                py: 0.5,
-                fontSize: "0.75rem",
                 mb: 1,
                 zIndex: 2,
               }}
@@ -207,7 +206,7 @@ const FlipCard = ({ service }) => {
             </Typography>
           )}
           <Typography
-            variant="h5"
+            component="h5"
             fontWeight={600}
             fontFamily={"Akatab,Sans-serif"}
             sx={{ mb: 1, zIndex: 2 }}
@@ -215,7 +214,6 @@ const FlipCard = ({ service }) => {
             {service.title}
           </Typography>
           <Typography
-            variant="body1"
             component="p"
             sx={{
               color: "#f5f5f5",
@@ -231,7 +229,7 @@ const FlipCard = ({ service }) => {
           {service.cta && service.link && (
             <Link href={service.link} passHref>
               <Button
-                variant="contained"
+                variant="contained"    
                 size="small"
                 sx={{
                   bgcolor: "#D7A10F",
@@ -275,7 +273,7 @@ export default function OurServices() {
     >
       <Container>
           <Typography
-            variant="h2"
+            component="h2"
             sx={{
               fontFamily: "Gloock, serif",
               fontWeight: "400",

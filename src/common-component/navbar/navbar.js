@@ -115,14 +115,15 @@ export default function Header() {
           </Box>
 
         {/* mobile navbar */}
+        <Container 
+        className={style.mobile_nav_bar}
+        sx={{px:"10px !important", backgroundColor:"rgba(0, 13, 31, 0.4)"}}
+        >
           <Box
             display="flex"
             justifyContent={"space-between"}
             width="100%"
-            backgroundColor="rgba(0, 13, 31, 0.4)"
             padding={0.5}
-            className={style.mobile_nav_bar}
-            sx={{px:"18px"}}
           >
             <Link href="/" passHref>
               <Image
@@ -153,7 +154,6 @@ export default function Header() {
               PaperProps={{
                 sx: {
                   zIndex: 1300,
-                  // ✅ Use colon instead of equal
                 },
               }}
             >
@@ -216,7 +216,7 @@ export default function Header() {
                     backgroundColor: "#0A163ED4",
                     color: "#CBEFFF",
                     height: "100%",
-                    padding: "15% 25%",
+                    padding: "4% 2%",
                   }}
                 >
                   {navItems.map((item, index) => (
@@ -244,7 +244,7 @@ export default function Header() {
               </Box>
             </Drawer>
           </Box>
-
+      </Container>
       </Toolbar>
     </AppBar>
   );
