@@ -20,7 +20,7 @@ function Planner() {
             >
               <Typography
              
-                component="h6"
+                variant="h6"
                 sx={{
                   fontFamily: "Akatab,serif",
                   fontWeight:"600",
