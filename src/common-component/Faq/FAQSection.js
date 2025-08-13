@@ -140,13 +140,13 @@ const FAQSection = ({
                 <Grid item sx={{width:{sm:"50%"}}}>
                   <Box
                     sx={{
-                      paddingTop: { xs: 0, sm: 1.4 },
+                      paddingTop: { xs: 0, sm: 1.2 },
                       paddingLeft: { xs: 2, sm: 2 },
                       transition: 'opacity 0.3s ease',
                     }}
                   >
                     <Typography
-                     component={"p"}
+                     component="h6"
                       id={`faq-content-${index}`}
                       aria-labelledby={`faq-header-${index}`}
                       sx={{

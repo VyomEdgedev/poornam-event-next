@@ -161,7 +161,7 @@ function ServicesSubPage() {
       > */}
       <WhyChoose title={title} />
       <WeOffer serviceId={id} />
-      <WhyPoornam />
+      <WhyPoornam poornamId={id}/>
       {/* </Box> */}
       <CapturedMoments title={title} porfioId={id} />
       <YourDream blogId={id} />

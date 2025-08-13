@@ -1,4 +1,4 @@
-import { Grid, Card, Typography, Box } from '@mui/material'
+import { Grid, Card, Typography, Box, Container } from '@mui/material'
 import { color } from 'framer-motion'
 import React from 'react'
 
@@ -7,9 +7,10 @@ const WhyChoose = ({ title }) => {
 
     return (
         <Box
-         px={{xs : "5%", sm:"10%", md: "14%"}} 
+        //  px={{xs : "5%", sm:"10%", md: "14%"}} 
          py = {{xs : "20px", sm:"20px", md: "20px"}} 
          textAlign = "center" >
+            <Container>
     <Box container
         display="flex"
         justifyContent="space-evenly"
@@ -37,7 +38,7 @@ const WhyChoose = ({ title }) => {
 
     </Box>
 
-
+    </Container>
         </Box >
     )
 }

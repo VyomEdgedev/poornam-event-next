@@ -81,30 +81,33 @@ const CapturedMoments = ({ title, porfioId }) => {
       router.push(`/browsegallery?filter=${id}`);
     }
   };
+  // Don't render the entire section if there's no data and not loading
+  if (!loading && moments.length === 0) {
+    return null;
+  }
+
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
       <Container
-        maxWidth="lg"
         sx={{ py: 8 }}
-        px={{ xs: "5%", sm: "5%", md: "15%" }}
+        // px={{ xs: "5%", sm: "5%", md: "15%" }}
       >
         <Typography
-          variant="h3"
           component="h2"
           align="center"
           sx={{
             fontWeight: "400",
             mb: 2,
             fontFamily: "Gloock,serif",
-            fontSize: { xs: "32px", sm: "32px", md: "48px" },
+            
           }}
         >
           {`  Captured Moments from ${title}`}
         </Typography>
         <Typography
-          variant="body1"
+          component="p"
           align="center"
-          sx={{ mb: 4, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
+          sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
         >
           {`   Scroll through stories written in flowers, lights, and smiles.`}
         </Typography>
@@ -131,7 +134,7 @@ const CapturedMoments = ({ title, porfioId }) => {
               minHeight: 300,
             }}
           >
-            <CircularProgress />
+            <CircularProgress sx={{color:"#DAA412"}} />
           </Box>
         ) : (
           <Grid
@@ -188,7 +191,7 @@ const CapturedMoments = ({ title, porfioId }) => {
                   </Box>
                   <CardContent backgroundColor="#FFFCF5">
                     <Typography
-                      variant="subtitle1"
+                      variant="p"
                       component="div"
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
@@ -199,17 +202,11 @@ const CapturedMoments = ({ title, porfioId }) => {
                       {portfolio?.name}
                     </Typography>
                     <Typography
-                      variant="body1"
                       component="p"
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         fontWeight: "500",
-                        color: "#000000",
-                        fontSize: {
-                          xs: "0.9rem",
-                          sm: "0.9rem",
-                          md: "1.125rem",
-                        },
+                        color: "#000000",  
                       }}
                     >
                       {/* {staticDescriptions[index] || "No Description"} */}

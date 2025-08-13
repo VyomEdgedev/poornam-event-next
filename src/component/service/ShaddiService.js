@@ -227,9 +227,11 @@ const HeroContent = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "start",
   height: "100%",
+  width:"100%",
   [theme.breakpoints.down("md")]: {
     marginLeft: "20px",
     alignItems: "center",
+    
   },
   [theme.breakpoints.down("sm")]: {
     marginLeft: "0px",

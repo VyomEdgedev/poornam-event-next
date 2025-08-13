@@ -131,7 +131,7 @@ const SearchFilter = ({ setPosts, catgeory }) => {
           {/* Search + Filters */}
           <Grid item xs={12} md={6}>
             {/* Search */}
-            <Box sx={{ mb: 3 }} className="search-suggestion-box">
+            <Box sx={{ mb: 3 ,position: "relative" }} className="search-suggestion-box">
               <Typography
                 component="h6"
                 sx={{
@@ -155,35 +155,62 @@ const SearchFilter = ({ setPosts, catgeory }) => {
                 onFocus={() => setOpenSuggestions(true)}
               />
 
-              {/* Suggestions */}
-              {openSuggestions && suggestions.length > 0 && (
-                <Paper
-                  sx={{
-                    position: "absolute",
-                    zIndex: 10,
-                    mt: 0.5,
-                    width: "100%",
-                    maxHeight: 300,
-                    overflowY: "auto",
-                    bgcolor: "background.paper",
-                    borderRadius: 1,
-                  }}
-                >
-                  <List dense>
-                    {suggestions.map((blog) => (
-                      <ListItem
-                        key={blog._id}
-                        disablePadding
-                        onClick={() => handleSuggestionClick(blog)}
-                      >
-                        <ListItemButton>
-                          <ListItemText primary={blog.title} />
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Paper>
-              )}
+                             {/* Suggestions */}
+               {openSuggestions && suggestions.length > 0 && (
+                 <Paper
+                 sx={{
+                  position: "absolute",
+                  top: "calc(100% + 6px)", // exactly below the TextField block
+                  left: 0,
+                  right: 0,
+                  width: "100%",          // match TextField width
+                  zIndex: 10,
+                  maxHeight: 240,
+                  overflowY: "auto",
+                  bgcolor: "background.paper",
+                  borderRadius: 1,
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                  border: "1px solid #e0e0e0",
+                }}
+                 >
+                   <List dense sx={{ py: 0 }}>
+                     {suggestions.slice(0, 5).map((blog) => (
+                       <ListItem
+                         key={blog._id}
+                         disablePadding
+                         onClick={() => handleSuggestionClick(blog)}
+                         sx={{
+                           borderBottom: "1px solid #f0f0f0",
+                           "&:last-child": {
+                             borderBottom: "none",
+                           },
+                         }}
+                       >
+                         <ListItemButton
+                           sx={{
+                             py: 0.5,
+                             px: 1.5,
+                             "&:hover": {
+                               backgroundColor: "#f5f5f5",
+                             },
+                           }}
+                         >
+                           <ListItemText 
+                             primary={blog.title} 
+                             primaryTypographyProps={{
+                               fontSize: "0.8rem",
+                               fontWeight: 400,
+                               fontFamily: "Akatab, sans-serif",
+                               color: "#333",
+                               noWrap: true,
+                             }}
+                           />
+                         </ListItemButton>
+                       </ListItem>
+                     ))}
+                   </List>
+                 </Paper>
+               )}
             </Box>
 
             {/* Categories */}
