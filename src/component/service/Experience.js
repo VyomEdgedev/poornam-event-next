@@ -23,7 +23,7 @@ const Experience = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Container  sx={{ py:"30px", mb:"10px"}} >
+    <Container  >
      {/* <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} py={8}>
         <Grid item size={{ xs: 12, sm: 8, md: 8, lg: 8 }}>
           <Typography variant="h4"
@@ -179,7 +179,7 @@ const Experience = () => {
 
 
 
-      <div>
+     <div className="poornam-section">
         <div className="content-wrapper">
           <div className="left-content">
             <h1 className="title">{`The Poornam Experience`}</h1>
