@@ -23,8 +23,8 @@ const Experience = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Container>
-      <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} py={8}>
+    <Container  sx={{ py:"30px", mb:"10px"}} >
+     {/* <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} py={8}>
         <Grid item size={{ xs: 12, sm: 8, md: 8, lg: 8 }}>
           <Typography variant="h4"
             component="h1"
@@ -166,7 +166,69 @@ const Experience = () => {
 
 
 
-        <Box sx={{ position: "relative" }}>
+      
+
+      </Grid>*/}
+
+
+
+
+
+
+
+
+
+
+      <div>
+        <div className="content-wrapper">
+          <div className="left-content">
+            <h1 className="title">{`The Poornam Experience`}</h1>
+            <p className="subtitle">
+              {` We plan weddings the way your dadi tells stories- with love, 
+              drama, and perfect timing.`}
+            </p>
+
+            <div className="process-section">
+              <h3 className="process-title">{`Our Process`}</h3>
+              <div className="process-steps">
+                <div className="process-step">
+                  <div className="step-content">
+                    <div className="step-title">{`Vision`}</div>
+                    <div className="step-subtitle">{`Discovery`}</div>
+                  </div>
+                </div>
+                <div className="step-arrow">
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
+                </div>
+                <div className="process-step">
+                  <div className="step-content">
+                    <div className="step-title">{`Planning &`}</div>
+                    <div className="step-subtitle">{`Budgeting`}</div>
+                  </div>
+                </div>
+                <div className="step-arrow">
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
+                </div>
+                <div className="process-step">
+                  <div className="step-content">
+                    <div className="step-title">{`Design &`}</div>
+                    <div className="step-subtitle">{`Moodboarding`}</div>
+                  </div>
+                </div>
+                <div className="step-arrow">
+                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
+                </div>
+                <div className="process-step">
+                  <div className="step-content">
+                    <div className="step-title">{`Final Execution`}</div>
+                    <div className="step-subtitle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  <Box sx={{ position: "relative" }}>
           <Grid container spacing={1} justifyContent={{ xs: "center", sm: "center", md: "center" }}
             columns={{ xs: 12, sm: 8, md: 4, lg: 4 }} >
             {/* Left Large Image */}
@@ -250,70 +312,8 @@ const Experience = () => {
           </Grid>
         </Box>
 
-      </Grid>
-
-
-
-
-
-
-
-
-
-
-      {/*<div>
-        <div className="content-wrapper">
-          <div className="left-content">
-            <h1 className="title">{`The Poornam Experience`}</h1>
-            <p className="subtitle">
-              {` We plan weddings the way your dadi tells stories- with love, 
-              drama, and perfect timing.`}
-            </p>
-
-            <div className="process-section">
-              <h3 className="process-title">{`Our Process`}</h3>
-              <div className="process-steps">
-                <div className="process-step">
-                  <div className="step-content">
-                    <div className="step-title">{`Vision`}</div>
-                    <div className="step-subtitle">{`Discovery`}</div>
-                  </div>
-                </div>
-                <div className="step-arrow">
-                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
-                </div>
-                <div className="process-step">
-                  <div className="step-content">
-                    <div className="step-title">{`Planning &`}</div>
-                    <div className="step-subtitle">{`Budgeting`}</div>
-                  </div>
-                </div>
-                <div className="step-arrow">
-                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
-                </div>
-                <div className="process-step">
-                  <div className="step-content">
-                    <div className="step-title">{`Design &`}</div>
-                    <div className="step-subtitle">{`Moodboarding`}</div>
-                  </div>
-                </div>
-                <div className="step-arrow">
-                  <Image src="/Arrow.svg" alt="Arrow" width={30} height={20} />
-                </div>
-                <div className="process-step">
-                  <div className="step-content">
-                    <div className="step-title">{`Final Execution`}</div>
-                    <div className="step-subtitle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>*/}
-
-
-
-      {/* </div>
-      </div>*/}
+       </div>
+      </div>
     </Container>
   );
 };

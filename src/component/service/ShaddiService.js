@@ -318,7 +318,7 @@ const ShaddiService = () => {
   }, []);
   return (
     <Container sx={{ py: { xs: 4, md: 4 } }}>
-      <StyledTypography variant="h2">Our Shaadi Services</StyledTypography>
+      <StyledTypography component="h2">{`Our Shaadi Services`}</StyledTypography>
         {/* Hero Section */}
       <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
         <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
