@@ -266,7 +266,7 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                       },
                     }}
                   >
-                    {item.category?.name || "No Title"}
+                    {item.category?.name }
                   </Typography>
                                      <Typography
                      variant="body1"

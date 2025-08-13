@@ -299,7 +299,7 @@ const ShaddiService = () => {
           const formattedServices = data.map((item, idx) => ({
             id: item._id || idx,
             image: item.featuredImage?.url || "/serviceimg2.png",
-            title: item.meta?.title || "No Title",
+            title: item.meta?.title,
             description: item.meta?.description || "No Description",
             gridProps: { xs: 12, sm: 6, md: 4 },
             uid: item.uid,
