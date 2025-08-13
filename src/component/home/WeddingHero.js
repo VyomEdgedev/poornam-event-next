@@ -33,7 +33,7 @@ export default function WeddingSection() {
               fontFamily: "Gloock, serif",
               fontWeight: 400,
               color: "#000D1F",
-              mb: 2,
+              mb: 1,
               letterSpacing: "0.7px",
             }}
           >
@@ -51,23 +51,21 @@ export default function WeddingSection() {
             </Box>
           </Typography>
 
-          <Typography
-            // variant="h5"
+         <Typography
             component="h4"
             sx={{
-              mb: 1,
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
             }}
           >
-            {`It's a Story You'll Tell Forever`}
+            {`It’s a Story You’ll Tell Forever`}
           </Typography>
 
           <Typography
           component="p"
             sx={{
-              mb: 2,
+              mb: 1,
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
@@ -83,7 +81,6 @@ export default function WeddingSection() {
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
-              mb: 1,
             }}
           >
             {` At Poornam, we don’t just manage weddings:`}
@@ -95,7 +92,6 @@ export default function WeddingSection() {
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
               fontWeight: 400,
-              lineHeight: 1.3,
               fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" },
             }}
           >
