@@ -7,14 +7,13 @@ const WhyPoornam = () => {
         sx={{
           px: { xs: 10, sm: 12, md: 8, lg: 22, xl: 33 },
           py: { xs: 4, sm: 6, md: 8 },
-          //             // bgcolor: '#f8f9fa'
         }}
       >
     <Box>
       <Grid container spacing={{ xs: 5, md: 2 }}>
         <Grid size={{ xs: 12, md: 4 }}>
           <Typography
-            variant="h2"
+            component="h2"
             sx={{
               fontSize: { xs: "30px", sm: "36px", md: "40px" },
               fontFamily: "Gloock, Sans-serif",
@@ -50,10 +49,9 @@ const WhyPoornam = () => {
         </Grid>
         <Grid size={{ xs: 12, md: 4 }}>
           <Typography
-            variant="body1"
+            component="p"
             sx={{
               fontFamily: "Akatab, Sans-serif",
-              fontSize: { xs: "14px", sm: "15px", md: "16px" },
               lineHeight: 1.6,
               color: "#666",
               // textAlign: { xs: 'center', md: 'left' },
