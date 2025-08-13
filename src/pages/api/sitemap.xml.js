@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     if (Array.isArray(subservicesData)) {
       const obj = {};
       subservices  = subservicesData.map(
-        (val) => (obj.page = `getServicePageById/${val.uid}/event`)
+        (val) => (obj.page = `services/${val.uid}`)
       );
     }
   } catch (error) {
