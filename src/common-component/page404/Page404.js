@@ -2,17 +2,11 @@ import React from 'react'
 import CustomBanner from '../banner/CustomBanner';
 import CustomButton from '../button/CustomButton';
 import { Box, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 function Page404() {
-  const router = useRouter();
-
   const handlePage404W = () => {
     window.open("https://wa.me/919519066885", "_blank");
-  };
-
-  const handlePage404 = (path) => {
-    router.push(path);
   };
 
   return (
@@ -102,9 +96,21 @@ function Page404() {
           gap={2}
           padding="20px"
         >
-          <CustomButton   data-testid="notify-button" testId="home" onClick={() => handlePage404('/')}>{`Take Me Home`}</CustomButton>
-          <CustomButton   data-testid="notify-button" onClick={() => handlePage404('/connectus')}>{`Contact Us`}</CustomButton>
-          <CustomButton   data-testid="notify-button" onClick={() => handlePage404W()}>{`Plan My Wedding`}</CustomButton>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <CustomButton data-testid="notify-button" testId="home">
+              Take Me Home
+            </CustomButton>
+          </Link>
+          
+          <Link href="/connectus" style={{ textDecoration: 'none' }}>
+            <CustomButton data-testid="notify-button">
+              Contact Us
+            </CustomButton>
+          </Link>
+          
+          <CustomButton data-testid="notify-button" onClick={handlePage404W}>
+            Plan My Wedding
+          </CustomButton>
         </Box>
       </Box>
     </Box>
