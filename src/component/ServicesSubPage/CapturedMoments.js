@@ -81,6 +81,11 @@ const CapturedMoments = ({ title, porfioId }) => {
       router.push(`/browsegallery?filter=${id}`);
     }
   };
+  // Don't render the entire section if there's no data and not loading
+  if (!loading && moments.length === 0) {
+    return null;
+  }
+
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
       <Container
