@@ -14,10 +14,10 @@ function Philosophy() {
     <>
       <Container>
         {/* First Section */}
-        <Box sx={{py:{xs:4, md:4}}}>
+        <Box sx={{ py: { xs: 4, md: 4 } }}>
           <Grid
             container
-            spacing={{ xs: 0.5, md: 20 }}
+            spacing={{ xs: 0.5, md: 2 }}
             columns={{ xs: 12, sm: 12, md: 12 }}
             alignItems="center"
             justifyContent="center"
@@ -25,15 +25,15 @@ function Philosophy() {
             {/* Title */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 4 }}
-              sx={{ textAlign: "center" }}
+              size={{ xs: 12, sm: 12, md: 5 }}
+              sx={{ textAlign:  "center"  }}
             >
               <Typography
                 component="h2"
                 sx={{
-                    fontFamily: "Gloock, serif",
-                  fontWeight:400,
-                  color:"#000000"
+                  fontFamily: "Gloock, serif",
+                  fontWeight: 400,
+                  color: "#000000",
                 }}
               >
                 {` Our Philosophy`}
@@ -43,10 +43,10 @@ function Philosophy() {
             {/* Image */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 4 }}
+              size={{ xs: 12, sm: 12, md: 2 }}
               sx={{ textAlign: "center" }}
             >
-               <Box
+              <Box
                 sx={{
                   position: "relative",
                   width: { xs: "130px", sm: "160px", md: "200px" },
@@ -68,11 +68,13 @@ function Philosophy() {
             </Grid>
 
             {/* Card */}
-            <Grid item size={{ xs: 12, sm: 12, md: 4 }}>
+            <Grid item size={{ xs: 12, sm: 12, md: 5 }} justifyItems={"center"}>
               <Card
                 sx={{
                   boxShadow: 3,
                   height: "100%",
+                  marginLeft: { sm: 0, md: 5 },
+                 margin: "0 auto",
                 }}
               >
                 <CardContent sx={{ p: 3 }}>
@@ -91,6 +93,7 @@ function Philosophy() {
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
                     fontWeight="400"
+                    
                   >
                     {`Founded by a passionate team, Poornam began
                     with the idea of bringing joy and creativity to
@@ -102,11 +105,8 @@ function Philosophy() {
           </Grid>
         </Box>
 
-        
         {/* Second Section */}
-        <Box sx={{ py: {xs:0.3, sm:0.5, md:3} }} mb={3
-          
-        }>
+        <Box sx={{ py: { xs: 0.3, sm: 0.5, md: 1 } }} mb={3}>
           <Grid
             container
             spacing={{ xs: 0.5, md: 3 }}
@@ -114,12 +114,12 @@ function Philosophy() {
             alignItems="center"
             justifyContent="center"
             sx={{
-              flexDirection: { xs: "column-reverse", md: "row" }, 
+              flexDirection: { xs: "column-reverse", md: "row" },
             }}
           >
             {/* Image */}
-             {/* Card */}
-             <Grid item size={{ xs: 12, sm: 12, md: 4 }}>
+            {/* Card */}
+            <Grid item size={{ xs: 12, sm: 12, md: 5 }}>
               <Card
                 sx={{
                   boxShadow: 3,
@@ -134,24 +134,20 @@ function Philosophy() {
                     fontFamily="Akatab, Sans-serif"
                     // sx={{ mb: 2 }}
                   >
-                  {`  Our Mission`}
+                    {`  Our Mission`}
                   </Typography>
                   <Typography
                     component="p"
                     color="#000000"
                     fontFamily="Akatab, Sans-serif"
                     fontWeight="400"
-                  > 
+                  >
                     {`To create memorable moments filled with creativity, care, joy, and authenticity.`}
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid
-              item
-                size={{ xs: 12, sm: 12, md: 4 }}
-  
-            >
+            <Grid item size={{ sm: 12, md: 2 }}>
               <Box
                 sx={{
                   position: "relative",
@@ -170,22 +166,20 @@ function Philosophy() {
                   }}
                   sizes="(max-width: 768px) 200px, (max-width: 1024px) 250px, 300px"
                 />
-                </Box>
+              </Box>
             </Grid>
-
-           
 
             {/* Title */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 4 }}
+              size={{ xs: 12, sm: 12, md: 5 }}
               sx={{ textAlign: "center", flexDirection: "column-reverse" }}
             >
               <Typography
                 component="h2"
                 sx={{
-                    fontFamily: "Gloock, serif",
-                    fontWeight:"400"
+                  fontFamily: "Gloock, serif",
+                  fontWeight: "400",
                   // mt: { xs: 1, md: 0 },
                 }}
               >
@@ -194,7 +188,6 @@ function Philosophy() {
             </Grid>
           </Grid>
         </Box>
-
       </Container>
     </>
   );
