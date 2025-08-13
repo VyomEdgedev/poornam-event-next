@@ -32,8 +32,6 @@ const SearchFilter = ({ setPosts, catgeory }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
   const debounceTimeout = useRef(null);
-
-  // ✅ API call
   const fetchSuggestions = async (query, category) => {
     try {
       const panel = "event";
@@ -49,8 +47,6 @@ const SearchFilter = ({ setPosts, catgeory }) => {
         const results = response.data.results || [];
         setSuggestions(results);
         setOpenSuggestions(true);
-
-        // If filtering only by category, update posts list immediately
         if (category && !query) {
           setPosts(results);
         }
