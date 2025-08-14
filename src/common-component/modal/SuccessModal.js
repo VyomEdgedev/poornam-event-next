@@ -20,16 +20,17 @@ const style = {
 
 const SuccessModal = ({open}) => {
   // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
 
   return (
     <Modal
       open={open}
-      // onClose={handleClose}
+       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
+       
       <Box sx={style}>
         <Typography color="#fff" id="modal-modal-title" variant="h6" component="h2" textAlign={"center"} fontFamily={"Gloock, serif"}>
          {`Thank you`} 

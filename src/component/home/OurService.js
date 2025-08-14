@@ -143,7 +143,8 @@ const FlipCard = ({ service }) => {
               backdropFilter: "blur(4px)",
             }}
           >
-            <Typography variant="h6" fontWeight={600}>
+            <Typography   fontFamily= 'Akatab, sans-serif'
+             variant="h6" fontWeight={600}>
               {service.title}
             </Typography>
           </Box>

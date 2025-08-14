@@ -468,11 +468,12 @@ const PortfolioSection = () => {
         <Box
           sx={{
             position: "relative",
-            height: "150vh",
+            height: "100vh",
             width: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            marginTop:"20px"
           }}
         >
           {/* Close Button */}
