@@ -64,7 +64,7 @@ export default function   Snapshot() {
 
           
         /> */}
-         <Box id="instagram-embed" sx={{ marginTop: 5, }}>
+         <Box id="instagram-embed" sx={{ marginTop: 5 }}>
             <blockquote
               className="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/reel/DNNj2zcz2gp/?igsh=aWZjeTg5M3RwbHRo"
@@ -77,18 +77,19 @@ export default function   Snapshot() {
                 margin: "1px",
                 maxWidth: 540,
                 minWidth: 326,
-                padding: 0,
                 width: "100%",
+                padding: 0,
                 maxHeight: "100%",
+                
               }}
             >
               <a
                 href="https://www.instagram.com/reel/DNNj2zcz2gp/?igsh=aWZjeTg5M3RwbHRo"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#3897f0", fontWeight: 550 }}
+                style={{color: "#3897f0", fontWeight: 550 }}
               >
-                View this post on Instagram
+                {/* View this post on Instagram */}
               </a>
             </blockquote>
             

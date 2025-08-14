@@ -85,7 +85,7 @@ function ServicesSubPage() {
         paragraphSubtitle={description}
         backgroundImage="/serviceSPBanner.png"
         showLogo={true}
-        logoSrc="/logo.png"
+        logoSrc="/logo2.png"
         breadcrumbs={[
           { href: "/", isHome: true },
           // { href: '/blog', label: 'Blog' },
@@ -94,12 +94,12 @@ function ServicesSubPage() {
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
-          top: "400px",
-          left: "47px",
-          lg: { top: "350px", left: "60px" },
-          md: { top: "300px", left: "20px" },
-          sm: { top: "330px", left: "7px" },
-          xs: { top: "310px", left: "20px" },
+          top: "300px",
+          left: "25px",
+          lg: { top: "280px", left: "25px" },
+          md: { top: "170px", left: "26px" },
+          sm: { top: "330px", left: "3px" },
+          xs: { top: "200px", left: "20px" },
         }}
         overlay={{
           background:

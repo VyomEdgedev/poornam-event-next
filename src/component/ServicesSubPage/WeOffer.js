@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import React, { Component, useEffect, useState } from "react";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
 
@@ -86,11 +86,12 @@ function WeOffer({ serviceId }) {
   return (
     <Box
       sx={{
-        px: { xs: 2, sm: 1, md: 1, lg: 15, xl: 28 },
+        // px: { xs: 2, sm: 1, md: 1, lg: 15, xl: 28 },
         py: { xs: 4, sm: 6, md: 8 },
         bgcolor: "#FFF7E4",
       }}
     >
+      <Container>
       <Box textAlign="center" px={{ xs: "5%", sm: "10%", md: "15%" }}>
         <Typography
         component="h2"
@@ -101,13 +102,11 @@ function WeOffer({ serviceId }) {
           {`What's inside Your 'Shaadi ka Pitara'?`}
         </Typography>
 
-        <Grid container spacing={4} justifyContent="center" sx={{ mt: 3 }}>
+        <Grid container spacing={4} columns={{ xs: 12, sm: 12, md: 12 }} justifyContent="center" sx={{ mt: 3 }}>
           {categories.map((service, index) => (
             <Grid
               item
-              xs={12}
-              sm={6}
-              md={3}
+              size={{ xs: 12, sm: 4, md: 6 }}
               key={service.id || index}
               sx={{ display: "flex", justifyContent: "center" }}
             >
@@ -116,19 +115,20 @@ function WeOffer({ serviceId }) {
                   sx={{
                     width: 80,
                     height: 80,
-                    borderRadius: "50%",
+                    // borderRadius: "50%",
                     border: "2px solid #DAA412",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     margin: "0 auto",
+                    overflow:"hidden"
                   }}
                 >
                   <Image
                     src={service.image?.url || "/Weoffer1.svg"}
                     alt={service.name}
-                    width={40}
-                    height={40}
+                    width={100}
+                    height={100}
                     objectFit="contain"
                   />
                 </Box>
@@ -164,6 +164,7 @@ function WeOffer({ serviceId }) {
           ))}
         </Grid>
       </Box>
+      </Container>
     </Box>
   );
 }
