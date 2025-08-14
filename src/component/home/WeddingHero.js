@@ -28,8 +28,14 @@ export default function WeddingSection() {
       >
         <Box sx={{ flex: 1, maxWidth: { sm: "100%", md: "50%" } }}>
           <Typography
-            component="h2"
+            component="div"
             sx={{
+               fontSize: {
+      xs: "20px", 
+      sm: "24px", 
+      md: "28px", 
+      lg: "32px ", 
+    },
               fontFamily: "Gloock, serif",
               fontWeight: 400,
               color: "#000D1F",
@@ -52,7 +58,8 @@ export default function WeddingSection() {
           </Typography>
 
          <Typography
-            component="h4"
+            component="p"
+            className="h4_heading"
             sx={{
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",
@@ -76,7 +83,8 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-            component="h4"
+             component="p"
+            className="h4_heading"
             sx={{
               fontFamily: "Akatab,Sans-serif",
               color: "#000D1F",

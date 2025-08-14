@@ -104,7 +104,8 @@ export default function ClientTestimonials() {
             }}
           >
             <Typography
-              component="h2"
+              component="p"
+              className="h2_heading"
               sx={{
                 fontFamily: "Gloock, serif",
                 fontWeight: "400",
@@ -201,7 +202,7 @@ export default function ClientTestimonials() {
                 overflowX: "auto",
                 overflowY: "visible",
                 "&::-webkit-scrollbar": { height: 6 },
-                px:2
+                px: 2,
               }}
             >
               <Box
@@ -239,7 +240,8 @@ export default function ClientTestimonials() {
                         sx={{ width: 30, height: 30 }}
                       />
                       <Typography
-                        component="h6"
+                          component="h3"
+                    className="h6_heading"
                         fontWeight={600}
                         fontFamily={"Akatab,Sans-serif"}
                         color="#000000"

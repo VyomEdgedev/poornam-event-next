@@ -123,12 +123,13 @@ export default function FAQSection() {
                       }}
                     >
                       <Typography
-                        component="p"
+                        component="h3"
                         variant="body1"
+                        className="h6_heading"
                         sx={{
                           fontFamily: "Akatab, Sans-serif",
                           fontWeight: 700,
-                          fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                          // fontSize: { xs: "14px", sm: "16px", md: "18px" },
                           color: "#001538",
                         }}
                       >

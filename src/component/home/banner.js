@@ -101,8 +101,14 @@ export default function HeroSection() {
                 </Typography>
 
                 <Typography
-                  component="h2"
+                  component="span"
                   sx={{
+                    fontSize: {
+      xs: "20px", 
+      sm: "24px", 
+      md: "28px", 
+      lg: "32px ", 
+    },
                     color: "#FFF5D9",
                     fontWeight: 400,
                     fontFamily: "Akatab,Sans-serif ",
@@ -114,7 +120,7 @@ export default function HeroSection() {
                   {`   Let’s Make Yours Legendary`}
                 </Typography>
                 <Typography
-                  component="h6"
+                  component="p"
                   sx={{
                     color: "#FFF5D9",
                     textAlign: { xs: "left", md: "left" },

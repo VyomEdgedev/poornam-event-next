@@ -50,7 +50,8 @@ export default function ResourcesSection() {
               {`Love From Our Couples`}
             </Typography>
             <Typography
-              component="h5"
+              component="p"
+              className="h5_heading"
                sx={{  fontFamily: "Akatab,Sans-serif",fontWeight: 600 , mt: 2, }}
             >
            {`   Grab your free tools:`}
@@ -97,8 +98,8 @@ export default function ResourcesSection() {
                     sx={{ height: 100, mb: 2 }}
                   />
                   <Typography
-                    component="h6"
-                    
+                    component="h3"
+                    className="h6_heading"
                     sx={{  fontFamily: "Akatab,Sans-serif",fontWeight: 500 }}
                   >
                     {tool.title}

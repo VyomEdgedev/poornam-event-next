@@ -4,10 +4,6 @@ import {
   Container,
   Grid,
   Typography,
-  IconButton,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Paper,
   styled,
 } from "@mui/material";
@@ -98,7 +94,7 @@ const Footer = () => {
                   >
                     <Typography
                       variant="body2"
-                      component={'span'}
+                      component={'p'}
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
@@ -126,7 +122,7 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  component={'span'}
+                  component={'p'}
                   sx={{
                   
                     mb: 1,
@@ -179,7 +175,7 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  component={'span'}
+                  component={'p'}
                   sx={{
                    
                     mb: 1,
@@ -358,7 +354,7 @@ const Footer = () => {
             >
               <Typography
                 variant="body2"
-                component="span"
+                component="p"
                 sx={{ fontSize: "14px", color: "black" }}
               >
                 Developed by{" "}
