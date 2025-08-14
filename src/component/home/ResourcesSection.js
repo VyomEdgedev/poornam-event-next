@@ -59,6 +59,7 @@ export default function ResourcesSection() {
               onClick={handleDownloadClick}
               variant="contained"
               sx={{
+                 fontFamily: "Akatab, Sans-serif !important",
                 mt: 2,
                 backgroundColor: "#E1A900",
                 borderRadius: "25px",

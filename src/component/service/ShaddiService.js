@@ -227,11 +227,11 @@ const HeroContent = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "start",
   height: "100%",
-  width:"100%",
+  width: "100%",
   [theme.breakpoints.down("md")]: {
     marginLeft: "20px",
     alignItems: "center",
-    
+
   },
   [theme.breakpoints.down("sm")]: {
     marginLeft: "0px",
@@ -244,27 +244,26 @@ const HeroTitle = styled(Typography, {
   shouldForwardProp: (prop) => prop !== "isLong",
 })(({ theme, isLong }) => ({
   fontFamily: "Gloock, serif",
-  width: "314px",
+  width: "260px",
   fontWeight: 400,
-  fontSize: "26px !important",
+  fontSize: "30px !important",
+ 
   color: "#000000",
 
   marginBottom: theme.spacing(0.5),
-  [theme.breakpoints.down("md")]: { width: "100%", fontSize: "30px" },
+  [theme.breakpoints.down("md")]: { fontSize: "30px" },
   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
 }));
 
 const HeroDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: "400",
-
+  fontSize: "16px !important",
   width: "251px",
   color: "#000000",
   textAlign: "left",
   marginBottom: theme.spacing(3),
-
-  [theme.breakpoints.down("md")]: { width: "100%" },
-  [theme.breakpoints.down("sm")]: { padding: "0px 20px" },
+  [theme.breakpoints.down("sm")]: { padding: "0px 20px", width: "100%" },
 }));
 
 function highlightSpecificWords(text, keywords) {
@@ -330,16 +329,19 @@ const ShaddiService = () => {
     fetchServices();
   }, []);
   return (
-    <Container sx={{ py: { xs: 4, md: 4 } }}>
+    <Container sx={{ py: { xs: 4, md: 4 }, px: { xs: 4, md: 4 } }}>
       <StyledTypography component="h2">{`Our Shaadi Services`}</StyledTypography>
       {/* Hero Section */}
       <Grid
         container
+
         spacing={2}
         columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-        sx={{ border: "1px solid #ddd", borderRadius: "8px" ,  }}
+        sx={{ border: "1px solid #ddd", borderRadius: "8px", }}
       >
-        <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
+        <Grid item size={{ xs: 12, sm: 6, md: 8 }}
+          sx={{ p: 2 }}
+        >
           <HeroImageContainer>
             <Image
               src={services[0]?.image}
@@ -349,9 +351,9 @@ const ShaddiService = () => {
             />
           </HeroImageContainer>
         </Grid>
-        <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
+        <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
           <HeroContent>
-            <HeroTitle>
+            <HeroTitle > 
               {selectedService
                 ? selectedService.title
                 : services[0]?.title || servicesData.hero.title}
@@ -362,7 +364,7 @@ const ShaddiService = () => {
                 : trimText(services[0]?.description, 100)}
             </HeroDescription>
             <CustomButton
-            sx={{mb:1}}
+              sx={{ mb: 1, fontFamily: "Akatab, Sans-serif !important"}}
               onClick={() => {
                 handleNavigate(services[0]?.uid);
               }}
@@ -396,7 +398,7 @@ const ShaddiService = () => {
             return (
               <Grid
                 key={index}
-                size={{ xs: 12, sm: 6, md: 4 }}
+                size={{ xs: 12, sm: 6, md: 6 }}
                 onClick={() => {
                   handleNavigate(val.uid);
                 }}
@@ -406,13 +408,13 @@ const ShaddiService = () => {
                     border: "2px solid #ddd",
                     padding: "10px",
                     borderRadius: "5px",
-                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  "&:hover": {
-                    border: "1px solid #DAA412",
-                    transform: "translateY(-2px) scale(1.01)",
-                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
-                    cursor: "pointer",
-                  },
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    "&:hover": {
+                      border: "1px solid #DAA412",
+                      transform: "translateY(-2px) scale(1.01)",
+                      boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
+                      cursor: "pointer",
+                    },
                   }}
                 >
                   <Box sx={{ display: "flex", gap: "12px" }}>
@@ -424,23 +426,22 @@ const ShaddiService = () => {
                     />
                     <Box>
                       <Typography
-                        variant="h6"
+                        component="h6"
                         my={1}
                         sx={{
                           fontFamily: "Akatab, Sans-serif",
                           fontWeight: 700,
-                          lineHeight: 1,
+
                         }}
                       >
                         {val?.title}
                       </Typography>
                       <Typography
-                        variant="p"
+
                         component="p"
                         sx={{
                           fontFamily: "Akatab, Sans-serif",
                           fontWeight: 400,
-                          lineHeight: 1,
                         }}
                       >
                         {val?.description}
