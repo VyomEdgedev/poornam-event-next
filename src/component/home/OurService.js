@@ -144,7 +144,7 @@ const FlipCard = ({ service }) => {
             }}
           >
             <Typography   fontFamily= 'Akatab, sans-serif'
-             variant="h6" fontWeight={600}>
+             variant="p" fontWeight={600}>
               {service.title}
             </Typography>
           </Box>
@@ -207,7 +207,7 @@ const FlipCard = ({ service }) => {
             </Typography>
           )}
           <Typography
-            component="h5"
+            component="p"
             fontWeight={600}
             fontFamily={"Akatab,Sans-serif"}
             sx={{ mb: 1, zIndex: 2 }}
@@ -274,8 +274,9 @@ export default function OurServices() {
     >
       <Container>
           <Typography
-            component="h2"
+            component="p"
             sx={{
+              fontSize:"32px !important",
               fontFamily: "Gloock, serif",
               fontWeight: "400",
               color: "#0D1A46",
