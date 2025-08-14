@@ -91,7 +91,7 @@ const WeddingThemes = () => {
                 elevation={1}
               >
                 <Chip
-                component={"p"}
+                component="p"
                   label={tag}
                   size="small"
                   sx={{
@@ -99,7 +99,7 @@ const WeddingThemes = () => {
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                  
+                   fontFamily: "Akatab,Sans-serif",
                     zIndex: 2,
                   }}
                 />

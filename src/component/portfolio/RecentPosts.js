@@ -97,7 +97,7 @@ const RecentPosts = () => {
 
                 
                 <Chip
-                component={"p"}
+                component="p"
                   label={post.category}
                   size="small"
                   sx={{
@@ -105,7 +105,7 @@ const RecentPosts = () => {
                     top: 12,
                     left: 12,
                     backgroundColor: '#0000000D',
-                 
+                   fontFamily: "Akatab,Sans-serif",
                     fontWeight: 500,
                     cursor: 'pointer'
                   }}
@@ -163,7 +163,7 @@ const RecentPosts = () => {
                     mb: 1,
                     fontWeight: 400,
                     color: '#000000',
-                  
+                   fontFamily: "Akatab,Sans-serif",
                     cursor: 'pointer'
                   }}
                 >
@@ -176,7 +176,7 @@ const RecentPosts = () => {
                   sx={{
                     width: '100%',
                     color: '#000000',
-                  
+                   fontFamily: "Akatab,Sans-serif",
                   }}
                 >
                   Published on {post.publishDate}

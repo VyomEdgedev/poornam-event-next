@@ -254,7 +254,7 @@ const Experience = () => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    borderRadius: 2,
+                    borderRadius: 3,
                   }}
                 />
               </Box>
@@ -269,7 +269,7 @@ const Experience = () => {
                     sx={{
                       position: { xs: "initial", sm: "initial", md: "absolute" },
                       top: 40,
-                      borderRadius: 3,
+                    borderRadius: 3,
                       overflow: 'hidden',
 
                     }}
@@ -283,7 +283,7 @@ const Experience = () => {
                         // width: '100%',
                         // height: 'auto',
                         objectFit: 'cover',
-                        borderRadius: 5,
+                        borderRadius: 3,
                       }}
                     />
                   </Box>
@@ -306,7 +306,7 @@ const Experience = () => {
                         // width: '100%',
                         // height: 'auto',
                         objectFit: 'cover',
-                        borderRadius: 5,
+                        borderRadius: 3,
                       }}
                     />
                   </Box>

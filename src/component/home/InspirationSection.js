@@ -37,9 +37,9 @@ export default function InspirationSection() {
         justifyContent="center"
         padding="0px 0px"
       > */}
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }} justifyContent="center">
+        <Grid container  rowSpacing={{ xs:2}} columnSpacing={{xs:0 ,md:6}} columns={{ xs: 12, sm: 12, md: 12 }} justifyContent="center">
         {data.map((item, index) => (
-          <Grid item key={index} size={{ xs: 6, sm: 4, md: 3 }}>
+          <Grid item key={index} size={{ xs: 6, sm: 5, md: 3 }}>
             <Box
               sx={{
                 width: { xs: 150, sm: 170, md: 200, lg: 230 },
@@ -93,7 +93,9 @@ export default function InspirationSection() {
               {/* Label with slight upward animation on hover */}
               <Typography
                 className="label-text"
+                component="p"
                 sx={{
+                   fontFamily: "Akatab,Sans-serif",fontWeight: 600 ,
                   position: "absolute",
                   bottom: 25,
                   left: 0,
