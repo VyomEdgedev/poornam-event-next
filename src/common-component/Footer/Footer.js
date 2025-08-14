@@ -74,7 +74,7 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  variant="h6"
+                  component={'p'}
                   sx={{
                     fontSize: "16px",
                     mb: 1,
@@ -100,6 +100,7 @@ const Footer = () => {
                   >
                     <Typography
                       variant="body2"
+                      component={'span'}
                       sx={{
                         fontSize: "15px",
                         mb: 0.5,
@@ -127,6 +128,7 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
+                  component={'span'}
                   sx={{
                     fontSize: "16px",
                     mb: 1,
@@ -179,6 +181,7 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
+                  component={'span'}
                   sx={{
                     fontSize: "16px",
                     mb: 1,
