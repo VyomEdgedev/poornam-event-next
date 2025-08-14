@@ -18,7 +18,7 @@ const BreadcrumbsComponent = ({
   }
 
   return (
-    <Box sx={{ py: 2, px: 2, ...sx }}>
+    <Box sx={{ py: 2, px: 0, ...sx ,}}>
       <Breadcrumbs
         separator={separator}
         maxItems={maxItems}
