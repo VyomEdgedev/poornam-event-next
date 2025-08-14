@@ -30,8 +30,7 @@ export default function AboutSection() {
           component="p"
           sx={{
             color: "#000D1F",
-            fontSize: "1rem",
-            lineHeight: 1.75,
+            
             fontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight: "400",
@@ -51,7 +50,7 @@ export default function AboutSection() {
           sx={{
             color: "#000000",
             // fontSize: "1rem",
-            lineHeight: 1.75,
+            //lineHeight: 1.75,
             fontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight: "400",
@@ -73,6 +72,7 @@ export default function AboutSection() {
                   whiteSpace: "nowrap",
                   fontSize: "16px",
                   textTransform: "capitalize",
+                   fontFamily: "Akatab,Sans-serif",
                 }}
               >
                 {`Meet Our Story`}

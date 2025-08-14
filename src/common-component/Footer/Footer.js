@@ -53,10 +53,8 @@ const Footer = () => {
                 </a>
               </Link>
               <Typography
-                variant="h6"
+              component="p"
                 sx={{
-                  fontSize: "16px",
-                  lineHeight: 1.6,
                   fontFamily: "Akatab,Sans-serif",
                   color:"#FFF1CA"
                 }}
@@ -74,9 +72,9 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  variant="h6"
+                  component="p"
                   sx={{
-                    fontSize: "16px",
+                    
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -99,9 +97,9 @@ const Footer = () => {
                     style={{ textDecoration: "none" ,width:"fit-content"}}
                   >
                     <Typography
-                      variant="body2"
+                     component="p"
                       sx={{
-                        fontSize: "15px",
+                        fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
                         color: "#E4E4E4",
                         textDecoration: "none",
@@ -126,9 +124,9 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  variant="h6"
+                 component="p"
                   sx={{
-                    fontSize: "16px",
+                  
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -151,9 +149,9 @@ const Footer = () => {
                     style={{ textDecoration: "none" ,width:"fit-content"}}
                   >
                     <Typography
-                      variant="body2"
+                     component="p"
                       sx={{
-                        fontSize: "15px",
+                        fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
                         color: "#E4E4E4",
                         fontWeight: 400,
@@ -178,9 +176,9 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  variant="h6"
+                 component="p"
                   sx={{
-                    fontSize: "16px",
+                   
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -194,8 +192,8 @@ const Footer = () => {
                   Phone: 9519066885
                 </Typography> */}
                 <Typography
-                  variant="body2"
-                  sx={{ fontSize: "15px", color: "#E4E4E4", fontWeight: 400 }}
+                
+                  sx={{ fontFamily: "Akatab,Sans-serif", color: "#E4E4E4", fontWeight: 400 }}
                 >
                   Phone:{" "}
                   <a
@@ -213,8 +211,8 @@ const Footer = () => {
                 </Typography>
 
                 <Typography
-                  variant="body2"
-                  sx={{ fontSize: "15px", color: "#E4E4E4", fontWeight: 400 }}
+                  component="p"
+                  sx={{  fontFamily: "Akatab,Sans-serif", color: "#E4E4E4", fontWeight: 400 }}
                 >
                   Email:{" "}
                   <Box
@@ -287,7 +285,7 @@ const Footer = () => {
       </Container>
 
       {/* Bottom mustard section */}
-      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
+      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }} >
         <Container maxWidth="lg">
           <Grid
             container
@@ -298,10 +296,10 @@ const Footer = () => {
             {/* Left - Copyright */}
             <Grid item xs={12} md={4}>
               <Typography
-                variant="body2"
+                component="p"
                 sx={{
-                  fontSize: "14px",
-                  textAlign: { xs: "center", md: "left" },
+                  fontFamily: "Akatab,Sans-serif",
+                  textAlign: { xs: "center", md: "left" }
                 }}
               >
                 © 2025 Poornam Events.
@@ -311,8 +309,11 @@ const Footer = () => {
             {/* Center - Policies */}
             <Grid item xs={12} md={4}>
               <Typography
-                variant="body2"
-                sx={{ fontSize: "14px", textAlign: "center", color: "black" }}
+               component="p"
+                sx={{  fontFamily: "Akatab,Sans-serif", textAlign: "center", color: "black",  textDecoration: "none",
+                        "&:hover": {
+                          textDecoration: "underline",
+                        }, }}
               >
                 <Link
                   href="/disclaimer"

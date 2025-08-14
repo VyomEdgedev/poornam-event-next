@@ -16,8 +16,7 @@ const WeddingFooter = () => {
       textAlign: {
         xs: "center",
         sm: "left",
-        md: "left",
-        lg: "left",
+
       }
 
 
@@ -25,11 +24,11 @@ const WeddingFooter = () => {
 
 
       <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-       alignItems={"center"}
-       >
+        alignItems={"center"}
+      >
         <Grid item size={{ xs: 12, sm: 5, md: 5, lg: 5 }}>
           <Typography
-           
+
             component="h3"
             sx={{
               fontWeight: '400',
@@ -45,10 +44,10 @@ const WeddingFooter = () => {
             }}
           />
         </Grid>
-        <Grid  item size={{ xs: 12, sm: 7, md: 7, lg: 7 }}>
+        <Grid item size={{ xs: 12, sm: 7, md: 7, lg: 7 }}>
           <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
-         
-            >
+
+          >
 
             <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
               <Box
@@ -56,64 +55,68 @@ const WeddingFooter = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: 1,
-                  justifyContent:{xs:"center",sm:"start"}
+                  justifyContent: { xs: "center", sm: "start" },
+                 
+                  
                 }}
                 
               >
-                <Image src="/weddingfooter1.png" alt="Email Icon" width={40} height={40} />
-                <Typography
-                 component={"p"}
-                  sx={{
-                    color: '#000000',
-                    fontWeight: '400',
-                    fontFamily: 'Akatab, sans-serif',
-
-                  }}
-                >
-                  {` Serving Indore, Bhopal, Ujjain & beyond.`}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
-              <Box
+              <Image src="/weddingfooter1.png" alt="Email Icon" width={40} height={40} />
+              <Typography
+                component={"p"}
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  justifyContent:{xs:"center",sm:"start"}
+                  color: '#000000',
+                  fontWeight: '400',
+                  fontFamily: 'Akatab, sans-serif',
+
                 }}
               >
-                <Image src="/weddingfooter.png" alt="Email Icon" width={40} height={40} />
-                <Typography
-                 component={"p"}
+                {` Serving Indore, Bhopal, Ujjain & beyond.`}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                justifyContent: { xs: "center", sm: "start" }
+              }}
+            >
+              <Image src="/weddingfooter.png" alt="Email Icon"
+
+                width={40} height={40} />
+              <Typography
+                component={"p"}
+                sx={{
+                  color: '#000000',
+                  fontWeight: '400',
+                  fontFamily: 'Akatab, sans-serif',
+                }}
+              >
+                Available at{' '}
+                <Box
+                  component="a"
+                  href="mailto:info@poornamevents.com"
                   sx={{
-                    color: '#000000',
-                    fontWeight: '400',
-                    fontFamily: 'Akatab, sans-serif',
+                    color: '#DAA412',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      textDecoration: 'underline'
+                    }
                   }}
                 >
-                  Available at{' '}
-                  <Box
-                    component="a"
-                    href="mailto:info@poornamevents.com"
-                    sx={{
-                      color: '#DAA412',
-                      textDecoration: 'none',
-                      '&:hover': {
-                        textDecoration: 'underline'
-                      }
-                    }}
-                  >
-                    info@poornamevents.com
-                  </Box>
-                </Typography>
-              </Box>
+                  info@poornamevents.com
+                </Box>
+              </Typography>
+            </Box>
 
-            </Grid>
           </Grid>
         </Grid>
-
       </Grid>
+
+    </Grid>
       { /* <Box
         sx={{
           display: 'flex',
@@ -126,7 +129,7 @@ const WeddingFooter = () => {
         }}
       >}
         {/* Left side - Main heading */}
-      { /*<Box sx={{ flex: '0 0 auto' }}>
+  { /*<Box sx={{ flex: '0 0 auto' }}>
           <Typography
             variant="h4"
             component="h1"
@@ -148,7 +151,7 @@ const WeddingFooter = () => {
         </Box>}
 
         {/* Right side - Contact info */}
-      {  /* <Box
+  {  /* <Box
           sx={{
             display: 'flex',
             gap: { xs: 2, md: 2 },
@@ -157,7 +160,7 @@ const WeddingFooter = () => {
           }}
         >}
       {/* Location */}
-      {/*  <Box
+  {/*  <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -181,7 +184,7 @@ const WeddingFooter = () => {
           </Box>}
 
           {/* Email */}
-      { /* <Box
+  { /* <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -217,7 +220,7 @@ const WeddingFooter = () => {
           </Box>
         </Box>
       </Box>*/}
-    </Container>
+    </Container >
   );
 };
 

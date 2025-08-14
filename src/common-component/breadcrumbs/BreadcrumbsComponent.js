@@ -49,6 +49,7 @@ const BreadcrumbsComponent = ({
                   alignItems: "center",
                   fontWeight: 500,
                   fontSize: { xs: "12px", md: "14px" },
+                    fontFamily: "Akatab, Sans-serif",
                 }}
               >
                 {isHome && showHomeIcon && (
@@ -78,6 +79,7 @@ const BreadcrumbsComponent = ({
                 "&:hover": {
                   textDecoration: "underline",
                 },
+                  fontFamily: "Akatab, Sans-serif",
               }}
               onClick={item.onClick}
             >

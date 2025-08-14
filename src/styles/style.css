@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url("/cursor1.svg") 16 16, auto !important;
+  cursor: url("/cursor1.svg") 12 12, auto !important;
 }
 body {
   zoom:0.9;
@@ -14,6 +14,7 @@ body {
   color:#000000;
   /* font-family: 'Akatab', sans-serif; */
 }
+
 
 .container {
   max-width: 1200px;
