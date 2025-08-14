@@ -46,7 +46,7 @@ const Service = () => {
           lg: { top: "300px", left: "25px" },
           md: { top: "200px", left: "26px" },
           sm: { top: "330px", left: "3px" },
-          xs: { top: "180px", left: "20px" },
+          xs: { top: "200px", left: "20px" },
         }}
         overlay={{
           background:

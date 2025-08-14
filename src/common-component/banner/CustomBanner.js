@@ -30,7 +30,7 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   },
   // [theme.breakpoints.down("xs")]: {
   //   height: height === "100vh" ? "60vh" : height === "450px" ? "300px" : height,
-  //   minHeight: "540px",
+  //   minHeight: "440px",
   // },
 }));
 
@@ -53,7 +53,7 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
   position: "absolute",
   top: 0,
   left: 0,
-  width: overlay?.width || "65%",
+  width: overlay?.width || "85%",
   height: "100%",
   zIndex: 2,
   background:
@@ -62,7 +62,7 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
 
   // Responsive overlay adjustments
   [theme.breakpoints.down("lg")]: {
-    width: overlay?.responsive?.lg?.width || "70%",
+    width: overlay?.responsive?.lg?.width || "85%",
     background:
       overlay?.responsive?.lg?.background ||
       overlay?.background ||
@@ -89,33 +89,18 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
     top: -46,
     left: 0,
     zIndex: 6,
-    // position: "absolute",
-    // top: logoposition?.top || "0px",
-    // left: logoposition?.left || "0px",
-    // right: logoposition?.right || "auto",
 
     zIndex: 3,
-    // marginTop:"-40px",
-    // marginBottom:"20px",
+
     width: "100px",
     height: "auto",
 
     // Enhanced responsive logo positioning
-    [theme.breakpoints.down("lg")]: {
-      // top: logoposition?.lg?.top || logoposition?.mobile?.top || "25px",
-      // left: logoposition?.lg?.left || logoposition?.mobile?.left || "25px",
-      // width: logoposition?.lg?.width || logoposition?.mobile?.width || "70px",
-    },
+    [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {
-      // top: logoposition?.md?.top || logoposition?.mobile?.top || "20px",
-      // left: logoposition?.md?.left || logoposition?.mobile?.left || "20px",
-      // width: logoposition?.md?.width || logoposition?.mobile?.width || "60px",
       display: "none",
     },
     [theme.breakpoints.down("sm")]: {
-      // top: logoposition?.sm?.top || logoposition?.mobile?.top || "15px",
-      // left: logoposition?.sm?.left || logoposition?.mobile?.left || "15px",
-      // width: logoposition?.sm?.width || logoposition?.mobile?.width || "50px",
       display: "none",
     },
   }),
@@ -123,7 +108,7 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
 
 const ContentContainer = styled(Container)(
   ({ theme, contentalignment, contentposition }) => ({
-    position:"relative",
+    position: "relative",
     zIndex: 3,
     display: "flex",
     flexDirection: "column",
@@ -131,31 +116,17 @@ const ContentContainer = styled(Container)(
     justifyContent: contentalignment?.vertical || "center",
     textAlign: contentalignment?.textAlign || "left",
 
-
     // Enhanced responsive positioning
-    [theme.breakpoints.down("xl")]: {
-     
-    },
-  
+    [theme.breakpoints.down("xl")]: {},
+
     [theme.breakpoints.down("md")]: {
       width: "100%",
-      // maxWidth: "100%",
     },
 
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-      
-     
     },
-    [theme.breakpoints.down("xs")]: {
-      // position: "relative",
-      // top: "20px",
-      // left: "2px",
-
-      // padding: '20px 28px',
-      // alignItems: contentalignment?.sm?.horizontal || contentalignment?.mobile?.horizontal || 'center',
-      // textAlign: contentalignment?.sm?.textAlign || contentalignment?.mobile?.textAlign || 'center',
-    },
+    [theme.breakpoints.down("xs")]: {},
   })
 );
 
@@ -170,28 +141,25 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   // maxWidth: headingstyle?.maxWidth || '950px',
 
   // Enhanced responsive typography
-  [theme.breakpoints.down("xl")]: {
-    fontSize: headingstyle?.responsive?.xl?.fontSize || "44px",
-    // maxWidth: headingstyle?.responsive?.xl?.maxWidth || '1050px',
-  },
+
   [theme.breakpoints.down("lg")]: {
-    fontSize: headingstyle?.responsive?.lg?.fontSize || "30px",
-    // lineHeight: headingstyle?.responsive?.lg?.lineHeight || "1.15",
-    // maxWidth: headingstyle?.responsive?.lg?.maxWidth || '550px',
+    fontSize:
+      (headingstyle?.responsive?.lg?.fontSize || "30px") + " !important",
   },
   [theme.breakpoints.down("md")]: {
-    fontSize: headingstyle?.responsive?.md?.fontSize || "24px ",
-    // lineHeight: headingstyle?.responsive?.md?.lineHeight || "1.2",
-    // maxWidth: headingstyle?.responsive?.md?.maxWidth || '100%',
+    fontSize:
+      (headingstyle?.responsive?.md?.fontSize || "24px") + " !important",
     marginBottom: headingstyle?.responsive?.md?.marginBottom || "12px",
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: headingstyle?.responsive?.sm?.fontSize || "18px",
+    fontSize:
+      (headingstyle?.responsive?.sm?.fontSize || "18px") + " !important",
     lineHeight: headingstyle?.responsive?.sm?.lineHeight || "1",
     marginBottom: headingstyle?.responsive?.sm?.marginBottom || "4px",
   },
   [theme.breakpoints.down("xs")]: {
-    fontSize: headingstyle?.responsive?.xs?.fontSize || "17px",
+    fontSize:
+      (headingstyle?.responsive?.xs?.fontSize || "17px") + " !important",
     lineHeight: headingstyle?.responsive?.xs?.lineHeight || "1",
   },
 }));
@@ -208,25 +176,27 @@ const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
 
   // Enhanced responsive typography
   [theme.breakpoints.down("xl")]: {
-    fontSize: subheadingstyle?.responsive?.xl?.fontSize || "24px",
-    // maxWidth: subheadingstyle?.responsive?.xl?.maxWidth || "800px",
+    fontSize:
+      (subheadingstyle?.responsive?.xl?.fontSize || "24px") + " !important",
   },
   [theme.breakpoints.down("lg")]: {
-    fontSize: subheadingstyle?.responsive?.lg?.fontSize || "22px",
-    // maxWidth: subheadingstyle?.responsive?.lg?.maxWidth || "700px",
+    fontSize:
+      (subheadingstyle?.responsive?.lg?.fontSize || "22px") + " !important",
   },
   [theme.breakpoints.down("md")]: {
-    fontSize: subheadingstyle?.responsive?.md?.fontSize || "20px ",
+    fontSize:
+      (subheadingstyle?.responsive?.md?.fontSize || "20px") + " !important",
     marginBottom: subheadingstyle?.responsive?.md?.marginBottom || "12px",
-    maxWidth: subheadingstyle?.responsive?.md?.maxWidth || "100%",
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: subheadingstyle?.responsive?.sm?.fontSize || "24px",
+    fontSize:
+      (subheadingstyle?.responsive?.sm?.fontSize || "24px") + " !important",
     lineHeight: subheadingstyle?.responsive?.sm?.lineHeight || "1.2",
     marginBottom: subheadingstyle?.responsive?.sm?.marginBottom || "14px",
   },
   [theme.breakpoints.down("xs")]: {
-    fontSize: subheadingstyle?.responsive?.xs?.fontSize || "20px",
+    fontSize:
+      (subheadingstyle?.responsive?.xs?.fontSize || "20px") + " !important",
   },
 }));
 
@@ -241,25 +211,25 @@ const ParagraphSubtitle = styled(Typography)(({ theme, paragraphstyle }) => ({
   // maxWidth: paragraphstyle?.maxWidth || "800px",
 
   // Enhanced responsive typography
-  [theme.breakpoints.down("xl")]: {
-    // maxWidth: paragraphstyle?.responsive?.xl?.maxWidth || "700px",
-  },
+  [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {
-    fontSize: paragraphstyle?.responsive?.lg?.fontSize || "15px",
-    // maxWidth: paragraphstyle?.responsive?.lg?.maxWidth || "600px",
+    fontSize:
+      (paragraphstyle?.responsive?.lg?.fontSize || "15px") + " !important",
   },
   [theme.breakpoints.down("md")]: {
-    fontSize: paragraphstyle?.responsive?.md?.fontSize || "15px",
+    fontSize:
+      (paragraphstyle?.responsive?.md?.fontSize || "15px") + " !important",
     marginBottom: paragraphstyle?.responsive?.md?.marginBottom || "24px",
-    // maxWidth: paragraphstyle?.responsive?.md?.maxWidth || "100%",
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: paragraphstyle?.responsive?.sm?.fontSize || "14px",
+    fontSize:
+      (paragraphstyle?.responsive?.sm?.fontSize || "14px") + " !important",
     lineHeight: paragraphstyle?.responsive?.sm?.lineHeight || "1.6",
     marginBottom: paragraphstyle?.responsive?.sm?.marginBottom || "20px",
   },
   [theme.breakpoints.down("xs")]: {
-    fontSize: paragraphstyle?.responsive?.xs?.fontSize || "13px",
+    fontSize:
+      (paragraphstyle?.responsive?.xs?.fontSize || "13px") + " !important",
     lineHeight: paragraphstyle?.responsive?.xs?.lineHeight || "1.65",
   },
 }));
@@ -318,7 +288,7 @@ const BreadcrumbsWrapper = styled(Box)(({ theme, breadcrumbsPosition }) => ({
     top: breadcrumbsPosition.sm?.top || breadcrumbsPosition.top,
     left: breadcrumbsPosition.sm?.left || breadcrumbsPosition.left,
   },
-  [theme.breakpoints.down("xs")]: {
+  [theme.breakpoints.only("xs")]: {
     top: breadcrumbsPosition.xs?.top || breadcrumbsPosition.top,
     left: breadcrumbsPosition.xs?.left || breadcrumbsPosition.left,
   },
@@ -394,31 +364,31 @@ const CustomBanner = ({
 
   // Styling props with enhanced responsive options
   headingStyle = {
-    // responsive: {
-    //   xl: { fontSize: "44px", maxWidth: "550px" },
-    //   lg: { fontSize: "40px", maxWidth: "500px" },
-    //   md: { fontSize: "36px", maxWidth: "100%" },
-    //   sm: { fontSize: "28px", marginBottom: "10px" },
-    //   xs: { fontSize: "24px" },
-    // },
+    responsive: {
+      xl: { fontSize: "44px" },
+      lg: { fontSize: "40px" },
+      md: { fontSize: "36px" },
+      sm: { fontSize: "28px", marginBottom: "10px" },
+      xs: { fontSize: "24px" },
+    },
   },
   subheadingStyle = {
     responsive: {
-      // xl: { fontSize: "24px", maxWidth: "800px" },
-      // lg: { fontSize: "22px", maxWidth: "700px" },
-      // md: { fontSize: "20px", maxWidth: "100%" },
-      // sm: { fontSize: "18px", marginBottom: "14px" },
-      // xs: { fontSize: "16px" },
+      xl: { fontSize: "24px" },
+      lg: { fontSize: "22px" },
+      md: { fontSize: "20px" },
+      sm: { fontSize: "18px", marginBottom: "14px" },
+      xs: { fontSize: "16px" },
     },
   },
   paragraphStyle = {
-    // responsive: {
-    //   xl: { maxWidth: "700px" },
-    //   // lg: { fontSize: "15px", maxWidth: "600px" },
-    //   // md: { fontSize: "15px", maxWidth: "100%" },
-    //   sm: { fontSize: "13px", marginBottom: "15px" },
-    //   xs: { fontSize: "12px" },
-    // },
+    responsive: {
+      xl: { maxWidth: "700px" },
+      // lg: { fontSize: "15px", maxWidth: "600px" },
+      // md: { fontSize: "15px", maxWidth: "100%" },
+      sm: { fontSize: "13px", marginBottom: "15px" },
+      xs: { fontSize: "12px" },
+    },
   },
   buttonsContainer = {
     lg: { gap: "14px" },
@@ -448,31 +418,25 @@ const CustomBanner = ({
       {/* Overlay */}
       {overlay && <Overlay overlay={overlay} />}
 
-  
-  
-      
       {/* Main Content */}
       <ContentContainer
         contentalignment={contentAlignment}
         contentposition={contentPosition}
       >
         {/* Logo */}
-      {showLogo && logoSrc && (
-        <Link href="/" style={{ display: "block" }}>
-        <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
-          
-            <Image
-              src={logoSrc}
-              alt={logoAlt}
-              width={120} // You can adjust
-              height={120} // You can adjust
-              style={{ width: "100%", height: "auto" }}
-            />
-          
-        </LogoContainer>
-        </Link>
-      )}
-      
+        {showLogo && logoSrc && (
+          <Link href="/" style={{ display: "block" }}>
+            <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
+              <Image
+                src={logoSrc}
+                alt={logoAlt}
+                width={120} // You can adjust
+                height={120} // You can adjust
+                style={{ width: "100%", height: "auto" }}
+              />
+            </LogoContainer>
+          </Link>
+        )}
 
         {/* Title */}
         {title && (
@@ -521,20 +485,19 @@ const CustomBanner = ({
             ))}
           </ButtonContainer>
         )}
-{/* Breadcrumbs - Added this new section */}
+        {/* Breadcrumbs - Added this new section */}
 
         {/* Custom children content */}
         {children}
         {breadcrumbs && (
-        <BreadcrumbsWrapper
-          breadcrumbsPosition={breadcrumbsPosition}
-          sx={breadcrumbsSx}
-        >
-          <BreadcrumbsComponent items={breadcrumbs} />
-        </BreadcrumbsWrapper>
-      )}
+          <BreadcrumbsWrapper
+            breadcrumbsPosition={breadcrumbsPosition}
+            sx={breadcrumbsSx}
+          >
+            <BreadcrumbsComponent items={breadcrumbs} />
+          </BreadcrumbsWrapper>
+        )}
       </ContentContainer>
-      
     </BannerSection>
   );
 };
