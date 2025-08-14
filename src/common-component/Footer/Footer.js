@@ -72,7 +72,7 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  component="p"
+                  component={'p'}
                   sx={{
                     
                     mb: 1,
@@ -97,7 +97,8 @@ const Footer = () => {
                     style={{ textDecoration: "none" ,width:"fit-content"}}
                   >
                     <Typography
-                     component="p"
+                      variant="body2"
+                      component={'span'}
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
@@ -124,7 +125,8 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                 component="p"
+                  variant="h6"
+                  component={'span'}
                   sx={{
                   
                     mb: 1,
@@ -176,7 +178,8 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                 component="p"
+                  variant="h6"
+                  component={'span'}
                   sx={{
                    
                     mb: 1,
