@@ -103,7 +103,11 @@ export default function WeddingSection() {
         <Grid
           mt={{xs:5,sm:3,md:0}}
           container
-          spacing={3}
+          spacing={{
+            xs:1,
+            sm:3, 
+
+          }}
           sx={{
             // maxWidth: {
             //   xs: "100%",
@@ -132,7 +136,7 @@ export default function WeddingSection() {
                 borderRadius: 3,
                 boxShadow: 3,
                 objectFit: "cover",
-                height: { xs: 220, sm: 200, md: 230, lg: 260, xl: 260 },
+                height: { xs: 200, sm: 200, md: 230, lg: 260, xl: 260 },
               }}
               onError={(e) => {
                 e.target.onerror = null;
@@ -152,7 +156,7 @@ export default function WeddingSection() {
                 boxShadow: 3,
                 objectFit: "cover",
                 mt: { xs: 4, sm: 4, md: 4, lg: 8, xl: 8 },
-                height: { xs: 210, sm: 200, md: 220, lg: 260, xl: 260 },
+                height: { xs: 200, sm: 200, md: 220, lg: 260, xl: 260 },
               }}
               onError={(e) => {
                 e.target.onerror = null;
