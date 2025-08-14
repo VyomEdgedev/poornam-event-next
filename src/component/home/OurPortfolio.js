@@ -14,6 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const PortfolioSection = () => {
   const theme = useTheme();
@@ -231,6 +232,7 @@ const PortfolioSection = () => {
               alt={portfolioImages[5].alt}
               // onClick={() => handleOpenModal(5)}
             >
+              <Link href="/gallery" style={{ textDecoration: 'none' }}>
               <Button
                 data-testid="notify-button"
                 onClick={() => handlegallery()}
@@ -266,6 +268,7 @@ const PortfolioSection = () => {
               >
                 View Full Wedding Stories
               </Button>
+              </Link>
             </PortfolioImage>
           </Box>
         </Box>
@@ -319,6 +322,7 @@ const PortfolioSection = () => {
               alt={portfolioImages[4].alt}
               onClick={() => handleOpenModal(4)}
             >
+              
               <Button
                 data-testid="notify-button"
                 onClick={() => handlegallery()}
@@ -352,6 +356,7 @@ const PortfolioSection = () => {
               >
                 View Full Wedding Stories
               </Button>
+             
             </PortfolioImage>
           </Box>
         </Box>

@@ -148,6 +148,7 @@ export default function HeroSection() {
                   >
                     Plan My Wedding
                   </CustomButton>
+                   <Link href="/https://wa.me/919519066885" style={{ textDecoration: 'none' }}>
                   <CustomButton
                     data-testid="notify-button"
                     variant="outlined"
@@ -172,6 +173,7 @@ export default function HeroSection() {
                   >
                     Talk to Our Planner
                   </CustomButton>
+                  </Link>
                 </Stack>
               </Box>
             </Box>
