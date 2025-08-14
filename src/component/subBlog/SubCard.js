@@ -8,6 +8,8 @@ import {
   Chip,
   IconButton,
   CircularProgress,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 import axios from "axios";
@@ -23,12 +25,45 @@ const cardData = {
   date: "02-07-2025",
 };
 
-const BlogCard = ({setFaq}) => {
+const BlogCard = ({ setFaq }) => {
   const [posts, setPosts] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showShareMessage, setShowShareMessage] = useState(false);
   const router = useRouter();
   const { id } = router.query;
+  console.log("CRAD component");
+
+  // Share functionality
+  const handleShare = async () => {
+    console.log("handleShare");
+    const currentUrl = window.location.href;
+    const shareData = {
+      title: posts?.title || "Blog Post",
+      text: posts?.excerpt || "Check out this interesting blog post!",
+      url: currentUrl,
+    };
+    console.log("ad", currentUrl);
+    try {
+      if (navigator.share && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+      } else {
+        console.log("clipboard");
+        await navigator.clipboard.writeText(currentUrl);
+        setShowShareMessage(true);
+      }
+    } catch (error) {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        setShowShareMessage(true);
+      } catch (clipboardError) {
+        console.error("Failed to copy URL:", clipboardError);
+
+        alert(`Share this URL: ${currentUrl}`);
+      }
+    }
+  };
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -37,7 +72,7 @@ const BlogCard = ({setFaq}) => {
         const data = response.data.blog;
         if (data) {
           setPosts(data);
-          setFaq(data.faq)
+          setFaq(data.faq);
         } else {
           setPosts(null);
         }
@@ -51,8 +86,10 @@ const BlogCard = ({setFaq}) => {
       fetchBlogs();
     }
   }, [id]);
+
   // if (loading) return <CircularProgress sx={{ m: 5 }} />;
   if (error) return <Typography color="error">Error: {error}</Typography>;
+
   return (
     <Box
       display="flex"
@@ -61,6 +98,7 @@ const BlogCard = ({setFaq}) => {
       flexDirection="column"
       px={{ xs: 2, sm: 6, md: 10 }}
       py={5}
+      mt={6}
     >
       {posts && (
         <Card
@@ -77,22 +115,33 @@ const BlogCard = ({setFaq}) => {
             alt={posts?.title}
             width={600}
             height={400}
-            style={{ objectFit: "cover", width: "100%", height: "100%" ,position:"center" }}
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+              position: "center",
+            }}
           />
 
           {/* Share icon top-right */}
           <IconButton
-            data-testid="notify-button"
+            data-testid="share-button"
+            onClick={handleShare}
             sx={{
               position: "absolute",
               top: 10,
               right: 10,
               color: "white",
-              // bgcolor: 'rgba(0,0,0,0.4)',
-              "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+              bgcolor: "rgba(0,0,0,0.3)",
+              zIndex: "1500",
+              "&:hover": {
+                bgcolor: "rgba(0,0,0,0.6)",
+                transform: "scale(1.1)",
+                transition: "all 0.2s ease-in-out",
+              },
             }}
           >
-            <ShareIcon data-testid="notify-button" />
+            <ShareIcon sx={{ cursor: "pointer" }} />
           </IconButton>
 
           {/* Overlay Text */}
@@ -108,7 +157,7 @@ const BlogCard = ({setFaq}) => {
             }}
           >
             <Typography
-             component={"p"}
+              component={"p"}
               sx={{
                 fontWeight: 600,
                 fontFamily: "Akatab,Sans-serif",
@@ -117,9 +166,8 @@ const BlogCard = ({setFaq}) => {
               Category: {posts?.category?.name || "N/A"}
             </Typography>
             <Typography
-            component={"p"}
+              component={"p"}
               sx={{
-               
                 fontWeight: 600,
                 fontFamily: "Akatab,Sans-serif",
               }}
@@ -143,6 +191,22 @@ const BlogCard = ({setFaq}) => {
           </Box>
         </Card>
       )}
+
+      {/* Share success message */}
+      <Snackbar
+        open={showShareMessage}
+        autoHideDuration={3000}
+        onClose={() => setShowShareMessage(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setShowShareMessage(false)}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          URL copied to clipboard!
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
