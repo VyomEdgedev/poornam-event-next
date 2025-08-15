@@ -67,6 +67,7 @@ export default function AboutSection() {
               <Button
                 data-testid="notify-button"
                 sx={{
+                   fontFamily: "Akatab, Sans-serif !important",
                   textDecoration: "none",
                   color: "inherit",
                   whiteSpace: "nowrap",

@@ -16,35 +16,35 @@ const StyledCustomButton = styled(Button)(({ theme, variant }) => ({
   fontFamily: theme.typography.fontFamily,
   whiteSpace: 'nowrap',
   minWidth: '120px', // Minimum width to prevent too narrow buttons
-  
+
   // Tablet styles
   [theme.breakpoints.up('sm')]: {
     width: '178px',
     padding: '10px 22px',
     fontSize: '16px',
   },
-  
+
   // Desktop styles
   [theme.breakpoints.up('md')]: {
     width: '178px',
     padding: '10px 22px',
     fontSize: '16px',
   },
-  
+
   // Large desktop styles
   [theme.breakpoints.up('lg')]: {
     width: '178px',
     padding: '10px 22px',
     fontSize: '16px',
   },
-  
+
   // Extra small devices (portrait phones)
   [theme.breakpoints.down('xs')]: {
     fontSize: '13px',
     padding: '8px 14px',
     height: '42px',
   },
-  
+
   // Primary variant (solid background)
   ...(variant === 'primary' && {
     backgroundColor: '#D7A10F',
@@ -62,7 +62,7 @@ const StyledCustomButton = styled(Button)(({ theme, variant }) => ({
       color: '#A0A0A0',
     },
   }),
-  
+
   // Secondary variant (with border)
   ...(variant === 'secondary' && {
     backgroundColor: '#D7A10F',
@@ -104,6 +104,7 @@ const CustomButton = ({
       type={type}
       className={className}
       disableRipple
+      fontFamily="Akatab,Sans-serif  !important"
       sx={{
         // Override width if fullWidth is true
         ...(fullWidth && {
