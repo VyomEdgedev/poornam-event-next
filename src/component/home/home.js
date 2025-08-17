@@ -18,8 +18,9 @@ import SEO from "@/common-component/SEO/seo";
 
 
 
-export default function HomePage() {
+export default function HomePage({ categories }) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
+  console.log(categories)
   return (
     <>
       <>
@@ -52,4 +53,26 @@ export default function HomePage() {
       <ContactSection></ContactSection> 
     </>
   )
+}
+
+export async function getServerSideProps() {
+  try {
+    const categoryResponse = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/category/getuserpanel/event`
+    );
+console.log(process.env.NEXT_PUBLIC_API_BASE_URL , "ddddddddddddddddddddd")
+    return {
+      props: {
+        categories: categoryResponse.data || [],
+      },
+    };
+
+  } catch (error) {
+    console.error("Error fetching categories:", error.message);
+    return {
+      props: {
+        categories: [],
+      },
+    };
+  }
 }

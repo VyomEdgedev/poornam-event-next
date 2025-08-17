@@ -337,6 +337,7 @@ const BreadcrumbsWrapper = styled(Box)(({ theme, breadcrumbsPosition }) => ({
 // Main Banner Component
 const CustomBanner = ({
   // Content props
+  headingtag="h2",
   title,
   subtitle,
   paragraphSubtitle,
@@ -492,7 +493,7 @@ const CustomBanner = ({
       >
         {/* Title */}
         {title && (
-          <MainHeading variant="h2" headingstyle={headingStyle}>
+          <MainHeading variant={`${headingtag}`} headingstyle={headingStyle}>
             {title}
           </MainHeading>
         )}
