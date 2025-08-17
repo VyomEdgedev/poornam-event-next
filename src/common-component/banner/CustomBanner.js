@@ -174,7 +174,7 @@ const ContentContainer = styled(Container)(
 );
 
 const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
-  fontFamily: headingstyle?.fontFamily || "'Gloock', serif",
+  fontFamily: headingstyle?.fontFamily || "'Gloock', serif  !important",
   fontWeight: headingstyle?.fontWeight || "400",
   fontSize: headingstyle?.fontSize || "48px",
   letterSpacing: headingstyle?.letterSpacing || "0.03em",
@@ -211,7 +211,7 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
 }));
 
 const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
-  fontFamily: subheadingstyle?.fontFamily || "'Akatab',Sans-serif",
+  fontFamily: subheadingstyle?.fontFamily || "'Akatab',Sans-serif !important",
   fontWeight: subheadingstyle?.fontWeight || "600",
   fontSize: subheadingstyle?.fontSize || "26px !important",
   letterSpacing: subheadingstyle?.letterSpacing || "0.02em",
@@ -245,7 +245,7 @@ const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
 }));
 
 const ParagraphSubtitle = styled(Typography)(({ theme, paragraphstyle }) => ({
-  fontFamily: paragraphstyle?.fontFamily || "'Akatab', sans-serif",
+  fontFamily: paragraphstyle?.fontFamily || "'Akatab', sans-serif !important",
   fontWeight: paragraphstyle?.fontWeight || "400",
   fontSize: paragraphstyle?.fontSize || "16px",
   letterSpacing: paragraphstyle?.letterSpacing || "0.01em",
@@ -336,6 +336,8 @@ const BreadcrumbsWrapper = styled(Box)(({ theme, breadcrumbsPosition }) => ({
 
 // Main Banner Component
 const CustomBanner = ({
+  // Content props
+  headingtag="h2",
   title,
   subtitle,
   paragraphSubtitle,
@@ -487,7 +489,7 @@ const CustomBanner = ({
       >
         {/* Title */}
         {title && (
-          <MainHeading variant="h2" headingstyle={headingStyle}>
+          <MainHeading variant={`${headingtag}`} headingstyle={headingStyle}>
             {title}
           </MainHeading>
         )}

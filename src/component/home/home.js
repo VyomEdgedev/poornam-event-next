@@ -18,8 +18,9 @@ import SEO from "@/common-component/SEO/seo";
 
 
 
-export default function HomePage() {
+export default function HomePage(props) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
+console.log(props.categorie , 'categoriescategoriescategoriescategories')
   return (
     <>
       <>
@@ -48,8 +49,9 @@ export default function HomePage() {
       <HomeSnapshot></HomeSnapshot>
       <ResourcesSection></ResourcesSection>
       <FAQSection></FAQSection>
-      <InspirationSection></InspirationSection>
+      <InspirationSection categories={props.categorie}></InspirationSection>
       <ContactSection></ContactSection> 
     </>
   )
 }
+
