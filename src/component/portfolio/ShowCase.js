@@ -130,20 +130,20 @@ const ShowCase = () => {
   return (
     <Container maxWidth="xl" sx={{ py: 2 }}>
       <Typography
-      
+
         component="h2"
         align="center"
         sx={{
           fontWeight: "400",
           mb: 1,
           fontFamily: "Gloock,serif",
-        
+
         }}
       >
         {` Visual Showcase `}
       </Typography>
       <Typography
-      
+
         component="p"
         align="center"
         sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
@@ -167,6 +167,7 @@ const ShowCase = () => {
         />
         <CustomButton
           onClick={handleBrowse}
+          fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
@@ -196,8 +197,8 @@ const ShowCase = () => {
                 }}
                 elevation={1}
               >
-                <Chip 
-                component={"p"}
+                <Chip
+                  component={"p"}
                   label={item.category?.name || "No Category"}
                   size="small"
                   sx={{
@@ -205,7 +206,7 @@ const ShowCase = () => {
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                  
+
                     zIndex: 2,
                   }}
                 />
@@ -232,24 +233,24 @@ const ShowCase = () => {
                 </Box>
                 <CardContent>
                   <Typography
-                 
+
                     component="p"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "400",
-                   
+
                     }}
                   >
-                    {item.category?.name }
+                    {item.category?.name}
                   </Typography>
                   <Typography
-                   
+
                     component="h6"
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: "500",
                       color: "#000000",
-                     
+
                     }}
                   >
                     {/* {staticDescriptions[idx] || "A beautiful wedding moment."} */}
@@ -268,7 +269,7 @@ const ShowCase = () => {
           sx: { backgroundColor: "rgba(0,0,0,0.5)" },
         }}
       >
-       <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt:3 }}>
+        <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 3 }}>
           {/* Close Button */}
           <IconButton
             onClick={handleCloseModal}
@@ -278,7 +279,7 @@ const ShowCase = () => {
               right: 20,
               color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412",
+              backgroundColor: "#DAA412",
               // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
@@ -290,17 +291,17 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               left: 20,
-            color: "#fff",
+              color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412 !important",
+              backgroundColor: "#DAA412 !important",
               // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
             <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
           </IconButton>
           {/* Image */}
-          <Box sx={{ height:"100vh",width:"100%", }}>
-          
+          <Box sx={{ height: "100vh", width: "100%", }}>
+
             {portfolioImages.length > 0 && (
               <Image
                 src={portfolioImages[currentIndex].src}
@@ -316,9 +317,9 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               right: 20,
-               color: "#fff",
+              color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412 !important",
+              backgroundColor: "#DAA412 !important",
               // p: { xs: 0.5, sm: 0.75, md: 1 }, 
             }}
           >

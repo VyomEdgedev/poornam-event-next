@@ -83,8 +83,8 @@ export default function ContactUs() {
       </>
       <CustomBanner
         title="Let's Make Shaadi Magic Together!"
-        subtitle="From planning to 'I do', we've got your back!"
-        // paragraphSubtitle="Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with ❤️, dhol, and a bit of dholak. For brides, grooms, families, and even the baaratis. Let’s get planning, Poornam-style."
+        paragraphSubtitle="From planning to 'I do', we've got your back!"
+        // subtitle="Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with ❤️, dhol, and a bit of dholak. For brides, grooms, families, and even the baaratis. Let’s get planning, Poornam-style."
         backgroundImage="/ConnectUsBanner.png"
         showLogo={true}
         logoSrc="/logo.png"
