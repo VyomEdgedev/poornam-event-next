@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 
 const data = [
   {
@@ -20,7 +21,8 @@ const data = [
   },
 ];
 
-export default function InspirationSection() {
+export default function InspirationSection({categories=data}) {
+  console.log(categories , 'categories')
   return (
     <Container>
     <Box sx={{ textAlign: "center" ,py:5}}>
@@ -31,15 +33,13 @@ export default function InspirationSection() {
         {`Inspirations & Blogs`}
       </Typography>
 
-      {/* <Grid
-        container
-        spacing={5}
-        justifyContent="center"
-        padding="0px 0px"
-      > */}
         <Grid container  rowSpacing={{ xs:2}} columnSpacing={{xs:0 ,md:6}} columns={{ xs: 12, sm: 12, md: 12 }} justifyContent="center">
-        {data.map((item, index) => (
+        {categories.map((item, index) => (
           <Grid item key={index} size={{ xs: 6, sm: 5, md: 3 }}>
+                <Link
+                href={`/blog/?category=${item.name}`} 
+                style={{ textDecoration: "none" }}
+              >
             <Box
               sx={{
                 width: { xs: 150, sm: 170, md: 200, lg: 230 },
@@ -109,9 +109,10 @@ export default function InspirationSection() {
                   transition: "transform 0.6s ease-in-out", // ⬅️ slower and smooth
                 }}
               >
-                {item.label}
+                {item.name}
               </Typography>
             </Box>
+            </Link>
           </Grid>
         ))}
       </Grid>
