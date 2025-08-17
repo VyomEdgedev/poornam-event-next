@@ -4,12 +4,9 @@ import {
   Typography,
   Grid,
   Button,
-  useMediaQuery,
-  useTheme,
   Container,
 } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 const services = [
   {
@@ -84,7 +81,7 @@ const FlipCard = ({ service }) => {
       onMouseLeave={() => setFlipped(false)}
       sx={{
         width: "100%",
-        height: {xs:330,sm:350},
+        height: { xs: 330, sm: 350 },
         perspective: 1500,
         cursor: "pointer",
         transition: "transform 0.4s ease-in-out",
@@ -143,8 +140,8 @@ const FlipCard = ({ service }) => {
               backdropFilter: "blur(4px)",
             }}
           >
-            <Typography   fontFamily= 'Akatab, sans-serif'
-             variant="p" fontWeight={600}>
+            <Typography fontFamily='Akatab, sans-serif'
+              fontWeight={600}>
               {service.title}
             </Typography>
           </Box>
@@ -162,7 +159,7 @@ const FlipCard = ({ service }) => {
             background: "#000D1F",
             border: "1px solid rgba(255,255,255,0.15)",
             color: "#fff",
-            px: {xs:1,sm:2,md:3},
+            px: { xs: 1, sm: 2, md: 3 },
             py: 3,
             boxShadow: "inset 0 0 10px rgba(255,255,255,0.1)",
             display: "flex",
@@ -172,7 +169,6 @@ const FlipCard = ({ service }) => {
             textAlign: "center",
             overflow: "hidden",
             zIndex: 1,
-            position: "absolute",
             "::before": {
               content: '""',
               position: "absolute",
@@ -191,8 +187,7 @@ const FlipCard = ({ service }) => {
           }}
         >
           {service.guests && (
-            <Typography 
-            component="p"
+            <Typography
               sx={{
                 bgcolor: "rgba(255,255,255,0.8)",
                 color: "#0D1A46",
@@ -207,7 +202,6 @@ const FlipCard = ({ service }) => {
             </Typography>
           )}
           <Typography
-            component="p"
             fontWeight={600}
             fontFamily={"Akatab,Sans-serif"}
             sx={{ mb: 1, zIndex: 2 }}
@@ -215,10 +209,9 @@ const FlipCard = ({ service }) => {
             {service.title}
           </Typography>
           <Typography
-            component="p"
             sx={{
               color: "#f5f5f5",
-              fontFamily: "Akatab,Sans-serif",
+              fontFamily: "Akatab,sans-serif",
               color: "#FFFBF0",
               lineHeight: 1.2,
               mb: 2,
@@ -230,7 +223,7 @@ const FlipCard = ({ service }) => {
           {service.cta && service.link && (
             <Link href={service.link} passHref>
               <Button
-                variant="contained"    
+                variant="contained"
                 size="small"
                 sx={{
                   bgcolor: "#D7A10F",
@@ -248,7 +241,7 @@ const FlipCard = ({ service }) => {
                   },
                 }}
 
-                // style={{ cursor: 'pointer' }}
+              // style={{ cursor: 'pointer' }}
               >
                 {service.cta}
               </Button>
@@ -261,51 +254,47 @@ const FlipCard = ({ service }) => {
 };
 
 export default function OurServices() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <Box
       sx={{
         py: { xs: 4, sm: 6, md: 2 },
+        pb:{md:4},
         bgcolor: "#FFFAED",
         textAlign: "center",
       }}
     >
       <Container>
-          <Typography
-            component="p"
-            sx={{
-              fontSize:"32px !important",
-              fontFamily: "Gloock, serif",
-              fontWeight: "400",
-              color: "#0D1A46",
-              mb: 1,
-            }}
-          >
-            Our Services
-          </Typography>
-          <Typography
-            component="p"
-            color="#000000"
-            fontFamily={"Akatab,Sans-serif"}
-            fontWeight={400}
-            mb={{ xs: 2, md: 4 }}
-          >
-            {` Everything You Need, Delivered Beautifully`}
-          </Typography>
+        <Typography
+          sx={{
+            fontSize: "32px !important",
+            fontFamily: "Gloock, serif",
+            fontWeight: "400",
+            color: "#0D1A46",
+            mb: 1,
+          }}
+        >
+          Our Services
+        </Typography>
+        <Typography
+          color="#000000"
+          fontFamily={"Akatab,Sans-serif"}
+          fontWeight={400}
+          mb={{ xs: 2, md: 4 }}
+        >
+          {` Everything You Need, Delivered Beautifully`}
+        </Typography>
 
-          <Grid
-            container
-            spacing={{ xs: 1, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }}
-            justifyContent="center"
-          >
-            {services.map((service, index) => (
-              <Grid item xs={12} size={{ xs: 6, sm: 4, md: 3 ,lg:3}} key={index}>
-                <FlipCard service={service} />
-              </Grid>
-            ))}
-          </Grid>
+        <Grid
+          container
+          spacing={{ xs: 1, md: 3 }} columns={12}
+          justifyContent="center"
+        >
+          {services.map((service, index) => (
+            <Grid item xs={12} size={{ xs: 6, sm: 4, md: 3 }} key={index}>
+              <FlipCard service={service} />
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );

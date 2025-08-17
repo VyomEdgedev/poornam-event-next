@@ -5,6 +5,7 @@ import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Styles from "@/styles/Home.module.scss";
 
 export default function HeroSection() {
   const [open, setOpen] = useState(false);
@@ -30,17 +31,15 @@ export default function HeroSection() {
     }
   }, []);
   return (
-    <Box sx={{ backgroundColor: "#030b1d", overflow:"hidden",pt: { xs: 12, md: 0 } }}>
+    <Box sx={{ backgroundColor: "#030b1d", overflow: "hidden", pt: { xs: 12, md: 0 } }}>
       <Container>
         <>
           <ConnectModal open={open} setOpen={setOpen} />
           <Box
             sx={{
               display: "flex",
-              flexDirection: { xs: "column",md: "row" },
-              alignItems: "stretch",
+              flexDirection: { xs: "column", md: "row" },
               justifyContent: "space-between",
-              
             }}
           >
             <Box
@@ -53,12 +52,12 @@ export default function HeroSection() {
               <Box
                 mb={2}
                 sx={{
-                  display: { xs: "none",md: "block" },
+                  display: { xs: "none", md: "block" },
                   position: "absolute",
                   top: 10,
                   left: 0,
                   zIndex: 6,
-                  width: { xs: 80 ,lg: 100 },
+                  width: { xs: 80, lg: 100 },
                 }}
               >
                 <Link href="/" passHref>
@@ -68,7 +67,7 @@ export default function HeroSection() {
                     width={120}
                     height={120}
                     style={{
-                      width: "100%", 
+                      width: "100%",
                       height: "auto",
                     }}
                   />
@@ -77,11 +76,9 @@ export default function HeroSection() {
               <Box
                 sx={{
                   zIndex: 5,
-                  width: "100%",
                   height: { xs: "100%", md: "50%" },
                   position: { xs: "initial", md: "absolute" },
                   top: { xs: "20px", sm: "100px", md: "130px", lg: "170px" },
-                  left: { xs: 0, sm: 0, md: 0 },
                   mt: { xs: "4px", sm: "15px", md: 0 },
                 }}
               >
@@ -91,29 +88,26 @@ export default function HeroSection() {
                   sx={{
                     color: "#E6C365",
                     fontFamily: "Gloock, serif",
-                    textAlign:"left" ,
-                    whiteSpace: { xs: "wrap", md: "nowrap"},
+                    whiteSpace: { xs: "wrap", md: "nowrap" },
                     zIndex: 7,
                     letterSpacing: "2px",
                   }}
                 >
-                  {` Shaadiyaan Banti Hain Yaadon Se...`}
+                  Shaadiyaan Banti Hain Yaadon&nbsp;Se...
                 </Typography>
 
                 <Typography
                   component="span"
                   sx={{
                     fontSize: {
-      xs: "20px", 
-      sm: "24px", 
-      md: "28px", 
-      lg: "32px ", 
-    },
+                      xs: "20px",
+                      sm: "24px",
+                      md: "28px",
+                      lg: "32px ",
+                    },
                     color: "#FFF5D9",
                     fontWeight: 400,
                     fontFamily: "Akatab,Sans-serif ",
-                    textAlign: { xs: "left", md: "left" },
-                    // ml: { xs: 3, sm: 2, md: 5, lg: 5 },
                     letterSpacing: "1px",
                   }}
                 >
@@ -126,20 +120,18 @@ export default function HeroSection() {
                     textAlign: { xs: "left", md: "left" },
                     fontFamily: "Akatab,Sans-serif",
                     fontWeight: 400,
-                    whiteSpace: { xs: "wrap", sm: "wrap", md: "nowrap" },
                     mb: 3,
                     letterSpacing: "0.5px",
                   }}
                 >
-                  {` Luxury meets laughter, chaos choreographed-beautiful weddings across
-              Indore, Bhopal & Ujjain.`}
+                  Luxury meets laughter, chaos choreographed-beautiful weddings across Indore, Bhopal & Ujjain.
                 </Typography>
 
                 <Stack
-                  direction={{ xs: "row", sm: "row" }}
+                  direction={"row"}
                   spacing={2}
-                  marginTop={{ xs: 0, sm: 0, md: 4, lg: 5 }}
-                  marginBottom={{ xs: 3, sm: 3, md: 0, lg: 0 }}
+                  marginTop={{ xs: 0, md: 4, lg: 5 }}
+                  marginBottom={{ xs: 3, md: 0, lg: 0 }}
                   alignContent={{ xs: "center", md: "flex-start" }}
                 >
                   <CustomButton
@@ -148,13 +140,13 @@ export default function HeroSection() {
                     onClick={handleWeddingPlan}
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
-                      fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
                       fontWeight: 400,
                     }}
                   >
                     Plan My Wedding
                   </CustomButton>
-                   <Link href="/https://wa.me/919519066885" style={{ textDecoration: 'none' }}>
+
                   <CustomButton
                     data-testid="notify-button"
                     variant="outlined"
@@ -167,7 +159,7 @@ export default function HeroSection() {
                       borderRadius: "30px",
                       textTransform: "none",
                       fontFamily: "Akatab,Sans-serif",
-                      fontSize: { xs: "0.70rem", sm: "1rem", md: "1rem" },
+                      fontSize: { xs: "0.70rem", sm: "1rem" },
                       fontWeight: 400,
                       whiteSpace: "nowrap",
                       "&:hover": {
@@ -179,7 +171,6 @@ export default function HeroSection() {
                   >
                     Talk to Our Planner
                   </CustomButton>
-                  </Link>
                 </Stack>
               </Box>
             </Box>
@@ -190,10 +181,11 @@ export default function HeroSection() {
                 flex: 1,
                 width: "100%",
                 overflow: { xs: "visible", md: "hidden" },
-                // borderRadius: 2,
-                zIndex: 1,
-                position:"relative",
-                right:{md:"-150px"}
+                position: "relative",
+                right: { md: "-150px" },
+                display: "flex",
+                justifyContent: 'center'
+
               }}
             >
               <Image
@@ -201,14 +193,7 @@ export default function HeroSection() {
                 alt="Bridal Hero"
                 width={500}
                 height={405}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "top",
-                  display: "block",
-                  transform: "scaleX(-1)",
-                }}
+                className={Styles.HomeBrideImg}
               />
             </Box>
           </Box>

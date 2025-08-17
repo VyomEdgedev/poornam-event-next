@@ -11,7 +11,7 @@ export default function AboutSection() {
           bgcolor: "#fff",
           marginTop: "10px",
           marginBottom: "10px",
-          py: {xs:3,md:5},
+          py: { xs: 3, md: 5 },
         }}
       >
         <Typography
@@ -27,14 +27,10 @@ export default function AboutSection() {
         </Typography>
 
         <Typography
-          component="p"
           sx={{
-            color: "#000D1F",
-            
             fontFamily: "Akatab,Sans-serif",
             color: "#000000",
             fontWeight: "400",
-            // textAlign: "center",
             mb: 2,
           }}
         >
@@ -46,13 +42,9 @@ export default function AboutSection() {
         </Typography>
 
         <Typography
-          component="p"
           sx={{
             color: "#000000",
-            // fontSize: "1rem",
-            //lineHeight: 1.75,
             fontFamily: "Akatab,Sans-serif",
-            color: "#000000",
             fontWeight: "400",
             mb: 4,
           }}
@@ -61,7 +53,7 @@ export default function AboutSection() {
           brings emotion, elegance, and flawless execution to every event.`}
         </Typography>
 
-        <Box sx={{display: "flex", justifyContent: {xs:"center" ,sm:"flex-start"}}}>
+        <Box sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-start" } }}>
           <CustomButton data-testid="notify-button">
             <Link href="/aboutus" passHref legacyBehavior>
               <Button
@@ -72,7 +64,7 @@ export default function AboutSection() {
                   whiteSpace: "nowrap",
                   fontSize: "16px",
                   textTransform: "capitalize",
-                   fontFamily: "Akatab,Sans-serif",
+                  fontFamily: "Akatab,Sans-serif",
                 }}
               >
                 {`Meet Our Story`}
