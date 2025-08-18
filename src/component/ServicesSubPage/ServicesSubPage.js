@@ -159,11 +159,11 @@ function ServicesSubPage() {
           //             // bgcolor: '#f8f9fa'
         }}
       > */}
-      <WhyChoose title={title} />
+      <WhyChoose title={title} description={service?.description || ''} />
       <WeOffer serviceId={id} />
-      <WhyPoornam poornamId={id}/>
+      <WhyPoornam poornamId={id}  service={service}/>
       {/* </Box> */}
-      <CapturedMoments title={title} porfioId={id} />
+      <CapturedMoments title={title} service={service} />
       <YourDream blogId={id} />
       <WeddingKit />
       <FAQSection faqData={service?.faq || []} />

@@ -44,33 +44,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 //   "An elegant beach ceremony.",
 //   "Simplicity meets elegance.",
 // ];
-const CapturedMoments = ({ title, porfioId }) => {
-  const [moments, setMoments] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const CapturedMoments = ({ title, service =[]}) => {
+  const moments = service?.relatedPortfolios || []
   const router = useRouter();
-  useEffect(() => {
-    const fetchMoments = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${porfioId}/event`
-        );
-        if (response.data.relatedPortfolios) {
-          setMoments(response.data.relatedPortfolios);
-        } else {
-          setMoments([]);
-        }
-      } catch (err) {
-        setMoments([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (porfioId) {
-      fetchMoments();
-    }
-  }, [porfioId]);
 
   const handleViewAll = (category_id) => {
     const id =
@@ -81,10 +57,7 @@ const CapturedMoments = ({ title, porfioId }) => {
       router.push(`/browsegallery?filter=${id}`);
     }
   };
-  // Don't render the entire section if there's no data and not loading
-  if (!loading && moments.length === 0) {
-    return null;
-  }
+
 
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
@@ -125,18 +98,6 @@ const CapturedMoments = ({ title, porfioId }) => {
             View All
           </CustomButton>
         </Box>
-        {loading ? (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              minHeight: 300,
-            }}
-          >
-            <CircularProgress sx={{color:"#DAA412"}} />
-          </Box>
-        ) : (
           <Grid
             container
             spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 8 }}
@@ -183,7 +144,7 @@ const CapturedMoments = ({ title, porfioId }) => {
                     <Image
                       src={portfolio.images?.[0]?.url || "/YourDream1.png"}
                       alt={
-                        portfolio.featuredImage?.altText || "Your Dream Theme"
+                        portfolio?.featuredImage?.altText || "Your Dream Theme"
                       }
                       layout="fill"
                       objectFit="cover"
@@ -216,8 +177,7 @@ const CapturedMoments = ({ title, porfioId }) => {
               </Grid>
             ))}
           </Grid>
-        )}
-      </Container>
+     </Container>
     </Box>
   );
 };

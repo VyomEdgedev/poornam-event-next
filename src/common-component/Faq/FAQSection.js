@@ -11,14 +11,8 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const faqData = [
-  { question: "Do you only plan weddings in Indore?", answer: "Nope! We serve Bhopal, Ujjain, and beyond." },
-  { question: "Can you help with last-minute weddings?", answer: "Absolutely. We’ve pulled off 3-day prep shaadis with a smile." },
-  { question: "Do you provide decorators and photographers too?", answer: "Yes! We provide decorators and photographers too." },
-  { question: "Do you offer budget planning help?", answer: "Of course! We even have a free planner you can download." },
-];
 
-export default function FAQSection() {
+export default function FAQSection({faqData=[]}) {
   const [expanded, setExpanded] = useState(null);
   const theme = useTheme();
   const isTabletUp = useMediaQuery(theme.breakpoints.up("sm"));
