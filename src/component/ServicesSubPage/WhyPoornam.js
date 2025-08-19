@@ -3,55 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { apiClient } from "@/lib/api-client";
 import Image from "next/image";
 
-const WhyPoornam = ({ poornamId }) => {
-  const [whyPoornamData, setWhyPoornamData] = useState({
-    title: "",
-    description: "",
-  });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchWhyPoornam = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${poornamId}/event`
-        );
-        console.log("WhyPoornam API response:", response);
-
-        if (response?.data?.whyPoornam) {
-          const { title, description } = response.data.whyPoornam;
-          setWhyPoornamData({
-            title: title || "",
-            description: description || "",
-          });
-        }
-      } catch (err) {
-        console.error("Error fetching WhyPoornam data:", err);
-        setWhyPoornamData({
-          title: "",
-          description: "",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (poornamId) {
-      fetchWhyPoornam();
-    } else {
-      setLoading(false);
-    }
-  }, [poornamId]);
-  // // Don't render anything if no data is available
-  // if (loading) {
-  //   return null; // or you can show a loading spinner
-  // }
-
-  // // Don't render the section if both title and description are empty
-  // if (!whyPoornamData.title && !whyPoornamData.description) {
-  //   return null;
-  // }
+const WhyPoornam = ({ poornamId , service }) => {
 
   return (
     <Box
@@ -78,10 +30,7 @@ const WhyPoornam = ({ poornamId }) => {
               }}
               dangerouslySetInnerHTML={{
                 __html:
-                  whyPoornamData.title ||
-                  `Why Poornam for<br />
-                        Your Destination<br />
-                        Wedding?`,
+                service?.whyPoornam[0]?.title  || service?.whyPoornam?.title,
               }}
             />
           </Grid>
@@ -115,8 +64,7 @@ const WhyPoornam = ({ poornamId }) => {
                 mx: { xs: "auto", md: 0 },
               }}
             >
-              {whyPoornamData?.description ||
-                `With years of experience and a personal touch, Poornam Events dedicates itself to making your destination wedding dreams come true. We tailor each experience to your needs, ensuring every detail is meticulously managed for a perfect celebration.`}
+              {service?.whyPoornam?.description || service?.whyPoornam[0]?.description}
             </Typography>
           </Grid>
         </Grid>

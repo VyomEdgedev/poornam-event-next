@@ -86,7 +86,7 @@ export default function HeroSection() {
                 }}
               >
                 <Typography
-                  variant="h1"
+                  component={"h1"}
                   fontWeight="400"
                   sx={{
                     color: "#E6C365",

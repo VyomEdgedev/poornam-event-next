@@ -88,7 +88,7 @@ const Portfolio = () => {
           },
         }}
       >
-        <CustomButton data-testid="notify-button" onClick={handleportfolio}>
+        <CustomButton data-testid="notify-button"  fontFamily= "Akatab, Sans-serif !important" onClick={handleportfolio}>
           {` Plan My Wedding`}
         </CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />

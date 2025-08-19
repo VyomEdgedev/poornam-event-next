@@ -61,63 +61,65 @@ export default function Header() {
       }}
     >
       <Toolbar disableGutters sx={{ justifyContent: "center" }}>
-       
-        {/* desktop navbar  */}
-          <Box
-            display="flex"
-            alignItems="center"
-            className={style.deskop_nav_bar}
-            sx={{
-              backgroundColor: "rgba(10, 17, 56, 0.85)",
-              borderRadius: "30px",
-              px: 2,
-              py: 1,
-              
-            }}
-            gap={2}
-          >
-            {navItems.map((item, index) => {
-              const isActive = pathname === item.href;
 
-              return (
-                <Link
-                  key={index}
-                  href={item.href}
-                  style={{ textDecoration: "none" }}
+        {/* desktop navbar  */}
+        <Box
+          display="flex"
+          alignItems="center"
+          className={style.deskop_nav_bar}
+          sx={{
+            backgroundColor: "rgba(10, 17, 56, 0.85)",
+            borderRadius: "30px",
+            px: 2,
+            py: 1,
+
+          }}
+          gap={2}
+        >
+          {navItems.map((item, index) => {
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={index}
+                href={item.href}
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  sx={{
+                    fontWeight: 400,
+                    fontFamily: "Akatab,Sans-serif ",
+                    color: isActive ? "#DAA412" : "#FFFFFF",
+                    borderRadius: "20px",
+                    textTransform: "none",
+                    fontWeight: 500,
+                    px: 2,
+                    py: 0.5,
+                    minWidth: "auto",
+                    fontSize: "14px",
+                    "&:hover": {
+                      backgroundColor: "#192249",
+                    },
+                  }}
                 >
-                  <Button
-                    sx={{
-                      color: isActive ? "#DAA412" : "#FFFFFF",
-                      borderRadius: "20px",
-                      textTransform: "none",
-                      fontWeight: 500,
-                      px: 2,
-                      py: 0.5,
-                      minWidth: "auto",
-                      fontSize: "14px",
-                      "&:hover": {
-                        backgroundColor: "#192249",
-                      },
-                    }}
-                  >
-                    {item.label}
-                  </Button>
-                </Link>
-              );
-            })}
-            <IconButton
-              href="https://wa.me/919519066885"
-              target="_blank"
-              sx={{ color: "#25D366" }}
-            >
-              <WhatsAppIcon />
-            </IconButton>
-          </Box>
+                  {item.label}
+                </Button>
+              </Link>
+            );
+          })}
+          <IconButton
+            href="https://wa.me/919519066885"
+            target="_blank"
+            sx={{ color: "#25D366" }}
+          >
+            <WhatsAppIcon />
+          </IconButton>
+        </Box>
 
         {/* mobile navbar */}
-        <Container 
-        className={style.mobile_nav_bar}
-        sx={{px:"10px !important", backgroundColor:"rgba(0, 13, 31, 0.4)"}}
+        <Container
+          className={style.mobile_nav_bar}
+          sx={{ px: "10px !important", backgroundColor: "rgba(0, 13, 31, 0.4)" }}
         >
           <Box
             display="flex"
@@ -141,7 +143,7 @@ export default function Header() {
                   color: "#DAA412",
                   // backgroundColor: isDarkBg ? '#192249' : '#FFFFFF',
                   boxShadow: "none",
-                  marginTop:"15px",
+                  marginTop: "15px",
                 }}
               >
                 <MenuIcon />
@@ -166,7 +168,7 @@ export default function Header() {
                   zIndex: 1300,
                   py: 1,
                   px: 2,
-                
+
                 }}
               >
                 {/* WhatsApp Button (left) */}
@@ -183,8 +185,9 @@ export default function Header() {
                 <IconButton
                   edge="end"
                   onClick={() => setOpenDrawer(false)}
-                  sx={{ color: "#DAA412", 
-               
+                  sx={{
+                    color: "#DAA412",
+
                   }}
                 >
                   <CloseIcon sx={{ fontSize: 24 }} />
@@ -223,16 +226,16 @@ export default function Header() {
                     <React.Fragment key={index}>
                       <ListItem disablePadding>
                         <ListItemButton component={Link} href={item.href} selected={pathname === item.href}
-                           sx={{
-                          borderRadius: "10px",
-                          backgroundColor:
-                            pathname === item.href ? "#192249" : "transparent",
-                          color:
-                            pathname === item.href ? "#DAA412" : "#CBEFFF",
-                          "&:hover": {
-                            backgroundColor: "#192249",
-                          },
-                        }}
+                          sx={{
+                            borderRadius: "10px",
+                            backgroundColor:
+                              pathname === item.href ? "#192249" : "transparent",
+                            color:
+                              pathname === item.href ? "#DAA412" : "#CBEFFF",
+                            "&:hover": {
+                              backgroundColor: "#192249",
+                            },
+                          }}
                         >
                           <ListItemText primary={item.label} />
                         </ListItemButton>
@@ -244,7 +247,7 @@ export default function Header() {
               </Box>
             </Drawer>
           </Box>
-      </Container>
+        </Container>
       </Toolbar>
     </AppBar>
   );

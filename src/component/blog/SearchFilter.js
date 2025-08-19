@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { apiClient } from "@/lib/api-client";
+import { useRouter } from "next/router";
 
 const FilterChip = styled(Chip)(({ theme, selected }) => ({
   margin: theme.spacing(0.5),
@@ -27,48 +28,80 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   },
 }));
 
-const SearchFilter = ({ setPosts, catgeory }) => {
+const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
   const debounceTimeout = useRef(null);
-  const fetchSuggestions = async (query, category) => {
-    try {
-      const panel = "event";
-      const queryParams = new URLSearchParams();
+  const initialPostsRef = useRef(initialPosts || []);
+useEffect(() => {
+  const { search, category } = router.query;
+  if (search) {
+    setSearchValue(search);
+    setSelectedCategory(null);
+    fetchSuggestions(search, null);
+    setOpenSuggestions(true);
+  } else if (category) {
+    setSelectedCategory(category);
+    setSearchValue("");
+    fetchSuggestions("", category);
+  } else {
+    setPosts(initialPostsRef.current);
+  }
+}, [router.query]);
 
-      queryParams.append("query", query ||category);
-    
+const fetchSuggestions = async (query, category) => {
+  try {
+    const panel = "event";
+    const queryParams = new URLSearchParams();
+    if (query) queryParams.append("query", query);
+    if (category) queryParams.append("query", category);
 
-      const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
-      const response = await apiClient.get(url);
+    const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
+    const response = await apiClient.get(url);
 
-      if (response.status === 200) {
-        const results = response.data.results || [];
-        setSuggestions(results);
-        setOpenSuggestions(true);
-        if (category && !query) {
-          setPosts(results);
-        }
-      } else {
-        setSuggestions([]);
-        setOpenSuggestions(false);
+    if (response.status === 200) {
+      const results = response.data.results || [];
+      setSuggestions(results);
+      setOpenSuggestions(true);
+      if (category && !query) {
+        setPosts(results);
       }
-    } catch (error) {
-      console.error("Failed to fetch suggestions:", error);
+    } else {
       setSuggestions([]);
       setOpenSuggestions(false);
     }
-  };
+  } catch (error) {
+    console.error("Failed to fetch suggestions:", error);
+    setSuggestions([]);
+    setOpenSuggestions(false);
+  }
+};
 
-  // ✅ Debounce calls
+const handleSearchChange = (e) => {
+  const value = e.target.value;
+  setSearchValue(value);
+  if (value) setSelectedCategory(null);
+
+  router.replace(
+    {
+      pathname: router.pathname,
+      query: { search: value || undefined }, 
+    },
+    undefined,
+    { shallow: true }
+  );
+
+  if (!value) {
+    setPosts(initialPostsRef.current);
+    return;
+  }
+};
+
   useEffect(() => {
-    if (!searchValue && !selectedCategory) {
-      setSuggestions([]);
-      setOpenSuggestions(false);
-      return;
-    }
+    if (!searchValue && !selectedCategory) return;
     if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
     debounceTimeout.current = setTimeout(() => {
       fetchSuggestions(searchValue, selectedCategory);
@@ -76,29 +109,39 @@ const SearchFilter = ({ setPosts, catgeory }) => {
     return () => clearTimeout(debounceTimeout.current);
   }, [searchValue, selectedCategory]);
 
-  // ✅ Close suggestions when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!e.target.closest(".search-suggestion-box")) {
-        setOpenSuggestions(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
 
-  // Handlers
-  const handleSearchChange = (e) => setSearchValue(e.target.value);
+// Category select
+const handleCategoryToggle = (categoryName) => {
+  const newCategory = selectedCategory === categoryName ? null : categoryName;
+  setSelectedCategory(newCategory);
 
-  const handleCategoryToggle = (categoryName) => {
-    setSelectedCategory((prev) => (prev === categoryName ? null : categoryName));
-  };
+  // Clear search when selecting category
+  if (newCategory) setSearchValue("");
 
+  router.replace(
+    {
+      pathname: router.pathname,
+      query: { category: newCategory || undefined }, // only `category` param
+    },
+    undefined,
+    { shallow: true }
+  );
+
+  if (!newCategory) {
+    setPosts(initialPostsRef.current);
+    return;
+  }
+
+  fetchSuggestions("", newCategory);
+};
+
+  // Suggestion click
   const handleSuggestionClick = (blog) => {
     setOpenSuggestions(false);
     setSearchValue(blog.title);
     setPosts([blog]);
   };
+
 
   return (
     <Box backgroundColor="#FFF7E4" position="relative">

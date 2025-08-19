@@ -48,14 +48,14 @@ const BreadcrumbsComponent = ({
                   display: "flex",
                   alignItems: "center",
                   fontWeight: 500,
-                  fontSize: { xs: "12px", md: "14px" },
+                  fontSize: { xs: "16px", md: "16px" },
                     fontFamily: "Akatab, Sans-serif",
                 }}
               >
                 {isHome && showHomeIcon && (
                   <Home
                     sx={{ mr: 0.5, color: homeIconColor }}
-                    fontSize="3rem"
+                    fontSize= { {xs: "24px", md: "30px" } }
                   />
                 )}
                 {item.label}
@@ -74,7 +74,7 @@ const BreadcrumbsComponent = ({
                 display: "flex",
                 alignItems: "center",
                 textDecoration: "none",
-                fontSize: { xs: "13px", md: "14px" },
+                  fontSize: { xs: "16px", md: "16px" },
                 cursor: "pointer",
                 "&:hover": {
                   textDecoration: "underline",
