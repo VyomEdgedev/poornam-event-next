@@ -346,9 +346,7 @@ const CustomBanner = ({
   breadcrumbsPosition = {
     top: "20px",
     left: "20px",
-    // Responsive positions
     lg: { top: "15px", left: "15px" },
-    md: { top: "10px", left: "10px" },
     sm: { top: "10px", left: "10px" },
   },
   breadcrumbsSx = {},
@@ -387,8 +385,6 @@ const CustomBanner = ({
     // Enhanced responsive alignment
     xl: { horizontal: "flex-start", textAlign: "left" },
     lg: { horizontal: "flex-start", textAlign: "left" },
-    md: { horizontal: "center", textAlign: "center" },
-    sm: { horizontal: "center", textAlign: "center" },
     xs: { horizontal: "center", textAlign: "center" },
     mobile: { horizontal: "center", textAlign: "center" },
   },

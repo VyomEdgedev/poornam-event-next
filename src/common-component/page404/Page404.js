@@ -14,7 +14,7 @@ function Page404() {
       <CustomBanner
         showLogo={true}
         logoSrc="/logo.png"
-        height={{ xs: "10vh", sm: "20vh", md: "20vh" }}
+        height={{ xs: "10vh", sm: "20vh"}}
       />
 
       <Box padding="3%">

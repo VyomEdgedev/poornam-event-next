@@ -3,39 +3,31 @@ import {
   Box,
   Typography,
   Grid,
-  useMediaQuery,
-  useTheme,
   Container,
 } from "@mui/material";
 
 export default function WeddingSection() {
-  const theme = useTheme();
-  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
-
+  
   return (
     <Container>
       <Box
         sx={{
           py: { xs: 3, sm: 6 },
-          // width: "100%",
           margin: 0,
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          // alignItems: "center",
-          // gap: { xs: 3, sm: 4, md: 6 },
         }}
       >
         <Box sx={{ flex: 1, maxWidth: { sm: "100%", md: "50%" } }}>
-          <Typography
-            component="div"
+          <Box
             sx={{
-               fontSize: {
-      xs: "20px", 
-      sm: "24px", 
-      md: "28px", 
-      lg: "32px ", 
-    },
+              fontSize: {
+                xs: "20px",
+                sm: "24px",
+                md: "28px",
+                lg: "32px ",
+              },
               fontFamily: "Gloock, serif",
               fontWeight: 400,
               color: "#000D1F",
@@ -55,9 +47,9 @@ export default function WeddingSection() {
             >
               Wedding...
             </Box>
-          </Typography>
+          </Box>
 
-         <Typography
+          <Typography
             component="p"
             className="h4_heading"
             sx={{
@@ -70,7 +62,7 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-          component="p"
+            component="p"
             sx={{
               mb: 1,
               fontFamily: "Akatab,Sans-serif",
@@ -83,7 +75,7 @@ export default function WeddingSection() {
           </Typography>
 
           <Typography
-             component="p"
+            component="p"
             className="h4_heading"
             sx={{
               fontFamily: "Akatab,Sans-serif",
@@ -109,21 +101,14 @@ export default function WeddingSection() {
         </Box>
 
         <Grid
-          mt={{xs:5,sm:3,md:0}}
+          mt={{ xs: 5, sm: 3, md: 0 }}
           container
           spacing={{
-            xs:1,
-            sm:3, 
+            xs: 1,
+            sm: 3,
 
           }}
           sx={{
-            // maxWidth: {
-            //   xs: "100%",
-            //   sm: "100%",
-            //   md: "100%",
-            //   lg: "60%",
-            //   xl: "55%",
-            // },
             justifyContent: {
               xs: "center",
               sm: "center",
