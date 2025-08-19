@@ -140,7 +140,7 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
                     height: "auto",
                     display: "flex",
                     flexDirection: "column",
-                    borderRadius: 3,
+                    borderRadius: 1,
                     boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     mx: "auto",

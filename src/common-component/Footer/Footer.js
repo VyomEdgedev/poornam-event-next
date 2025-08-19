@@ -317,7 +317,7 @@ const Footer = () => {
                 <Link
                   href="/disclaimer"
                   underline="hover"
-                  style={{ color: "black", textDecoration: "none" }}
+                  style={{ color: "black", textDecoration: "none",hover:"underline" }}
                 >
                   Disclaimer
                 </Link>{" "}

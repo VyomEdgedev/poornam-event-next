@@ -1,6 +1,10 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography,IconButton } from "@mui/material";
 import Link from "next/link";
+import { useRef, useState, useEffect } from "react";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
 
 const data = [
   { name: "Latest Trends", image: "/blog1.jpg" },
@@ -11,17 +15,69 @@ const data = [
   { name: "Beauty", image: "/blog2.jpg" },
 ];
 
+
 export default function InspirationSection({ categories = data }) {
+    const scrollRef = useRef(null);
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(true);
+
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    setShowLeft(scrollLeft > 0);
+    setShowRight(scrollLeft + clientWidth < scrollWidth - 1);
+  };
+
+  useEffect(() => {
+    handleScroll();
+    const el = scrollRef.current;
+    if (el) el.addEventListener("scroll", handleScroll);
+    return () => {
+      if (el) el.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 250; 
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <Container>
-      <Box sx={{ textAlign: "center", py: 5 }}>
+      <Box sx={{ textAlign: "center", py: 5 }} //border="1px solid grey"  borderRadius="10px" paddingTop={2}
+      >
         <Typography
           component="h2"
           sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 6 }}
         >
           {`Inspirations & Blogs`}
         </Typography>
+          <Box sx={{ position: "relative" }} //border="1px solid grey"  borderRadius="10px" paddingTop={2}
+          >
+         
+          {showLeft && (
+            <IconButton
+              onClick={() => scroll("left")}
+              sx={{
+                position: "absolute",
+                left: -10,
+                top: "40%",
+                zIndex: 10,
+                background: "#fff",
+                boxShadow: 2,
+                "&:hover": { background: "#f5f5f5" },
+              }}
+            >
+              <ArrowBackIosNewIcon />
+            </IconButton>
+          )}
         <Box
+         ref={scrollRef}
           sx={{
             display: "flex",
             gap: 9.5,
@@ -62,7 +118,7 @@ export default function InspirationSection({ categories = data }) {
                   cursor: "pointer",
                   transition: "transform 0.8s ease",
                   "&:hover": {
-                    transform: "scale(1.05)",
+                    transform: "scale(1)",
                   },
                   "&:hover .overlay": {
                     backdropFilter: "blur(3px)",
@@ -127,6 +183,24 @@ export default function InspirationSection({ categories = data }) {
               </Box>
             </Link>
           ))}
+        </Box>
+          
+          {showRight && (
+            <IconButton
+              onClick={() => scroll("right")}
+              sx={{
+                position: "absolute",
+                right: -10,
+                top: "40%",
+                zIndex: 10,
+                background: "#fff",
+                boxShadow: 2,
+                "&:hover": { background: "#f5f5f5" },
+              }}
+            >
+              <ArrowForwardIosIcon />
+            </IconButton>
+          )}
         </Box>
       </Box>
     </Container>

@@ -194,6 +194,7 @@ const ShowCase = () => {
                   flexDirection: "column",
                   position: "relative",
                   cursor: "pointer",
+                  fontFamily: "Akatab,Sans-serif"
                 }}
                 elevation={1}
               >
@@ -206,7 +207,7 @@ const ShowCase = () => {
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-
+                    fontFamily: "Akatab,Sans-serif",
                     zIndex: 2,
                   }}
                 />

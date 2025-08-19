@@ -17,6 +17,14 @@ import { styled } from "@mui/material/styles";
 import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
 
+const capitalizeWords = (text) => {
+  if (!text) return "";
+  return text
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+};
+
 const FilterChip = styled(Chip)(({ theme, selected }) => ({
   margin: theme.spacing(0.5),
   backgroundColor: selected ? "#DAA412" : theme.palette.background.default,
@@ -36,69 +44,69 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
   const [openSuggestions, setOpenSuggestions] = useState(false);
   const debounceTimeout = useRef(null);
   const initialPostsRef = useRef(initialPosts || []);
-useEffect(() => {
-  const { search, category } = router.query;
-  if (search) {
-    setSearchValue(search);
-    setSelectedCategory(null);
-    fetchSuggestions(search, null);
-    setOpenSuggestions(true);
-  } else if (category) {
-    setSelectedCategory(category);
-    setSearchValue("");
-    fetchSuggestions("", category);
-  } else {
-    setPosts(initialPostsRef.current);
-  }
-}, [router.query]);
-
-const fetchSuggestions = async (query, category) => {
-  try {
-    const panel = "event";
-    const queryParams = new URLSearchParams();
-    if (query) queryParams.append("query", query);
-    if (category) queryParams.append("query", category);
-
-    const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
-    const response = await apiClient.get(url);
-
-    if (response.status === 200) {
-      const results = response.data.results || [];
-      setSuggestions(results);
+  useEffect(() => {
+    const { search, category } = router.query;
+    if (search) {
+      setSearchValue(search);
+      setSelectedCategory(null);
+      fetchSuggestions(search, null);
       setOpenSuggestions(true);
-      if (category && !query) {
-        setPosts(results);
-      }
+    } else if (category) {
+      setSelectedCategory(category);
+      setSearchValue("");
+      fetchSuggestions("", category);
     } else {
+      setPosts(initialPostsRef.current);
+    }
+  }, [router.query]);
+
+  const fetchSuggestions = async (query, category) => {
+    try {
+      const panel = "event";
+      const queryParams = new URLSearchParams();
+      if (query) queryParams.append("query", query);
+      if (category) queryParams.append("query", category);
+
+      const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
+      const response = await apiClient.get(url);
+
+      if (response.status === 200) {
+        const results = response.data.results || [];
+        setSuggestions(results);
+        setOpenSuggestions(true);
+        if (category && !query) {
+          setPosts(results);
+        }
+      } else {
+        setSuggestions([]);
+        setOpenSuggestions(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch suggestions:", error);
       setSuggestions([]);
       setOpenSuggestions(false);
     }
-  } catch (error) {
-    console.error("Failed to fetch suggestions:", error);
-    setSuggestions([]);
-    setOpenSuggestions(false);
-  }
-};
+  };
 
-const handleSearchChange = (e) => {
-  const value = e.target.value;
-  setSearchValue(value);
-  if (value) setSelectedCategory(null);
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    if (value) setSelectedCategory(null);
 
-  router.replace(
-    {
-      pathname: router.pathname,
-      query: { search: value || undefined }, 
-    },
-    undefined,
-    { shallow: true }
-  );
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: { search: value || undefined },
+      },
+      undefined,
+      { shallow: true }
+    );
 
-  if (!value) {
-    setPosts(initialPostsRef.current);
-    return;
-  }
-};
+    if (!value) {
+      setPosts(initialPostsRef.current);
+      return;
+    }
+  };
 
   useEffect(() => {
     if (!searchValue && !selectedCategory) return;
@@ -110,30 +118,30 @@ const handleSearchChange = (e) => {
   }, [searchValue, selectedCategory]);
 
 
-// Category select
-const handleCategoryToggle = (categoryName) => {
-  const newCategory = selectedCategory === categoryName ? null : categoryName;
-  setSelectedCategory(newCategory);
+  // Category select
+  const handleCategoryToggle = (categoryName) => {
+    const newCategory = selectedCategory === categoryName ? null : categoryName;
+    setSelectedCategory(newCategory);
 
-  // Clear search when selecting category
-  if (newCategory) setSearchValue("");
+    // Clear search when selecting category
+    if (newCategory) setSearchValue("");
 
-  router.replace(
-    {
-      pathname: router.pathname,
-      query: { category: newCategory || undefined }, // only `category` param
-    },
-    undefined,
-    { shallow: true }
-  );
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: { category: newCategory || undefined }, // only `category` param
+      },
+      undefined,
+      { shallow: true }
+    );
 
-  if (!newCategory) {
-    setPosts(initialPostsRef.current);
-    return;
-  }
+    if (!newCategory) {
+      setPosts(initialPostsRef.current);
+      return;
+    }
 
-  fetchSuggestions("", newCategory);
-};
+    fetchSuggestions("", newCategory);
+  };
 
   // Suggestion click
   const handleSuggestionClick = (blog) => {
@@ -148,7 +156,7 @@ const handleCategoryToggle = (categoryName) => {
       <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Grid container justifyContent="center" spacing={7.5}>
           {/* Heading */}
-          <Grid item xs={12} md={6} sx={{ py: 2 }}>
+          <Grid item xs={12} md={6} sx={{ py: 2 }} textAlign="center">
             <Typography
               component="h2"
               sx={{
@@ -162,6 +170,7 @@ const handleCategoryToggle = (categoryName) => {
             </Typography>
             <Typography
               component="p"
+
               sx={{
                 fontWeight: 400,
                 color: "#000",
@@ -176,87 +185,103 @@ const handleCategoryToggle = (categoryName) => {
           <Grid item xs={12} md={6}>
             {/* Search */}
             <NoSsr defer>
-            <Box sx={{ mb: 3 ,position: "relative" }} className="search-suggestion-box">
-              <Typography
-                component="h6"
-                sx={{
-                  mb: 0,
-                  fontWeight: 500,
-                  color: "#000D1F",
-                  fontFamily: "Akatab,Sans-serif",
-                }}
-              >
-                Search
-              </Typography>
-              <TextField
-                fullWidth
-                size="small"
-                placeholder="How to plan haldi?"
-                value={searchValue}
-                onChange={handleSearchChange}
-                variant="outlined"
-                autoComplete="off"
-                sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
-                onFocus={() => setOpenSuggestions(true)}
-              />
+              <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
+                <Typography
+                  component="h6"
+                  sx={{
+                    mb: 0,
+                    fontWeight: 500,
+                    color: "#000D1F",
+                    fontFamily: "Akatab,Sans-serif",
+                  }}
+                >
+                  Search
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="small"
+                  placeholder="How to plan haldi?"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  variant="outlined"
+                  autoComplete="off"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#ccc",
+                        borderRadius: 1
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#011d4a", // Hover color
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#011d4a", // Focus (click) color
+                        borderWidth: 2,
+                      },
+                    },
+                    backgroundColor: "white"
+                  }}
+                  // sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+                  onFocus={() => setOpenSuggestions(true)}
+                />
 
-                             {/* Suggestions */}
-               {openSuggestions && suggestions.length > 0 && (
-                 <Paper
-                 sx={{
-                  position: "absolute",
-                  top: "calc(100% + 6px)", // exactly below the TextField block
-                  left: 0,
-                  right: 0,
-                  width: "100%",          // match TextField width
-                  zIndex: 10,
-                  maxHeight: 240,
-                  overflowY: "auto",
-                  bgcolor: "background.paper",
-                  borderRadius: 1,
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
-                  border: "1px solid #e0e0e0",
-                }}
-                 >
-                   <List dense sx={{ py: 0 }}>
-                     {suggestions.slice(0, 5).map((blog) => (
-                       <ListItem
-                         key={blog._id}
-                         disablePadding
-                         onClick={() => handleSuggestionClick(blog)}
-                         sx={{
-                           borderBottom: "1px solid #f0f0f0",
-                           "&:last-child": {
-                             borderBottom: "none",
-                           },
-                         }}
-                       >
-                         <ListItemButton
-                           sx={{
-                             py: 0.5,
-                             px: 1.5,
-                             "&:hover": {
-                               backgroundColor: "#f5f5f5",
-                             },
-                           }}
-                         >
-                           <ListItemText 
-                             primary={blog.title} 
-                             primaryTypographyProps={{
-                               fontSize: "0.8rem",
-                               fontWeight: 400,
-                               fontFamily: "Akatab, sans-serif",
-                               color: "#333",
-                               noWrap: true,
-                             }}
-                           />
-                         </ListItemButton>
-                       </ListItem>
-                     ))}
-                   </List>
-                 </Paper>
-               )}
-            </Box>
+                {/* Suggestions */}
+                {openSuggestions && suggestions.length > 0 && (
+                  <Paper
+                    sx={{
+                      position: "absolute",
+                      top: "calc(100% + 6px)", // exactly below the TextField block
+                      left: 0,
+                      right: 0,
+                      width: "100%",          // match TextField width
+                      zIndex: 10,
+                      maxHeight: 240,
+                      overflowY: "auto",
+                      bgcolor: "background.paper",
+                      borderRadius: 1,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                      border: "1px solid #e0e0e0",
+                    }}
+                  >
+                    <List dense sx={{ py: 0 }}>
+                      {suggestions.slice(0, 5).map((blog) => (
+                        <ListItem
+                          key={blog._id}
+                          disablePadding
+                          onClick={() => handleSuggestionClick(blog)}
+                          sx={{
+                            borderBottom: "1px solid #f0f0f0",
+                            "&:last-child": {
+                              borderBottom: "none",
+                            },
+                          }}
+                        >
+                          <ListItemButton
+                            sx={{
+                              py: 0.5,
+                              px: 1.5,
+                              "&:hover": {
+                                backgroundColor: "#f5f5f5",
+                              },
+                            }}
+                          >
+                            <ListItemText
+                              primary={blog.title}
+                              primaryTypographyProps={{
+                                fontSize: "0.8rem",
+                                fontWeight: 400,
+                                fontFamily: "Akatab, sans-serif",
+                                color: "#333",
+                                noWrap: true,
+                              }}
+                            />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Paper>
+                )}
+              </Box>
             </NoSsr>
             {/* Categories */}
             <Box sx={{ mb: 3 }}>
@@ -275,7 +300,7 @@ const handleCategoryToggle = (categoryName) => {
                 {catgeory.map((category) => (
                   <FilterChip
                     key={category.name}
-                    label={category.name}
+                    label={capitalizeWords(category.name)}
                     selected={selectedCategory === category.name}
                     onClick={() => handleCategoryToggle(category.name)}
                     clickable
