@@ -43,11 +43,6 @@ function SocialMedia() {
                 fontFamily: "Gloock, serif",
                 fontWeight: "400",
               }}
-              // dangerouslySetInnerHTML={{
-              //   __html: `  Follow Us </br>
-              //           on </br>
-              //             Social Media`,
-              // }}
             >
               Follow Us <br />
               on <br />
