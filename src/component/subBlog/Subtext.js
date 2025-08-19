@@ -1,61 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import {
-  Typography,
   Box,
-  CircularProgress,
 } from "@mui/material";
-import { apiClient } from "@/lib/api-client";
-import { useRouter } from "next/router";
-const Subtext = () => {
-  const [description, setDescription] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await apiClient.get(`api/blogs/${id}/event`);
-        // console.log(response);
-        const blog = response.data.blog;
-        if (blog && blog.description) {
-          setDescription(blog.description);
-        } else {
-          setDescription("No description found.");
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (id) {
-      fetchBlogs();
-    }
-  }, [id]);
-
-  if (loading) return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="200px"
-    >
-      <CircularProgress 
-        sx={{ 
-          color: "#DAA412",
-          m: 5 
-        }} 
-      />
-    </Box>
-  );
-  if (error)
-    return (
-      <Typography color="error">
-        Error: {error.message || "Something went wrong"}
-      </Typography>
-    );
+const Subtext = ({blogtext}) => {
+const description = blogtext
+  
   return (
     <Box
       display="flex"

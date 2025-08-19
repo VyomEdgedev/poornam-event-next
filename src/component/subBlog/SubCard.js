@@ -1,40 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
   Card,
-  CardMedia,
   Chip,
   IconButton,
-  CircularProgress,
   Snackbar,
   Alert,
 } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
-import axios from "axios";
-import { apiClient } from "@/lib/api-client";
-import { useRouter } from "next/router";
 import Image from "next/image";
 
-const cardData = {
-  image: "/SubBlog.png",
-  category: "Budget & Planning",
-  title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
-  author: "Author",
-  date: "02-07-2025",
-};
-
-const BlogCard = ({ setFaq }) => {
-  const [posts, setPosts] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const BlogCard = ({ blogimg }) => {
   const [showShareMessage, setShowShareMessage] = useState(false);
-  const router = useRouter();
-  const { id } = router.query;
-  console.log("CRAD component");
-
-  // Share functionality
   const handleShare = async () => {
     console.log("handleShare");
     const currentUrl = window.location.href;
@@ -63,33 +42,7 @@ const BlogCard = ({ setFaq }) => {
       }
     }
   };
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await apiClient.get(`api/blogs/${id}/event`);
-        console.log(response);
-        const data = response.data.blog;
-        if (data) {
-          setPosts(data);
-          setFaq(data.faq);
-        } else {
-          setPosts(null);
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (id) {
-      fetchBlogs();
-    }
-  }, [id]);
-
-  // if (loading) return <CircularProgress sx={{ m: 5 }} />;
-  if (error) return <Typography color="error">Error: {error}</Typography>;
-
+const posts = blogimg;
   return (
     <Box
       display="flex"
@@ -166,7 +119,7 @@ const BlogCard = ({ setFaq }) => {
               Category: {posts?.category?.name || "N/A"}
             </Typography>
             <Typography
-              component={"p"}
+              component={"h1"}
               sx={{
                 fontWeight: 600,
                 fontFamily: "Akatab,Sans-serif",

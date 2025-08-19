@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Container,
   Typography,
@@ -9,74 +9,11 @@ import {
 } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
-import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
-import CircularProgress from "@mui/material/CircularProgress";
 
-// const YourDreamData = [
-//   {
-//     id: 1,
-//     image: "/YourDream1.png",
-//     alt: "Royal Rajasthani Theme",
-//     title: "Udaipur",
-//     description: "For that royal Rajasthani Magic.",
-//     ctr: "Read More",
-//   },
-//   {
-//     id: 2,
-//     image: "/YourDream2.png",
-//     alt: "Royal Rajasthani Theme",
-//     title: "Goa",
-//     description: "For Beachside vows & sunset pheras.",
-//     ctr: "Read More",
-//   },
-//   {
-//     id: 3,
-//     image: "/YourDream3.png",
-//     alt: "Royal Rajasthani Theme",
-//     title: "Mahabaleshwar",
-//     description: "For mountain serenity & mity mornings.",
-//     ctr: "Read More",
-//   },
-// ];
-
-const YourDream = ({ blogId }) => {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+const YourDream = ({ Blogs }) => {
   const router = useRouter();
-  const [categoryName, setCategoryName] = useState("");
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${blogId}/event`
-        );
-        console.log("API blogs:", response);
-        if (response?.data?.relatedBlogs) {
-          setBlogs(response.data.relatedBlogs);
-        } else {
-          setBlogs([]);
-        }
-        if (response?.data?.relatedBlogs[0]?.category?.name) {
-          setCategoryName(response.data.relatedBlogs[0]?.category.name);
-        } else {
-          setCategoryName();
-        }
-      } catch (err) {
-        console.error("Error fetching blogs:", err);
-        setBlogs([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (blogId) {
-      fetchBlogs();
-    }
-  }, [blogId]);
-
-  if (!categoryName) return null;
-
+  const relatedBlogs=Blogs; 
   return (
     <Container sx={{ py: 8 }}>
       <Typography
@@ -88,27 +25,15 @@ const YourDream = ({ blogId }) => {
           fontFamily: "Gloock,serif",
         }}
       >
-        {`Real Talk About  ${categoryName}`}
+        {`Real Talk About  ${relatedBlogs[0]?.category?.name}`}
       </Typography>
-      {loading ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: 300,
-          }}
-        >
-          <CircularProgress sx={{ color: "#DAA412" }} />
-        </Box>
-      ) : (
         <Grid
           container
           spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 7 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent="center"
         >
-          {blogs.map((blog, index) => (
+          {relatedBlogs?.map((blog, index) => (
             <Grid item key={blog._id || index} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
                 sx={{
@@ -171,7 +96,6 @@ const YourDream = ({ blogId }) => {
             </Grid>
           ))}
         </Grid>
-      )}
     </Container>
   );
 };

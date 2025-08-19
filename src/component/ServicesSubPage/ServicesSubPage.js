@@ -1,5 +1,4 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
-import CustomButton from "@/common-component/button/CustomButton";
 import React, { useEffect, useState } from "react";
 import WhyChoose from "./WhyChoose";
 import YourDream from "./YourDream";
@@ -9,9 +8,9 @@ import WeddingKit from "./WeddingKit";
 import { Box, CircularProgress, Stack } from "@mui/material";
 import CapturedMoments from "./CapturedMoments";
 import FAQSection from "@/common-component/Faq/FAQSection";
-import ConnectModal from "@/common-component/modal/ConnectModal";
 import { useRouter } from "next/router";
 import { apiClient } from "@/lib/api-client";
+import SEO from "@/common-component/SEO/seo";
 
 function ServicesSubPage() {
   const router = useRouter();
@@ -19,40 +18,7 @@ function ServicesSubPage() {
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [open, setOpen] = useState(false);
-  const handleWeddingPlan = () => {
-    // Add your navigation or action logic here
-    setOpen(true);
-  };
 
-  const handleTalkToPlanner = () => {
-    // Add your navigation or action logic here
-    window.open("https://wa.me/919519066885", "_blank");
-  };
-
-  const myFAQData = [
-    {
-      question: " What guest size qualifies as an intimate wedding?",
-      answer:
-        "Anywhere between 20 to 100 guests — basically anyone you’d personally hug at your reception.",
-    },
-    {
-      question: "Is it possible to make a small wedding look luxurious?",
-      answer:
-        " Absolutely! With fewer guests, your budget allows for richer décor, curated food, and personalized experiences.",
-    },
-    {
-      question: "Do you work with home venues?",
-      answer:
-        "Yes! We love transforming home gardens, terraces, courtyards, and even drawing rooms into magical spaces.",
-    },
-
-    {
-      question: "Can we still have a sangeet or mehendi for small weddings?",
-      answer:
-        " Of course! In fact, we make them even more fun with interactive setups and cozy vibe-focused entertainment.",
-    },
-  ];
   useEffect(() => {
     if (!id) return;
     const fetchService = async () => {
@@ -77,10 +43,11 @@ function ServicesSubPage() {
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
   const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
+    const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
 return (
   <>
     {loading ? (
-      <Box sx={{ py: 8, textAlign: "center" }}>
+      <Box sx={{ py: 8, textAlign: "center" ,height:"60.5vh"}}>
         <CircularProgress
                 sx={{ 
                   color: "#DAA412",
@@ -90,6 +57,20 @@ return (
       </Box>
     ) : (
       <>
+       <SEO
+              url="http://www.poornamevents.com/services"
+              metaTitle={`${service?.meta?.title}`}
+              metaDescription={`${service?.meta?.description}`}
+              keywords={`${service?.meta?.keywords}`}
+              canonical="http://www.poornamevents.com/services"
+              ogTitle= {`${service?.ogTags?.title}`}
+              ogDescriptio={`${service?.ogTags?.description}`}
+              ogImage={`${service?.ogTags?.image}`||`${SITE_URL}/og-image.jpg` }
+              twitterTitle={`${service?.ogTags?.title}`}
+              twitterDescription={`${service?.ogTags?.description}`}
+              twitterImage={`${SITE_URL}/logoo.jpg`}
+              robots="index, follow" //  default'
+            />
         <CustomBanner
           title={title}
           paragraphSubtitle={description}
@@ -123,10 +104,10 @@ return (
           }}
         />
         <WhyChoose title={title} description={service?.description || ''} />
-        <WeOffer serviceId={id} />
-        <WhyPoornam poornamId={id} service={service} />
-        <CapturedMoments title={title} service={service} />
-        <YourDream blogId={id} />
+        <WeOffer serviceId={service?.serviceCategory} />
+        <WhyPoornam  poornam={service} />
+        <CapturedMoments title={title} captured={service} />
+        <YourDream Blogs={service?.relatedBlogs} />
         <WeddingKit />
         <FAQSection faqData={service?.faq || []} />
       </>
