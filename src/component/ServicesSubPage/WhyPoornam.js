@@ -3,12 +3,11 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { apiClient } from "@/lib/api-client";
 import Image from "next/image";
 
-const WhyPoornam = ({ poornamId , service }) => {
+const WhyPoornam = ({  poornam }) => {
 
   return (
     <Box
       sx={{
-        // px: { xs: 10, sm: 12, md: 8, lg: 22, xl: 33 },
         py: { xs: 4, sm: 6, md: 8 },
       }}
     >
@@ -30,7 +29,7 @@ const WhyPoornam = ({ poornamId , service }) => {
               }}
               dangerouslySetInnerHTML={{
                 __html:
-                service?.whyPoornam[0]?.title  || service?.whyPoornam?.title,
+                poornam?.whyPoornam[0]?.title  || service?.whyPoornam?.title,
               }}
             />
           </Grid>
@@ -64,7 +63,7 @@ const WhyPoornam = ({ poornamId , service }) => {
                 mx: { xs: "auto", md: 0 },
               }}
             >
-              {service?.whyPoornam?.description || service?.whyPoornam[0]?.description}
+              {poornam?.whyPoornam?.description || poornam?.whyPoornam[0]?.description}
             </Typography>
           </Grid>
         </Grid>

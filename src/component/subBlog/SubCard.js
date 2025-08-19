@@ -4,7 +4,6 @@ import {
   Box,
   Typography,
   Card,
-
   Chip,
   IconButton,
   Snackbar,
@@ -13,18 +12,9 @@ import {
 import ShareIcon from "@mui/icons-material/Share";
 import Image from "next/image";
 
-// const cardData = {
-//   image: "/SubBlog.png",
-//   category: "Budget & Planning",
-//   title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
-//   author: "Author",
-//   date: "02-07-2025",
-// };
-
-
-const BlogCard = ({blogimg }) => {
-const [showShareMessage, setShowShareMessage] = useState(false);
-const handleShare = async () => {
+const BlogCard = ({ blogimg }) => {
+  const [showShareMessage, setShowShareMessage] = useState(false);
+  const handleShare = async () => {
     console.log("handleShare");
     const currentUrl = window.location.href;
     const shareData = {
@@ -52,9 +42,7 @@ const handleShare = async () => {
       }
     }
   };
-
- 
-const posts = blogimg
+const posts = blogimg;
   return (
     <Box
       display="flex"

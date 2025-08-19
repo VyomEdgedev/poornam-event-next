@@ -52,18 +52,6 @@ export default function   Snapshot() {
         >
         {`  A scrapbook of memories shared by our couples.`}
         </Typography>
-
-   {/* <SnapshotCard 
-         
-          avatarSrc="/logo.png"
-          title="Poornam Events"
-          Subtitles="2 days ago at Udaipur"
-          imageSrc="/snapshot.jpg"
-          caption="Every detail was perfectly curated!"
-           tags={['#WeddingGoals', '#PerfectDay']}
-
-          
-        /> */}
          <Box id="instagram-embed" sx={{ marginTop: 5 }}>
             <blockquote
               className="instagram-media"
@@ -77,7 +65,7 @@ export default function   Snapshot() {
                 margin: "1px",
                 maxWidth: 540,
                 minWidth: 326,
-                width: "100%",
+                width: "80%",
                 padding: 0,
                 maxHeight: "100%",
                 
@@ -89,7 +77,7 @@ export default function   Snapshot() {
                 rel="noopener noreferrer"
                 style={{color: "#3897f0", fontWeight: 550 }}
               >
-                {/* View this post on Instagram */}
+                View this post on Instagram
               </a>
             </blockquote>
             

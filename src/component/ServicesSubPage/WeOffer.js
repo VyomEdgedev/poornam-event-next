@@ -56,38 +56,10 @@ const weOfferData = [
 ];
 
 function WeOffer({ serviceId }) {
-  // const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   const fetchCategories = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await apiClient.get(
-  //         `api/service/getServicePageById/${serviceId}/event`
-  //       );
-  //       let categoryArr;
-  //       if (Array.isArray(response.data.serviceCategory)) {
-  //         categoryArr = response.data.serviceCategory;
-  //       } else if (response.data.serviceCategory) {
-  //         categoryArr = [response.data.serviceCategory];
-  //       }
-  //       setCategories(categoryArr);
-  //     } catch (err) {
-  //       setCategories([]);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   if (serviceId) {
-  //     fetchCategories();
-  //   }
-  // }, [serviceId]);
-console.log("categories",serviceId)
 const categories = serviceId 
   return (
-    <Box
+    <Box  
       sx={{
-        // px: { xs: 2, sm: 1, md: 1, lg: 15, xl: 28 },
         py: { xs: 4, sm: 6, md: 8 },
         bgcolor: "#FFF7E4",
       }}

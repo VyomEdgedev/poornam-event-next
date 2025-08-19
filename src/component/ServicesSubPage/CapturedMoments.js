@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Container,
   Typography,
@@ -10,42 +10,10 @@ import {
 } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
-import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
-import CircularProgress from "@mui/material/CircularProgress";
-// const CapturedMomentsData = [
-//   {
-//     id: 1,
-//     tag: "Rajasthan",
-//     image: "/YourDream1.png",
-//     alt: "Royal Rajasthani Theme",
-//     title: "Royal Rajasthani",
-//     description: "A regal affair in royal palaces.",
-//   },
-//   {
-//     id: 2,
-//     tag: "Beach",
-//     image: "/YourDream1.png",
-//     alt: "Boho Beach Theme",
-//     title: "Boho Beach",
-//     description: "An elegant beach ceremony.",
-//   },
-//   {
-//     id: 3,
-//     tag: "Modern",
-//     image: "/YourDream1.png",
-//     alt: "Minimal Chic Theme",
-//     title: "Minimal Chic ",
-//     description: "Simplicity meets elegance.",
-//   },
-// ];
-// const staticDescriptions = [
-//   "A regal affair in royal palaces.",
-//   "An elegant beach ceremony.",
-//   "Simplicity meets elegance.",
-// ];
-const CapturedMoments = ({ title, service =[]}) => {
-  const moments = service?.relatedPortfolios || []
+
+const CapturedMoments = ({ title, captured =[]}) => {
+  const moments = captured?.relatedPortfolios || []
   const router = useRouter();
 
   const handleViewAll = (category_id) => {

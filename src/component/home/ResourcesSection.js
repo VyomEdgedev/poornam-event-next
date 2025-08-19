@@ -46,7 +46,7 @@ export default function ResourcesSection() {
             >
               {`Resources`}
             </Typography>
-            <Typography  component="p" color="#000000">
+            <Typography  component="p" color="#000000" sx={{  fontFamily: "Akatab,Sans-serif"  }}>
               {`Love From Our Couples`}
             </Typography>
             <Typography
@@ -80,7 +80,6 @@ export default function ResourcesSection() {
           {/* Right Section */}
           <Grid
             item
-            // size={{ xs: 12, sm: 5, md: 5, lg: 6 }}
             size={{ xs: 12, sm: 7, md: 7, lg: 7 }}
             mt={{xs:5,sm:0}}
           >
