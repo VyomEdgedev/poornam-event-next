@@ -12,6 +12,7 @@ import FAQSection from "@/common-component/Faq/FAQSection";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import { useRouter } from "next/router";
 import { apiClient } from "@/lib/api-client";
+import SEO from "@/common-component/SEO/seo";
 
 function ServicesSubPage() {
   const router = useRouter();
@@ -77,10 +78,11 @@ function ServicesSubPage() {
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
   const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
+    const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
 return (
   <>
     {loading ? (
-      <Box sx={{ py: 8, textAlign: "center" }}>
+      <Box sx={{ py: 8, textAlign: "center" ,height:"60.5vh"}}>
         <CircularProgress
                 sx={{ 
                   color: "#DAA412",
@@ -90,6 +92,20 @@ return (
       </Box>
     ) : (
       <>
+       <SEO
+              url="http://www.poornamevents.com/services"
+              metaTitle={`${service?.meta?.title}`}
+              metaDescription={`${service?.meta?.description}`}
+              keywords={`${service?.meta?.keywords}`}
+              canonical="http://www.poornamevents.com/services"
+              ogTitle= {`${service?.ogTags?.title}`}
+              ogDescriptio={`${service?.ogTags?.description}`}
+              ogImage={`${service?.ogTags?.image}`||`${SITE_URL}/og-image.jpg` }
+              twitterTitle={`${service?.ogTags?.title}`}
+              twitterDescription={`${service?.ogTags?.description}`}
+              twitterImage={`${SITE_URL}/logoo.jpg`}
+              robots="index, follow" //  default'
+            />
         <CustomBanner
           title={title}
           paragraphSubtitle={description}
@@ -123,10 +139,10 @@ return (
           }}
         />
         <WhyChoose title={title} description={service?.description || ''} />
-        <WeOffer serviceId={id} />
+        <WeOffer serviceId={service?.serviceCategory} />
         <WhyPoornam poornamId={id} service={service} />
         <CapturedMoments title={title} service={service} />
-        <YourDream blogId={id} />
+        <YourDream Blogs={service?.relatedBlogs} />
         <WeddingKit />
         <FAQSection faqData={service?.faq || []} />
       </>

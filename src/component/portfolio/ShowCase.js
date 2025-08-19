@@ -40,7 +40,7 @@ const ShowCase = () => {
       setLoading(true);
       try {
         const response = await apiClient.get("/api/portfolio/event");
-        console.log(response);
+        console.log(response, "response");
         const data = response.data;
         if (Array.isArray(data)) {
           setAllThemes(data);

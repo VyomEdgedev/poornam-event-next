@@ -40,42 +40,43 @@ import CircularProgress from "@mui/material/CircularProgress";
 //   },
 // ];
 
-const YourDream = ({ blogId }) => {
+const YourDream = ({ Blogs }) => {
   const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [categoryName, setCategoryName] = useState("");
+  console.log("relatedBlogs", Blogs);
+  const relatedBlogs=Blogs; 
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       const response = await apiClient.get(
+  //         `api/service/getServicePageById/${blogId}/event`
+  //       );
+  //       console.log("API blogs:", response);
+  //       if (response?.data?.relatedBlogs) {
+  //         setBlogs(response.data.relatedBlogs);
+  //       } else {
+  //         setBlogs([]);
+  //       }
+  //       if (response?.data?.relatedBlogs[0]?.category?.name) {
+  //         setCategoryName(response.data.relatedBlogs[0]?.category.name);
+  //       } else {
+  //         setCategoryName();
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching blogs:", err);
+  //       setBlogs([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   if (blogId) {
+  //     fetchBlogs();
+  //   }
+  // }, [blogId]);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${blogId}/event`
-        );
-        console.log("API blogs:", response);
-        if (response?.data?.relatedBlogs) {
-          setBlogs(response.data.relatedBlogs);
-        } else {
-          setBlogs([]);
-        }
-        if (response?.data?.relatedBlogs[0]?.category?.name) {
-          setCategoryName(response.data.relatedBlogs[0]?.category.name);
-        } else {
-          setCategoryName();
-        }
-      } catch (err) {
-        console.error("Error fetching blogs:", err);
-        setBlogs([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (blogId) {
-      fetchBlogs();
-    }
-  }, [blogId]);
-
-  if (!categoryName) return null;
+  // if (!categoryName) return null;
 
   return (
     <Container sx={{ py: 8 }}>
@@ -88,9 +89,9 @@ const YourDream = ({ blogId }) => {
           fontFamily: "Gloock,serif",
         }}
       >
-        {`Real Talk About  ${categoryName}`}
+        {`Real Talk About  ${relatedBlogs[0]?.category?.name}`}
       </Typography>
-      {loading ? (
+      {/* {loading ? (
         <Box
           sx={{
             display: "flex",
@@ -101,14 +102,14 @@ const YourDream = ({ blogId }) => {
         >
           <CircularProgress sx={{ color: "#DAA412" }} />
         </Box>
-      ) : (
+      ) : ( */}
         <Grid
           container
           spacing={{ xs: 2, sm: 2, md: 2, lg: 6, xl: 7 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent="center"
         >
-          {blogs.map((blog, index) => (
+          {relatedBlogs?.map((blog, index) => (
             <Grid item key={blog._id || index} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
                 sx={{
@@ -171,7 +172,7 @@ const YourDream = ({ blogId }) => {
             </Grid>
           ))}
         </Grid>
-      )}
+      {/* )} */}
     </Container>
   );
 };

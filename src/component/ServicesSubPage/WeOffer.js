@@ -56,33 +56,34 @@ const weOfferData = [
 ];
 
 function WeOffer({ serviceId }) {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${serviceId}/event`
-        );
-        let categoryArr;
-        if (Array.isArray(response.data.serviceCategory)) {
-          categoryArr = response.data.serviceCategory;
-        } else if (response.data.serviceCategory) {
-          categoryArr = [response.data.serviceCategory];
-        }
-        setCategories(categoryArr);
-      } catch (err) {
-        setCategories([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (serviceId) {
-      fetchCategories();
-    }
-  }, [serviceId]);
-
+  // useEffect(() => {
+  //   const fetchCategories = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await apiClient.get(
+  //         `api/service/getServicePageById/${serviceId}/event`
+  //       );
+  //       let categoryArr;
+  //       if (Array.isArray(response.data.serviceCategory)) {
+  //         categoryArr = response.data.serviceCategory;
+  //       } else if (response.data.serviceCategory) {
+  //         categoryArr = [response.data.serviceCategory];
+  //       }
+  //       setCategories(categoryArr);
+  //     } catch (err) {
+  //       setCategories([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   if (serviceId) {
+  //     fetchCategories();
+  //   }
+  // }, [serviceId]);
+console.log("categories",serviceId)
+const categories = serviceId 
   return (
     <Box
       sx={{
