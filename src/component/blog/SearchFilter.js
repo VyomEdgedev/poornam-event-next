@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  NoSsr,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { apiClient } from "@/lib/api-client";
@@ -174,6 +175,7 @@ const handleCategoryToggle = (categoryName) => {
           {/* Search + Filters */}
           <Grid item xs={12} md={6}>
             {/* Search */}
+            <NoSsr defer>
             <Box sx={{ mb: 3 ,position: "relative" }} className="search-suggestion-box">
               <Typography
                 component="h6"
@@ -255,7 +257,7 @@ const handleCategoryToggle = (categoryName) => {
                  </Paper>
                )}
             </Box>
-
+            </NoSsr>
             {/* Categories */}
             <Box sx={{ mb: 3 }}>
               <Typography

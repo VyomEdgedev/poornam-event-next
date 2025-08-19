@@ -57,7 +57,7 @@ const [loading, setLoading] = useState(false);
   return (
     <Box 
     // px={{xs : "5%", sm:"2%", md: "0%", lg:"5%" ,xl:"10%"}} 
-    py={{xs : "5px", sm:"10px", md: "10px"}} textAlign="center" bgcolor="#FFF7E4" >
+    py={{xs : "5px", sm:"10px", md: "10px"}}  bgcolor="#FFF7E4" >
     <Container>
       <Grid container spacing={{ xs: 2, md: 5 }} columns={{ xs: 12, sm: 12, md: 12 }}>
       <Grid item size={{ xs: 12, sm: 6, md: 6 }}>

@@ -113,7 +113,6 @@ const MyForm = () => {
     setErrors(newErrors);
 
     if (Object.values(newErrors).some((error) => error)) {
-      toast.error("Please fill all required fields correctly.");
       setLoading(false);
       return;
     }

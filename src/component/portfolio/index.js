@@ -60,7 +60,7 @@ const Portfolio = () => {
         paragraphSubtitle={`From planning to "I do", we've got your back`}
         backgroundImage="/portfoliobanner.png"
         showLogo={true}
-        logoSrc="/logo.png"
+        logoSrc="/logo2.png"
         breadcrumbs={[
           { href: "/", isHome: true },
           // { href: '/blog', label: 'Blog' },
@@ -68,12 +68,12 @@ const Portfolio = () => {
         ]}
         // Optional: customize breadcrumbs position
         breadcrumbsPosition={{
-          top: "400px",
-          left: "43px",
-          lg: { top: "350px", left: "60px" },
-          md: { top: "300px", left: "10px" },
+          top: "320px",
+          left: "25px",
+          lg: { top: "300px", left: "25px" },
+          md: { top: "200px", left: "26px" },
           sm: { top: "330px", left: "3px" },
-          xs: { top: "310px", left: "20px" },
+          xs: { top: "200px", left: "20px" },
         }}
         overlay={{
           background:

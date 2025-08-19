@@ -279,6 +279,14 @@ export default function CookiesBanner() {
                   <Switch
                     checked={preferences.analytics}
                     onChange={handlePreferenceChange("analytics")}
+                    sx={{
+                      "& .MuiSwitch-switchBase.Mui-checked": {
+                        color: "#DAA412",
+                      },
+                      "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                        backgroundColor: "#DAA412",
+                      },
+                    }}
                   />
                 }
                 label=""
@@ -309,6 +317,14 @@ export default function CookiesBanner() {
                   <Switch
                     checked={preferences.marketing}
                     onChange={handlePreferenceChange("marketing")}
+                    sx={{
+                      "& .MuiSwitch-switchBase.Mui-checked": {
+                        color: "#DAA412",
+                      },
+                      "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                        backgroundColor: "#DAA412",
+                      },
+                    }}
                   />
                 }
                 label=""
