@@ -490,7 +490,7 @@ const PortfolioSection = () => {
               right: 20,
               color: "#fff",
               zIndex: 10,
-              backgroundColor:"#DAA412",
+              backgroundColor:"#DAA412 !important",
               // p: { xs: 0.5, sm: 0.75, md: 1 },
             }}
           >
