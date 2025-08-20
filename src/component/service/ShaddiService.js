@@ -162,7 +162,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   width: "100px",
   height: "125px",
   overflow: "hidden",
-  borderRadius: "8px",
+  borderRadius: "6px",
   flexShrink: 0,
   "& img": {
     width: "100%",
@@ -177,9 +177,9 @@ const ImageContainer = styled(Box)(({ theme }) => ({
 
 const HeroImageContainer = styled(Box)({
   width: "100%",
-  height: "223px",
+  height: "250px",
   overflow: "hidden",
-  borderRadius: "8px",
+  borderRadius: "6px",
   "& img": {
     width: "100%",
     height: "100%",
@@ -209,9 +209,7 @@ const ServiceTitle = styled(Typography)(({ theme }) => ({
 
 const ServiceDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
-
   color: "#000000",
-
   display: "-webkit-box",
   WebkitLineClamp: 2,
   WebkitBoxOrient: "vertical",
@@ -222,34 +220,38 @@ const ServiceDescription = styled(Typography)(({ theme }) => ({
 
 const HeroContent = styled(Box)(({ theme }) => ({
   display: "flex",
-  marginLeft: "30px",
   flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "start",
   height: "100%",
   width: "100%",
-  [theme.breakpoints.down("md")]: {
-    marginLeft: "20px",
-    alignItems: "center",
+  // [theme.breakpoints.down("md")]: {
+  //   alignItems: "center",
 
-  },
-  [theme.breakpoints.down("sm")]: {
-    marginLeft: "0px",
-    textAlign: "center",
-    alignItems: "center",
-  },
+  // },
+  // [theme.breakpoints.down("sm")]: {
+  //   marginLeft: "0px",
+  //   textAlign: "center",
+  //   alignItems: "center",
+  // },
+  // [theme.breakpoints.down("xs")]: {
+   
+  //   textAlign: "start",
+  //   alignItems: "start",
+  // },
+   padding:6
 }));
 
 const HeroTitle = styled(Typography, {
   shouldForwardProp: (prop) => prop !== "isLong",
 })(({ theme, isLong }) => ({
   fontFamily: "Gloock, serif",
-  width: "260px",
   fontWeight: 400,
-  fontSize: "30px !important",
- 
+  fontSize: "32px !important",
   color: "#000000",
-
+   [theme.breakpoints.down("xs")]: {
+    alignItems: "start",
+    textAlign:"start"
+  },
+  paddingLeft:{xs:"10px", sm:"0px"},
   marginBottom: theme.spacing(0.5),
   [theme.breakpoints.down("md")]: { fontSize: "30px" },
   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
@@ -259,7 +261,6 @@ const HeroDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
   fontWeight: "400",
   fontSize: "16px !important",
-  width: "251px",
   color: "#000000",
   textAlign: "left",
   marginBottom: theme.spacing(3),
@@ -339,7 +340,7 @@ const ShaddiService = () => {
         columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
         sx={{ border: "1px solid #ddd", borderRadius: "8px", }}
       >
-        <Grid item size={{ xs: 12, sm: 6, md: 8 }}
+        <Grid item size={{ xs: 12, sm: 6, md: 7 }}
           sx={{ p: 2 }}
         >
           <HeroImageContainer>
@@ -351,20 +352,20 @@ const ShaddiService = () => {
             />
           </HeroImageContainer>
         </Grid>
-        <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
+        <Grid item size={{ xs: 12, sm: 6, md: 5 }}>
           <HeroContent>
-            <HeroTitle > 
+            <HeroTitle >
               {selectedService
-                ? selectedService.title
-                : services[0]?.title || servicesData.hero.title}
+                ? trimText(selectedService.title, 110)
+                : trimText(services[0]?.title || servicesData.hero.title,40)}
             </HeroTitle>
             <HeroDescription>
               {selectedService
-                ? trimText(selectedService.description, 100)
-                : trimText(services[0]?.description, 100)}
+                ? trimText(selectedService.description, 80)
+                : trimText(services[0]?.description, 110)}
             </HeroDescription>
             <CustomButton
-              sx={{ mb: 1, fontFamily: "Akatab, Sans-serif !important"}}
+              sx={{ mb: 1, fontFamily: "Akatab, Sans-serif !important" }}
               onClick={() => {
                 handleNavigate(services[0]?.uid);
               }}

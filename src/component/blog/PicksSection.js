@@ -68,9 +68,8 @@ const PicksSection = () => {
               component="h2"
               sx={{
                 fontFamily: "Gloock,serif",
-                fontWeight: 400,
-             
-                mb: 2,
+                fontWeight:500,
+               mb: 2,
                 color: "#000000",
                 textAlign: { xs: "center", md: "center", lg: "left" },
               }}

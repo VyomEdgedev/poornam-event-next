@@ -104,14 +104,7 @@ const WeddingChecklist = () => {
       }}
     >
       <Container >
-        {/* <Box
-          sx={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: "flex-start",
-            gap: { xs: 1, sm: 4, md: 5, lg: 4, xl: 2 },
-          }}
-        > */}
+       
         <Grid container spacing={0} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
           alignItems={"center"}
           justifyItems={"center"} justifyContent={"center"}
@@ -119,7 +112,7 @@ const WeddingChecklist = () => {
         >  {/* Main Title Section */}
           <Grid item size={{ xs: 12,md: 6, lg: 4 }} >
             <MainTitle component="h2"
-              textAlign={{ xs: "center", sm: "start" }}>
+              textAlign={{ xs: "center", sm: "center", md:"start" }}>
             {`  Shaadi Mein
               Kya-Kya Karwaya
               Hai?`}
@@ -235,64 +228,6 @@ const WeddingChecklist = () => {
             </Grid>
           </Grid>
         </Grid>
-
-
-        {/* Main Title Section */}
-        {  /*<Box
-            sx={{
-              flex: isMobile ? "none" : 1,
-              minWidth: isMobile ? "100%" : "300px",
-              mb: isMobile ? 3 : 0,
-            }}
-          >
-            <MainTitle variant="h2">
-              Shaadi Mein
-              <br />
-              Kya-Kya Karwaya
-              <br />
-              Hai?
-            </MainTitle>
-          </Box>}
-
-          {/* Events Grid */}
-        {/*  <Box
-            sx={{
-              flex: isMobile ? "none" : 1,
-              width: "100%",
-              // maxWidth: isMobile ? '100%' : '600px'
-            }}
-          >
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : isTablet
-                    ? "1fr"
-                    : "repeat(2, 1fr)",
-                gap: 1,
-                alignItems: "baseline",
-                width: "100%",
-              }}
-            >
-              {events.map((event, index) => (
-                <EventItem key={index}>
-                  <IconWrapper>
-                    <IconImage
-                      src={event.icon}
-                      alt={`Icon for ${event.text}`}
-                      onError={(e) => {
-                        // Fallback if image doesn't load
-                        e.target.style.display = "none";
-                      }}
-                    />
-                  </IconWrapper>
-                  <EventText>{event.text}</EventText>
-                </EventItem>
-              ))}
-            </Box>
-          </Box>*/}
-        {/* </Box> */}
       </Container>
     </Box>
   );
