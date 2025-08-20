@@ -186,7 +186,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
           {/* Search + Filters */}
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             {/* Search */}
-            <NoSsr defer>
+            
               <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
                 <Typography
                   component="h6"
@@ -284,7 +284,6 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                   </Paper>
                 )}
               </Box>
-            </NoSsr>
             {/* Categories */}
             <Box sx={{ mb: 3 }}>
               <Typography
