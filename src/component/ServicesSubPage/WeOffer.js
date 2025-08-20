@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 
 function WeOffer({ categoriesId }) {
+  console.log("hello")
   const categories = categoriesId;
   return (
     <Box
