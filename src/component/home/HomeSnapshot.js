@@ -65,7 +65,7 @@ export default function   Snapshot() {
                 margin: "1px",
                 maxWidth: 540,
                 minWidth: 326,
-                width: "80%",
+                width: "100%",
                 padding: 0,
                 maxHeight: "100%",
                 

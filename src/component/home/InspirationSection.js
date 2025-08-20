@@ -21,6 +21,13 @@ export default function InspirationSection({ categories = data }) {
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
 
+  const capitalizeWords = (text) => {
+    if (!text) return "";
+    return text
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  };
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
@@ -85,7 +92,7 @@ export default function InspirationSection({ categories = data }) {
             ref={scrollRef}
             sx={{
               display: "flex",
-              gap: 9.5,
+              gap: { xs: 5.5, md: 9.5 },
               overflowX: "auto",
               scrollBehavior: "smooth",
               pb: 2,
@@ -156,6 +163,8 @@ export default function InspirationSection({ categories = data }) {
                       backdropFilter: "blur(0px)",
                       transition: "all 0.4s ease",
                       zIndex: 1,
+                      textAlign: "center",
+                      alignItems: "center",
                     }}
                   />
 
@@ -163,11 +172,12 @@ export default function InspirationSection({ categories = data }) {
                   <Typography
                     className="label-text"
                     component="p"
+                    label={capitalizeWords(item.name)}
                     sx={{
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: 600,
                       position: "absolute",
-                      bottom: 25,
+                      bottom: 40,
                       left: 0,
                       right: 0,
                       textAlign: "center",
@@ -181,9 +191,13 @@ export default function InspirationSection({ categories = data }) {
                       zIndex: 2,
                       transform: "translateY(0)",
                       transition: "transform 0.6s ease-in-out",
+                      width: "75%",
+
+
+                      margin: "auto"
                     }}
                   >
-                    {item.name}
+                    {capitalizeWords(item.name)}
                   </Typography>
                 </Box>
               </Link>
