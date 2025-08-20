@@ -15,10 +15,6 @@ const layouts = {
   default: Layout,
   layout1: Layout1,
 };
-
-
-
-
 export default function App({ Component, pageProps }) {
   const Layout = layouts[Component.layout] || layouts.default;
 
@@ -52,6 +48,10 @@ export default function App({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
+
+
+
+      
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Layout>
