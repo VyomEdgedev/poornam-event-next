@@ -218,3 +218,6 @@ p  { font-size: 14px !important; }
 .css-161ms7l-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
     opacity: 1 !important;
 }
+.css-t0qtwk-MuiButtonBase-root-MuiAccordionSummary-root{
+      padding: 0px 0px !important;
+}
