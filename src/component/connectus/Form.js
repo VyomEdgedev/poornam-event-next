@@ -35,88 +35,52 @@ const MyForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+  const validators = {
+    fullName: (v) => v.trim().length > 0,
+    email: (v) =>
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v.trim()),
+    phone: (v) => /^[0-9]{10}$/.test(v),
+    location: (v) => v.trim().length > 0,
+    numberOfGuests: (v) => /^\d+$/.test(v) && Number(v) > 0,
+    yourMessage: (v) => v.trim().length > 0,
   };
 
-  const validatePhone = (phone) => {
-    const re = /^[0-9]{10,15}$/;
-    return re.test(phone);
+  const validateField = (name, value) => {
+    const fn = validators[name];
+    return fn ? fn(value ?? "") : true;
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    let next = value;
+    
+    if (name === "phone") {
+      next = value.replace(/\D/g, "").slice(0, 10);
+    }
+    if (name === "numberOfGuests") {
+      next = value.replace(/\D/g, "").slice(0, 5);
+    }
 
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: false,
-      });
+    setFormData((prev) => ({ ...prev, [name]: next }));
+
+    if (Object.prototype.hasOwnProperty.call(errors, name)) {
+      setErrors((prev) => ({ ...prev, [name]: !validateField(name, next) }));
     }
   };
-
-  // const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     setLoading(true);
-  //     // Validate form
-  //     const newErrors = {
-  //         fullName: !formData.fullName.trim(),
-  //         email: !formData.email.trim() || !validateEmail(formData.email),
-  //         phone: !formData.phone.trim() || !validatePhone(formData.phone),
-  //         location: !formData.location.trim(),
-  //         numberOfGuests: !formData.numberOfGuests.trim(),
-  //         yourMessage: !formData.yourMessage.trim()
-  //     };
-
-  //     setErrors(newErrors);
-  //     setTimeout(() => {
-  //     // Check if there are any errors
-  //     if (!Object.values(newErrors).some(error => error)) {
-
-  //     toast.success("Form submitted successfully!");
-  //     setFormData({
-  //         fullName: '',
-  //         email: '',
-  //         phone: '',
-  //         weddingDate: '',
-  //         location: '',
-  //         numberOfGuests: '',
-  //         yourMessage: ''
-  //     });
-
-  // } else {
-  //     toast.error("Please fill all required fields correctly.");
-  // }
-  // setLoading(false);
-  // },1000);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    const newErrors = {
-      fullName: !formData.fullName.trim(),
-      email: !formData.email.trim() || !validateEmail(formData.email),
-      phone: !formData.phone.trim() || !validatePhone(formData.phone),
-      location: !formData.location.trim(),
-      numberOfGuests: !formData.numberOfGuests.trim(),
-      yourMessage: !formData.yourMessage.trim(),
-    };
+const newErrors = Object.keys(errors).reduce((acc, key) => {
+      acc[key] = !validateField(key, formData[key]);
+      return acc;
+    }, {});
 
     setErrors(newErrors);
 
-    if (Object.values(newErrors).some((error) => error)) {
-      setLoading(false);
+    if (Object.values(newErrors).some(Boolean)) {
+      toast.error("Please fix the highlighted fields.");
       return;
     }
 
+    setLoading(true);
     try {
       const payload = {
         formType: "contactus",
@@ -130,7 +94,6 @@ const MyForm = () => {
         sourcePage: "/connectus",
       };
       const response = await apiClient.post("/api/userform/event", payload);
-      console.log("Form Data:", response);
       setFormData({
         fullName: "",
         email: "",
@@ -141,6 +104,9 @@ const MyForm = () => {
         yourMessage: "",
       });
       setOpenSuccess(true);
+      setTimeout(() => {
+        setOpenSuccess(false);
+      }, 1500);
     } catch (error) {
       const errorMsg =
         error?.response?.data?.error ||
@@ -158,38 +124,23 @@ const MyForm = () => {
     }
   };
   const today = new Date().toISOString().split("T")[0];
-  const isBelow900 = useMediaQuery("(max-width:900px)");
-  const responsiveSpacing = isBelow900 ? 2 : 5;
 
   return (
     <Container>
       <Box
         sx={{
           py: 4,
-          // backgroundColor: "red",
-          // px: { xs: 12, sm: 10, md: 0, lg: 0, xl: 24 },
-          // py: { xs: 2, sm: 5, md: 7, lg: 5, xl: 7 },
           fontFamily: "Akatab, sans-serif",
         }}
       >
         <SuccessModal open={openSuccess} setOpen={setOpenSuccess} />
         <Grid
-          // spacing={{ xs: 2, sm: 5, md: 7, lg: 4, xl: 0 }}
-          // px={{ xs: 2, sm: 5, md: 20 }}
-          // display="flex"
-          // alignItems="flex-start"
-          // justifyContent="space-evenly"
           container
           spacing={{ xs: 2, md: 5, lg: 6 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
         >
           {/* Left Side - Title + Image */}
-          <Grid
-            container
-            // spacing={responsiveSpacing}
-            item
-            size={{ xs: 12, sm: 6, md: 6 }}
-          >
+          <Grid container item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box width={"100%"}>
               <Typography
                 component="h2"
@@ -208,12 +159,10 @@ const MyForm = () => {
               <Box
                 sx={{
                   width: "100%",
-                  // maxWidth: { xs: 350, sm: 400, md: 440, lg: 440, xl: 440 },
                   height: { xs: 250, sm: 450, md: 480, lg: 500, xl: 500 },
                   borderRadius: 2,
                   overflow: "hidden",
                   position: "relative",
-                  // px: { xs: 5, sm: 10, md: 2 },
                 }}
               >
                 <Image
@@ -223,7 +172,6 @@ const MyForm = () => {
                   style={{
                     objectFit: "cover",
                   }}
-                  // sizes="(max-width: 600px) 300px, (max-width: 900px) 350px, 450px"
                   priority
                 />
               </Box>
@@ -235,13 +183,10 @@ const MyForm = () => {
             <Box
               component="form"
               onSubmit={handleSubmit}
-              noValidate // This disables HTML5 validation
+              noValidate
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                // gap: 3,
-                // maxWidth: { xs: 350, sm: 400, md: 400, lg: 500, xl: 600 },
-                // width: { xs: "100%", sm: "350px", md: "540px" },
                 mx: { xs: 0, sm: 0, md: 0 },
               }}
             >
@@ -262,6 +207,7 @@ const MyForm = () => {
                   placeholder="Your Full Name"
                   variant="outlined"
                   fullWidth
+                  autoComplete="off"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -308,6 +254,7 @@ const MyForm = () => {
                   placeholder="Your Email"
                   variant="outlined"
                   fullWidth
+                  autoComplete="off"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -333,7 +280,7 @@ const MyForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   error={errors.email}
-                  helperText={errors.email ? "Please enter a valid email" : ""}
+                  helperText={errors.email ? "Please enter a  email" : ""}
                 />
               </Box>
 
@@ -354,6 +301,21 @@ const MyForm = () => {
                   placeholder="Your Phone"
                   variant="outlined"
                   fullWidth
+                  autoComplete="off"
+                  type="tel"
+                  inputProps={{
+                    inputMode: "numeric",
+                    pattern: "[0-9]*",
+                    maxLength: 10,
+                  }}
+                  onKeyDown={(e) => {
+                    const blocked = ["e", "E", "+", "-", "."];
+                    if (blocked.includes(e.key)) e.preventDefault();
+                  }}
+                  onPaste={(e) => {
+                    const paste = e.clipboardData.getData("text");
+                    if (/\D/.test(paste)) e.preventDefault();
+                  }}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -379,9 +341,7 @@ const MyForm = () => {
                   onChange={handleChange}
                   error={errors.phone}
                   helperText={
-                    errors.phone
-                      ? "Please enter a valid phone number (10-15 digits)"
-                      : ""
+                    errors.phone ? "Please enter a  phone number " : ""
                   }
                 />
               </Box>
@@ -449,6 +409,7 @@ const MyForm = () => {
                   placeholder="Venue Location"
                   variant="outlined"
                   fullWidth
+                  autoComplete="off"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -492,6 +453,8 @@ const MyForm = () => {
                 </Typography>
                 <TextField
                   placeholder="Estimated Guests"
+                  autoComplete="off"
+                  type="number"
                   variant="outlined"
                   fullWidth
                   sx={{
@@ -541,6 +504,7 @@ const MyForm = () => {
                   placeholder="Your Message"
                   variant="outlined"
                   fullWidth
+                  autoComplete="off"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -586,7 +550,7 @@ const MyForm = () => {
                   fontWeight: "400",
                   height: { xs: "45px", md: "50px" },
                   "&:hover": {
-                    bgcolor: "#DAA412", // Changed hover color to #011d4a
+                    bgcolor: "#DAA412",
                   },
                 }}
               >

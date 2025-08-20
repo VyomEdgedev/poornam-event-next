@@ -92,16 +92,13 @@ const handleSubmit = async (e) => {
     } finally {
       setLoading(false);
     }
-  } else {
-    toast.error("Please fill all required fields correctly.");
-  }
-};
+  } };
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
-        gap: 3,
+        gap: {xs:1, sm:3},
         p: 1,
       
       }}
@@ -111,10 +108,9 @@ const handleSubmit = async (e) => {
       <Box
         sx={{
           width: { xs: "100%", sm: "40%", md: "40%" },
-          height: { xs: 200, sm: 300,md:"auto"},
+          height: { xs: 155, sm:"auto"},
           position: "relative",
           borderRadius: 2,
-          // overflow: "hidden",
         }}
       >
         <Image
@@ -122,8 +118,7 @@ const handleSubmit = async (e) => {
           alt="Wedding planning imagery"
           fill
           style={{ objectFit: "cover" }}
-          // sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-          priority
+           priority
         />
       </Box>
 
@@ -136,7 +131,7 @@ const handleSubmit = async (e) => {
           width: { xs: "100%", sm: "60%" },
           display: "flex",
           flexDirection: "column",
-          gap: 2,
+          gap: { xs: 1, sm: 2 },
         }}
       >
         <Typography
@@ -146,7 +141,7 @@ const handleSubmit = async (e) => {
             fontWeight: "400",
             fontFamily: "Gloock, serif",
             color: "#000000",
-            mb: 2,
+            mb: { xs: 0, sm: 2 },
           }}
         >
           Tell Us About Your Wedding
@@ -263,7 +258,7 @@ const handleSubmit = async (e) => {
           variant="outlined"
           fullWidth
           multiline
-          rows={3}
+          rows={2.5}
           size="small"
           error={errors.message}
           helperText={errors.message ? "Message is required" : ""}
