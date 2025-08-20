@@ -15,34 +15,31 @@ import Image from "next/image";
 const BlogCard = ({ blogimg }) => {
   const [showShareMessage, setShowShareMessage] = useState(false);
   const handleShare = async () => {
-    console.log("handleShare");
     const currentUrl = window.location.href;
     const shareData = {
       title: posts?.title || "Blog Post",
       text: posts?.excerpt || "Check out this interesting blog post!",
       url: currentUrl,
     };
-    console.log("ad", currentUrl);
     try {
       if (navigator.share && navigator.canShare(shareData)) {
         await navigator.share(shareData);
       } else {
-        console.log("clipboard");
         await navigator.clipboard.writeText(currentUrl);
         setShowShareMessage(true);
       }
     } catch (error) {
+      console.log("clipboard"); 
       try {
         await navigator.clipboard.writeText(currentUrl);
         setShowShareMessage(true);
       } catch (clipboardError) {
         console.error("Failed to copy URL:", clipboardError);
-
         alert(`Share this URL: ${currentUrl}`);
       }
     }
   };
-const posts = blogimg;
+  const posts = blogimg;
   return (
     <Box
       display="flex"

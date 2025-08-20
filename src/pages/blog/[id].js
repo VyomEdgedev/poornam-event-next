@@ -2,7 +2,6 @@ import SubBlog from "@/component/subBlog/SubBlog";
 import axios from "axios";
 
 const id = ({ singleBlog }) => {
-  console.log("singleBlog", singleBlog);
   return (
     <>
       <SubBlog blog={singleBlog} />

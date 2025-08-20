@@ -44,7 +44,6 @@ const description = blogtext
                 fontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 color: "#000D1F",
-                // fontSize: { xs: "16px", sm: "18px", md: "22px" },
               },
               "&  p ": {
                 fontFamily: "Akatab,Sans-serif",

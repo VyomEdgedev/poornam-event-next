@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { apiClient } from "@/lib/api-client";
 import Image from "next/image";
 
-const WhyPoornam = ({  poornam }) => {
-
+const WhyPoornam = ({ poornam }) => {
   return (
     <Box
       sx={{
@@ -29,7 +27,7 @@ const WhyPoornam = ({  poornam }) => {
               }}
               dangerouslySetInnerHTML={{
                 __html:
-                poornam?.whyPoornam[0]?.title  || service?.whyPoornam?.title,
+                  poornam?.whyPoornam[0]?.title || service?.whyPoornam?.title,
               }}
             />
           </Grid>
@@ -63,7 +61,8 @@ const WhyPoornam = ({  poornam }) => {
                 mx: { xs: "auto", md: 0 },
               }}
             >
-              {poornam?.whyPoornam?.description || poornam?.whyPoornam[0]?.description}
+              {poornam?.whyPoornam?.description ||
+                poornam?.whyPoornam[0]?.description}
             </Typography>
           </Grid>
         </Grid>
