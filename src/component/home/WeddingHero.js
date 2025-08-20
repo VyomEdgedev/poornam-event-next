@@ -126,7 +126,7 @@ export default function WeddingSection() {
               sx={{
                 width: "100%",
                 height: "auto",
-                borderRadius: 3,
+               
                 boxShadow: 3,
                 objectFit: "cover",
                 height: { xs: 200, sm: 200, md: 230, lg: 260, xl: 260 },
@@ -145,10 +145,10 @@ export default function WeddingSection() {
               sx={{
                 width: "100%",
                 height: "auto",
-                borderRadius: 1,
+               
                 boxShadow: 3,
                 objectFit: "cover",
-                mt: { xs: 4, sm: 4, md: 4, lg: 8, xl: 8 },
+                mt: { xs: 4, sm: 6, md: 6, lg: 10, xl: 10 },
                 height: { xs: 200, sm: 200, md: 220, lg: 260, xl: 260 },
               }}
               onError={(e) => {

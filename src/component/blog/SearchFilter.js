@@ -297,7 +297,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
               >
                 Filter by Category
               </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 ,height:"140px", overflow:"auto"}} >
                 {catgeory.map((category) => (
                   <FilterChip
                     key={category.name}
