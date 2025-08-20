@@ -13,7 +13,7 @@ const description = blogtext
       alignItems="center"
       flexDirection="column"
       px={{ xs: 2, sm: 6, md: 10 }}
-      py={4}
+      py={2}
     >
       <Box maxWidth="1100px" width="100%" textAlign="left">
         <Box>

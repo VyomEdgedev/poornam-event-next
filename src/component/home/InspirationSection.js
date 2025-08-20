@@ -57,7 +57,11 @@ export default function InspirationSection({ categories = data }) {
         >
           {`Inspirations & Blogs`}
         </Typography>
-          <Box sx={{ position: "relative" }} //border="1px solid grey"  borderRadius="10px" paddingTop={2}
+          <Box sx={{ position: "relative" }}
+           border="1px solid grey" 
+            borderRadius="10px" 
+            paddingTop={2}
+            boxShadow={4}
           >
          
           {showLeft && (

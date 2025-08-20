@@ -50,7 +50,6 @@ const posts = blogimg;
       alignItems="center"
       flexDirection="column"
       px={{ xs: 2, sm: 6, md: 10 }}
-      py={5}
       mt={6}
     >
       {posts && (

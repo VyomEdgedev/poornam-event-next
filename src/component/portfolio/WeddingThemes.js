@@ -43,7 +43,7 @@ const WeddingThemes = () => {
     console.log("Themes clicked");
   };
   return (
-    <Container maxWidth="xl" sx={{ py: 3 }}>
+    <Container  sx={{ py: 3 }}>
       <Typography
         component="h2"
         align="center"
@@ -68,12 +68,10 @@ const WeddingThemes = () => {
       >
         {`Choose from a variety of stunning wedding themes. `}
       </Typography>
-      {/* <Box textAlign="center" mb={4}>
-        <CustomButton  data-testid="notify-button" onClick={handleThemes}>{`View All Themes`}</CustomButton>
-      </Box> */}
+    
       <Grid
         container
-        spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+        spacing={{ xs: 2, sm: 3.5, md: 4, lg: 6, xl: 6 }}
         justifyContent="center"
       >
         {weddingThemesData.map(

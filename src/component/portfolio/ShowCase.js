@@ -221,7 +221,7 @@ const ShowCase = () => {
                     alignItems: "center",
                     fontSize: 14,
                     textAlign: "center",
-                    minHeight: { xs: 250, sm: 280, md: 300 },
+                    minHeight: { xs: 250, sm: 280, md: 430 },
                   }}
                   onClick={() => handleOpenModal(idx)}
                 >
@@ -232,31 +232,7 @@ const ShowCase = () => {
                     objectFit="cover"
                   />
                 </Box>
-                <CardContent>
-                  <Typography
-
-                    component="p"
-                    sx={{
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "400",
-
-                    }}
-                  >
-                    {item.category?.name}
-                  </Typography>
-                  <Typography
-
-                    component="h6"
-                    sx={{
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "500",
-                      color: "#000000",
-
-                    }}
-                  >
-                    {/* {staticDescriptions[idx] || "A beautiful wedding moment."} */}
-                  </Typography>
-                </CardContent>
+              
               </Card>
             </Grid>
           ))
