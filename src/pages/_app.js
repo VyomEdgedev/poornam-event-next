@@ -16,6 +16,9 @@ const layouts = {
   layout1: Layout1,
 };
 
+
+
+
 export default function App({ Component, pageProps }) {
   const Layout = layouts[Component.layout] || layouts.default;
 
