@@ -31,8 +31,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
       <Container
         sx={{ py: 8 }}
-        // px={{ xs: "5%", sm: "5%", md: "15%" }}
-      >
+       >
         <Typography
           component="h2"
           align="center"

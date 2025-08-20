@@ -30,7 +30,6 @@ function ServicesSubPage() {
         );
         setService(response.data);
       } catch (err) {
-        console.error("Error fetching service:", err);
         setError(err.message || "Failed to fetch service");
         setService(null);
       } finally {
@@ -104,7 +103,7 @@ return (
           }}
         />
         <WhyChoose title={title} description={service?.description || ''} />
-        <WeOffer serviceId={service?.serviceCategory} />
+        <WeOffer categoriesId={service?.serviceCategory} />
         <WhyPoornam  poornam={service} />
         <CapturedMoments title={title} captured={service} />
         <YourDream Blogs={service?.relatedBlogs} />
