@@ -13,8 +13,9 @@ function Page404() {
     <Box>
       <CustomBanner
         showLogo={true}
-        logoSrc="/logo.png"
-        height={{ xs: "10vh", sm: "20vh"}}
+        logoSrc="/logo2.png"
+        height={{ xs: "15vh", sm: "15vh", md: "40vh"}}
+        
       />
 
       <Box padding="3%">
@@ -93,22 +94,22 @@ function Page404() {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          gap={2}
+          gap={{xs: '10px', sm: '20px', md: '30px'}}
           padding="20px"
         >
           <Link href="/" style={{ textDecoration: 'none' }}>
-            <CustomButton data-testid="notify-button" testId="home">
+            <CustomButton sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}} data-testid="notify-button" testId="home">
               Take Me Home
             </CustomButton>
           </Link>
           
           <Link href="/connectus" style={{ textDecoration: 'none' }}>
-            <CustomButton data-testid="notify-button">
+            <CustomButton sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}}data-testid="notify-button">
               Contact Us
             </CustomButton>
           </Link>
           
-          <CustomButton data-testid="notify-button" onClick={handlePage404W}>
+          <CustomButton sx={{ fontSize: { xs: '12px', sm: '13px', md: '16px' }}} data-testid="notify-button" onClick={handlePage404W}>
             Plan My Wedding
           </CustomButton>
         </Box>
