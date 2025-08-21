@@ -6,74 +6,45 @@ import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { apiClient } from "@/lib/api-client";
 import SuccessModal from "./SuccessModal";
-const Form = () => {
+import { useForm } from "react-hook-form";
+const Form = ({ onClose }) => {
   const [openSuccess, setOpenSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    message: "",
+  const [loading, setLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
   });
 
-  const [errors, setErrors] = useState({
-    fullName: false,
-    email: false,
-    phone: false,
-    message: false,
-  });
-const [loading, setLoading] = useState(false);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: false,
-      });
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {
-      fullName: !formData.fullName.trim(),
-      email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email),
-      phone: !/^\d{10}$/.test(formData.phone),
-      message: !formData.message.trim(),
-    };
-
-    setErrors(newErrors);
-    return !Object.values(newErrors).some((error) => error);
-  };
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (validateForm()) {
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
       const payload = {
         formType: "contactus",
-        fullName: formData?.fullName,
-        message: formData?.message,
-        email: formData?.email,
-        phoneNo: formData?.phone,
+        fullName: data?.fullName,
+        message: data?.message,
+        email: data?.email,
+        phoneNo: data?.phone,
         sourcePage: "/model",
       };
-      const response = await apiClient.post("/api/userform/event", payload);
-   
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-       setOpenSuccess(true);
+      await apiClient.post("/api/userform/event", payload);
+
+      reset();
+      setOpenSuccess(true);
       setTimeout(() => {
         setOpenSuccess(false);
+        onClose?.();
       }, 1500);
     } catch (error) {
       const errorMsg =
@@ -93,7 +64,7 @@ const handleSubmit = async (e) => {
     } finally {
       setLoading(false);
     }
-  } };
+  };
   return (
     <Box
       sx={{
@@ -126,7 +97,7 @@ const handleSubmit = async (e) => {
       {/* Right Side - Form */}
       <Box
         component="form"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         noValidate
         sx={{
           width: { xs: "100%", sm: "60%" },
@@ -153,8 +124,22 @@ const handleSubmit = async (e) => {
           variant="outlined"
           fullWidth
           size="small"
-          error={errors.fullName}
-          helperText={errors.fullName ? "Full name is required" : ""}
+            name="fullName"
+          autoComplete="off"
+          {...register("fullName", {
+            required: "Full name is required",
+            validate: {
+              minLength: (value) => {
+                const length = (value || "").trim().length;
+                if (length > 0 && length < 3) {
+                  return "Must be at least 3 characters";
+                }
+                return true;
+              },
+            },
+          })}
+          error={!!errors.fullName}
+          helperText={errors.fullName?.message}
           sx={{
             "& .MuiInputBase-root": {
               height: "40px",
@@ -176,9 +161,7 @@ const handleSubmit = async (e) => {
               opacity: 1,
             },
           }}
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
+        
         />
 
         {/* Email */}
@@ -187,8 +170,15 @@ const handleSubmit = async (e) => {
           variant="outlined"
           fullWidth
           size="small"
-          error={errors.email}
-          helperText={errors.email ? "Please enter a valid email" : ""}
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Please enter a valid email",
+            },
+          })}
+          error={!!errors.email}
+          helperText={errors.email?.message}
           sx={{
             "& .MuiInputBase-root": {
               height: "40px",
@@ -212,8 +202,7 @@ const handleSubmit = async (e) => {
           }}
           name="email"
           type="email"
-          value={formData.email}
-          onChange={handleChange}
+          autoComplete="off"
         />
 
         {/* Phone */}
@@ -222,10 +211,18 @@ const handleSubmit = async (e) => {
           variant="outlined"
           fullWidth
           size="small"
-          error={errors.phone}
-          helperText={
-            errors.phone ? "Please enter a valid 10-digit phone number" : ""
-          }
+          {...register("phone", {
+            required: "Phone number is required",
+            pattern: {
+              value: /^[0-9]{10}$/,
+              message: "Please enter a valid 10-digit phone number",
+            },
+            onChange: (e) => {
+              e.target.value = e.target.value.replace(/[^0-9]/g, "");
+            },
+          })}
+          error={!!errors.phone}
+          helperText={errors.phone?.message}
           sx={{
             "& .MuiInputBase-root": {
               height: "40px",
@@ -248,8 +245,32 @@ const handleSubmit = async (e) => {
             },
           }}
           name="phone"
-          value={formData.phone}
-          onChange={handleChange}
+          inputProps={{ maxLength: 10 }}
+          type="tel"
+          onKeyDown={(e) => {
+            const allowedKeys = [
+              "Backspace",
+              "Delete",
+              "ArrowLeft",
+              "ArrowRight",
+              "Tab",
+            ];
+            const blocked = ["e", "E", "+", "-", "."];
+            if (
+              blocked.includes(e.key) ||
+              (((e.key >= "a" && e.key <= "z") ||
+                (e.key >= "A" && e.key <= "Z")) &&
+                !allowedKeys.includes(e.key))
+            ) {
+              e.preventDefault();
+            }
+          }}
+          onPaste={(e) => {
+            const pastedData = e.clipboardData.getData("text");
+            if (/[^0-9]/.test(pastedData)) {
+              e.preventDefault();
+            }
+          }}
         />
 
         {/* Message */}
@@ -260,8 +281,14 @@ const handleSubmit = async (e) => {
           multiline
           rows={2.5}
           size="small"
-          error={errors.message}
-          helperText={errors.message ? "Message is required" : ""}
+          {...register("message", {
+            required: "Message is required",
+            validate: (value) =>
+              (value || "").trim().length >= 3 ||
+              "Must be at least 3 characters",
+          })}
+          error={!!errors.message}
+          helperText={errors.message?.message}
           sx={{
             "& .MuiInputBase-root": {
               fontFamily: "Akatab, sans-serif",
@@ -282,8 +309,7 @@ const handleSubmit = async (e) => {
 },
           }}
           name="message"
-          value={formData.message}
-          onChange={handleChange}
+          autoComplete="off"
         />
 
         {/* Submit Button */}
@@ -306,7 +332,7 @@ const handleSubmit = async (e) => {
             },
           }}
         >
-          {loading ? (
+          {(isSubmitting || loading) ? (
     <CircularProgress size={24} sx={{ color: "#fff" }} />
   ) : (
     `Let's Begin the Dream`

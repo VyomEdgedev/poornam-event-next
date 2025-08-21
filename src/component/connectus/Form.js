@@ -13,95 +13,48 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { apiClient } from "@/lib/api-client";
 import SuccessModal from "@/common-component/modal/SuccessModal";
+import { useForm } from "react-hook-form";
 const MyForm = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    weddingDate: "",
-    location: "",
-    numberOfGuests: "",
-    yourMessage: "",
-  });
-
-  const [errors, setErrors] = useState({
-    fullName: false,
-    email: false,
-    phone: false,
-    location: false,
-    numberOfGuests: false,
-    yourMessage: false,
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      weddingDate: "",
+      location: "",
+      numberOfGuests: "",
+      yourMessage: "",
+    },
   });
   const [loading, setLoading] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
-  const validators = {
-    fullName: (v) => v.trim().length > 0,
-    email: (v) =>
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v.trim()),
-    phone: (v) => /^[0-9]{10}$/.test(v),
-    location: (v) => v.trim().length > 0,
-    numberOfGuests: (v) => /^\d+$/.test(v) && Number(v) > 0,
-    yourMessage: (v) => v.trim().length > 0,
-  };
 
-  const validateField = (name, value) => {
-    const fn = validators[name];
-    return fn ? fn(value ?? "") : true;
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    let next = value;
-    
-    if (name === "phone") {
-      next = value.replace(/\D/g, "").slice(0, 10);
-    }
-    if (name === "numberOfGuests") {
-      next = value.replace(/\D/g, "").slice(0, 5);
-    }
-
-    setFormData((prev) => ({ ...prev, [name]: next }));
-
-    if (Object.prototype.hasOwnProperty.call(errors, name)) {
-      setErrors((prev) => ({ ...prev, [name]: !validateField(name, next) }));
-    }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-const newErrors = Object.keys(errors).reduce((acc, key) => {
-      acc[key] = !validateField(key, formData[key]);
-      return acc;
-    }, {});
-
-    setErrors(newErrors);
-
-    if (Object.values(newErrors).some(Boolean)) {
-      toast.error("Please fix the highlighted fields.");
-      return;
-    }
+  const onSubmit = async (data) => {
+    return;
 
     setLoading(true);
     try {
       const payload = {
         formType: "contactus",
-        fullName: formData?.fullName,
-        email: formData?.email,
-        phoneNo: formData?.phone,
-        weddingDate: formData?.weddingDate,
-        location: formData?.location,
-        numberOfGuests: formData?.numberOfGuests,
-        message: formData?.message,
+        fullName: data?.fullName,
+        email: data?.email,
+        phoneNo: data?.phone,
+        weddingDate: data?.weddingDate,
+        location: data?.location,
+        numberOfGuests: data?.numberOfGuests,
+        message: data?.yourMessage,
         sourcePage: "/connectus",
       };
-      const response = await apiClient.post("/api/userform/event", payload);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        weddingDate: "",
-        location: "",
-        numberOfGuests: "",
-        yourMessage: "",
-      });
+      await apiClient.post("/api/userform/event", payload);
+
+      reset();
       setOpenSuccess(true);
       setTimeout(() => {
         setOpenSuccess(false);
@@ -122,6 +75,7 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
       setLoading(false);
     }
   };
+
   const today = new Date().toISOString().split("T")[0];
 
   return (
@@ -181,7 +135,7 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box
               component="form"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               noValidate
               sx={{
                 display: "flex",
@@ -206,6 +160,20 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   placeholder="Your Full Name"
                   variant="outlined"
                   fullWidth
+                  {...register("fullName", {
+                    required: "Full name is required",
+                    validate: {
+                      minLength: (value) => {
+                        const length = (value || "").trim().length;
+                        if (length > 0 && length < 3) {
+                          return "Must be at least 3 characters";
+                        }
+                        return true;
+                      },
+                    },
+                  })}
+                  error={!!errors.fullName}
+                  helperText={errors.fullName?.message}
                   autoComplete="off"
                   sx={{
                     fontFamily: "Akatab, sans-serif",
@@ -228,11 +196,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  error={errors.fullName}
-                  helperText={errors.fullName ? "Full name is required" : ""}
                 />
               </Box>
 
@@ -254,6 +217,17 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   variant="outlined"
                   fullWidth
                   autoComplete="off"
+                  name="email"
+                  type="email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Enter valid email",
+                    },
+                  })}
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -274,12 +248,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                  helperText={errors.email ? "Please enter a  email" : ""}
                 />
               </Box>
 
@@ -302,19 +270,44 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   fullWidth
                   autoComplete="off"
                   type="tel"
-                  inputProps={{
-                    inputMode: "numeric",
-                    pattern: "[0-9]*",
-                    maxLength: 10,
-                  }}
+                  name="phone"
+                  inputProps={{ maxLength: 10 }}
+                  {...register("phone", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: "Enter valid 10-digit number",
+                    },
+                    onChange: (e) => {
+                      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    },
+                  })}
                   onKeyDown={(e) => {
+                    const allowedKeys = [
+                      "Backspace",
+                      "Delete",
+                      "ArrowLeft",
+                      "ArrowRight",
+                      "Tab",
+                    ];
                     const blocked = ["e", "E", "+", "-", "."];
-                    if (blocked.includes(e.key)) e.preventDefault();
+                    if (
+                      blocked.includes(e.key) ||
+                      (((e.key >= "a" && e.key <= "z") ||
+                        (e.key >= "A" && e.key <= "Z")) &&
+                        !allowedKeys.includes(e.key))
+                    ) {
+                      e.preventDefault();
+                    }
                   }}
                   onPaste={(e) => {
-                    const paste = e.clipboardData.getData("text");
-                    if (/\D/.test(paste)) e.preventDefault();
+                    const pastedData = e.clipboardData.getData("text");
+                    if (/[^0-9]/.test(pastedData)) {
+                      e.preventDefault();
+                    }
                   }}
+                  error={!!errors.phone}
+                  helperText={errors.phone?.message}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -335,13 +328,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  error={errors.phone}
-                  helperText={
-                    errors.phone ? "Please enter a  phone number " : ""
-                  }
                 />
               </Box>
 
@@ -361,10 +347,24 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                 <TextField
                   type="date"
                   variant="outlined"
+                  name="weddingDate"
                   fullWidth
                   inputProps={{
                     min: today,
                   }}
+                  {...register("weddingDate", {
+                    validate: (value) => {
+                      if (!value) return true; 
+                      return value >= today || "Date cannot be in the past";
+                    },
+                  })}
+                  onBlur={(e) => {
+                    const selected = e.target.value;
+                    if (selected && selected < today) {
+                      e.target.value = today;
+                    }
+                  }}
+                  onFocus={(e) => e.target.showPicker?.()}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -385,9 +385,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="weddingDate"
-                  value={formData.weddingDate}
-                  onChange={handleChange}
                 />
               </Box>
 
@@ -409,6 +406,15 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   variant="outlined"
                   fullWidth
                   autoComplete="off"
+                  name="location"
+                  {...register("location", {
+                    required: "Location is required",
+                    validate: (value) =>
+                      (value || "").trim().length >= 3 ||
+                      "Must be at least 3 characters",
+                  })}
+                  error={!!errors.location}
+                  helperText={errors.location?.message}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -429,11 +435,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  error={errors.location}
-                  helperText={errors.location ? "Location is required" : ""}
                 />
               </Box>
 
@@ -456,6 +457,37 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   type="number"
                   variant="outlined"
                   fullWidth
+                  name="numberOfGuests"
+                  {...register("numberOfGuests", {
+                    required: "Number of guests is required",
+                    min: { value: 1, message: "Must be at least 1 guest" },
+                  })}
+                  onKeyDown={(e) => {
+                    const allowedKeys = [
+                      "Backspace",
+                      "Delete",
+                      "ArrowLeft",
+                      "ArrowRight",
+                      "Tab",
+                    ];
+                    const blocked = ["e", "E", "+", "-", "."];
+                    if (
+                      blocked.includes(e.key) ||
+                      (((e.key >= "a" && e.key <= "z") ||
+                        (e.key >= "A" && e.key <= "Z")) &&
+                        !allowedKeys.includes(e.key))
+                    ) {
+                      e.preventDefault();
+                    }
+                  }}
+                  onPaste={(e) => {
+                    const pastedData = e.clipboardData.getData("text");
+                    if (/[^0-9]/.test(pastedData)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  error={!!errors.numberOfGuests}
+                  helperText={errors.numberOfGuests?.message}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -475,14 +507,15 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                     "& .MuiInputBase-input::placeholder": {
                       fontFamily: "Akatab, sans-serif",
                     },
+                    "& input[type=number]": {
+                      MozAppearance: "textfield",
+                    },
+                    "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button":
+                      {
+                        WebkitAppearance: "none",
+                        margin: 0,
+                      },
                   }}
-                  name="numberOfGuests"
-                  value={formData.numberOfGuests}
-                  onChange={handleChange}
-                  error={errors.numberOfGuests}
-                  helperText={
-                    errors.numberOfGuests ? "Number of guests is required" : ""
-                  }
                 />
               </Box>
 
@@ -504,6 +537,15 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   variant="outlined"
                   fullWidth
                   autoComplete="off"
+                  name="yourMessage"
+                  {...register("yourMessage", {
+                    required: "Message is required",
+                    validate: (value) =>
+                      (value || "").trim().length >= 3 ||
+                      "Must be at least 3 characters",
+                  })}
+                  error={!!errors.yourMessage}
+                  helperText={errors.yourMessage?.message}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
                     "& .MuiOutlinedInput-root": {
@@ -523,11 +565,6 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                       fontFamily: "Akatab, sans-serif",
                     },
                   }}
-                  name="yourMessage"
-                  value={formData.yourMessage}
-                  onChange={handleChange}
-                  error={errors.yourMessage}
-                  helperText={errors.yourMessage ? "Message is required" : ""}
                 />
               </Box>
 
@@ -553,7 +590,7 @@ const newErrors = Object.keys(errors).reduce((acc, key) => {
                   },
                 }}
               >
-                {loading ? (
+                {isSubmitting || loading ? (
                   <CircularProgress size={24} sx={{ color: "#fff" }} />
                 ) : (
                   `Let's Begin the Dream`
