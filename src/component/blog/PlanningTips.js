@@ -23,7 +23,7 @@ const PlanningTips = () => {
         image: "/planningtips1.svg",
         title: "Expert Planning Tips",
         description: "Get the best advice for your special day.",
-        color: "#FFFCF5",
+       color: "#D9D9D980",
       },
       {
         id: 2,

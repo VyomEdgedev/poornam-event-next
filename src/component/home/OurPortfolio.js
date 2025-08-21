@@ -64,7 +64,8 @@ const PortfolioSection = () => {
     setCurrentIndex(index);
     setOpen(true);
   };
-  const handlegallery = () => {
+  const handlegallery = (event) => {
+     event.stopPropagation(); 
     router.push("/gallery");
   };
 
@@ -235,7 +236,7 @@ const PortfolioSection = () => {
               <Link href="/gallery" style={{ textDecoration: 'none' }}>
               <Button
                 data-testid="notify-button"
-                onClick={() => handlegallery()}
+                onClick={(ev) => handlegallery(ev)}
                 sx={{
                   position: "absolute",
                   top: "50%",
@@ -325,7 +326,7 @@ const PortfolioSection = () => {
               
               <Button
                 data-testid="notify-button"
-                onClick={() => handlegallery()}
+                onClick={(ev) => handlegallery(ev)}
                 sx={{
                   position: "absolute",
                   top: "50%",
@@ -421,7 +422,7 @@ const PortfolioSection = () => {
             >
               <Button
                 data-testid="notify-button"
-                onClick={() => handlegallery()}
+                onClick={(ev) => handlegallery(ev)}
                 sx={{
                   position: "absolute",
                   top: "50%",
@@ -486,8 +487,8 @@ const PortfolioSection = () => {
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
-              top: 20,
-              right: 20,
+              top: { xs: 13, sm: 15, md: 20, lg: 20 },
+              right: 30,
               color: "#fff",
               zIndex: 10,
               backgroundColor:"#DAA412 !important",
@@ -501,7 +502,7 @@ const PortfolioSection = () => {
             onClick={handlePrev}
             sx={{
               position: "absolute",
-              left: 20,
+              left: 30,
             color: "#fff",
               zIndex: 10,
               backgroundColor:"#DAA412 !important",
@@ -536,7 +537,7 @@ const PortfolioSection = () => {
             onClick={handleNext}
             sx={{
               position: "absolute",
-              right: 20,
+              right: 30,
                color: "#fff",
               zIndex: 10,
               backgroundColor:"#DAA412 !important",

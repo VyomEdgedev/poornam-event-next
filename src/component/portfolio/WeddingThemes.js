@@ -71,7 +71,7 @@ const WeddingThemes = () => {
     
       <Grid
         container
-        spacing={{ xs: 2, sm: 3.5, md: 4, lg: 6, xl: 6 }}
+        spacing={{ xs: 2, sm: 4, md: 4, lg: 6, xl: 6 }}
         justifyContent="center"
       >
         {weddingThemesData.map(
