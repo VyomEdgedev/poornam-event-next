@@ -111,6 +111,7 @@ export default function InspirationSection({ categories = data }) {
               "&::-webkit-scrollbar": {
                 display: "none",
               },
+              px:4
             }}
           >
             {categories.map((item, index) => (

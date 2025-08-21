@@ -64,7 +64,7 @@ const RecentPosts = () => {
       <Grid container spacing={4} marginBottom={5} alignContent={"center"} justifyContent={"center"}>
         
         {postsData.map((post) => (
-          <Grid item xs={12} sm={6} md={4} key={post.id}>
+          <Grid item xs={12} sm={6} md={4} key={post.id}  >
              
             <Card
               sx={{
@@ -80,12 +80,13 @@ const RecentPosts = () => {
                   boxShadow: '0 8px 15px rgba(0, 0, 0, 0.15)',
                   transform: 'translateY(-2px)'
                 },
-                cursor: 'pointer'
+                cursor: 'pointer',
+              
               }}
             >
 
              
-              <Box sx={{ position: 'relative' }}>
+              <Box sx={{ position: 'relative', }}>
                 <CardMedia
                   component="img"
                   image={post.image}
@@ -109,7 +110,9 @@ const RecentPosts = () => {
                    fontFamily: "Akatab,Sans-serif",
                     fontWeight: 500,
                     cursor: 'pointer',
-                    borderRadius:0
+                    borderRadius:0,
+                    borderBottomRightRadius:"5px",
+                    opacity:0.8
                   }}
                 />
 
