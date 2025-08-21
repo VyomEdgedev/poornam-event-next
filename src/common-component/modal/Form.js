@@ -49,6 +49,7 @@ const [loading, setLoading] = useState(false);
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
   };
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (validateForm()) {
@@ -135,7 +136,6 @@ const handleSubmit = async (e) => {
         }}
       >
         <Typography
-          variant="h5"
           component="h2"
           sx={{
             fontWeight: "400",
@@ -144,7 +144,7 @@ const handleSubmit = async (e) => {
             mb: { xs: 0, sm: 2 },
           }}
         >
-          Tell Us About Your Wedding
+          {`Tell Us About Your Wedding`}
         </Typography>
 
         {/* Full Name */}

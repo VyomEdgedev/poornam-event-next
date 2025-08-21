@@ -9,7 +9,6 @@ import {
   Container,
 } from "@mui/material";
 import Image from "next/image";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { apiClient } from "@/lib/api-client";
