@@ -14,11 +14,11 @@ const Service = () => {
   return (
     <>
       <SEO
-        url="http://www.poornamevents.com/services"
+        url="https://www.poornamevents.com/services"
         metaTitle="Wedding Planner Services | Indore, Bhopal & Ujjain"
         metaDescription="Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more."
         keywords="wedding planner service list, event management Indore"
-        canonical="http://www.poornamevents.com/services"
+        canonical="https://www.poornamevents.com/services"
         ogTitle="Wedding Planner Services | Indore, Bhopal & Ujjain"
         ogDescriptio="Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more."
         ogImage={`${SITE_URL}/og-image.jpg`}

@@ -156,11 +156,11 @@ export default function Disclaimer() {
     <>
       <>
         <SEO
-          url="http://www.poornamevents.com/disclaimer"
+          url="https://www.poornamevents.com/disclaimer"
           metaTitle="Disclaimer • Poornam Events"
           metaDescription="Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website."
           keywords="wedding planning disclaimer, Poornam disclaimer"
-          canonical="http://www.poornamevents.com/disclaimer"
+          canonical="https://www.poornamevents.com/disclaimer"
           ogTitle="Disclaimer • Poornam Events"
           ogDescription="Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website."
           ogImage="https://www.poornamevent.com/og-image.jpg"

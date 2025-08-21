@@ -15,11 +15,11 @@ const Blog = () => {
     <>
       <>
         <SEO
-          url='http://www.poornamevents.com/blog'
+          url='https://www.poornamevents.com/blog'
           metaTitle='Wedding Planning Tips & Real Weddings Blog'
           metaDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
           keywords='wedding planning tips India, blog destination wedding'
-          canonical='http://www.poornamevents.com/blog'
+          canonical='https://www.poornamevents.com/blog'
           ogTitle='Wedding Planning Tips & Real Weddings Blog'
           ogDescription='Read expert wedding planning tips, real Indian weddings & destination ideas. For couples in MP & across India.'
           ogImage={`${SITE_URL}/blog-og.jpg`}

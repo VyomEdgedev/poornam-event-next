@@ -195,11 +195,11 @@ export default function PrivacyPolicy() {
     <>
       <>
         <SEO
-          url="http://www.poornamevents.com/privacy-policy"
+          url="https://www.poornamevents.com/privacy-policy"
           metaTitle="Privacy Policy • Poornam Events"
           metaDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
           keywords="privacy policy India wedding planner"
-          canonical="http://www.poornamevents.com/privacy-policy"
+          canonical="https://www.poornamevents.com/privacy-policy"
           ogTitle="Privacy Policy • Poornam Events"
           ogDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
           ogImage="https://www.poornamevent.com/og-image.jpg"

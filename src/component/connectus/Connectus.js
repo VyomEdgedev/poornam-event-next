@@ -67,11 +67,11 @@ export default function ContactUs() {
     <>
       <>
         <SEO
-          url='http://www.poornamevents.com/contact'
+          url='https://www.poornamevents.com/contact'
           metaTitle='Contact Poornam Events | Wedding Planner in MP'
           metaDescription='Get in touch with Poornam Events. Book your consultation for an unforgettable wedding experience.'
           keywords='wedding planner contact India, Poornam Events contact'
-          canonical='http://www.poornamevents.com/contact'
+          canonical='https://www.poornamevents.com/contact'
           ogTitle='Contact Poornam Events | Wedding Planner in MP'
           ogDescription='Get in touch with Poornam Events. Book your consultation for an unforgettable wedding experience.'
           ogImage={`${SITE_URL}/og-image.jpg`}

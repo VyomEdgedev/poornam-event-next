@@ -24,11 +24,11 @@ export default function AboutUS() {
     <>
       <>
         <SEO
-          url='http://www.poornamevents.com/about-us'
+          url='https://www.poornamevents.com/about-us'
           metaTitle='About Poornam Events | Wedding Planner in MP'
           metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
           keywords='wedding planner in MP, about Poornam Events'
-          canonical='http://www.poornamevents.com/about-us'
+          canonical='https://www.poornamevents.com/about-us'
           ogTitle='About Poornam Events | Wedding Planner in MP'
           ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
           ogImage={`${SITE_URL}/og-image.jpg`}
