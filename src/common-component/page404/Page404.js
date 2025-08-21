@@ -103,7 +103,7 @@ function Page404() {
             </CustomButton>
           </Link>
           
-          <Link href="/connectus" style={{ textDecoration: 'none' }}>
+          <Link href="/contact" style={{ textDecoration: 'none' }}>
             <CustomButton sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}}data-testid="notify-button">
               Contact Us
             </CustomButton>
