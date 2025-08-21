@@ -8,6 +8,8 @@ import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CircularProgress from '@mui/material/CircularProgress';
+
 const FilterGallery = () => {
   const [themes, setThemes] = useState([]);
   const [allThemes, setAllThemes] = useState([]);
@@ -17,6 +19,7 @@ const FilterGallery = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false); 
   const [currentIndex, setCurrentIndex] = useState(0);
+  
 
   useEffect(() => {
     const fetchAllThemes = async () => {
@@ -201,7 +204,7 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
          
       <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
         {loading ? (
-          <Typography>Loading...</Typography>
+          <Typography><CircularProgress   /></Typography>
         ) : themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
@@ -227,7 +230,6 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                     top: 8,
                     left: 8,
                     backgroundColor: "#ddd",
-                   
                     zIndex: 2,
                   }}
                 />
@@ -235,13 +237,13 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                   sx={{
                     position: "relative",
                     width: "350px",
-                    height: 300,
+                    height: 400,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     fontSize: 14,
                     textAlign: "center",
-                    minHeight: { xs: 250, sm: 280, md: 300 },
+                    minHeight: { xs: 250, sm: 280, md: 390 },
                   }}
                    onClick={() => handleOpenModal(idx)}
                 >
@@ -252,33 +254,7 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
                     objectFit="cover"
                   />
                 </Box>
-                <CardContent>
-                  <Typography
-                  
-                    component="p"
-                    sx={{
-                      fontFamily: "Akatab,Sans-serif",
-                      fontWeight: "400",
-                    
-                        cursor: "pointer",
-                   
-                    }}
-                  >
-                    {item.category?.name }
-                  </Typography>
-                                     <Typography
-                    
-                     component="h6"
-                     sx={{
-                       fontFamily: "Akatab,Sans-serif",
-                       fontWeight: "500",
-                       color: "#000000",
-                     
-                     }}
-                   >
-                     {item.description || "A beautiful wedding moment."}
-                   </Typography>
-                </CardContent>
+               
               </Card>
             </Grid>
           ))

@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ShowCase = () => {
   const [allThemes, setAllThemes] = useState([]);
@@ -157,6 +158,7 @@ const ShowCase = () => {
         justifyContent={"center"}
         gap={2}
         flexWrap="wrap"
+        
       >
         <CustomMultiSelect
           names={categories}
@@ -166,13 +168,15 @@ const ShowCase = () => {
           multiple={true}
         />
         <CustomButton
-          onClick={handleBrowse}
+         onClick={handleBrowse}
           fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
           {`Browse Gallery`}{" "}
         </CustomButton>
+        
+      
       </Box>
       <Grid
         container
@@ -180,7 +184,7 @@ const ShowCase = () => {
         justifyContent="center"
       >
         {loading ? (
-          <Typography>Loading...</Typography>
+          <Typography>    <CircularProgress   /></Typography>
         ) : themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
