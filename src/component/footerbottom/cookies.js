@@ -145,8 +145,6 @@ export default function CookiesBanner() {
               display:{xs:"block", sm:"flex"},
               alignItems: "center",
               gap: 2,
-              // flexWrap: "wrap",
-              // justifyContent: { xs: "flex", sm: "flex-end",},
               mt: { xs: 2, sm: 0 },
             }}
           >
@@ -182,6 +180,7 @@ export default function CookiesBanner() {
               variant="outlined"
               onClick={handleRejectNonEssential}
               sx={{
+                mt:1,
                 borderColor:"white",
                 color: "rgba(255,255,255,0.7)",
                 "&:hover": {

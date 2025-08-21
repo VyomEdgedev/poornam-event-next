@@ -22,11 +22,11 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   },
   [theme.breakpoints.down("md")]: {
     height: height === "100vh" ? "70vh" : height === "450px" ? "350px" : height,
-    minHeight: "300px",
+    minHeight: height || "300px",
   },
   [theme.breakpoints.down("sm")]: {
     height: height === "100vh" ? "60vh" : height === "450px" ? "380px" : height,
-    minHeight: "320px",
+    minHeight: height || "320px",
   },
   // [theme.breakpoints.down("xs")]: {
   //   height: height === "100vh" ? "60vh" : height === "450px" ? "300px" : height,
@@ -337,7 +337,7 @@ const CustomBanner = ({
   },
 
   // Layout props
-  height = "450px",
+  height ,
   contentAlignment = {
     horizontal: "flex-start",
     vertical: "center",
@@ -400,9 +400,11 @@ const CustomBanner = ({
   children,
   ...props
 }) => {
+   const bannerHeight = height || "450px";
+
   return (
     <BannerSection
-      height={height}
+      height={bannerHeight}
       backgroundcolor={backgroundColor}
       className={className}
       {...props}

@@ -26,7 +26,7 @@ function CheckList() {
             component={"h6"}
             sx={{
               fontFamily: "Akatab,Sans-serif",
-              fontWeight: "700",
+              fontWeight: "800",
               textAlign: { xs: "center", sm: "start", md: "start" },
             }}
             dangerouslySetInnerHTML={{
@@ -74,13 +74,13 @@ function CheckList() {
           <Grid item>
             <Box
               sx={{
-                width: 100,
-                height: 100,
+                width: 150,
+                height: 150,
                 position: "relative",
               }}
             >
               <Image
-                src="/locationicon.svg" // ✅ Replace with your actual icon
+                src="/locationicon.svg" 
                 alt="Location Icon"
                 layout="fill"
                 objectFit="contain"
