@@ -17,15 +17,16 @@ function Philosophy() {
         <Box sx={{ py: { xs: 4, md: 4 } }}>
           <Grid
             container
-            spacing={{ xs: 0.5, md: 2 }}
+           
             columns={{ xs: 12, sm: 12, md: 12 }}
             alignItems="center"
-            justifyContent="center"
+            justifyContent="space-between"
+            justifyItems="center"
           >
             {/* Title */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 5 }}
+              size={{ xs: 12, sm: 12, md: 4 }}
               sx={{ textAlign:  "center"  }}
             >
               <Typography
@@ -43,7 +44,7 @@ function Philosophy() {
             {/* Image */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 2 }}
+              size={{ xs: 12, sm: 12, md: 4 }}
               sx={{ textAlign: "center" }}
             >
               <Box
@@ -68,7 +69,7 @@ function Philosophy() {
             </Grid>
 
             {/* Card */}
-            <Grid item size={{ xs: 12, sm: 12, md: 5 }} justifyItems={"center"}>
+            <Grid item size={{ xs: 12, sm: 12, md: 4 }} justifyItems={"center"}>
               <Card
                 sx={{
                   boxShadow: 3,
@@ -119,7 +120,7 @@ function Philosophy() {
           >
             {/* Image */}
             {/* Card */}
-            <Grid item size={{ xs: 12, sm: 12, md: 5 }}>
+            <Grid item size={{ xs: 12, sm: 12, md: 4 }}>
               <Card
                 sx={{
                   boxShadow: 3,
@@ -147,7 +148,7 @@ function Philosophy() {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item size={{ sm: 12, md: 2 }}>
+            <Grid item size={{ sm: 12, md: 4 }}>
               <Box
                 sx={{
                   position: "relative",
@@ -172,7 +173,7 @@ function Philosophy() {
             {/* Title */}
             <Grid
               item
-              size={{ xs: 12, sm: 12, md: 5 }}
+              size={{ xs: 12, sm: 12, md: 4 }}
               sx={{ textAlign: "center", flexDirection: "column-reverse" }}
             >
               <Typography

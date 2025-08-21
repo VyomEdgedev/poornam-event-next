@@ -311,20 +311,21 @@ const Footer = () => {
                component="p"
                 sx={{  fontFamily: "Akatab,Sans-serif", textAlign: "center", color: "black",  textDecoration: "none",
                         "&:hover": {
-                          textDecoration: "underline",
+                          //textDecoration: "underline",
                         }, }}
               >
                 <Link
                   href="/disclaimer"
-                  underline="hover"
-                  style={{ color: "black", textDecoration: "none",hover:"underline" }}
+               
+                  className="hoverlink"
+                  style={{ color: "black", textDecoration: "none", }}
                 >
                   Disclaimer
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/privacy-policy"
-                  underline="hover"
+                   className="hoverlink"
                   style={{ color: "black", textDecoration: "none", mx: 2 }}
                 >
                   Privacy Policy
@@ -333,7 +334,7 @@ const Footer = () => {
                 &nbsp;|&nbsp;
                 <Link
                   href="/terms"
-                  underline="hover"
+                   className="hoverlink"
                   style={{ color: "black", textDecoration: "none", mx: 2 }}
                 >
                   T&C
@@ -350,6 +351,8 @@ const Footer = () => {
                 textAlign: { xs: "center", md: "right" },
                 position: "relative",
                 mt: { xs: 0, md: 0 },
+                width:"fit-content",
+                mx:"auto"
               }}
             >
               <Typography
@@ -388,8 +391,8 @@ const Footer = () => {
                   display: "inline-block",
                   // mt: { xs: 0, md: 0, lg: 1 },
                   position: { xs: "absolute", sm: "absolute", md: "absolute" },
-                  top: {xs:"0px", md: "-50px", lg: "-50px" },
-                  right: { md: "10px", lg: "10px" },
+                  top: {xs:"0px",sm:"-2px", md: "-50px", lg: "-50px" },
+                  right: {xs:"-25px", sm:"-40px", md: "10px", lg: "10px" },
                   width: { xs: "20px", sm: "30px", md: "50px" },
                   marginLeft:"8px"
                 }}

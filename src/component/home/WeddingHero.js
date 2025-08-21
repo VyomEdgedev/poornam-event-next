@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 
 export default function WeddingSection() {
-  
+
   return (
     <Container>
       <Box
@@ -23,10 +23,10 @@ export default function WeddingSection() {
           <Box
             sx={{
               fontSize: {
-                xs: "20px",
-                sm: "24px",
-                md: "28px",
-                lg: "32px ",
+                xs: "24px",
+                sm: "26px",
+                md: "32px",
+                lg: "38px ",
               },
               fontFamily: "Gloock, serif",
               fontWeight: 400,
@@ -126,8 +126,7 @@ export default function WeddingSection() {
               sx={{
                 width: "100%",
                 height: "auto",
-                borderRadius: 3,
-                boxShadow: 3,
+                borderRadius: "4px",
                 objectFit: "cover",
                 height: { xs: 200, sm: 200, md: 230, lg: 260, xl: 260 },
               }}
@@ -145,10 +144,10 @@ export default function WeddingSection() {
               sx={{
                 width: "100%",
                 height: "auto",
-                borderRadius: 1,
+                borderRadius: "4px",
                 boxShadow: 3,
                 objectFit: "cover",
-                mt: { xs: 4, sm: 4, md: 4, lg: 8, xl: 8 },
+                mt: { xs: 4, sm: 6, md: 6, lg: 10, xl: 10 },
                 height: { xs: 200, sm: 200, md: 220, lg: 260, xl: 260 },
               }}
               onError={(e) => {

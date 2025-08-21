@@ -47,7 +47,7 @@ export default function ContactSection() {
     setLoading(true);
 
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "fullName is required";
+    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
     if (Object.keys(newErrors).length > 0) {
@@ -93,7 +93,7 @@ export default function ContactSection() {
         <SuccessModal open={openSuccess} setOpen={setOpenSuccess} />
         <Grid
           container
-          spacing={{ xs: 4, md: 20 }} columns={{ xs: 12, sm: 12, md: 12 }}
+          spacing={{ xs: 2, md: 20 }} columns={{ xs: 12, sm: 12, md: 12 }}
           justifyContent="space-between"
         >
           {/* Left Text Side */}
@@ -132,7 +132,7 @@ export default function ContactSection() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 2,
+                gap: 1,
                 // width: { xs: "100%", sm: "400px", md: "600px" },
               }}
             >

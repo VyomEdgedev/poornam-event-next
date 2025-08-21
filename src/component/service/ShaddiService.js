@@ -12,6 +12,7 @@ import {
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { apiClient } from "@/lib/api-client";
+import { px } from "framer-motion";
 
 const servicesData = {
   hero: {
@@ -108,7 +109,6 @@ const MainContainer = styled(Box)(({ theme }) => ({
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
   fontWeight: 400,
-
   textAlign: "center",
   marginBottom: theme.spacing(4),
   [theme.breakpoints.down("md")]: { fontSize: "36px" },
@@ -162,7 +162,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   width: "100px",
   height: "125px",
   overflow: "hidden",
-  borderRadius: "8px",
+  borderRadius: "6px",
   flexShrink: 0,
   "& img": {
     width: "100%",
@@ -177,9 +177,9 @@ const ImageContainer = styled(Box)(({ theme }) => ({
 
 const HeroImageContainer = styled(Box)({
   width: "100%",
-  height: "223px",
+  height: "240px",
   overflow: "hidden",
-  borderRadius: "8px",
+  borderRadius: "5px",
   "& img": {
     width: "100%",
     height: "100%",
@@ -209,62 +209,66 @@ const ServiceTitle = styled(Typography)(({ theme }) => ({
 
 const ServiceDescription = styled(Typography)(({ theme }) => ({
   fontFamily: "Akatab,Sans-serif",
-
   color: "#000000",
-
   display: "-webkit-box",
   WebkitLineClamp: 2,
   WebkitBoxOrient: "vertical",
   overflow: "hidden",
-
   [theme.breakpoints.down("sm")]: { fontSize: "12px" },
 }));
 
 const HeroContent = styled(Box)(({ theme }) => ({
   display: "flex",
-  marginLeft: "30px",
   flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "start",
   height: "100%",
   width: "100%",
   [theme.breakpoints.down("md")]: {
-    marginLeft: "20px",
-    alignItems: "center",
+    alignItems: "start",
 
   },
   [theme.breakpoints.down("sm")]: {
-    marginLeft: "0px",
-    textAlign: "center",
-    alignItems: "center",
+    marginLeft: "10px",
+    textAlign: "start",
+    alignItems: "start",
+    padding: 0
   },
+  [theme.breakpoints.down("xs")]: {
+    padding: 6,
+    textAlign: "start",
+    alignItems: "start",
+  },
+  padding: 6
 }));
 
-const HeroTitle = styled(Typography, {
-  shouldForwardProp: (prop) => prop !== "isLong",
-})(({ theme, isLong }) => ({
-  fontFamily: "Gloock, serif",
-  width: "260px",
-  fontWeight: 400,
-  fontSize: "30px !important",
- 
-  color: "#000000",
+// const HeroTitle = styled(Typography, {
+//   shouldForwardProp: (prop) => prop !== "isLong",
+// })(({ theme, isLong }) => ({
+//   fontFamily: "Gloock, serif",
+//   fontWeight: 400,
+//   // fontSize: "32px !important",
+//   color: "#000000",
+//   [theme.breakpoints.down("sm")]: {
+//     alignItems: "start",
+//     textAlign: "start",
+//      fontSize: "68px !important",
+//      padding:4
+//   },
 
-  marginBottom: theme.spacing(0.5),
-  [theme.breakpoints.down("md")]: { fontSize: "30px" },
-  [theme.breakpoints.down("sm")]: { fontSize: "24px" },
-}));
+//   paddingLeft: { xs: "10px", md: "0px" },
+//   marginBottom: theme.spacing(0.5),
+//   [theme.breakpoints.down("md")]: { fontSize: "30px" },
+//   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
+// }));
 
-const HeroDescription = styled(Typography)(({ theme }) => ({
-  fontFamily: "Akatab,Sans-serif",
-  fontWeight: "400",
-  fontSize: "16px !important",
-  width: "251px",
-  color: "#000000",
-  textAlign: "left",
-  marginBottom: theme.spacing(3),
-  [theme.breakpoints.down("sm")]: { padding: "0px 20px", width: "100%" },
-}));
+// const HeroDescription = styled(Typography)(({ theme }) => ({
+//   fontFamily: "Akatab,Sans-serif",
+//   fontWeight: "400",
+//   fontSize: "16px !important",
+//   color: "#000000",
+//   textAlign: "left",
+//   marginBottom: theme.spacing(3),
+//   [theme.breakpoints.down("sm")]: { padding: "0px 0px", width: "100%" },
+//}));
 
 function highlightSpecificWords(text, keywords) {
   const regex = new RegExp(`(${keywords.join("|")})`, "gi");
@@ -329,7 +333,7 @@ const ShaddiService = () => {
     fetchServices();
   }, []);
   return (
-    <Container sx={{ py: { xs: 4, md: 4 }, px: { xs: 4, md: 4 } }}>
+    <Container sx={{ py: { xs: 3, md: 4 }, px: { xs: 4, md: 4 } }}>
       <StyledTypography component="h2">{`Our Shaadi Services`}</StyledTypography>
       {/* Hero Section */}
       <Grid
@@ -351,20 +355,41 @@ const ShaddiService = () => {
             />
           </HeroImageContainer>
         </Grid>
-        <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
-          <HeroContent>
-            <HeroTitle > 
+        <Grid item size={{ xs: 11, sm: 6, md: 4 }} >
+          <HeroContent sx={{ py: { xs: 0, sm: 2, md: 1.5 } }} >
+            <Typography component="h2" variant="h2"
+              sx={{
+                paddingRight: { xs: "5px", sm: "2px" },
+                px: { xs: "5px", sm: "2px" },
+                fontFamily: "Gloock, serif",
+                fontWeight: 400,
+                color: "#000000",
+                mb: 2
+              }}>
               {selectedService
-                ? selectedService.title
-                : services[0]?.title || servicesData.hero.title}
-            </HeroTitle>
-            <HeroDescription>
+                ? trimText(selectedService.title, 110)
+                : trimText(services[0]?.title || servicesData.hero.title, 40)}
+            </Typography>
+            <Typography component="p" variant="p"
+              sx={{
+                px: { xs: "5px", sm: "1px" },
+                fontFamily: "Akatab,Sans-serif",
+                fontWeight: "400",
+                color: "#000000",
+                textAlign: "left",
+                mb: 2
+              }}>
               {selectedService
-                ? trimText(selectedService.description, 100)
-                : trimText(services[0]?.description, 100)}
-            </HeroDescription>
+                ? trimText(selectedService.description, 80)
+                : trimText(services[0]?.description, 110)}
+            </Typography>
             <CustomButton
-              sx={{ mb: 1, fontFamily: "Akatab, Sans-serif !important"}}
+              sx={{
+                marginLeft: { xs: "5px", sm: "5px", md: 0 },
+                alignItems: "start",
+                mb: 2,
+                fontFamily: "Akatab, Sans-serif !important"
+              }}
               onClick={() => {
                 handleNavigate(services[0]?.uid);
               }}
@@ -418,16 +443,18 @@ const ShaddiService = () => {
                   }}
                 >
                   <Box sx={{ display: "flex", gap: "12px" }}>
-                    <Image
+                  <Box sx={{height:"100%", width:"100px"}}>
+                      <Image
                       src={val?.image}
                       height={100}
                       width={100}
                       style={{ border: "1px solid #ddd", borderRadius: "8px" }}
                     />
+                  </Box>
                     <Box>
                       <Typography
                         component="h6"
-                        my={1}
+                        mb={1}
                         sx={{
                           fontFamily: "Akatab, Sans-serif",
                           fontWeight: 700,

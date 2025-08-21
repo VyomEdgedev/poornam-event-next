@@ -4,7 +4,7 @@ import { Box, Typography, Stack, Container } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import Styles from "@/styles/Home.module.scss";
 
 export default function HeroSection() {
@@ -18,18 +18,7 @@ export default function HeroSection() {
     window.open("https://wa.me/919519066885", "_blank");
   };
 
-  useEffect(() => {
-    const alreadyShown = localStorage.getItem("weddingModalShown");
 
-    if (!alreadyShown) {
-      const timer = setTimeout(() => {
-        setOpen(true);
-        localStorage.setItem("weddingModalShown", "true");
-      }, 7000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
   return (
     <Box sx={{ backgroundColor: "#030b1d", overflow: "hidden", pt: { xs: 12, md: 0 } }}>
       <Container>

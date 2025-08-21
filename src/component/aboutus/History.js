@@ -32,11 +32,11 @@ export default function OurStories() {
     }}>
       {data.map((item, index) => (
         <Box key={index} style={{ marginBottom: "0.5rem" }}>
-          <Typography component="h6" sx={{  color: "black", mb: 0.5 , fontFamily: "Akatab,Sans-serif",fontWeight:600}}>{item.heading}</Typography>
-           <Typography component="p"  sx={{fontFamily: "Akatab,Sans-serif",fontWeight:700,  mb:0.5}}>{item.subheading}</Typography>
+          <Typography component="h6" sx={{  color: "black", mb: 1, fontFamily: "Akatab,Sans-serif",fontWeight:600}}>{item.heading}</Typography>
+           <Typography component="p"  sx={{fontFamily: "Akatab,Sans-serif",fontWeight:500,  mb:1}}>{item.subheading}</Typography>
           {item.paragraphs.map((p, i) => (
            
-            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",fontWeight:400}}>{p}</Typography>
+            <Typography component="p" key={i} sx={{fontFamily: "Akatab,Sans-serif",fontWeight:500, mt:1}}>{p}</Typography>
           ))}
         </Box>
       ))}

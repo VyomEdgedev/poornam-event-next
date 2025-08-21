@@ -23,7 +23,7 @@ const PlanningTips = () => {
         image: "/planningtips1.svg",
         title: "Expert Planning Tips",
         description: "Get the best advice for your special day.",
-        color: "#D9D9D980",
+       color: "#D9D9D980",
       },
       {
         id: 2,
@@ -148,8 +148,8 @@ const PlanningTips = () => {
                       {/* Icon */}
                       <Box
                         sx={{
-                          // width: { xs: 48, sm: 60, md: 60 },
-                          // height: { xs: 48, sm: 60, md: 60 },
+                           width: { xs: 48, sm: 60, md: 60 },
+                         height: { xs: 48, sm: 60, md: 60 },
                           backgroundColor: service.color,
                           borderRadius: 50,
                           display: "flex",

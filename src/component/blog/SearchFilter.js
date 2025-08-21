@@ -154,10 +154,11 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
   return (
     <Box backgroundColor="#FFF7E4" position="relative">
       <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
-        <Grid container justifyContent="center" spacing={7.5}>
+        <Grid container justifyContent="center" spacing={0} columns={12}>
           {/* Heading */}
-          <Grid item xs={12} md={6} sx={{ py: 2 }} textAlign="center">
-            <Typography
+          <Grid item size={{ xs: 12, sm: 6, md: 6 }} sx={{display:"flex",alignItems:"center"}}>
+           <Box>
+             <Typography
               component="h2"
               sx={{
                 fontWeight: 400,
@@ -179,12 +180,13 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
             >
               Search for valuable insights to aid your planning journey.
             </Typography>
+           </Box>
           </Grid>
 
           {/* Search + Filters */}
-          <Grid item xs={12} md={6}>
+          <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             {/* Search */}
-            <NoSsr defer>
+            
               <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
                 <Typography
                   component="h6"
@@ -230,7 +232,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                   <Paper
                     sx={{
                       position: "absolute",
-                      top: "calc(100% + 6px)", // exactly below the TextField block
+                      top: "calc(100% + 1px)", // exactly below the TextField block
                       left: 0,
                       right: 0,
                       width: "100%",          // match TextField width
@@ -282,7 +284,6 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                   </Paper>
                 )}
               </Box>
-            </NoSsr>
             {/* Categories */}
             <Box sx={{ mb: 3 }}>
               <Typography
@@ -296,7 +297,8 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
               >
                 Filter by Category
               </Typography>
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              
+              <Box  sx={{ display: "flex", flexWrap: "wrap", gap: 1 ,height:"140px", overflow:"auto"}} >
                 {catgeory.map((category) => (
                   <FilterChip
                     key={category.name}

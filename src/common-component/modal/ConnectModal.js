@@ -78,7 +78,7 @@ export default function ConnectModal({ open, setOpen }) {
 
         {/* Form Content */}
         <Box sx={{ mt: 4 }}>
-          <Form />
+          <Form onClose={handleClose} />
         </Box>
       </Box>
     </Modal>
