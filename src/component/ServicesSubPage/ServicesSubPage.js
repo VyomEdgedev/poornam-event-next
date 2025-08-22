@@ -57,11 +57,11 @@ return (
     ) : (
       <>
        <SEO
-              url="http://www.poornamevents.com/services"
+              url="https://www.poornamevents.com/services"
               metaTitle={`${service?.meta?.title}`}
               metaDescription={`${service?.meta?.description}`}
               keywords={`${service?.meta?.keywords}`}
-              canonical="http://www.poornamevents.com/services"
+              canonical="https://www.poornamevents.com/services"
               ogTitle= {`${service?.ogTags?.title}`}
               ogDescriptio={`${service?.ogTags?.description}`}
               ogImage={`${service?.ogTags?.image}`||`${SITE_URL}/og-image.jpg` }

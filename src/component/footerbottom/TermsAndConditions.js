@@ -170,11 +170,11 @@ export default function TermsAndConditions() {
     <>
       <>
         <SEO
-          url="http://www.poornamevents.com/terms"
+          url="https://www.poornamevents.com/terms"
           metaTitle="Terms & Conditions • Poornam Events"
           metaDescription="Terms of use for Poornam Events website, bookings, pricing & services."
           keywords="terms Poornam Events, terms wedding planner"
-          canonical="http://www.poornamevents.com/terms"
+          canonical="https://www.poornamevents.com/terms"
           ogTitle="Terms & Conditions • Poornam Events"
           ogDescription="Terms of use for Poornam Events website, bookings, pricing & services."
           ogImage="https://www.poornamevent.com/og-image.jpg"
