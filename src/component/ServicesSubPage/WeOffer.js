@@ -50,8 +50,8 @@ function WeOffer({ categoriesId }) {
                     }}
                   >
                     <Image
-                      src={service.image?.url || "/Weoffer1.svg"}
-                      alt={service.name}
+                      src={service?.image?.url || "/Weoffer1.svg"}
+                      alt={service?.name}
                       width={100}
                       height={100}
                       objectFit="contain"
@@ -65,7 +65,9 @@ function WeOffer({ categoriesId }) {
                         fontFamily: "Akatab,Sans-serif",
                       }}
                     >
-                      {service.name}
+                      {typeof service.name === "string"
+                        ? service?.name.trim().charAt(0).toUpperCase() + service?.name.trim().slice(1).toLowerCase()
+                        : service?.name}
                     </Typography>
                     <Typography
                       component="p"
@@ -80,7 +82,7 @@ function WeOffer({ categoriesId }) {
                         fontFamily: "Akatab,Sans-serif",
                       }}
                     >
-                      {service.description}
+                      {service?.description}
                     </Typography>
                   </Box>
                 </Box>

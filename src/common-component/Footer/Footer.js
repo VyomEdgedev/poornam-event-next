@@ -84,7 +84,7 @@ const Footer = () => {
                   { label: "About", href: "/aboutus" },
                   { label: "Services", href: "/services" },
                   { label: "Gallery", href: "/gallery" },
-                  { label: "Blogs", href: "/blog" },
+                  { label: "Blog", href: "/blog" },
                   { label: "Connect us", href: "/contact" },
                 ].map((item) => (
                   <Link
@@ -187,9 +187,7 @@ const Footer = () => {
                   Contact
                 </Typography>
 
-                {/* <Typography variant="body2" sx={{ fontSize: "15px", color: "#E4E4E4" ,fontWeight:400,}}>
-                  Phone: 9519066885
-                </Typography> */}
+           
                 <Typography
                 
                   sx={{ fontFamily: "Akatab,Sans-serif", color: "#E4E4E4", fontWeight: 400 }}
@@ -205,8 +203,24 @@ const Footer = () => {
                       (e.target.style.textDecoration = "none")
                     }
                   >
-                    9519066885
+                    9519066885,
                   </a>
+                  <br/>
+                  {/* <Box
+                   sx={{ display: "block", marginLeft: "55px" }}> */}
+                  <a
+                    href="tel:8839844233"
+                    style={{ color: "#E4E4E4", textDecoration: "none" }}
+                    onMouseEnter={(e) =>
+                      (e.target.style.textDecoration = "underline")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.textDecoration = "none")
+                    }
+                  >
+                    8839844233
+                  </a>
+                  {/* </Box> */}
                 </Typography>
 
                 <Typography

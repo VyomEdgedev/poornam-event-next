@@ -52,7 +52,7 @@ export default function   Snapshot() {
         >
         {`  A scrapbook of memories shared by our couples.`}
         </Typography>
-         <Box id="instagram-embed" sx={{ marginTop: 5 }}>
+         <Box id="instagram-embed" sx={{ marginTop: 5, padding:"0px 30px"}}>
             <blockquote
               className="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/reel/DNNj2zcz2gp/?igsh=aWZjeTg5M3RwbHRo"
@@ -63,11 +63,13 @@ export default function   Snapshot() {
                 borderRadius: 3,
                 boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
                 margin: "1px",
-                maxWidth: 540,
+                maxWidth: '62%',
                 minWidth: 326,
                 width: "100%",
                 padding: 0,
                 maxHeight: "100%",
+                marginLeft: 'auto', 
+                marginRight: 'auto',
                 
               }}
             >

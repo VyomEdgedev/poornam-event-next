@@ -7,16 +7,12 @@ import Testimonials from "./Testimonials";
 import OurPortfolio from "./OurPortfolio";
 import AboutSection from "./AboutSection";
 import ExecutiveCard from "./ExecutiveCard";
-import { Typography } from "@mui/material";
 import ResourcesSection from "./ResourcesSection";
 import FAQSection from "./FAQ";
 import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
 import HomeSnapshot from "./HomeSnapshot"
 import SEO from "@/common-component/SEO/seo";
-
-
-
 
 export default function HomePage(props) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
@@ -43,8 +39,7 @@ console.log(props.categorie , 'categoriescategoriescategoriescategories')
       <WeddingHero></WeddingHero>
       <OurServices></OurServices>
       <AboutSection></AboutSection>
-
-      <OurPortfolio></OurPortfolio>
+    <OurPortfolio></OurPortfolio>
       <Testimonials></Testimonials>
       <HomeSnapshot></HomeSnapshot>
       <ResourcesSection></ResourcesSection>

@@ -40,14 +40,14 @@ const Service = () => {
           { label: "Services" },
         ]}
         // Optional: customize breadcrumbs position
-        breadcrumbsPosition={{
-          top: "320px",
-          left: "25px",
-          lg: { top: "300px", left: "25px" },
-          md: { top: "200px", left: "26px" },
-          sm: { top: "330px", left: "3px" },
-          xs: { top: "200px", left: "20px" },
-        }}
+        // breadcrumbsPosition={{
+        //   top: "320px",
+        //   left: "25px",
+        //   lg: { top: "300px", left: "25px" },
+        //   // md: { top: "200px", left: "26px" },
+        //   // sm: { top: "280px", left: "3px" },
+        //   // xs: { top: "200px", left: "20px" },
+        // }}
         overlay={{
           background:
             "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",

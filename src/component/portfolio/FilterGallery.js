@@ -59,8 +59,6 @@ const FilterGallery = () => {
       const filterParam = router.query.filter || "all";
       const filterIds = filterParam.split(",");
       
-      // console.log("FilterGallery - URL filter param:", filterParam);
-      // console.log("FilterGallery - Filter IDs:", filterIds);
       
       if (filterIds.includes("all")) {
         setSelectedFilters([{ _id: "all", name: "All" }]);
