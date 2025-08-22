@@ -109,6 +109,25 @@ function WeddingKit() {
                   error={Boolean(error)}
                   helperText={error}
                   disabled={loading}
+                  sx={{
+                    fontFamily: "Akatab, sans-serif",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#011d4a",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#011d4a",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#011d4a",
+                      },
+
+                      fontFamily: "Akatab, sans-serif",
+                    },
+                    "& .MuiInputBase-input::placeholder": {
+                      fontFamily: "Akatab, sans-serif",
+                    },
+                  }}
                 />
               </Box>
               <Typography

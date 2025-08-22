@@ -6,6 +6,7 @@ import CustomButton from "../button/CustomButton";
 import Image from "next/image";
 import Link from "next/link";
 import BreadcrumbsComponent from "../breadcrumbs/BreadcrumbsComponent";
+
 // Custom styled components
 const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   position: "relative",
@@ -17,9 +18,6 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
   overflow: "hidden",
 
   // Responsive height adjustments
-  [theme.breakpoints.down("lg")]: {
-    height: height === "100vh" ? "80vh" : height === "450px" ? "400px" : height,
-  },
   [theme.breakpoints.down("md")]: {
     height: height === "100vh" ? "70vh" : height === "450px" ? "350px" : height,
     minHeight: height || "300px",
@@ -28,10 +26,10 @@ const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
     height: height === "100vh" ? "60vh" : height === "450px" ? "380px" : height,
     minHeight: height || "320px",
   },
-  // [theme.breakpoints.down("xs")]: {
-  //   height: height === "100vh" ? "60vh" : height === "450px" ? "300px" : height,
-  //   minHeight: "440px",
-  // },
+  [theme.breakpoints.down("xs")]: {
+    height: height === "100vh" ? "60vh" : height === "450px" ? "300px" : height,
+    minHeight: "440px",
+  },
 }));
 
 const BackgroundImage = styled("img")(({ theme }) => ({
@@ -43,7 +41,6 @@ const BackgroundImage = styled("img")(({ theme }) => ({
   objectFit: "cover",
   zIndex: 1,
 
-  // Responsive adjustments for background image
   [theme.breakpoints.down("md")]: {
     objectPosition: "center center",
   },
@@ -60,7 +57,6 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
     overlay?.background ||
     "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
 
-  // Responsive overlay adjustments
   [theme.breakpoints.down("lg")]: {
     width: overlay?.responsive?.lg?.width || "85%",
     background:
@@ -83,20 +79,15 @@ const Overlay = styled(Box)(({ theme, overlay }) => ({
   },
 }));
 
-const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
+const LogoContainer = styled(Box)(({ theme, showlogo }) => ({
   ...(showlogo && {
     position: "relative",
-    top: -46,
+    top: -68,
     left: 0,
     zIndex: 6,
-
-    zIndex: 3,
-
     width: "100px",
     height: "auto",
 
-    // Enhanced responsive logo positioning
-    [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -106,29 +97,23 @@ const LogoContainer = styled(Box)(({ theme, showlogo, logoposition }) => ({
   }),
 }));
 
-const ContentContainer = styled(Container)(
-  ({ theme, contentalignment, contentposition }) => ({
-    position: "relative",
-    zIndex: 3,
-    display: "flex",
+const ContentContainer = styled(Container)(({ theme, contentalignment }) => ({
+  height: "100%",
+  position: "relative",
+  zIndex: 3,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: contentalignment?.horizontal || "flex-start",
+  justifyContent: contentalignment?.vertical || "center",
+  textAlign: contentalignment?.textAlign || "left",
+
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
+  [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
-    alignItems: contentalignment?.horizontal || "flex-start",
-    justifyContent: contentalignment?.vertical || "center",
-    textAlign: contentalignment?.textAlign || "left",
-
-    // Enhanced responsive positioning
-    [theme.breakpoints.down("xl")]: {},
-
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-    [theme.breakpoints.down("xs")]: {},
-  })
-);
+  },
+}));
 
 const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   fontFamily: headingstyle?.fontFamily || "'Gloock', serif  !important",
@@ -138,9 +123,6 @@ const MainHeading = styled(Typography)(({ theme, headingstyle }) => ({
   lineHeight: headingstyle?.lineHeight || "1.13",
   color: headingstyle?.color || "rgba(255, 255, 255, 1)",
   marginBottom: headingstyle?.marginBottom || "8px",
-  // maxWidth: headingstyle?.maxWidth || '950px',
-
-  // Enhanced responsive typography
 
   [theme.breakpoints.down("lg")]: {
     fontSize:
@@ -172,9 +154,7 @@ const SubHeading = styled(Typography)(({ theme, subheadingstyle }) => ({
   lineHeight: subheadingstyle?.lineHeight || "1.37",
   color: subheadingstyle?.color || "#FFFFFF",
   marginBottom: subheadingstyle?.marginBottom || "10px",
-  // maxWidth: subheadingstyle?.maxWidth || "900px",
 
-  // Enhanced responsive typography
   [theme.breakpoints.down("xl")]: {
     fontSize:
       (subheadingstyle?.responsive?.xl?.fontSize || "24px") + " !important",
@@ -208,10 +188,7 @@ const ParagraphSubtitle = styled(Typography)(({ theme, paragraphstyle }) => ({
   lineHeight: paragraphstyle?.lineHeight || "1.5",
   color: paragraphstyle?.color || "rgba(255, 255, 255, 0.8)",
   marginBottom: paragraphstyle?.marginBottom || "32px",
-  // maxWidth: paragraphstyle?.maxWidth || "800px",
 
-  // Enhanced responsive typography
-  [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {
     fontSize:
       (paragraphstyle?.responsive?.lg?.fontSize || "15px") + " !important",
@@ -241,7 +218,6 @@ const ButtonContainer = styled(Box)(({ theme, buttonscontainer }) => ({
   flexDirection: buttonscontainer?.direction || "row",
   flexWrap: "wrap",
 
-  // Enhanced responsive button layout
   [theme.breakpoints.down("lg")]: {
     gap: buttonscontainer?.lg?.gap || "14px",
     flexDirection: buttonscontainer?.lg?.direction || "row",
@@ -263,7 +239,6 @@ const ButtonContainer = styled(Box)(({ theme, buttonscontainer }) => ({
     width: "100%",
     "& > *": {
       width: buttonscontainer?.sm?.buttonWidth || "100%",
-      // maxWidth: "300px",
     },
   },
   [theme.breakpoints.down("xs")]: {
@@ -273,41 +248,23 @@ const ButtonContainer = styled(Box)(({ theme, buttonscontainer }) => ({
 
 const BreadcrumbsWrapper = styled(Box)(({ theme, breadcrumbsPosition }) => ({
   position: "absolute",
-  top: breadcrumbsPosition.top,
-  left: breadcrumbsPosition.left,
-  zIndex: 4, // Higher than overlay but below logo if needed
-  [theme.breakpoints.down("lg")]: {
-    top: breadcrumbsPosition.lg?.top || breadcrumbsPosition.top,
-    left: breadcrumbsPosition.lg?.left || breadcrumbsPosition.left,
-  },
-  [theme.breakpoints.down("md")]: {
-    top: breadcrumbsPosition.md?.top || breadcrumbsPosition.top,
-    left: breadcrumbsPosition.md?.left || breadcrumbsPosition.left,
-  },
-  [theme.breakpoints.down("sm")]: {
-    top: breadcrumbsPosition.sm?.top || breadcrumbsPosition.top,
-    left: breadcrumbsPosition.sm?.left || breadcrumbsPosition.left,
-  },
-  [theme.breakpoints.only("xs")]: {
-    top: breadcrumbsPosition.xs?.top || breadcrumbsPosition.top,
-    left: breadcrumbsPosition.xs?.left || breadcrumbsPosition.left,
-  },
+  bottom: "0px",
+  left: "20px",
+  zIndex: 4,
 }));
 
 // Main Banner Component
 const CustomBanner = ({
   // Content props
-  headingtag="h1",
+  headingtag = "h1",
   title,
   subtitle,
   paragraphSubtitle,
   buttons = [],
   breadcrumbs,
   breadcrumbsPosition = {
-    top: "20px",
+    top: "320px",
     left: "20px",
-    lg: { top: "15px", left: "15px" },
-    sm: { top: "10px", left: "10px" },
   },
   breadcrumbsSx = {},
 
@@ -326,65 +283,45 @@ const CustomBanner = ({
     left: "37px",
     width: "120px",
     height: "120px",
-
-    // Enhanced responsive logo positions
-    xl: { top: "12px", left: "60px", width: "100px" },
-    lg: { top: "10px", left: "50px", width: "90px" },
-    md: { top: "15px", left: "20px", width: "70px" },
-    sm: { top: "10px", left: "15px", width: "60px" },
-    xs: { top: "8px", left: "10px", width: "50px" },
-    mobile: { top: "20px", left: "20px", width: "60px" },
   },
 
   // Layout props
-  height ,
+  height,
   contentAlignment = {
     horizontal: "flex-start",
     vertical: "center",
     textAlign: "left",
-    // Enhanced responsive alignment
     xl: { horizontal: "flex-start", textAlign: "left" },
     lg: { horizontal: "flex-start", textAlign: "left" },
     xs: { horizontal: "center", textAlign: "center" },
     mobile: { horizontal: "center", textAlign: "center" },
   },
-  contentPosition = {
-    paddingTop: "120px",
-    paddingBottom: "60px",
-    // Enhanced responsive positioning
-    // xl: { top: '120px', left: '60px' },
-    lg: { top: "123px", left: "50px" },
-    md: { paddingTop: "40px", paddingBottom: "40px" },
-    sm: { paddingTop: "30px", paddingBottom: "30px" },
-    mobile: { paddingTop: "100px" },
-  },
 
   // Styling props with enhanced responsive options
   headingStyle = {
     responsive: {
-      xl: { fontSize: "44px" },
-      lg: { fontSize: "40px" },
-      md: { fontSize: "36px" },
-      sm: { fontSize: "28px", marginBottom: "10px" },
+      xl: { fontSize: "48px" },
+      lg: { fontSize: "44px" },
+      md: { fontSize: "40px" },
+      sm: { fontSize: "32px", marginBottom: "10px" },
       xs: { fontSize: "24px" },
     },
   },
   subheadingStyle = {
     responsive: {
-      xl: { fontSize: "24px" },
-      lg: { fontSize: "22px" },
-      md: { fontSize: "20px" },
-      sm: { fontSize: "18px", marginBottom: "14px" },
-      xs: { fontSize: "16px" },
+      xl: { fontSize: "28px" },
+      lg: { fontSize: "26px" },
+      md: { fontSize: "24px" },
+      sm: { fontSize: "20px", marginBottom: "14px" },
+      xs: { fontSize: "18px" },
     },
   },
   paragraphStyle = {
     responsive: {
-      xl: { maxWidth: "700px" },
-      // lg: { fontSize: "15px", maxWidth: "600px" },
-      // md: { fontSize: "15px", maxWidth: "100%" },
-      sm: { fontSize: "13px", marginBottom: "15px" },
-      xs: { fontSize: "12px" },
+      xl: { fontSize: "16px", maxWidth: "700px" },
+      md: { fontSize: "16px" },
+      sm: { fontSize: "15px", marginBottom: "15px" },
+      xs: { fontSize: "14px" },
     },
   },
   buttonsContainer = {
@@ -400,7 +337,7 @@ const CustomBanner = ({
   children,
   ...props
 }) => {
-   const bannerHeight = height || "450px";
+  const bannerHeight = height || "450px";
 
   return (
     <BannerSection
@@ -418,10 +355,7 @@ const CustomBanner = ({
       {overlay && <Overlay overlay={overlay} />}
 
       {/* Main Content */}
-      <ContentContainer
-        contentalignment={contentAlignment}
-        contentposition={contentPosition}
-      >
+      <ContentContainer contentalignment={contentAlignment}>
         {/* Logo */}
         {showLogo && logoSrc && (
           <Link href="/" style={{ display: "block" }}>
@@ -429,8 +363,8 @@ const CustomBanner = ({
               <Image
                 src={logoSrc}
                 alt={logoAlt}
-                width={120} // You can adjust
-                height={120} // You can adjust
+                width={120}
+                height={120}
                 style={{ width: "100%", height: "auto" }}
               />
             </LogoContainer>
@@ -470,7 +404,6 @@ const CustomBanner = ({
                 type={button.type}
                 className={button.className}
                 sx={{
-                  // Responsive button styling
                   "@media (max-width: 600px)": {
                     width: "100%",
                     maxWidth: "300px",
@@ -484,10 +417,11 @@ const CustomBanner = ({
             ))}
           </ButtonContainer>
         )}
-        {/* Breadcrumbs - Added this new section */}
 
         {/* Custom children content */}
         {children}
+
+        {/* Breadcrumbs */}
         {breadcrumbs && (
           <BreadcrumbsWrapper
             breadcrumbsPosition={breadcrumbsPosition}

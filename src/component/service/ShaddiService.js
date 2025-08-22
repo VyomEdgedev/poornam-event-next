@@ -400,17 +400,6 @@ const ShaddiService = () => {
         </Grid>
       </Grid>
 
-      {/* <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
-        {Array.from(Array(6)).map((_, index) => (
-          <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
-            <Item>{index + 1}</Item>
-          </Grid>
-        ))}
-      </Grid> */}
 
       {services?.length > 0 && (
         <Grid
@@ -482,53 +471,6 @@ const ShaddiService = () => {
         </Grid>
       )}
 
-      {/* <MainContainer >
-        <Grid
-          container
-          spacing={2}
-          justifyContent={{ xs: "center", md: "start" }}
-        >
-          {(services.length ? services : servicesData.services).map((service) => (
-            <Grid
-              item
-              key={service.id}
-              onClick={() => {
-                handleNavigate(service.uid);
-              }}
-              {...{ xs: 12, sm: 6, md: 4, ...(service.gridProps || {}) }}
-              display="flex"
-              justifyContent="center"
-            >
-              <ServiceCard
-                onClick={() => setSelectedService(service)}
-                isSelected={selectedService?.id === service.id}
-              >
-                <ImageContainer>
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    width={100}
-                    height={125}
-                  />
-                </ImageContainer>
-                <ServiceContent>
-                  <ServiceTitle>{service.title}</ServiceTitle>
-                  <ServiceDescription>
-                    {highlightSpecificWords(service.description, [
-                      "Vintage",
-                      "Bollywood",
-                      "Royal",
-                      "Rajput",
-                      "YES",
-                    ])}
-                  </ServiceDescription>
-                </ServiceContent>
-              </ServiceCard>
-            </Grid>
-          ))}
-        </Grid>
-       
-      </MainContainer> */}
     </Container>
   );
 };

@@ -52,18 +52,27 @@ const WhyPoornam = ({ poornam }) => {
             />
           </Grid>
           <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
-            <Typography
-              component="p"
+            <Box
               sx={{
-                fontFamily: "Akatab, Sans-serif",
-                lineHeight: 1.6,
-                color: "#000000",
-                mx: { xs: "auto", md: 0 },
+                boxShadow: 2,
+                p: { xs: 1, md: 2 },
+                borderRadius: 1,
+                bgcolor: "#ffffff",
               }}
             >
-              {poornam?.whyPoornam?.description ||
-                poornam?.whyPoornam[0]?.description}
-            </Typography>
+              <Typography
+                component="p"
+                sx={{
+                  fontFamily: "Akatab, Sans-serif",
+                  lineHeight: 1.6,
+                  color: "#000000",
+                  mx: { xs: "auto", md: 0 },
+                }}
+              >
+                {poornam?.whyPoornam?.description ||
+                  poornam?.whyPoornam[0]?.description}
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>
