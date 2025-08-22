@@ -498,6 +498,8 @@ const Footer = () => {
                     
                   </Link>
                    <Typography 
+                    variant="body2"
+                  component="body1"
                 sx={{
                   display: "inline-block",
                   // mt: { xs: 0, md: 0, lg: 1 },
