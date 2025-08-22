@@ -158,7 +158,6 @@ const ShowCase = () => {
         justifyContent={"center"}
         gap={2}
         flexWrap="wrap"
-        
       >
         <CustomMultiSelect
           names={categories}
@@ -168,15 +167,13 @@ const ShowCase = () => {
           multiple={true}
         />
         <CustomButton
-         onClick={handleBrowse}
+          onClick={handleBrowse}
           fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
           {`Browse Gallery`}{" "}
         </CustomButton>
-        
-      
       </Box>
       <Grid
         container
@@ -184,7 +181,7 @@ const ShowCase = () => {
         justifyContent="center"
       >
         {loading ? (
-          <Typography>    <CircularProgress   /></Typography>
+          <Typography><CircularProgress   /></Typography>
         ) : themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
@@ -219,7 +216,7 @@ const ShowCase = () => {
                   sx={{
                     position: "relative",
                     width: "350px",
-                    height: 300,
+                    height: 430,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -257,11 +254,11 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               top: 20,
-              right: 20,
+              right: 35,
               color: "#fff",
               zIndex: 10,
-              backgroundColor: "#DAA412",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
+              backgroundColor: "#DAA412 !important",
+             
             }}
           >
             <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
@@ -271,11 +268,11 @@ const ShowCase = () => {
             onClick={handlePrev}
             sx={{
               position: "absolute",
-              left: 20,
+              left: 35,
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
+           
             }}
           >
             <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
@@ -297,11 +294,10 @@ const ShowCase = () => {
             onClick={handleNext}
             sx={{
               position: "absolute",
-              right: 20,
+              right: 35,
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
             }}
           >
             <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
