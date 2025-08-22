@@ -40,11 +40,11 @@ const Portfolio = () => {
     <>
       <>
         <SEO
-          url="http://www.poornamevents.com/gallery"
+          url="https://www.poornamevents.com/gallery"
           metaTitle="Wedding Gallery  | Poornam Events"
           metaDescription="Browse our gallery of weddings curated in Indore, Bhopal & destination locations."
           keywords="wedding gallery Indore, wedding gallery"
-          canonical="http://www.poornamevents.com/gallery"
+          canonical="https://www.poornamevents.com/gallery"
           ogTitle="Wedding Gallery  | Poornam Events"
           ogDescription="Browse our gallery of weddings curated in Indore, Bhopal & destination locations."
           ogImage={`${SITE_URL}/og-image.jpg`}

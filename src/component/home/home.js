@@ -21,11 +21,11 @@ console.log(props.categorie , 'categoriescategoriescategoriescategories')
     <>
       <>
         <SEO
-          url='http://www.poornamevents.com/'
+          url='https://www.poornamevents.com/'
           metaTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
           metaDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
           keywords='wedding planner Indore, destination wedding planner Bhopal, themed weddings Ujjain'
-          canonical='http://www.poornamevents.com/'
+          canonical='https://www.poornamevents.com/'
           ogTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
           ogDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
           ogImage={`${SITE_URL}/og-image.jpg`}
