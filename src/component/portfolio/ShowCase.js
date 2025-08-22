@@ -19,6 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ShowCase = () => {
   const [allThemes, setAllThemes] = useState([]);
@@ -184,6 +185,7 @@ const ShowCase = () => {
         justifyContent="center"
       >
         {loading ? (
+          <Typography><CircularProgress   /></Typography>
           <Typography>    <CircularProgress   /></Typography>
         ) : themes.length === 0 ? (
           <Typography>No data found.</Typography>
@@ -219,7 +221,7 @@ const ShowCase = () => {
                   sx={{
                     position: "relative",
                     width: "350px",
-                    height: 300,
+                    height: 430,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -257,11 +259,11 @@ const ShowCase = () => {
             sx={{
               position: "absolute",
               top: 20,
-              right: 20,
+              right: 35,
               color: "#fff",
               zIndex: 10,
-              backgroundColor: "#DAA412",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
+              backgroundColor: "#DAA412 !important",
+             
             }}
           >
             <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
@@ -271,11 +273,11 @@ const ShowCase = () => {
             onClick={handlePrev}
             sx={{
               position: "absolute",
-              left: 20,
+              left: 35,
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
+           
             }}
           >
             <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
@@ -297,11 +299,10 @@ const ShowCase = () => {
             onClick={handleNext}
             sx={{
               position: "absolute",
-              right: 20,
+              right: 35,
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
             }}
           >
             <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
