@@ -45,18 +45,33 @@ export default function InspirationSection({ categories = data }) {
     };
   }, []);
 
+  
+
   const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = 250;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+  if (scrollRef.current) {
+    // get width of the first child (circle)
+    const firstChild = scrollRef.current.querySelector("div");
+    if (!firstChild) return;
+
+    const childWidth = firstChild.offsetWidth;
+    const gap = parseInt(
+      getComputedStyle(scrollRef.current).columnGap || 
+      getComputedStyle(scrollRef.current).gap || 
+      0
+    );
+
+    const scrollAmount = childWidth + gap; // dynamic scroll step
+
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  }
+};
+
   return (
     <Container>
-      <Box sx={{ textAlign: "center", py: 5 }} //border="1px solid grey"  borderRadius="10px" paddingTop={2}
+      <Box sx={{ textAlign: "center", py: 5 }}
       >
         <Typography
           component="h2"
@@ -92,7 +107,7 @@ export default function InspirationSection({ categories = data }) {
             ref={scrollRef}
             sx={{
               display: "flex",
-              gap: { xs: 5.5, md: 9.5 },
+              gap: { xs: 5.5, md: 6.5 },
               overflowX: "auto",
               scrollBehavior: "smooth",
               pb: 2,
