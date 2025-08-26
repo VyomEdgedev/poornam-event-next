@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -6,10 +6,12 @@ import {
   Typography,
   Paper,
   styled,
+  CircularProgress,
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
+import { apiClient } from "@/lib/api-client";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -22,22 +24,40 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Footer = () => {
+  const [AllPortfolioData, setAllPortfolioData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchPortfolio = async () => {
+    try {
+      const res = await apiClient.get("/api/service/AllServicePages/event");
+      console.log(res?.data);
+      setAllPortfolioData(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching portfolio", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPortfolio();
+  }, []);
   // const [open, setOpen] = useState(false);
   return (
     <Box sx={{ backgroundColor: "#011d4a" }}>
       {/* Top dark blue section */}
       <Container>
-        <Box sx={{ flexGrow: 1,py:5}}>
+        <Box sx={{ flexGrow: 1, py: 5 }}>
           <Grid
             container
             columns={{ xs: 12, sm: 12, md: 12 }}
             alignItems={"flex-start"}
             spacing={4}
           >
-            <Grid size={{ xs: 12, sm: 12, md: 4,lg:4 }} item>
+            <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }} item>
               <Link href="/" passHref legacyBehavior>
                 <a>
-                  <Box sx={{ display: "inline-block" ,mb:2}}>
+                  <Box sx={{ display: "inline-block", mb: 2 }}>
                     <Image
                       src="/logo2.png"
                       alt="Logo"
@@ -49,10 +69,10 @@ const Footer = () => {
                 </a>
               </Link>
               <Typography
-              component="p"
+                component="p"
                 sx={{
                   fontFamily: "Akatab,Sans-serif",
-                  color:"#FFF1CA"
+                  color: "#FFF1CA",
                 }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
@@ -60,7 +80,10 @@ const Footer = () => {
                 create moments that live forever.`}
               </Typography>
             </Grid>
-            <Grid size={{ xs: 4, sm: 3, md: 2,lg:2 }} pt={{sx:0,sm:0,md:5}}>
+            <Grid
+              size={{ xs: 4, sm: 3, md: 2, lg: 2 }}
+              pt={{ sx: 0, sm: 0, md: 5 }}
+            >
               <Box
                 sx={{
                   textAlign: "left",
@@ -68,9 +91,8 @@ const Footer = () => {
                 }}
               >
                 <Typography
-                  component={'p'}
+                  component={"p"}
                   sx={{
-                    
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -90,11 +112,11 @@ const Footer = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    style={{ textDecoration: "none" ,width:"fit-content"}}
+                    style={{ textDecoration: "none", width: "fit-content" }}
                   >
                     <Typography
                       variant="body2"
-                      component={'p'}
+                      component={"p"}
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
@@ -113,7 +135,10 @@ const Footer = () => {
                 ))}
               </Box>
             </Grid>
-            <Grid size={{ xs: 8, sm: 4, md: 3,lg:3 }}  pt={{sx:0,sm:0,md:5}}>
+            <Grid
+              size={{ xs: 8, sm: 4, md: 3, lg: 3 }}
+              pt={{ sx: 0, sm: 0, md: 5 }}
+            >
               <Box
                 sx={{
                   textAlign: "left",
@@ -122,9 +147,8 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  component={'p'}
+                  component={"p"}
                   sx={{
-                  
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -133,39 +157,43 @@ const Footer = () => {
                 >
                   Services
                 </Typography>
-                {[
-                  { label: "Destination Weddings", href: "/servicessubpage" },
-                  { label: "Intimate Wedding", href: "/services" },
-                  { label: "Themed & Designer Weddings", href: "/services" },
-                  { label: "Artist Management", href: "/services" },
-                  { label: "Prewedding & Photography", href: "/services" },
-                  { label: "Special Effects", href: "/services" },
-                ].map((item, i) => (
-                  <Link
-                    key={i}
-                    href={item.href}
-                    style={{ textDecoration: "none" ,width:"fit-content"}}
-                  >
-                    <Typography
-                     component="p"
-                      sx={{
-                        fontFamily: "Akatab,Sans-serif",
-                        mb: 0.5,
-                        color: "#E4E4E4",
-                        fontWeight: 400,
-                        textDecoration: "none",
-                        "&:hover": {
-                          textDecoration: "underline",
-                        },
-                      }}
-                    >
-                      {item.label}
-                    </Typography>
-                  </Link>
-                ))}
+                {loading ? (
+                  <CircularProgress />
+                ) : (
+                  <Box sx={{ maxHeight: "150px", overflowY: "auto" }}>
+                    {AllPortfolioData.map((item, i) => (
+                      <Link
+                        key={i}
+                        href={`/services/${item.uid}`}
+                        style={{ textDecoration: "none", width: "fit-content" }}
+                      >
+                        <Typography
+                          component="p"
+                          sx={{
+                            fontFamily: "Akatab,Sans-serif",
+                            mb: 0.5,
+                            color: "#E4E4E4",
+                            fontWeight: 400,
+                            textDecoration: "none",
+                            "&:hover": {
+                              textDecoration: "underline",
+                            },
+                          }}
+                        >
+                          {item.title.length > 28
+                            ? item.title.slice(0, 28) + "..."
+                            : item.title}
+                        </Typography>
+                      </Link>
+                    ))}
+                  </Box>
+                )}
               </Box>
             </Grid>
-            <Grid size={{ xs: 12, sm: 5, md: 3,lg:3 }}  pt={{sx:0,sm:0,md:5}}>
+            <Grid
+              size={{ xs: 12, sm: 5, md: 3, lg: 3 }}
+              pt={{ sx: 0, sm: 0, md: 5 }}
+            >
               <Box
                 sx={{
                   textAlign: "left",
@@ -175,9 +203,8 @@ const Footer = () => {
               >
                 <Typography
                   variant="h6"
-                  component={'p'}
+                  component={"p"}
                   sx={{
-                   
                     mb: 1,
                     fontWeight: 600,
                     color: "#E4E4E4",
@@ -189,8 +216,11 @@ const Footer = () => {
 
            
                 <Typography
-                
-                  sx={{ fontFamily: "Akatab,Sans-serif", color: "#E4E4E4", fontWeight: 400 }}
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif",
+                    color: "#E4E4E4",
+                    fontWeight: 400,
+                  }}
                 >
                   Phone:{" "}
                   <a
@@ -225,7 +255,11 @@ const Footer = () => {
 
                 <Typography
                   component="p"
-                  sx={{  fontFamily: "Akatab,Sans-serif", color: "#E4E4E4", fontWeight: 400 }}
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif",
+                    color: "#E4E4E4",
+                    fontWeight: 400,
+                  }}
                 >
                   Email:{" "}
                   <Box
@@ -298,7 +332,7 @@ const Footer = () => {
       </Container>
 
       {/* Bottom mustard section */}
-      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }} >
+      <Box sx={{ backgroundColor: "#d59700", color: "#000D1F", py: 1.5 }}>
         <Container maxWidth="lg">
           <Grid
             container
@@ -312,7 +346,7 @@ const Footer = () => {
                 component="p"
                 sx={{
                   fontFamily: "Akatab,Sans-serif",
-                  textAlign: { xs: "center", md: "left" }
+                  textAlign: { xs: "center", md: "left" },
                 }}
               >
                 © 2025 Poornam Events.
@@ -322,24 +356,28 @@ const Footer = () => {
             {/* Center - Policies */}
             <Grid item xs={12} md={4}>
               <Typography
-               component="p"
-                sx={{  fontFamily: "Akatab,Sans-serif", textAlign: "center", color: "black",  textDecoration: "none",
-                        "&:hover": {
-                          //textDecoration: "underline",
-                        }, }}
+                component="p"
+                sx={{
+                  fontFamily: "Akatab,Sans-serif",
+                  textAlign: "center",
+                  color: "black",
+                  textDecoration: "none",
+                  "&:hover": {
+                    //textDecoration: "underline",
+                  },
+                }}
               >
                 <Link
                   href="/disclaimer"
-               
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none", }}
+                  style={{ color: "black", textDecoration: "none" }}
                 >
                   Disclaimer
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/privacy-policy"
-                   className="hoverlink"
+                  className="hoverlink"
                   style={{ color: "black", textDecoration: "none", mx: 2 }}
                 >
                   Privacy Policy
@@ -348,7 +386,7 @@ const Footer = () => {
                 &nbsp;|&nbsp;
                 <Link
                   href="/terms"
-                   className="hoverlink"
+                  className="hoverlink"
                   style={{ color: "black", textDecoration: "none", mx: 2 }}
                 >
                   T&C
@@ -357,7 +395,7 @@ const Footer = () => {
             </Grid>
 
             {/* Right - Developer logo */}
-            <Grid
+            {/* <Grid
               item
               xs={12}
               md={4}
@@ -365,8 +403,6 @@ const Footer = () => {
                 textAlign: { xs: "center", md: "right" },
                 position: "relative",
                 mt: { xs: 0, md: 0 },
-                width:"fit-content",
-                mx:"auto"
               }}
             >
               <Typography
@@ -399,7 +435,7 @@ const Footer = () => {
                 </Link>
               </Typography>
 
-              {/* Responsive logo wrapper */}
+        
               <Box
                 sx={{
                   display: "inline-block",
@@ -429,6 +465,88 @@ const Footer = () => {
                   </a>
                 </Link>
               </Box>
+            </Grid> */}
+            <Grid
+              item
+              xs={12}
+              md={4}
+              sx={{
+                textAlign: { xs: "center", md: "right" },
+                mt: { xs: 0, md: 0 },
+              }}
+            >
+              <Box
+                sx={{
+                  textAlign: { xs: "center", md: "right" },
+                  
+                  // width: "fit-content",
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  component="p"
+                  sx={{ fontSize: "14px", color: "black",position: "relative",width:"fit-content",margin:"auto"}}
+                >
+                  Developed by{" "}
+                  <Link
+                    href="https://vyomedge.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    passHref
+                    legacyBehavior
+                  >
+                    <Typography
+                      component="a"
+                      sx={{
+                        fontWeight: 600,
+                        color: "black",
+                        textDecoration: "none",
+                        "&:hover": {
+                          color: "black",
+                          textDecoration: "none",
+                        },
+                      }}
+                    >
+                      Vyomedge
+                    </Typography>
+                    
+                  </Link>
+                   <Typography 
+                    variant="body2"
+                  component="body1"
+                sx={{
+                  display: "inline-block",
+                  // mt: { xs: 0, md: 0, lg: 1 },
+                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
+                  top: { xs: "3px", sm: "-2px", md: "-50px", lg: "-50px" },
+                  right: { xs: "-25px", sm: "-40px", md: "10px", lg: "10px" },
+                  width: { xs: "20px", sm: "30px", md: "50px" },
+                  marginLeft: "8px",
+                }}
+              >
+                <Link href="https://vyomedge.com/" passHref legacyBehavior>
+                  <a
+                    color="black"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "inline-block", width: "100%" }}
+                  >
+                    <Image
+                      src="/developer.png"
+                      alt="Developer Logo"
+                      layout="responsive"
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                  </a>
+                </Link>
+              </Typography>
+                </Typography>
+              </Box>
+
+              {/* Responsive logo wrapper */}
+             
             </Grid>
           </Grid>
         </Container>
