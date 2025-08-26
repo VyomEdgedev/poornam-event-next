@@ -30,7 +30,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Blogs", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/aboutus" },
   { label: "Connect us", href: "/contact" },
 ];
@@ -42,6 +42,12 @@ export default function Header() {
   const pathname = usePathname();
   const isDarkBg = true;
   const iconColor = isDarkBg ? "#FFFFFF" : "#192249";
+
+  const isItemActive = (href) => {
+    if (!pathname) return false;
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+  };
 
   return (
     <AppBar
@@ -77,7 +83,7 @@ export default function Header() {
           gap={2}
         >
           {navItems.map((item, index) => {
-            const isActive = pathname === item.href;
+            const isActive = isItemActive(item.href);
 
             return (
               <Link
@@ -222,27 +228,31 @@ export default function Header() {
                     padding: "4% 2%",
                   }}
                 >
-                  {navItems.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <ListItem disablePadding>
-                        <ListItemButton component={Link} href={item.href} selected={pathname === item.href}
-                          sx={{
-                            borderRadius: "10px",
-                            backgroundColor:
-                              pathname === item.href ? "#192249" : "transparent",
-                            color:
-                              pathname === item.href ? "#DAA412" : "#CBEFFF",
-                            "&:hover": {
-                              backgroundColor: "#192249",
-                            },
-                          }}
-                        >
-                          <ListItemText primary={item.label} />
-                        </ListItemButton>
-                      </ListItem>
-                      <hr />
-                    </React.Fragment>
-                  ))}
+                  {navItems.map((item, index) => {
+                    const isActive = isItemActive(item.href);
+                    return (
+                      <React.Fragment key={index}>
+                        <ListItem disablePadding>
+                          <ListItemButton
+                            component={Link}
+                            href={item.href}
+                            selected={isActive}
+                            sx={{
+                              borderRadius: "10px",
+                              backgroundColor: isActive ? "#192249" : "transparent",
+                              color: isActive ? "#DAA412" : "#CBEFFF",
+                              "&:hover": {
+                                backgroundColor: "#192249",
+                              },
+                            }}
+                          >
+                            <ListItemText primary={item.label} />
+                          </ListItemButton>
+                        </ListItem>
+                        <hr />
+                      </React.Fragment>
+                    );
+                  })}
                 </List>
               </Box>
             </Drawer>

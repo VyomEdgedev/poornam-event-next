@@ -30,7 +30,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
   return (
     <Box sx={{ backgroundColor: "#FFF7E4" }}>
       <Container
-        sx={{ py: 8 }}
+        sx={{ py: 4 }}
        >
         <Typography
           component="h2"
@@ -97,7 +97,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
                   <Box
                     sx={{
                       position: "relative",
-                      width: "340px",
+                      width: "350px",
                       height: 300,
 
                       display: "flex",
@@ -105,7 +105,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
                       alignItems: "center",
                       fontSize: 14,
                       textAlign: "center",
-                      minHeight: { xs: 250, sm: 280, md: 300 },
+                      minHeight: { xs: 250, sm: 280, md: 380 },
                     }}
                   >
                     <Image
@@ -117,29 +117,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
                       objectFit="cover"
                     />
                   </Box>
-                  <CardContent backgroundColor="#FFFCF5">
-                    <Typography
-                      variant="p"
-                      component="div"
-                      sx={{
-                        fontFamily: "Akatab,Sans-serif",
-                        fontWeight: "400",
-                        fontSize: { xs: "0.9rem", sm: "0.9rem", md: "1rem" },
-                      }}
-                    >
-                      {portfolio?.name}
-                    </Typography>
-                    <Typography
-                      component="p"
-                      sx={{
-                        fontFamily: "Akatab,Sans-serif",
-                        fontWeight: "500",
-                        color: "#000000",  
-                      }}
-                    >
-                      {/* {staticDescriptions[index] || "No Description"} */}
-                    </Typography>
-                  </CardContent>
+             
                 </Card>
               </Grid>
             ))}

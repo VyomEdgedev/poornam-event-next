@@ -61,7 +61,7 @@ return (
               metaTitle={`${service?.meta?.title}`}
               metaDescription={`${service?.meta?.description}`}
               keywords={`${service?.meta?.keywords}`}
-              canonical="https://www.poornamevents.com/services"
+              canonical={`https://www.poornamevents.com/services/${id}`} 
               ogTitle= {`${service?.ogTags?.title}`}
               ogDescriptio={`${service?.ogTags?.description}`}
               ogImage={`${service?.ogTags?.image}`||`${SITE_URL}/og-image.jpg` }
@@ -74,21 +74,14 @@ return (
           title={title}
           paragraphSubtitle={description}
           backgroundImage="/serviceSPBanner.png"
-          showLogo={true}
-          logoSrc="/logo2.png"
+         showLogo={true}
+        logoSrc ="/logo2.png"
           breadcrumbs={[
             { href: "/", isHome: true },
             { href: "/services", label: "services" },
             { href: `/services/${id}`, label: title },
           ]}
-          breadcrumbsPosition={{
-            top: "300px",
-            left: "25px",
-            lg: { top: "280px", left: "25px" },
-            md: { top: "170px", left: "26px" },
-            sm: { top: "330px", left: "3px" },
-            xs: { top: "200px", left: "20px" },
-          }}
+          
           overlay={{
             background:
               "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",

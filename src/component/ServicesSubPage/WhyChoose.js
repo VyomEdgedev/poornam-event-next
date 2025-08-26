@@ -2,6 +2,12 @@ import { Typography, Box, Container } from "@mui/material";
 import React from "react";
 
 const WhyChoose = ({ title, description }) => {
+  const safeDescription = React.useMemo(() => {
+    const html = description || "";
+    return html
+      .replace(/<h1\b([^>]*)>/gi, "<h2$1>")
+      .replace(/<\/h1>/gi, "</h2>");
+  }, [description]);
   return (
     <Box py={{ xs: "20px", sm: "20px", md: "20px" }} textAlign="center">
       <Container>
@@ -11,10 +17,10 @@ const WhyChoose = ({ title, description }) => {
           alignItems="flex-start"
           textAlign="center"
           sx={{
-            flexDirection: { xs: "column", md: "row" },
+            flexDirection: { xs: "column", sm: "row" },
             margin: 2,
             padding: 1,
-            gap: 6,
+            gap: {xs:2, sm:3,md:6}
           }}
         >
           <Box
@@ -32,7 +38,7 @@ const WhyChoose = ({ title, description }) => {
               {`${title} with Poornam?`}
             </Typography>
             <Typography
-              dangerouslySetInnerHTML={{ __html: description }}
+              dangerouslySetInnerHTML={{ __html: safeDescription }}
               component="p"
               sx={{ fontFamily: "Akatab, Sans-serif" }}
             />

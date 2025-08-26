@@ -69,6 +69,7 @@ export default function HeroSection() {
                   position: { xs: "initial", md: "absolute" },
                   top: { xs: "20px", sm: "100px", md: "130px", lg: "170px" },
                   mt: { xs: "4px", sm: "15px", md: 0 },
+                  ml:{xs:"5px",sm:0}
                 }}
               >
                 <Typography
@@ -113,7 +114,7 @@ export default function HeroSection() {
                     letterSpacing: "0.5px",
                   }}
                 >
-                  Luxury meets laughter, chaos choreographed-beautiful weddings across Indore, Bhopal & Ujjain.
+                 {` Luxury meets laughter, chaos choreographed-beautiful weddings across Indore, Bhopal & Ujjain.`}
                 </Typography>
 
                 <Stack
