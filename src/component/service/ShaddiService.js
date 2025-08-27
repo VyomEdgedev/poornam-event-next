@@ -240,36 +240,6 @@ const HeroContent = styled(Box)(({ theme }) => ({
   padding: 6
 }));
 
-// const HeroTitle = styled(Typography, {
-//   shouldForwardProp: (prop) => prop !== "isLong",
-// })(({ theme, isLong }) => ({
-//   fontFamily: "Gloock, serif",
-//   fontWeight: 400,
-//   // fontSize: "32px !important",
-//   color: "#000000",
-//   [theme.breakpoints.down("sm")]: {
-//     alignItems: "start",
-//     textAlign: "start",
-//      fontSize: "68px !important",
-//      padding:4
-//   },
-
-//   paddingLeft: { xs: "10px", md: "0px" },
-//   marginBottom: theme.spacing(0.5),
-//   [theme.breakpoints.down("md")]: { fontSize: "30px" },
-//   [theme.breakpoints.down("sm")]: { fontSize: "24px" },
-// }));
-
-// const HeroDescription = styled(Typography)(({ theme }) => ({
-//   fontFamily: "Akatab,Sans-serif",
-//   fontWeight: "400",
-//   fontSize: "16px !important",
-//   color: "#000000",
-//   textAlign: "left",
-//   marginBottom: theme.spacing(3),
-//   [theme.breakpoints.down("sm")]: { padding: "0px 0px", width: "100%" },
-//}));
-
 function highlightSpecificWords(text, keywords) {
   const regex = new RegExp(`(${keywords.join("|")})`, "gi");
   const parts = text.split(regex);
@@ -309,12 +279,12 @@ const ShaddiService = () => {
         const response = await apiClient.get(
           "api/service/AllServicePages/event"
         );
-        console.log(response, "response");
         const data = response.data;
         if (Array.isArray(data)) {
           const formattedServices = data.map((item, idx) => ({
             id: item._id || idx,
             image: item.featuredImage?.url || "/serviceimg2.png",
+            alt: item.featuredImage?.altText || "Service Image",
             title: item.meta?.title,
             description: item.meta?.description || "No Description",
             gridProps: { xs: 12, sm: 6, md: 4 },
@@ -435,6 +405,7 @@ const ShaddiService = () => {
                   <Box sx={{height:"100%", width:"100px"}}>
                       <Image
                       src={val?.image}
+                      alt={val?.alt||"image"}
                       height={100}
                       width={100}
                       style={{ border: "1px solid #ddd", borderRadius: "8px" }}

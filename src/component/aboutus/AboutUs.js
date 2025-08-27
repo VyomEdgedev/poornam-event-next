@@ -28,7 +28,7 @@ export default function AboutUS() {
           metaTitle='About Poornam Events | Wedding Planner in MP'
           metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
           keywords='wedding planner in MP, about Poornam Events'
-          canonical='https://www.poornamevents.com/about-us'
+          canonical='https://www.poornamevents.com/aboutus'
           ogTitle='About Poornam Events | Wedding Planner in MP'
           ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
           ogImage={`${SITE_URL}/og-image.jpg`}

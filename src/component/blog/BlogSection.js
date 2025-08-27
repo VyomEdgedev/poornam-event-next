@@ -3,43 +3,20 @@ import {
   Box,
   Container,
   Typography,
-  Button,
   Card,
   CardContent,
   Grid,
   useTheme,
   useMediaQuery,
-  CircularProgress,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import axios from "axios";
 import { apiClient } from "@/lib/api-client";
 import Link from "next/link";
 
 const blogData = {
   title: "Latest From the Blog",
   viewAllText: "View All Blogs",
-  // posts: [
-  //   {
-  //     id: 1,
-  //     title: "Shaadi Mein Budget Toh Hai, Par Planning Kaha Hai?",
-  //     subtitle: "Learn how to make every rupee feel like a royal investment.",
-  //     category: "Budget & Planning",
-  //     image: "/blogsection1.png",
-  //     imageAlt: "Wedding venue with golden lights and decorations",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Top 5 Destination Wedding Locations You Haven't Considered Yet",
-  //     subtitle:
-  //       "Beyond Goa and Udaipur — these hidden gems are chef's kiss for intimate vibes.",
-  //     category: "Destination Weddings",
-  //     image: "/blogsection2.png",
-  //     imageAlt:
-  //       "Wedding planning infographic with venue and catering statistics",
-  //   },
-  // ],
 };
 
 const BlogSection = ({posts, setPosts , setCategories}) => {
@@ -47,8 +24,8 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isBelow1150 = useMediaQuery("(max-width:1150px),(spacing:50px)");
   const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 } // spacing when screen is small
-    : { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }; // spacing when screen is large
+    ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 } 
+    : { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }; 
   const router = useRouter();
   
   const [loading, setLoading] = useState(true);
@@ -73,7 +50,7 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
       }
     };
     fetchBlogs();
-  }, []);
+  }, [setPosts, setCategories]);
 
   const sortedPosts = [...posts]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -83,10 +60,6 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
   if (loading) return null;
   if (error) return null;
   if (!sortedPosts.length) return null;
-
-  const handleNavigate = () => {
-    router.push("#");
-  };
 
   return (
     <Box
@@ -177,7 +150,6 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
                       fill
                       style={{
                         objectPosition: "center",
-                        // objectFit: "cover",
                       }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />

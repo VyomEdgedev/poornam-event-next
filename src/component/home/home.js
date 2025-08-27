@@ -16,7 +16,7 @@ import SEO from "@/common-component/SEO/seo";
 
 export default function HomePage(props) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
-console.log(props.categorie , 'categoriescategoriescategoriescategories')
+console.log(props.categorie , '')
   return (
     <>
       <>

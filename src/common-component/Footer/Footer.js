@@ -235,9 +235,15 @@ const Footer = () => {
                   >
                     9519066885,
                   </a>
-                  <br/>
-                  {/* <Box
-                   sx={{ display: "block", marginLeft: "55px" }}> */}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif",
+                    color: "#E4E4E4",
+                    fontWeight: 400,
+                  }}
+                >
+                 <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
                   <a
                     href="tel:8839844233"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
@@ -250,7 +256,6 @@ const Footer = () => {
                   >
                     8839844233
                   </a>
-                  {/* </Box> */}
                 </Typography>
 
                 <Typography

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import {
   Box,
   Container,
@@ -115,7 +115,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
       fetchSuggestions(searchValue, selectedCategory);
     }, 300);
     return () => clearTimeout(debounceTimeout.current);
-  }, [searchValue, selectedCategory]);
+  }, [searchValue, selectedCategory, fetchSuggestions]);
 
 
   // Category select
@@ -214,16 +214,15 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                         borderRadius: 1
                       },
                       "&:hover fieldset": {
-                        borderColor: "#011d4a", // Hover color
+                        borderColor: "#011d4a", 
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#011d4a", // Focus (click) color
+                        borderColor: "#011d4a", 
                         borderWidth: 2,
                       },
                     },
                     backgroundColor: "white"
                   }}
-                  // sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
                   onFocus={() => setOpenSuggestions(true)}
                 />
 
@@ -232,10 +231,10 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                   <Paper
                     sx={{
                       position: "absolute",
-                      top: "calc(100% + 1px)", // exactly below the TextField block
+                      top: "calc(100% + 1px)",
                       left: 0,
                       right: 0,
-                      width: "100%",          // match TextField width
+                      width: "100%",  
                       zIndex: 10,
                       maxHeight: 240,
                       overflowY: "auto",
