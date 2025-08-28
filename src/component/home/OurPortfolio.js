@@ -284,20 +284,14 @@ const PortfolioSection = () => {
                     color: "#FFFFFF",
 
                     width: {
-                      xs: "100%",
+                      xs: "270px",
                       sm: "290px",
-                      md: "210px",
-                      lg: "290px",
-                      xl: "290px",
                     },
                     borderRadius: 50,
                     height: "55px",
                     fontSize: {
-                      xs: "12px",
-                      sm: "16px",
-                      md: "15px",
+                      xs: "15px",
                       lg: "16px",
-                      xl: "16px",
                     },
                     fontFamily: "Akatab,Sans-serif",
                     fontWeight: "500",
