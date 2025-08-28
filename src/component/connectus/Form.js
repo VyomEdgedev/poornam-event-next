@@ -37,9 +37,7 @@ const MyForm = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
 
   const onSubmit = async (data) => {
-    return;
-
-    setLoading(true);
+ setLoading(true);
     try {
       const payload = {
         formType: "contactus",
