@@ -24,7 +24,7 @@ export default function AboutUS() {
     <>
       <>
         <SEO
-          url='https://www.poornamevents.com/about-us'
+          url='https://www.poornamevents.com/aboutus'
           metaTitle='About Poornam Events | Wedding Planner in MP'
           metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
           keywords='wedding planner in MP, about Poornam Events'
