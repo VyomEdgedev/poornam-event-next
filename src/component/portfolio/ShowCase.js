@@ -18,8 +18,7 @@ import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CircularProgress from '@mui/material/CircularProgress';
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ShowCase = () => {
   const [allThemes, setAllThemes] = useState([]);
@@ -42,7 +41,7 @@ const ShowCase = () => {
       setLoading(true);
       try {
         const response = await apiClient.get("/api/portfolio/event");
-        console.log(response, "response");
+
         const data = response.data;
         if (Array.isArray(data)) {
           setAllThemes(data);
@@ -91,8 +90,6 @@ const ShowCase = () => {
     );
   };
   const handleChange = (selectedObjs) => {
-    console.log("Selected objects:", selectedObjs);
-
     if (selectedObjs.length === 0) {
       setSelectedNames([{ _id: "all", name: "All" }]);
       setThemes(allThemes);
@@ -132,20 +129,17 @@ const ShowCase = () => {
   return (
     <Container maxWidth="xl" sx={{ py: 2 }}>
       <Typography
-
         component="h2"
         align="center"
         sx={{
           fontWeight: "400",
           mb: 1,
           fontFamily: "Gloock,serif",
-
         }}
       >
         {` Visual Showcase `}
       </Typography>
       <Typography
-
         component="p"
         align="center"
         sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
@@ -159,7 +153,6 @@ const ShowCase = () => {
         justifyContent={"center"}
         gap={2}
         flexWrap="wrap"
-        
       >
         <CustomMultiSelect
           names={categories}
@@ -169,15 +162,13 @@ const ShowCase = () => {
           multiple={true}
         />
         <CustomButton
-         onClick={handleBrowse}
+          onClick={handleBrowse}
           fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
           sx={{ width: { xs: "178px", sm: "auto" } }}
         >
           {`Browse Gallery`}{" "}
         </CustomButton>
-        
-      
       </Box>
       <Grid
         container
@@ -185,8 +176,9 @@ const ShowCase = () => {
         justifyContent="center"
       >
         {loading ? (
-          <Typography><CircularProgress   /></Typography>
-          <Typography>    <CircularProgress   /></Typography>
+          <Typography>
+            <CircularProgress />
+          </Typography>
         ) : themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
@@ -200,7 +192,7 @@ const ShowCase = () => {
                   flexDirection: "column",
                   position: "relative",
                   cursor: "pointer",
-                  fontFamily: "Akatab,Sans-serif"
+                  fontFamily: "Akatab,Sans-serif",
                 }}
                 elevation={1}
               >
@@ -238,7 +230,6 @@ const ShowCase = () => {
                     objectFit="cover"
                   />
                 </Box>
-              
               </Card>
             </Grid>
           ))
@@ -252,7 +243,17 @@ const ShowCase = () => {
           sx: { backgroundColor: "rgba(0,0,0,0.5)" },
         }}
       >
-        <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 3 }}>
+        <Box
+          sx={{
+            position: "relative",
+            height: "100vh",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mt: 3,
+          }}
+        >
           {/* Close Button */}
           <IconButton
             onClick={handleCloseModal}
@@ -263,7 +264,6 @@ const ShowCase = () => {
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-             
             }}
           >
             <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
@@ -277,20 +277,20 @@ const ShowCase = () => {
               color: "#fff",
               zIndex: 10,
               backgroundColor: "#DAA412 !important",
-           
             }}
           >
-            <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
+            <ArrowBackIosNewIcon
+              sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
+            />
           </IconButton>
           {/* Image */}
-          <Box sx={{ height: "100vh", width: "100%", }}>
-
+          <Box sx={{ height: "100vh", width: "100%" }}>
             {portfolioImages.length > 0 && (
               <Image
                 src={portfolioImages[currentIndex].src}
                 alt={portfolioImages[currentIndex].alt}
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
               />
             )}
           </Box>
@@ -305,7 +305,9 @@ const ShowCase = () => {
               backgroundColor: "#DAA412 !important",
             }}
           >
-            <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
+            <ArrowForwardIosIcon
+              sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
+            />
           </IconButton>
         </Box>
       </Dialog>

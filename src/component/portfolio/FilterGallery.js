@@ -82,7 +82,6 @@ const FilterGallery = () => {
 
 
 const handleFilterChange = (selectedObjs) => {
-  console.log("FilterGallery - Selected objects:", selectedObjs);
   if (selectedObjs.length === 0) {
     setSelectedFilters([{_id:"all", name:"All"}]);
     setThemes(allThemes);
