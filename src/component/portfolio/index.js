@@ -10,7 +10,7 @@ import FAQSection from "@/common-component/Faq/FAQSection";
 import SEO from "@/common-component/SEO/seo";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 
-const Portfolio = () => {
+const Portfolio = ({ gallery }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const myFAQData = [
     {
@@ -88,13 +88,17 @@ const Portfolio = () => {
           },
         }}
       >
-        <CustomButton data-testid="notify-button"  fontFamily= "Akatab, Sans-serif !important" onClick={handleportfolio}>
+        <CustomButton
+          data-testid="notify-button"
+          fontFamily="Akatab, Sans-serif !important"
+          onClick={handleportfolio}
+        >
           {` Plan My Wedding`}
         </CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner>
       <WeddingThemes />
-      <ShowCase />
+      <ShowCase categoriesGallery={gallery}   />
       <RecentPosts />
       <FAQSection faqData={myFAQData} />
       <SocialMediaFollow />

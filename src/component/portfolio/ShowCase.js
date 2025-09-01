@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Typography,
   Grid,
   Card,
-  CardContent,
   Box,
   Chip,
   Dialog,
@@ -13,21 +12,30 @@ import {
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
-import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CircularProgress from "@mui/material/CircularProgress";
 
-const ShowCase = () => {
-  const [allThemes, setAllThemes] = useState([]);
-  const [themes, setThemes] = useState([]);
-  const [loading, setLoading] = useState(true);
+const ShowCase = ({ categoriesGallery }) => {
+  const [themes, setThemes] = useState(categoriesGallery || []);
   const [selectedNames, setSelectedNames] = useState([
     { _id: "all", name: "All" },
   ]);
-  const [categories, setCategories] = useState([{ _id: "all", name: "All" }]);
+  const [categories] = useState(() => {
+    const uniqueCategories = [];
+    const map = {};
+    categoriesGallery.forEach((item) => {
+      if (item.category && !map[item.category._id]) {
+        uniqueCategories.push({
+          _id: item.category._id,
+          name: item.category.name,
+        });
+        map[item.category._id] = true;
+      }
+    });
+    return [{ _id: "all", name: "All" }, ...uniqueCategories];
+  });
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,43 +43,6 @@ const ShowCase = () => {
     src: item?.images[0]?.url,
     alt: item.category?.name,
   }));
-
-  useEffect(() => {
-    const fetchThemes = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get("/api/portfolio/event");
-
-        const data = response.data;
-        if (Array.isArray(data)) {
-          setAllThemes(data);
-          setThemes(data);
-
-          const uniqueCategories = [];
-          const map = {};
-          data.forEach((item) => {
-            if (item.category && !map[item.category._id]) {
-              uniqueCategories.push({
-                _id: item.category._id,
-                name: item.category.name,
-              });
-              map[item.category._id] = true;
-            }
-          });
-          setCategories([{ _id: "all", name: "All" }, ...uniqueCategories]);
-        } else {
-          setAllThemes([]);
-          setThemes([]);
-        }
-      } catch (error) {
-        setAllThemes([]);
-        setThemes([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchThemes();
-  }, []);
 
   const handleOpenModal = (index) => {
     setCurrentIndex(index);
@@ -92,7 +63,7 @@ const ShowCase = () => {
   const handleChange = (selectedObjs) => {
     if (selectedObjs.length === 0) {
       setSelectedNames([{ _id: "all", name: "All" }]);
-      setThemes(allThemes);
+      setThemes(categoriesGallery);
       return;
     }
 
@@ -103,17 +74,17 @@ const ShowCase = () => {
       const finalSelection = otherSelections;
       setSelectedNames(finalSelection);
       setThemes(
-        allThemes.filter((item) =>
+        categoriesGallery.filter((item) =>
           finalSelection.some((obj) => obj._id === item.category?._id)
         )
       );
     } else if (hasAll) {
       setSelectedNames([{ _id: "all", name: "All" }]);
-      setThemes(allThemes);
+      setThemes(categoriesGallery);
     } else {
       setSelectedNames(selectedObjs);
       setThemes(
-        allThemes.filter((item) =>
+        categoriesGallery.filter((item) =>
           selectedObjs.some((obj) => obj._id === item.category?._id)
         )
       );
@@ -175,11 +146,7 @@ const ShowCase = () => {
         spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
         justifyContent="center"
       >
-        {loading ? (
-          <Typography>
-            <CircularProgress />
-          </Typography>
-        ) : themes.length === 0 ? (
+        {themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
           themes.map((item, idx) => (
