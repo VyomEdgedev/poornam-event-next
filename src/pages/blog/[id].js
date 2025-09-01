@@ -19,18 +19,19 @@ export async function getServerSideProps({ params }) {
 
   try {
     const singleBlogResponse = await axios.get(url);
-
+    
+    if (!singleBlogResponse || Object.keys(singleBlogResponse).length === 0) {
+      return { notFound: true };
+    }
     return {
       props: {
         singleBlog: singleBlogResponse.data.blog || [],
       },
     };
   } catch (error) {
-    console.error("err", error.message);
+   console.error("err", error.message);
     return {
-      props: {
-        singleBlog: [],
-      },
+      notFound: true,
     };
   }
 }
