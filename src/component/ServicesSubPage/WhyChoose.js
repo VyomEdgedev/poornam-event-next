@@ -37,10 +37,10 @@ const WhyChoose = ({ title, description }) => {
             >
               {`${title} with Poornam?`}
             </Typography>
-            <Typography
+            <div
               dangerouslySetInnerHTML={{ __html: safeDescription }}
-              component="p"
-              sx={{ fontFamily: "Akatab, Sans-serif" }}
+              // component="p"
+              style={{ fontFamily: "Akatab, Sans-serif" }}
             />
           </Box>
         </Box>
