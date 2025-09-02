@@ -12,33 +12,15 @@ import { useRouter } from "next/router";
 import { apiClient } from "@/lib/api-client";
 import SEO from "@/common-component/SEO/seo";
 
-function ServicesSubPage() {
+function ServicesSubPage(props) {
   const router = useRouter();
   const { id } = router.query;
-  const [service, setService] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const service = props?.singleService
+  // const [service, setService] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!id) return;
-    const fetchService = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await apiClient.get(
-          `api/service/getServicePageById/${id}/event`
-        );
-        setService(response.data);
-      } catch (err) {
-        setError(err.message || "Failed to fetch service");
-        setService(null);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchService();
-  }, [id]);
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
   const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
