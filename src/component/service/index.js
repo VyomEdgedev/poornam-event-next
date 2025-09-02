@@ -9,7 +9,7 @@ import SEO from "@/common-component/SEO/seo";
 import CookiesBanner from "../footerbottom/cookies";
 import ServicesGrid from "./ShaddiService";
 
-const Service = () => {
+const Service = (props) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   return (
     <>
@@ -62,7 +62,7 @@ const Service = () => {
         }}
       />
 
-      <ShaddiService />
+      <ShaddiService services={props?.services}/>
 
       <SignatureAddOns />
 

@@ -27,7 +27,7 @@ const WhyPoornam = ({ poornam }) => {
               }}
               dangerouslySetInnerHTML={{
                 __html:
-                  poornam?.whyPoornam[0]?.title || service?.whyPoornam?.title,
+                  poornam?.whyPoornam[0]?.title || poornam?.whyPoornam?.title,
               }}
             />
           </Grid>
