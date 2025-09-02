@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef, useCallback} from "react";
 import {
   Box,
   Container,
@@ -36,21 +36,48 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   },
 }));
 
-const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
-  const router = useRouter();
+const SearchFilter = ({ setPosts, categories, posts }) => {
+ const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
+
   const debounceTimeout = useRef(null);
-  const initialPostsRef = useRef(initialPosts || []);
+  const initialPostsRef = useRef(posts || []);
+  const fetchSuggestions = useCallback(
+    async (query, category) => {
+      try {
+        const panel = "event";
+        const queryParams = new URLSearchParams();
+        if (query) queryParams.append("query", query);
+        if (category) queryParams.append("query", category);
+
+        const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
+        const response = await apiClient.get(url);
+
+        if (response.status === 200) {
+          const results = response.data.results || [];
+          setSuggestions(results);
+          if (category && !query) {
+            setPosts(results.length ? results : initialPostsRef.current);
+          }
+        } else {
+          setSuggestions([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch suggestions:", error);
+        setSuggestions([]);
+      }
+    },
+    [setPosts]
+  );
   useEffect(() => {
     const { search, category } = router.query;
     if (search) {
       setSearchValue(search);
       setSelectedCategory(null);
       fetchSuggestions(search, null);
-      setOpenSuggestions(true);
     } else if (category) {
       setSelectedCategory(category);
       setSearchValue("");
@@ -58,104 +85,65 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
     } else {
       setPosts(initialPostsRef.current);
     }
-  }, [router.query]);
-
-  const fetchSuggestions = async (query, category) => {
-    try {
-      const panel = "event";
-      const queryParams = new URLSearchParams();
-      if (query) queryParams.append("query", query);
-      if (category) queryParams.append("query", category);
-
-      const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
-      const response = await apiClient.get(url);
-
-      if (response.status === 200) {
-        const results = response.data.results || [];
-        setSuggestions(results);
-        setOpenSuggestions(true);
-        if (category && !query) {
-          setPosts(results);
-        }
-      } else {
-        setSuggestions([]);
-        setOpenSuggestions(false);
-      }
-    } catch (error) {
-      console.error("Failed to fetch suggestions:", error);
-      setSuggestions([]);
-      setOpenSuggestions(false);
-    }
-  };
+  }, []);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-    if (value) setSelectedCategory(null);
 
-    router.replace(
-      {
-        pathname: router.pathname,
-        query: { search: value || undefined },
-      },
-      undefined,
-      { shallow: true }
-    );
-
-    if (!value) {
+    if (value) {
+      setSelectedCategory(null);
+      router.replace(
+        { pathname: router.pathname, query: { search: value } },
+        undefined,
+        { shallow: true }
+      );
+    } else {
+      router.replace(router.pathname, undefined, { shallow: true });
       setPosts(initialPostsRef.current);
-      return;
     }
   };
 
   useEffect(() => {
-    if (!searchValue && !selectedCategory) return;
+    if (!searchValue || selectedCategory) return;
+
     if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
     debounceTimeout.current = setTimeout(() => {
-      fetchSuggestions(searchValue, selectedCategory);
+      fetchSuggestions(searchValue, null);
     }, 300);
+
     return () => clearTimeout(debounceTimeout.current);
   }, [searchValue, selectedCategory, fetchSuggestions]);
 
-
-  // Category select
   const handleCategoryToggle = (categoryName) => {
     const newCategory = selectedCategory === categoryName ? null : categoryName;
     setSelectedCategory(newCategory);
+    setSearchValue("");
 
-    // Clear search when selecting category
-    if (newCategory) setSearchValue("");
-
-    router.replace(
-      {
-        pathname: router.pathname,
-        query: { category: newCategory || undefined }, // only `category` param
-      },
-      undefined,
-      { shallow: true }
-    );
-
-    if (!newCategory) {
+    if (newCategory) {
+      router.replace(
+        { pathname: router.pathname, query: { category: newCategory } },
+        undefined,
+        { shallow: true }
+      );
+      fetchSuggestions("", newCategory);
+    } else {
+      router.replace(router.pathname, undefined, { shallow: true });
       setPosts(initialPostsRef.current);
-      return;
     }
-
-    fetchSuggestions("", newCategory);
   };
 
-  // Suggestion click
   const handleSuggestionClick = (blog) => {
     setOpenSuggestions(false);
     setSearchValue(blog.title);
     setPosts([blog]);
   };
 
-
   return (
     <Box backgroundColor="#FFF7E4" position="relative">
       <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Grid container justifyContent="center" spacing={0} columns={12}>
-          {/* Heading */}
+   
           <Grid item size={{ xs: 12, sm: 6, md: 6 }} sx={{display:"flex",alignItems:"center"}}>
            <Box>
              <Typography
@@ -167,7 +155,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                 fontFamily: "Gloock,serif",
               }}
             >
-              Find What You Need
+            {`  Find What You Need`}
             </Typography>
             <Typography
               component="p"
@@ -178,14 +166,14 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                 fontFamily: "Akatab,Sans-serif",
               }}
             >
-              Search for valuable insights to aid your planning journey.
+            {`  Search for valuable insights to aid your planning journey.`}
             </Typography>
            </Box>
           </Grid>
 
-          {/* Search + Filters */}
+
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
-            {/* Search */}
+      
             
               <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
                 <Typography
@@ -197,7 +185,7 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                     fontFamily: "Akatab,Sans-serif",
                   }}
                 >
-                  Search
+                  {`Search`}
                 </Typography>
                 <TextField
                   fullWidth
@@ -294,11 +282,11 @@ const SearchFilter = ({ setPosts, catgeory, initialPosts }) => {
                   color: "text.primary",
                 }}
               >
-                Filter by Category
+             {`   Filter by Category`}
               </Typography>
               
               <Box  sx={{ display: "flex", flexWrap: "wrap", gap: 1 ,height:"140px", overflow:"auto"}} >
-                {catgeory.map((category) => (
+                {categories?.map((category) => (
                   <FilterChip
                     key={category.name}
                     label={capitalizeWords(category.name)}
