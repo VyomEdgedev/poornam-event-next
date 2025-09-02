@@ -94,7 +94,7 @@ const ShowCase = ({ categoriesGallery }) => {
     const filters = selectedNames.filter((obj) => obj._id !== "all");
     const filterQuery =
       filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
-    router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
+    router.push(`/gallery/${filterQuery}`);
   };
 
   return (
@@ -130,7 +130,7 @@ const ShowCase = ({ categoriesGallery }) => {
           value={selectedNames}
           onChange={handleChange}
           label="Filter by Category"
-          multiple={true}
+          multiple={false}
         />
         <CustomButton
           onClick={handleBrowse}
