@@ -1,10 +1,9 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
-import { apiClient } from "@/lib/api-client";
+
 import {
   Box,
   Card,
-  CardContent,
   Chip,
   Container,
   Grid,
@@ -18,30 +17,27 @@ import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CircularProgress from "@mui/material/CircularProgress";
 
-const FilterGallery = ({ galleryFilter }) => {
+
+const FilterGallery = ({galleryFilter}) => {
   const [themes, setThemes] = useState([]);
   const [allThemes, setAllThemes] = useState([]);
   const [categories, setCategories] = useState([{ _id: "all", name: "All" }]);
   const [selectedFilters, setSelectedFilters] = useState([
     { _id: "all", name: "All" },
   ]);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchAllThemes = async () => {
-      setLoading(true);
+ 
       try {
-        const response = await apiClient.get("/api/portfolio/event");
-        const data = response.data;
+        const data = galleryFilter;
         if (Array.isArray(data)) {
           setAllThemes(data);
           setThemes(data);
-
           const uniqueCategories = [];
           const map = {};
           data.forEach((item) => {
@@ -57,16 +53,14 @@ const FilterGallery = ({ galleryFilter }) => {
         }
       } catch (error) {
         console.error("Error fetching themes:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
     fetchAllThemes();
-  }, []);
+  }, [galleryFilter]);
 
   useEffect(() => {
     if (router.isReady && allThemes.length > 0 && categories.length > 1) {
-      const filterParam = router.query.filter || "all";
+      const filterParam = router.query.id || "all";
       const filterIds = filterParam.split(",");
 
       if (filterIds.includes("all")) {
@@ -85,13 +79,14 @@ const FilterGallery = ({ galleryFilter }) => {
         setThemes(filteredThemes);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query.filter, allThemes, categories]);
 
   const handleFilterChange = (selectedObjs) => {
     if (selectedObjs.length === 0) {
       setSelectedFilters([{ _id: "all", name: "All" }]);
       setThemes(allThemes);
-      router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
+      router.replace(`/gallery/all`, undefined, { shallow: true });
       return;
     }
     const hasAll = selectedObjs.some((obj) => obj._id === "all");
@@ -107,14 +102,14 @@ const FilterGallery = ({ galleryFilter }) => {
       );
       const filterQuery = finalSelection.map((obj) => obj._id).join(",");
       router.replace(
-        `/browsegallery?filter=${encodeURIComponent(filterQuery)}`,
+        `/gallery/${filterQuery}`,
         undefined,
         { shallow: true }
       );
     } else if (hasAll) {
       setSelectedFilters([{ _id: "all", name: "All" }]);
       setThemes(allThemes);
-      router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
+      router.replace(`/gallery/all`, undefined, { shallow: true });
     } else {
       setSelectedFilters(selectedObjs);
       setThemes(
@@ -124,7 +119,7 @@ const FilterGallery = ({ galleryFilter }) => {
       );
       const filterQuery = selectedObjs.map((obj) => obj._id).join(",");
       router.replace(
-        `/browsegallery?filter=${encodeURIComponent(filterQuery)}`,
+        `/gallery/${filterQuery}`,
         undefined,
         { shallow: true }
       );
@@ -207,6 +202,7 @@ const FilterGallery = ({ galleryFilter }) => {
             value={selectedFilters}
             onChange={handleFilterChange}
             label="Filter by Category"
+            multiple={false}
           />
         </Box>
 
@@ -215,11 +211,7 @@ const FilterGallery = ({ galleryFilter }) => {
           spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
           justifyContent="center"
         >
-          {loading ? (
-            <Typography>
-              <CircularProgress />
-            </Typography>
-          ) : themes.length === 0 ? (
+          { themes.length === 0 ? (
             <Typography>No data found.</Typography>
           ) : (
             themes.map((item, idx) => (
@@ -292,8 +284,7 @@ const FilterGallery = ({ galleryFilter }) => {
               mt: 3,
             }}
           >
-            {/* Close Button */}
-            {/* Close Button */}
+         
             <IconButton
               onClick={handleCloseModal}
               sx={{
@@ -310,7 +301,7 @@ const FilterGallery = ({ galleryFilter }) => {
                 sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
               />
             </IconButton>
-            {/* Left Arrow */}
+           
             <IconButton
               onClick={handlePrev}
               sx={{
@@ -319,7 +310,7 @@ const FilterGallery = ({ galleryFilter }) => {
                 color: "#fff",
                 zIndex: 10,
                 backgroundColor: "#DAA412 !important",
-                // p: { xs: 0.5, sm: 0.75, md: 1 },
+              
               }}
             >
               <ArrowBackIosNewIcon
@@ -346,7 +337,6 @@ const FilterGallery = ({ galleryFilter }) => {
                 color: "#fff",
                 zIndex: 10,
                 backgroundColor: "#DAA412 !important",
-                // p: { xs: 0.5, sm: 0.75, md: 1 },
               }}
             >
               <ArrowForwardIosIcon
