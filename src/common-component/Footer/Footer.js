@@ -269,7 +269,7 @@ const Footer = () => {
                   Email:{" "}
                   <Box
                     component="a"
-                    href="mailto:info@poornamevents.com"
+                    href="mailto:eventspoornam@gmail.com"
                     style={{ color: "white", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
@@ -278,7 +278,7 @@ const Footer = () => {
                       (e.target.style.textDecoration = "none")
                     }
                   >
-                    info@poornamevents.com
+                    eventspoornam@gmail.com
                   </Box>
                 </Typography>
                 <Box>

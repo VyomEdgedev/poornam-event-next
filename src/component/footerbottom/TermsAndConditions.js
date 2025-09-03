@@ -15,6 +15,7 @@ import {
 import { styled } from "@mui/material/styles";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import SEO from "@/common-component/SEO/seo";
+import Link from "next/link";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -155,8 +156,9 @@ const termsData = {
         "If you have questions about these Terms, feel free to get in touch:",
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
-        email: "info@poornamevents.com",
+        email: "eventspoornam@gmail.com",
         phone: "+91-9519066885",
+        phone2: "+91-8839844233",
       },
     },
   ],
@@ -281,15 +283,15 @@ export default function TermsAndConditions() {
                   {section.contactInfo.company}
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`mailto:${section.contactInfo.email}`}
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.email}
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`tel:${section.contactInfo.phone.replace(
                       /[^+\d]/g,
                       ""
@@ -297,7 +299,18 @@ export default function TermsAndConditions() {
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.phone}
-                  </a>
+                  </Link>
+                </Typography>
+                <Typography variant="body1" color="black">
+                  <Link
+                    href={`tel:${section.contactInfo.phone2.replace(
+                      /[^+\d]/g,
+                      ""
+                    )}`}
+                    style={{ color: "inherit", textDecoration: "underline" }}
+                  >
+                    {section.contactInfo.phone2}
+                  </Link>
                 </Typography>
               </Box>
             )}
