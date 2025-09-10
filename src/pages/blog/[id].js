@@ -11,28 +11,81 @@ const id = ({ singleBlog }) => {
 
 export default id;
 
-export async function getServerSideProps({ params }) {
-  const { id } = params || {};
+// export async function getServerSideProps({ params }) {
+//   const { id } = params || {};
 
+//   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+//   const url = `${baseUrl}/api/blogs/${id}/event`;
+
+//   try {
+//     const singleBlogResponse = await axios.get(url);
+    
+//     if (!singleBlogResponse || Object.keys(singleBlogResponse).length === 0) {
+//       return { notFound: true };
+//     }
+//     return {
+//       props: {
+//         singleBlog: singleBlogResponse.data.blog || [],
+//       },
+//     };
+//   } catch (error) {
+//    console.error("err", error.message);
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
+
+
+
+export async function getStaticPaths() {
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+  const url = `${baseUrl}/api/blogs`;
+
+  try {
+    const response = await axios.get(url);
+    const blogs = response.data.blogs || [];
+
+    const paths = blogs.map((blog) => ({
+      params: { id: blog.id.toString() }, 
+    }));
+
+    return {
+      paths,
+      fallback: "blocking",
+    };
+  } catch (error) {
+    console.error("Error fetching blogs:", error.message);
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
+}
+
+
+export async function getStaticProps({ params }) {
+  const { id } = params || {};
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   const url = `${baseUrl}/api/blogs/${id}/event`;
 
   try {
-    const singleBlogResponse = await axios.get(url);
-    
-    if (!singleBlogResponse || Object.keys(singleBlogResponse).length === 0) {
+    const response = await axios.get(url);
+    const singleBlog = response.data.blog || null;
+
+    if (!singleBlog) {
       return { notFound: true };
     }
+
     return {
       props: {
-        singleBlog: singleBlogResponse.data.blog || [],
+        singleBlog,
       },
+      revalidate: 60,
     };
   } catch (error) {
-   console.error("err", error.message);
-    return {
-      notFound: true,
-    };
+    console.error("Error fetching single blog:", error.message);
+    return { notFound: true };
   }
 }
 

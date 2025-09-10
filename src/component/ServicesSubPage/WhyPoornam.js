@@ -14,6 +14,7 @@ const WhyPoornam = ({ poornam }) => {
           container
           spacing={{ xs: 5, md: 2 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
+          
         >
           <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
             <Typography
@@ -37,6 +38,7 @@ const WhyPoornam = ({ poornam }) => {
             sx={{
               display: "flex",
               justifyContent: "center",
+                  alignItems: "center",
             }}
           >
             <Image
@@ -48,6 +50,7 @@ const WhyPoornam = ({ poornam }) => {
                 width: "100%",
                 height: "auto",
                 maxWidth: "130px",
+            
               }}
             />
           </Grid>
