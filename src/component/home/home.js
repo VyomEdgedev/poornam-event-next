@@ -16,7 +16,6 @@ import SEO from "@/common-component/SEO/seo";
 
 export default function HomePage(props) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
-console.log(props.categorie , '')
   return (
     <>
       <>
@@ -37,7 +36,7 @@ console.log(props.categorie , '')
       </>
       <Banner></Banner>
       <WeddingHero></WeddingHero>
-      <OurServices></OurServices>
+      <OurServices services={props.services}/>
       <AboutSection></AboutSection>
     <OurPortfolio></OurPortfolio>
       <Testimonials></Testimonials>

@@ -30,7 +30,6 @@ const Footer = () => {
   const fetchPortfolio = async () => {
     try {
       const res = await apiClient.get("/api/service/AllServicePages/event");
-      console.log(res?.data);
       setAllPortfolioData(res.data);
       setLoading(false);
     } catch (error) {

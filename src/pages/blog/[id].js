@@ -35,3 +35,56 @@ export async function getServerSideProps({ params }) {
     };
   }
 }
+
+
+
+// export async function getStaticPaths() {
+//   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+//   const url = `${baseUrl}/api/blogs`;
+
+//   try {
+//     const response = await axios.get(url);
+//     const blogs = response.data.blogs || [];
+
+//     const paths = blogs.map((blog) => ({
+//       params: { id: blog.id.toString() }, // Make sure id is a string
+//     }));
+
+//     return {
+//       paths,
+//       fallback: "blocking", // "blocking" will server-render new paths not generated at build
+//     };
+//   } catch (error) {
+//     console.error("Error fetching blogs:", error.message);
+//     return {
+//       paths: [],
+//       fallback: "blocking",
+//     };
+//   }
+// }
+
+// // This function fetches blog data at build time
+// export async function getStaticProps({ params }) {
+//   const { id } = params || {};
+//   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+//   const url = `${baseUrl}/api/blogs/${id}/event`;
+
+//   try {
+//     const response = await axios.get(url);
+//     const singleBlog = response.data.blog || null;
+
+//     if (!singleBlog) {
+//       return { notFound: true };
+//     }
+
+//     return {
+//       props: {
+//         singleBlog,
+//       },
+//       revalidate: 60, // optional: regenerate the page every 10 seconds
+//     };
+//   } catch (error) {
+//     console.error("Error fetching single blog:", error.message);
+//     return { notFound: true };
+//   }
+// }

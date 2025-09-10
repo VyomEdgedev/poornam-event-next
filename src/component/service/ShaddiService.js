@@ -58,7 +58,6 @@ const ShaddiService = (props) => {
   const services = props?.services;
 
   const handleNavigate = (uid) => {
-    console.log(uid, "uid");
     router.push(`/services/${uid}`);
   };
 
