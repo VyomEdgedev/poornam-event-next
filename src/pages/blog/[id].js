@@ -47,12 +47,12 @@ export async function getStaticPaths() {
     const blogs = response.data.blogs || [];
 
     const paths = blogs.map((blog) => ({
-      params: { id: blog.id.toString() }, // Make sure id is a string
+      params: { id: blog.id.toString() }, 
     }));
 
     return {
       paths,
-      fallback: "blocking", // "blocking" will server-render new paths not generated at build
+      fallback: "blocking",
     };
   } catch (error) {
     console.error("Error fetching blogs:", error.message);
@@ -63,7 +63,7 @@ export async function getStaticPaths() {
   }
 }
 
-// This function fetches blog data at build time
+
 export async function getStaticProps({ params }) {
   const { id } = params || {};
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -81,7 +81,7 @@ export async function getStaticProps({ params }) {
       props: {
         singleBlog,
       },
-      revalidate: 60, // optional: regenerate the page every 10 seconds
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Error fetching single blog:", error.message);
