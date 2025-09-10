@@ -22,7 +22,7 @@ const CapturedMoments = ({ title, captured =[]}) => {
         ? category_id._id
         : category_id;
     if (id) {
-      router.push(`/browsegallery?filter=${id}`);
+      router.push(`/gallery/${id}`);
     }
   };
 

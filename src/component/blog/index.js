@@ -11,7 +11,7 @@ const Blog = ({ initialPosts, initialCategories }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const [posts, setPosts] = useState(initialPosts);
   const [categories, setCategories] = useState(initialCategories);
-console.log(posts , categories)
+
   return (
     <>
       <SEO
@@ -40,6 +40,18 @@ console.log(posts , categories)
           { href: "/", isHome: true },
           { href: "/blog", label: "Blog" },
         ]}
+        overlay={{
+          background:
+            "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
+          width: "80%",
+          responsive: {
+            md: {
+              width: "100%",
+              background:
+                "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)",
+            },
+          },
+        }}
       />
 
       <WeddingPlanning />
