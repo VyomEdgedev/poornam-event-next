@@ -12,6 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
 import { apiClient } from "@/lib/api-client";
+import { usePathname } from "next/navigation";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -26,6 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Footer = () => {
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const pathName = usePathname()
 
   const fetchPortfolio = async () => {
     try {
@@ -347,11 +349,17 @@ const Footer = () => {
             {/* Left - Copyright */}
             <Grid item xs={12} md={4}>
               <Typography
-                component="p"
+                component="a"
                 sx={{
                   fontFamily: "Akatab,Sans-serif",
                   textAlign: { xs: "center", md: "left" },
+                  textDecoration:"none",
+                  "&:hover": {
+                        textDecoration: "underline",
+                      },
+                  color:"inherit"
                 }}
+                href="/"
               >
                 © 2025 Poornam Events.
               </Typography>
@@ -365,16 +373,12 @@ const Footer = () => {
                   fontFamily: "Akatab,Sans-serif",
                   textAlign: "center",
                   color: "black",
-                  textDecoration: "none",
-                  "&:hover": {
-                    //textDecoration: "underline",
-                  },
                 }}
               >
                 <Link
                   href="/disclaimer"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none" }}
+                  style={{ color: "black", textDecoration: pathName.includes("disclaimer") ?"underline" : "none" }}
                 >
                   Disclaimer
                 </Link>{" "}
@@ -382,7 +386,7 @@ const Footer = () => {
                 <Link
                   href="/privacy-policy"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("privacy-policy") ?"underline" : "none", mx: 2 }}
                 >
                   Privacy Policy
                 </Link>
@@ -391,7 +395,7 @@ const Footer = () => {
                 <Link
                   href="/terms"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("terms") ?"underline" : "none", mx: 2 }}
                 >
                   T&C
                 </Link>

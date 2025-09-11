@@ -54,7 +54,7 @@ function CheckList() {
           justifyContent={"center"}
           spacing={2}
           component="a"
-          href="https://www.google.com/maps/place/202+Kothari+Manjur,+Janjeerwala+Square,+Near+Janjeerwala+Square,+Diamond+Colony,+New+Palasia,+Indore,+Madhya+Pradesh+452001/@22.719568,75.857727,17z/data=!3m1!4b1!4m6!3m5!1s0x3962f9c8d7e8f0a5:0x7c6b2d8e9f8c4b1!8m2!3d22.719568!4d75.8599157!16s%2Fg%2F11c1lq_5t?entry=ttu"
+          href="https://www.google.com/maps/place/Poornam+Events/@22.7267398,75.8806682,20z/data=!4m10!1m2!2m1!1s202,+2nd+Floor,+Kothari+Manjur,+Janjeerwala+Square,+Near+Janjeerwala+Square,+Diamond+Colony,+New+Palasia,+Indore,+Madhya+Pradesh+452001!3m6!1s0x3962fdfe51d60cbd:0xd00dd93d1df328a7!8m2!3d22.7267501!4d75.8810795!15sCocBMjAyLCAybmQgRmxvb3IsIEtvdGhhcmkgTWFuanVyLCBKYW5qZWVyd2FsYSBTcXVhcmUsIE5lYXIgSmFuamVlcndhbGEgU3F1YXJlLCBEaWFtb25kIENvbG9ueSwgTmV3IFBhbGFzaWEsIEluZG9yZSwgTWFkaHlhIFByYWRlc2ggNDUyMDAxWoEBIn8yMDIgMm5kIGZsb29yIGtvdGhhcmkgbWFuanVyIGphbmplZXJ3YWxhIHNxdWFyZSBuZWFyIGphbmplZXJ3YWxhIHNxdWFyZSBkaWFtb25kIGNvbG9ueSBuZXcgcGFsYXNpYSBpbmRvcmUgbWFkaHlhIHByYWRlc2ggNDUyMDAxkgEYZXZlbnRfbWFuYWdlbWVudF9jb21wYW55qgHgAQoJL20vMDFfeXZ5CggvbS8wY3c0bBABKiAiHDIwMiAybmQgZmxvb3Iga290aGFyaSBtYW5qdXIoADIfEAEiG-NTmXYFMIuWOQ9gVZ8l6ztyu2T4hphe5fnTETKDARACIn8yMDIgMm5kIGZsb29yIGtvdGhhcmkgbWFuanVyIGphbmplZXJ3YWxhIHNxdWFyZSBuZWFyIGphbmplZXJ3YWxhIHNxdWFyZSBkaWFtb25kIGNvbG9ueSBuZXcgcGFsYXNpYSBpbmRvcmUgbWFkaHlhIHByYWRlc2ggNDUyMDAx4AEA!16s%2Fg%2F11t1vv9958?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
           data-testid="notify-button"
