@@ -223,7 +223,7 @@ const Footer = () => {
                 >
                   Phone:{" "}
                   <a
-                    href="tel:9519066005"
+                    href="tel:9519066885"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
