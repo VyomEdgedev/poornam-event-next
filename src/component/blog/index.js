@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import WeddingPlanning from "./WeddingPlanning";
 import SearchFilter from "./SearchFilter";
@@ -11,6 +11,10 @@ const Blog = ({ initialPosts, initialCategories }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const [posts, setPosts] = useState(initialPosts);
   const [categories, setCategories] = useState(initialCategories);
+
+  useEffect(()=>{
+    setPosts(()=>initialPosts)
+  } ,[]);
 
   return (
     <>
@@ -59,7 +63,6 @@ const Blog = ({ initialPosts, initialCategories }) => {
         posts={posts}
         setPosts={setPosts}
         categories={categories}
-        setCategories={setCategories}
       />
       <BlogSection
         posts={posts}

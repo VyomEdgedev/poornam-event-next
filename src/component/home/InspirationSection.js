@@ -69,6 +69,10 @@ export default function InspirationSection({ categories = data }) {
   }
 };
 
+const handleCatgotyClick = ()=>{
+   window.location.state = "fromHome"
+}
+
   return (
     <Container>
       <Box sx={{ textAlign: "center", py: 5 }}
@@ -134,6 +138,7 @@ export default function InspirationSection({ categories = data }) {
                 key={index}
                 href={`/blog/?category=${item.name}`}
                 style={{ textDecoration: "none" }}
+                onClick={(e)=>{handleCatgotyClick(item.name)}}
               >
                 <Box
                   sx={{
