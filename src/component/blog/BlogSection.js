@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -13,13 +13,18 @@ import Link from "next/link";
 import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
 
 const BlogSection = ({ posts }) => {
-  if (!posts?.length) return null;
-  const [visibledPosts, setVisibledPosts] = useState(posts.slice(0, 15))
+  const [visibledPosts, setVisibledPosts] = useState([]);
+
+  useEffect(()=>{
+    setVisibledPosts(posts.slice(0, 15))
+  },[])
 
   const handleViewMore = () => {
     const newAddPosts = posts.slice(visibledPosts.length, visibledPosts.length + 6);
     setVisibledPosts((prev) => [...prev, ...newAddPosts]);
   }
+
+    if (!posts?.length) return null;
 
   return (
     <Box sx={{ py: 5, backgroundColor: "#fff" }}>
