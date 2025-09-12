@@ -347,7 +347,7 @@ const Footer = () => {
             justifyContent={{ xs: "center", md: "space-between" }}
           >
             {/* Left - Copyright */}
-            <Grid item xs={12} md={4}>
+            <Grid sx={{textAlign:{ xs: "center", md: "left" }}} item xs={12} md={4}>
               <Typography
                 component="a"
                 sx={{
