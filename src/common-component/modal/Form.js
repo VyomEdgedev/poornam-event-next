@@ -55,7 +55,8 @@ const Form = ({ onClose }) => {
 
       if (
         errorMsg.includes("E11000") ||
-        errorMsg.includes("duplicate key")
+        errorMsg.includes("duplicate key") || 
+        errorMsg.includes("email already exists") 
       ) {
         toast.error("You are already registered!");
       } else {
