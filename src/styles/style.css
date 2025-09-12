@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url("/cursor1.svg") 12 12, auto !important;
+  cursor: url("/cursor1.svg") 5 5, auto !important;
 }
 body {
   zoom:0.9;

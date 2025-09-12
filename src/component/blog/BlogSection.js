@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
   Typography,
   Card,
   CardContent,
+  Button,
+  IconButton,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
 
 const BlogSection = ({ posts }) => {
   if (!posts?.length) return null;
+  const [visibledPosts, setVisibledPosts] = useState(posts.slice(0, 15))
+
+  const handleViewMore = () => {
+    const newAddPosts = posts.slice(visibledPosts.length, visibledPosts.length + 6);
+    setVisibledPosts((prev) => [...prev, ...newAddPosts]);
+  }
 
   return (
     <Box sx={{ py: 5, backgroundColor: "#fff" }}>
@@ -25,18 +34,16 @@ const BlogSection = ({ posts }) => {
               mb: 3,
             }}
           >
-           {` Wedding Blog`}
+            {` Wedding Blog`}
           </Typography>
         </Box>
         <Box
           sx={{
             display: "flex",
             gap: 3,
-            overflowX: "auto",
-            scrollbarWidth: "thin",
-            "&::-webkit-scrollbar": {
-              height: 6,
-            },
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: "#DAA412",
               borderRadius: 3,
@@ -46,12 +53,12 @@ const BlogSection = ({ posts }) => {
             },
           }}
         >
-          {posts.map((post, idx) => (
+          {visibledPosts.map((post, idx) => (
             <Box
               key={post._id || idx}
               sx={{
                 flex: "0 0 auto",
-                width: { xs: "300px", sm: "350px", md: "400px" },
+                width: { xs: "300px", sm: "350px", md: "360px" },
               }}
             >
               <Link href={`/blog/${post.uid}`} style={{ textDecoration: "none" }}>
@@ -128,7 +135,17 @@ const BlogSection = ({ posts }) => {
               </Link>
             </Box>
           ))}
+
         </Box>
+        {
+          visibledPosts.length < posts.length &&
+          visibledPosts.length >= 15 &&
+          <Box sx={{ textAlign: "center", paddingTop: 2 }}>
+            <IconButton className="view-more-icon" size="large" onClick={handleViewMore}>
+              <KeyboardDoubleArrowDownSharpIcon sx={{ height: "40px", fill: "#DAA412", width: "40px" }} />
+            </IconButton>
+          </Box>
+        }
       </Container>
     </Box>
   );

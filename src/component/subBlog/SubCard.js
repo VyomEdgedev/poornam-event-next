@@ -29,7 +29,6 @@ const BlogCard = ({ blogimg }) => {
         setShowShareMessage(true);
       }
     } catch (error) {
-      console.log("clipboard"); 
       try {
         await navigator.clipboard.writeText(currentUrl);
         setShowShareMessage(true);

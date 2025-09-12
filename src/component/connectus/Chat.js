@@ -28,7 +28,7 @@ function Chat() {
           alignItems="center"
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
-          //   direction={isSmOrBelow600 ? "column" : "row"}
+        //   direction={isSmOrBelow600 ? "column" : "row"}
         >
           <ConnectModal open={open} setOpen={setOpen} />
           {/* Left Content */}
@@ -38,10 +38,10 @@ function Chat() {
             textAlign={{ xs: "center", sm: "start", md: "start" }}
           >
             <Typography
-             
+
               component="h2"
               sx={{
-               
+
                 fontFamily: "Gloock, serif",
                 fontWeight: 400,
                 color: "#000",
@@ -52,7 +52,7 @@ function Chat() {
             <Typography
               variant="h2"
               sx={{
-               
+
                 fontFamily: "Gloock, serif",
                 fontWeight: 400,
                 mb: 2,
@@ -79,21 +79,26 @@ function Chat() {
           >
             {/* Call Us */}
             <Grid item xs={12} sm={6} md={6} textAlign="center">
-              <Grid
-                component="img"
-                src="/chat.png"
-                alt="Call"
-                sx={{ padding: 2 }}
-              />
               <Typography
-               
+                component={"a"}
+                href="tel:+919519066885"
+              >
+                <Grid
+                  component="img"
+                  src="/chat.png"
+                  alt="Call"
+                  sx={{ padding: 2 }}
+                />
+              </Typography>
+              <Typography
+
                 component="h6"
-                sx={{ fontFamily: "Akatab, sans-serif", fontWeight:"400", color:"#000000" }}
+                sx={{ fontFamily: "Akatab, sans-serif", fontWeight: "400", color: "#000000" }}
               >
                 {`  Call Us`}
               </Typography>
               <Typography
-              variant="h6"
+                variant="h6"
                 component="a"
                 href="tel:+919519066885"
                 sx={{
@@ -106,27 +111,32 @@ function Chat() {
                   display: "block"
                 }}
               >
-              +91 9519066885
+                +91 9519066885
               </Typography>
             </Grid>
 
             {/* WhatsApp */}
             <Grid item xs={12} sm={6} md={6} textAlign="center">
-              <Grid
-                component="img"
-                src="/chat.png"
-                alt="WhatsApp"
-                sx={{ padding: 2 }}
-              />
+              <Typography
+                component={"a"}
+                href="https://wa.me/919519066885"
+              >
+                <Grid
+                  component="img"
+                  src="/chat.png"
+                  alt="WhatsApp"
+                  sx={{ padding: 2 }}
+                />
+              </Typography>
               <Typography
 
                 component="h6"
-                sx={{ fontFamily: "Akatab, sans-serif", fontWeight:"400", color:"#000000" }}
+                sx={{ fontFamily: "Akatab, sans-serif", fontWeight: "400", color: "#000000" }}
               >
                 {`   WhatsApp`}
               </Typography>
               <Typography
-              variant="h6"
+                variant="h6"
                 component="a"
                 href="https://wa.me/919519066885"
                 target="_blank"
@@ -139,7 +149,7 @@ function Chat() {
                   "&:hover": { textDecoration: "underline" },
                   cursor: "pointer",
                   display: "block"
-                  
+
                 }}
               >
                 +91 9519066885

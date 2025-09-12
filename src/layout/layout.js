@@ -8,17 +8,12 @@ import CookiesBanner from "@/component/footerbottom/cookies";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 export default function Layout({ children }) {
    const [open, setOpen] = useState(false);
-    useEffect(() => {
-       const alreadyShown = localStorage.getItem("weddingModalShown");
-   
-       if (!alreadyShown) {
+    useEffect(() => { 
          const timer = setTimeout(() => {
            setOpen(true);
-           localStorage.setItem("weddingModalShown", "true");
          }, 7000);
    
          return () => clearTimeout(timer);
-       }
      }, []);
   return (
     <div>

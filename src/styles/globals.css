@@ -98,6 +98,22 @@
       }
     }
 
+    .view-more-icon {
+  font-size: 28px; /* icon size */
+  color: #333;     /* icon color */
+  display: inline-block;
+  animation: upDown 1.4s ease-in-out infinite;
+}
+
+@keyframes upDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px); /* neeche kitna move kare */
+  }
+}
+
 
 
 
