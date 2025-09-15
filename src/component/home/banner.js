@@ -149,7 +149,7 @@ export default function HeroSection() {
                       borderRadius: "30px",
                       textTransform: "none",
                       fontFamily: "Akatab,Sans-serif",
-                      fontSize: { xs: "0.70rem", sm: "1rem" },
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
                       fontWeight: 400,
                       whiteSpace: "nowrap",
                       "&:hover": {

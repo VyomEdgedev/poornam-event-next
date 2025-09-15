@@ -66,7 +66,7 @@ const MyForm = () => {
         error?.message ||
         "";
 
-      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key") || errorMsg.includes("email already exists") ) {
         toast.error("You are already registered!");
       } else {
         toast.error("Something went wrong. Please try again.");

@@ -56,12 +56,10 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
         const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
         const response = await apiClient.get(url);
 
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 304 ) {
           const results = response.data.results || [];
           setSuggestions(results);
-          if (category && !query) {
-            setPosts(results.length ? results : initialPostsRef.current);
-          }
+            setPosts(results);
         } else {
           setSuggestions([]);
         }
@@ -83,7 +81,7 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       setSearchValue("");
       fetchSuggestions("", category);
     } else {
-      setPosts(initialPostsRef.current);
+      setPosts(initialPostsRef);
     }
   }, []);
 
@@ -100,7 +98,7 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       );
     } else {
       router.replace(router.pathname, undefined, { shallow: true });
-      setPosts(initialPostsRef.current);
+      setPosts(initialPostsRef);
     }
   };
 
@@ -129,7 +127,7 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       fetchSuggestions("", newCategory);
     } else {
       router.replace(router.pathname, undefined, { shallow: true });
-      setPosts(initialPostsRef.current);
+      setPosts(initialPostsRef);
     }
   };
 
@@ -212,6 +210,7 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
                     backgroundColor: "white"
                   }}
                   onFocus={() => setOpenSuggestions(true)}
+                  onBlur={()=>setOpenSuggestions(false)}
                 />
 
                 {/* Suggestions */}

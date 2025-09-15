@@ -11,23 +11,40 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
+import { useRef } from "react";
 
 const BlogSection = ({ posts }) => {
   const [visibledPosts, setVisibledPosts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setVisibledPosts(posts.slice(0, 15))
-  },[])
+  }, [JSON.stringify(posts)])
 
   const handleViewMore = () => {
     const newAddPosts = posts.slice(visibledPosts.length, visibledPosts.length + 6);
     setVisibledPosts((prev) => [...prev, ...newAddPosts]);
   }
 
-    if (!posts?.length) return null;
+  const blogRef = useRef();
+
+  useEffect(() => {
+
+    if (typeof window !== "undefined" && window.location.state == "fromHome") {
+      if (blogRef.current) {
+        const y = blogRef.current.getBoundingClientRect().top + window.scrollY - 50;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        delete window.location.state
+      }
+    }
+  }, []);
 
   return (
-    <Box sx={{ py: 5, backgroundColor: "#fff" }}>
+    <Box ref={blogRef} sx={{ py: 5, backgroundColor: "#fff" }}>
       <Container>
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography
@@ -58,7 +75,7 @@ const BlogSection = ({ posts }) => {
             },
           }}
         >
-          {visibledPosts.map((post, idx) => (
+          {visibledPosts.length ? visibledPosts.map((post, idx) => (
             <Box
               key={post._id || idx}
               sx={{
@@ -101,6 +118,7 @@ const BlogSection = ({ posts }) => {
                   {/* Title */}
                   <Typography
                     component="h6"
+                    className="truncate-3-lines"
                     sx={{
                       fontWeight: 400,
                       fontFamily: "Akatab,Sans-serif",
@@ -139,7 +157,9 @@ const BlogSection = ({ posts }) => {
                 </Card>
               </Link>
             </Box>
-          ))}
+          )) :
+            <Typography>No Blogs Available</Typography>
+          }
 
         </Box>
         {

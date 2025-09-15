@@ -120,6 +120,7 @@ function Chat() {
               <Typography
                 component={"a"}
                 href="https://wa.me/919519066885"
+                target="_blank"
               >
                 <Grid
                   component="img"
