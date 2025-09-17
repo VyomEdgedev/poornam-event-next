@@ -4,11 +4,16 @@ import { Box, Typography, Stack, Container } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import Link from "next/link";
-import {useState } from "react";
+import {useContext, useState } from "react";
 import Styles from "@/styles/Home.module.scss";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 export default function HeroSection() {
   const [open, setOpen] = useState(false);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+  
+  
 
   const handleWeddingPlan = () => {
     setOpen(true);
@@ -17,7 +22,6 @@ export default function HeroSection() {
   const handleTalkToPlanner = () => {
     window.open("https://wa.me/919519066885", "_blank");
   };
-
 
   return (
     <Box sx={{ backgroundColor: "#030b1d", overflow: "hidden", pt: { xs: 12, md: 0 } }}>
@@ -49,7 +53,7 @@ export default function HeroSection() {
                   width: { xs: 80, lg: 100 },
                 }}
               >
-                <Link href="/" passHref>
+                <Link href="/" passHref  >
                   <Image
                     src={"/logo2.png"}
                     alt="Logo"

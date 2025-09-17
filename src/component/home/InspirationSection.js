@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Container, Typography, IconButton } from "@mui/material";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 
 const data = [
@@ -20,6 +21,7 @@ export default function InspirationSection({ categories = data }) {
   const scrollRef = useRef(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
+  const { loading, setLoading } = useContext(loaderContext);
 
   const capitalizeWords = (text) => {
     if (!text) return "";
@@ -45,33 +47,36 @@ export default function InspirationSection({ categories = data }) {
     };
   }, []);
 
-  
+
 
   const scroll = (direction) => {
-  if (scrollRef.current) {
-    // get width of the first child (circle)
-    const firstChild = scrollRef.current.querySelector("div");
-    if (!firstChild) return;
+    if (scrollRef.current) {
+      // get width of the first child (circle)
+      const firstChild = scrollRef.current.querySelector("div");
+      if (!firstChild) return;
 
-    const childWidth = firstChild.offsetWidth;
-    const gap = parseInt(
-      getComputedStyle(scrollRef.current).columnGap || 
-      getComputedStyle(scrollRef.current).gap || 
-      0
-    );
+      const childWidth = firstChild.offsetWidth;
+      const gap = parseInt(
+        getComputedStyle(scrollRef.current).columnGap ||
+        getComputedStyle(scrollRef.current).gap ||
+        0
+      );
 
-    const scrollAmount = childWidth + gap; // dynamic scroll step
+      const scrollAmount = childWidth + gap; // dynamic scroll step
 
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleCatgotyClick = () => {
+    setLoading(true);
+    window.location.state = "fromHome"
   }
-};
 
-const handleCatgotyClick = ()=>{
-   window.location.state = "fromHome"
-}
+  if (loading) return <Loader />
 
   return (
     <Container>
@@ -130,7 +135,7 @@ const handleCatgotyClick = ()=>{
               "&::-webkit-scrollbar": {
                 display: "none",
               },
-              px:4
+              px: 4
             }}
           >
             {categories.map((item, index) => (
@@ -138,7 +143,7 @@ const handleCatgotyClick = ()=>{
                 key={index}
                 href={`/blog/?category=${item.name}`}
                 style={{ textDecoration: "none" }}
-                onClick={(e)=>{handleCatgotyClick(item.name)}}
+                onClick={(e) => { handleCatgotyClick(item.name) }}
               >
                 <Box
                   sx={{

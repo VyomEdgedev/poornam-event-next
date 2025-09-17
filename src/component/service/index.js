@@ -1,5 +1,5 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ShaddiService from "./ShaddiService";
 import SignatureAddOns from "./SignatureAddOns";
 import Experience from "./Experience";
@@ -8,9 +8,18 @@ import WeddingFooter from "./WeddingFooter";
 import SEO from "@/common-component/SEO/seo";
 import CookiesBanner from "../footerbottom/cookies";
 import ServicesGrid from "./ShaddiService";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 const Service = (props) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+  const {loading ,setLoading} = useContext(loaderContext);
+
+  useEffect(()=>{
+    setLoading(false);
+  },[]);
+  
+  if(loading) return <Loader/>
   return (
     <>
       <SEO

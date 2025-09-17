@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "../connectus/Form";
 import Chat from "./Chat";
 import CheckList from "./CheckList";
@@ -12,6 +12,8 @@ import CustomButton from "@/common-component/button/CustomButton";
 import SEO from "@/common-component/SEO/seo";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 
 export default function ContactUs() {
@@ -60,9 +62,20 @@ export default function ContactUs() {
 
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
    const [open, setOpen] = useState(false)
+   const {loading ,setLoading} = useContext(loaderContext);
+
+   useEffect(()=>{
+    setLoading(false);
+   },[])
+  
+
+  
   const handleWeddingPlan=() =>{
    
     setOpen(true)}
+
+    if(loading) return <Loader/>
+
   return (
     <>
       <>

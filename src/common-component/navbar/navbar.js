@@ -15,7 +15,7 @@ import {
   ListItemText,
   useMediaQuery,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Image from "next/image";
@@ -25,6 +25,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CloseIcon from "@mui/icons-material/Close";
 import style from "@/styles/style.module.scss"
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -42,12 +43,19 @@ export default function Header() {
   const pathname = usePathname();
   const isDarkBg = true;
   const iconColor = isDarkBg ? "#FFFFFF" : "#192249";
-
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const isItemActive = (href) => {
     if (!pathname) return false;
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
   };
+
+  const handleNaviagate = (path)=>{
+       if(pathname !== path){
+        setLoading(true)
+       }
+  }
 
   return (
     <AppBar
@@ -92,6 +100,7 @@ export default function Header() {
                 style={{ textDecoration: "none" }}
               >
                 <Button
+                 onClick={()=>handleNaviagate(item.href)}
                   sx={{
                     fontWeight: 400,
                     fontFamily: "Akatab,Sans-serif ",
@@ -135,6 +144,7 @@ export default function Header() {
           >
             <Link href="/" passHref>
               <Image
+                onClick={() => handleNaviagate("/")}
                 src="/logo.png"
                 alt="Logo"
                 width={65}
@@ -236,6 +246,7 @@ export default function Header() {
                           <ListItemButton
                             component={Link}
                             href={item.href}
+                            onClick={()=>handleNaviagate(item.href)}
                             selected={isActive}
                             sx={{
                               borderRadius: "10px",
