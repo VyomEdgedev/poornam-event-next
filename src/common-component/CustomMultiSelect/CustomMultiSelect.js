@@ -52,6 +52,7 @@ export default function CustomMultiSelect({
     <FormControl
       variant="outlined"
       sx={{
+        position:"relative",
         color: "#000D1F",
         background: "#FFFFFF",
         width: { xs: "178px", sm: "250px" },
@@ -61,6 +62,9 @@ export default function CustomMultiSelect({
         fontFamily: "Akatab,Sans-serif",
         fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
         fontWeight: 400,
+        '& .MuiMenu-root':{
+        position:"absolute"
+        },
         '& .MuiOutlinedInput-root': {
           borderRadius: "30px",
           height: "46px",
@@ -168,9 +172,14 @@ export default function CustomMultiSelect({
         }
         MenuProps={{
           ...MenuProps,
+          disablePortal:true,
           PaperProps: {
             ...MenuProps.PaperProps,
             sx: {
+               position:"relative",
+               top:"100% !important",
+               left:"0% !important",
+               textAlign:"left",
               '& .MuiMenuItem-root': {
                 fontFamily: "Akatab,Sans-serif",
                 fontSize: { xs: "0.9rem", sm: "1rem" },

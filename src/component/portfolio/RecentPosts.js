@@ -65,9 +65,10 @@ const RecentPosts = () => {
 
         {postsData.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}  >
-            <Link href={"https://www.youtube.com/@poornam-wedding-planner"} target="_blank" passHref legacyBehavior>
+            <Link href={"https://www.youtube.com/@poornam-wedding-planner"} target='_blank' passHref legacyBehavior>
               <Card
                 component={'a'}
+                target='_blank'
                 sx={{
                   textDecoration: "none",
                   width: '267px',
