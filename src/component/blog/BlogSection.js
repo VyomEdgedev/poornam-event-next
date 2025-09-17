@@ -17,11 +17,11 @@ const BlogSection = ({ posts }) => {
   const [visibledPosts, setVisibledPosts] = useState([]);
 
   useEffect(() => {
-    setVisibledPosts(posts.slice(0, 15))
+    setVisibledPosts(posts?.slice(0, 15))
   }, [JSON.stringify(posts)])
 
   const handleViewMore = () => {
-    const newAddPosts = posts.slice(visibledPosts.length, visibledPosts.length + 6);
+    const newAddPosts = posts?.slice(visibledPosts.length, visibledPosts.length + 6);
     setVisibledPosts((prev) => [...prev, ...newAddPosts]);
   }
 

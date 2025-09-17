@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Box,
   Container,
@@ -36,15 +36,14 @@ const FilterChip = styled(Chip)(({ theme, selected }) => ({
   },
 }));
 
-const SearchFilter = ({ setPosts, categories, posts }) => {
- const router = useRouter();
+const SearchFilter = ({ setPosts, categories, initialPosts }) => {
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
 
   const debounceTimeout = useRef(null);
-  const initialPostsRef = useRef(posts || []);
   const fetchSuggestions = useCallback(
     async (query, category) => {
       try {
@@ -56,10 +55,10 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
         const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
         const response = await apiClient.get(url);
 
-        if (response.status === 200 || response.status === 304 ) {
+        if (response.status === 200 || response.status === 304) {
           const results = response.data.results || [];
           setSuggestions(results);
-            setPosts(results);
+          setPosts(results);
         } else {
           setSuggestions([]);
         }
@@ -81,7 +80,8 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       setSearchValue("");
       fetchSuggestions("", category);
     } else {
-      setPosts(initialPostsRef);
+      setPosts(initialPosts);
+      setSuggestions(initialPosts);
     }
   }, []);
 
@@ -98,7 +98,8 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       );
     } else {
       router.replace(router.pathname, undefined, { shallow: true });
-      setPosts(initialPostsRef);
+      setPosts(initialPosts);
+      setSuggestions(initialPosts);
     }
   };
 
@@ -127,7 +128,8 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
       fetchSuggestions("", newCategory);
     } else {
       router.replace(router.pathname, undefined, { shallow: true });
-      setPosts(initialPostsRef);
+      setPosts(initialPosts);
+      setSuggestions(initialPosts);
     }
   };
 
@@ -141,135 +143,135 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
     <Box backgroundColor="#FFF7E4" position="relative">
       <Container sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Grid container justifyContent="center" spacing={0} columns={12}>
-   
-          <Grid item size={{ xs: 12, sm: 6, md: 6 }} sx={{display:"flex",alignItems:"center"}}>
-           <Box>
-             <Typography
-              component="h2"
-              sx={{
-                fontWeight: 400,
-                color: "#000",
-                mb: 1,
-                fontFamily: "Gloock,serif",
-              }}
-            >
-            {`  Find What You Need`}
-            </Typography>
-            <Typography
-              component="p"
 
-              sx={{
-                fontWeight: 400,
-                color: "#000",
-                fontFamily: "Akatab,Sans-serif",
-              }}
-            >
-            {`  Search for valuable insights to aid your planning journey.`}
-            </Typography>
-           </Box>
+          <Grid item size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: "flex", alignItems: "center" }}>
+            <Box>
+              <Typography
+                component="h2"
+                sx={{
+                  fontWeight: 400,
+                  color: "#000",
+                  mb: 1,
+                  fontFamily: "Gloock,serif",
+                }}
+              >
+                {`  Find What You Need`}
+              </Typography>
+              <Typography
+                component="p"
+
+                sx={{
+                  fontWeight: 400,
+                  color: "#000",
+                  fontFamily: "Akatab,Sans-serif",
+                }}
+              >
+                {`  Search for valuable insights to aid your planning journey.`}
+              </Typography>
+            </Box>
           </Grid>
 
 
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
-      
-            
-              <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
-                <Typography
-                  component="h6"
+
+
+            <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
+              <Typography
+                component="h6"
+                sx={{
+                  mb: 0,
+                  fontWeight: 500,
+                  color: "#000D1F",
+                  fontFamily: "Akatab,Sans-serif",
+                }}
+              >
+                {`Search`}
+              </Typography>
+              <TextField
+                fullWidth
+                size="small"
+                placeholder="How to plan haldi?"
+                value={searchValue}
+                onChange={handleSearchChange}
+                variant="outlined"
+                autoComplete="off"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#ccc",
+                      borderRadius: 1
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#011d4a",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#011d4a",
+                      borderWidth: 2,
+                    },
+                  },
+                  backgroundColor: "white"
+                }}
+                onFocus={() => setOpenSuggestions(true)}
+                onBlur={() => setOpenSuggestions(false)}
+              />
+
+              {/* Suggestions */}
+              {openSuggestions && suggestions.length > 0 && (
+                <Paper
                   sx={{
-                    mb: 0,
-                    fontWeight: 500,
-                    color: "#000D1F",
-                    fontFamily: "Akatab,Sans-serif",
+                    position: "absolute",
+                    top: "calc(100% + 1px)",
+                    left: 0,
+                    right: 0,
+                    width: "100%",
+                    zIndex: 10,
+                    maxHeight: 240,
+                    overflowY: "auto",
+                    bgcolor: "background.paper",
+                    borderRadius: 1,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                    border: "1px solid #e0e0e0",
                   }}
                 >
-                  {`Search`}
-                </Typography>
-                <TextField
-                  fullWidth
-                  size="small"
-                  placeholder="How to plan haldi?"
-                  value={searchValue}
-                  onChange={handleSearchChange}
-                  variant="outlined"
-                  autoComplete="off"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#ccc",
-                        borderRadius: 1
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#011d4a", 
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#011d4a", 
-                        borderWidth: 2,
-                      },
-                    },
-                    backgroundColor: "white"
-                  }}
-                  onFocus={() => setOpenSuggestions(true)}
-                  onBlur={()=>setOpenSuggestions(false)}
-                />
-
-                {/* Suggestions */}
-                {openSuggestions && suggestions.length > 0 && (
-                  <Paper
-                    sx={{
-                      position: "absolute",
-                      top: "calc(100% + 1px)",
-                      left: 0,
-                      right: 0,
-                      width: "100%",  
-                      zIndex: 10,
-                      maxHeight: 240,
-                      overflowY: "auto",
-                      bgcolor: "background.paper",
-                      borderRadius: 1,
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
-                      border: "1px solid #e0e0e0",
-                    }}
-                  >
-                    <List dense sx={{ py: 0 }}>
-                      {suggestions.slice(0, 5).map((blog) => (
-                        <ListItem
-                          key={blog._id}
-                          disablePadding
-                          onClick={() => handleSuggestionClick(blog)}
+                  <List dense sx={{ py: 0 }}>
+                    {suggestions.slice(0, 5).map((blog) => (
+                      <ListItem
+                        key={blog._id}
+                        disablePadding
+                        onClick={() => handleSuggestionClick(blog)}
+                        sx={{
+                          borderBottom: "1px solid #f0f0f0",
+                          "&:last-child": {
+                            borderBottom: "none",
+                          },
+                        }}
+                      >
+                        <ListItemButton
                           sx={{
-                            borderBottom: "1px solid #f0f0f0",
-                            "&:last-child": {
-                              borderBottom: "none",
+                            py: 0.5,
+                            px: 1.5,
+                            "&:hover": {
+                              backgroundColor: "#f5f5f5",
                             },
                           }}
                         >
-                          <ListItemButton
-                            sx={{
-                              py: 0.5,
-                              px: 1.5,
-                              "&:hover": {
-                                backgroundColor: "#f5f5f5",
-                              },
+                          <ListItemText
+                            primary={blog.title}
+                            primaryTypographyProps={{
+                              fontSize: "0.8rem",
+                              fontWeight: 400,
+                              fontFamily: "Akatab, sans-serif",
+                              color: "#333",
+                              noWrap: true,
                             }}
-                          >
-                            <ListItemText
-                              primary={blog.title}
-                              primaryTypographyProps={{
-                                fontSize: "0.8rem",
-                                fontWeight: 400,
-                                fontFamily: "Akatab, sans-serif",
-                                color: "#333",
-                                noWrap: true,
-                              }}
-                            />
-                          </ListItemButton>
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Paper>
-                )}
-              </Box>
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Paper>
+              )}
+            </Box>
             {/* Categories */}
             <Box sx={{ mb: 3 }}>
               <Typography
@@ -281,10 +283,10 @@ const SearchFilter = ({ setPosts, categories, posts }) => {
                   color: "text.primary",
                 }}
               >
-             {`   Filter by Category`}
+                {`   Filter by Category`}
               </Typography>
-              
-              <Box  sx={{ display: "flex", flexWrap: "wrap", gap: 1 ,height:"140px", overflow:"auto"}} >
+
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, height: "140px", overflow: "auto" }} >
                 {categories?.map((category) => (
                   <FilterChip
                     key={category.name}

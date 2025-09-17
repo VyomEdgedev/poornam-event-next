@@ -60,9 +60,9 @@ const Blog = ({ initialPosts, initialCategories }) => {
 
       <WeddingPlanning />
       <SearchFilter
-        posts={posts}
         setPosts={setPosts}
         categories={categories}
+        initialPosts={initialPosts}
       />
       <BlogSection
         posts={posts}
