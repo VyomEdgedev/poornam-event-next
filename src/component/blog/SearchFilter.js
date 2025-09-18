@@ -42,6 +42,7 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [openSuggestions, setOpenSuggestions] = useState(false);
+  const suggestionRef = useRef(null);
 
   const debounceTimeout = useRef(null);
   const fetchSuggestions = useCallback(
@@ -134,10 +135,22 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
   };
 
   const handleSuggestionClick = (blog) => {
-    setOpenSuggestions(false);
-    setSearchValue(blog.title);
-    setPosts([blog]);
+   setOpenSuggestions(false);
+   setSearchValue(blog.title);
+   setPosts([blog]);
   };
+
+  useEffect(()=>{
+
+     const handleOutsideSuggestionClick = (event)=>{
+       if (suggestionRef.current && !suggestionRef.current.contains(event.target)) {
+        setOpenSuggestions(false);
+      }
+     }
+     
+     window.addEventListener("mousedown",(e)=>{ handleOutsideSuggestionClick(e)})
+    return window.removeEventListener("mousedown" ,handleOutsideSuggestionClick)
+  },[])
 
   return (
     <Box backgroundColor="#FFF7E4" position="relative">
@@ -212,12 +225,12 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
                   backgroundColor: "white"
                 }}
                 onFocus={() => setOpenSuggestions(true)}
-                onBlur={() => setOpenSuggestions(false)}
               />
 
               {/* Suggestions */}
               {openSuggestions && suggestions.length > 0 && (
                 <Paper
+                  ref={suggestionRef}
                   sx={{
                     position: "absolute",
                     top: "calc(100% + 1px)",
