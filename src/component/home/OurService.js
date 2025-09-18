@@ -7,8 +7,6 @@ const FlipCard = ({ service }) => {
   const { loading, setLoading } = useContext(loaderContext);
   const [flipped, setFlipped] = useState(false);
 
-  if (loading) return <Loader />
-
   return (
     <Box
       onMouseEnter={() => setFlipped(true)}
