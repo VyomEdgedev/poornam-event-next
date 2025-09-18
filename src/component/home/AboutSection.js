@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { Box, Typography, Button, Container } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 export default function AboutSection() {
+  const {loading ,setLoading} = useContext(loaderContext);
+
+  if(loading) return <Loader/>
+
   return (
     <Container>
       <Box
@@ -58,6 +64,7 @@ export default function AboutSection() {
             <Link href="/aboutus" passHref legacyBehavior>
               <Button
                 data-testid="notify-button"
+                onClick={()=>setLoading(true)}
                 sx={{
                    fontFamily: "Akatab, Sans-serif !important",
                   textDecoration: "none",

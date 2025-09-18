@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Box,
@@ -16,6 +16,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { apiClient } from "@/lib/api-client";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const PortfolioSection = () => {
   const theme = useTheme();
@@ -23,7 +24,9 @@ const PortfolioSection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+  
 
   const fetchPortfolio = async () => {
     try {
@@ -86,6 +89,7 @@ const PortfolioSection = () => {
   const handlegallery = (event) => {
     event.preventDefault();
     event.stopPropagation();
+    setLoading(true)
     router.push("/gallery");
   };
 
@@ -147,6 +151,8 @@ const PortfolioSection = () => {
       />
     </Box>
   );
+
+  if(loading) return <Loader/>
 
   return (
     <Box sx={{ bgcolor: "#FFFAED", py: 3 }}>

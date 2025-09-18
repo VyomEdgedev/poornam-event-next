@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CustomButton from "@/common-component/button/CustomButton";
 import {
   Grid,
@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontFamily: "Gloock, serif",
@@ -56,10 +57,15 @@ const HeroContent = styled(Box)(({ theme }) => ({
 const ShaddiService = (props) => {
   const router = useRouter();
   const services = props?.services;
-
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+  
   const handleNavigate = (uid) => {
+    setLoading(true);
     router.push(`/services/${uid}`);
   };
+
+
 
   return (
     <Container sx={{ py: { xs: 3, md: 4 }, px: { xs: 4, md: 4 } }}>

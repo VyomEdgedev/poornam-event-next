@@ -1,5 +1,5 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import WhyChoose from "./WhyChoose";
 import YourDream from "./YourDream";
 import WeOffer from "./WeOffer";
@@ -11,32 +11,31 @@ import FAQSection from "@/common-component/Faq/FAQSection";
 import { useRouter } from "next/router";
 import { apiClient } from "@/lib/api-client";
 import SEO from "@/common-component/SEO/seo";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 function ServicesSubPage(props) {
   const router = useRouter();
   const { id } = router.query;
   const service = props?.singleService;
   // const [service, setService] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const {loading ,setLoading} = useContext(loaderContext);
 
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
   const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+
+  useEffect(()=>{
+     setLoading(false);
+  }, [])
+
+  if(loading) return <Loader/>
+
+
   return (
     <>
-      {loading ? (
-        <Box sx={{ py: 8, textAlign: "center", height: "60.5vh" }}>
-          <CircularProgress
-            sx={{
-              color: "#DAA412",
-              m: 5,
-            }}
-          />
-        </Box>
-      ) : (
-        <>
           <SEO
             url="https://www.poornamevents.com/services"
             metaTitle={`${service?.meta?.title}`}
@@ -82,8 +81,6 @@ function ServicesSubPage(props) {
           <YourDream Blogs={service?.relatedBlogs || []} />
           <WeddingKit />
           <FAQSection faqData={service?.faq || []} />
-        </>
-      )}
     </>
   );
 }

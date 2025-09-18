@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -13,6 +13,7 @@ import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
 import { apiClient } from "@/lib/api-client";
 import { usePathname } from "next/navigation";
+import { loaderContext } from "@/contextApi/loaderContext";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -26,17 +27,19 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Footer = () => {
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useContext(loaderContext);
+  const [apiLoading, setApiLoading] = useState(true);
+
   const pathName = usePathname()
 
   const fetchPortfolio = async () => {
     try {
       const res = await apiClient.get("/api/service/AllServicePages/event");
       setAllPortfolioData(res.data);
-      setLoading(false);
+      setApiLoading(false);
     } catch (error) {
       console.error("Error fetching portfolio", error);
-      setLoading(false);
+      setApiLoading(false);
     }
   };
 
@@ -44,6 +47,13 @@ const Footer = () => {
     fetchPortfolio();
   }, []);
   // const [open, setOpen] = useState(false);
+
+  const handleNaviagate = (path) => {
+    if (pathName !== path) {
+      setLoading(true);
+    }
+  }
+
   return (
     <Box sx={{ backgroundColor: "#011d4a" }}>
       {/* Top dark blue section */}
@@ -60,6 +70,7 @@ const Footer = () => {
                 <a>
                   <Box sx={{ display: "inline-block", mb: 2 }}>
                     <Image
+                      onClick={()=>handleNaviagate("/")}
                       src="/logo2.png"
                       alt="Logo"
                       width={100}
@@ -118,6 +129,7 @@ const Footer = () => {
                     <Typography
                       variant="body2"
                       component={"p"}
+                      onClick={() => handleNaviagate(item.href)}
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
@@ -158,7 +170,7 @@ const Footer = () => {
                 >
                   Services
                 </Typography>
-                {loading ? (
+                {apiLoading ? (
                   <CircularProgress />
                 ) : (
                   <Box sx={{ maxHeight: "150px", overflowY: "auto" }}>
@@ -170,6 +182,7 @@ const Footer = () => {
                       >
                         <Typography
                           component="p"
+                          onClick={() => handleNaviagate(`/services/${item.uid}`)}
                           sx={{
                             fontFamily: "Akatab,Sans-serif",
                             mb: 0.5,
@@ -215,7 +228,7 @@ const Footer = () => {
                   Contact
                 </Typography>
 
-           
+
                 <Typography
                   sx={{
                     fontFamily: "Akatab,Sans-serif",
@@ -244,7 +257,7 @@ const Footer = () => {
                     fontWeight: 400,
                   }}
                 >
-                 <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
+                  <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
                   <a
                     href="tel:8839844233"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
@@ -347,22 +360,27 @@ const Footer = () => {
             justifyContent={{ xs: "center", md: "space-between" }}
           >
             {/* Left - Copyright */}
-            <Grid sx={{textAlign:{ xs: "center", md: "left" }}} item xs={12} md={4}>
-              <Typography
-                component="a"
-                sx={{
-                  fontFamily: "Akatab,Sans-serif",
-                  textAlign: { xs: "center", md: "left" },
-                  textDecoration:"none",
-                  "&:hover": {
-                        textDecoration: "underline",
-                      },
-                  color:"inherit"
-                }}
-                href="/"
+            <Grid sx={{ textAlign: { xs: "center", md: "left" } }} item xs={12} md={4}>
+              <Link
+                href={`/`}
+                style={{ textDecoration: "none", width: "fit-content", color: "inherit" }}
               >
-                © 2025 Poornam Events.
-              </Typography>
+                <Typography
+                  onClick={() => handleNaviagate("/")}
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif",
+                    textAlign: { xs: "center", md: "left" },
+                    textDecoration: "none",
+                    "&:hover": {
+                      textDecoration: "underline",
+                    },
+                    color: "inherit"
+                  }}
+
+                >
+                  © {new Date().getFullYear()} Poornam Events.
+                </Typography>
+              </Link>
             </Grid>
 
             {/* Center - Policies */}
@@ -378,26 +396,26 @@ const Footer = () => {
                 <Link
                   href="/disclaimer"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: pathName.includes("disclaimer") ?"underline" : "none" }}
+                  style={{ color: "black", textDecoration: pathName.includes("disclaimer") ? "underline" : "none" }}
                 >
-                  Disclaimer
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>Disclaimer</span>
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/privacy-policy"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: pathName.includes("privacy-policy") ?"underline" : "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("privacy-policy") ? "underline" : "none", mx: 2 }}
                 >
-                  Privacy Policy
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>Privacy Policy</span>
                 </Link>
                 {"  "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/terms"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: pathName.includes("terms") ?"underline" : "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("terms") ? "underline" : "none", mx: 2 }}
                 >
-                  T&C
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>T&C</span>
                 </Link>
               </Typography>
             </Grid>
@@ -486,14 +504,14 @@ const Footer = () => {
               <Box
                 sx={{
                   textAlign: { xs: "center", md: "right" },
-                  
+
                   // width: "fit-content",
                 }}
               >
                 <Typography
                   variant="body2"
                   component="p"
-                  sx={{ fontSize: "14px", color: "black",position: "relative",width:"fit-content",margin:"auto"}}
+                  sx={{ fontSize: "14px", color: "black", position: "relative", width: "fit-content", margin: "auto" }}
                 >
                   Developed by{" "}
                   <Link
@@ -517,44 +535,44 @@ const Footer = () => {
                     >
                       Vyomedge
                     </Typography>
-                    
+
                   </Link>
-                   <Typography 
+                  <Typography
                     variant="body2"
-                  component="body1"
-                sx={{
-                  display: "inline-block",
-                  // mt: { xs: 0, md: 0, lg: 1 },
-                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
-                  top: { xs: "3px", sm: "-2px", md: "-50px", lg: "-50px" },
-                  right: { xs: "-25px", sm: "-40px", md: "10px", lg: "10px" },
-                  width: { xs: "20px", sm: "30px", md: "50px" },
-                  marginLeft: "8px",
-                }}
-              >
-                <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                  <a
-                    color="black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: "inline-block", width: "100%" }}
+                    component="body1"
+                    sx={{
+                      display: "inline-block",
+                      // mt: { xs: 0, md: 0, lg: 1 },
+                      position: { xs: "absolute", sm: "absolute", md: "absolute" },
+                      top: { xs: "3px", sm: "-2px", md: "-50px", lg: "-50px" },
+                      right: { xs: "-25px", sm: "-40px", md: "10px", lg: "10px" },
+                      width: { xs: "20px", sm: "30px", md: "50px" },
+                      marginLeft: "8px",
+                    }}
                   >
-                    <Image
-                      src="/developer.png"
-                      alt="Developer Logo"
-                      layout="responsive"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </a>
-                </Link>
-              </Typography>
+                    <Link href="https://vyomedge.com/" passHref legacyBehavior>
+                      <a
+                        color="black"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ display: "inline-block", width: "100%" }}
+                      >
+                        <Image
+                          src="/developer.png"
+                          alt="Developer Logo"
+                          layout="responsive"
+                          width={100}
+                          height={100}
+                          priority
+                        />
+                      </a>
+                    </Link>
+                  </Typography>
                 </Typography>
               </Box>
 
               {/* Responsive logo wrapper */}
-             
+
             </Grid>
           </Grid>
         </Container>

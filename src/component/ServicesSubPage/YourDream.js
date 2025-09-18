@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Container,
   Typography,
@@ -10,9 +10,17 @@ import {
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const YourDream = ({ Blogs }) => {
   const router = useRouter();
+  const {loading ,setLoading} = useContext(loaderContext);
+
+  const handleNaviagate =  (path)=>{
+    setLoading(true);
+    router.push(path)
+  }
+  
   const relatedBlogs=Blogs; 
   return (
     <Container sx={{ py: 8 }}>
@@ -87,7 +95,7 @@ const YourDream = ({ Blogs }) => {
                     {/* {blog.meta.description} */}
                   </Typography>
                   <CustomButton
-                    onClick={() => router.push(`/blog/${blog.uid}`)}
+                    onClick={() =>handleNaviagate(`/blog/${blog.uid}`)}
                   >
                     Read More
                   </CustomButton>

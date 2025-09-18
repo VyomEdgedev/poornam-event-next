@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Typography, Grid, Button, Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { loaderContext } from "@/contextApi/loaderContext";
 const FlipCard = ({ service }) => {
+  const { loading, setLoading } = useContext(loaderContext);
   const [flipped, setFlipped] = useState(false);
+
+  if (loading) return <Loader />
 
   return (
     <Box
@@ -140,6 +144,7 @@ const FlipCard = ({ service }) => {
               <Button
                 variant="contained"
                 size="small"
+                onClick={()=>setLoading(true)}
                 sx={{
                   bgcolor: "#D7A10F",
                   color: "#FFFFFF",

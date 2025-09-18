@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Box } from "@mui/material";
 import SubCard from "./SubCard";
 import Subtext from "./Subtext";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import SEO from "@/common-component/SEO/seo";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default function SubBlog({ blog }) {
+  const {loading ,setLoading} = useContext(loaderContext);
+  useEffect(()=>{
+      setLoading(false);
+  },[])
+  if(loading) return <Loader/>
+
     return (
     <>
       <SEO

@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import React, { useContext, useEffect } from "react";
 import Banner from "./banner";
 import WeddingHero from "./WeddingHero";
 import OurServices from "./OurService";
@@ -13,9 +15,19 @@ import InspirationSection from "./InspirationSection";
 import ContactSection from "./ContactSection";
 import HomeSnapshot from "./HomeSnapshot"
 import SEO from "@/common-component/SEO/seo";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 export default function HomePage(props) {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  const { loading, setLoading } = useContext(loaderContext);
+  useEffect(()=>{
+    setLoading(false);
+    return  setLoading(false);
+  },[])
+  
+  if(loading){return <Loader/>}
+
   return (
     <>
       <>
@@ -30,21 +42,21 @@ export default function HomePage(props) {
           ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
           twitterDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
-           twitterImage={`${SITE_URL}/logoo.jpg`}
+          twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />
       </>
       <Banner></Banner>
       <WeddingHero></WeddingHero>
-      <OurServices services={props.services}/>
+      <OurServices services={props.services} />
       <AboutSection></AboutSection>
-    <OurPortfolio></OurPortfolio>
+      <OurPortfolio></OurPortfolio>
       <Testimonials></Testimonials>
       <HomeSnapshot></HomeSnapshot>
       <ResourcesSection></ResourcesSection>
       <FAQSection></FAQSection>
       <InspirationSection categories={props.categorie}></InspirationSection>
-      <ContactSection></ContactSection> 
+      <ContactSection></ContactSection>
     </>
   )
 }

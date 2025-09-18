@@ -37,8 +37,8 @@ export default function CustomMultiSelect({
   ...props
 }) {
   const theme = useTheme();
-    const getObjById = (id) => names.find(n => n._id === id);
-     const handleChange = (event) => {
+  const getObjById = (id) => names.find(n => n._id === id);
+  const handleChange = (event) => {
     const selectedIds = event.target.value;
     if (multiple) {
       const selectedObjs = selectedIds.map(id => getObjById(id)).filter(Boolean);
@@ -52,7 +52,7 @@ export default function CustomMultiSelect({
     <FormControl
       variant="outlined"
       sx={{
-        position:"relative",
+        position: "relative",
         color: "#000D1F",
         background: "#FFFFFF",
         width: { xs: "178px", sm: "250px" },
@@ -62,8 +62,8 @@ export default function CustomMultiSelect({
         fontFamily: "Akatab,Sans-serif",
         fontSize: { xs: "0.9rem", sm: "1rem", md: "1rem" },
         fontWeight: 400,
-        '& .MuiMenu-root':{
-        position:"absolute"
+        '& .MuiMenu-root': {
+          position: "absolute"
         },
         '& .MuiOutlinedInput-root': {
           borderRadius: "30px",
@@ -87,7 +87,7 @@ export default function CustomMultiSelect({
       }}
     >
       <Select
-        multiple ={multiple}
+        multiple={multiple}
         value={
           multiple
             ? value.map(obj => obj._id)
@@ -95,91 +95,94 @@ export default function CustomMultiSelect({
         }
         onChange={handleChange}
         input={<OutlinedInput />}
-         renderValue={(selected) =>
+        renderValue={(selected) =>
           multiple
             ? (selected.length === 0 ? (
-                <Box
-                  sx={{
-                    color: "#bdbdbd",
-                    fontFamily: "Akatab,Sans-serif",
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    pl: 1,
-                  }}
-                >
-                  {placeholder}
-                </Box>
-              ) : (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexWrap: 'nowrap',
-                    gap: 0.5,
-                    overflowX: 'auto',
-                    whiteSpace: 'nowrap',
-                    height: 32,
-                    alignItems: 'center',
-                    '&::-webkit-scrollbar': {
-                      height: 4,
-                      background: 'transparent',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                      background: 'none',
-                      borderRadius: 2,
-                    },
-                    scrollbarWidth: 'none',
-                    scrollbarColor: 'transparent',
-                  }}
-                >
-                  {value.map((obj) => (
-                    <Chip
-                      key={obj._id}
-                      label={obj.name}
-                      sx={{
-                        borderRadius: "30px",
-                        height: 28,
-                        fontFamily: "Akatab,Sans-serif",
-                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                        background: "#DAA412",
-                        color: "#fff",
-                        border: "1.5px solid #DAA412",
-                      }}
-                    />
-                  ))}
-                </Box>
-              ))
+              <Box
+                sx={{
+                  color: "#bdbdbd",
+                  fontFamily: "Akatab,Sans-serif",
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  pl: 1,
+                }}
+              >
+                {placeholder}
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'nowrap',
+                  gap: 0.5,
+                  overflowX: 'auto',
+                  whiteSpace: 'nowrap',
+                  height: 32,
+                  alignItems: 'center',
+                  '&::-webkit-scrollbar': {
+                    height: 4,
+                    background: 'transparent',
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    background: 'none',
+                    borderRadius: 2,
+                  },
+                  scrollbarWidth: 'none',
+                  scrollbarColor: 'transparent',
+                }}
+              >
+                {value.map((obj) => (
+                  <Chip
+                    key={obj._id}
+                    label={obj.name}
+                    sx={{
+                      borderRadius: "30px",
+                      height: 28,
+                      fontFamily: "Akatab,Sans-serif",
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      background: "#DAA412",
+                      color: "#fff",
+                      border: "1.5px solid #DAA412",
+                    }}
+                  />
+                ))}
+              </Box>
+            ))
             : (!selected ? (
-                <Box
-                  sx={{
-                    color: "#bdbdbd",
-                    fontFamily: "Akatab,Sans-serif",
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    pl: 1,
-                  }}
-                >
-                  {placeholder}
-                </Box>
-              ) : (
-                <Box
-                  sx={{
-                    fontFamily: "Akatab,Sans-serif",
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    pl: 1,
-                  }}
-                >
-                  {value[0]?.name}
-                </Box>
-              ))
+              <Box
+                sx={{
+                  color: "#bdbdbd",
+                  fontFamily: "Akatab,Sans-serif",
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  pl: 1,
+                }}
+              >
+                {placeholder}
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  fontFamily: "Akatab,Sans-serif",
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  pl: 1,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {value[0]?.name}
+              </Box>
+            ))
         }
         MenuProps={{
           ...MenuProps,
-          disablePortal:true,
+          disablePortal: true,
           PaperProps: {
             ...MenuProps.PaperProps,
             sx: {
-               position:"relative",
-               top:"100% !important",
-               left:"0% !important",
-               textAlign:"left",
+              position: "relative",
+              top: "100% !important",
+              left: "0% !important",
+              textAlign: "left",
               '& .MuiMenuItem-root': {
                 fontFamily: "Akatab,Sans-serif",
                 fontSize: { xs: "0.9rem", sm: "1rem" },
@@ -220,23 +223,25 @@ export default function CustomMultiSelect({
         }}
         {...props}
       >
-        {names.map((name) => (
-          <MenuItem
-            key={name?._id}
-            value={name?._id}
-            style={getStyles(name._id, value.map(obj=>obj._id), theme)}
-          >
-            <Box sx={{ flex: 1 }}>{name.name}</Box>
-           {(multiple
-              ? value.some(obj => obj._id === name._id)
-              : value[0]?._id === name._id
-            ) && (
-              <CheckIcon color="success" fontSize="small" />
-            )}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+        {
+          names.map((name) => (
+            <MenuItem
+              key={name?._id}
+              value={name?._id}
+              style={getStyles(name._id, value.map(obj => obj._id), theme)}
+            >
+              <Box sx={{ flex: 1 }}>{name.name}</Box>
+              {(multiple
+                ? value.some(obj => obj._id === name._id)
+                : value[0]?._id === name._id
+              ) && (
+                  <CheckIcon color="success" fontSize="small" />
+                )}
+            </MenuItem>
+          ))
+        }
+      </Select >
+    </FormControl >
   );
 }
 

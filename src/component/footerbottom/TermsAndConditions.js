@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Container,
   Typography,
@@ -16,6 +16,8 @@ import { styled } from "@mui/material/styles";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import SEO from "@/common-component/SEO/seo";
 import Link from "next/link";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -165,9 +167,15 @@ const termsData = {
 };
 
 export default function TermsAndConditions() {
+  const {loading ,setLoading} = useContext(loaderContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(()=>{
+    setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
   return (
     <>
       <>

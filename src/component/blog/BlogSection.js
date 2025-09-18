@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -12,9 +12,14 @@ import Image from "next/image";
 import Link from "next/link";
 import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
 import { useRef } from "react";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const BlogSection = ({ posts }) => {
   const [visibledPosts, setVisibledPosts] = useState([]);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+  
 
   useEffect(() => {
     setVisibledPosts(posts?.slice(0, 15))
@@ -42,6 +47,8 @@ const BlogSection = ({ posts }) => {
       }
     }
   }, []);
+
+  if(loading) return <Loader/>
 
   return (
     <Box ref={blogRef} sx={{ py: 5, backgroundColor: "#fff" }}>
@@ -85,6 +92,7 @@ const BlogSection = ({ posts }) => {
             >
               <Link href={`/blog/${post.uid}`} style={{ textDecoration: "none" }}>
                 <Card
+                  onClick={()=>setLoading(true)}
                   sx={{
                     height: "100%",
                     display: "flex",
