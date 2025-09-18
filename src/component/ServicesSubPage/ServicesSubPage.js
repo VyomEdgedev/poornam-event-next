@@ -29,7 +29,7 @@ function ServicesSubPage(props) {
 
   useEffect(()=>{
      setLoading(false);
-  }, [])
+  }, [id])
 
   if(loading) return <Loader/>
 

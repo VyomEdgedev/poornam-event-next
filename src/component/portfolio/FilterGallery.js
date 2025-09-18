@@ -13,10 +13,12 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 
 const FilterGallery = ({galleryFilter}) => {
@@ -29,7 +31,8 @@ const FilterGallery = ({galleryFilter}) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   useEffect(() => {
     const fetchAllThemes = async () => {
  
@@ -57,6 +60,8 @@ const FilterGallery = ({galleryFilter}) => {
     };
     fetchAllThemes();
   }, [galleryFilter]);
+
+
 
   useEffect(() => {
     if (router.isReady && allThemes.length > 0 && categories.length > 1) {
@@ -137,6 +142,14 @@ const FilterGallery = ({galleryFilter}) => {
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === themes.length - 1 ? 0 : prev + 1));
   };
+
+
+  useEffect(()=>{
+    setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
+  
 
   return (
     <>

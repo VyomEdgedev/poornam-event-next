@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Container,
   Typography,
@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const ShowCase = ({ categoriesGallery }) => {
   const [themes, setThemes] = useState(categoriesGallery || []);
@@ -39,6 +40,8 @@ const ShowCase = ({ categoriesGallery }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const portfolioImages = themes.map((item) => ({
     src: item?.images[0]?.url,
     alt: item.category?.name,
@@ -94,6 +97,7 @@ const ShowCase = ({ categoriesGallery }) => {
     const filters = selectedNames.filter((obj) => obj._id !== "all");
     const filterQuery =
       filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
+      setLoading(true);
     router.push(`/gallery/${filterQuery}`);
   };
 
