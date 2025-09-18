@@ -152,8 +152,6 @@ const PortfolioSection = () => {
     </Box>
   );
 
-  if(loading) return <Loader/>
-
   return (
     <Box sx={{ bgcolor: "#FFFAED", py: 3 }}>
       <Container>

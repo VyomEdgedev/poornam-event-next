@@ -76,8 +76,6 @@ export default function InspirationSection({ categories = data }) {
     window.location.state = "fromHome"
   }
 
-  if (loading) return <Loader />
-
   return (
     <Container>
       <Box sx={{ textAlign: "center", py: 5 }}
