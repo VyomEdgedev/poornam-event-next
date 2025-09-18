@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import WeddingPlanning from "./WeddingPlanning";
 import SearchFilter from "./SearchFilter";
@@ -6,15 +6,21 @@ import PlanningTips from "./PlanningTips";
 import BlogSection from "./BlogSection";
 import PicksSection from "./PicksSection";
 import SEO from "@/common-component/SEO/seo";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const Blog = ({ initialPosts, initialCategories }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const [posts, setPosts] = useState(initialPosts);
   const [categories, setCategories] = useState(initialCategories);
-
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   useEffect(()=>{
     setPosts(()=>initialPosts)
+    setLoading(false);
   } ,[]);
+
+  if(loading) return <Loader/>
 
   return (
     <>

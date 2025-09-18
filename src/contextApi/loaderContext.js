@@ -4,8 +4,7 @@ export const loaderContext = createContext();
 
 const LoaderContextProvider = ({children})=>{
     const [loading , setLoading] = useState(false);
-    console.log("loading" ,loading);
-
+   
     return <loaderContext.Provider value={{loading ,setLoading}}>
         {children}
     </loaderContext.Provider>

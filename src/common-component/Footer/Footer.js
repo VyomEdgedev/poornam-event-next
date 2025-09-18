@@ -72,6 +72,7 @@ const Footer = () => {
                 <a>
                   <Box sx={{ display: "inline-block", mb: 2 }}>
                     <Image
+                      onClick={()=>handleNaviagate("/")}
                       src="/logo2.png"
                       alt="Logo"
                       width={100}

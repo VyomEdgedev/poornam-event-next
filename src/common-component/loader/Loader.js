@@ -12,7 +12,7 @@ const Loader = () => {
     },[])
     return (
         <Container disableGutters maxWidth="xxl" sx={{height:"120vh" ,width:"100vw" , display:'flex', alignItems:"center" ,justifyContent:"center"}}>
-            <Box className={style.loaderAnimation} sx={{width:"20vh"}}>
+            <Box className={style.loaderAnimation} sx={{width:"15vh"}}>
                 <Image
                     src={"/logo2.png"}
                     alt="Logo"

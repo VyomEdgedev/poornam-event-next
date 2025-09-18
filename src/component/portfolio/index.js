@@ -1,7 +1,7 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import WeddingThemes from "./WeddingThemes";
 import ShowCase from "./ShowCase";
 import RecentPosts from "./RecentPosts";
@@ -9,6 +9,8 @@ import SocialMediaFollow from "./SocialMediaFollow";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import SEO from "@/common-component/SEO/seo";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 const Portfolio = ({ gallery }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
@@ -33,9 +35,18 @@ const Portfolio = ({ gallery }) => {
     },
   ];
   const [open, setOpen] = useState(false);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const handleportfolio = () => {
     setOpen(true);
   };
+
+  useEffect(()=>{
+     setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
+
   return (
     <>
       <>
