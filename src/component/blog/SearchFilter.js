@@ -55,8 +55,6 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
         const url = `/api/blogs/${panel}/search/allblog?${queryParams.toString()}`;
         const response = await apiClient.get(url);
 
-        console.log("res" ,response.data.results );
-
         if (response.status === 200 || response.status === 304) {
           const results = response.data.results || [];
           setSuggestions(results);

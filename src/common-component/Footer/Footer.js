@@ -49,8 +49,6 @@ const Footer = () => {
   // const [open, setOpen] = useState(false);
 
   const handleNaviagate = (path) => {
-    console.log("pathName" ,pathName);
-    console.log("path" ,path);
     if (pathName !== path) {
       setLoading(true);
     }
