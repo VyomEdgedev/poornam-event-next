@@ -44,6 +44,8 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
   const [openSuggestions, setOpenSuggestions] = useState(false);
 
   const debounceTimeout = useRef(null);
+  const suggestionRef = useRef(null);
+
   const fetchSuggestions = useCallback(
     async (query, category) => {
       try {
@@ -57,8 +59,12 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
 
         if (response.status === 200 || response.status === 304) {
           const results = response.data.results || [];
-          setSuggestions(results);
-          setPosts(results);
+          
+          if(searchValue || selectedCategory){
+              setSuggestions(results);
+              setPosts(results);
+          }
+          
         } else {
           setSuggestions([]);
         }
@@ -67,7 +73,7 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
         setSuggestions([]);
       }
     },
-    [setPosts]
+    [setPosts  , searchValue , selectedCategory]
   );
   useEffect(() => {
     const { search, category } = router.query;
@@ -104,12 +110,13 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
   };
 
   useEffect(() => {
-    if (!searchValue || selectedCategory) return;
+    
+    if (!searchValue || selectedCategory){ return;} 
 
     if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
     debounceTimeout.current = setTimeout(() => {
       fetchSuggestions(searchValue, null);
-    }, 300);
+    }, 500);
 
     return () => clearTimeout(debounceTimeout.current);
   }, [searchValue, selectedCategory, fetchSuggestions]);
@@ -138,6 +145,18 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
     setSearchValue(blog.title);
     setPosts([blog]);
   };
+
+  useEffect(()=>{
+
+     const handleOutsideSuggestionClick = (event)=>{
+       if (suggestionRef.current && !suggestionRef.current.contains(event.target)) {
+        setOpenSuggestions(false);
+      }
+     }
+     
+     window.addEventListener("mousedown",(e)=>{ handleOutsideSuggestionClick(e)})
+    return window.removeEventListener("mousedown" ,handleOutsideSuggestionClick)
+  },[])
 
   return (
     <Box backgroundColor="#FFF7E4" position="relative">
@@ -175,7 +194,7 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
 
 
-            <Box sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
+            <Box ref={suggestionRef} sx={{ mb: 3, position: "relative" }} className="search-suggestion-box">
               <Typography
                 component="h6"
                 sx={{
@@ -212,12 +231,11 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
                   backgroundColor: "white"
                 }}
                 onFocus={() => setOpenSuggestions(true)}
-                onBlur={() => setOpenSuggestions(false)}
               />
 
               {/* Suggestions */}
               {openSuggestions && suggestions.length > 0 && (
-                <Paper
+                <Paper  
                   sx={{
                     position: "absolute",
                     top: "calc(100% + 1px)",
