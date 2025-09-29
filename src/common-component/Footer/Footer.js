@@ -14,6 +14,7 @@ import CookiesBanner from "@/component/footerbottom/cookies";
 import { apiClient } from "@/lib/api-client";
 import { usePathname } from "next/navigation";
 import { loaderContext } from "@/contextApi/loaderContext";
+import style from '@/styles/style.module.scss'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -173,7 +174,7 @@ const Footer = () => {
                 {apiLoading ? (
                   <CircularProgress />
                 ) : (
-                  <Box sx={{ maxHeight: "150px", overflowY: "auto" }}>
+                  <Box className={style.footerScroll} sx={{ maxHeight: "160px", overflowY: "auto" }}>
                     {AllPortfolioData.map((item, i) => (
                       <Link
                         key={i}

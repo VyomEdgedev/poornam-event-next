@@ -14,7 +14,7 @@ const Blog = ({ initialPosts, initialCategories }) => {
   const [posts, setPosts] = useState(initialPosts);
   const [categories, setCategories] = useState(initialCategories);
   const {loading ,setLoading} = useContext(loaderContext);
-  
+
   useEffect(()=>{
     setPosts(()=>initialPosts)
     setLoading(false);
