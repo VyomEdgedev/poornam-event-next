@@ -59,8 +59,8 @@ const SearchFilter = ({ setPosts, categories, initialPosts }) => {
 
         if (response.status === 200 || response.status === 304) {
           const results = response.data.results || [];
-          
-          if(searchValue || selectedCategory){
+  
+          if(query || category){
               setSuggestions(results);
               setPosts(results);
           }
