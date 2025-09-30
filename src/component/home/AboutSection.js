@@ -4,11 +4,20 @@ import { Box, Typography, Button, Container } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
 import Loader from "@/common-component/loader/Loader";
 import { loaderContext } from "@/contextApi/loaderContext";
+import { useRouter } from "next/router";
 
 export default function AboutSection() {
   const {loading ,setLoading} = useContext(loaderContext);
 
-  if(loading) return <Loader/>
+  const router = useRouter();
+
+  if (loading) return <Loader />;
+
+  const handleNavigate = () => {
+    setLoading(true);
+    router.push("/aboutus");
+  };
+
 
   return (
     <Container>
@@ -60,24 +69,8 @@ export default function AboutSection() {
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-start" } }}>
-          <CustomButton data-testid="notify-button">
-            <Link href="/aboutus" passHref legacyBehavior>
-              <Button
-                data-testid="notify-button"
-                onClick={()=>setLoading(true)}
-                sx={{
-                   fontFamily: "Akatab, Sans-serif !important",
-                  textDecoration: "none",
-                  color: "inherit",
-                  whiteSpace: "nowrap",
-                  fontSize: "16px",
-                  textTransform: "capitalize",
-                  fontFamily: "Akatab,Sans-serif",
-                }}
-              >
+          <CustomButton onClick={handleNavigate}>
                 {`Meet Our Story`}
-              </Button>
-            </Link>
           </CustomButton>
         </Box>
       </Box>

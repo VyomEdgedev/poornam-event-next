@@ -5,19 +5,19 @@ import { useRef, useState, useEffect } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { loaderContext } from "@/contextApi/loaderContext";
+import Image from "next/image";
 
-
-const data = [
-  { name: "Latest Trends", image: "/blog1.jpg" },
-  { name: "Celebrity", image: "/blog2.jpg" },
-  { name: "Fashion", image: "/blog3.jpg" },
-  { name: "Decoration", image: "/blog4.jpg" },
-  { name: "Lifestyle", image: "/blog1.jpg" },
-  { name: "Beauty", image: "/blog2.jpg" },
-];
-
+// const data = [
+//   { name: "Latest Trends", image: "/blog1.jpg" },
+//   { name: "Celebrity", image: "/blog2.jpg" },
+//   { name: "Fashion", image: "/blog3.jpg" },
+//   { name: "Decoration", image: "/blog4.jpg" },
+//   { name: "Lifestyle", image: "/blog1.jpg" },
+//   { name: "Beauty", image: "/blog2.jpg" },
+// ];
 
 export default function InspirationSection({ categories = data }) {
+
   const scrollRef = useRef(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(true);
@@ -47,8 +47,6 @@ export default function InspirationSection({ categories = data }) {
     };
   }, []);
 
-
-
   const scroll = (direction) => {
     if (scrollRef.current) {
       // get width of the first child (circle)
@@ -58,8 +56,8 @@ export default function InspirationSection({ categories = data }) {
       const childWidth = firstChild.offsetWidth;
       const gap = parseInt(
         getComputedStyle(scrollRef.current).columnGap ||
-        getComputedStyle(scrollRef.current).gap ||
-        0
+          getComputedStyle(scrollRef.current).gap ||
+          0
       );
 
       const scrollAmount = childWidth + gap; // dynamic scroll step
@@ -73,26 +71,26 @@ export default function InspirationSection({ categories = data }) {
 
   const handleCatgotyClick = () => {
     setLoading(true);
-    window.location.state = "fromHome"
-  }
+    window.location.state = "fromHome";
+  };
 
   return (
     <Container>
-      <Box sx={{ textAlign: "center", py: 5 }}
-      >
+      <Box sx={{ textAlign: "center", py: 5 }}>
         <Typography
           component="h2"
           sx={{ fontFamily: "Gloock, serif", fontWeight: 400, mb: 6 }}
         >
           {`Inspirations & Blogs`}
         </Typography>
-        <Box sx={{
-          position: "relative",
-          border: "1px solid grey",
-          borderRadius: "10px",
-          paddingTop: 2,
-          boxShadow: 4
-        }}
+        <Box
+          sx={{
+            position: "relative",
+            border: "1px solid grey",
+            borderRadius: "10px",
+            paddingTop: 2,
+            boxShadow: 4,
+          }}
         >
           {showLeft && (
             <IconButton
@@ -133,7 +131,7 @@ export default function InspirationSection({ categories = data }) {
               "&::-webkit-scrollbar": {
                 display: "none",
               },
-              px: 4
+              px: 4,
             }}
           >
             {categories.map((item, index) => (
@@ -141,7 +139,9 @@ export default function InspirationSection({ categories = data }) {
                 key={index}
                 href={`/blog/?category=${item.name}`}
                 style={{ textDecoration: "none" }}
-                onClick={(e) => { handleCatgotyClick(item.name) }}
+                onClick={(e) => {
+                  handleCatgotyClick(item.name);
+                }}
               >
                 <Box
                   sx={{
@@ -164,15 +164,11 @@ export default function InspirationSection({ categories = data }) {
                     },
                   }}
                 >
-                  <Box
-                    component="img"
+                  <Image
                     src={item.image}
-                    alt={item.label}
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    alt={item.label || "BlogImg"}
+                    fill 
+                    style={{ objectFit: "cover" }}
                   />
 
                   <Box
@@ -217,8 +213,7 @@ export default function InspirationSection({ categories = data }) {
                       transition: "transform 0.6s ease-in-out",
                       width: "75%",
 
-
-                      margin: "auto"
+                      margin: "auto",
                     }}
                   >
                     {capitalizeWords(item.name)}
