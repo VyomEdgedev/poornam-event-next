@@ -69,7 +69,7 @@ export default function AboutSection() {
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-start" } }}>
-          <CustomButton ariaLabel={"aboutus"} onClick={handleNavigate}>
+          <CustomButton ariaLabel={"Meet Our Story"} onClick={handleNavigate}>
                 {`Meet Our Story`}
           </CustomButton>
         </Box>

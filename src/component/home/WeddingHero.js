@@ -121,7 +121,7 @@ export default function WeddingSection() {
           <Grid item xs={6} sm={6} md={6}>
             <Box
               component="img"
-              src="./weddinghero1.png"
+              src="./weddinghero1.webp"
               alt="Colorful wedding archway with many floral arrangements in yellow, pink, orange, and green colors creating a vibrant path"
               sx={{
                 width: "100%",
@@ -139,7 +139,7 @@ export default function WeddingSection() {
           <Grid item xs={6} sm={6} md={6} sx={{ position: "relative" }}>
             <Box
               component="img"
-              src="./weddinghero2.png"
+              src="./weddinghero2.webp"
               alt="Elegant wedding stage decorated with a big pink floral chandelier composed of roses, hydrangeas, and ornamental hanging crystals with vintage style seating"
               sx={{
                 width: "100%",

@@ -105,7 +105,7 @@ const CustomButton = ({
       type={type}
       className={className}
       disableRipple
-      aria-label={ariaLabel || (typeof children === "string" ? children : undefined)}
+      aria-label={ariaLabel}
       fontFamily="Akatab,Sans-serif  !important"
       sx={{
         // Override width if fullWidth is true

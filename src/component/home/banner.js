@@ -183,11 +183,12 @@ export default function HeroSection() {
               }}
             >
               <Image
-                src="/sadhi.png"
+                src="/sadhi.webp"
                 alt="Bridal Hero"
                 width={500}
                 height={405}
                 className={Styles.HomeBrideImg}
+                priority
               />
             </Box>
           </Box>
