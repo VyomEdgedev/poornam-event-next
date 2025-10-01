@@ -3,10 +3,16 @@ import { Box, Typography, Grid, Button, Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { loaderContext } from "@/contextApi/loaderContext";
+import { useRouter } from "next/router";
 const FlipCard = ({ service }) => {
   const { loading, setLoading } = useContext(loaderContext);
   const [flipped, setFlipped] = useState(false);
+  const router = useRouter();
 
+  const handleClick = () => {
+    setLoading(true);
+    router.push(`/services/${service.uid}`);
+  };
   return (
     <Box
       onMouseEnter={() => setFlipped(true)}
@@ -49,7 +55,7 @@ const FlipCard = ({ service }) => {
         >
           <Image
             src={service?.featuredImage?.url}
-            alt={service?.featuredImage?.altText}
+            alt={service?.featuredImage?.altText || "Service Image"}
             width={245}
             height={300}
             unoptimized
@@ -138,30 +144,28 @@ const FlipCard = ({ service }) => {
               "..."}
           </Typography>
           {service.uid && (
-            <Link href={`/services/${service.uid}`} passHref>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={()=>setLoading(true)}
-                sx={{
-                  bgcolor: "#D7A10F",
-                  color: "#FFFFFF",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  borderRadius: "999px",
-                  px: 3,
-                  py: 0.8,
-                  fontSize: "0.85rem",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                  zIndex: 2,
-                  "&:hover": {
-                    bgcolor: "#B8850D",
-                  },
-                }}
-              >
-                Learn More
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleClick}
+              sx={{
+                bgcolor: "#D7A10F",
+                color: "#FFFFFF",
+                textTransform: "none",
+                fontWeight: 600,
+                borderRadius: "999px",
+                px: 3,
+                py: 0.8,
+                fontSize: "0.85rem",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                zIndex: 2,
+                "&:hover": {
+                  bgcolor: "#B8850D",
+                },
+              }}
+            >
+              Learn More
+            </Button>
           )}
         </Box>
       </Box>

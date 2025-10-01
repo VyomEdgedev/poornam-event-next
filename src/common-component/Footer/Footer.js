@@ -67,8 +67,8 @@ const Footer = () => {
             spacing={4}
           >
             <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }} item>
-              <Link href="/" passHref legacyBehavior>
-                <a>
+              <Link href="/" >
+              
                   <Box sx={{ display: "inline-block", mb: 2 }}>
                     <Image
                       onClick={()=>handleNaviagate("/")}
@@ -79,7 +79,7 @@ const Footer = () => {
                       style={{ height: "auto" }}
                     />
                   </Box>
-                </a>
+               
               </Link>
               <Typography
                 component="p"
@@ -238,7 +238,7 @@ const Footer = () => {
                   }}
                 >
                   Phone:{" "}
-                  <a
+                  <Link
                     href="tel:9519066885"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
@@ -249,7 +249,7 @@ const Footer = () => {
                     }
                   >
                     9519066885,
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography
                   sx={{
@@ -259,7 +259,7 @@ const Footer = () => {
                   }}
                 >
                   <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
-                  <a
+                  <Link
                     href="tel:8839844233"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
@@ -270,7 +270,7 @@ const Footer = () => {
                     }
                   >
                     8839844233
-                  </a>
+                  </Link>
                 </Typography>
 
                 <Typography
@@ -421,78 +421,7 @@ const Footer = () => {
               </Typography>
             </Grid>
 
-            {/* Right - Developer logo */}
-            {/* <Grid
-              item
-              xs={12}
-              md={4}
-              sx={{
-                textAlign: { xs: "center", md: "right" },
-                position: "relative",
-                mt: { xs: 0, md: 0 },
-              }}
-            >
-              <Typography
-                variant="body2"
-                component="p"
-                sx={{ fontSize: "14px", color: "black" }}
-              >
-                Developed by{" "}
-                <Link
-                  href="https://vyomedge.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  passHref
-                  legacyBehavior
-                >
-                  <Box
-                    component="a"
-                    sx={{
-                      fontWeight: 600,
-                      color: "black",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: "black",
-                        textDecoration: "none",
-                      },
-                    }}
-                  >
-                    Vyomedge
-                  </Box>
-                </Link>
-              </Typography>
-
-        
-              <Box
-                sx={{
-                  display: "inline-block",
-                  // mt: { xs: 0, md: 0, lg: 1 },
-                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
-                  top: {xs:"0px",sm:"-2px", md: "-50px", lg: "-50px" },
-                  right: {xs:"-25px", sm:"-40px", md: "10px", lg: "10px" },
-                  width: { xs: "20px", sm: "30px", md: "50px" },
-                  marginLeft:"8px"
-                }}
-              >
-                <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                  <a
-                    color="black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: "inline-block", width: "100%" }}
-                  >
-                    <Image
-                      src="/developer.png"
-                      alt="Developer Logo"
-                      layout="responsive"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </a>
-                </Link>
-              </Box>
-            </Grid> */}
+            {/* Right - Developed by */}
             <Grid
               item
               xs={12}
@@ -511,7 +440,7 @@ const Footer = () => {
               >
                 <Typography
                   variant="body2"
-                  component="p"
+                  component="div"
                   sx={{ fontSize: "14px", color: "black", position: "relative", width: "fit-content", margin: "auto" }}
                 >
                   Developed by{" "}
@@ -519,12 +448,13 @@ const Footer = () => {
                     href="https://vyomedge.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    passHref
-                    legacyBehavior
+                    style={{ textDecoration: "none" }}
                   >
                     <Typography
-                      component="a"
+                      component="span"
                       sx={{
+                        display: "inline-block",
+                        fontSize: "14px",
                         fontWeight: 600,
                         color: "black",
                         textDecoration: "none",
@@ -540,7 +470,7 @@ const Footer = () => {
                   </Link>
                   <Typography
                     variant="body2"
-                    component="body1"
+                    
                     sx={{
                       display: "inline-block",
                       // mt: { xs: 0, md: 0, lg: 1 },
@@ -551,13 +481,8 @@ const Footer = () => {
                       marginLeft: "8px",
                     }}
                   >
-                    <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                      <a
-                        color="black"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ display: "inline-block", width: "100%" }}
-                      >
+                    <Link href="https://vyomedge.com/"  >
+                    
                         <Image
                           src="/developer.png"
                           alt="Developer Logo"
@@ -566,7 +491,6 @@ const Footer = () => {
                           height={100}
                           priority
                         />
-                      </a>
                     </Link>
                   </Typography>
                 </Typography>

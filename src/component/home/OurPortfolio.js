@@ -43,39 +43,6 @@ const PortfolioSection = () => {
     fetchPortfolio();
   }, []);
 
-  // Images
-  const portfolioImages = [
-    {
-      src: "/portfolio2.png",
-      alt: "Main gallery",
-      id: "main",
-    },
-    {
-      src: "/portfolio3.png",
-      alt: "gallery Image 3",
-      id: "img1",
-    },
-    {
-      src: "/portfolio7.jpg",
-      alt: "gallery Image 7",
-      id: "img2",
-    },
-    {
-      src: "/portfolio6.jpg",
-      alt: "gallery Image 6",
-      id: "img3",
-    },
-    {
-      src: "/portfolio5.jpg",
-      alt: "gallery Image 5",
-      id: "img5",
-    },
-    {
-      src: "/portfolio4.jpg",
-      alt: "gallery Image 4",
-      id: "img4",
-    },
-  ];
 
   // Modal state
   const [open, setOpen] = useState(false);
@@ -140,7 +107,7 @@ const PortfolioSection = () => {
       )}
       <Image
         src={src}
-        alt={alt}
+        alt={alt || "Portfolio Image"}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw,"
         style={{
@@ -201,7 +168,7 @@ const PortfolioSection = () => {
           {/* Left Column - Main Image */}
           <PortfolioImage
             src={AllPortfolioData[0]?.images[0]?.url}
-            alt={AllPortfolioData[0]?.images[0]?.url}
+            alt={AllPortfolioData[0]?.images[0]?.url || "Portfolio Image"}
             onClick={() => handleOpenModal(0)} // Uncomment if you want image click to open modal
           />
 
@@ -217,7 +184,7 @@ const PortfolioSection = () => {
             {/* Top section */}
             <PortfolioImage
               src={AllPortfolioData[1]?.images[0]?.url}
-              alt={AllPortfolioData[1]?.images[0]?.url}
+              alt={AllPortfolioData[1]?.images[0]?.url || "Portfolio Image"}
               onClick={() => handleOpenModal(1)}
             />
 
@@ -232,12 +199,12 @@ const PortfolioSection = () => {
             >
               <PortfolioImage
                 src={AllPortfolioData[2]?.images[0]?.url}
-                alt={AllPortfolioData[2]?.images[0]?.url}
+                alt={AllPortfolioData[2]?.images[0]?.url || "Portfolio Image"}
                 onClick={() => handleOpenModal(2)}
               />
               <PortfolioImage
                 src={AllPortfolioData[3]?.images[0]?.url}
-                alt={AllPortfolioData[3]?.images[0]?.url}
+                alt={AllPortfolioData[3]?.images[0]?.url || "Portfolio Image"}
                 onClick={() => handleOpenModal(3)}
               />
             </Box>
@@ -266,13 +233,13 @@ const PortfolioSection = () => {
           >
             <PortfolioImage
               src={AllPortfolioData[4]?.images[0]?.url}
-              alt={AllPortfolioData[4]?.images[0]?.url}
+              alt={AllPortfolioData[4]?.images[0]?.url || "Portfolio Image"}
               onClick={() => handleOpenModal(4)}
             />
 
             <PortfolioImage
               src={AllPortfolioData[5]?.images[0]?.url}
-              alt={AllPortfolioData[5]?.images[0]?.url}
+              alt={AllPortfolioData[5]?.images[0]?.url || "Portfolio Image"}
               // onClick={() => handleOpenModal(5)}
             >
               <Link href="/gallery" style={{ textDecoration: "none" }}>
@@ -382,7 +349,7 @@ const PortfolioSection = () => {
               <Image
                 // AllPortfolioData[5]?.images[0]?.url
                 src={AllPortfolioData[currentIndex]?.images[0]?.url}
-                alt={AllPortfolioData[currentIndex]?.images[0]?.url}
+                alt={AllPortfolioData[currentIndex]?.images[0]?.url || "Portfolio Image"}
                 fill
                 style={{
                   objectFit: "contain",
