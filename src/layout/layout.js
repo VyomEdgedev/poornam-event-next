@@ -16,7 +16,6 @@ export default function Layout({ children }) {
 
     return () => clearTimeout(timer);
   }, []);
-  
   return (
     <div>
       <LoaderContextProvider>
