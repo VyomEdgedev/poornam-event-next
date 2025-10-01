@@ -94,6 +94,7 @@ const CustomButton = ({
   type = 'button',
   className,
   fullWidth = false, // New prop for full width on mobile
+  ariaLabel,
   ...props
 }) => {
   return (
@@ -104,6 +105,7 @@ const CustomButton = ({
       type={type}
       className={className}
       disableRipple
+      aria-label={ariaLabel || (typeof children === "string" ? children : undefined)}
       fontFamily="Akatab,Sans-serif  !important"
       sx={{
         // Override width if fullWidth is true

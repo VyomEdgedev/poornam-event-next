@@ -9,13 +9,14 @@ import ConnectModal from "@/common-component/modal/ConnectModal";
 import LoaderContextProvider from "@/contextApi/loaderContext";
 export default function Layout({ children }) {
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(true);
-    }, 7000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setOpen(true);
+  //   }, 7000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
+  
   return (
     <div>
       <LoaderContextProvider>

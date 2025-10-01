@@ -274,7 +274,7 @@ export default function ContactSection() {
 
               {/* Submit Button */}
               <CustomButton
-                data-testid="notify-button"
+                ariaLabel={"Let's Chat"}
                 type="submit"
                 variant="primary"
                 sx={{
