@@ -40,7 +40,7 @@ const Service = (props) => {
         title="We Don't Just Plan Weddings"
         subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
         paragraphSubtitle="From Big Fat Indian Shaadis to intimate royal vibes- we design, plan, and execute it all."
-        backgroundImage="/servicebanner.png"
+        backgroundImage="/servicebanner.webp"
         showLogo={true}
         logoSrc="/logo2.png"
         breadcrumbs={[
