@@ -129,7 +129,7 @@ export default function HeroSection() {
                   alignContent={{ xs: "center", md: "flex-start" }}
                 >
                   <CustomButton
-                    data-testid="notify-button"
+                    ariaLabel={"Plan My Wedding"}
                     variant="primary"
                     onClick={handleWeddingPlan}
                     sx={{
@@ -142,7 +142,7 @@ export default function HeroSection() {
                   </CustomButton>
 
                   <CustomButton
-                    data-testid="notify-button"
+                    ariaLabel={"Talk to Our Planner"}
                     variant="outlined"
                     sx={{
                       color: "#000D1F",

@@ -25,7 +25,7 @@ const PortfolioSection = () => {
   const router = useRouter();
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
   const {loading ,setLoading} = useContext(loaderContext);
-  
+
   
 
   const fetchPortfolio = async () => {
@@ -73,6 +73,9 @@ const PortfolioSection = () => {
       prev === AllPortfolioData.length - 1 ? 0 : prev + 1
     );
   };
+
+
+  
 
   // Common image component with hover effects
   const PortfolioImage = ({ src, alt, children, onClick }) => (
@@ -242,8 +245,9 @@ const PortfolioSection = () => {
               alt={AllPortfolioData[5]?.images[0]?.url || "Portfolio Image"}
               // onClick={() => handleOpenModal(5)}
             >
-              <Link href="/gallery" style={{ textDecoration: "none" }}>
+             
                 <Button
+                  aria-label="View Full Wedding Stories"
                   data-testid="notify-button"
                   onClick={(ev) => handlegallery(ev)}
                   sx={{
@@ -272,7 +276,7 @@ const PortfolioSection = () => {
                 >
                   View Full Wedding Stories
                 </Button>
-              </Link>
+             
             </PortfolioImage>
           </Box>
         </Box>
@@ -307,6 +311,7 @@ const PortfolioSection = () => {
         >
           {/* Close Button */}
           <IconButton
+            aria-label="close"
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
@@ -322,6 +327,7 @@ const PortfolioSection = () => {
           </IconButton>
           {/* Left Arrow */}
           <IconButton
+            aria-label="previous"
             onClick={handlePrev}
             sx={{
               position: "absolute",
@@ -360,6 +366,7 @@ const PortfolioSection = () => {
           </Box>
           {/* Right Arrow */}
           <IconButton
+            aria-label="next"
             onClick={handleNext}
             sx={{
               position: "absolute",

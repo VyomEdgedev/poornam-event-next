@@ -100,6 +100,7 @@ export default function Header() {
                 style={{ textDecoration: "none" }}
               >
                 <Button
+                aria-label={item.label}
                  onClick={()=>handleNaviagate(item.href)}
                   sx={{
                     fontWeight: 400,
@@ -123,6 +124,7 @@ export default function Header() {
             );
           })}
           <IconButton
+            aria-label="WhatsApp"
             href="https://wa.me/919519066885"
             target="_blank"
             sx={{ color: "#25D366" }}
@@ -154,6 +156,7 @@ export default function Header() {
             </Link>
             <Box>
               <IconButton
+                aria-label="Menu"
                 onClick={() => setOpenDrawer(true)}
                 sx={{
                   color: "#DAA412",
@@ -189,6 +192,7 @@ export default function Header() {
               >
                 {/* WhatsApp Button (left) */}
                 <IconButton
+                  aria-label="WhatsApp"
                   component="a"
                   href="https://wa.me/919519066885"
                   target="_blank"
@@ -199,6 +203,7 @@ export default function Header() {
                 </IconButton>
                 {/* Close Button (right) */}
                 <IconButton
+                  aria-label="Close"
                   edge="end"
                   onClick={() => setOpenDrawer(false)}
                   sx={{
@@ -244,6 +249,7 @@ export default function Header() {
                       <React.Fragment key={index}>
                         <ListItem disablePadding>
                           <ListItemButton
+                            aria-label={item.label}
                             component={Link}
                             href={item.href}
                             onClick={()=>handleNaviagate(item.href)}
