@@ -174,13 +174,13 @@ const Footer = () => {
                 {apiLoading ? (
                   <CircularProgress />
                 ) : (
-                  <Box className={style.footerScroll} sx={{ maxHeight: "160px", overflowY: "auto" }}>
-                    {AllPortfolioData.map((item, i) => (
+                  <Box className={style.footerScroll} sx={{ maxHeight: "170px", overflowY: "auto" }}>
+                    {AllPortfolioData.slice(0 ,5).map((item, i) => (
                       <Link
                         key={i}
                         href={`/services/${item.uid}`}
                         style={{ textDecoration: "none", width: "fit-content" }}
-                      >
+                      >  
                         <Typography
                           component="p"
                           onClick={() => handleNaviagate(`/services/${item.uid}`)}
@@ -201,6 +201,27 @@ const Footer = () => {
                         </Typography>
                       </Link>
                     ))}
+                     <Link
+                        href={`/services`}
+                        style={{ textDecoration: "none", width: "fit-content" }}
+                      >  
+                        <Typography
+                          component="p"
+                          onClick={() => handleNaviagate(`/services`)}
+                          sx={{
+                            fontFamily: "Akatab,Sans-serif",
+                            mb: 0.5,
+                            color: "#E4E4E4",
+                            fontWeight: 400,
+                            textDecoration: "none",
+                            "&:hover": {
+                              textDecoration: "underline",
+                            },
+                          }}
+                        >
+                          View All Services
+                        </Typography>
+                      </Link>
                   </Box>
                 )}
               </Box>
