@@ -74,6 +74,7 @@ const BlogCard = ({ blogimg }) => {
           {/* Share icon top-right */}
           <IconButton
             data-testid="share-button"
+            aria-label="share"
             onClick={handleShare}
             sx={{
               position: "absolute",

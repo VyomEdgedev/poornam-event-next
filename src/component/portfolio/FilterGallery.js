@@ -299,6 +299,7 @@ const FilterGallery = ({galleryFilter}) => {
           >
          
             <IconButton
+              aria-label="close"
               onClick={handleCloseModal}
               sx={{
                 position: "absolute",
@@ -316,6 +317,7 @@ const FilterGallery = ({galleryFilter}) => {
             </IconButton>
            
             <IconButton
+              aria-label="previous"
               onClick={handlePrev}
               sx={{
                 position: "absolute",
@@ -343,6 +345,7 @@ const FilterGallery = ({galleryFilter}) => {
             </Box>
             {/* Right Arrow */}
             <IconButton
+              aria-label="next"
               onClick={handleNext}
               sx={{
                 position: "absolute",

@@ -128,6 +128,7 @@ const ShaddiService = (props) => {
               {services[0]?.meta?.description}
             </Typography>
             <CustomButton
+            ariaLabel={"Learn More"}
               sx={{
                 marginLeft: { xs: "5px", sm: "5px", md: 0 },
                 alignItems: "start",

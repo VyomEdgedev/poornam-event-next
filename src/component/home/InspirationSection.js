@@ -94,6 +94,7 @@ export default function InspirationSection({ categories = data }) {
         >
           {showLeft && (
             <IconButton
+              aria-label="Scroll left to view more inspiration categories"
               onClick={() => scroll("left")}
               sx={{
                 position: "absolute",
@@ -225,6 +226,7 @@ export default function InspirationSection({ categories = data }) {
 
           {showRight && (
             <IconButton
+              aria-label="Scroll right to view more inspiration categories"
               onClick={() => scroll("right")}
               sx={{
                 position: "absolute",

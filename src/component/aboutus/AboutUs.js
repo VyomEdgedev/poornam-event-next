@@ -81,7 +81,7 @@ export default function AboutUS() {
             }
           }} >
           <ConnectModal open={open} setOpen={setOpen} />
-          <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan my Wedding`}</CustomButton>
+          <CustomButton ariaLabel={"Plan my Wedding"} onClick={handleWeddingPlan}>{`Plan my Wedding`}</CustomButton>
         </CustomBanner >
 
 

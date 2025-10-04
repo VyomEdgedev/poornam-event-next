@@ -148,6 +148,7 @@ const FlipCard = ({ service }) => {
               variant="contained"
               size="small"
               onClick={handleClick}
+              aria-label={`Learn more about ${service.title || 'this service'}`}
               sx={{
                 bgcolor: "#D7A10F",
                 color: "#FFFFFF",

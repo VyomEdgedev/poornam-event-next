@@ -61,7 +61,7 @@ function Chat() {
             >
               {`  We Do Too!`}
             </Typography>
-            <CustomButton onClick={handleSubmit} data-testid="notify-button">
+            <CustomButton ariaLabel={"Start Chat"} onClick={handleSubmit}>
               {`  Start Chat`}
             </CustomButton>
           </Grid>

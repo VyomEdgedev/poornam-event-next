@@ -174,7 +174,7 @@ const BlogSection = ({ posts }) => {
           visibledPosts.length < posts.length &&
           visibledPosts.length >= 15 &&
           <Box sx={{ textAlign: "center", paddingTop: 2 }}>
-            <IconButton className="view-more-icon" size="large" onClick={handleViewMore}>
+            <IconButton aria-label="view more" className="view-more-icon" size="large" onClick={handleViewMore}>
               <KeyboardDoubleArrowDownSharpIcon sx={{ height: "40px", fill: "#DAA412", width: "40px" }} />
             </IconButton>
           </Box>
