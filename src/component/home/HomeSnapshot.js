@@ -57,6 +57,7 @@ export default function   Snapshot() {
               className="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/reel/DNNj2zcz2gp/"
               data-instgrm-version="12"
+              title="Instagram post from Poornam Events - Wedding snapshots and memories"
               style={{
                 background: "#FFF",
                 border: 0,

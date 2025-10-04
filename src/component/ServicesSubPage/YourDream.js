@@ -95,6 +95,7 @@ const YourDream = ({ Blogs }) => {
                     {/* {blog.meta.description} */}
                   </Typography>
                   <CustomButton
+                    ariaLabel={"Read More"}
                     onClick={() =>handleNaviagate(`/blog/${blog.uid}`)}
                   >
                     Read More

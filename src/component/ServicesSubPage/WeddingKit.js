@@ -206,6 +206,7 @@ function WeddingKit() {
                 )}
 
                 <CustomButton
+                  ariaLabel={"notify-me"}
                   data-testid="notify-button"
                   onClick={handleNotifyClick}
                   sx={{ mt: 2, width: 130, height: 50 }}

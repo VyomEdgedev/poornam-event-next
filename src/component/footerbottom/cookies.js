@@ -150,6 +150,7 @@ export default function CookiesBanner() {
           >
             <Box sx={{display:"flex", alignItems:"Center", gap:"10px" , mt:1,mb:0.5}}>
             <CustomButton
+              ariaLabel={"Accept All"}
               onClick={handleAcceptAll}
               sx={{
                 fontWeight: "bold",
@@ -159,6 +160,7 @@ export default function CookiesBanner() {
               Accept All
             </CustomButton>
             <CustomButton
+              ariaLabel={"Manage Preferences"}
               variant="outlined"
               onClick={handleManagePreferences}
               
@@ -177,6 +179,7 @@ export default function CookiesBanner() {
             </CustomButton>
             </Box >
             <CustomButton
+              ariaLabel={"Reject Non-Essential"}
               variant="outlined"
               onClick={handleRejectNonEssential}
               sx={{
@@ -336,7 +339,7 @@ export default function CookiesBanner() {
           </Box>
         </DialogContent>
         <DialogActions sx={{ p: 3, pt: 1 }}>
-          <CustomButton onClick={handleSavePreferences} size="large" fullWidth>
+          <CustomButton ariaLabel={"save-preferences"} onClick={handleSavePreferences} size="large" fullWidth>
             {`Save My Preferences`}
           </CustomButton>
         </DialogActions>

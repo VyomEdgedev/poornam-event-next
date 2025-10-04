@@ -122,6 +122,7 @@ const RecentPosts = () => {
 
                   {post.videoThumbnail && (
                     <IconButton
+                      aria-label='play'
                       sx={{
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         color: 'white',

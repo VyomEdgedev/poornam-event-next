@@ -137,6 +137,7 @@ const ShowCase = ({ categoriesGallery }) => {
           multiple={false}
         />
         <CustomButton
+        ariaLabel={`Browse Gallery`}
           onClick={handleBrowse}
           fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
@@ -227,6 +228,7 @@ const ShowCase = ({ categoriesGallery }) => {
         >
           {/* Close Button */}
           <IconButton
+            aria-label="close"
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
@@ -241,6 +243,7 @@ const ShowCase = ({ categoriesGallery }) => {
           </IconButton>
           {/* Left Arrow */}
           <IconButton
+            aria-label="previous"
             onClick={handlePrev}
             sx={{
               position: "absolute",
@@ -267,6 +270,7 @@ const ShowCase = ({ categoriesGallery }) => {
           </Box>
           {/* Right Arrow */}
           <IconButton
+            aria-label="next"
             onClick={handleNext}
             sx={{
               position: "absolute",

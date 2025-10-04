@@ -311,7 +311,7 @@ const PortfolioSection = () => {
         >
           {/* Close Button */}
           <IconButton
-            aria-label="close"
+            aria-label="Close portfolio image modal"
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
@@ -327,7 +327,7 @@ const PortfolioSection = () => {
           </IconButton>
           {/* Left Arrow */}
           <IconButton
-            aria-label="previous"
+            aria-label="View previous portfolio image"
             onClick={handlePrev}
             sx={{
               position: "absolute",
@@ -366,7 +366,7 @@ const PortfolioSection = () => {
           </Box>
           {/* Right Arrow */}
           <IconButton
-            aria-label="next"
+            aria-label="View next portfolio image"
             onClick={handleNext}
             sx={{
               position: "absolute",

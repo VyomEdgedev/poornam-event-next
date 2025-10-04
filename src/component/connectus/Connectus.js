@@ -127,7 +127,7 @@ export default function ContactUs() {
         }}
       >
         
-        <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan My Wedding`}</CustomButton>
+        <CustomButton onClick={handleWeddingPlan} ariaLabel={`Plan My Wedding`}>{`Plan My Wedding`}</CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner >
 

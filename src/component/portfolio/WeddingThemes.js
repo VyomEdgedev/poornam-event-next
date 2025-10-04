@@ -8,7 +8,6 @@ import {
   Box,
   Chip,
 } from "@mui/material";
-import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 
 const weddingThemesData = [
