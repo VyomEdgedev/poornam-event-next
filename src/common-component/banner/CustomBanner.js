@@ -368,7 +368,7 @@ const CustomBanner = ({
         {/* Logo */}
         {showLogo && logoSrc && (
           <Link href="/" style={{ display: "block" }}>
-            <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
+            <LogoContainer showlogo={showLogo.toString()} logoposition={logoPosition}>
               <Image
                 onClick={()=>handleNaviagate("/")}
                 src={logoSrc}

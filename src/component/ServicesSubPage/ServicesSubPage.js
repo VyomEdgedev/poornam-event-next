@@ -5,11 +5,10 @@ import YourDream from "./YourDream";
 import WeOffer from "./WeOffer";
 import WhyPoornam from "./WhyPoornam";
 import WeddingKit from "./WeddingKit";
-import { Box, CircularProgress, Stack } from "@mui/material";
+
 import CapturedMoments from "./CapturedMoments";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import { useRouter } from "next/router";
-import { apiClient } from "@/lib/api-client";
 import SEO from "@/common-component/SEO/seo";
 import { loaderContext } from "@/contextApi/loaderContext";
 import Loader from "@/common-component/loader/Loader";
@@ -24,7 +23,7 @@ function ServicesSubPage(props) {
 
   const title = service?.title || "Service";
   const description = service?.meta?.description || "Service Description";
-  const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.png";
+  const bannerImage = service?.featuredImage?.url || "/serviceSPBanner.webp";
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
   useEffect(()=>{
@@ -53,7 +52,8 @@ function ServicesSubPage(props) {
           <CustomBanner
             title={title}
             paragraphSubtitle={description}
-            backgroundImage="/serviceSPBanner.png"
+            // backgroundImage={bannerImage || "/serviceSPBanner.png"}
+            backgroundImage="/serviceSPBanner.webp"
             showLogo={true}
             logoSrc="/logo2.png"
             breadcrumbs={[

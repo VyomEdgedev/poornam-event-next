@@ -4,14 +4,14 @@ import Image from "next/image";
 
 const owners = [
   {
-    image: "/AadiJain.png",
+    image: "/AadiJain.webp",
     alt: "Aadi Jain",
     headline: "Aadi Jain - The Visionary (Founder & Creative Director)",
     description:
       "The calm in your chaos, the brain behind every baraat. Swati's superpower? Turning Pinterest boards into physical mandaps, without breaking the bank or a sweat.",
   },
   {
-    image: "/RichiAnandJain.png",
+    image: "/RichiAnandJain.webp",
     alt: "Richi Anand Jain",
     headline: "Richi Anand Jain - CEO",
     description:

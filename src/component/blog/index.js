@@ -43,7 +43,7 @@ const Blog = ({ initialPosts, initialCategories }) => {
         headingtag={"h1"}
         title="Shaadi Ki Planning? Gyaan Bhi, Fun Bhi!"
         paragraphSubtitle="Welcome to the only wedding blog that understands your vibe..."
-        backgroundImage="/blogbanner.png"
+        backgroundImage="/blogbanner.webp"
         showLogo={true}
         logoSrc="/logo2.png"
         breadcrumbs={[

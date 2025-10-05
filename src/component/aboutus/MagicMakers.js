@@ -11,7 +11,7 @@ function MagicMakers() {
         backgroundImage: `linear-gradient(
                                 rgba(0, 13, 31, 0.5),
                                 rgba(0, 13, 31, 0.5)
-                            ), url(/MagicMakers.png)`,
+                            ), url(/MagicMakers.webp)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
