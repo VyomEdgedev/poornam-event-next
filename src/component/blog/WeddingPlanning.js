@@ -67,7 +67,7 @@ export default function WeddingPlanning() {
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box
               component="img"
-              src="./weddingplanning.jpg"
+              src="./weddingplanning.webp"
               alt="Wedding Planning"
               sx={{
                 width: {

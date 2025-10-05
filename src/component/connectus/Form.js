@@ -119,7 +119,7 @@ const MyForm = () => {
                 }}
               >
                 <Image
-                  src="/FormImg.png"
+                  src="/FormImg.webp"
                   alt="Wedding planning imagery"
                   fill
                   style={{

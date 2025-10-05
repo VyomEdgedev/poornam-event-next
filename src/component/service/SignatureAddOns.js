@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Grid, Avatar, Container } from "@mui/material";
+import { Box, Typography, Grid, Container } from "@mui/material";
 import Image from "next/image";
 
 const SignatureAddOns = () => {

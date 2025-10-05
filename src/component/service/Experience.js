@@ -1,23 +1,8 @@
-import React from "react";
 import Image from "next/image";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useTheme, useMediaQuery } from "@mui/material";
 
 
-const itemData = [
-  {
-    img: "https://images.unsplash.com/photo-1549388604-817d15aa0110",
-    title: "Bed",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3",
-    title: "Kitchen",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6",
-    title: "Sink",
-  },
-];
 
 const Experience = () => {
   const theme = useTheme();
