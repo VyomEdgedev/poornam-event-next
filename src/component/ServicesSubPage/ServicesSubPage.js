@@ -55,7 +55,7 @@ function ServicesSubPage(props) {
             // backgroundImage={bannerImage || "/serviceSPBanner.png"}
             backgroundImage="/serviceSPBanner.webp"
             showLogo={true}
-            logoSrc="/logo2.png"
+            logoSrc="/logo2.webp"
             breadcrumbs={[
               { href: "/", isHome: true },
               { href: "/services", label: "services" },

@@ -40,7 +40,7 @@ const Service = (props) => {
         paragraphSubtitle="From Big Fat Indian Shaadis to intimate royal vibes- we design, plan, and execute it all."
         backgroundImage="/servicebanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
           { label: "Services" },

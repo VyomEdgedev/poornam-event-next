@@ -10,13 +10,13 @@ import {
 import { keyframes } from "@emotion/react";
 
 const vows = [
-  { img: "/AboutVows3.png", title: "Emotions Ka Khayal" },
-  { img: "/AboutVows4.png", title: "Riwaaz Ko Rang Denge" },
-  { img: "/AboutVows5.png", title: "Aapki Tension,Ab Hamari" },
-  { img: "/AboutVows6.png", title: "Banayenge SapneKo Haqiqat" },
-  { img: "/AboutVows7.png", title: "Sunenge Dil Se" },
-  { img: "/AboutVows1.png", title: "Yaadon Ka Wada" },
-  { img: "/AboutVows2.png", title: "Har Scene,Screen-Ready" },
+  { img: "/AboutVows3.webp", title: "Emotions Ka Khayal" },
+  { img: "/AboutVows4.webp", title: "Riwaaz Ko Rang Denge" },
+  { img: "/AboutVows5.webp", title: "Aapki Tension,Ab Hamari" },
+  { img: "/AboutVows6.webp", title: "Banayenge SapneKo Haqiqat" },
+  { img: "/AboutVows7.webp", title: "Sunenge Dil Se" },
+  { img: "/AboutVows1.webp", title: "Yaadon Ka Wada" },
+  { img: "/AboutVows2.webp", title: "Har Scene,Screen-Ready" },
 ];
 
 const rotateParent = keyframes`
@@ -187,7 +187,7 @@ const PoornamVows = () => {
             }}
           >
             <Avatar
-              src="/AboutVows8.png"
+              src="/AboutVows8.webp"
               alt="Center Ritual"
               variant="circular"
               sx={{ width: "100%", height: "100%" }}

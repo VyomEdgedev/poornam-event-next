@@ -45,7 +45,7 @@ const Blog = ({ initialPosts, initialCategories }) => {
         paragraphSubtitle="Welcome to the only wedding blog that understands your vibe..."
         backgroundImage="/blogbanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
           { href: "/blog", label: "Blog" },

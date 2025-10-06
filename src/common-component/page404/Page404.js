@@ -15,7 +15,7 @@ function Page404() {
     <Box>
       <CustomBanner
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         height={{ xs: "15vh", sm: "15vh", md: "40vh"}}
         
       />

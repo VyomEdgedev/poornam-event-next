@@ -157,22 +157,14 @@ const FilterGallery = ({galleryFilter}) => {
         title="Let’s Make Shaadi Magic Together!"
         // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
         paragraphSubtitle={`From planning to "I do", we've got your back`}
-        backgroundImage="/portfoliobanner.png"
+        backgroundImage="/portfoliobanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
           { href: "/gallery", label: "Gallery" },
           { href: "/browsegallery", label: "Browse Gallery" },
         ]}
-        breadcrumbsPosition={{
-          top: "300px",
-          left: "25px",
-          lg: { top: "280px", left: "25px" },
-          md: { top: "170px", left: "26px" },
-          sm: { top: "330px", left: "3px" },
-          xs: { top: "200px", left: "20px" },
-        }}
         overlay={{
           background:
             "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",

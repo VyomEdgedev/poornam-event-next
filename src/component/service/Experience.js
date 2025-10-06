@@ -76,7 +76,7 @@ const Experience = () => {
                   }}
                 >
                   <Image
-                    src="/experience1.png"
+                    src="/experience1.webp"
                     alt="Wedding Ritual"
                     width={257}
                     height={380}
@@ -105,7 +105,7 @@ const Experience = () => {
                       }}
                     >
                       <Image
-                        src="/experience3.jpg"
+                        src="/experience3.webp"
                         alt="Question Cards"
                         width={119}
                         height={100}
@@ -128,7 +128,7 @@ const Experience = () => {
                       }}
                     >
                       <Image
-                        src="/experience2.jpg"
+                        src="/experience2.webp"
                         alt="Help Desk"
                         width={119}
                         height={130}

@@ -147,7 +147,7 @@ export default function Header() {
             <Link href="/" passHref>
               <Image
                 onClick={() => handleNaviagate("/")}
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Logo"
                 width={65}
                 height={65}

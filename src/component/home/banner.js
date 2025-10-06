@@ -55,7 +55,7 @@ export default function HeroSection() {
               >
                 <Link href="/" passHref  >
                   <Image
-                    src={"/logo2.png"}
+                    src={"/logo2.webp"}
                     alt="Logo"
                     width={120}
                     height={120}

@@ -14,7 +14,7 @@ const Loader = () => {
         <Container disableGutters maxWidth="xxl" sx={{height:"120vh" ,width:"100vw" , display:'flex', alignItems:"center" ,justifyContent:"center"}}>
             <Box className={style.loaderAnimation} sx={{width:"15vh"}}>
                 <Image
-                    src={"/logo2.png"}
+                    src={"/logo2.webp"}
                     alt="Logo"
                     width={120}
                     height={120}
