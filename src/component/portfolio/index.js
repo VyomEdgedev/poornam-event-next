@@ -1,6 +1,5 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
-import { Button } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import WeddingThemes from "./WeddingThemes";
 import ShowCase from "./ShowCase";
@@ -69,23 +68,13 @@ const Portfolio = ({ gallery }) => {
         title="Let’s Make Shaadi Magic Together!"
         // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
         paragraphSubtitle={`From planning to "I do", we've got your back`}
-        backgroundImage="/portfoliobanner.png"
+        backgroundImage="/portfoliobanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
-          // { href: '/blog', label: 'Blog' },
           { label: "Gallery" },
         ]}
-        // Optional: customize breadcrumbs position
-        breadcrumbsPosition={{
-          top: "320px",
-          left: "25px",
-          lg: { top: "300px", left: "25px" },
-          md: { top: "200px", left: "26px" },
-          sm: { top: "330px", left: "3px" },
-          xs: { top: "200px", left: "20px" },
-        }}
         overlay={{
           background:
             "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",

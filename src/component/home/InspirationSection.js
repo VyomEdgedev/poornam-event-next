@@ -7,14 +7,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { loaderContext } from "@/contextApi/loaderContext";
 import Image from "next/image";
 
-// const data = [
-//   { name: "Latest Trends", image: "/blog1.jpg" },
-//   { name: "Celebrity", image: "/blog2.jpg" },
-//   { name: "Fashion", image: "/blog3.jpg" },
-//   { name: "Decoration", image: "/blog4.jpg" },
-//   { name: "Lifestyle", image: "/blog1.jpg" },
-//   { name: "Beauty", image: "/blog2.jpg" },
-// ];
 
 export default function InspirationSection({ categories = data }) {
 

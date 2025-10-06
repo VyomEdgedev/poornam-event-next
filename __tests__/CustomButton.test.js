@@ -3,10 +3,10 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CustomButton from '@/common-component/button/CustomButton'
 
-// Create a theme for testing
+
 const theme = createTheme()
 
-// Wrapper component to provide theme context
+
 const TestWrapper = ({ children }) => (
   <ThemeProvider theme={theme}>
     {children}

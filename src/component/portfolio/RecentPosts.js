@@ -21,7 +21,7 @@ const postsData = [
     description: "Beautiful beach wedding setup",
     publishDate: "October 10, 2023",
     videoThumbnail: true,
-    image: "/recent.png"
+    image: "/recent.webp"
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const postsData = [
     description: "Stunning garden flowers",
     publishDate: "October 5, 2023",
     videoThumbnail: true,
-    image: "/recent2.png"
+    image: "/recent2.webp"
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const postsData = [
     description: "Rustic decor inspiration",
     publishDate: "September 20, 2023",
     videoThumbnail: true,
-    image: "/recent3.png"
+    image: "/recent3.webp"
   }
 ];
 
@@ -64,8 +64,14 @@ const RecentPosts = () => {
       <Grid container spacing={4} marginBottom={5} alignContent={"center"} justifyContent={"center"}>
 
         {postsData.map((post) => (
-          <Grid item xs={12} sm={6} md={4} key={post.id}  >
-            <Link href={"https://www.youtube.com/@poornam-wedding-planner"} target='_blank' passHref legacyBehavior>
+          <Grid item xs={12} sm={6} md={4} key={post.id}>
+            <Link
+              href={"https://www.youtube.com/@poornam-wedding-planner"} 
+              target='_blank' 
+              passHref 
+              legacyBehavior
+              aria-label={`Watch ${post.title} video on YouTube`}
+            >
               <Card
                 component={'a'}
                 target='_blank'
@@ -109,13 +115,14 @@ const RecentPosts = () => {
                       position: 'absolute',
                       top: 0,
                       left: 0,
-                      backgroundColor: "#ddd",
+                      backgroundColor: "rgba(0, 0, 0, 0.8)",
+                      color: "#FFFFFF",
                       fontFamily: "Akatab,Sans-serif",
                       fontWeight: 500,
                       cursor: 'pointer',
                       borderRadius: 0,
                       borderBottomRightRadius: "5px",
-                      opacity: 0.8
+                      opacity: 0.9
                     }}
                   />
 
@@ -137,7 +144,7 @@ const RecentPosts = () => {
                         left: '50%',
                         transform: 'translate(-50%, -50%)'
                       }}
-                      component="a"
+                
                     >
                       <PlayArrow sx={{ fontSize: 30 }} color='inherit' />
                     </IconButton>

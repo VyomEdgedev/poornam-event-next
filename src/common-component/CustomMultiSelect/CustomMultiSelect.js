@@ -34,6 +34,7 @@ export default function CustomMultiSelect({
   value = [],
   onChange,
   multiple = true,
+  label = "Select options",
   ...props
 }) {
   const theme = useTheme();
@@ -95,6 +96,10 @@ export default function CustomMultiSelect({
         }
         onChange={handleChange}
         input={<OutlinedInput />}
+        aria-label={label}
+        inputProps={{
+          'aria-label': label,
+        }}
         renderValue={(selected) =>
           multiple
             ? (selected.length === 0 ? (

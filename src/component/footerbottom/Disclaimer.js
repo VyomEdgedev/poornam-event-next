@@ -176,7 +176,7 @@ export default function Disclaimer() {
           robots="index, follow" //  default
         />
       </>
-      <CustomBanner showLogo={true} logoSrc="/logo.png" height="30vh" />
+      <CustomBanner showLogo={true} logoSrc="/logo.webp" height="35vh" />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Header Section */}
         <StyledPaper elevation={3}>
