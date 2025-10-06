@@ -87,7 +87,7 @@ const Form = ({ onClose }) => {
         }}
       >
         <Image
-          src="/FormImg.png"
+          src="/FormImg.webp"
           alt="Wedding planning imagery"
           fill
           style={{ objectFit: "cover" }}
