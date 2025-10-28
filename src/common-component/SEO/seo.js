@@ -19,6 +19,7 @@ const SEO = ({
   orgaizationName = "Poornam Events",
   orgaizationLogo = "https://www.poornamevents.com/logo.png",
   pageName = "",
+  isHomePage = false,
 }) => {
 
   const router = useRouter();
@@ -148,6 +149,43 @@ const SEO = ({
         },
         inLanguage: "en-IN",
       },
+      // WebPage Schema - Only for homepage
+      ...(isHomePage
+        ? [
+          {
+            "@type": "WebPage",
+            "@id": "https://www.poornamevents.com/#webpage",
+            url: "https://www.poornamevents.com/",
+            name: metaTitle,
+            description: metaDescription,
+            inLanguage: "en-IN",
+            isPartOf: {
+              "@type": "WebSite",
+              "@id": "https://www.poornamevents.com/#website",
+            },
+            about: {
+              "@type": "Organization",
+              "@id": "https://www.poornamevents.com/#organization",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Poornam Events",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.poornamevents.com/logo.png",
+              },
+              url: "https://www.poornamevents.com",
+            },
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              url: "https://www.poornamevents.com/banner.jpg",
+            },
+            datePublished: "2024-07-01",
+            dateModified: new Date().toISOString().split("T")[0],
+          },
+        ]
+        : []),
+
       // BreadcrumbList Schema - Always include
       {
         "@type": "BreadcrumbList",

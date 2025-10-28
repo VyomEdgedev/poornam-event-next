@@ -13,14 +13,14 @@ const Blog = ({ initialPosts, initialCategories }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const [posts, setPosts] = useState(initialPosts);
   const [categories, setCategories] = useState(initialCategories);
-  const {loading ,setLoading} = useContext(loaderContext);
+  const { loading, setLoading } = useContext(loaderContext);
 
-  useEffect(()=>{
-    setPosts(()=>initialPosts)
+  useEffect(() => {
+    setPosts(() => initialPosts)
     setLoading(false);
-  } ,[]);
+  }, []);
 
-  if(loading) return <Loader/>
+  if (loading) return <Loader />
 
   return (
     <>
