@@ -19,12 +19,12 @@ import Loader from "@/common-component/loader/Loader";
 export default function HomePage(props) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   const { loading, setLoading } = useContext(loaderContext);
-  useEffect(()=>{
+  useEffect(() => {
     setLoading(false);
-    return  setLoading(false);
-  },[])
-  
-  if(loading){return <Loader/>}
+    return setLoading(false);
+  }, [])
+
+  if (loading) { return <Loader /> }
 
   return (
     <>
@@ -42,6 +42,7 @@ export default function HomePage(props) {
           twitterDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
           twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
+          isHomePage={true}
         />
       </>
       <Banner></Banner>
