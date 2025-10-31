@@ -35,7 +35,7 @@ export default function SubBlog({ blog }) {
       <Box>
         <SubCard blogimg={blog} />
         <Subtext blogtext={blog?.description} />
-        {Array.isArray(blog?.faq) && blog.faq.length > 0 && (
+        {Array.isArray(blog?.faq) && blog?.faq?.[0]?.question?.length > 0 && (
           <FAQSection faqData={blog.faq} />
         )}
       </Box>

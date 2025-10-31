@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export async function getStaticProps() {
   try {
     const [blogsRes, categoriesRes] = await Promise.all([
-      apiClient.get("/api/blogs/all/event?type=blog"),
+      apiClient.get("/api/blogs/all/event?type=blog&status=Published&page=1&limit=10"),
       apiClient.get("/api/category/getuserpanel/event"),
     ]);
     return {

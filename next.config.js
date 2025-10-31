@@ -13,6 +13,10 @@ const nextConfig = {
         source: "/sitemap.xml",
         destination: "/api/sitemap.xml",
       },
+      {
+        source: "/llms.txt",
+        destination: "/api/llms.txt",
+      },
     ];
   },
 };

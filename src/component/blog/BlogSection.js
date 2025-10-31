@@ -14,20 +14,33 @@ import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDouble
 import { useRef } from "react";
 import Loader from "@/common-component/loader/Loader";
 import { loaderContext } from "@/contextApi/loaderContext";
+import { apiClient } from "@/lib/api-client";
 
-const BlogSection = ({ posts }) => {
-  const [visibledPosts, setVisibledPosts] = useState([]);
-  const {loading ,setLoading} = useContext(loaderContext);
-  
-  
+const BlogSection = ({ posts, setPosts }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const {loading, setLoading} = useContext(loaderContext);
 
-  useEffect(() => {
-    setVisibledPosts(posts?.slice(0, 15))
-  }, [JSON.stringify(posts)])
-
-  const handleViewMore = () => {
-    const newAddPosts = posts?.slice(visibledPosts.length, visibledPosts.length + 6);
-    setVisibledPosts((prev) => [...prev, ...newAddPosts]);
+  const handleViewMore = async () => {
+    setLoadingMore(true);
+    try {
+      const nextPage = currentPage + 1;
+      const response = await apiClient.get(`/api/blogs/all/event?type=blog&status=Published&page=${nextPage}&limit=10`);
+      const newPosts = response.data.blogs || [];
+      
+      if (newPosts.length < 10) {
+        setHasMore(false);
+      }
+      
+      setPosts((prev) => [...prev, ...newPosts]);
+      setCurrentPage(nextPage);
+    } catch (error) {
+      console.error("Error fetching more posts:", error);
+      setHasMore(false);
+    } finally {
+      setLoadingMore(false);
+    }
   }
 
   const blogRef = useRef();
@@ -82,7 +95,7 @@ const BlogSection = ({ posts }) => {
             },
           }}
         >
-          {visibledPosts.length ? visibledPosts.map((post, idx) => (
+          {posts.length ? posts.map((post, idx) => (
             <Box
               key={post._id || idx}
               sx={{
@@ -166,17 +179,22 @@ const BlogSection = ({ posts }) => {
               </Link>
             </Box>
           )) :
-            <Typography>No Blogs Available</Typography>
+            <Typography>{`No Blogs Available`}</Typography>
           }
 
         </Box>
         {
-          visibledPosts.length < posts.length &&
-          visibledPosts.length >= 15 &&
+          hasMore && !loadingMore &&
           <Box sx={{ textAlign: "center", paddingTop: 2 }}>
             <IconButton aria-label="view more" className="view-more-icon" size="large" onClick={handleViewMore}>
               <KeyboardDoubleArrowDownSharpIcon sx={{ height: "40px", fill: "#DAA412", width: "40px" }} />
             </IconButton>
+          </Box>
+        }
+        {
+          loadingMore &&
+          <Box sx={{ textAlign: "center", paddingTop: 2 }}>
+            <Typography sx={{ fontFamily: "Akatab,Sans-serif", color: "#DAA412" }}>Loading more blogs...</Typography>
           </Box>
         }
       </Container>
