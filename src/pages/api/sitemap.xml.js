@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   let blogs;
   try {
-    const blogResponse = await apiClient.get("/api/blogs/all/event?type=blog");
+    const blogResponse = await apiClient.get("/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000");
     const data = blogResponse.data.blogs;
 
     if (Array.isArray(data)) {
