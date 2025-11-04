@@ -1,11 +1,11 @@
-import React  from "react";
+import React from "react";
 import {
   Box,
 } from "@mui/material";
 
-const Subtext = ({blogtext}) => {
-const description = blogtext
-  
+const Subtext = ({ blogtext }) => {
+  const description = blogtext
+
   return (
     <Box
       display="flex"
@@ -14,6 +14,7 @@ const description = blogtext
       flexDirection="column"
       px={{ xs: 2, sm: 6, md: 10 }}
       py={2}
+      sx={{ overflowX: "hidden" }}
     >
       <Box maxWidth="1100px" width="100%" textAlign="left">
         <Box>
@@ -49,11 +50,25 @@ const description = blogtext
                 fontFamily: "Akatab,Sans-serif",
                 fontWeight: 400,
                 color: "#000D1F",
-                fontSize:{xs:"16px", sm:"16px", md:"16px", lg:"18px"}
+                fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" }
               },
               "& ul, & ol": {
                 paddingLeft: "50px",
                 fontSize: { xs: "16px", sm: "16px", md: "18px" },
+              },
+              "img": {
+                height: { xs: "250px", sm: "300px", md: "400px" },
+                width: { xs: "250px", sm: "300px", md: "400px" },
+              },
+               "& table": {
+                display: {xs:"block", lg:"contents"},
+                width: "100%",
+                minWidth:"300px",
+                overflowX: "auto",
+              },
+              "& table th, & table td": {
+                padding: "8px",
+                whiteSpace: "nowrap",
               },
             }}
             dangerouslySetInnerHTML={{ __html: description }}
