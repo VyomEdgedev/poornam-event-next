@@ -4,9 +4,9 @@ import {
 } from "@mui/material";
 
 const Subtext = ({ blogtext }) => {
- let processed = blogtext || "";
+  let processed = blogtext || "";
 
-    processed = processed.replace(
+  processed = processed.replace(
     /(<iframe\b[^>]*?)\s*sandbox=(["']?)?[^"'\s>]*?(["']?)?([^>]*>)/gi,
     "$1 $4"
   );
@@ -30,70 +30,70 @@ const Subtext = ({ blogtext }) => {
           <Box
             component="div"
             sx={{
-            // border: "1px solid #37863f",
-            borderRadius: { xs: "10px", sm: "20px", md: "30px" },
-            p: { xs: 3, md: 5 },
-            lineHeight: 1.6,
-            backgroundColor: "#fff",
-            color: "#000D1F",
-
-            "& *": {
-              fontFamily: "Akatab, Sans-serif",
-            },
-            "& h1": {
-              fontFamily: "Gloock, serif",
-              fontWeight: 400,
+              // border: "1px solid #37863f",
+              borderRadius: { xs: "10px", sm: "20px", md: "30px" },
+              p: { xs: 3, md: 5 },
+              lineHeight: 1.6,
+              backgroundColor: "#fff",
               color: "#000D1F",
-            },
-            "& h2, & h3, & h4": {
-              fontFamily: "Akatab, Sans-serif",
-              fontWeight: 600,
-              color: "#000D1F",
-            },
-            "& h3, & h4": {
-              fontSize: { xs: "20px", sm: "22px", md: "28px" },
-            },
-            "& h5, & h6, & p": {
-              fontWeight: 400,
-              color: "#000D1F",
-            },
-            "& p": {
-              fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" },
-            },
 
-            "& ul, & ol": {
-              paddingLeft: "50px",
-              fontSize: { xs: "16px", sm: "16px", md: "18px" },
-              listStylePosition: "inside",
-            },
+              "& *": {
+                fontFamily: "Akatab, Sans-serif",
+              },
+              "& h1": {
+                fontFamily: "Gloock, serif",
+                fontWeight: 400,
+                color: "#000D1F",
+              },
+              "& h2, & h3, & h4": {
+                fontFamily: "Akatab, Sans-serif",
+                fontWeight: 600,
+                color: "#000D1F",
+              },
+              "& h3, & h4": {
+                fontSize: { xs: "20px", sm: "22px", md: "28px" },
+              },
+              "& h5, & h6, & p": {
+                fontWeight: 400,
+                color: "#000D1F",
+              },
+              "& p": {
+                fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" },
+              },
 
-            "& img": {
-              maxWidth: "100%",
-              height: "auto",
-              display: "block",
-              borderRadius: "10px",
-            },
+              "& ul, & ol": {
+                paddingLeft: "50px",
+                fontSize: { xs: "16px", sm: "16px", md: "18px" },
+                listStylePosition: "inside",
+              },
 
-            "& .table-wrapper": {
-              width: "100%",
-              overflowX: "auto",
-              display: "block",
-            },
-            "& table": {
-              width: "100%",
-              borderCollapse: "collapse",
-            },
-            "& table th, & table td": {
-              border: "1px solid #ddd",
-              padding: "8px",
-              textAlign: "left",
-              whiteSpace: "nowrap",
-            },
-            "& table th": {
-              backgroundColor: "#f5f5f5",
-            },
-          }}
-            dangerouslySetInnerHTML={{  __html: processed }}
+              "& img": {
+                maxWidth: "100%",
+                height: "auto",
+                display: "block",
+                margin: "1px auto",
+              },
+
+              "& .table-wrapper": {
+                width: "100%",
+                overflowX: "auto",
+                display: "block",
+              },
+              "& table": {
+                width: "100%",
+                borderCollapse: "collapse",
+              },
+              "& table th, & table td": {
+                border: "1px solid #ddd",
+                padding: "8px",
+                textAlign: "left",
+                whiteSpace: "nowrap",
+              },
+              "& table th": {
+                backgroundColor: "#f5f5f5",
+              },
+            }}
+            dangerouslySetInnerHTML={{ __html: processed }}
           />
         </Box>
       </Box>
