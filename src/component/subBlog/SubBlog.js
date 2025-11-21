@@ -23,7 +23,7 @@ export default function SubBlog({ blog }) {
         metaTitle={blog?.meta?.title}
         metaDescription={blog?.meta?.description}
         keywords={blog?.meta?.keywords}
-        canonical={`${SITE_URL}/blog/${blog?.meta?.canonicalUrl || ""}`}
+        canonical={`${SITE_URL}/blog/${blog?.uid || ""}`}
         ogTitle={blog?.ogTags?.title}
         ogDescription={blog?.ogTags?.description}
         ogImage={`${SITE_URL}/blog-og.jpg`}
