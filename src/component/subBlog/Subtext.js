@@ -61,11 +61,11 @@ const Subtext = ({ blogtext }) => {
                 fontSize: { xs: "16px", sm: "16px", md: "16px", lg: "18px" },
               },
 
-              "& ul, & ol": {
-                paddingLeft: "50px",
-                fontSize: { xs: "16px", sm: "16px", md: "18px" },
-                listStylePosition: "inside",
-              },
+              // "& ul, & ol": {
+              //   paddingLeft: "50px",
+              //   fontSize: { xs: "16px", sm: "16px", md: "18px" },
+              //   listStylePosition: "inside",
+              // },
 
               "& img": {
                 maxWidth: "100%",
