@@ -55,8 +55,9 @@ export default function   Snapshot() {
          <Box id="instagram-embed" sx={{ marginTop: 5 , display:"flex", justifyContent:"center"}}>
             <blockquote
               className="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/reel/DNNj2zcz2gp/?igsh=aWZjeTg5M3RwbHRo"
+              data-instgrm-permalink="https://www.instagram.com/reel/DNNj2zcz2gp/"
               data-instgrm-version="12"
+              title="Instagram post from Poornam Events - Wedding snapshots and memories"
               style={{
                 background: "#FFF",
                 border: 0,

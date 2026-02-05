@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Breadcrumbs, Typography, Box } from "@mui/material";
 import { Home, NavigateNext } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const BreadcrumbsComponent = ({
   items = [],
@@ -12,9 +13,16 @@ const BreadcrumbsComponent = ({
   homeIconColor = "#DAA412",
   sx = {},
 }) => {
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+
   // If no items provided, return null or empty component
   if (!items || items.length === 0) {
     return null;
+  }
+
+  const handleNaviagate=()=>{
+      setLoading(true);
   }
 
   return (
@@ -81,7 +89,7 @@ const BreadcrumbsComponent = ({
                 },
                   fontFamily: "Akatab, Sans-serif",
               }}
-              onClick={item.onClick}
+              onClick={()=>{item.onClick; handleNaviagate()}}
             >
               {isHome && showHomeIcon && (
                 <Image

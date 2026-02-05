@@ -32,14 +32,14 @@ export default function CookiesBanner() {
     analytics: false,
     marketing: false,
   });
-  
+
   useEffect(() => {
     const cookiePref = Cookies.get(COOKIE_KEY);
     if (cookiePref) {
       try {
         const parsed = JSON.parse(cookiePref);
         setPreferences({
-          necessary: true, 
+          necessary: true,
           analytics: !!parsed.analytics,
           marketing: !!parsed.marketing,
         });
@@ -52,7 +52,7 @@ export default function CookiesBanner() {
       setShowBanner(true);
     }
   }, []);
-  
+
   useEffect(() => {
     if (!showBanner) setShowPreferences(false);
   }, [showBanner]);
@@ -62,19 +62,19 @@ export default function CookiesBanner() {
     Cookies.set(COOKIE_KEY, JSON.stringify(prefs), { expires: 365, sameSite: "Lax" });
   };
   const handleAcceptAll = () => {
-    const newPrefs={
+    const newPrefs = {
       necessary: true,
       analytics: true,
       marketing: true,
     }
-     setPreferences(newPrefs);
+    setPreferences(newPrefs);
     savePreferencesToCookie(newPrefs);
     setShowBanner(false);
-    
+
   };
 
   const handleRejectNonEssential = () => {
-    const newPrefs={
+    const newPrefs = {
       necessary: true,
       analytics: false,
       marketing: false,
@@ -113,27 +113,27 @@ export default function CookiesBanner() {
           right: 0,
           zIndex: 1300,
           p: 2,
-         backgroundColor: "rgba(1, 29, 74, 0.8)",
+          backgroundColor: "rgba(1, 29, 74, 0.8)",
           color: "white",
           fontFamily: "Akatab,Sans-serif",
           borderRadius: "16px 16px 0 0",
         }}
       >
-        <Box sx={{ mx: "auto",  display: { xs: "block", sm: "block", md: "flex"}, justifyContent: "space-between"}}>
+        <Box sx={{ mx: "auto", display: { xs: "block", sm: "block", md: "flex" }, justifyContent: "space-between" }}>
           <Box
-            sx={{ width: { xs: "100%", sm: "100%", md: "60%"}, display: "flex", alignItems: "flex-start", gap: 1, mb: 0 }}
+            sx={{ width: { xs: "100%", sm: "100%", md: "60%" }, display: "flex", alignItems: "flex-start", gap: 1, mb: 0 }}
           >
             {/* <CookieIcon sx={{ fontSize: 32, color: '#ffa726', mt: 0.5 }} /> */}
-            <Box sx={{ flex: 1 ,}}>
+            <Box sx={{ flex: 1, }}>
               <Typography
                 component="h5"
-                sx={{  fontWeight: "900"  , fontFamily:"Akatab,Sans-serif",mb: 1 }}
+                sx={{ fontWeight: "900", fontFamily: "Akatab,Sans-serif", mb: 1 }}
               >
                 {`We Use Cookies (Not the Wedding Wale Wale)`}
               </Typography>
               <Typography
                 component="p"
-                sx={{  color: "rgba(255,255,255,0.8)", lineHeight: 1.1, }}
+                sx={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.1, }}
               >
                 {`This website uses cookies to give you a better, faster, and more personalized experience.  
                 By continuing to browse, you agree to our use of cookies as per our Privacy Policy.`}
@@ -142,58 +142,61 @@ export default function CookiesBanner() {
           </Box>
           <Box
             sx={{
-              display:{xs:"block", sm:"flex"},
+              display: { xs: "block", sm: "flex" },
               alignItems: "center",
               gap: 2,
               mt: { xs: 2, sm: 0 },
             }}
           >
-            <Box sx={{display:"flex", alignItems:"Center", gap:"10px" , mt:1,mb:0.5}}>
-            <CustomButton
-              onClick={handleAcceptAll}
-              sx={{
-                fontWeight: "bold",
+            <Box sx={{ display: "flex", alignItems: "Center", gap: "10px", mt: 1, mb: 0.5 }}>
+              <CustomButton
+                ariaLabel={"Accept All"}
+                onClick={handleAcceptAll}
+                sx={{
+                  fontWeight: "bold",
 
-              }}
-            >
-              Accept All
-            </CustomButton>
-            <CustomButton
-              variant="outlined"
-              onClick={handleManagePreferences}
-              
-              sx={{
-                borderColor: "white",
-                width:"250px",
-                color: "white",
-                "&:hover": {
-                  borderColor: "#ffa726",
-                  backgroundColor: "#DAA412",
-                },
-               
-              }}
-            >
-              Manage Preferences
-            </CustomButton>
+                }}
+              >
+                Accept All
+              </CustomButton>
+              <CustomButton
+                ariaLabel={"Manage Preferences"}
+                variant="outlined"
+                onClick={handleManagePreferences}
+
+                sx={{
+                  borderColor: "white",
+                  width: "250px",
+                  color: "white",
+                  "&:hover": {
+                    borderColor: "#ffa726",
+                    backgroundColor: "#DAA412",
+                  },
+
+                }}
+              >
+                Manage Preferences
+              </CustomButton>
             </Box >
             <CustomButton
+              ariaLabel={"Reject Non-Essential"}
               variant="outlined"
               onClick={handleRejectNonEssential}
               sx={{
-                mt:1,
-                borderColor:"white",
+                mt: 1,
+                borderColor: "white",
                 color: "rgba(255,255,255,0.7)",
                 "&:hover": {
                   borderColor: "#DAA412",
-                           color: "white",
-                
+                  color: "white",
+
                 },
-                
+
               }}
             >
               Reject Non-Essential
             </CustomButton>
-            
+
           </Box>
         </Box>
       </Paper>
@@ -213,25 +216,17 @@ export default function CookiesBanner() {
           },
         }}
       >
-        <DialogTitle
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            pb: 1,
-          }}
+        <Typography variant="h6" component="div" sx={{ fontWeight: "bold" }}>
+          {`Cookie Preferences`}
+        </Typography>
+        <IconButton
+          aria-label="close"
+          onClick={() => setShowPreferences(false)}
+          sx={{ color: "#DAA412" }}
         >
-          <Typography variant="h6" component="div" sx={{ fontWeight: "bold" }}>
-            {`Cookie Preferences`}
-          </Typography>
-          <IconButton
-            aria-label="close"
-            onClick={() => setShowPreferences(false)}
-            sx={{ color: "#DAA412" }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
+          <CloseIcon />
+        </IconButton>
+
         <DialogContent sx={{ pt: 2 }}>
           {/* Necessary Cookies */}
           <Box sx={{ mb: 3 }}>
@@ -243,7 +238,7 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-             <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
+              <Typography component="p" sx={{ fontWeight: "900", fontFamily: "Akatab,Sans-serif" }}>
                 {`Necessary Cookies`}
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -270,7 +265,7 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-              <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
+              <Typography component="p" sx={{ fontWeight: "900", fontFamily: "Akatab,Sans-serif" }}>
                 {`Analytics Cookies`}
               </Typography>
               <FormControlLabel
@@ -308,7 +303,7 @@ export default function CookiesBanner() {
                 mb: 1,
               }}
             >
-              <Typography component="h6" sx={{ fontWeight: "900"  , fontFamily:"Akatab,Sans-serif"}}>
+              <Typography component="p" sx={{ fontWeight: "900", fontFamily: "Akatab,Sans-serif" }}>
                 {`Marketing Cookies`}
               </Typography>
               <FormControlLabel
@@ -336,7 +331,7 @@ export default function CookiesBanner() {
           </Box>
         </DialogContent>
         <DialogActions sx={{ p: 3, pt: 1 }}>
-          <CustomButton onClick={handleSavePreferences} size="large" fullWidth>
+          <CustomButton ariaLabel={"save-preferences"} onClick={handleSavePreferences} size="large" fullWidth>
             {`Save My Preferences`}
           </CustomButton>
         </DialogActions>

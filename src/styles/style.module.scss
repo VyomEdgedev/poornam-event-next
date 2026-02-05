@@ -14,3 +14,30 @@
   }
 }
 
+
+
+@keyframes rotateHorizontal {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.loaderAnimation{
+  display: inline-block;
+  animation: rotateHorizontal 2s linear infinite;
+  transform-style: preserve-3d; /* for 3D effect */
+}
+
+.footerScroll{
+    &::-webkit-scrollbar{
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background-color: rgb(255, 255, 255);
+      border-radius: 5px;
+    }
+}
+

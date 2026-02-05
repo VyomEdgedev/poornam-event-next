@@ -3,8 +3,10 @@ import CustomBanner from '../banner/CustomBanner';
 import CustomButton from '../button/CustomButton';
 import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function Page404() {
+  const router = useRouter();
   const handlePage404W = () => {
     window.open("https://wa.me/919519066885", "_blank");
   };
@@ -13,7 +15,7 @@ function Page404() {
     <Box>
       <CustomBanner
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         height={{ xs: "15vh", sm: "15vh", md: "40vh"}}
         
       />
@@ -97,19 +99,19 @@ function Page404() {
           gap={{xs: '10px', sm: '20px', md: '30px'}}
           padding="20px"
         >
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <CustomButton sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}} data-testid="notify-button" testId="home">
+        
+            <CustomButton ariaLabel={"Home"} onClick={() => router.push('/')}  sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}} >
               Take Me Home
             </CustomButton>
-          </Link>
           
-          <Link href="/contact" style={{ textDecoration: 'none' }}>
-            <CustomButton sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}}data-testid="notify-button">
+          
+          
+            <CustomButton ariaLabel={"Contact Us"} onClick={() => router.push('/contact')} sx={{ fontSize: {  xs: '12px', sm: '13px', md: '16px' }}}>
               Contact Us
             </CustomButton>
-          </Link>
+
           
-          <CustomButton sx={{ fontSize: { xs: '12px', sm: '13px', md: '16px' }}} data-testid="notify-button" onClick={handlePage404W}>
+          <CustomButton ariaLabel={"Plan My Wedding"} sx={{ fontSize: { xs: '12px', sm: '13px', md: '16px' }}} onClick={handlePage404W}>
             Plan My Wedding
           </CustomButton>
         </Box>

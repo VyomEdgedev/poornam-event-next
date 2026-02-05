@@ -4,11 +4,16 @@ import { Box, Typography, Stack, Container } from "@mui/material";
 import Image from "next/image";
 import ConnectModal from "@/common-component/modal/ConnectModal";
 import Link from "next/link";
-import {useState } from "react";
+import {useContext, useState } from "react";
 import Styles from "@/styles/Home.module.scss";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 export default function HeroSection() {
   const [open, setOpen] = useState(false);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
+  
+  
 
   const handleWeddingPlan = () => {
     setOpen(true);
@@ -17,7 +22,6 @@ export default function HeroSection() {
   const handleTalkToPlanner = () => {
     window.open("https://wa.me/919519066885", "_blank");
   };
-
 
   return (
     <Box sx={{ backgroundColor: "#030b1d", overflow: "hidden", pt: { xs: 12, md: 0 } }}>
@@ -49,9 +53,9 @@ export default function HeroSection() {
                   width: { xs: 80, lg: 100 },
                 }}
               >
-                <Link href="/" passHref>
+                <Link href="/" passHref  >
                   <Image
-                    src={"/logo2.png"}
+                    src={"/logo2.webp"}
                     alt="Logo"
                     width={120}
                     height={120}
@@ -125,7 +129,7 @@ export default function HeroSection() {
                   alignContent={{ xs: "center", md: "flex-start" }}
                 >
                   <CustomButton
-                    data-testid="notify-button"
+                    ariaLabel={"Plan My Wedding"}
                     variant="primary"
                     onClick={handleWeddingPlan}
                     sx={{
@@ -138,7 +142,7 @@ export default function HeroSection() {
                   </CustomButton>
 
                   <CustomButton
-                    data-testid="notify-button"
+                    ariaLabel={"Talk to Our Planner"}
                     variant="outlined"
                     sx={{
                       color: "#000D1F",
@@ -149,7 +153,7 @@ export default function HeroSection() {
                       borderRadius: "30px",
                       textTransform: "none",
                       fontFamily: "Akatab,Sans-serif",
-                      fontSize: { xs: "0.70rem", sm: "1rem" },
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
                       fontWeight: 400,
                       whiteSpace: "nowrap",
                       "&:hover": {
@@ -179,11 +183,12 @@ export default function HeroSection() {
               }}
             >
               <Image
-                src="/sadhi.png"
+                src="/sadhi.webp"
                 alt="Bridal Hero"
                 width={500}
                 height={405}
                 className={Styles.HomeBrideImg}
+                priority
               />
             </Box>
           </Box>

@@ -1,11 +1,13 @@
 // components/Banner.js
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CustomButton from "../button/CustomButton";
 import Image from "next/image";
 import Link from "next/link";
 import BreadcrumbsComponent from "../breadcrumbs/BreadcrumbsComponent";
+import { usePathname } from "next/navigation";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 // Custom styled components
 const BannerSection = styled(Box)(({ theme, height, backgroundcolor }) => ({
@@ -338,7 +340,14 @@ const CustomBanner = ({
   ...props
 }) => {
   const bannerHeight = height || "450px";
+  const {loading ,setLoading} = useContext(loaderContext);
+  const pathName = usePathname();
 
+  const handleNaviagate=(path)=>{
+    if(pathName !== path){
+      setLoading(true);
+    }
+  }
   return (
     <BannerSection
       height={bannerHeight}
@@ -359,8 +368,9 @@ const CustomBanner = ({
         {/* Logo */}
         {showLogo && logoSrc && (
           <Link href="/" style={{ display: "block" }}>
-            <LogoContainer showlogo={showLogo} logoposition={logoPosition}>
+            <LogoContainer showlogo={showLogo.toString()} logoposition={logoPosition}>
               <Image
+                onClick={()=>handleNaviagate("/")}
                 src={logoSrc}
                 alt={logoAlt}
                 width={120}

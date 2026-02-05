@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   let blogs;
   try {
-    const blogResponse = await apiClient.get("/api/blogs/all/event");
+    const blogResponse = await apiClient.get("/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000");
     const data = blogResponse.data.blogs;
 
     if (Array.isArray(data)) {
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       blogs = data.map((item) => (obj.page = `blog/${item?.uid}`));
     }
   } catch (error) {
-    console.log("Error fetching blogs:", error);
+    console.error("Error fetching blogs:", error);
   }
 
   let portfolio;
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       );
     }
   } catch (error) {
-    console.log("Error fetching portfolio:", error);
+    console.error("Error fetching portfolio:", error);
   }
   let subservices;
   try {
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
       );
     }
   } catch (error) {
-    console.log("Error fetching subservices:", error);
+    console.error("Error fetching subservices:", error);
   }
   const allUrls = staticPages.concat(blogs,subservices);
 

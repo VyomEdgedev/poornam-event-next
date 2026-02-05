@@ -13,6 +13,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     fullName: "",
     message: "",
+    email:""
   });
 
   const [errors, setErrors] = useState({});
@@ -47,8 +48,12 @@ export default function ContactSection() {
     setLoading(true);
 
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (!formData?.fullName?.trim()) newErrors.fullName = "Full Name is required";
+    if (!formData?.message?.trim()) newErrors.message = "Message is required";
+    if (!formData?.email?.trim()) newErrors.email = "Email is required";
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(formData?.email?.trim() && !emailRegex.test(formData?.email)) newErrors.email = "Please enter a valid email";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -62,9 +67,10 @@ export default function ContactSection() {
         fullName: formData?.fullName,
         message: formData?.message,
         sourcePage: "/home",
+        email:formData?.email
       };
-      const response = await apiClient.post("/api/userform/event", payload);
-      setFormData({ fullName: "", message: "" });
+      const response = await apiClient.post("/api/inquiryform/event", payload);
+      setFormData({ fullName: "", message: "" ,email:"" });
       setOpenSuccess(true);
       setTimeout(() => {
         setOpenSuccess(false);
@@ -76,7 +82,7 @@ export default function ContactSection() {
         error?.message ||
         "";
 
-      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key") || errorMsg.includes("email already exists") ) {
         toast.error("You are already registered!");
       } else {
         toast.error("Something went wrong. Please try again.");
@@ -154,14 +160,56 @@ export default function ContactSection() {
                 <TextField
                   id="user-name"
                   name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
+                  type="text"
+                  value={formData.fullName}  
+                  onChange={(e)=>  /^[A-Za-z\s]*$/.test(e.target.value) && handleChange(e)}
                   placeholder="Enter your name"
                   variant="outlined"
                   size="small"
                   fullWidth
                   error={!!errors.fullName}
                   helperText={errors.fullName}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#ccc",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#011d4a", // Hover color
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#011d4a", // Focus (click) color
+                        borderWidth: 2,
+                      },
+                    },
+                  }}
+                />
+              </Box>
+
+              {/* Email Field */}
+              <Box>
+                <Typography
+                  htmlFor="email"
+                  sx={{
+                    mb: 0.5,
+                    fontFamily: "Akatab, Sans-serif",
+                    fontWeight: 500,
+                    color: "#000000",
+                  }}
+                >
+                  {`Your Email`}
+                </Typography>
+                <TextField
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  error={!!errors.email}
+                  helperText={errors.email}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
@@ -226,7 +274,7 @@ export default function ContactSection() {
 
               {/* Submit Button */}
               <CustomButton
-                data-testid="notify-button"
+                ariaLabel={"Let's Chat"}
                 type="submit"
                 variant="primary"
                 sx={{

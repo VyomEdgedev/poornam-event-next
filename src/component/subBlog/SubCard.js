@@ -29,7 +29,6 @@ const BlogCard = ({ blogimg }) => {
         setShowShareMessage(true);
       }
     } catch (error) {
-      console.log("clipboard"); 
       try {
         await navigator.clipboard.writeText(currentUrl);
         setShowShareMessage(true);
@@ -75,6 +74,7 @@ const BlogCard = ({ blogimg }) => {
           {/* Share icon top-right */}
           <IconButton
             data-testid="share-button"
+            aria-label="share"
             onClick={handleShare}
             sx={{
               position: "absolute",

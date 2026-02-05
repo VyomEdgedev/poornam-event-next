@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Box } from "@mui/material";
 import SubCard from "./SubCard";
 import Subtext from "./Subtext";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import SEO from "@/common-component/SEO/seo";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default function SubBlog({ blog }) {
+  const {loading ,setLoading} = useContext(loaderContext);
+  useEffect(()=>{
+      setLoading(false);
+  },[])
+  if(loading) return <Loader/>
+
     return (
     <>
       <SEO
@@ -15,7 +23,7 @@ export default function SubBlog({ blog }) {
         metaTitle={blog?.meta?.title}
         metaDescription={blog?.meta?.description}
         keywords={blog?.meta?.keywords}
-        canonical={`${SITE_URL}/blog/${blog?.meta?.canonicalUrl || ""}`}
+        canonical={`${SITE_URL}/blog/${blog?.uid || ""}`}
         ogTitle={blog?.ogTags?.title}
         ogDescription={blog?.ogTags?.description}
         ogImage={`${SITE_URL}/blog-og.jpg`}
@@ -27,7 +35,7 @@ export default function SubBlog({ blog }) {
       <Box>
         <SubCard blogimg={blog} />
         <Subtext blogtext={blog?.description} />
-        {Array.isArray(blog?.faq) && blog.faq.length > 0 && (
+        {Array.isArray(blog?.faq) && blog?.faq?.[0]?.question?.length > 0 && (
           <FAQSection faqData={blog.faq} />
         )}
       </Box>

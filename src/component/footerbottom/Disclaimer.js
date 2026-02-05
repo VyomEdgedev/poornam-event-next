@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Container,
   Typography,
@@ -15,6 +15,9 @@ import {
 import { styled } from "@mui/material/styles";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import SEO from "@/common-component/SEO/seo";
+import Link from "next/link";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -141,8 +144,9 @@ const disclaimerData = {
         "If you have any questions about this disclaimer or any of our policies:",
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
-        email: "info@poornamevents.com",
+        email: "eventspoornam@gmail.com",
         phone: "+91-9519066885",
+        phone2: "+91-8839844233",
       },
     },
   ],
@@ -150,8 +154,10 @@ const disclaimerData = {
 
 export default function Disclaimer() {
   const theme = useTheme();
+  const {loading ,setLoading} = useContext(loaderContext);
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+   if(loading) return <Loader/>
   return (
     <>
       <>
@@ -170,7 +176,7 @@ export default function Disclaimer() {
           robots="index, follow" //  default
         />
       </>
-      <CustomBanner showLogo={true} logoSrc="/logo.png" height="30vh" />
+      <CustomBanner showLogo={true} logoSrc="/logo.webp" height="35vh" />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Header Section */}
         <StyledPaper elevation={3}>
@@ -279,15 +285,15 @@ export default function Disclaimer() {
                   {section.contactInfo.company}
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`mailto:${section.contactInfo.email}`}
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.email}
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`tel:${section.contactInfo.phone.replace(
                       /[^+\d]/g,
                       ""
@@ -295,7 +301,18 @@ export default function Disclaimer() {
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.phone}
-                  </a>
+                  </Link>
+                </Typography>
+                <Typography variant="body1" color="black">
+                  <Link
+                    href={`tel:${section.contactInfo.phone2.replace(
+                      /[^+\d]/g,
+                      ""
+                    )}`}
+                    style={{ color: "inherit", textDecoration: "underline" }}
+                  >
+                    {section.contactInfo.phone2}
+                  </Link>
                 </Typography>
               </Box>
             )}

@@ -1,7 +1,6 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import CustomButton from "@/common-component/button/CustomButton";
-import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import WeddingThemes from "./WeddingThemes";
 import ShowCase from "./ShowCase";
 import RecentPosts from "./RecentPosts";
@@ -9,8 +8,10 @@ import SocialMediaFollow from "./SocialMediaFollow";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import SEO from "@/common-component/SEO/seo";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
-const Portfolio = () => {
+const Portfolio = ({ gallery }) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
   const myFAQData = [
     {
@@ -33,9 +34,18 @@ const Portfolio = () => {
     },
   ];
   const [open, setOpen] = useState(false);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const handleportfolio = () => {
     setOpen(true);
   };
+
+  useEffect(()=>{
+     setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
+
   return (
     <>
       <>
@@ -58,23 +68,13 @@ const Portfolio = () => {
         title="Let’s Make Shaadi Magic Together!"
         // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
         paragraphSubtitle={`From planning to "I do", we've got your back`}
-        backgroundImage="/portfoliobanner.png"
+        backgroundImage="/portfoliobanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
-          // { href: '/blog', label: 'Blog' },
           { label: "Gallery" },
         ]}
-        // Optional: customize breadcrumbs position
-        breadcrumbsPosition={{
-          top: "320px",
-          left: "25px",
-          lg: { top: "300px", left: "25px" },
-          md: { top: "200px", left: "26px" },
-          sm: { top: "330px", left: "3px" },
-          xs: { top: "200px", left: "20px" },
-        }}
         overlay={{
           background:
             "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
@@ -88,13 +88,17 @@ const Portfolio = () => {
           },
         }}
       >
-        <CustomButton data-testid="notify-button"  fontFamily= "Akatab, Sans-serif !important" onClick={handleportfolio}>
+        <CustomButton
+          data-testid="notify-button"
+          fontFamily="Akatab, Sans-serif !important"
+          onClick={handleportfolio}
+        >
           {` Plan My Wedding`}
         </CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner>
       <WeddingThemes />
-      <ShowCase />
+      <ShowCase categoriesGallery={gallery}   />
       <RecentPosts />
       <FAQSection faqData={myFAQData} />
       <SocialMediaFollow />

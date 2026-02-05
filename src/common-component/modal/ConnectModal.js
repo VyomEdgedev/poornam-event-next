@@ -61,6 +61,7 @@ export default function ConnectModal({ open, setOpen }) {
       <Box sx={responsiveStyle}>
         {/* Close Button */}
         <IconButton
+          aria-label="close"
           onClick={handleClose}
           sx={{
             position: "absolute",
@@ -71,7 +72,6 @@ export default function ConnectModal({ open, setOpen }) {
               backgroundColor: (theme) => theme.palette.grey[100],
             },
           }}
-          aria-label="close"
         >
           <CloseIcon sx={{ fontSize: 24, color: "#DAA412" }} />
         </IconButton>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "../connectus/Form";
 import Chat from "./Chat";
 import CheckList from "./CheckList";
@@ -12,6 +12,8 @@ import CustomButton from "@/common-component/button/CustomButton";
 import SEO from "@/common-component/SEO/seo";
 import FAQSection from "@/common-component/Faq/FAQSection";
 import ConnectModal from "@/common-component/modal/ConnectModal";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
 
 export default function ContactUs() {
@@ -60,9 +62,20 @@ export default function ContactUs() {
 
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ;
    const [open, setOpen] = useState(false)
+   const {loading ,setLoading} = useContext(loaderContext);
+
+   useEffect(()=>{
+    setLoading(false);
+   },[])
+  
+
+  
   const handleWeddingPlan=() =>{
    
     setOpen(true)}
+
+    if(loading) return <Loader/>
+
   return (
     <>
       <>
@@ -85,23 +98,13 @@ export default function ContactUs() {
         title="Let's Make Shaadi Magic Together!"
         paragraphSubtitle="From planning to 'I do', we've got your back!"
         // subtitle="Welcome to the only wedding blog that understands your vibe, your chaos, and your cousin who always wants to dance at haldi. From serious planning tips to hilarious shaadi stories, we’ve written it all — with ❤️, dhol, and a bit of dholak. For brides, grooms, families, and even the baaratis. Let’s get planning, Poornam-style."
-        backgroundImage="/ConnectUsBanner.png"
+        backgroundImage="/ConnectUsBanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
          breadcrumbs={[
           { href: "/", isHome: true },
-          // { href: '/blog', label: 'Blog' },
           { label: "Connect us" },
         ]}
-        // Optional: customize breadcrumbs position
-        breadcrumbsPosition={{
-          top: "320px",
-          left: "25px",
-          lg: { top: "300px", left: "25px" },
-          md: { top: "200px", left: "26px" },
-          sm: { top: "330px", left: "3px" },
-          xs: { top: "200px", left: "20px" },
-        }}
         overlay={{
           background: 'linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)',
           width: '70%',
@@ -114,7 +117,7 @@ export default function ContactUs() {
         }}
       >
         
-        <CustomButton onClick={handleWeddingPlan} data-testid="notify-button">{`Plan My Wedding`}</CustomButton>
+        <CustomButton onClick={handleWeddingPlan} ariaLabel={`Plan My Wedding`}>{`Plan My Wedding`}</CustomButton>
         <ConnectModal open={open} setOpen={setOpen} />
       </CustomBanner >
 

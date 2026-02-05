@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -12,6 +12,9 @@ import Link from "next/link";
 import Image from "next/image";
 import CookiesBanner from "@/component/footerbottom/cookies";
 import { apiClient } from "@/lib/api-client";
+import { usePathname } from "next/navigation";
+import { loaderContext } from "@/contextApi/loaderContext";
+import style from '@/styles/style.module.scss'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -25,17 +28,19 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Footer = () => {
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useContext(loaderContext);
+  const [apiLoading, setApiLoading] = useState(true);
+
+  const pathName = usePathname()
 
   const fetchPortfolio = async () => {
     try {
       const res = await apiClient.get("/api/service/AllServicePages/event");
-      console.log(res?.data);
       setAllPortfolioData(res.data);
-      setLoading(false);
+      setApiLoading(false);
     } catch (error) {
       console.error("Error fetching portfolio", error);
-      setLoading(false);
+      setApiLoading(false);
     }
   };
 
@@ -43,6 +48,13 @@ const Footer = () => {
     fetchPortfolio();
   }, []);
   // const [open, setOpen] = useState(false);
+
+  const handleNaviagate = (path) => {
+    if (pathName !== path) {
+      setLoading(true);
+    }
+  }
+
   return (
     <Box sx={{ backgroundColor: "#011d4a" }}>
       {/* Top dark blue section */}
@@ -55,18 +67,19 @@ const Footer = () => {
             spacing={4}
           >
             <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }} item>
-              <Link href="/" passHref legacyBehavior>
-                <a>
+              <Link href="/" >
+              
                   <Box sx={{ display: "inline-block", mb: 2 }}>
                     <Image
-                      src="/logo2.png"
+                      onClick={()=>handleNaviagate("/")}
+                      src="/logo2.webp"
                       alt="Logo"
                       width={100}
                       height={40}
                       style={{ height: "auto" }}
                     />
                   </Box>
-                </a>
+               
               </Link>
               <Typography
                 component="p"
@@ -117,6 +130,7 @@ const Footer = () => {
                     <Typography
                       variant="body2"
                       component={"p"}
+                      onClick={() => handleNaviagate(item.href)}
                       sx={{
                         fontFamily: "Akatab,Sans-serif",
                         mb: 0.5,
@@ -157,18 +171,19 @@ const Footer = () => {
                 >
                   Services
                 </Typography>
-                {loading ? (
+                {apiLoading ? (
                   <CircularProgress />
                 ) : (
-                  <Box sx={{ maxHeight: "150px", overflowY: "auto" }}>
-                    {AllPortfolioData.map((item, i) => (
+                  <Box className={style.footerScroll} sx={{ maxHeight: "170px", overflowY: "auto" }}>
+                    {AllPortfolioData.slice(0 ,5).map((item, i) => (
                       <Link
                         key={i}
                         href={`/services/${item.uid}`}
                         style={{ textDecoration: "none", width: "fit-content" }}
-                      >
+                      >  
                         <Typography
                           component="p"
+                          onClick={() => handleNaviagate(`/services/${item.uid}`)}
                           sx={{
                             fontFamily: "Akatab,Sans-serif",
                             mb: 0.5,
@@ -186,6 +201,27 @@ const Footer = () => {
                         </Typography>
                       </Link>
                     ))}
+                     <Link
+                        href={`/services`}
+                        style={{ textDecoration: "none", width: "fit-content" }}
+                      >  
+                        <Typography
+                          component="p"
+                          onClick={() => handleNaviagate(`/services`)}
+                          sx={{
+                            fontFamily: "Akatab,Sans-serif",
+                            mb: 0.5,
+                            color: "#E4E4E4",
+                            fontWeight: 400,
+                            textDecoration: "none",
+                            "&:hover": {
+                              textDecoration: "underline",
+                            },
+                          }}
+                        >
+                          View All Services
+                        </Typography>
+                      </Link>
                   </Box>
                 )}
               </Box>
@@ -214,7 +250,7 @@ const Footer = () => {
                   Contact
                 </Typography>
 
-           
+
                 <Typography
                   sx={{
                     fontFamily: "Akatab,Sans-serif",
@@ -223,8 +259,8 @@ const Footer = () => {
                   }}
                 >
                   Phone:{" "}
-                  <a
-                    href="tel:9519066005"
+                  <Link
+                    href="tel:9519066885"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
@@ -234,7 +270,7 @@ const Footer = () => {
                     }
                   >
                     9519066885,
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography
                   sx={{
@@ -243,8 +279,8 @@ const Footer = () => {
                     fontWeight: 400,
                   }}
                 >
-                 <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
-                  <a
+                  <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
+                  <Link
                     href="tel:8839844233"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
@@ -255,7 +291,7 @@ const Footer = () => {
                     }
                   >
                     8839844233
-                  </a>
+                  </Link>
                 </Typography>
 
                 <Typography
@@ -269,7 +305,7 @@ const Footer = () => {
                   Email:{" "}
                   <Box
                     component="a"
-                    href="mailto:info@poornamevents.com"
+                    href="mailto:eventspoornam@gmail.com"
                     style={{ color: "white", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
@@ -278,7 +314,7 @@ const Footer = () => {
                       (e.target.style.textDecoration = "none")
                     }
                   >
-                    info@poornamevents.com
+                    eventspoornam@gmail.com
                   </Box>
                 </Typography>
                 <Box>
@@ -346,16 +382,27 @@ const Footer = () => {
             justifyContent={{ xs: "center", md: "space-between" }}
           >
             {/* Left - Copyright */}
-            <Grid item xs={12} md={4}>
-              <Typography
-                component="p"
-                sx={{
-                  fontFamily: "Akatab,Sans-serif",
-                  textAlign: { xs: "center", md: "left" },
-                }}
+            <Grid sx={{ textAlign: { xs: "center", md: "left" } }} item xs={12} md={4}>
+              <Link
+                href={`/`}
+                style={{ textDecoration: "none", width: "fit-content", color: "inherit" }}
               >
-                © 2025 Poornam Events.
-              </Typography>
+                <Typography
+                  onClick={() => handleNaviagate("/")}
+                  sx={{
+                    fontFamily: "Akatab,Sans-serif",
+                    textAlign: { xs: "center", md: "left" },
+                    textDecoration: "none",
+                    "&:hover": {
+                      textDecoration: "underline",
+                    },
+                    color: "inherit"
+                  }}
+
+                >
+                  © {new Date().getFullYear()} Poornam Events.
+                </Typography>
+              </Link>
             </Grid>
 
             {/* Center - Policies */}
@@ -366,111 +413,36 @@ const Footer = () => {
                   fontFamily: "Akatab,Sans-serif",
                   textAlign: "center",
                   color: "black",
-                  textDecoration: "none",
-                  "&:hover": {
-                    //textDecoration: "underline",
-                  },
                 }}
               >
                 <Link
                   href="/disclaimer"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none" }}
+                  style={{ color: "black", textDecoration: pathName.includes("disclaimer") ? "underline" : "none" }}
                 >
-                  Disclaimer
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>Disclaimer</span>
                 </Link>{" "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/privacy-policy"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("privacy-policy") ? "underline" : "none", mx: 2 }}
                 >
-                  Privacy Policy
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>Privacy Policy</span>
                 </Link>
                 {"  "}
                 &nbsp;|&nbsp;
                 <Link
                   href="/terms"
                   className="hoverlink"
-                  style={{ color: "black", textDecoration: "none", mx: 2 }}
+                  style={{ color: "black", textDecoration: pathName.includes("terms") ? "underline" : "none", mx: 2 }}
                 >
-                  T&C
+                  <span onClick={()=>handleNaviagate("/disclaimer")}>T&C</span>
                 </Link>
               </Typography>
             </Grid>
 
-            {/* Right - Developer logo */}
-            {/* <Grid
-              item
-              xs={12}
-              md={4}
-              sx={{
-                textAlign: { xs: "center", md: "right" },
-                position: "relative",
-                mt: { xs: 0, md: 0 },
-              }}
-            >
-              <Typography
-                variant="body2"
-                component="p"
-                sx={{ fontSize: "14px", color: "black" }}
-              >
-                Developed by{" "}
-                <Link
-                  href="https://vyomedge.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  passHref
-                  legacyBehavior
-                >
-                  <Box
-                    component="a"
-                    sx={{
-                      fontWeight: 600,
-                      color: "black",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: "black",
-                        textDecoration: "none",
-                      },
-                    }}
-                  >
-                    Vyomedge
-                  </Box>
-                </Link>
-              </Typography>
-
-        
-              <Box
-                sx={{
-                  display: "inline-block",
-                  // mt: { xs: 0, md: 0, lg: 1 },
-                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
-                  top: {xs:"0px",sm:"-2px", md: "-50px", lg: "-50px" },
-                  right: {xs:"-25px", sm:"-40px", md: "10px", lg: "10px" },
-                  width: { xs: "20px", sm: "30px", md: "50px" },
-                  marginLeft:"8px"
-                }}
-              >
-                <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                  <a
-                    color="black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: "inline-block", width: "100%" }}
-                  >
-                    <Image
-                      src="/developer.png"
-                      alt="Developer Logo"
-                      layout="responsive"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </a>
-                </Link>
-              </Box>
-            </Grid> */}
+            {/* Right - Developed by */}
             <Grid
               item
               xs={12}
@@ -483,26 +455,27 @@ const Footer = () => {
               <Box
                 sx={{
                   textAlign: { xs: "center", md: "right" },
-                  
+
                   // width: "fit-content",
                 }}
               >
                 <Typography
                   variant="body2"
-                  component="p"
-                  sx={{ fontSize: "14px", color: "black",position: "relative",width:"fit-content",margin:"auto"}}
+                  component="div"
+                  sx={{ fontSize: "14px", color: "black", position: "relative", width: "fit-content", margin: "auto" }}
                 >
                   Developed by{" "}
                   <Link
                     href="https://vyomedge.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    passHref
-                    legacyBehavior
+                    style={{ textDecoration: "none" }}
                   >
                     <Typography
-                      component="a"
+                      component="span"
                       sx={{
+                        display: "inline-block",
+                        fontSize: "14px",
                         fontWeight: 600,
                         color: "black",
                         textDecoration: "none",
@@ -514,44 +487,38 @@ const Footer = () => {
                     >
                       Vyomedge
                     </Typography>
-                    
+
                   </Link>
-                   <Typography 
+                  <Typography
                     variant="body2"
-                  component="body1"
-                sx={{
-                  display: "inline-block",
-                  // mt: { xs: 0, md: 0, lg: 1 },
-                  position: { xs: "absolute", sm: "absolute", md: "absolute" },
-                  top: { xs: "3px", sm: "-2px", md: "-50px", lg: "-50px" },
-                  right: { xs: "-25px", sm: "-40px", md: "10px", lg: "10px" },
-                  width: { xs: "20px", sm: "30px", md: "50px" },
-                  marginLeft: "8px",
-                }}
-              >
-                <Link href="https://vyomedge.com/" passHref legacyBehavior>
-                  <a
-                    color="black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: "inline-block", width: "100%" }}
+                    
+                    sx={{
+                      display: "inline-block",
+                      // mt: { xs: 0, md: 0, lg: 1 },
+                      position: { xs: "absolute", sm: "absolute", md: "absolute" },
+                      top: { xs: "3px", sm: "-2px", md: "-50px", lg: "-50px" },
+                      right: { xs: "-25px", sm: "-40px", md: "10px", lg: "10px" },
+                      width: { xs: "20px", sm: "30px", md: "50px" },
+                      marginLeft: "8px",
+                    }}
                   >
-                    <Image
-                      src="/developer.png"
-                      alt="Developer Logo"
-                      layout="responsive"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </a>
-                </Link>
-              </Typography>
+                    <Link href="https://vyomedge.com/"  >
+                    
+                        <Image
+                          src="/developer.png"
+                          alt="Developer Logo"
+                          layout="responsive"
+                          width={100}
+                          height={100}
+                          priority
+                        />
+                    </Link>
+                  </Typography>
                 </Typography>
               </Box>
 
               {/* Responsive logo wrapper */}
-             
+
             </Grid>
           </Grid>
         </Container>

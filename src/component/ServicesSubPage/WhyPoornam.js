@@ -14,6 +14,7 @@ const WhyPoornam = ({ poornam }) => {
           container
           spacing={{ xs: 5, md: 2 }}
           columns={{ xs: 12, sm: 12, md: 12 }}
+          
         >
           <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
             <Typography
@@ -27,7 +28,7 @@ const WhyPoornam = ({ poornam }) => {
               }}
               dangerouslySetInnerHTML={{
                 __html:
-                  poornam?.whyPoornam[0]?.title || service?.whyPoornam?.title,
+                  poornam?.whyPoornam[0]?.title || poornam?.whyPoornam?.title,
               }}
             />
           </Grid>
@@ -37,6 +38,7 @@ const WhyPoornam = ({ poornam }) => {
             sx={{
               display: "flex",
               justifyContent: "center",
+                  alignItems: "center",
             }}
           >
             <Image
@@ -48,6 +50,7 @@ const WhyPoornam = ({ poornam }) => {
                 width: "100%",
                 height: "auto",
                 maxWidth: "130px",
+            
               }}
             />
           </Grid>
@@ -58,6 +61,22 @@ const WhyPoornam = ({ poornam }) => {
                 p: { xs: 1, md: 2 },
                 borderRadius: 1,
                 bgcolor: "#ffffff",
+                maxHeight: 280,
+                overflowY: "auto",
+                "&::-webkit-scrollbar": {
+                  width: "6px", 
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: "#f1f1f1",
+                  borderRadius: "10px",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: "#c1c1c1",
+                  borderRadius: "10px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: "#999", 
+                },
               }}
             >
               <Typography
@@ -67,6 +86,7 @@ const WhyPoornam = ({ poornam }) => {
                   lineHeight: 1.6,
                   color: "#000000",
                   mx: { xs: "auto", md: 0 },
+                  my: { xs: 2, md: "auto" },
                 }}
               >
                 {poornam?.whyPoornam?.description ||

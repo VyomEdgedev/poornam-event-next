@@ -1,122 +1,118 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Container,
   Typography,
   Card,
   CardContent,
-  Grid,
-  useTheme,
-  useMediaQuery,
+  Button,
+  IconButton,
 } from "@mui/material";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import { apiClient } from "@/lib/api-client";
 import Link from "next/link";
+import KeyboardDoubleArrowDownSharpIcon from '@mui/icons-material/KeyboardDoubleArrowDownSharp';
+import { useRef } from "react";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
+import { apiClient } from "@/lib/api-client";
 
-const blogData = {
-  title: "Latest From the Blog",
-  viewAllText: "View All Blogs",
-};
+const BlogSection = ({ posts, setPosts }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const {loading, setLoading} = useContext(loaderContext);
 
-const BlogSection = ({posts, setPosts , setCategories}) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const isBelow1150 = useMediaQuery("(max-width:1150px),(spacing:50px)");
-  const responsiveSpacing = isBelow1150
-    ? { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 } 
-    : { xs: 2, sm: 3, md: 2, lg: 8, xl: 25 }; 
-  const router = useRouter();
-  
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const handleViewMore = async () => {
+    setLoadingMore(true);
+    try {
+      const nextPage = currentPage + 1;
+      const response = await apiClient.get(`/api/blogs/all/event?type=blog&status=Published&page=${nextPage}&limit=10`);
+      const newPosts = response.data.blogs || [];
+      
+      if (newPosts.length < 10) {
+        setHasMore(false);
+      }
+      
+      setPosts((prev) => [...prev, ...newPosts]);
+      setCurrentPage(nextPage);
+    } catch (error) {
+      console.error("Error fetching more posts:", error);
+      setHasMore(false);
+    } finally {
+      setLoadingMore(false);
+    }
+  }
+
+  const blogRef = useRef();
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await apiClient.get('/api/blogs/all/event'); 
-        const data = response.data.blogs;
-        if (Array.isArray(data)) {
-          setPosts(data);
-        } else {
-          setPosts([]);
-        }
-         const categoryrepons = await apiClient.get('/api/category/getuserpanel/event');
-         setCategories(categoryrepons.data)
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+
+    if (typeof window !== "undefined" && window.location.state == "fromHome") {
+      if (blogRef.current) {
+        const y = blogRef.current.getBoundingClientRect().top + window.scrollY - 50;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    };
-    fetchBlogs();
-  }, [setPosts, setCategories]);
+    }
 
-  const sortedPosts = [...posts]
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 2);
+    return () => {
+      if (typeof window !== "undefined") {
+        delete window.location.state
+      }
+    }
+  }, []);
 
-
-  if (loading) return null;
-  if (error) return null;
-  if (!sortedPosts.length) return null;
+  if(loading) return <Loader/>
 
   return (
-    <Box
-      sx={{
-        py: 5,
-        px: { xs: 2, sm: 8, md: 5, lg: 10, xl: 3 },
-        backgroundColor: "#fff",
-      }}
-    >
-      <Container maxWidth="xl">
-        {/* Header */}
+    <Box ref={blogRef} sx={{ py: 5, backgroundColor: "#fff" }}>
+      <Container>
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography
-           
             component="h2"
             sx={{
               fontFamily: "Gloock,serif",
               fontWeight: 400,
               color: "#000000",
               mb: 3,
-             
             }}
           >
-            {blogData.title}
+            {` Wedding Blog`}
           </Typography>
         </Box>
-
-        <Grid
-          container
-          spacing={responsiveSpacing}
-          alignItems={isBelow1150 ? "center" : "center"}
-          justifyContent={isBelow1150 ? "center" : "center"}
-          sx={{ px: 0 }}
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#DAA412",
+              borderRadius: 3,
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#ccc",
+            },
+          }}
         >
-          {sortedPosts.map((post, idx) => (
-            <Grid item xs={12} sm={8} md={6} key={post._id || idx}>
-              <Box>
-                <Link href={`/blog/${post.uid}`} 
-                style={{textDecoration:"none"}}
-                >
-                <Card 
-                // onClick={() => router.push(`/blog/${post.uid}`)}
+          {posts.length ? posts.map((post, idx) => (
+            <Box
+              key={post._id || idx}
+              sx={{
+                flex: "0 0 auto",
+                width: { xs: "300px", sm: "350px", md: "360px" },
+              }}
+            >
+              <Link href={`/blog/${post.uid}`} style={{ textDecoration: "none" }}>
+                <Card
+                  onClick={()=>setLoading(true)}
                   sx={{
-                    width: {
-                      xs: "350px",
-                      sm: "400px",
-                      md: "460px",
-                      lg: "460px",
-                      xl: "460px",
-                    },
-                    height: "auto",
+                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     borderRadius: 1,
                     boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    mx: "auto",
                     "&:hover": {
                       transform: "translateY(-5px)",
                       boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
@@ -124,92 +120,83 @@ const BlogSection = ({posts, setPosts , setCategories}) => {
                     cursor: "pointer",
                   }}
                 >
+                  {/* Image */}
                   <Box
                     sx={{
                       position: "relative",
-                      width: {
-                        xs: "100%",
-                        sm: "100%",
-                        md: "460px",
-                        lg: "460px",
-                        xl: "460px",
-                      },
-                      height: {
-                        xs: "250px",
-                        sm: "250px",
-                        md: "300px",
-                        lg: "350px",
-                        xl: "350px",
-                      },
-                      margin: "0 auto",
+                      width: "100%",
+                      height: { xs: "220px", sm: "250px", md: "280px" },
                     }}
                   >
                     <Image
                       src={post.featuredImage?.url}
-                      alt={post.featuredImage?.altText}
+                      alt={post.featuredImage?.altText || post.title}
                       fill
-                      style={{
-                        objectPosition: "center",
-                      }}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </Box>
+
+                  {/* Title */}
                   <Typography
-                    
                     component="h6"
+                    className="truncate-3-lines"
                     sx={{
                       fontWeight: 400,
                       fontFamily: "Akatab,Sans-serif",
                       color: "#000000",
-                      mb: 1,
-                     
-                      textAlign: "cover",
+                      px: 2,
                       pt: 2,
-                      px: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
+                      mb: 1,
                     }}
                   >
                     {post.title}
                   </Typography>
-                  <CardContent sx={{ p: 1.5, flexGrow: 1 }}>
+
+                  <CardContent sx={{ p: 2, textAlign: "center" }}>
                     <Typography
-                    component={"h6"}
-                      label={post.category}
+                      component="h6"
                       sx={{
-                      
                         fontFamily: "Akatab,Sans-serif",
                         color: "#00000080",
-                        textAlign: "center",
                         fontWeight: 500,
                         mb: 1.5,
-                        height: 24,
                       }}
                     >
                       {post.category?.name}
                     </Typography>
-
                     <Typography
-                     
                       component="h6"
                       sx={{
-                        color: "#000000",
-                      
-                        fontWeight: 400,
                         fontFamily: "Akatab,Sans-serif",
-                    
-                       
+                        color: "#000000",
                         fontWeight: "bold",
-                        textAlign: "center",
                       }}
                     >
                       {post.authorName}
                     </Typography>
                   </CardContent>
                 </Card>
-                </Link>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+              </Link>
+            </Box>
+          )) :
+            <Typography>{`No Blogs Available`}</Typography>
+          }
+
+        </Box>
+        {
+          hasMore && !loadingMore &&
+          <Box sx={{ textAlign: "center", paddingTop: 2 }}>
+            <IconButton aria-label="view more" className="view-more-icon" size="large" onClick={handleViewMore}>
+              <KeyboardDoubleArrowDownSharpIcon sx={{ height: "40px", fill: "#DAA412", width: "40px" }} />
+            </IconButton>
+          </Box>
+        }
+        {
+          loadingMore &&
+          <Box sx={{ textAlign: "center", paddingTop: 2 }}>
+            <Typography sx={{ fontFamily: "Akatab,Sans-serif", color: "#DAA412" }}>Loading more blogs...</Typography>
+          </Box>
+        }
       </Container>
     </Box>
   );

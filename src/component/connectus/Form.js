@@ -37,20 +37,22 @@ const MyForm = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
 
   const onSubmit = async (data) => {
- setLoading(true);
+    setLoading(true);
     try {
       const payload = {
         formType: "contactus",
         fullName: data?.fullName,
         email: data?.email,
         phoneNo: data?.phone,
-        weddingDate: data?.weddingDate,
-        location: data?.location,
-        numberOfGuests: data?.numberOfGuests,
+        extraFields: {
+          weddingDate: data?.weddingDate,
+          location: data?.location,
+          numberOfGuests: data?.numberOfGuests,
+        },
         message: data?.yourMessage,
         sourcePage: "/connectus",
       };
-      await apiClient.post("/api/userform/event", payload);
+      await apiClient.post("/api/inquiryform/event", payload);
 
       reset();
       setOpenSuccess(true);
@@ -64,7 +66,7 @@ const MyForm = () => {
         error?.message ||
         "";
 
-      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key") || errorMsg.includes("email already exists") ) {
         toast.error("You are already registered!");
       } else {
         toast.error("Something went wrong. Please try again.");
@@ -117,7 +119,7 @@ const MyForm = () => {
                 }}
               >
                 <Image
-                  src="/FormImg.png"
+                  src="/FormImg.webp"
                   alt="Wedding planning imagery"
                   fill
                   style={{
@@ -163,7 +165,9 @@ const MyForm = () => {
                     validate: {
                       minLength: (value) => {
                         const length = (value || "").trim().length;
-                        if (length > 0 && length < 3) {
+                        if (!/^[A-Za-z\s]*$/.test(value)) {
+                          return "Enter valid name"
+                        } else if (length > 0 && length < 3) {
                           return "Must be at least 3 characters";
                         }
                         return true;
@@ -352,7 +356,7 @@ const MyForm = () => {
                   }}
                   {...register("weddingDate", {
                     validate: (value) => {
-                      if (!value) return true; 
+                      if (!value) return true;
                       return value >= today || "Date cannot be in the past";
                     },
                   })}
@@ -509,10 +513,10 @@ const MyForm = () => {
                       MozAppearance: "textfield",
                     },
                     "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button":
-                      {
-                        WebkitAppearance: "none",
-                        margin: 0,
-                      },
+                    {
+                      WebkitAppearance: "none",
+                      margin: 0,
+                    },
                   }}
                 />
               </Box>

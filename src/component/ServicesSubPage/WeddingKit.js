@@ -12,25 +12,34 @@ import { apiClient } from "@/lib/api-client";
 import { toast, ToastContainer } from "react-toastify";
 function WeddingKit() {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleNotifyClick = async () => {
-    setError("");
+    const newErrors = {};
     setSuccess("");
-    if (!email) {
-      setError("Email is required");
-      return;
-    }
 
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
+    if (!formData?.fullName?.trim()) newErrors.fullName = "Full Name is required";
+    if (!formData?.email?.trim()) newErrors.email = "Email is required";
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (formData?.email?.trim() && !emailRegex.test(formData?.email)) newErrors.email = "Please enter a valid email";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setLoading(false);
       return;
     }
 
@@ -38,10 +47,12 @@ function WeddingKit() {
     try {
       const payload = {
         formType: "contactus",
-        email: email.trim(),
+        email: formData.email.trim(),
+        fullName: formData.fullName.trim(),
         sourcePage: "/services",
       };
-      const response = await apiClient.post("/api/userform/event", { email });
+      const response = await apiClient.post("/api/inquiryform/event", payload);
+      setFormData({ email: "", fullName: "" })
       toast.success("Thank you! You are now subscribed.");
       setEmail("");
     } catch (error) {
@@ -51,7 +62,7 @@ function WeddingKit() {
         error?.message ||
         "";
 
-      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key")) {
+      if (errorMsg.includes("E11000") || errorMsg.includes("duplicate key") || errorMsg.includes("email already exists")) {
         toast.error("You are already subscribed!");
       } else {
         toast.error("Something went wrong. Please try again.");
@@ -66,7 +77,7 @@ function WeddingKit() {
       <Container>
         <Grid
           container
-          spacing={{ xs: 2, md: 5 }}
+          spacing={{ xs: 2, md: 5  }}
           columns={{ xs: 12, sm: 12, md: 12 }}
         >
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
@@ -87,6 +98,51 @@ function WeddingKit() {
           </Grid>
           <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
             <Box>
+              <Box textAlign="left" sx={{marginBottom:2}}>
+                <Typography
+                  component="p"
+                  sx={{
+                    mb: 0.5,
+                    fontFamily: "Akatab,Sans-serif",
+                    fontWeight: "500",
+                    color: "#000000",
+                  }}
+                >
+                  Full Name*
+                </Typography>
+                <TextField
+                  fullWidth
+                  placeholder="Enter your full name "
+                  variant="outlined"
+                  name="fullName"
+                  size="small"
+                  value={formData.fullName}
+                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleChange(e)}
+                  error={!!errors.fullName}
+                  helperText={errors.fullName}
+                  disabled={loading}
+                  sx={{
+                    fontFamily: "Akatab, sans-serif",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#011d4a",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#011d4a",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#011d4a",
+                      },
+
+                      fontFamily: "Akatab, sans-serif",
+                    },
+                    "& .MuiInputBase-input::placeholder": {
+                      fontFamily: "Akatab, sans-serif",
+                    },
+                  }}
+                />
+              </Box>
+
               <Box textAlign="left">
                 <Typography
                   component="p"
@@ -104,10 +160,11 @@ function WeddingKit() {
                   placeholder="Enter your email address"
                   variant="outlined"
                   size="small"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  error={Boolean(error)}
-                  helperText={error}
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) => handleChange(e)}
+                  error={!!errors.email}
+                  helperText={errors.email}
                   disabled={loading}
                   sx={{
                     fontFamily: "Akatab, sans-serif",
@@ -149,6 +206,7 @@ function WeddingKit() {
                 )}
 
                 <CustomButton
+                  ariaLabel={"notify-me"}
                   data-testid="notify-button"
                   onClick={handleNotifyClick}
                   sx={{ mt: 2, width: 130, height: 50 }}

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Container,
   Typography,
   Grid,
   Card,
-  CardContent,
   Box,
   Chip,
   Dialog,
@@ -13,65 +12,40 @@ import {
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
-import { apiClient } from "@/lib/api-client";
 import { useRouter } from "next/router";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CircularProgress from "@mui/material/CircularProgress";
+import { loaderContext } from "@/contextApi/loaderContext";
 
-const ShowCase = () => {
-  const [allThemes, setAllThemes] = useState([]);
-  const [themes, setThemes] = useState([]);
-  const [loading, setLoading] = useState(true);
+const ShowCase = ({ categoriesGallery }) => {
+  const [themes, setThemes] = useState(categoriesGallery || []);
   const [selectedNames, setSelectedNames] = useState([
     { _id: "all", name: "All" },
   ]);
-  const [categories, setCategories] = useState([{ _id: "all", name: "All" }]);
+  const [categories] = useState(() => {
+    const uniqueCategories = [];
+    const map = {};
+    categoriesGallery.forEach((item) => {
+      if (item.category && !map[item.category._id]) {
+        uniqueCategories.push({
+          _id: item.category._id,
+          name: item.category.name,
+        });
+        map[item.category._id] = true;
+      }
+    });
+    return [{ _id: "all", name: "All" }, ...uniqueCategories];
+  });
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const portfolioImages = themes.map((item) => ({
     src: item?.images[0]?.url,
     alt: item.category?.name,
   }));
-
-  useEffect(() => {
-    const fetchThemes = async () => {
-      setLoading(true);
-      try {
-        const response = await apiClient.get("/api/portfolio/event");
-
-        const data = response.data;
-        if (Array.isArray(data)) {
-          setAllThemes(data);
-          setThemes(data);
-
-          const uniqueCategories = [];
-          const map = {};
-          data.forEach((item) => {
-            if (item.category && !map[item.category._id]) {
-              uniqueCategories.push({
-                _id: item.category._id,
-                name: item.category.name,
-              });
-              map[item.category._id] = true;
-            }
-          });
-          setCategories([{ _id: "all", name: "All" }, ...uniqueCategories]);
-        } else {
-          setAllThemes([]);
-          setThemes([]);
-        }
-      } catch (error) {
-        setAllThemes([]);
-        setThemes([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchThemes();
-  }, []);
 
   const handleOpenModal = (index) => {
     setCurrentIndex(index);
@@ -92,7 +66,7 @@ const ShowCase = () => {
   const handleChange = (selectedObjs) => {
     if (selectedObjs.length === 0) {
       setSelectedNames([{ _id: "all", name: "All" }]);
-      setThemes(allThemes);
+      setThemes(categoriesGallery);
       return;
     }
 
@@ -103,17 +77,17 @@ const ShowCase = () => {
       const finalSelection = otherSelections;
       setSelectedNames(finalSelection);
       setThemes(
-        allThemes.filter((item) =>
+        categoriesGallery.filter((item) =>
           finalSelection.some((obj) => obj._id === item.category?._id)
         )
       );
     } else if (hasAll) {
       setSelectedNames([{ _id: "all", name: "All" }]);
-      setThemes(allThemes);
+      setThemes(categoriesGallery);
     } else {
       setSelectedNames(selectedObjs);
       setThemes(
-        allThemes.filter((item) =>
+        categoriesGallery.filter((item) =>
           selectedObjs.some((obj) => obj._id === item.category?._id)
         )
       );
@@ -123,7 +97,8 @@ const ShowCase = () => {
     const filters = selectedNames.filter((obj) => obj._id !== "all");
     const filterQuery =
       filters.length > 0 ? filters.map((obj) => obj._id).join(",") : "all";
-    router.push(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`);
+      setLoading(true);
+    router.push(`/gallery/${filterQuery}`);
   };
 
   return (
@@ -159,9 +134,10 @@ const ShowCase = () => {
           value={selectedNames}
           onChange={handleChange}
           label="Filter by Category"
-          multiple={true}
+          multiple={false}
         />
         <CustomButton
+        ariaLabel={`Browse Gallery`}
           onClick={handleBrowse}
           fontFamily="Akatab, Sans-serif !important"
           data-testid="notify-button"
@@ -175,11 +151,7 @@ const ShowCase = () => {
         spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
         justifyContent="center"
       >
-        {loading ? (
-          <Typography>
-            <CircularProgress />
-          </Typography>
-        ) : themes.length === 0 ? (
+        {themes.length === 0 ? (
           <Typography>No data found.</Typography>
         ) : (
           themes.map((item, idx) => (
@@ -256,6 +228,7 @@ const ShowCase = () => {
         >
           {/* Close Button */}
           <IconButton
+            aria-label="close"
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
@@ -270,6 +243,7 @@ const ShowCase = () => {
           </IconButton>
           {/* Left Arrow */}
           <IconButton
+            aria-label="previous"
             onClick={handlePrev}
             sx={{
               position: "absolute",
@@ -296,6 +270,7 @@ const ShowCase = () => {
           </Box>
           {/* Right Arrow */}
           <IconButton
+            aria-label="next"
             onClick={handleNext}
             sx={{
               position: "absolute",

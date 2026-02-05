@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Container,
   Typography,
@@ -11,18 +11,21 @@ import {
 import CustomButton from "@/common-component/button/CustomButton";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const CapturedMoments = ({ title, captured =[]}) => {
   const moments = captured?.relatedPortfolios || []
   const router = useRouter();
-
+  const {loading ,setLoading} = useContext(loaderContext);
+  
   const handleViewAll = (category_id) => {
     const id =
       typeof category_id === "object" && category_id !== null
         ? category_id._id
         : category_id;
     if (id) {
-      router.push(`/browsegallery?filter=${id}`);
+      setLoading(true);
+      router.push(`/gallery/${id}`);
     }
   };
 

@@ -38,7 +38,7 @@ const Form = ({ onClose }) => {
         phoneNo: data?.phone,
         sourcePage: "/model",
       };
-      await apiClient.post("/api/userform/event", payload);
+      await apiClient.post("/api/inquiryform/event", payload);
 
       reset();
       setOpenSuccess(true);
@@ -55,7 +55,8 @@ const Form = ({ onClose }) => {
 
       if (
         errorMsg.includes("E11000") ||
-        errorMsg.includes("duplicate key")
+        errorMsg.includes("duplicate key") || 
+        errorMsg.includes("email already exists") 
       ) {
         toast.error("You are already registered!");
       } else {
@@ -86,7 +87,7 @@ const Form = ({ onClose }) => {
         }}
       >
         <Image
-          src="/FormImg.png"
+          src="/FormImg.webp"
           alt="Wedding planning imagery"
           fill
           style={{ objectFit: "cover" }}
@@ -124,14 +125,17 @@ const Form = ({ onClose }) => {
           variant="outlined"
           fullWidth
           size="small"
-            name="fullName"
+          name="fullName"
           autoComplete="off"
           {...register("fullName", {
             required: "Full name is required",
             validate: {
               minLength: (value) => {
                 const length = (value || "").trim().length;
-                if (length > 0 && length < 3) {
+               
+                if(!/^[A-Za-z\s]*$/.test(value)){
+                  return "Enter valid name"
+                }else if (length > 0 && length < 3) {
                   return "Must be at least 3 characters";
                 }
                 return true;

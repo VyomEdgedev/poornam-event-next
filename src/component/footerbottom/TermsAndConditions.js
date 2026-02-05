@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Container,
   Typography,
@@ -15,6 +15,9 @@ import {
 import { styled } from "@mui/material/styles";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import SEO from "@/common-component/SEO/seo";
+import Link from "next/link";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -155,17 +158,24 @@ const termsData = {
         "If you have questions about these Terms, feel free to get in touch:",
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
-        email: "info@poornamevents.com",
+        email: "eventspoornam@gmail.com",
         phone: "+91-9519066885",
+        phone2: "+91-8839844233",
       },
     },
   ],
 };
 
 export default function TermsAndConditions() {
+  const {loading ,setLoading} = useContext(loaderContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(()=>{
+    setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
   return (
     <>
       <>
@@ -184,7 +194,7 @@ export default function TermsAndConditions() {
           robots="index, follow"
         />
       </>
-      <CustomBanner showLogo={true} logoSrc="/logo.png" height="30vh" />
+      <CustomBanner showLogo={true} logoSrc="/logo.webp" height="35vh" />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Header Section */}
         <StyledPaper elevation={3}>
@@ -281,15 +291,15 @@ export default function TermsAndConditions() {
                   {section.contactInfo.company}
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`mailto:${section.contactInfo.email}`}
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.email}
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`tel:${section.contactInfo.phone.replace(
                       /[^+\d]/g,
                       ""
@@ -297,7 +307,18 @@ export default function TermsAndConditions() {
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.phone}
-                  </a>
+                  </Link>
+                </Typography>
+                <Typography variant="body1" color="black">
+                  <Link
+                    href={`tel:${section.contactInfo.phone2.replace(
+                      /[^+\d]/g,
+                      ""
+                    )}`}
+                    style={{ color: "inherit", textDecoration: "underline" }}
+                  >
+                    {section.contactInfo.phone2}
+                  </Link>
                 </Typography>
               </Box>
             )}

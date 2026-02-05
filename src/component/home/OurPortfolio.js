@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Box,
@@ -16,6 +16,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { apiClient } from "@/lib/api-client";
+import { loaderContext } from "@/contextApi/loaderContext";
 
 const PortfolioSection = () => {
   const theme = useTheme();
@@ -23,7 +24,9 @@ const PortfolioSection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {loading ,setLoading} = useContext(loaderContext);
+
+  
 
   const fetchPortfolio = async () => {
     try {
@@ -40,39 +43,6 @@ const PortfolioSection = () => {
     fetchPortfolio();
   }, []);
 
-  // Images
-  const portfolioImages = [
-    {
-      src: "/portfolio2.png",
-      alt: "Main gallery",
-      id: "main",
-    },
-    {
-      src: "/portfolio3.png",
-      alt: "gallery Image 3",
-      id: "img1",
-    },
-    {
-      src: "/portfolio7.jpg",
-      alt: "gallery Image 7",
-      id: "img2",
-    },
-    {
-      src: "/portfolio6.jpg",
-      alt: "gallery Image 6",
-      id: "img3",
-    },
-    {
-      src: "/portfolio5.jpg",
-      alt: "gallery Image 5",
-      id: "img5",
-    },
-    {
-      src: "/portfolio4.jpg",
-      alt: "gallery Image 4",
-      id: "img4",
-    },
-  ];
 
   // Modal state
   const [open, setOpen] = useState(false);
@@ -86,6 +56,7 @@ const PortfolioSection = () => {
   const handlegallery = (event) => {
     event.preventDefault();
     event.stopPropagation();
+    setLoading(true)
     router.push("/gallery");
   };
 
@@ -102,6 +73,9 @@ const PortfolioSection = () => {
       prev === AllPortfolioData.length - 1 ? 0 : prev + 1
     );
   };
+
+
+  
 
   // Common image component with hover effects
   const PortfolioImage = ({ src, alt, children, onClick }) => (
@@ -136,7 +110,7 @@ const PortfolioSection = () => {
       )}
       <Image
         src={src}
-        alt={alt}
+        alt={alt || "Portfolio Image"}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw,"
         style={{
@@ -197,7 +171,7 @@ const PortfolioSection = () => {
           {/* Left Column - Main Image */}
           <PortfolioImage
             src={AllPortfolioData[0]?.images[0]?.url}
-            alt={AllPortfolioData[0]?.images[0]?.url}
+            alt={AllPortfolioData[0]?.images[0]?.url || "Portfolio Image"}
             onClick={() => handleOpenModal(0)} // Uncomment if you want image click to open modal
           />
 
@@ -213,7 +187,7 @@ const PortfolioSection = () => {
             {/* Top section */}
             <PortfolioImage
               src={AllPortfolioData[1]?.images[0]?.url}
-              alt={AllPortfolioData[1]?.images[0]?.url}
+              alt={AllPortfolioData[1]?.images[0]?.url || "Portfolio Image"}
               onClick={() => handleOpenModal(1)}
             />
 
@@ -228,12 +202,12 @@ const PortfolioSection = () => {
             >
               <PortfolioImage
                 src={AllPortfolioData[2]?.images[0]?.url}
-                alt={AllPortfolioData[2]?.images[0]?.url}
+                alt={AllPortfolioData[2]?.images[0]?.url || "Portfolio Image"}
                 onClick={() => handleOpenModal(2)}
               />
               <PortfolioImage
                 src={AllPortfolioData[3]?.images[0]?.url}
-                alt={AllPortfolioData[3]?.images[0]?.url}
+                alt={AllPortfolioData[3]?.images[0]?.url || "Portfolio Image"}
                 onClick={() => handleOpenModal(3)}
               />
             </Box>
@@ -262,17 +236,18 @@ const PortfolioSection = () => {
           >
             <PortfolioImage
               src={AllPortfolioData[4]?.images[0]?.url}
-              alt={AllPortfolioData[4]?.images[0]?.url}
+              alt={AllPortfolioData[4]?.images[0]?.url || "Portfolio Image"}
               onClick={() => handleOpenModal(4)}
             />
 
             <PortfolioImage
               src={AllPortfolioData[5]?.images[0]?.url}
-              alt={AllPortfolioData[5]?.images[0]?.url}
+              alt={AllPortfolioData[5]?.images[0]?.url || "Portfolio Image"}
               // onClick={() => handleOpenModal(5)}
             >
-              <Link href="/gallery" style={{ textDecoration: "none" }}>
+             
                 <Button
+                  aria-label="View Full Wedding Stories"
                   data-testid="notify-button"
                   onClick={(ev) => handlegallery(ev)}
                   sx={{
@@ -301,7 +276,7 @@ const PortfolioSection = () => {
                 >
                   View Full Wedding Stories
                 </Button>
-              </Link>
+             
             </PortfolioImage>
           </Box>
         </Box>
@@ -336,6 +311,7 @@ const PortfolioSection = () => {
         >
           {/* Close Button */}
           <IconButton
+            aria-label="Close portfolio image modal"
             onClick={handleCloseModal}
             sx={{
               position: "absolute",
@@ -351,6 +327,7 @@ const PortfolioSection = () => {
           </IconButton>
           {/* Left Arrow */}
           <IconButton
+            aria-label="View previous portfolio image"
             onClick={handlePrev}
             sx={{
               position: "absolute",
@@ -378,7 +355,7 @@ const PortfolioSection = () => {
               <Image
                 // AllPortfolioData[5]?.images[0]?.url
                 src={AllPortfolioData[currentIndex]?.images[0]?.url}
-                alt={AllPortfolioData[currentIndex]?.images[0]?.url}
+                alt={AllPortfolioData[currentIndex]?.images[0]?.url || "Portfolio Image"}
                 fill
                 style={{
                   objectFit: "contain",
@@ -389,6 +366,7 @@ const PortfolioSection = () => {
           </Box>
           {/* Right Arrow */}
           <IconButton
+            aria-label="View next portfolio image"
             onClick={handleNext}
             sx={{
               position: "absolute",

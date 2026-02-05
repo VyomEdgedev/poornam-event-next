@@ -1,16 +1,23 @@
 import CustomBanner from "@/common-component/banner/CustomBanner";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ShaddiService from "./ShaddiService";
 import SignatureAddOns from "./SignatureAddOns";
 import Experience from "./Experience";
 import WeddingChecklist from "./WeddingChecklist";
 import WeddingFooter from "./WeddingFooter";
 import SEO from "@/common-component/SEO/seo";
-import CookiesBanner from "../footerbottom/cookies";
-import ServicesGrid from "./ShaddiService";
+import { loaderContext } from "@/contextApi/loaderContext";
+import Loader from "@/common-component/loader/Loader";
 
-const Service = () => {
+const Service = (props) => {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+  const {loading ,setLoading} = useContext(loaderContext);
+
+  useEffect(()=>{
+    setLoading(false);
+  },[]);
+  
+  if(loading) return <Loader/>
   return (
     <>
       <SEO
@@ -31,23 +38,14 @@ const Service = () => {
         title="We Don't Just Plan Weddings"
         subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
         paragraphSubtitle="From Big Fat Indian Shaadis to intimate royal vibes- we design, plan, and execute it all."
-        backgroundImage="/servicebanner.png"
+        backgroundImage="/servicebanner.webp"
         showLogo={true}
-        logoSrc="/logo2.png"
+        logoSrc="/logo2.webp"
         breadcrumbs={[
           { href: "/", isHome: true },
-          // { href: '/blog', label: 'Blog' },
           { label: "Services" },
         ]}
-        // Optional: customize breadcrumbs position
-        // breadcrumbsPosition={{
-        //   top: "320px",
-        //   left: "25px",
-        //   lg: { top: "300px", left: "25px" },
-        //   // md: { top: "200px", left: "26px" },
-        //   // sm: { top: "280px", left: "3px" },
-        //   // xs: { top: "200px", left: "20px" },
-        // }}
+        
         overlay={{
           background:
             "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
@@ -62,7 +60,7 @@ const Service = () => {
         }}
       />
 
-      <ShaddiService />
+      <ShaddiService services={props?.services}/>
 
       <SignatureAddOns />
 

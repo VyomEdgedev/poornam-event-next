@@ -15,6 +15,7 @@ import {
 import { styled } from "@mui/material/styles";
 import CustomBanner from "@/common-component/banner/CustomBanner";
 import SEO from "@/common-component/SEO/seo";
+import Link from "next/link";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -162,7 +163,7 @@ const privacyData = {
         "You can ask us to correct or delete your information",
         "You can opt-out of emails or marketing anytime",
       ],
-      contactEmail: "Contact us at: info@poornamevents.com",
+      contactEmail: "Contact us at: eventspoornam@gmail.com",
     },
     {
       title: "9. Third-Party Links",
@@ -180,8 +181,9 @@ const privacyData = {
         "If you have any questions about this Privacy Policy or how we use your data, feel free to get in touch:",
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
-        email: "info@poornamevents.com",
+        email: "eventspoornam@gmail.com",
         phone: "+91-9519066885",
+        phone2: "+91-8839844233",
       },
     },
   ],
@@ -210,7 +212,7 @@ export default function PrivacyPolicy() {
         />
       </>
 
-      <CustomBanner showLogo={true} logoSrc="/logo.png" height="30vh" />
+      <CustomBanner showLogo={true} logoSrc="/logo.webp" height="35vh" />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Header Section */}
         <StyledPaper elevation={3}>
@@ -261,13 +263,13 @@ export default function PrivacyPolicy() {
                 {section.content}
               </Typography>
             )}
-
+            <Link href= "https://www.poornamevents.com" target="_blank" style={{ color: "inherit", textDecoration: "underline" }}>
             {section.websiteUrl && (
-              <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
+              <Typography variant="body1" color="black" sx={{ mb: 2 }}>
                 {section.websiteUrl}
               </Typography>
             )}
-
+            </Link>
             {section.additionalContent && (
               <Typography variant="body1" sx={{ mb: 2 }}>
                 {section.additionalContent}
@@ -340,15 +342,15 @@ export default function PrivacyPolicy() {
                   {section.contactInfo.company}
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`mailto:${section.contactInfo.email}`}
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.email}
-                  </a>
+                  </Link>
                 </Typography>
                 <Typography variant="body1" color="black">
-                  <a
+                  <Link
                     href={`tel:${section.contactInfo.phone.replace(
                       /[^+\d]/g,
                       ""
@@ -356,7 +358,18 @@ export default function PrivacyPolicy() {
                     style={{ color: "inherit", textDecoration: "underline" }}
                   >
                     {section.contactInfo.phone}
-                  </a>
+                  </Link>
+                </Typography>
+                <Typography variant="body1" color="black">
+                  <Link
+                    href={`tel:${section.contactInfo.phone2.replace(
+                      /[^+\d]/g,
+                      ""
+                    )}`}
+                    style={{ color: "inherit", textDecoration: "underline" }}
+                  >
+                    {section.contactInfo.phone2}
+                  </Link>
                 </Typography>
               </Box>
             )}

@@ -1,36 +1,46 @@
-import CustomBanner from '@/common-component/banner/CustomBanner'
-import CustomMultiSelect from '@/common-component/CustomMultiSelect/CustomMultiSelect';
-import { apiClient } from '@/lib/api-client';
-import { Box, Card, CardContent, Chip, Container, Grid, Typography ,Dialog, IconButton } from '@mui/material';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
-import CloseIcon from '@mui/icons-material/Close';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import CircularProgress from '@mui/material/CircularProgress';
+import CustomBanner from "@/common-component/banner/CustomBanner";
+import CustomMultiSelect from "@/common-component/CustomMultiSelect/CustomMultiSelect";
 
-const FilterGallery = () => {
+import {
+  Box,
+  Card,
+  Chip,
+  Container,
+  Grid,
+  Typography,
+  Dialog,
+  IconButton,
+} from "@mui/material";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Loader from "@/common-component/loader/Loader";
+import { loaderContext } from "@/contextApi/loaderContext";
+
+
+const FilterGallery = ({galleryFilter}) => {
   const [themes, setThemes] = useState([]);
   const [allThemes, setAllThemes] = useState([]);
   const [categories, setCategories] = useState([{ _id: "all", name: "All" }]);
-  const [selectedFilters, setSelectedFilters] = useState([{ _id: "all", name: "All" }]);
-  const [loading, setLoading] = useState(true);
+  const [selectedFilters, setSelectedFilters] = useState([
+    { _id: "all", name: "All" },
+  ]);
   const router = useRouter();
-  const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {loading ,setLoading} = useContext(loaderContext);
   
-
   useEffect(() => {
     const fetchAllThemes = async () => {
-      setLoading(true);
+ 
       try {
-        const response = await apiClient.get("/api/portfolio/event");
-        const data = response.data;
+        const data = galleryFilter;
         if (Array.isArray(data)) {
           setAllThemes(data);
           setThemes(data);
- 
           const uniqueCategories = [];
           const map = {};
           data.forEach((item) => {
@@ -46,81 +56,82 @@ const FilterGallery = () => {
         }
       } catch (error) {
         console.error("Error fetching themes:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
     fetchAllThemes();
-  }, []);
+  }, [galleryFilter]);
 
-  
+
+
   useEffect(() => {
     if (router.isReady && allThemes.length > 0 && categories.length > 1) {
-      const filterParam = router.query.filter || "all";
+      const filterParam = router.query.id || "all";
       const filterIds = filterParam.split(",");
-      
-      
+
       if (filterIds.includes("all")) {
         setSelectedFilters([{ _id: "all", name: "All" }]);
         setThemes(allThemes);
       } else {
-     
-        const filterObjects = filterIds.map(id => {
-          const category = categories.find(cat => cat._id === id);
+        const filterObjects = filterIds.map((id) => {
+          const category = categories.find((cat) => cat._id === id);
           return category || { _id: id, name: id };
         });
         setSelectedFilters(filterObjects);
-        
-    
+
         const filteredThemes = allThemes.filter((item) =>
           filterIds.includes(item.category?._id)
         );
         setThemes(filteredThemes);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query.filter, allThemes, categories]);
 
+  const handleFilterChange = (selectedObjs) => {
+    if (selectedObjs.length === 0) {
+      setSelectedFilters([{ _id: "all", name: "All" }]);
+      setThemes(allThemes);
+      router.replace(`/gallery/all`, undefined, { shallow: true });
+      return;
+    }
+    const hasAll = selectedObjs.some((obj) => obj._id === "all");
+    const otherSelections = selectedObjs.filter((obj) => obj._id !== "all");
 
-const handleFilterChange = (selectedObjs) => {
-  if (selectedObjs.length === 0) {
-    setSelectedFilters([{_id:"all", name:"All"}]);
-    setThemes(allThemes);
-    router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
-    return;
-  }
-const hasAll = selectedObjs.some(obj => obj._id === "all");
-  const otherSelections = selectedObjs.filter(obj => obj._id !== "all");
-  
-  if (hasAll && otherSelections.length > 0) {
-    
-    const finalSelection = otherSelections;
-    setSelectedFilters(finalSelection);
-    setThemes(
-      allThemes.filter((item) =>
-        finalSelection.some(obj => obj._id === item.category?._id)
-      )
-    );
-    const filterQuery = finalSelection.map(obj => obj._id).join(",");
-    router.replace(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`, undefined, { shallow: true });
-  } else if (hasAll) {
+    if (hasAll && otherSelections.length > 0) {
+      const finalSelection = otherSelections;
+      setSelectedFilters(finalSelection);
+      setThemes(
+        allThemes.filter((item) =>
+          finalSelection.some((obj) => obj._id === item.category?._id)
+        )
+      );
+      const filterQuery = finalSelection.map((obj) => obj._id).join(",");
+      router.replace(
+        `/gallery/${filterQuery}`,
+        undefined,
+        { shallow: true }
+      );
+    } else if (hasAll) {
+      setSelectedFilters([{ _id: "all", name: "All" }]);
+      setThemes(allThemes);
+      router.replace(`/gallery/all`, undefined, { shallow: true });
+    } else {
+      setSelectedFilters(selectedObjs);
+      setThemes(
+        allThemes.filter((item) =>
+          selectedObjs.some((obj) => obj._id === item.category?._id)
+        )
+      );
+      const filterQuery = selectedObjs.map((obj) => obj._id).join(",");
+      router.replace(
+        `/gallery/${filterQuery}`,
+        undefined,
+        { shallow: true }
+      );
+    }
+  };
 
-    setSelectedFilters([{_id:"all", name:"All"}]);
-    setThemes(allThemes);
-    router.replace(`/browsegallery?filter=all`, undefined, { shallow: true });
-  } else {
-   
-    setSelectedFilters(selectedObjs);
-    setThemes(
-      allThemes.filter((item) =>
-        selectedObjs.some(obj => obj._id === item.category?._id)
-      )
-    );
-    const filterQuery = selectedObjs.map(obj => obj._id).join(",");
-    router.replace(`/browsegallery?filter=${encodeURIComponent(filterQuery)}`, undefined, { shallow: true });
-  }
-};
-
- const handleOpenModal = (idx) => {
+  const handleOpenModal = (idx) => {
     setCurrentIndex(idx);
     setOpen(true);
   };
@@ -132,205 +143,219 @@ const hasAll = selectedObjs.some(obj => obj._id === "all");
     setCurrentIndex((prev) => (prev === themes.length - 1 ? 0 : prev + 1));
   };
 
+
+  useEffect(()=>{
+    setLoading(false);
+  },[])
+
+  if(loading) return <Loader/>
+  
+
   return (
     <>
-    <CustomBanner
-            title="Let’s Make Shaadi Magic Together!"
-            // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
-            paragraphSubtitle={`From planning to "I do", we've got your back`}
-            backgroundImage="/portfoliobanner.png"
-            showLogo={true}
-            logoSrc="/logo2.png"
-            breadcrumbs={[
-              { href: "/", isHome: true },
-              { href: "/gallery", label: "Gallery" },
+      <CustomBanner
+        title="Let’s Make Shaadi Magic Together!"
+        // subtitle="We Orchestrate Celebrations You'll Tell Your Grandkids About."
+        paragraphSubtitle={`From planning to "I do", we've got your back`}
+        backgroundImage="/portfoliobanner.webp"
+        showLogo={true}
+        logoSrc="/logo2.webp"
+        breadcrumbs={[
+          { href: "/", isHome: true },
+          { href: "/gallery", label: "Gallery" },
           { href: "/browsegallery", label: "Browse Gallery" },
-            ]}
-          
-            breadcrumbsPosition={{
-             top: "300px",
-            left: "25px",
-            lg: { top: "280px", left: "25px" },
-            md: { top: "170px", left: "26px" },
-            sm: { top: "330px", left: "3px" },
-            xs: { top: "200px", left: "20px" },
-            }}
-            overlay={{
+        ]}
+        overlay={{
+          background:
+            "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
+          width: "70%",
+          responsive: {
+            md: {
+              width: "100%",
               background:
-                "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 100%)",
-              width: "70%",
-              responsive: {
-                md: {
-                  width: "100%",
-                  background:
-                    "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)",
-                },
-              },
-            }}
-          >
-            
-          </CustomBanner>
+                "linear-gradient(270deg, rgba(0, 13, 31, 0) 0%, #000D1E 90%)",
+            },
+          },
+        }}
+      ></CustomBanner>
 
- <Container maxWidth="xl" sx={{ py: 2, }}>
-      
-      <Typography
-       
-        component="h2"
-        align="center"
-        sx={{ fontWeight: "400", mb: 1, fontFamily: 'Gloock,serif' }}
-      >
-        {` Visual Showcase `}
-      </Typography>
-      <Typography
-       
-        component="p"
-        align="center"
+      <Container maxWidth="xl" sx={{ py: 2 }}>
+        <Typography
+          component="h2"
+          align="center"
+          sx={{ fontWeight: "400", mb: 1, fontFamily: "Gloock,serif" }}
+        >
+          {` Visual Showcase `}
+        </Typography>
+        <Typography
+          component="p"
+          align="center"
+          sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: "400" }}
+        >
+          {`Highlighting exquisite captures from different weddings.`}
+        </Typography>
+        <Box
+          textAlign="center"
+          mb={4}
+          display={"flex"}
+          justifyContent={"center"}
+          gap={2}
+          flexWrap="wrap"
+        >
+          <CustomMultiSelect
+            names={categories}
+            value={selectedFilters}
+            onChange={handleFilterChange}
+            label="Filter by Category"
+            multiple={false}
+          />
+        </Box>
 
-        sx={{ mb: 2, fontFamily: "Akatab,Sans-serif", fontWeight: '400' }}
-      >
-        {`Highlighting exquisite captures from different weddings.`}
-      </Typography>
-      <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} gap={2} flexWrap="wrap">
-        <CustomMultiSelect
-      names={categories}
-      value={selectedFilters}
-      onChange={handleFilterChange}
-      label="Filter by Category"
-       />
-     </Box>
-         
-      <Grid container spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }} justifyContent="center">
-        {loading ? (
-          <Typography><CircularProgress   /></Typography>
-        ) : themes.length === 0 ? (
-          <Typography>No data found.</Typography>
-        ) : (
-          themes.map((item, idx) => (
-            <Grid item key={item._id} xs={12} sm={6} md={4}>
-              <Card
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                  cursor: "pointer",
-                }}
-                elevation={1}
-              >
-                <Chip
-                component={"p"}
-                  label={item.category?.name || "No Category"}
-                  size="small"
+        <Grid
+          container
+          spacing={{ xs: 2, sm: 2, md: 4, lg: 6, xl: 6 }}
+          justifyContent="center"
+        >
+          { themes.length === 0 ? (
+            <Typography>No data found.</Typography>
+          ) : (
+            themes.map((item, idx) => (
+              <Grid item key={item._id} xs={12} sm={6} md={4}>
+                <Card
                   sx={{
-                    position: "absolute",
-                    top: 8,
-                    left: 8,
-                    backgroundColor: "#ddd",
-                    zIndex: 2,
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: "relative",
-                    width: "350px",
-                    height: 400,
+                    width: "100%",
+                    height: "100%",
                     display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: 14,
-                    textAlign: "center",
-                    minHeight: { xs: 250, sm: 280, md: 390 },
+                    flexDirection: "column",
+                    position: "relative",
+                    cursor: "pointer",
                   }}
-                   onClick={() => handleOpenModal(idx)}
+                  elevation={1}
                 >
-                  <Image
-                    src={item?.images[0]?.url}
-                    alt={item.category?.name || "No Title"}
-                    layout="fill"
-                    objectFit="cover"
+                  <Chip
+                    component={"p"}
+                    label={item.category?.name || "No Category"}
+                    size="small"
+                    sx={{
+                      position: "absolute",
+                      top: 8,
+                      left: 8,
+                      backgroundColor: "#ddd",
+                      zIndex: 2,
+                    }}
                   />
-                </Box>
-               
-              </Card>
-            </Grid>
-          ))
-        )}
-      </Grid>
-    <Dialog
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "350px",
+                      height: 400,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: 14,
+                      textAlign: "center",
+                      minHeight: { xs: 250, sm: 280, md: 390 },
+                    }}
+                    onClick={() => handleOpenModal(idx)}
+                  >
+                    <Image
+                      src={item?.images[0]?.url}
+                      alt={item.category?.name || "No Title"}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </Box>
+                </Card>
+              </Grid>
+            ))
+          )}
+        </Grid>
+        <Dialog
           open={open}
           onClose={handleCloseModal}
           fullScreen
           PaperProps={{
-            sx: { backgroundColor: 'rgba(0,0,0,0.5)' }
+            sx: { backgroundColor: "rgba(0,0,0,0.5)" },
           }}
         >
-          <Box sx={{ position: 'relative', height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', mt:3 }}>
-            {/* Close Button */}
-             {/* Close Button */}
-          <IconButton
-            onClick={handleCloseModal}
+          <Box
             sx={{
-              position: "absolute",
-              top: 20,
-              right: 20,
-              color: "#fff",
-              zIndex: 10,
-              backgroundColor:"#DAA412",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
+              position: "relative",
+              height: "100vh",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mt: 3,
             }}
           >
-            <CloseIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
-          </IconButton>
-               {/* Left Arrow */}
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              position: "absolute",
-              left: 20,
-            color: "#fff",
-              zIndex: 10,
-              backgroundColor:"#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 },
-            }}
-          >
-            <ArrowBackIosNewIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
-          </IconButton>
+         
+            <IconButton
+              aria-label="close"
+              onClick={handleCloseModal}
+              sx={{
+                position: "absolute",
+                top: 20,
+                right: 20,
+                color: "#fff",
+                zIndex: 10,
+                backgroundColor: "#DAA412",
+                // p: { xs: 0.5, sm: 0.75, md: 1 },
+              }}
+            >
+              <CloseIcon
+                sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
+              />
+            </IconButton>
+           
+            <IconButton
+              aria-label="previous"
+              onClick={handlePrev}
+              sx={{
+                position: "absolute",
+                left: 20,
+                color: "#fff",
+                zIndex: 10,
+                backgroundColor: "#DAA412 !important",
+              
+              }}
+            >
+              <ArrowBackIosNewIcon
+                sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
+              />
+            </IconButton>
             {/* Image */}
-            <Box sx={{ height:"100vh",width:"100%", }}>
+            <Box sx={{ height: "100vh", width: "100%" }}>
               {themes.length > 0 && (
                 <Image
                   src={themes[currentIndex]?.images[0]?.url}
                   alt={themes[currentIndex]?.category?.name || "No Title"}
                   fill
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: "contain" }}
                 />
               )}
             </Box>
-          {/* Right Arrow */}
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              position: "absolute",
-              right: 20,
-               color: "#fff",
-              zIndex: 10,
-              backgroundColor:"#DAA412 !important",
-              // p: { xs: 0.5, sm: 0.75, md: 1 }, 
-            }}
-          >
-            <ArrowForwardIosIcon sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }} />
-          </IconButton>
+            {/* Right Arrow */}
+            <IconButton
+              aria-label="next"
+              onClick={handleNext}
+              sx={{
+                position: "absolute",
+                right: 20,
+                color: "#fff",
+                zIndex: 10,
+                backgroundColor: "#DAA412 !important",
+              }}
+            >
+              <ArrowForwardIosIcon
+                sx={{ fontSize: { xs: 18, sm: 20, md: 24, lg: 28 } }}
+              />
+            </IconButton>
           </Box>
         </Dialog>
-    </Container>
- 
+      </Container>
+    </>
+  );
+};
 
-
-
-</>
-
-  )
-}
-
-export default FilterGallery
+export default FilterGallery;

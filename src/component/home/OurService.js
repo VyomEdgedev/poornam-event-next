@@ -1,80 +1,18 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Grid,
-  Button,
-  Container,
-} from "@mui/material";
+import React, { useContext, useState } from "react";
+import { Box, Typography, Grid, Button, Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-const services = [
-  {
-    title: "Destination Weddings",
-    image: "/homeservices1.png",
-    description:
-      "We plan unforgettable weddings in Udaipur, Goa, Jaipur, and even your ancestral haveli...",
-    cta: "Learn More",
-    link: "/servicessubpage",
-  },
-  {
-    title: "Intimate Weddings",
-    image: "/homeservices.png",
-    description:
-      "Smaller weddings, bigger heart.We specialize in private, cozy affairs- beautifully styled, deeply personal, and easy on the chaos.",
-    guests: "50 guests, 500 memories, 0 stress",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Themed & Designer Weddings",
-    image: "/homeservices2.png",
-    description: "Enjoy your big day while we handle the details.",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Artist Management",
-    image: "/homeservices3.png",
-    description: "Don’t lift a finger. We’ll plan the entire show.",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Prewedding & Photography",
-    image: "/homeservices4.png",
-    description:
-      "Because you don’t want to be managing the DJ during your own varmala.",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Special Effects",
-    image: "/homeservices5.png",
-    description:
-      "More than just pretty flowers. We design Instagram-worthy wedding sets, mandaps...",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Food and Beverages",
-    image: "/homeservices6.png",
-    description: "More than just pretty flowers...",
-    cta: "Learn More",
-    link: "/services",
-  },
-  {
-    title: "Guest Hospitality & Logistics",
-    image: "/homeservices7.png",
-    description: "Because a happy guest = a happy shaadi...",
-    cta: "Learn More",
-    link: "/services",
-  },
-];
-
+import { loaderContext } from "@/contextApi/loaderContext";
+import { useRouter } from "next/router";
 const FlipCard = ({ service }) => {
+  const { loading, setLoading } = useContext(loaderContext);
   const [flipped, setFlipped] = useState(false);
+  const router = useRouter();
 
+  const handleClick = () => {
+    setLoading(true);
+    router.push(`/services/${service.uid}`);
+  };
   return (
     <Box
       onMouseEnter={() => setFlipped(true)}
@@ -116,8 +54,8 @@ const FlipCard = ({ service }) => {
           }}
         >
           <Image
-            src={service.image}
-            alt={service.title}
+            src={service?.featuredImage?.url}
+            alt={service?.featuredImage?.altText || "Service Image"}
             width={245}
             height={300}
             unoptimized
@@ -140,9 +78,8 @@ const FlipCard = ({ service }) => {
               backdropFilter: "blur(4px)",
             }}
           >
-            <Typography fontFamily='Akatab, sans-serif'
-              fontWeight={600}>
-              {service.title}
+            <Typography fontFamily="Akatab, sans-serif" fontWeight={600}>
+              {service?.title}
             </Typography>
           </Box>
         </Box>
@@ -186,27 +123,12 @@ const FlipCard = ({ service }) => {
             },
           }}
         >
-          {service.guests && (
-            <Typography
-              sx={{
-                bgcolor: "rgba(255,255,255,0.8)",
-                color: "#0D1A46",
-                fontWeight: 600,
-                borderRadius: 2,
-                px: 2,
-                mb: 1,
-                zIndex: 2,
-              }}
-            >
-              {service.guests}
-            </Typography>
-          )}
           <Typography
-            fontWeight={600}
+            fontWeight={700}
             fontFamily={"Akatab,Sans-serif"}
             sx={{ mb: 1, zIndex: 2 }}
           >
-            {service.title}
+            {service?.title}
           </Typography>
           <Typography
             sx={{
@@ -218,34 +140,33 @@ const FlipCard = ({ service }) => {
               zIndex: 2,
             }}
           >
-            {service.description}
+            {service?.meta?.description?.split(" ").slice(0, 25).join(" ") +
+              "..."}
           </Typography>
-          {service.cta && service.link && (
-            <Link href={service.link} passHref>
-              <Button
-                variant="contained"
-                size="small"
-                sx={{
-                  bgcolor: "#D7A10F",
-                  color: "#FFFFFF",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  borderRadius: "999px",
-                  px: 3,
-                  py: 0.8,
-                  fontSize: "0.85rem",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                  zIndex: 2,
-                  "&:hover": {
-                    bgcolor: "#B8850D",
-                  },
-                }}
-
-              // style={{ cursor: 'pointer' }}
-              >
-                {service.cta}
-              </Button>
-            </Link>
+          {service.uid && (
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleClick}
+              aria-label={`Learn more about ${service.title || 'this service'}`}
+              sx={{
+                bgcolor: "#D7A10F",
+                color: "#FFFFFF",
+                textTransform: "none",
+                fontWeight: 600,
+                borderRadius: "999px",
+                px: 3,
+                py: 0.8,
+                fontSize: "0.85rem",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                zIndex: 2,
+                "&:hover": {
+                  bgcolor: "#B8850D",
+                },
+              }}
+            >
+              Learn More
+            </Button>
           )}
         </Box>
       </Box>
@@ -253,12 +174,12 @@ const FlipCard = ({ service }) => {
   );
 };
 
-export default function OurServices() {
+export default function OurServices({ services }) {
   return (
     <Box
       sx={{
         py: { xs: 4, sm: 6, md: 2 },
-        pb:{md:4},
+        pb: { md: 4 },
         bgcolor: "#FFFAED",
         textAlign: "center",
       }}
@@ -273,7 +194,7 @@ export default function OurServices() {
             mb: 1,
           }}
         >
-          Our Services
+          {`Our Services`}
         </Typography>
         <Typography
           color="#000000"
@@ -286,7 +207,8 @@ export default function OurServices() {
 
         <Grid
           container
-          spacing={{ xs: 1, md: 3 }} columns={12}
+          spacing={{ xs: 1, md: 3 }}
+          columns={12}
           justifyContent="center"
         >
           {services.map((service, index) => (
