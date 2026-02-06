@@ -25,7 +25,9 @@ export default async function handler(req, res) {
   let blogPages = [];
   try {
     const blogUrl = `${serverUrl}/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000`;
-    const blogResponse = await axios.get(blogUrl);
+    const blogResponse = await axios.get(blogUrl, {
+      headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+    });
     const blogs = blogResponse.data.blogs;
 
     if (Array.isArray(blogs)) {
@@ -60,7 +62,9 @@ export default async function handler(req, res) {
   let servicePages = [];
   try {
     const serviceUrl = `${serverUrl}/api/service/AllServicePages/event`;
-    const serviceResponse = await axios.get(serviceUrl);
+    const serviceResponse = await axios.get(serviceUrl, {
+      headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+    });
     const services = serviceResponse.data;
 
     if (Array.isArray(services)) {
