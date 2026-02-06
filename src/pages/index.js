@@ -2,10 +2,10 @@ import Home from "../component/home/home";
 import axios from "axios";
 
 export default function HomePage({ categories, services }) {
-  return <Home  categorie={categories} services={services}/>;
+  return <Home categorie={categories} services={services} />;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const categoryUrl = `${baseUrl}/api/category/getuserpanel/event`;
@@ -22,6 +22,7 @@ export async function getServerSideProps() {
         categories: categoryResponse.data || [],
         services: serviceResponse.data || [],
       },
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Error fetching data:", error.message);
@@ -30,6 +31,7 @@ export async function getServerSideProps() {
         categories: [],
         services: [],
       },
+      revalidate: 60,
     };
   }
 }

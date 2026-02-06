@@ -19,7 +19,7 @@ export default id;
 
 //   try {
 //     const singleBlogResponse = await axios.get(url);
-    
+
 //     if (!singleBlogResponse || Object.keys(singleBlogResponse).length === 0) {
 //       return { notFound: true };
 //     }
@@ -36,20 +36,22 @@ export default id;
 //   }
 // }
 
-
-
 export async function getStaticPaths() {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   const url = `${baseUrl}/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000`;
 
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+    });
     const blogs = response.data.blogs || [];
 
     // Use uid instead of id for paths
-    const paths = blogs.map((blog) => ({
-      params: { id: blog.uid || blog.id?.toString() }, 
-    })).filter(path => path.params.id); // Filter out any undefined/null ids
+    const paths = blogs
+      .map((blog) => ({
+        params: { id: blog.uid || blog.id?.toString() },
+      }))
+      .filter((path) => path.params.id); // Filter out any undefined/null ids
 
     return {
       paths,
@@ -67,14 +69,15 @@ export async function getStaticPaths() {
   }
 }
 
-
 export async function getStaticProps({ params }) {
   const { id } = params || {};
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   const url = `${baseUrl}/api/blogs/${id}/event`;
 
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+    });
     const singleBlog = response.data.blog || null;
 
     if (!singleBlog) {
@@ -92,8 +95,6 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
   }
 }
-
-
 
 // export async function getStaticPaths() {
 //   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
