@@ -6,17 +6,25 @@ import { useRouter } from "next/router";
 export async function getStaticProps() {
   try {
     const [blogsRes, categoriesRes] = await Promise.all([
-      apiClient.get(
-        "/api/blogs/all/event?type=blog&status=Published&page=1&limit=10",
+      fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/all/event?type=blog&status=Published&page=1&limit=10`,
+        { cache: "force-cache" },
       ),
-      apiClient.get("/api/category/getuserpanel/event"),
+      fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/category/getuserpanel/event`,
+        { cache: "force-cache" },
+      ),
     ]);
+
+    const blogsData = await blogsRes.json();
+    const categoriesData = await categoriesRes.json();
+
     return {
       props: {
-        initialPosts: blogsRes.data.blogs || [],
-        initialCategories: categoriesRes.data || [],
+        initialPosts: blogsData.blogs || [],
+        initialCategories: categoriesData || [],
       },
-      revalidate: 60 * 60 * 24,
+      revalidate: 60 * 60 * 24, // 24 hours ISR
     };
   } catch (error) {
     return {

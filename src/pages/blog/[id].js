@@ -41,25 +41,24 @@ export async function getStaticPaths() {
   const url = `${baseUrl}/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000`;
 
   try {
-    const response = await axios.get(url);
-    const blogs = response.data.blogs || [];
+    const response = await fetch(url, { cache: "force-cache" });
+    const data = await response.json();
 
-    // Use uid instead of id for paths
+    const blogs = data.blogs || [];
+
     const paths = blogs
       .map((blog) => ({
         params: { id: blog.uid || blog.id?.toString() },
       }))
-      .filter((path) => path.params.id); // Filter out any undefined/null ids
+      .filter((path) => path.params.id);
 
     return {
       paths,
       fallback: "blocking",
     };
   } catch (error) {
-    // Only log if it's not a 401 (unauthorized) - might be API auth issue
-    if (error.response?.status !== 401) {
-      console.error("Error fetching blogs:", error.message);
-    }
+    console.error("Error fetching blogs:", error.message);
+
     return {
       paths: [],
       fallback: "blocking",
@@ -73,8 +72,14 @@ export async function getStaticProps({ params }) {
   const url = `${baseUrl}/api/blogs/${id}/event`;
 
   try {
-    const response = await axios.get(url);
-    const singleBlog = response.data.blog || null;
+    const response = await fetch(url, { cache: "force-cache" });
+
+    if (!response.ok) {
+      return { notFound: true };
+    }
+
+    const data = await response.json();
+    const singleBlog = data.blog || null;
 
     if (!singleBlog) {
       return { notFound: true };
@@ -84,11 +89,14 @@ export async function getStaticProps({ params }) {
       props: {
         singleBlog,
       },
-      revalidate: 60 * 60 * 24, // optional: regenerate the page every 24 hours
+      revalidate: 60 * 60 * 24, // 24 hours ISR
     };
   } catch (error) {
     console.error("Error fetching single blog:", error.message);
-    return { notFound: true };
+
+    return {
+      notFound: true,
+    };
   }
 }
 
