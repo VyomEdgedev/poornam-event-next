@@ -19,7 +19,7 @@ export default id;
 
 //   try {
 //     const singleBlogResponse = await axios.get(url);
-    
+
 //     if (!singleBlogResponse || Object.keys(singleBlogResponse).length === 0) {
 //       return { notFound: true };
 //     }
@@ -36,8 +36,6 @@ export default id;
 //   }
 // }
 
-
-
 export async function getStaticPaths() {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   const url = `${baseUrl}/api/blogs/all/event?type=blog&status=Published&page=1&limit=1000`;
@@ -47,9 +45,11 @@ export async function getStaticPaths() {
     const blogs = response.data.blogs || [];
 
     // Use uid instead of id for paths
-    const paths = blogs.map((blog) => ({
-      params: { id: blog.uid || blog.id?.toString() }, 
-    })).filter(path => path.params.id); // Filter out any undefined/null ids
+    const paths = blogs
+      .map((blog) => ({
+        params: { id: blog.uid || blog.id?.toString() },
+      }))
+      .filter((path) => path.params.id); // Filter out any undefined/null ids
 
     return {
       paths,
@@ -66,7 +66,6 @@ export async function getStaticPaths() {
     };
   }
 }
-
 
 export async function getStaticProps({ params }) {
   const { id } = params || {};
@@ -85,15 +84,13 @@ export async function getStaticProps({ params }) {
       props: {
         singleBlog,
       },
-      revalidate: 60,
+      revalidate: 60 * 60 * 24, // optional: regenerate the page every 24 hours
     };
   } catch (error) {
     console.error("Error fetching single blog:", error.message);
     return { notFound: true };
   }
 }
-
-
 
 // export async function getStaticPaths() {
 //   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;

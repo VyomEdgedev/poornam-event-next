@@ -1,14 +1,14 @@
-
 import Blog from "@/component/blog";
 import { apiClient } from "@/lib/api-client";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-
 export async function getStaticProps() {
   try {
     const [blogsRes, categoriesRes] = await Promise.all([
-      apiClient.get("/api/blogs/all/event?type=blog&status=Published&page=1&limit=10"),
+      apiClient.get(
+        "/api/blogs/all/event?type=blog&status=Published&page=1&limit=10",
+      ),
       apiClient.get("/api/category/getuserpanel/event"),
     ]);
     return {
@@ -16,7 +16,7 @@ export async function getStaticProps() {
         initialPosts: blogsRes.data.blogs || [],
         initialCategories: categoriesRes.data || [],
       },
-      revalidate: 60,
+      revalidate: 60 * 60 * 24,
     };
   } catch (error) {
     return {
@@ -24,7 +24,7 @@ export async function getStaticProps() {
         initialPosts: [],
         initialCategories: [],
       },
-      revalidate: 60,
+      revalidate: 60 * 60 * 24,
     };
   }
 }
@@ -44,52 +44,52 @@ export default function BlogsPage({ initialPosts, initialCategories }) {
   const schemaData =
     isBlogList && blogPosts.length > 0
       ? [
-        {
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "@id": `${url}#collectionpage`,
-          url: url,
-          name: metaTitle,
-          description: metaDescription,
-          inLanguage: "en-IN",
-          isPartOf: {
-            "@type": "WebSite",
-            "@id": "https://www.poornamevents.com/#website",
-          },
-          about: {
-            "@type": "Organization",
-            "@id": "https://www.poornamevents.com/#organization",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "Poornam Events",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://www.poornamevents.com/logo.png",
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${url}#collectionpage`,
+            url: url,
+            name: metaTitle,
+            description: metaDescription,
+            inLanguage: "en-IN",
+            isPartOf: {
+              "@type": "WebSite",
+              "@id": "https://www.poornamevents.com/#website",
             },
-            url: "https://www.poornamevents.com",
-          },
-          hasPart: blogPosts.map((blog) => ({
-            "@type": "BlogPosting",
-            headline: blog.title,
-            url: `https://www.poornamevents.com/blogs/${blog.uid}`,
-            datePublished: blog.createdAt
-              ? blog.createdAt.includes("T")
-                ? blog.createdAt
-                : `${blog.createdAt}T00:00:00+05:30`
-              : new Date().toISOString(),
-            author: {
+            about: {
+              "@type": "Organization",
+              "@id": "https://www.poornamevents.com/#organization",
+            },
+            publisher: {
               "@type": "Organization",
               name: "Poornam Events",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.poornamevents.com/logo.png",
+              },
               url: "https://www.poornamevents.com",
             },
-            description: blog.description || "",
-            image:
-              blog.featuredImage?.url ||
-              "https://www.poornamevents.com/logo.png",
-          })),
-        },
-      ]
+            hasPart: blogPosts.map((blog) => ({
+              "@type": "BlogPosting",
+              headline: blog.title,
+              url: `https://www.poornamevents.com/blogs/${blog.uid}`,
+              datePublished: blog.createdAt
+                ? blog.createdAt.includes("T")
+                  ? blog.createdAt
+                  : `${blog.createdAt}T00:00:00+05:30`
+                : new Date().toISOString(),
+              author: {
+                "@type": "Organization",
+                name: "Poornam Events",
+                url: "https://www.poornamevents.com",
+              },
+              description: blog.description || "",
+              image:
+                blog.featuredImage?.url ||
+                "https://www.poornamevents.com/logo.png",
+            })),
+          },
+        ]
       : [];
 
   return (
@@ -102,8 +102,8 @@ export default function BlogsPage({ initialPosts, initialCategories }) {
           />
         )}
       </Head>
-
-      <Blog initialPosts={initialPosts} initialCategories={initialCategories} />;
+      <Blog initialPosts={initialPosts} initialCategories={initialCategories} />
+      ;
     </>
-  )
+  );
 }
