@@ -24,9 +24,7 @@ const PortfolioSection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
   const [AllPortfolioData, setAllPortfolioData] = useState([]);
-  const {loading ,setLoading} = useContext(loaderContext);
-
-  
+  const { loading, setLoading } = useContext(loaderContext);
 
   const fetchPortfolio = async () => {
     try {
@@ -43,7 +41,6 @@ const PortfolioSection = () => {
     fetchPortfolio();
   }, []);
 
-
   // Modal state
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,7 +53,7 @@ const PortfolioSection = () => {
   const handlegallery = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setLoading(true)
+    setLoading(true);
     router.push("/gallery");
   };
 
@@ -64,18 +61,15 @@ const PortfolioSection = () => {
 
   const handlePrev = () => {
     setCurrentIndex((prev) =>
-      prev === 0 ? AllPortfolioData.length - 1 : prev - 1
+      prev === 0 ? AllPortfolioData.length - 1 : prev - 1,
     );
   };
   // AllPortfolioData[currentIndex]?.images[0]?.url
   const handleNext = () => {
     setCurrentIndex((prev) =>
-      prev === AllPortfolioData.length - 1 ? 0 : prev + 1
+      prev === AllPortfolioData.length - 1 ? 0 : prev + 1,
     );
   };
-
-
-  
 
   // Common image component with hover effects
   const PortfolioImage = ({ src, alt, children, onClick }) => (
@@ -245,38 +239,36 @@ const PortfolioSection = () => {
               alt={AllPortfolioData[5]?.images[0]?.url || "Portfolio Image"}
               // onClick={() => handleOpenModal(5)}
             >
-             
-                <Button
-                  aria-label="View Full Wedding Stories"
-                  data-testid="notify-button"
-                  onClick={(ev) => handlegallery(ev)}
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    backgroundColor: "#000000",
-                    color: "#FFFFFF",
+              <Button
+                aria-label="View Full Wedding Stories"
+                data-testid="notify-button"
+                onClick={(ev) => handlegallery(ev)}
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  backgroundColor: "#000000",
+                  color: "#FFFFFF",
 
-                    width: {
-                      xs: "270px",
-                      sm: "290px",
-                    },
-                    borderRadius: 50,
-                    height: "55px",
-                    fontSize: {
-                      xs: "15px",
-                      lg: "16px",
-                    },
-                    fontFamily: "Akatab,Sans-serif",
-                    fontWeight: "500",
-                    textTransform: "capitalize",
-                  }}
-                  zIndex={5}
-                >
-                  View Full Wedding Stories
-                </Button>
-             
+                  width: {
+                    xs: "270px",
+                    sm: "290px",
+                  },
+                  borderRadius: 50,
+                  height: "55px",
+                  fontSize: {
+                    xs: "15px",
+                    lg: "16px",
+                  },
+                  fontFamily: "Akatab,Sans-serif",
+                  fontWeight: "500",
+                  textTransform: "capitalize",
+                }}
+                zIndex={5}
+              >
+                View Full Wedding Stories
+              </Button>
             </PortfolioImage>
           </Box>
         </Box>
@@ -355,7 +347,10 @@ const PortfolioSection = () => {
               <Image
                 // AllPortfolioData[5]?.images[0]?.url
                 src={AllPortfolioData[currentIndex]?.images[0]?.url}
-                alt={AllPortfolioData[currentIndex]?.images[0]?.url || "Portfolio Image"}
+                alt={
+                  AllPortfolioData[currentIndex]?.images[0]?.url ||
+                  "Portfolio Image"
+                }
                 fill
                 style={{
                   objectFit: "contain",
