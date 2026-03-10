@@ -4,19 +4,69 @@ export default function handler(req, res) {
   const robotsTxt = `
 # robots.txt for Poornam Events 
 
-User-agent: *
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+User-agent: DataForSeoBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: serpstatbot
+Disallow: /
+User-agent: rogerbot
+Disallow: /
+User-agent: linkdexbot
+Disallow: /
+User-agent: Exabot
+Disallow: /
+User-agent: ia_archiver
+Disallow: /
+# Allow Google - important for SEO
+User-agent: Googlebot
+Crawl-delay: 5
+Allow: /
+Disallow: /api/
 Disallow: /admin/
 Disallow: /login/
-Disallow: /cart/
-Disallow: /checkout/
-Disallow: /cgi-bin/
+Disallow: /register/
+Disallow: /dashboard/
+Disallow: /private/
+# Allow Bing
+User-agent: bingbot
+Crawl-delay: 10
 Allow: /
-
-# Block session or duplicate URLs
-Disallow: /*?sessionid=
-Disallow: /*?replytocom=
-
-# Sitemap location
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /dashboard/
+Disallow: /private/
+# All other bots
+User-agent: *
+Crawl-delay: 10
+Allow: /
+# Block non-public areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /dashboard/
+Disallow: /private/
+# Allow Next.js rendering assets
+Allow: /_next/
+Allow: /_next/static/
+# Allow assets
+Allow: /assets/
+Allow: /static/
+Allow: /images/
+Allow: /uploads/
 Sitemap: https://www.poornamevents.com/sitemap.xml
 `;
 
