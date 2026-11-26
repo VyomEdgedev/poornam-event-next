@@ -1,12 +1,13 @@
+
 import React from "react";
 import { Grid, Card, Box, Typography, Container } from "@mui/material";
 import Image from "next/image";
 
 const owners = [
   {
-    image: "/AadiJain.webp",
-    alt: "Aadi Jain",
-    headline: "Aadi Jain - The Visionary (Founder & Creative Director)",
+    image: null,
+    alt: "Neetesh Paliwal",
+    headline: "Neetesh Paliwal - The Visionary (Founder & Creative Director)",
     description:
       "The calm in your chaos, the brain behind every baraat. Swati's superpower? Turning Pinterest boards into physical mandaps, without breaking the bank or a sweat.",
   },
@@ -28,9 +29,18 @@ function OwnerCard({ image, alt, headline, description }) {
         position: "relative",
         mx: { xs: "auto", sm: 0 },
         mt: { xs: 2, sm: 0 },
+        overflow: "hidden",
       }}
     >
-      <Image src={image} alt={alt} fill style={{ objectFit: "cover" }} priority />
+      {image && (
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          style={{ objectFit: "cover" }}
+          priority
+        />
+      )}
 
       {/* Overlay */}
       <Box
@@ -42,21 +52,24 @@ function OwnerCard({ image, alt, headline, description }) {
           justifyContent: "flex-start",
           px: { xs: 1, md: 4 },
           py: { xs: 1.5, md: 2.5 },
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0) 70%)",
-          }}>
+          background: image
+            ? "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0) 70%)"
+            : "#FFFFFF",
+        }}
+      >
         <Box>
           <Typography
             component="h4"
-            color="#FFFFFF"
-            sx={{  fontFamily: "Akatab,Sans-serif", fontWeight:700 }}
+            color={image ? "#FFFFFF" : "#000000"}
+            sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: 700 }}
           >
             {headline}
           </Typography>
-          
+
           <Typography
-          component="p"            color="#FFFFFF"
-            sx={{  fontFamily: "Akatab,Sans-serif" , fontWeight:400}}
+            component="p"
+            color={image ? "#FFFFFF" : "#000000"}
+            sx={{ fontFamily: "Akatab,Sans-serif", fontWeight: 400 }}
           >
             {description}
           </Typography>

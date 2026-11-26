@@ -104,9 +104,9 @@ const SEO = ({
           height: 512,
         },
         description:
-          "Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.",
+          "Your trusted wedding planner serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya and Gadarwara. Luxury and destination weddings since 2017.",
         email: " eventspoornam@gmail.com",
-        telephone: "+919519066885",
+        telephone: "+919589500509",
         founder: {
           "@type": "Person",
           name: "Richi Jain",
@@ -115,7 +115,7 @@ const SEO = ({
         },
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: "+91-9519066885",
+          telephone: "+91-9589500509",
           contactType: "Customer Support",
           areaServed: "IN",
           availableLanguage: ["English", "Hindi"],
@@ -143,7 +143,7 @@ const SEO = ({
         url: "https://www.poornamevents.com/",
         name: "Poornam Events",
         description:
-          "Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.",
+          "Your trusted wedding planner serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya and Gadarwara. Luxury and destination weddings since 2017.",
         publisher: {
           "@id": "https://www.poornamevents.com/#organization",
         },

@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import CustomBanner from '../banner/CustomBanner';
 import CustomButton from '../button/CustomButton';
 import { Box, Typography } from '@mui/material';
@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 function Page404() {
   const router = useRouter();
   const handlePage404W = () => {
-    window.open("https://wa.me/919519066885", "_blank");
+    window.open("https://wa.me/919589500509", "_blank");
   };
 
   return (

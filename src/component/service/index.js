@@ -22,14 +22,14 @@ const Service = (props) => {
     <>
       <SEO
         url="https://www.poornamevents.com/services"
-        metaTitle="Wedding Planner Services | Indore, Bhopal & Ujjain"
+        metaTitle="Wedding Planner Services in Madhya Pradesh | Poornam Events"
         metaDescription="Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more."
         keywords="wedding planner service list, event management Indore"
         canonical="https://www.poornamevents.com/services"
-        ogTitle="Wedding Planner Services | Indore, Bhopal & Ujjain"
+        ogTitle="Wedding Planner Services in Madhya Pradesh | Poornam Events"
         ogDescriptio="Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more."
         ogImage={`${SITE_URL}/og-image.jpg`}
-        twitterTitle="Wedding Planner Services | Indore, Bhopal & Ujjain"
+        twitterTitle="Wedding Planner Services in Madhya Pradesh | Poornam Events"
         twitterDescription="Discover our full-service wedding planning offerings: destination, themed, intimate weddings & more."
         twitterImage={`${SITE_URL}/logoo.jpg`}
         robots="index, follow" //  default'

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+﻿import React, { useContext } from "react";
 import Link from "next/link";
 import { Box, Typography, Button, Container } from "@mui/material";
 import CustomButton from "@/common-component/button/CustomButton";
@@ -49,11 +49,11 @@ export default function AboutSection() {
             mb: 2,
           }}
         >
-          {` At Poonam Events, we turn your wedding dreams into unforgettable memories. Founded by `}
-          <strong>Aadi Jain</strong>
+          {` At Poornam Events, we turn your wedding dreams into unforgettable memories. Founded by `}
+          <strong>Neetesh Paliwal</strong>
           {`, a self-taught planner with a passion for perfection, and `}
           <strong>Richi Anand Jain</strong>
-          {`, the creative spirit behind our signature style — we've been planning heartfelt celebrations across India since 2017.`}
+          {`, the creative spirit behind our signature style â€” we've been planning heartfelt celebrations across India since 2017.`}
         </Typography>
 
         <Typography

@@ -36,14 +36,14 @@ export default function AboutUS() {
         <SEO
           url='https://www.poornamevents.com/aboutus'
           metaTitle='About Poornam Events | Wedding Planner in MP'
-          metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+          metaDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara and India.'
           keywords='wedding planner in MP, about Poornam Events'
           canonical='https://www.poornamevents.com/aboutus'
           ogTitle='About Poornam Events | Wedding Planner in MP'
-          ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+          ogDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara and India.'
           ogImage={`${SITE_URL}/og-image.jpg`}
           twitterTitle='About Poornam Events | Wedding Planner in MP'
-          twitterDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal & India.'
+          twitterDescription='Meet Poornam Events: founders, values & vision. Creating magical weddings across Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara and India.'
           twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
         />

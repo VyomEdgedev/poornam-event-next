@@ -1,4 +1,4 @@
-// components/Header.js
+﻿// components/Header.js
 "use client";
 import {
   AppBar,
@@ -125,7 +125,7 @@ export default function Header() {
           })}
           <IconButton
             aria-label="WhatsApp"
-            href="https://wa.me/919519066885"
+            href="https://wa.me/919589500509"
             target="_blank"
             sx={{ color: "#25D366" }}
           >
@@ -194,7 +194,7 @@ export default function Header() {
                 <IconButton
                   aria-label="WhatsApp"
                   component="a"
-                  href="https://wa.me/919519066885"
+                  href="https://wa.me/919589500509"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ color: "#25D366" }}
@@ -216,8 +216,8 @@ export default function Header() {
               </ListItem>
               {/* <ListItem sx={{ backgroundColor: "#0A163ED4", justifyContent: "align-end", zIndex: 1300 }}>
                   <IconButton
-                    component="a" // ✅ required to make href work
-                    href="https://wa.me/919519066885"
+                    component="a" // âœ… required to make href work
+                    href="https://wa.me/919589500509"
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{ color: "#25D366" }}

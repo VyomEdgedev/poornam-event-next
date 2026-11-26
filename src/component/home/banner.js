@@ -20,7 +20,7 @@ export default function HeroSection() {
   };
 
   const handleTalkToPlanner = () => {
-    window.open("https://wa.me/919519066885", "_blank");
+    window.open("https://wa.me/919589500509", "_blank");
   };
 
   return (
@@ -105,7 +105,7 @@ export default function HeroSection() {
                     letterSpacing: "1px",
                   }}
                 >
-                  {`   Let’s Make Yours Legendary`}
+                  {`   Letâ€™s Make Yours Legendary`}
                 </Typography>
                 <Typography
                   component="p"
@@ -118,7 +118,7 @@ export default function HeroSection() {
                     letterSpacing: "0.5px",
                   }}
                 >
-                 {` Luxury meets laughter, chaos choreographed-beautiful weddings across Indore, Bhopal & Ujjain.`}
+                 {` Luxury meets laughter, chaos choreographed-beautiful weddings across Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya & Gadarwara.`}
                 </Typography>
 
                 <Stack

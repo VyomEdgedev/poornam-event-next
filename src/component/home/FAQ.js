@@ -15,7 +15,7 @@ import FaqSchema from "@/common-component/FaqSchema";
 const faqData1 = [
   {
     question: "Do you only plan weddings in Indore?",
-    answer: "Nope! We serve Bhopal, Ujjain, and beyond.",
+    answer: "Nope! We serve Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara, and beyond.",
   },
   {
     question: "Can you help with last-minute weddings?",

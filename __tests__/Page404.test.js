@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Page404 from '@/common-component/page404/Page404'
@@ -186,7 +186,7 @@ describe('Page404 Component', () => {
     const planWeddingButton = screen.getByText('Plan My Wedding')
     fireEvent.click(planWeddingButton)
     
-    expect(mockWindowOpen).toHaveBeenCalledWith('https://wa.me/919519066885', '_blank')
+    expect(mockWindowOpen).toHaveBeenCalledWith('https://wa.me/919589500509', '_blank')
   })
 
   it('renders with proper styling for images', () => {

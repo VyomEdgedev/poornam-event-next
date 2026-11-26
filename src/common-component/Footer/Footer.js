@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+﻿import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -89,7 +89,7 @@ const Footer = () => {
                 }}
               >
                 {`  Born from a dream in 2017, Poornam Events is where traditions
-                meet timeless celebration. We don’t just plan weddings — we
+                meet timeless celebration. We donâ€™t just plan weddings â€” we
                 create moments that live forever.`}
               </Typography>
             </Grid>
@@ -260,7 +260,7 @@ const Footer = () => {
                 >
                   Phone:{" "}
                   <Link
-                    href="tel:9519066885"
+                    href="tel:9589500509"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
@@ -269,7 +269,7 @@ const Footer = () => {
                       (e.target.style.textDecoration = "none")
                     }
                   >
-                    9519066885,
+                    9589500509,
                   </Link>
                 </Typography>
                 <Typography
@@ -281,7 +281,7 @@ const Footer = () => {
                 >
                   <span style={{ visibility: "hidden" }}> Phone:{" "}</span>
                   <Link
-                    href="tel:8839844233"
+                    href="tel:9589500509"
                     style={{ color: "#E4E4E4", textDecoration: "none" }}
                     onMouseEnter={(e) =>
                       (e.target.style.textDecoration = "underline")
@@ -290,7 +290,7 @@ const Footer = () => {
                       (e.target.style.textDecoration = "none")
                     }
                   >
-                    8839844233
+                    9589500509
                   </Link>
                 </Typography>
 
@@ -400,7 +400,7 @@ const Footer = () => {
                   }}
 
                 >
-                  © {new Date().getFullYear()} Poornam Events.
+                  Â© {new Date().getFullYear()} Poornam Events.
                 </Typography>
               </Link>
             </Grid>
