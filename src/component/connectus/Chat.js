@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 
 import {
   Box,
@@ -71,7 +71,7 @@ function Chat() {
             item
             size={{ xs: 12, sm: 7, md: 6 }}
             container
-            // ✅ Changes here
+            // âœ… Changes here
             // bgcolor={"red"}
             spacing={{ xs: 5, sm: 4, md: 10, lg: 15 }}
             justifyContent={{ xs: "center", sm: "center", md: "flex-end" }}
@@ -81,7 +81,7 @@ function Chat() {
             <Grid item xs={12} sm={6} md={6} textAlign="center">
               <Typography
                 component={"a"}
-                href="tel:+919519066885"
+                href="tel:+919589500509"
               >
                 <Grid
                   component="img"
@@ -100,7 +100,7 @@ function Chat() {
               <Typography
                 variant="h6"
                 component="a"
-                href="tel:+919519066885"
+                href="tel:+919589500509"
                 sx={{
                   fontWeight: 800,
                   fontFamily: "Akatab, sans-serif",
@@ -111,7 +111,7 @@ function Chat() {
                   display: "block"
                 }}
               >
-                +91 9519066885
+                +91 9589500509
               </Typography>
             </Grid>
 
@@ -119,7 +119,7 @@ function Chat() {
             <Grid item xs={12} sm={6} md={6} textAlign="center">
               <Typography
                 component={"a"}
-                href="https://wa.me/919519066885"
+                href="https://wa.me/919589500509"
                 target="_blank"
               >
                 <Grid
@@ -139,7 +139,7 @@ function Chat() {
               <Typography
                 variant="h6"
                 component="a"
-                href="https://wa.me/919519066885"
+                href="https://wa.me/919589500509"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -153,7 +153,7 @@ function Chat() {
 
                 }}
               >
-                +91 9519066885
+                +91 9589500509
               </Typography>
             </Grid>
           </Grid>

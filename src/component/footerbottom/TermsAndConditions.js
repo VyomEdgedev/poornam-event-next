@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+﻿import React, { useContext, useEffect } from "react";
 import {
   Container,
   Typography,
@@ -50,7 +50,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingLeft: 0,
   paddingRight: 0,
   "&::before": {
-    content: '"•"',
+    content: '"â€¢"',
     color: "#001538",
 
     fontWeight: 600,
@@ -89,7 +89,7 @@ const termsData = {
     },
     {
       title: "3. Intellectual Property",
-      content: "Everything on this website — including but not limited to:",
+      content: "Everything on this website â€” including but not limited to:",
       items: [
         "Text",
         "Images",
@@ -118,7 +118,7 @@ const termsData = {
       items: [
         "We may contact you via email, WhatsApp, or phone regarding your inquiry",
         "You may receive updates, planning tips, or promotions from Poornam (you can unsubscribe anytime)",
-        "We respect your privacy — refer to our Privacy Policy",
+        "We respect your privacy â€” refer to our Privacy Policy",
       ],
     },
     {
@@ -159,8 +159,8 @@ const termsData = {
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
         email: "eventspoornam@gmail.com",
-        phone: "+91-9519066885",
-        phone2: "+91-8839844233",
+        phone: "+91-9589500509",
+        phone2: "+91-9589500509",
       },
     },
   ],
@@ -181,14 +181,14 @@ export default function TermsAndConditions() {
       <>
         <SEO
           url="https://www.poornamevents.com/terms"
-          metaTitle="Terms & Conditions • Poornam Events"
+          metaTitle="Terms & Conditions â€¢ Poornam Events"
           metaDescription="Terms of use for Poornam Events website, bookings, pricing & services."
           keywords="terms Poornam Events, terms wedding planner"
           canonical="https://www.poornamevents.com/terms"
-          ogTitle="Terms & Conditions • Poornam Events"
+          ogTitle="Terms & Conditions â€¢ Poornam Events"
           ogDescription="Terms of use for Poornam Events website, bookings, pricing & services."
           ogImage="https://www.poornamevent.com/og-image.jpg"
-          twitterTitle="Terms & Conditions • Poornam Events"
+          twitterTitle="Terms & Conditions â€¢ Poornam Events"
           twitterDescription="Terms of use for Poornam Events website, bookings, pricing & services."
           twitterImage="https://www.poornamevent.com/logoo.jpg"
           robots="index, follow"
@@ -220,7 +220,7 @@ export default function TermsAndConditions() {
               color="#000000"
               sx={{ fontStyle: "italic" }}
             >
-              Welcome to {termsData.companyName} — {termsData.description}
+              Welcome to {termsData.companyName} â€” {termsData.description}
             </Typography>
           </Box>
 

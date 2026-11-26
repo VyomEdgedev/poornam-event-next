@@ -50,7 +50,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingLeft: 0,
   paddingRight: 0,
   "&::before": {
-    content: '"•"',
+    content: '"â€¢"',
     color: "#000000",
     fontWeight: 600,
     position: "absolute",
@@ -65,12 +65,12 @@ const disclaimerData = {
   companyName: "Poornam Events",
   website: "www.poornamevents.com",
   description:
-    "While we love to dream big, plan beautifully, and blog passionately — it's important to clarify where inspiration ends and responsibility begins.",
+    "While we love to dream big, plan beautifully, and blog passionately â€” it's important to clarify where inspiration ends and responsibility begins.",
   sections: [
     {
       title: "1. General Information Purpose Only",
       content:
-        "All content provided on www.poornamevents.com, including blog posts, checklists, images, planning guides, pricing examples, and service descriptions — is for informational and inspirational purposes only.",
+        "All content provided on www.poornamevents.com, including blog posts, checklists, images, planning guides, pricing examples, and service descriptions â€” is for informational and inspirational purposes only.",
       additionalContent:
         "We strive to provide accurate and up-to-date info, but we make no guarantees regarding:",
       items: ["Accuracy", "Completeness", "Suitability", "Timeliness"],
@@ -79,7 +79,7 @@ const disclaimerData = {
     {
       title: "2. Service Availability Disclaimer",
       content:
-        "Wedding planning is a dynamic process. While we offer a wide range of services across Indore, Bhopal and destination locations:",
+        "Wedding planning is a dynamic process. While we offer a wide range of services across Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara and destination locations:",
       items: [
         "Availability of venues, vendors, or specific services may change without notice",
         "Visuals used on the site may represent past events, concepts, or client-specific customizations",
@@ -101,7 +101,7 @@ const disclaimerData = {
     {
       title: "4. Blog Content Disclaimer",
       content:
-        "Our blog is created with love and industry experience — but it's not a substitute for personalized wedding advice.",
+        "Our blog is created with love and industry experience â€” but it's not a substitute for personalized wedding advice.",
       highlight:
         "You should always consult with a Poornam planner or relevant professional before making big decisions based on blog suggestions.",
       additionalContent: "Also:",
@@ -145,8 +145,8 @@ const disclaimerData = {
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
         email: "eventspoornam@gmail.com",
-        phone: "+91-9519066885",
-        phone2: "+91-8839844233",
+        phone: "+91-9589500509",
+        phone2: "+91-9589500509",
       },
     },
   ],
@@ -163,14 +163,14 @@ export default function Disclaimer() {
       <>
         <SEO
           url="https://www.poornamevents.com/disclaimer"
-          metaTitle="Disclaimer • Poornam Events"
+          metaTitle="Disclaimer â€¢ Poornam Events"
           metaDescription="Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website."
           keywords="wedding planning disclaimer, Poornam disclaimer"
           canonical="https://www.poornamevents.com/disclaimer"
-          ogTitle="Disclaimer • Poornam Events"
+          ogTitle="Disclaimer â€¢ Poornam Events"
           ogDescription="Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website."
           ogImage="https://www.poornamevent.com/og-image.jpg"
-          twitterTitle="Disclaimer • Poornam Events"
+          twitterTitle="Disclaimer â€¢ Poornam Events"
           twitterDescription="Disclaimer for planning guides, blogs, tools & service estimates on Poornam Events website."
           twitterImage="https://www.poornamevent.com/logoo.jpg"
           robots="index, follow" //  default

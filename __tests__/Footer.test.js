@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Footer from '@/common-component/Footer/Footer'
@@ -105,8 +105,8 @@ describe('Footer Component', () => {
     )
     
     expect(screen.getByText('Phone:')).toBeInTheDocument()
-    expect(screen.getByText('9519066885,')).toBeInTheDocument()
-    expect(screen.getByText('8839844233')).toBeInTheDocument()
+    expect(screen.getByText('9589500509,')).toBeInTheDocument()
+    expect(screen.getByText('9589500509')).toBeInTheDocument()
     expect(screen.getByText('Email:')).toBeInTheDocument()
     expect(screen.getByText('eventspoornam@gmail.com')).toBeInTheDocument()
   })
@@ -138,7 +138,7 @@ describe('Footer Component', () => {
     )
     
     const currentYear = new Date().getFullYear()
-    expect(screen.getByText(`© ${currentYear} Poornam Events.`)).toBeInTheDocument()
+    expect(screen.getByText(`Â© ${currentYear} Poornam Events.`)).toBeInTheDocument()
   })
 
   it('renders policy links', () => {
@@ -301,11 +301,11 @@ describe('Footer Component', () => {
       </TestWrapper>
     )
     
-    const phoneLink = screen.getByText('9519066885,').closest('a')
-    expect(phoneLink).toHaveAttribute('href', 'tel:9519066885')
+    const phoneLink = screen.getByText('9589500509,').closest('a')
+    expect(phoneLink).toHaveAttribute('href', 'tel:9589500509')
     
-    const phoneLink2 = screen.getByText('8839844233').closest('a')
-    expect(phoneLink2).toHaveAttribute('href', 'tel:8839844233')
+    const phoneLink2 = screen.getByText('9589500509').closest('a')
+    expect(phoneLink2).toHaveAttribute('href', 'tel:9589500509')
   })
 
   it('handles email link clicks', () => {

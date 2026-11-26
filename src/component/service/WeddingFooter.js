@@ -71,7 +71,7 @@ const WeddingFooter = () => {
 
                 }}
               >
-                {` Serving Indore, Bhopal, Ujjain & beyond.`}
+                {` Serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara & beyond.`}
               </Typography>
             </Box>
           </Grid>

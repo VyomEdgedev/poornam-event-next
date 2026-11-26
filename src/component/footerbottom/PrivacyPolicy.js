@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import {
   Container,
   Typography,
@@ -48,7 +48,7 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingLeft: 0,
   paddingRight: 0,
   "&::before": {
-    content: '"•"',
+    content: '"â€¢"',
     color: "#001538",
     fontWeight: 600,
     position: "absolute",
@@ -63,7 +63,7 @@ const privacyData = {
   companyName: "Poornam Events",
   website: "https://www.poornamevents.com",
   description:
-    "We're excited to be part of your wedding journey — and we take your privacy just as seriously as your big day.",
+    "We're excited to be part of your wedding journey â€” and we take your privacy just as seriously as your big day.",
   sections: [
     {
       title: "1. Who We Are",
@@ -124,7 +124,7 @@ const privacyData = {
         "We do not sell or rent your personal information to third parties.",
       additionalContent: "We may share your information only with:",
       items: [
-        "Trusted vendors or partners (e.g., photographers, decorators) — but only with your consent",
+        "Trusted vendors or partners (e.g., photographers, decorators) â€” but only with your consent",
         "Technical service providers who help us maintain our site (e.g., hosting companies, analytics tools)",
       ],
     },
@@ -137,7 +137,7 @@ const privacyData = {
         "Firewall protection",
         "Regular website security checks",
       ],
-      note: "But remember — no internet transmission is 100% secure. Always take precautions on your end too.",
+      note: "But remember â€” no internet transmission is 100% secure. Always take precautions on your end too.",
     },
     {
       title: "6. Cookies Policy",
@@ -182,8 +182,8 @@ const privacyData = {
       contactInfo: {
         company: "Poornam Events, Indore, Madhya Pradesh",
         email: "eventspoornam@gmail.com",
-        phone: "+91-9519066885",
-        phone2: "+91-8839844233",
+        phone: "+91-9589500509",
+        phone2: "+91-9589500509",
       },
     },
   ],
@@ -198,14 +198,14 @@ export default function PrivacyPolicy() {
       <>
         <SEO
           url="https://www.poornamevents.com/privacy-policy"
-          metaTitle="Privacy Policy • Poornam Events"
+          metaTitle="Privacy Policy â€¢ Poornam Events"
           metaDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
           keywords="privacy policy India wedding planner"
           canonical="https://www.poornamevents.com/privacy-policy"
-          ogTitle="Privacy Policy • Poornam Events"
+          ogTitle="Privacy Policy â€¢ Poornam Events"
           ogDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
           ogImage="https://www.poornamevent.com/og-image.jpg"
-          twitterTitle=" Privacy Policy • Poornam Events"
+          twitterTitle=" Privacy Policy â€¢ Poornam Events"
           twitterDescription="Review how Poornam Events collects and handles personal data under India's DPDPA and global policies."
           twitterImage="https://www.poornamevent.com/logoo.jpg"
           robots="index, follow"

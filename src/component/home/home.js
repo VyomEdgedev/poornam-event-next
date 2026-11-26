@@ -31,15 +31,15 @@ export default function HomePage(props) {
       <>
         <SEO
           url='https://www.poornamevents.com/'
-          metaTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
-          metaDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
-          keywords='wedding planner Indore, destination wedding planner Bhopal, themed weddings Ujjain'
+          metaTitle='Wedding Planner in Madhya Pradesh | Poornam Events'
+          metaDescription='Your trusted wedding planner serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya and Gadarwara. Luxury and destination weddings since 2017.'
+          keywords='wedding planner Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara, destination weddings Madhya Pradesh'
           canonical='https://www.poornamevents.com/'
-          ogTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
-          ogDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
+          ogTitle='Wedding Planner in Madhya Pradesh | Poornam Events'
+          ogDescription='Your trusted wedding planner serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya and Gadarwara. Luxury and destination weddings since 2017.'
           ogImage={`${SITE_URL}/og-image.jpg`}
-          twitterTitle='Wedding Planner in Indore, Bhopal, Ujjain | Poornam Events'
-          twitterDescription='Your trusted wedding planner in Indore, Bhopal & Ujjain. Luxury destination, themed & intimate weddings planned since 2017.'
+          twitterTitle='Wedding Planner in Madhya Pradesh | Poornam Events'
+          twitterDescription='Your trusted wedding planner serving Indore, Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya and Gadarwara. Luxury and destination weddings since 2017.'
           twitterImage={`${SITE_URL}/logoo.jpg`}
           robots="index, follow"
           isHomePage={true}

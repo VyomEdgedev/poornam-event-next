@@ -18,7 +18,7 @@ const myFAQData = [
   },
   {
     question: 'Do you only work in Indore?',
-    answer: " While we’re proudly rooted in Indore, we’ve planned weddings in Bhopal, Jabalpur, and across India. If your heart says “Shimla ki Shaadi”, our bags are already packed.",
+    answer: " While we’re proudly rooted in Indore, we’ve planned weddings in Bhopal, Jabalpur, Ujjain, Pachmarhi, Pipariya, Gadarwara, and across India. If your heart says “Shimla ki Shaadi”, our bags are already packed.",
   },
   {
     question: 'Can I hire you just for wedding day coordination?',

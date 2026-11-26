@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Header from '@/common-component/navbar/navbar'
@@ -162,7 +162,7 @@ describe('Header Component', () => {
       button.closest('a')?.getAttribute('href')?.includes('wa.me')
     )
     
-    expect(whatsappLink?.closest('a')).toHaveAttribute('href', 'https://wa.me/919519066885')
+    expect(whatsappLink?.closest('a')).toHaveAttribute('href', 'https://wa.me/919589500509')
   })
 
   it('opens WhatsApp link in new tab', () => {
